@@ -50,3 +50,16 @@ function (err, tank) {
 	res.send(tank);
 });
 ```
+
+### Mass assign: set method
+```
+Tank.findById(id, function (err, tank) {
+  if (err) return handleError(err);
+  
+  tank.set({ size: 'large' });
+  tank.save(function (err, updatedTank) {
+    if (err) return handleError(err);
+    res.send(updatedTank);
+  });
+});
+```
