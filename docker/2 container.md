@@ -25,6 +25,7 @@ docker start <CONTAINER>
 ### SSH into a running container
 
 ```shell
+docker attach <container name>
 docker exec -it <container name> /bin/bash
 ```
 
