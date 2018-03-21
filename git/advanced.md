@@ -1,3 +1,13 @@
+## Set email and username for project
+git config user.email "lam.huynh@theappteam.com.au"
+git config user.name "Lam"
+
+
+## view git config
+git config user.email
+git config user.name
+
+
 ## Get git push work on window (In case you have installed TortoiseGIT)
 
 1. Open pageant, click Add Key, select your private key and add it to pageant
