@@ -8,6 +8,17 @@ git config user.email
 git config user.name
 
 
+## Rename remote
+git remote rename <old> <new>
+
+## List remote
+git remote
+
+
+## Remove remote
+git remote remove <name>
+
+
 ## Get git push work on window (In case you have installed TortoiseGIT)
 
 1. Open pageant, click Add Key, select your private key and add it to pageant
