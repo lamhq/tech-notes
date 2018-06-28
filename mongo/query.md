@@ -50,6 +50,13 @@ db.food.insert({"_id" : 3, "fruit" : ["cherry", "banana", "apple"]})
 db.food.find({fruit : {$all : ["apple", "banana"]}})
 ```
 
+
+#### Array contains one elements
+```
+db.food.find({fruit : "apple"})
+```
+
+
 #### Array match an other array (same keys and same key's order)
 
 ```

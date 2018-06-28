@@ -26,3 +26,13 @@ git remote remove <name>
 3. try `git push -u origin master` on your terminal
 
 Reference: http://guides.beanstalkapp.com/version-control/git-on-windows.html (search for the keyword: In case you have installed TortoiseGIT)
+
+## Fix git merge problem
+
+GIT PROBLEM / ERROR : ‘PLEASE ENTER A COMMIT MESSAGE TO EXPLAIN WHY THIS MERGE IS NECESSARY …’
+
+1. press "i"
+2. write your merge message
+3. press "esc"
+4. write ":wq"
+5. then press enter
