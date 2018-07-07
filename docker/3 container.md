@@ -69,19 +69,3 @@ docker container kill <Container NAME or ID>
 ```shell
 docker container rm <Container NAME or ID>
 ```
-
-### Remove all containers
-
-```shell
-docker container rm $(docker container ls -a -q)
-```
-
-### Run less css
-
-References: https://hub.docker.com/r/appleboy/node-less/
-
-```shell
-docker run --rm -v `pwd`:/app -ti appleboy/node-less styles.less styles.css
-docker run appleboy/node-less
-docker exec -it <container name> /bin/bash
-``` 

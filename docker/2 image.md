@@ -35,25 +35,6 @@ docker build -t friendlyhello .
 docker images
 ```
 
-### Remove specified image from this machine
-
-```shell
-docker image rm <image id>
-```
-
-### Remove all images from this machine
-
-```shell
-docker image rm $(docker image ls -a -q)
-```
-
-### Remove <none> images
-
-```shell
-docker image rm $(docker images -f "dangling=true" -q)
-docker image rm $(docker images | grep "^<none>" | awk "{print $3}")
-```
-
 ### Log in this CLI session using your Docker credentials
 
 ```shell
