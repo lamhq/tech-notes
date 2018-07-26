@@ -15,6 +15,10 @@ yarn add [package] --peer
 yarn add [package] --optional
 ```
 
+## Running globally
+```
+yarn global <add/bin/list/remove/upgrade> [--prefix]
+```
 
 ## Removing a dependency
 ```
