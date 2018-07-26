@@ -29,11 +29,14 @@ CMD ["python", "app.py"]
 # Build docker image
 docker build -t image_name .
 
-# Run container with port mapping, assign name
-docker run -p host_port:container_port --name container_name image_name 
+# Run image with port mapping, assign name to container
+docker run -p host_port:container_port --name container_name image_name
 
-# Run & interactive bash shell in the container
-docker run -it --entrypoint /bin/bash image_name
+# Run image
+# create interactive bash shell in the container
+# mounts the current working directory into the container
+# set working directory to mounted path
+docker run -it --entrypoint /bin/bash --name container_name -v `pwd`:container_dir -w container_dir image_name
 
 # Start an interactive bash shell in a running container
 docker exec -it container_name /bin/bash

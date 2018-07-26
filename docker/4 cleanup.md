@@ -62,5 +62,11 @@ docker volume ls -f dangling=true
 docker volume prune
 ```
 
+### Network
+```
+docker network ls
+docker network rm $(docker network ls | grep "bridge")
+```
+
 ### References: 
 - [https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72](https://rominirani.com/docker-tutorial-series-part-7-data-volumes-93073a1b5b72)
