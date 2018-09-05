@@ -2,7 +2,7 @@
 
 Reference: [https://github.com/creationix/nvm#installation](https://github.com/creationix/nvm#installation)
 
-```
+```shell
 # install nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 
@@ -13,21 +13,15 @@ nvm -v
 nvm install 8.9.4
 ```
 
-### Install nodejs with brew
+### Install new nodejs version with nvm
 
-```
-brew install node
-
-# add this in ~/.bashrc
-export NODE_PATH='/usr/local/lib/node_modules'
+```shell
+nvm install 10.9.0
+nvm alias default v10.9.0
 ```
 
-### Uninstall nodejs (if installed by brew)
+## Uninstall an old version
 
-```
-brew uninstall node; 
-# or `brew uninstall --force node` which removes all versions
-brew prune;
-rm -f /usr/local/bin/npm /usr/local/lib/dtrace/node.d;
-rm -rf ~/.npm;
+```shell
+nvm uninstall 8.9.4
 ```

@@ -16,6 +16,11 @@ docker run -d -p 4000:80 <image name>
 docker run -it --entrypoint /bin/bash <image name>
 ```
 
+### Run container and remove after exit
+```shell
+docker run --rm --name container_name -it --entrypoint /bin/sh image_name
+```
+
 ### Start one or more stopped containers
 
 ```shell
