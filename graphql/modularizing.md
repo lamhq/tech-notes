@@ -2,9 +2,10 @@
 
 GraphQL schema is the first thing you design, and acts as the contract between your frontend and backend
 
-Your actual business logic, permissions, and other concerns should not be part of your GraphQL schema. For large apps, we suggest splitting your GraphQL server code into 4 components: Schema, Resolvers, Models, and Connectors, which each handle a specific part of the work. 
+Your actual business logic, permissions, and other concerns should not be part of your GraphQL schema. For large apps, we suggest splitting your GraphQL server code into 4 components: `Schema`, `Resolvers`, `Models`, and `Connectors`, which each handle a specific part of the work. 
 
 Use standard libraries for auth and other special concerns. There’s no need to reinvent the login process in GraphQL
+
 
 ## Modularizing the schema
 
@@ -78,24 +79,33 @@ const rootResolvers = { ... };
 const resolvers = [rootResolvers, gitHubResolvers, sqlResolvers];
 ```
 
-## Resolver result format
 
-1. `null` or `undefined` - this indicates the object could not be found.
-2. An array.
-3. A promise.
-4. A scalar or object value.
+## Combine multiple resolvers into one
 
-## Resolver function signature
+The following is an example of a simple logged-in authorization logic:
 
 ```js
-fieldName(obj, args, context, info) { result }
+const isAuthenticated = (root, args, context, info) => {
+  if (!context.user) {
+    return new Error('Not authenticated')
+  }
+}
 ```
 
-1. `obj`: The object that contains the result returned from the resolver on the parent field.
-3. `context`: This is an object shared by all resolvers in a particular query, and is used to contain per-request state, including authentication information, dataloader instances, and anything else that should be taken into account when resolving the query.
-4. `info`: This argument should only be used in advanced cases, but it contains information about the execution state of the query, including the field name, path to the field from the root, and more.
+Which could be used it in an actual field resolver like this:
 
-## Resources
+```js
+import { combineResolvers } from 'graphql-resolvers'
 
-- [GitHunt API](https://github.com/apollographql/GitHunt-API)
-- [GraphQL schema language cheat sheet](https://raw.githubusercontent.com/sogko/graphql-shorthand-notation-cheat-sheet/master/graphql-shorthand-notation-cheat-sheet.png)
+const protectedField = (root, args, context, info) => 'Protected field value'
+
+const resolverMap = {
+  Query: {
+    protectedField: combineResolvers(
+      isAuthenticated,
+      protectedField
+    )
+  }
+}
+```
+
