@@ -1,7 +1,7 @@
 ### Run container and map port
 
 ```shell
-docker run -p 4000:80 <image name>
+docker run -p host_port:container_port <image name>
 ```
 
 ### Run container in detached mode

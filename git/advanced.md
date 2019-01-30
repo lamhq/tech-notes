@@ -1,4 +1,9 @@
-## Set email and username for project
+## Set email and username (global)
+git config --global user.email "hqlam.bt@gmail.com"
+git config --global user.name "Lam"
+
+
+## Set email and username (per project)
 git config user.email "lam.huynh@theappteam.com.au"
 git config user.name "Lam"
 
@@ -40,9 +45,18 @@ GIT PROBLEM / ERROR : ‘PLEASE ENTER A COMMIT MESSAGE TO EXPLAIN WHY THIS MERGE
 Vim tutorial: https://kipalog.com/posts/Lam-quen-VIM-trong-5-phut
 
 
-## Combine (squash) commits
+## Combine commits
 ```
 git reset --soft HEAD~3
 ```
 
 Reference: https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git#answer-5201642
+
+
+## extract changed files in a commit
+
+In below example `8449c1e65a` is parent commit of `2f4367`:
+
+```
+git diff --name-only 2f4367 8449c1e65a | zip changes.zip -@
+```

@@ -1,4 +1,4 @@
-# Compress an Entire Directory or a Single File
+# Compress using tar command
 
 ```bash
 tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
@@ -12,10 +12,24 @@ Here's what those switches actually mean:
 - -f: Allows you to specify the filename of the archive.
 
 
-# Extract an Archive
+# Extract an archive
 
 ```bash
 tar -xzvf archive.tar.gz
 ```
 
-It’s the same as the archive creation command we used above, except the -x switch replaces the -c switch. This specifies you want to extract an archive instead of create one.
+It's the same as the archive creation command we used above, except the -x switch replaces the -c switch. This specifies you want to extract an archive instead of create one.
+
+
+# Compress using zip command
+
+```bash
+zip -r name-of-archive.zip /path/to/directory
+```
+
+
+# Extract an archive
+
+```bash
+unzip name-of-archive.zip
+```
