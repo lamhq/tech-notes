@@ -1,6 +1,6 @@
 ### Delete branch
-git branch -d hotfix/1.6.1
-git push origin --delete hotfix/1.6.1
+git branch -d hotfix/1.6.5
+git push origin --delete hotfix/1.6.5
 
 
 ### Delete tag
