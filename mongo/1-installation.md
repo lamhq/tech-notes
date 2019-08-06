@@ -1,4 +1,8 @@
-### (Windows) Install MongoDB
+### Install MongoDB Manually (Mac)
+
+Reference: [https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x)
+
+### Install MongoDB (Windows)
 
 #### Create a configuration file
 

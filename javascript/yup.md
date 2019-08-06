@@ -1,8 +1,10 @@
 # Yup - object schema validator
 
+**We shouldn't use this library since its features do not cover our usecases, and it is not flexible.**
+
 [https://github.com/jquense/yup](https://github.com/jquense/yup)
 
-## basic
+## Basic
 ```js
 const { object, string, number, date } = require('yup')
 
@@ -25,7 +27,7 @@ await contactSchema.validate(contact)
 ```
 
 
-## custom validation
+## Custom validation
 ```js
 import * as yup from 'yup';
 
@@ -51,7 +53,7 @@ schema.validate(data).
 ```
 
 
-## custom validation (reusable)
+## Custom validation (reusable)
 ```js
 Yup.addMethod(Yup.type, 'methodName', function (anyArgsYouNeed) {
   const { message } = anyArgsYouNeed;
@@ -61,7 +63,7 @@ Yup.addMethod(Yup.type, 'methodName', function (anyArgsYouNeed) {
     // [value] - value of the property being tested
     // [path]  - property name,
     // ...
-    return someCondition || conditionTwo || createError(...);
+    return someCondition || conditionTwo || createError({ path, message: myFailureMessage });
   });
 });
 
@@ -75,7 +77,7 @@ const schema = {
 ```
 
 
-## async validation
+## Async validation
 ```js
 Yup.addMethod(Yup.mixed, 'methodName', function (yourArgs) {
   return this.test('methodName', message, function (value) {

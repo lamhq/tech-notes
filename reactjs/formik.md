@@ -40,9 +40,10 @@ export const ValidationSchemaExample = () => (
         email: '',
       }}
       validationSchema={SignupSchema}
-      onSubmit={values => {
+      onSubmit={(values, { setSubmitting, setErrors }) => {
         // same shape as initial values
         console.log(values);
+        setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
