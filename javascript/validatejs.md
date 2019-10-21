@@ -104,7 +104,9 @@ If you include `%{value}` in the error message it will be replaced with the actu
 ```javascript
 var constraints = {
   username: {
-    presence: true,
+    presence: {
+      allowEmpty: false,
+    },
     exclusion: {
       within: ["nicklas"],
       message: "'%{value}' is not allowed"
