@@ -4,7 +4,7 @@ git config --global user.name "Lam"
 
 
 ## Set email and username (per project)
-git config user.email "lam.huynh@theappteam.com.au"
+git config user.email "daibanglam@gmail.com"
 git config user.name "Lam"
 
 

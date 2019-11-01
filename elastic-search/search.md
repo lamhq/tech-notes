@@ -8,11 +8,11 @@
 - `timeout`: whether the query timed out
 
 
-## Search in multiple index, type
+## Search in multiple indices
 
 ```
-GET /_all/_search
 GET /_search
+GET /_all/_search
 GET /gb,us/_search
 GET /g*,u*/_search
 GET /gb,us/user,tweet/_search
@@ -27,7 +27,91 @@ GET /gb,us/user,tweet/_search
 GET /_search?size=5&from=10
 ```
 
-## Most Important Queries and Filters
+## Compound queries
+
+### Boolean
+
+The bool filter is used to combine multiple filter clauses using Boolean logic. It accepts three parameters:
+
+- `must`: These clauses must match, like `and`.
+- `filter`: These clauses must match, like `and`. However, filter clauses are executed in filter context, meaning that scoring is ignored and clauses are considered for caching.
+- `should`: At least one of these clauses must match, like `or`.
+- `must_not`: These clauses must not match, like `not`.
+
+```
+POST _search
+{
+  "query": {
+    "bool" : {
+      "must" : {
+        "term" : { "user" : "kimchy" }
+      },
+      "filter": {
+        "term" : { "tag" : "tech" }
+      },
+      "must_not" : {
+        "range" : {
+          "age" : { "gte" : 10, "lte" : 20 }
+        }
+      },
+      "should" : [
+        { "term" : { "tag" : "wow" } },
+        { "term" : { "tag" : "elasticsearch" } }
+      ],
+      "minimum_should_match" : 1,
+      "boost" : 1.0
+    }
+  }
+}
+```
+
+### Boosting
+
+Returns documents matching a positive query while reducing the relevance score of documents that also match a negative query.
+
+You can use the boosting query to demote certain documents without excluding them from the search results.
+
+```
+GET /_search
+{
+    "query": {
+        "boosting" : {
+            "positive" : {
+                "term" : {
+                    "text" : "apple"
+                }
+            },
+            "negative" : {
+                 "term" : {
+                     "text" : "pie tart fruit crumble tree"
+                }
+            },
+            "negative_boost" : 0.5
+        }
+    }
+}
+```
+
+
+### Disjunction max
+
+Returns documents matching one or more wrapped queries, called query clauses or clauses.
+
+```
+GET /_search
+{
+    "query": {
+        "dis_max" : {
+            "queries" : [
+                { "term" : { "title" : "Quick pets" }},
+                { "term" : { "body" : "Quick pets" }}
+            ],
+            "tie_breaker" : 0.7
+        }
+    }
+}
+```
+
 
 ### term Filter
 
@@ -62,19 +146,10 @@ The `exists` and `missing` filters are used to find documents in which the speci
 ```json
 {
     "exists": {
-        "field":    "title"
+        "field": "title"
     }
 }
 ```
-
-### bool Filter
-
-The bool filter is used to combine multiple filter clauses using Boolean logic. It accepts three parameters:
-
-- `must`: These clauses must match, like and.
-- `must_not`: These clauses must not match, like not.
-- `should`: At least one of these clauses must match, like or.
-
 
 ### match Query
 
@@ -115,6 +190,10 @@ GET /bank/account/_search
     		"must_not": { "match": { "firstname": "Keri" } }
     	}
     },
+    "sort": [
+    	{ "balance": { "order": "desc" } },
+        { "_score": { "order": "desc" }}
+    ],
     "highlight": {
         "fields": {
             "address": {}
@@ -133,6 +212,6 @@ GET /gb/tweet/_validate/query?explain
         "tweet" : {
             "match" : "really powerful"
         }
-    } 
+    }
 }
 ```
