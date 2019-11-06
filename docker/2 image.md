@@ -44,7 +44,7 @@ docker login
 ### Tag <image> for upload to registry
 
 ```shell
-docker tag <image> username/repository:tag
+docker tag <image> repository/image:tag
 ```
 
 ### Upload tagged image to registry

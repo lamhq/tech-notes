@@ -1,24 +1,26 @@
-### Run container and map port
+### Run an image with a specific name
+```
+docker run --name container_name <image name>
+```
+
+### Map port
 
 ```shell
 docker run -p host_port:container_port <image name>
 ```
 
-### Run container in detached mode
+### Map directory
+
+
+### Run in detached mode
 
 ```shell
-docker run -d -p 4000:80 <image name>
+docker run -d <image name>
 ```
 
-### Run container and go into terminal
-
+### Remove container after exit
 ```shell
-docker run -it --entrypoint /bin/bash <image name>
-```
-
-### Run container and remove after exit
-```shell
-docker run --rm --name container_name -it --entrypoint /bin/sh image_name
+docker run --rm <image name>
 ```
 
 ### Start one or more stopped containers
@@ -27,22 +29,17 @@ docker run --rm --name container_name -it --entrypoint /bin/sh image_name
 docker start <CONTAINER>
 ```
 
-### SSH into a running container
+### Run and open terminal
+
+```shell
+docker run -it --entrypoint /bin/bash <image name>
+```
+
+### Open terminal in a running container
 
 ```shell
 docker attach <container name>
 docker exec -it <container name> /bin/bash
-```
-
-### List machines
-
-```shell
-docker-machine ls
-```
-
-### Get the IP address of one or more machines
-```shell
-docker-machine ip <machine name>
 ```
 
 ### List all running containers
