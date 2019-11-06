@@ -11,6 +11,9 @@ docker run -p host_port:container_port <image name>
 
 ### Map directory
 
+```shell
+docker run -v "$PWD":/path/in/container <image name>
+```
 
 ### Run in detached mode
 
