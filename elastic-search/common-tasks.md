@@ -10,7 +10,7 @@ GET /
 ## Indexing a document
 
 ```
-PUT /{index}/{type}/{id}
+PUT /{index}/{id}
 {
     "field": "value"
 }

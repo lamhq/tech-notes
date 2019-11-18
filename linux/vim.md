@@ -8,3 +8,7 @@
 ## Quit without saving
 
 Press `escape` then enter `:q!`
+
+
+## Find word
+To find a word in Vi/Vim, simply type the / or ? key, followed by the word you're searching for.

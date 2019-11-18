@@ -1,0 +1,51 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:13.0.1-alpine' 
+            args '-p 3000:3000' 
+        }
+    }
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+    }
+    environment {
+        CI = 'true' 
+    }
+    stages {
+        stage('Build') { 
+            agent {
+                docker { image 'maven:3-alpine' }
+            }
+            steps {
+                sh 'yarn'
+                echo "${params.Greeting} World!"
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            }
+        }
+        stage('Test') { 
+            environment { 
+                DEBUG_FLAGS = '-g'
+            }
+            steps {
+                sh './jenkins/scripts/test.sh'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
+        stage('Deploy') { 
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+    post {
+        always {
+            junit '**/target/*.xml'
+        }
+        failure {
+            mail to: team@example.com, subject: 'The Pipeline failed :('
+        }
+    }
+}
