@@ -11,15 +11,8 @@ ssh-add ~/.ssh/id_rsa
 
 ### SSH to server without entering password
 
-1. Copy your local public key to remote server, enter your password:
-
 ```
 ssh-copy-id username@host
-```
-
-2. Now try logging into the machine, with:
-
-```
 ssh username@host
 ```
 
@@ -27,4 +20,19 @@ ssh username@host
 ### SSH Tunnel
 ```
 ssh -N -L 3000:203.150.7.51:3000 kero@115.78.2.236
+```
+
+
+### Execute command without password from a ssh connection
+
+Replace `Defaults requiretty` by `Defaults !requiretty` in your `/etc/sudoers`
+
+Reference: [https://www.shell-tips.com/2014/09/08/sudo-sorry-you-must-have-a-tty-to-run-sudo/](https://www.shell-tips.com/2014/09/08/sudo-sorry-you-must-have-a-tty-to-run-sudo/)
+
+
+### Download file from remote to local
+
+```shell
+scp <source> <destination>
+scp mscadmin@192.168.21.10:~/csv.tar.gz /Users/lam/Desktop/source/msc/embulk/
 ```
