@@ -83,7 +83,7 @@ directories.
 ## `rm` options
 
 - `r`: Recursively delete directories.
-- `f`: Ignore nonexistent files and do not prompt. 
+- `f`: Ignore nonexistent files and do not prompt.
 
 
 ## Symbolic Links
@@ -97,4 +97,83 @@ To create a symbolic link
 ```shell
 ln -s item link
 ```
+
+## Display Command's Usage Information
+
+```shell
+docker run --help
+```
+
+
+## Redirect
+
+### Send standard output to file
+
+```bash
+ls -l /usr/bin > ls-output.txt
+```
+
+
+### Append redirected output to a file
+
+```bash
+ls -l /usr/bin >> ls-output.txt
+```
+
+
+### Redirect standard error
+
+```bash
+ls -l /bin/usr 2> ls-error.txt
+```
+
+### Redirecting Standard Output And Standard Error To One File
+
+```bash
+ls -l /bin/usr > ls-output.txt 2>&1
+ls -l /bin/usr &> ls-output.txt
+ls -l /bin/usr &>> ls-output.txt
+```
+
+### Suppress error messages from a command
+
+```bash
+ls -l /bin/usr 2> /dev/null
+```
+
+
+### Debuging pipeline output with `tee`
+
+The tee program reads standard input and copies it to both standard output and files
+
+```bash
+ls /usr/bin | tee ls.txt | grep zip
+```
+
+
+## Print number of lines, words, bytes in file with `wc`
+
+```bash
+wc -l ls-output.txt
+ls /bin /usr/bin | sort | uniq | wc -l
+```
+
+
+## Print lines matching a pattern with `grep`
+
+- `-i`: ignore case
+- `-v`: print lines do not match
+
+```bash
+ls /bin /usr/bin | sort | uniq | grep zip
+```
+
+
+## Print first/last part of files
+
+```bash
+head -n 5 ls-output.txt
+tail -n 5 -f /var/log/system.log
+```
+
 
