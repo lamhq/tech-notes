@@ -177,3 +177,11 @@ tail -n 5 -f /var/log/system.log
 ```
 
 
+## Expansion
+
+```bash
+# Pathname Expansion
+echo D*
+echo *s
+
+```
