@@ -3,7 +3,7 @@
 ## Compress using tar command
 
 ```bash
-tar -czvf filename.tar.gz -C /path/to/compress .
+tar -czvf path/to/file.tar.gz -C /path/to/compress .
 ```
 
 Here's what those switches actually mean:

@@ -4,13 +4,23 @@
 cat /etc/os-release
 ```
 
-## Execute linux command without sudo prefix
+## Execute linux command without sudo
 
 ```shell
 sudo -i
 ```
 
-## ls command's common options
+
+## Set server timezone
+
+```bash
+cd /etc
+sudo rm localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Bangkok localtime
+```
+
+
+## List directory's content with `ls`
 
 - `-A`: does not list . (current directory) and .. (parent directory).
 - `-l`: List in long format.
