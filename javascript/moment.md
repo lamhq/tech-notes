@@ -87,8 +87,8 @@ moment().endOf("year");      // set the moment to 12-31 23:59:59.999 this year
 ```js
 // see: https://momentjs.com/docs/#/displaying/
 moment().format();                                // "2014-09-08T08:02:17-05:00" (ISO 8601, no fractional seconds)
-moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // "Sunday, February 14th 2010, 3:25:50 pm"
-moment().format("ddd, hA");                       // "Sun, 3PM"
+moment().format("dddd, MMMM Do YYYY, h:mm:ss a"); // Sunday, February 14th 2010, 3:25:50 pm
+moment().format("ddd, D/M/YYYY h:mm:ss a");       // Wed, 11/12/2019 7:06:24 am
 
 // difference
 var a = moment([2007, 0, 29]);

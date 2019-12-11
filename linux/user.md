@@ -1,4 +1,4 @@
-# User and Permission
+# User
 
 ## Create a Sudo User on CentOS
 
