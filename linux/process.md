@@ -1,16 +1,10 @@
-### List all running processes and which port they are using
-netstat -tulpn
-
-
-### Find a process using a port
-fuser 3002/tcp
-lsof -i :3002
-
-
-### Find and kill process by port
-fuser -k 3002/tcp
-kill -9 <PID>
-
-
 ### Get available RAM
+```shell
 free -m
+```
+
+
+### Get path of a process
+```shell
+pwdx <PID>
+```

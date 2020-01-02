@@ -1,25 +1,3 @@
-## Check os version
-
-```bash
-cat /etc/os-release
-```
-
-## Execute linux command without sudo
-
-```shell
-sudo -i
-```
-
-
-## Set server timezone
-
-```bash
-cd /etc
-sudo rm localtime
-sudo ln -s /usr/share/zoneinfo/Asia/Bangkok localtime
-```
-
-
 ## Command line keyboard shortcuts
 
 - `ctrl-a`: move cursor to the beginning of line
@@ -194,6 +172,10 @@ echo "The balance for user $USER is: \$5.00"
 mv bad\&filename good_filename
 ```
 
+## Heredoc
+
+https://linuxize.com/post/bash-heredoc/
+
 
 ## Using history
 
@@ -210,6 +192,42 @@ Press `ctrl-r`, followed by the text you are looking for.
 To find the next occurrence of the text (moving "up" the history list), press `Ctrl-r` again.
 
 To quit searching, press either `Ctrl-g` or `Ctrl-c`.
+
+
+## Environment
+
+There are two kinds of shell session: login shell session and non-login shell session. A login shell session is one in which we are prompted for our username and password (terminal, for example). A non-ogin shell session typically occurs when we launch a terminal session in the GUI.
+
+### Starup files for login shell session
+
+- `/etc/profile`: a global configuration script that applies to all users
+- `~/.bash_profile`: A user's personal startup file
+- `~/.bash_login`
+- `~/.profile`
+
+The `~/.bashrc` is the most important startup file, since it is almost always read (both login shell and non-login shell).
+
+
+### Apply changes in `.bashrc` immediately
+
+```shell
+source .bashrc
+```
+
+
+## Check os version
+
+```bash
+cat /etc/os-release
+```
+
+## Set server timezone
+
+```bash
+cd /etc
+sudo rm localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Bangkok localtime
+```
 
 
 ## List directory's content with `ls`
@@ -275,5 +293,4 @@ ls /bin /usr/bin | sort | uniq | grep zip
 head -n 5 ls-output.txt
 tail -n 5 -f /var/log/system.log
 ```
-
 

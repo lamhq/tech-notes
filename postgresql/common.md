@@ -1,7 +1,15 @@
-## Connect to remote server
+## Connect to db server
 
 ```shell
 psql -h <host> -p <port> -U <username> -W <password> <database>
+```
+
+
+## Connect to db server uing psql without typing password
+
+```shell
+vi ~/.pgpass
+localhost:5432:mobilesc_dev:postgres:abc@123!
 ```
 
 
@@ -23,6 +31,18 @@ Reference: [Stackoverflow](https://dba.stackexchange.com/questions/50602/how-do-
 
 ```bash
 pg_dump -U postgres -h localhost mobilesc_dev -s > ddl.sql
+```
+
+
+## Install pgclient on Centos
+```bash
+yum install -y postgresql10
+```
+
+
+## Import database
+```bash
+psql -h localhost -p 5432 -U postgres mobilesc_dev -f data.sql
 ```
 
 
