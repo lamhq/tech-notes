@@ -92,6 +92,7 @@ ls -l /bin/usr 2> ls-error.txt
 ls -l /bin/usr > ls-output.txt 2>&1
 ls -l /bin/usr &> ls-output.txt
 ls -l /bin/usr &>> ls-output.txt
+ls -l /bin/usr >>ls-output.txt 2>&1
 ```
 
 ### Suppress error messages from a command

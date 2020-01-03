@@ -1,34 +1,67 @@
-# Basic
+## Comment
+```python
+"""
+This is a comment
+written in
+more than just one line
+"""
+```
+
+
+## Types
+
+```python
+# getting data type
+x = 5
+print(type(x))
+
+# type conversion
+x = float(1) # x will be 1.0
+y = int(2.8) # y will be 2
+z = int("3") # z will be 3
+w = float("4.2") # w will be 4.2
+i = str(3.0)  # z will be '3.0'
+```
+
 
 ## Numbers
+
+Available operators:
 
 - `+`, `-`, `*`, `/`
 - `//`, `%`, `**`
 
+
 ## Strings
 
-- `'a sample string'`, `"string with double quotes"`
-- `'doesn\'t'`, `"doesn't"`
-- `len('abc')` return length of a string
-
-String literals can span **multiple lines**
+Python strings cannot be changed - they are immutable.
 
 ```python
-print("""\
+a = 'a sample string'
+b = "string with double quotes"
+c = 'doesn\'t'
+d = "doesn't"
+
+# multiline string
+e = """\
 Usage: thingy [OPTIONS]
      -h                        Display this usage message
      -H hostname               Hostname to connect to
 """)
-```
+f = '''Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.'''
 
-Two or more string literals (i.e. the ones enclosed between quotes) next to each other are **automatically concatenated**.
-
-```python
+# string literals next to each other are automatically concatenated
 text = ('Put several strings within parentheses '
     'to have them joined together.')
+
+# get string's length
+f = len('abc')
 ```
 
-Strings can be **indexed** (subscripted), with the first character having index 0.
+### Indexing
 
 ```python
 word = 'Python'
@@ -39,7 +72,7 @@ w2 = word[-2]   # second-last character: 'o'
 w3 = word[-6]   # 'P'
 ```
 
-**Slicing**
+### Slicing
 
 ```python
 s1 = word[0:2]  # characters from position 0 (included) to 2 (excluded): 'Py'
@@ -47,79 +80,110 @@ s2 = word[:2]   # character from the beginning to position 2 (excluded): 'Py'
 s3 = word[4:]   # characters from position 4 (included) to the end: 'on'
 ```
 
-Python strings cannot be changed — they are immutable.
+### String methods
+
+```python
+a = " Hello, World!"
+b = a.lower()
+c = a.upper()
+d = a.strip()
+e = a.replace("H", "J")
+f = a.split(",") # returns ['Hello', ' World!']
+x = "Hello" in a # returns True
+```
+
+- `endswith`: Returns true if the string ends with the specified value
+- `find`: Searches the string for a specified value and returns the position of where it was found
+- `isalnum`: Returns True if all characters in the string are alphanumeric
+- `isdigit`: Returns True if all characters in the string are digits
+- `join`: Joins the elements of an iterable to the end of the string
+- `split`: Splits the string at the specified separator, and returns a list
+- `splitlines`: Splits the string at line breaks and returns a list
+
+
+### String Format
+```python
+txt = "My name is John, and I am {}".format(36)
+myorder = "I want to pay {price} dollars for {quantity} pieces of item {item}.".format(
+    price = 5,
+    quantity = 2,
+    itemno = 'abcd'
+)
+```
+
+## Boolean
+
+Almost any value is evaluated to `True` if it has some sort of content.
+
+Any string is `True`, except empty strings.
+
+Any number is `True`, except `0`.
+
+Any list, tuple, set, and dictionary are `True`, except empty ones.
+
+Empty values, such as `()`, `[]`, `{}`, `""`, the number `0`, and the value `None`.
+
+Available operators:
+
+- `==`, `!=`, `>`, `<`, `>=`, `<=`
+- `and`, `or`, `not`
+- `is`, `is not`
+- `in`, `not in`
+
 
 ## List
 
 Like strings, lists can be indexed and sliced, Lists also support operations like concatenation
 
 ```python
+# create a list
 squares = [1, 4, 9, 16, 25]
-squares[2] = 64
-squares.append(216)
-newArr = squares + [36, 49, 64, 81, 100]
-squares[2:5] = [15, 14, 33]
-squareSize = len(squares)
 x = [['a', 'b', 'c'], [1, 2, 3]]
+
+# get list's size
+squareSize = len(squares)
+
+# access item
+a = squares[2:4]
+b = squares[:4]
+
+# Change Item Value
+squares[2] = 64
+squares[2:5] = [15, 14, 33]
+
+# loop through a List
+thislist = ["apple", "banana", "cherry"]
+for x in thislist:
+  print(x)
+
+# Check if Item Exists
+thislist = ["apple", "banana", "cherry"]
+if "apple" in thislist:
+  print("Yes, 'apple' is in the fruits list")
+
+# add items
+squares.append(216)
+
+# Remove Item
+thislist.remove('banana')
+thislist.pop()
+del thislist[0]
+thislist.clear()
+
+# Copy a list
+thislist = ["apple", "banana", "cherry"]
+mylist = thislist.copy()
+mylist = list(thislist)
+
+# Join Two Lists
+list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+list3 = list1 + list2
 ```
 
-## `if` Statements`
-
-```python
-x = int(input("Please enter an integer: "))
-if x < 0:
-    x = 0
-elif x == 0:
-    print('Zero')
-else:
-    print('More')
-```
-
-
-## `for` Statements`
-
-```python
-words = ['cat', 'window', 'defenestrate']
-for w in words:
-    print(w, len(w))
-
-for i in range(5):
-    print(i)
-
-a = ['Mary', 'had', 'a', 'little', 'lamb']
-for i in range(len(a)):
-    print(i, a[i])
-```
-
-Loop statements may have an `else` clause, it is executed when the loop terminates through exhaustion of the iterable (with `for`) or when the condition becomes `false` (with `while`), but not when the loop is terminated by a `break` statement.
-
-```python
-for n in range(10):
-    if n > 10:
-        print('found item', n)
-        break;
-else:
-    print('no item match the condition')
-```
-
-The `continue` statement, continues with the next iteration of the loop:
-
-```python
-for num in range(2, 10):
-    if num % 2 == 0:
-        print("Found an even number", num)
-        continue
-    print("Found a number", num)
-```
-
-### Functions
-
-```python
-def fib(n):
-    """Print a Fibonacci series up to n."""
-    a, b = 0, 1
-    while a < n:
-        print(a, end=' ')
-        a, b = b, a+b
-    print()
-```
+- `count`: Returns the number of elements with the specified value
+- `insert`: Adds an element at the specified position
+- `index`: Returns the index of the first element with the specified value
+- `pop`: Removes the element at the specified position
+- `reverse`: Reverses the order of the list
+- `sort`: Sorts the list
