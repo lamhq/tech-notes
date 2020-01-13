@@ -133,7 +133,7 @@ Available operators:
 
 ## List
 
-Like strings, lists can be indexed and sliced, Lists also support operations like concatenation
+List is a collection which is ordered and changeable. Allows duplicate members.
 
 ```python
 # create a list
@@ -187,3 +187,46 @@ list3 = list1 + list2
 - `pop`: Removes the element at the specified position
 - `reverse`: Reverses the order of the list
 - `sort`: Sorts the list
+
+
+## Tuples
+
+A tuple is a collection which is ordered and unchangeable. In Python tuples are written with round brackets.
+
+```python
+thistuple = ("apple", "banana", "cherry")
+
+print(thistuple[1])
+
+# convert tuple into a list
+y = list(thistuple)
+
+# tuple with one item
+thistuple = ("apple",)
+```
+
+
+## Set
+
+A set is a collection which is unordered and unindexed.
+
+You cannot access items in a set by referring to an index. But you can loop through the set items using a `for` loop
+
+```python
+thisset = {"apple", "banana", "cherry"}
+
+for x in thisset:
+  print(x)
+
+print("banana" in thisset)
+
+thisset.add("orange")
+thisset.update(["orange", "mango", "grapes"])
+thisset.discard("banana")
+
+# Join Two Sets
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set3 = set1.union(set2)
+```
