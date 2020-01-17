@@ -5,7 +5,10 @@ https://www.dataschool.io/launch/
 
 ## Step 1: Get comfortable with Python
 
+Reference: https://www.datacamp.com/tracks/data-scientist-with-python
+
 - [Introduction to Python](https://www.datacamp.com/courses/intro-to-python-for-data-science)
+- [Intermediate Python](https://www.datacamp.com/courses/intermediate-python-for-data-science)
 - [Introduction to Python](http://introtopython.org/)
 - [Google's Python Class](https://developers.google.com/edu/python/)
 - [Python Quick Reference](http://www.dataschool.io/python-quick-reference/)
