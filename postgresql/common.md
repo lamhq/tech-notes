@@ -30,7 +30,7 @@ Reference: [Stackoverflow](https://dba.stackexchange.com/questions/50602/how-do-
 ## Dump database schema with pg_dump
 
 ```bash
-pg_dump -U postgres -h localhost mobilesc_dev -s > ddl.sql
+pg_dump -U postgres -h localhost mobilesc_dev -s > schema.sql
 ```
 
 

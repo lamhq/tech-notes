@@ -13,3 +13,12 @@ docker run --rm hello-world
 - https://docs.docker.com/v17.12/install/linux/docker-ce/centos/
 - https://stackoverflow.com/questions/45272827/docker-ce-on-rhel-requires-container-selinux-2-9
 - http://mirror.centos.org/centos/7/extras/x86_64/Packages/
+
+
+## Configure Docker to start on boot
+
+```shell
+sudo systemctl enable docker
+```
+
+Reference: [https://docs.docker.com/install/linux/linux-postinstall//#configure-docker-to-start-on-boot](https://docs.docker.com/install/linux/linux-postinstall//#configure-docker-to-start-on-boot)

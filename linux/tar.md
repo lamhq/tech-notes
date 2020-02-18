@@ -3,7 +3,8 @@
 ## Create an archive (compress)
 
 ```bash
-tar -czvf path/to/file.tar.gz -C /path/to/compress .
+tar -czvf file.tar.gz -C /path/to/directory .
+tar -cvf files.tar -C /path/to/directory .; gzip -9 files.tar
 ```
 
 - `-c`: Create an archive.
