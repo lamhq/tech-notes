@@ -1,4 +1,6 @@
-## `if` Statements`
+# Flow control statements
+
+## `if` Statement
 
 ```python
 x = int(input("Please enter an integer: "))
@@ -11,7 +13,7 @@ else:
 ```
 
 
-## `for` Statements`
+## `for` Statement
 
 ```python
 words = ['cat', 'window', 'defenestrate']
@@ -25,6 +27,8 @@ a = ['Mary', 'had', 'a', 'little', 'lamb']
 for i in range(len(a)):
     print(i, a[i])
 ```
+
+### `for ... else`
 
 Loop statements may have an `else` clause, it is executed when the loop terminates through exhaustion of the iterable (with `for`) or when the condition becomes `false` (with `while`), but not when the loop is terminated by a `break` statement.
 
@@ -47,14 +51,3 @@ for num in range(2, 10):
     print("Found a number", num)
 ```
 
-### Functions
-
-```python
-def fib(n):
-    """Print a Fibonacci series up to n."""
-    a, b = 0, 1
-    while a < n:
-        print(a, end=' ')
-        a, b = b, a+b
-    print()
-```

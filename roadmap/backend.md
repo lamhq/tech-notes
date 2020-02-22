@@ -12,30 +12,30 @@
 ### Relational Database
 
 - PostgreSQL
-- MySQL
+- ~~MySQL~~
 
 
 ### NoSQL databases
 
 - MongoDB
-- DynamoDB
+- ~~DynamoDB~~
 
 ### Advance knowledge
 
-- ORMs
-- ACID
-- Transactions
-- N+1 problem
-- Database Normalization
-- Indexes and how they work
+- ~~ORMs~~
+- ~~ACID~~
+- ~~Transactions~~
+- ~~N+1 problem~~
+- ~~Database Normalization~~
+- ~~Indexes and how they work~~
 - Data replication
 - Sharding strategies
 
 
 ## Learn about API
 
-- REST
-- JSON APIs
+- ~~REST~~
+- ~~JSON APIs~~
 
 
 ## Server side caching
