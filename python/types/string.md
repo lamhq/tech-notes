@@ -83,10 +83,66 @@ x = "Hello" in a # returns True
 - `split`: Splits the string at the specified separator, and returns a list
 - `splitlines`: Splits the string at line breaks and returns a list
 
-
 ## Format a string
+
+### `printf`
+
+```python
+import math
+print('The value of pi is approximately %5.3f.' % math.pi)
+# The value of pi is approximately 3.142.
+```
+
+### `str.format`
+
 ```python
 str1 = "My name is John, and I am {}".format(36)
 
 str2 = "I want to pay {price} dollars for {quantity} pieces of item {item}.".format(price = 5, quantity = 2, itemno = 'abcd')
+
+table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
+print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '
+    'Dcab: {0[Dcab]:d}'.format(table))
+# Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+```
+
+
+### Formatted string literals
+
+Begin a string with `f` or `F` before the opening quotation mark or triple quotation mark. Inside this string, you can write a Python expression between `{` and `}` characters that can refer to variables or literal values.
+
+```python
+year = 2016
+event = 'Referendum'
+#'Results of the 2016 Referendum'
+str1 = f'Results of the {year} {event}'
+
+import math
+# rounds pi to three places after the decimal
+print(f'The value of pi is approximately {math.pi:.3f}.')
+# The value of pi is approximately 3.142.
+
+# cause field to be a minimum number of characters wide, good for aligning
+print(f'{2:10} ==> {4:10d}')
+#         2 ==>          4
+```
+
+
+## Display values
+
+The `str()` function is meant to return representations of values which are fairly human-readable, while `repr()` is meant to generate representations which can be read by the interpreter
+
+```python
+s = 'Hello, world.'
+
+str(s)
+# 'Hello, world.'
+
+repr(s)
+# "'Hello, world.'"
+
+hello = 'hello, world\n'
+hellos = repr(hello)
+print(hellos)
+# 'hello, world\n'
 ```

@@ -51,3 +51,11 @@ for num in range(2, 10):
     print("Found a number", num)
 ```
 
+
+## Ternary operator
+
+The ternary operator is a way of writing conditional statements in Python.
+
+```python
+msg = "Even" if to_check%2 == 0 else "Odd"
+```
