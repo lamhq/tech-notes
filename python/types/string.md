@@ -15,6 +15,12 @@ If you don’t want characters prefaced by `\` to be interpreted as special char
 print(r'C:\some\name')
 ```
 
+## Raw string
+```python
+raw_s = r'Hi\nHello'
+print(raw_s)
+# Hi\nHello
+```
 
 ## Multiline string
 

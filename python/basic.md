@@ -33,3 +33,12 @@ z = int("3") # z will be 3
 w = float("4.2") # w will be 4.2
 i = str(3.0)  # z will be '3.0'
 ```
+
+## Check if a value is None
+
+```python
+if foo is None:
+    print('foo is None')
+else:
+    print('foo is not None')
+```
