@@ -37,8 +37,8 @@
 
 ## Javascript Framework
 
-- React.js
-- Vue.js, VueX
+- React
+- Vue.js, Vuex
 - React strap
 - Material UI
 - Bootstrap
@@ -71,8 +71,3 @@
 ## API
 
 - GraphQL
-
-
-## Mobile Applications
-
-- React Native

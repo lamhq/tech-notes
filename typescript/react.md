@@ -1,0 +1,1 @@
+https://github.com/vikpe/react-webpack-typescript-starter

@@ -42,3 +42,9 @@ if foo is None:
 else:
     print('foo is not None')
 ```
+
+## Check variable is int
+```python
+val = 1.0
+isinstance(val, float)
+```

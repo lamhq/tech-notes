@@ -2,8 +2,9 @@
 
 ## Learn a language
 
-- Javascript (NodeJs)
-- Python
+- Javascript
+- NodeJs
+- ~~Python~~
 - Java
 
 
@@ -62,7 +63,7 @@
 
 ## Search Engines
 
-- Elasticsearch
+- Elastic Search
 
 
 ## Architecture Patterns

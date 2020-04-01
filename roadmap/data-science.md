@@ -54,3 +54,26 @@ Building "machine learning models" to predict the future or automatically extrac
 - http://www.datascienceweekly.org/
 - http://www.pythonweekly.com/
 - [staying up-to-date as a data scientist](https://www.youtube.com/watch?v=-9X_4lijXZI)
+
+
+## Data Science Courses
+
+https://www.coursera.org/learn/machine-learning/lecture/zcAuT
+https://courses.packtpub.com/courses/take/data-science/texts/9970128-welcome-to-the-data-science-workshop
+https://www.coursera.org/learn/what-is-datascience
+https://www.coursera.org/professional-certificates/ibm-data-science
+https://www.coursera.org/learn/python-for-applied-data-science-ai
+https://www.coursera.org/learn/machine-learning-with-python
+https://www.coursera.org/learn/data-analysis-with-python
+https://www.coursera.org/learn/open-source-tools-for-data-science
+https://www.coursera.org/learn/data-science-methodology
+https://www.coursera.org/learn/python-for-data-visualization
+https://www.coursera.org/learn/applied-data-science-capstone
+https://www.coursera.org/learn/sql-data-science
+https://courses.edx.org/courses/course-v1:HarvardX+PH526x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+PH125.3x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+PH125.1x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+PH125.2x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+PH125.8x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+PH125.7x+1T2020/course/
+https://courses.edx.org/courses/course-v1:HarvardX+CS50AI+1T2020/course/
