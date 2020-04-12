@@ -1,6 +1,6 @@
 ### Model
 
-```
+```js
 Model.deleteMany()
 Model.deleteOne()
 
@@ -59,7 +59,7 @@ Tank.updateOne({ size: 'large' }, { name: 'T-90' }, function(err, res) {
 
 ### Document
 
-```
+```js
 var Tank = mongoose.model('Tank', yourSchema);
 var tnk = new Tank({ size: 'small' });
 
