@@ -87,7 +87,7 @@ logger.error("Divide {x} / {y} = {c}".format(x=10, y=0, c=divide(10,0)))
 ```
 
 
-## Display values
+## Display variables
 
 ```python
 import reprlib
