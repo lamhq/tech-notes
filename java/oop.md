@@ -111,6 +111,8 @@ public class Rectangle {
 
 ## Class Variables & Class Methods
 
+The `final` modifier indicates that the value of this field cannot change.
+
 ```java
 public class Bicycle {
 
