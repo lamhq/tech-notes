@@ -11,15 +11,31 @@ Stream represents a sequence of objects from a source, which supports aggregate 
 - Automatic iterations: Stream operations do the iterations internally over the source elements provided, in contrast to Collections where explicit iteration is required.
 
 
-## Generating Streams
+## Stream Creation
 
-Collection interface has two methods to generate a Stream:
+```java
+// Empty Stream
+Stream<String> streamEmpty = Stream.empty();
 
-- `stream()`
-- `parallelStream()`
+// Stream of Collection
+Collection<String> collection = Arrays.asList("a", "b", "c");
+Stream<String> streamOfCollection = collection.stream();
+
+// Stream of Array
+Stream<String> streamOfArray = Stream.of("a", "b", "c");
+
+// Stream of Primitives
+IntStream intStream = IntStream.range(1, 3);
+LongStream longStream = LongStream.rangeClosed(1, 3);
+
+// Stream of File
+Path path = Paths.get("C:\\file.txt");
+Stream<String> streamOfStrings = Files.lines(path);
+Stream<String> streamWithCharset = Files.lines(path, Charset.forName("UTF-8"));
+```
 
 
-## Stream api
+## Processing a Stream
 
 ```java
 // forEach
@@ -42,21 +58,13 @@ random.ints().limit(10).forEach(System.out::println);
 Random random = new Random();
 random.ints().limit(10).sorted().forEach(System.out::println);
 
-// collect
-List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
-String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
-System.out.println("Merged String: " + mergedString);
-
 // reduce
 Stream<Integer> stream = Stream.of(1, 2, 3);
 int total = stream.reduce(0, (i, j) -> i + j);
 System.out.println(total);
 
-// Statistics
-List numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
-IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
-System.out.println("Highest number in List : " + stats.getMax());
-System.out.println("Lowest number in List : " + stats.getMin());
-System.out.println("Sum of all numbers : " + stats.getSum());
-System.out.println("Average of all numbers : " + stats.getAverage());
+// collect
+List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
+List<String> collectorCollection = productList.stream().map(Product::getName).collect(Collectors.toList());
 ```
