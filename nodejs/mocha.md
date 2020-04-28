@@ -1,28 +1,42 @@
-## Unit test
+# Mocha
 
-### Install `mocha` (test runner) and `chai` (assert library)
+JavaScript test framework
 
+## Installation
+
+```shell
+yarn add --dev mocha chai
 ```
-npm install --save-dev mocha chai
-```
 
-### Add `test` command to package.json
+Add `test` command to *package.json*
 
-```
+```json
 {
-    "devDependencies": {
-        "chai": "^1.9.2",
-        "mocha": "^2.0.1"
-    },
-    "scripts": {
-        "test": "mocha"
-    }
+  "scripts": {
+    "test": "mocha"
+  }
 }
 ```
 
-### Basic test
+## Run order
 
 ```
+describe("...", () => { ... })
+  'before' root-level pre-hook
+  'before' pre-hook
+    'beforeEach' root-level pre-hook
+    'beforeEach' pre-hook
+    it("...", () => { ... })
+    'afterEach' post-hook
+    'afterEach' root-level post-hook
+  'after' post-hook
+  'after' root-level post-hooks
+```
+
+
+## Basic test
+
+```js
 var chai = require("chai");
 var expect = chai.expect;
 var capitalize = function (str) {
@@ -42,7 +56,7 @@ describe("testCapitalize", function() {
 
 ### Run code before each code
 
-```
+```js
 describe("User", function() {
     var user;
     beforeEach(function() {
@@ -66,19 +80,19 @@ describe("User", function() {
 
 ### Install supertest
 
-```
+```shell
 npm install --save-dev supertest
 ```
 
 ### Install cherrio (jQuery DOM parser for nodejs)
 
-```
+```shell
 npm install --save-dev cherrio
 ```
 
 ### Write test
 
-```
+```js
 var app = require("../app");
 var supertest = require("supertest");
 var cheerio = require("cheerio");
