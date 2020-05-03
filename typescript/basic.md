@@ -16,9 +16,9 @@ let octal: number = 0o744;
 let fullName: string = `Bob Bobbington`;
 let age: number = 37;
 // multiline string
-let color: string = `Hello, my name is ${ fullName }.
+let color: string = `Hello, my name is ${fullName}.
 
-I'll be ${ age + 1 } years old next month.`;
+I'll be ${age + 1} years old next month.`;
 color = 'red';
 
 // array
@@ -30,7 +30,7 @@ let x: [string, number];
 x = ["hello", 10]; // OK
 
 // enum
-enum Color {Red = 1, Green, Blue}
+enum Color { Red = 1, Green, Blue }
 let colorName: string = Color[2];
 console.log(colorName); // Displays 'Green' as its value is 2 above
 
@@ -55,7 +55,7 @@ function error(message: string): never {
   throw new Error(message);
 }
 
-// object
+// union type
 declare function create(o: object | null): void;
 
 create({ prop: 0 }); // OK
