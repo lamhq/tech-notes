@@ -42,7 +42,7 @@ yum install -y postgresql10
 
 ## Import database
 ```bash
-psql -h localhost -p 5432 -U postgres mobilesc_dev -f data.sql
+psql -h localhost -p 5432 -U postgres mobilesc_db -f data.sql
 ```
 
 
