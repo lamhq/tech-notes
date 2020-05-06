@@ -131,3 +131,20 @@ abstract class Animal {
   }
 }
 ```
+
+
+## Parameter properties
+
+*Parameter properties* let you create and initialize a member in one place.
+
+Parameter properties are declared by prefixing a constructor parameter with an accessibility modifier or `readonly`, or both. Using `private` for a parameter property declares and initializes a private member; likewise, the same is done for `public`, `protected`, and `readonly`.
+
+```ts
+class Octopus {
+  constructor(readonly name: string) {
+  }
+}
+
+const octp = new Octopus('Abc');
+console.log(octp.name);
+```
