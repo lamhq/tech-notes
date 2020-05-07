@@ -1,5 +1,6 @@
 # Exception filters
 
+
 ## Throwing standard exceptions
 
 **cats.controller.ts**:
@@ -20,7 +21,7 @@ Sample error response:
 }
 ```
 
-Overriding the entire response body:
+To override the entire response body:
 
 **cats.controller.ts**:
 
@@ -116,15 +117,21 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
-To create a global-scoped filter, you would do the following:
+To register a global-scoped filter directly from any module, you would do the following:
 
 ```ts
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalFilters(new HttpExceptionFilter());
-  await app.listen(3000);
-}
-bootstrap();
+import { Module } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
+
+@Module({
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
+})
+export class AppModule {}
 ```
 
 
