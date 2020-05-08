@@ -2,9 +2,8 @@
 
 ## Define custom decorator
 
-**user.decorator.ts**:
-
 ```ts
+// user.decorator.ts
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
 export const User = createParamDecorator(

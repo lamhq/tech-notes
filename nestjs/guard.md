@@ -7,8 +7,8 @@ Guards have a single responsibility. They determine whether a given request will
 
 ## Define guard
 
-**roles.guard.ts**:
 ```ts
+// roles.guard.ts
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
@@ -32,11 +32,12 @@ export class RolesGuard implements CanActivate {
 ```
 
 
-## Using guard
+## Register guard
 
 Like pipes and exception filters, guards can be controller-scoped, method-scoped, or global-scoped.
 
 ```ts
+// cats.controller.ts
 @Controller('cats')
 @UseGuards(RolesGuard)
 export class CatsController {}
@@ -45,6 +46,7 @@ export class CatsController {}
 Set up a global guard directly from any module:
 
 ```ts
+// app.module.ts
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 
@@ -69,8 +71,8 @@ import { SetMetadata } from '@nestjs/common';
 export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
 ```
 
-**cats.controller.ts**:
 ```ts
+// cats.controller.ts
 @Post()
 @Roles('admin')
 async create(@Body() createCatDto: CreateCatDto) {

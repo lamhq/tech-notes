@@ -37,18 +37,16 @@ export class LoggingInterceptor implements NestInterceptor {
 
 Like **pipes** and **guards**, interceptors can be controller-scoped, method-scoped, or global-scoped.
 
-**cats.controller.ts**:
-
 ```ts
+// cats.controller.ts
 @UseInterceptors(LoggingInterceptor)
 export class CatsController {}
 ```
 
 Setup global interceptor directly from any module:
 
-**app.module.ts**:
-
 ```ts
+// app.module.ts
 import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 

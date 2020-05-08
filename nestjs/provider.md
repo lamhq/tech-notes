@@ -62,9 +62,8 @@ export class AppModule {}
 
 ## Using Provider
 
-**cats.controller.ts**:
-
 ```ts
+// cats.controller.ts
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { CatsService } from './cats.service';

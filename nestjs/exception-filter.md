@@ -3,9 +3,8 @@
 
 ## Throwing standard exceptions
 
-**cats.controller.ts**:
-
 ```ts
+// cats.controller.ts
 @Get()
 async findAll() {
   throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
@@ -23,9 +22,8 @@ Sample error response:
 
 To override the entire response body:
 
-**cats.controller.ts**:
-
 ```ts
+// cats.controller.ts
 @Get()
 async findAll() {
   throw new HttpException({
@@ -77,9 +75,8 @@ You may want to add logging or use a different JSON schema based on some dynamic
 
 Create an exception filter that is responsible for catching exceptions which are an instance of the `HttpException` class:
 
-**http-exception.filter.ts**
-
 ```ts
+// http-exception.filter.ts
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
 
@@ -107,9 +104,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
 Exception filters can be scoped at different levels: method-scoped, controller-scoped, or global-scoped.
 
-**cats.controller.ts**:
-
 ```ts
+// cats.controller.ts
 @Post()
 @UseFilters(HttpExceptionFilter)
 async create(@Body() createCatDto: CreateCatDto) {

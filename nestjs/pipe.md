@@ -108,9 +108,8 @@ export class ValidationPipe implements PipeTransform<any> {
 
 A pipe can be param-scoped. In the example below, we'll directly tie the pipe instance to the route param @Body() decorator:
 
-**cats.controller.ts**
-
 ```ts
+// app.module.ts
 @Post()
 async create(
   @Body(new ValidationPipe()) createCatDto: CreateCatDto,
@@ -121,9 +120,8 @@ async create(
 
 Alternatively, pass the class (not an instance), thus leaving instantiation up to the framework, and enabling dependency injection.
 
-**cats.controller.ts**
-
 ```ts
+// cats.controller.ts
 @Post()
 @UsePipes(ValidationPipe)
 async create(@Body() createCatDto: CreateCatDto) {

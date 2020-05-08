@@ -66,3 +66,68 @@ export class CatsModule {}
 ```
 
 
+## Dynamic module
+
+One example use case of dynamic module is when we want to import a provider from another module, but the provider can only be initiated with some options that only available at runtime.
+
+```ts
+// app.module.ts
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule } from './config/config.module';
+
+@Module({
+  imports: [ConfigModule.register({ folder: './config' })],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+```
+
+
+```ts
+// config.module.ts
+import { DynamicModule, Module } from '@nestjs/common';
+import { ConfigService } from './config.service';
+
+@Module({})
+export class ConfigModule {
+  static register(options): DynamicModule {
+    return {
+      module: ConfigModule,
+      providers: [
+        {
+          provide: 'CONFIG_OPTIONS',
+          useValue: options,
+        },
+        ConfigService,
+      ],
+      exports: [ConfigService],
+    };
+  }
+}
+```
+
+```ts
+// config.service.ts
+import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+import { Injectable, Inject } from '@nestjs/common';
+import { EnvConfig } from './interfaces';
+
+@Injectable()
+export class ConfigService {
+  private readonly envConfig: EnvConfig;
+
+  constructor(@Inject('CONFIG_OPTIONS') private options) {
+    const filePath = `${process.env.NODE_ENV || 'development'}.env`;
+    const envFile = path.resolve(__dirname, '../../', options.folder, filePath);
+    this.envConfig = dotenv.parse(fs.readFileSync(envFile));
+  }
+
+  get(key: string): string {
+    return this.envConfig[key];
+  }
+}
+```
