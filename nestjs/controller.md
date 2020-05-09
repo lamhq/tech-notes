@@ -3,7 +3,7 @@
 ## Create a controller
 
 ```shell
-nest g controller post
+nest g controller posts
 ```
 
 

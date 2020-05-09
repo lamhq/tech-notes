@@ -53,16 +53,11 @@ export class User {
 // app.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
 import { UsersModule } from './users/user.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      // every entity registered through the forFeature() method will be
-      // automatically added to the entities array of the configuration object.
-      autoLoadEntities: true,
-    }),
+    TypeOrmModule.forRoot(),
     UsersModule,
   ],
 })
