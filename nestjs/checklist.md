@@ -1,3 +1,11 @@
+# Practice NestJS
+
+```yml
+sample crud with mysql
+database migration
+input validation
+```
+
 # NestJS Research Checklist
 
 ```yml
@@ -9,13 +17,13 @@ Fundamentals
   Platform agnosticism
   Testing
 Techniques
-  Authentication
-  Database
-  Mongo
-  Configuration
+  # Database
   Validation
-  Caching
+  Configuration
   Serialization
+  Authentication
+  Mongo
+  Caching
   Task scheduling
   Compression
   Security
@@ -26,4 +34,5 @@ Techniques
   Model-View-Controller
 Other
   TypeORM
+  TypeORM migration
   Jest
