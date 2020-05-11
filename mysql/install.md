@@ -40,8 +40,8 @@ mysqld_safe --default-authentication-plugin=mysql_native_password
 
 ```shell
 mysql -u root -p
-# Enter password
-ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';
+# Enter default generated password
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 ```
 
 
@@ -49,9 +49,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';
 
 ```sql
 CREATE DATABASE t2h;
-CREATE USER 't2h'@'localhost' IDENTIFIED BY 'bangk0k';
+CREATE USER 't2h'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bangk0k';
 GRANT ALL PRIVILEGES ON t2h.* TO 't2h'@'localhost';
-ALTER USER 't2h'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bangk0k';
 ```
 
 
