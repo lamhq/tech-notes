@@ -17,7 +17,7 @@ Typically it is unsafe to use `synchronize: true` for schema synchronization on 
   "migrationsTableName": "custom_migration_table",
   "migrations": ["migration/*.js"],
   "cli": {
-      "migrationsDir": "migration"
+    "migrationsDir": "migration"
   }
 }
 ```
