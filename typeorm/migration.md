@@ -15,8 +15,10 @@ Typically it is unsafe to use `synchronize: true` for schema synchronization on 
   "database": "test",
   "entities": ["entity/*.js"],
   "migrationsTableName": "custom_migration_table",
+  // indicates that typeorm must load migrations from the given "migration" directory.
   "migrations": ["migration/*.js"],
   "cli": {
+    // indicates that the CLI must create new migrations in the "migration" directory.
     "migrationsDir": "migration"
   }
 }
