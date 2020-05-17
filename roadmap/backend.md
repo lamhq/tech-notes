@@ -1,6 +1,6 @@
 # Backend Roadmap
 
-## Learn a language
+## Programming Languages
 
 - Javascript
 - NodeJs
@@ -8,20 +8,26 @@
 - Java
 
 
-## Database
+## Programming Frameworks
 
-### Relational Database
+- NestJS
+
+
+## Databases
+
+### Relational Databases
 
 - PostgreSQL
 - ~~MySQL~~
 
 
-### NoSQL databases
+### NoSQL Databases
 
 - MongoDB
 - ~~DynamoDB~~
 
-### Advance knowledge
+
+### Advance Knowledge
 
 - ~~ORMs~~
 - ~~ACID~~
@@ -33,13 +39,13 @@
 - Sharding strategies
 
 
-## Learn about API
+## API Standards
 
 - ~~REST~~
-- ~~JSON APIs~~
+- GraphQL
 
 
-## Server side caching
+## Caching
 
 - Memcached
 - Redis
@@ -68,18 +74,17 @@
 
 ## Architecture Patterns
 
-- Monolithic Apps
 - Microservices
+- Serverless
+- Monolithic Apps
 - SOA
 - CQRS and Event Sourcing
-- Serverless
 
 
 ## Design and Development Principles
 
-- SOLID
+- Domain Driven Design
+- Test Driven Development- SOLID
 - KISS
 - YAGNI
 - DRY
-- Domain Driven Design
-- Test Driven Development
