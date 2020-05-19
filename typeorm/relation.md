@@ -2,8 +2,6 @@
 
 ## One to one
 
-### Define one to one relation
-
 ```ts
 import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
 import {Photo} from "./Photo";
@@ -29,82 +27,12 @@ export class PhotoMetadata {
 
 `@JoinColumn` decorator indicates that this side of the relationship will own the relationship. The owning side of a relationship contains a column with a foreign key in the database.
 
-The relation between `PhotoMetadata` and `Photo` is unidirectional. The owner of the relation is `PhotoMetadata`, and `Photo` doesn't know anything about `PhotoMetadata`.
+The relation between `PhotoMetadata` and `Photo` is uni-directional. The owner of the relation is `PhotoMetadata`, and `Photo` doesn't know anything about `PhotoMetadata`.
 
 
-### Saving one to one relation
+### Bi-directional relation
 
-```ts
-import {Photo} from "./entity/Photo";
-import {PhotoMetadata} from "./entity/PhotoMetadata";
-
-// create a photo
-let photo = new Photo();
-photo.name = "Me and Bears";
-photo.description = "I am near polar bears";
-photo.filename = "photo-with-bears.jpg";
-photo.isPublished = true;
-
-// create a photo metadata
-let metadata = new PhotoMetadata();
-metadata.height = 640;
-metadata.width = 480;
-metadata.compressed = true;
-metadata.comment = "cybershoot";
-metadata.orientation = "portait";
-metadata.photo = photo; // this way we connect them
-
-// get entity repositories
-let photoRepository = connection.getRepository(Photo);
-let metadataRepository = connection.getRepository(PhotoMetadata);
-
-// first we should save a photo
-await photoRepository.save(photo);
-
-// photo is saved. Now we need to save a photo metadata
-await metadataRepository.save(metadata);
-```
-
-Automatically save related objects:
-
-```ts
-export class Photo {
-  /// ... other columns
-
-  @OneToOne(
-    type => PhotoMetadata,
-    metadata => metadata.photo,
-    { cascade: true },
-  )
-  metadata: PhotoMetadata;
-}
-
-// create photo object
-let photo = new Photo();
-photo.name = "Me and Bears";
-photo.description = "I am near polar bears";
-photo.filename = "photo-with-bears.jpg";
-photo.isPublished = true;
-
-// create photo metadata object
-let metadata = new PhotoMetadata();
-metadata.height = 640;
-metadata.width = 480;
-metadata.compressed = true;
-metadata.comment = "cybershoot";
-metadata.orientation = "portait";
-
-photo.metadata = metadata; // this way we connect them
-
-// get repository
-let photoRepository = connection.getRepository(Photo);
-
-// saving a photo also save the metadata
-await photoRepository.save(photo);
-```
-
-
-### Bidirectional relation
+Relations can be uni-directional and bi-directional. **Uni-directional** are relations with a relation decorator only on one side. **Bi-directional** are relations with decorators on both sides of a relation.
 
 ```ts
 import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
@@ -136,22 +64,6 @@ export class Photo {
 ```
 
 `photo => photo.metadata` is a function that returns the name of the inverse side of the relation. Here we show that the metadata property of the `Photo` class is where we store `PhotoMetadata` in the `Photo` class.
-
-
-### Loading objects with their relations
-
-```ts
-let photoRepository = connection.getRepository(Photo);
-let photos = await photoRepository.find({ relations: ["metadata"] });
-```
-
-```ts
-let photos = await connection
-  .getRepository(Photo)
-  .createQueryBuilder("photo")
-  .innerJoinAndSelect("photo.metadata", "metadata")
-  .getMany();
-```
 
 
 ## Many-to-one / one-to-many
@@ -243,4 +155,149 @@ await connection.manager.save(photo);
 const loadedPhoto = await connection
   .getRepository(Photo)
   .findOne(1, { relations: ["albums"] });
+```
+
+
+## Loading objects with their relations
+
+```ts
+let photoRepository = connection.getRepository(Photo);
+let photos = await photoRepository.find({ relations: ["metadata"] });
+```
+
+```ts
+let photos = await connection
+  .getRepository(Photo)
+  .createQueryBuilder("photo")
+  .innerJoinAndSelect("photo.metadata", "metadata")
+  .getMany();
+```
+
+```ts
+const users = await connection
+  .getRepository(User)
+  .createQueryBuilder("user")
+  .leftJoinAndSelect("user.photos", "photo")
+  .getMany();
+```
+
+## Saving relation
+
+```ts
+import {Photo} from "./entity/Photo";
+import {PhotoMetadata} from "./entity/PhotoMetadata";
+
+// create a photo
+let photo = new Photo();
+photo.name = "Me and Bears";
+photo.description = "I am near polar bears";
+photo.filename = "photo-with-bears.jpg";
+photo.isPublished = true;
+
+// create a photo metadata
+let metadata = new PhotoMetadata();
+metadata.height = 640;
+metadata.width = 480;
+metadata.compressed = true;
+metadata.comment = "cybershoot";
+metadata.orientation = "portait";
+metadata.photo = photo; // this way we connect them
+
+// get entity repositories
+let photoRepository = connection.getRepository(Photo);
+let metadataRepository = connection.getRepository(PhotoMetadata);
+
+// first we should save a photo
+await photoRepository.save(photo);
+
+// photo is saved. Now we need to save a photo metadata
+await metadataRepository.save(metadata);
+```
+
+Automatically save related objects:
+
+```ts
+export class Photo {
+  /// ... other columns
+
+  @OneToOne(
+    type => PhotoMetadata,
+    metadata => metadata.photo,
+    { cascade: true },
+  )
+  metadata: PhotoMetadata;
+}
+
+// create photo object
+let photo = new Photo();
+photo.name = "Me and Bears";
+photo.description = "I am near polar bears";
+photo.filename = "photo-with-bears.jpg";
+photo.isPublished = true;
+
+// create photo metadata object
+let metadata = new PhotoMetadata();
+metadata.height = 640;
+metadata.width = 480;
+metadata.compressed = true;
+metadata.comment = "cybershoot";
+metadata.orientation = "portait";
+
+photo.metadata = metadata; // this way we connect them
+
+// get repository
+let photoRepository = connection.getRepository(Photo);
+
+// saving a photo also save the metadata
+await photoRepository.save(photo);
+```
+
+
+## Relation options
+
+- `eager`: relation will always be loaded with the main entity when using `find*` methods or `QueryBuilder` on this entity
+- `onDelete: "RESTRICT"|"CASCADE"|"SET NULL"`: specifies how foreign key should behave when referenced object is deleted
+- `nullable`: Indicates whether this relation's column is nullable or not.
+- `primary`: Indicates whether this relation's column will be a primary column or not.
+- `cascade: boolean | ("insert" | "update")[]` - related object will be inserted and updated in the database when saving the main object.
+
+
+## @JoinColumn options
+
+- `name`: name of the column will be used as foreign key
+- `referencedColumnName`: primary column of the related entity
+
+```ts
+@JoinColumn({
+  name: "cat_id",
+  referencedColumnName: 'uuid',
+});
+category: Category;
+
+// join multiple columns
+@ManyToOne(type => Category)
+@JoinColumn([
+  { name: "category_id", referencedColumnName: "id" },
+  { name: "locale_id", referencedColumnName: "locale_id" }
+])
+category: Category;
+```
+
+
+## @JoinTable options
+
+```ts
+@ManyToMany(type => Category)
+@JoinTable({
+  name: "question_categories", // table name for the junction table of this relation
+  joinColumn: {
+    name: "question",
+    referencedColumnName: "id"
+  },
+  inverseJoinColumn: {
+    name: "category",
+    referencedColumnName: "id"
+  }
+})
+categories: Category[];
 ```

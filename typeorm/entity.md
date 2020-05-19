@@ -71,19 +71,6 @@ export class User {
 - `@VersionColumn`
 
 
-### Column types
-
-```ts
-@Column("int")
-@Column({ type: "int" })
-@Column("varchar", { length: 200 })
-```
-
-Column types for mysql / mariadb:
-
-bit, int, integer, tinyint, smallint, mediumint, bigint, float, double, double precision, dec, decimal, numeric, fixed, bool, boolean, date, datetime, timestamp, time, year, char, nchar, national char, varchar, nvarchar, national varchar, text, tinytext, mediumtext, blob, longtext, tinyblob, mediumblob, longblob, enum, set, json, binary, varbinary, geometry, point, linestring, polygon, multipoint, multilinestring, multipolygon, geometrycollection
-
-
 ### enum column type
 
 ```ts
@@ -131,6 +118,30 @@ export class User {
   roles: UserRole[]
 }
 ```
+
+### Column types
+
+```ts
+@Column("int")
+@Column({ type: "int" })
+@Column("varchar", {
+  name: 'title',
+  length: 200,
+  nullable: false,
+  default: '',
+  unique: false,
+})
+title: string;
+```
+
+**Column types for mysql / mariadb:**
+
+bit, int, integer, tinyint, smallint, mediumint, bigint, float, double, double precision, dec, decimal, numeric, fixed, bool, boolean, date, datetime, timestamp, time, year, char, nchar, national char, varchar, nvarchar, national varchar, text, tinytext, mediumtext, blob, longtext, tinyblob, mediumblob, longblob, enum, set, json, binary, varbinary, geometry, point, linestring, polygon, multipoint, multilinestring, multipolygon, geometrycollection
+
+**Column types for sqlite / cordova / react-native / expo:**
+
+int, int2, int8, integer, tinyint, smallint, mediumint, bigint, decimal, numeric, float, double, real, double precision, datetime, varying character, character, native character, varchar, nchar, nvarchar2, unsigned big int, boolean, blob, text, clob, date
+
 
 ### Column options
 
