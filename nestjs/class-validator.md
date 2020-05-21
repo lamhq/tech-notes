@@ -75,8 +75,8 @@ export interface ValidatorOptions {
   groups?: string[];
   dismissDefaultMessages?: boolean;
   validationError?: {
-      target?: boolean;
-      value?: boolean;
+    target?: boolean;
+    value?: boolean;
   };
   forbidUnknownValues?: boolean;
 }
