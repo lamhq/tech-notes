@@ -159,6 +159,8 @@ int, int2, int8, integer, tinyint, smallint, mediumint, bigint, decimal, numeric
 
 ## Entity inheritance
 
+This example will create 3 tables - photo, question and post.
+
 ```ts
 export abstract class Content {
   @PrimaryGeneratedColumn()
@@ -184,6 +186,43 @@ export class Question extends Content {
 }
 
 @Entity()
+export class Post extends Content {
+  @Column()
+  viewCount: number;
+}
+```
+
+### Single Table Inheritance
+
+Single table inheritance is a pattern when you have multiple classes with their own properties, but in the database they are stored in the same table.
+
+```ts
+@Entity()
+@TableInheritance({ column: { type: "varchar", name: "type" } })
+export class Content {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  title: string;
+
+  @Column()
+  description: string;
+}
+
+@ChildEntity()
+export class Photo extends Content {
+  @Column()
+  size: string;
+}
+
+@ChildEntity()
+export class Question extends Content {
+  @Column()
+  answersCount: number;
+}
+
+@ChildEntity()
 export class Post extends Content {
   @Column()
   viewCount: number;
