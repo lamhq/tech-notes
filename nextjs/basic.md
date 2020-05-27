@@ -130,4 +130,88 @@ This `App` component is the top-level component which will be common across all 
 
 In Next.js, you can add global CSS files by importing them from `_app.js`. You cannot import global CSS anywhere else.
 
-https://nextjs.org/learn/basics/assets-metadata-css/polishing-layout
+
+## Pre-rendering
+
+Next.js generates HTML for each page in advance, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
+
+Next.js has two forms of pre-rendering:
+
+- **Static Generation**: is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on each request.
+
+We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
+
+You can use Static Generation for many types of pages, including:
+
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
+
+On the other hand, **Static Generation** is not a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
+
+In that case, you can use **Server-Side Rendering**. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use **client-side** JavaScript to populate data.
+
+
+### Static Generation with Data using `getStaticProps`
+
+When you export a page component, you can also export an async function called `getStaticProps`:
+
+```js
+export default function Home(props) { ... }
+
+export async function getStaticProps() {
+  // Get external data from the file system, API, DB, etc.
+  const data = ...
+
+  // The value of the `props` key will be
+  //  passed to the `Home` component
+  return {
+    props: ...
+  }
+}
+```
+
+`getStaticProps` runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+
+- In development (`npm run dev` or `yarn dev`), `getStaticProps` runs on every request.
+- In production, `getStaticProps` runs at build time.
+
+Because it’s meant to be run at build time, you won’t be able to use data that’s only available during request time, such as query parameters or HTTP headers.
+
+`getStaticProps` can only be exported from a page. You can’t export it from non-page files.
+
+
+### Server-Side Rendering
+
+To use Server-side Rendering, you need to export `getServerSideProps`
+
+```js
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      // props for your component
+    }
+  }
+}
+```
+
+`getServerSideProps`'s parameter (`context`) contains request specific parameters. You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time. It will be slower than getStaticProps because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+
+
+### Client-side Rendering
+
+```js
+import useSWR from 'swr'
+
+function Profile() {
+  const { data, error } = useSWR('/api/user', fetch)
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+  return <div>hello {data.name}!</div>
+}
+```
+
+https://nextjs.org/learn/basics/dynamic-routes
