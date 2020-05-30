@@ -214,4 +214,147 @@ function Profile() {
 }
 ```
 
-https://nextjs.org/learn/basics/dynamic-routes
+
+## Dynamic Routes
+
+### Generating Static Pages with Dynamic Routes
+
+If you want to statically generate a page of a path called `posts/<id>` where `<id>` can be dynamic, then:
+
+- Create a page at `/pages/posts/[id].js`
+- `getStaticPaths` which return an array of possible value for id
+- `getStaticProps` which fetches necessary data for the post with `id`
+
+```js
+// pages/posts/[id].js
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory)
+  return fileNames.map(fileName => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
+
+export function getPostData(id) {
+  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+  // Use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents)
+
+  // Combine the data with the id
+  return {
+    id,
+    ...matterResult.data
+  }
+}
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds()
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const postData = getPostData(params.id)
+  return {
+    props: {
+      postData
+    }
+  }
+}
+
+export default function Post({ postData }) {
+  return (
+    <Layout>
+      {postData.title}
+      <br />
+      {postData.id}
+      <br />
+      {postData.date}
+    </Layout>
+  )
+}
+```
+
+### Generating Link to dynamic pages
+
+To link to a page with dynamic routes, you need to use the Link component differently:
+
+```js
+<Link href="/posts/[id]" as="/posts/ssg-ssr">
+  <a>...</a>
+</Link>
+```
+
+### Fallback
+
+```js
+export async function getStaticPaths() {
+  const paths = getAllPostIds()
+  return {
+    paths,
+    fallback: false
+  }
+}
+```
+
+If `fallback` is `false`, then any paths not returned by `getStaticPaths` will result in a **404 page**.
+
+If `fallback` is `true`, then the behavior of `getStaticProps` changes:
+
+- The paths returned from `getStaticPaths` will be rendered to HTML at build time.
+- The paths that have not been generated at build time will not result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first request to such a path.
+- In the background, Next.js will statically generate the requested path. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
+
+
+### Catch-all Routes
+
+Dynamic routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:
+
+- `pages/posts/[...id].js` matches `/posts/a`, but also `/posts/a/b`, `/posts/a/b/c` and so on.
+
+If you do this, in `getStaticPaths`, you must return an array as the value of the id key like so:
+
+```js
+return [
+  {
+    params: {
+      // Statically Generates /posts/a/b/c
+      id: ['a', 'b', 'c']
+    }
+  }
+  //...
+]
+```
+
+And `params.id` will be an array in `getStaticProps`:
+
+```js
+export async function getStaticProps({ params }) {
+  // params.id will be like ['a', 'b', 'c']
+}
+```
+
+## 404 Pages
+
+To create a custom 404 page, create `pages/404.js`. This file is statically generated at build time.
+
+
+## API Routes
+
+API Routes let you create an API endpoint inside a Next.js app. You can do so by creating a function inside the `pages/api` directory that has the following format:
+
+```js
+// req = request data, res = response data
+export default (req, res) => {
+  // ...
+}
+```
+
+https://nextjs.org/learn/basics/api-routes/creating-api-routes
