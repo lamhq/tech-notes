@@ -5,6 +5,8 @@
 All styled-components will have access to the provided theme.
 
 ```js
+import { ThemeProvider } from 'styled-components';
+
 // Define our button, but with the use of props.theme this time
 const Button = styled.button`
   font-size: 1em;
