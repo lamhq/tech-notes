@@ -4,26 +4,20 @@
 
 ```tsx
 interface MyComponentProps {
-  userName: string
-  age: number
-  isActive: boolean
+  userName: string;
+  age: number;
+  isActive: boolean;
 }
 
-export const MyComponent = ({
-  userName,
-  age,
-  isActive,
-}: MyComponentProps) => (
-  <div>
-    <span>{`Hello, ${userName}`}</span>
-  </div>
-)
+export function MyComponent({ userName, age, isActive }: MyComponentProps): React.ReactElement {
+  return (
+    <div>
+      <span>{`Hello, ${userName}`}</span>
+    </div>
+  );
+}
 
-export const MyComponent: React.FC<MyComponentProps> = ({
-  userName,
-  age,
-  isActive,
-}) => (
+export const MyComponent: React.FC<MyComponentProps> = ({ userName, age, isActive }: MyComponentProps) => (
   <div>
     <span>{`Hello, ${userName}`}</span>
   </div>

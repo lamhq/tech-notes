@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-yarn add --dev jest
+yarn add --dev jest @types/jest
 ```
 
 
@@ -37,4 +37,19 @@ Run `yarn test` or `npm run test` and Jest will print this message:
 ```
 PASS  ./sum.test.js
 ✓ adds 1 + 2 to equal 3 (5ms)
+```
+
+
+## Sample test file
+
+```js
+describe('my beverage', () => {
+  it('is delicious', () => {
+    expect(myBeverage.delicious).toBeTruthy();
+  });
+
+  it('is not sour', () => {
+    expect(myBeverage.sour).toBeFalsy();
+  });
+});
 ```
