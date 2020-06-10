@@ -84,3 +84,32 @@ test('compiling android goes as expected', () => {
   expect(compileAndroidCode).toThrow(/JDK/);
 });
 ```
+
+
+## Mock function
+
+```js
+const mockFunc = jest.fn(x => 42 + x);
+forEach([0, 1, 2], mockFunc);
+
+// The mock function was called at least once
+expect(mockFunc).toHaveBeenCalled();
+
+// The mock function was called 2 times
+expect(mockFunc).toHaveBeenCalledTimes(2);
+
+// The mock function was called at least once with the specified args
+expect(mockFunc).toHaveBeenCalledWith(0);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc).toHaveBeenNthCalledWith(2, 1);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc).toHaveBeenLastCalledWith(2);
+
+// The mock function returned a specific value
+expect(mockFunc).toHaveReturnedWith(42);
+
+// The last call of mock function returned a specific value
+expect(mockFunc).toHaveLastReturnedWith(43);
+```

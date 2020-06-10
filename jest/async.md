@@ -25,3 +25,22 @@ test('the fetch fails with an error', async () => {
   await expect(fetchData()).rejects.toThrow('error');
 });
 ```
+
+
+## Testing promise
+
+```js
+it('works with resolves', () => {
+  // verify that a certain number of assertions are called
+  expect.assertions(1);
+  return expect(user.getUserName(5)).resolves.toEqual('Paul');
+});
+
+// Testing for async errors using `.rejects`.
+it('tests error with rejects', () => {
+  expect.assertions(1);
+  return expect(user.getUserName(3)).rejects.toEqual({
+    error: 'User with 3 not found.',
+  });
+});
+```

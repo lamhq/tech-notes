@@ -1,8 +1,8 @@
 # Mocking
 
-## Mock function
+## The Mock function
 
-### Basic
+### Create a mock function
 
 ```js
 function forEach(items, callback) {
@@ -18,24 +18,6 @@ forEach([0, 1, 2], mockFunc);
 
 // The mock function was called at least once
 expect(mockFunc).toHaveBeenCalled();
-
-// The mock function was called 2 times
-expect(mockFunc).toHaveBeenCalledTimes(2);
-
-// The mock function was called at least once with the specified args
-expect(mockFunc).toHaveBeenCalledWith(0);
-
-// The last call to the mock function was called with the specified args
-expect(mockFunc).toHaveBeenNthCalledWith(2, 1);
-
-// The last call to the mock function was called with the specified args
-expect(mockFunc).toHaveBeenLastCalledWith(2);
-
-// The mock function returned a specific value
-expect(mockFunc).toHaveReturnedWith(42);
-
-// The last call of mock function returned a specific value
-expect(mockFunc).toHaveLastReturnedWith(43);
 ```
 
 
@@ -96,7 +78,9 @@ const myMockFn = jest
 ```
 
 
-## Mocking Modules
+## Automatic Mocks
+
+### Mocking node modules
 
 ```js
 // users.js
@@ -131,7 +115,7 @@ test('should fetch users', () => {
 ```
 
 
-### Mock Module's Implementations
+### Mocking user modules
 
 ```js
 // foo.js
@@ -148,3 +132,36 @@ foo.mockImplementation(() => 42);
 foo();
 // > 42
 ```
+
+
+## Manual Mocks
+
+### Mocking user modules
+
+Manual mocks are defined by writing a module in a `__mocks__/` subdirectory immediately adjacent to the module. For example, to mock a module called `user` in the `models` directory, create a file called `user.js` and put it in the `models/__mocks__` directory.
+
+
+### Mocking Node modules
+
+If the module you are mocking is a Node module (e.g.: `lodash`), the mock should be placed in the `__mocks__` directory adjacent to `node_modules` (unless you configured [`roots`](Configuration.md#roots-arraystring) to point to a folder other than the project root) and will be **automatically** mocked. There's no need to explicitly call `jest.mock('module_name')`.
+
+Scoped modules can be mocked by creating a file in a directory structure that matches the name of the scoped module. For example, to mock a scoped module called `@scope/project-name`, create a file at `__mocks__/@scope/project-name.js`, creating the `@scope/` directory accordingly.
+
+If we want to mock Node's core modules (e.g.: `fs` or `path`), then explicitly calling e.g. `jest.mock('path')` is **required**, because core Node modules are not mocked by default.
+
+```
+.
+├── config
+├── __mocks__
+│   └── fs.js
+├── models
+│   ├── __mocks__
+│   │   └── user.js
+│   └── user.js
+├── node_modules
+└── views
+```
+
+When a manual mock exists for a given module, Jest's module system will use that module when explicitly calling `jest.mock('moduleName')`. However, when `automock` is set to `true`, the manual mock implementation will be used instead of the automatically created mock, even if `jest.mock('moduleName')` is not called. To opt out of this behavior you will need to explicitly call `jest.unmock('moduleName')` in tests that should use the actual module implementation.
+
+> Note: In order to mock properly, Jest needs `jest.mock('moduleName')` to be in the same scope as the `require/import` statement.
