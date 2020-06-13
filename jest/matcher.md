@@ -92,6 +92,9 @@ test('compiling android goes as expected', () => {
 const mockFunc = jest.fn(x => 42 + x);
 forEach([0, 1, 2], mockFunc);
 
+// The mock function was not called
+expect(mockFunc).not.toBeCalled();
+
 // The mock function was called at least once
 expect(mockFunc).toHaveBeenCalled();
 

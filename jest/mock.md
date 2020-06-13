@@ -165,3 +165,86 @@ If we want to mock Node's core modules (e.g.: `fs` or `path`), then explicitly c
 When a manual mock exists for a given module, Jest's module system will use that module when explicitly calling `jest.mock('moduleName')`. However, when `automock` is set to `true`, the manual mock implementation will be used instead of the automatically created mock, even if `jest.mock('moduleName')` is not called. To opt out of this behavior you will need to explicitly call `jest.unmock('moduleName')` in tests that should use the actual module implementation.
 
 > Note: In order to mock properly, Jest needs `jest.mock('moduleName')` to be in the same scope as the `require/import` statement.
+
+
+## Timer mocks
+
+### Setup
+
+Mock `setTimeout`, `setInterval`, `clearTimeout`, `clearInterval` functions
+
+```js
+// timerGame.js
+'use strict';
+
+function timerGame(callback) {
+  console.log('Ready....go!');
+  setTimeout(() => {
+    console.log("Time's up -- stop!");
+    callback && callback();
+  }, 1000);
+}
+
+module.exports = timerGame;
+```
+
+```js
+// __tests__/timerGame-test.js
+'use strict';
+
+jest.useFakeTimers();
+
+test('waits 1 second before ending the game', () => {
+  const timerGame = require('../timerGame');
+  timerGame();
+
+  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+});
+```
+
+### Fast-forward time
+
+```js
+jest.useFakeTimers();
+
+test('calls the callback after 1 second', () => {
+  const timerGame = require('../timerGame');
+  const callback = jest.fn();
+
+  timerGame(callback);
+
+  // At this point in time, the callback should not have been called yet
+  expect(callback).not.toBeCalled();
+
+  // Fast-forward until all timers have been executed
+  jest.runAllTimers();
+
+  // Now our callback should have been called!
+  expect(callback).toBeCalled();
+  expect(callback).toHaveBeenCalledTimes(1);
+});
+```
+
+### Advance Timers by Time
+
+```js
+jest.useFakeTimers();
+
+test('calls the callback after 1 second', () => {
+  const timerGame = require('../timerGame');
+  const callback = jest.fn();
+
+  timerGame(callback);
+
+  // At this point in time, the callback should not have been called yet
+  expect(callback).not.toBeCalled();
+
+  // Fast-forward until all timers have been executed
+  jest.advanceTimersByTime(1000);
+
+  // Now our callback should have been called!
+  expect(callback).toBeCalled();
+  expect(callback).toHaveBeenCalledTimes(1);
+});
+```
