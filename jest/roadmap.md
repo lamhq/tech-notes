@@ -1,4 +1,4 @@
-# Research Roadmap
+# Jest Research Roadmap
 
 - [x] Matchers
 - [x] Testing Asynchronous code
@@ -9,7 +9,7 @@
 - [x] Manual Mocks
 - [x] Timer Mocks
 - [x] Testing React Apps
-- [ ] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [x] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [ ] [Examples](https://github.com/facebook/jest/tree/master/examples)
 - [ ] [React Testing Guide](https://reactjs.org/docs/testing.html)
 - [ ] [Test Renderer](https://reactjs.org/docs/test-renderer.html)
