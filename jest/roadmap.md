@@ -10,11 +10,12 @@
 - [x] Timer Mocks
 - [x] Testing React Apps
 - [x] [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- [ ] [Examples](https://github.com/facebook/jest/tree/master/examples)
+- [ ] [react-hooks-testing-library](https://github.com/testing-library/react-hooks-testing-library)
 - [ ] [React Testing Guide](https://reactjs.org/docs/testing.html)
 - [ ] [Test Renderer](https://reactjs.org/docs/test-renderer.html)
 - [ ] [Test Utilities](https://reactjs.org/docs/test-utils.html)
+- [ ] [Examples](https://github.com/facebook/jest/tree/master/examples)
 - [ ] ES6 class mocks
-- [ ] Bypassing module mocks
+- [x] Bypassing module mocks
 - [ ] Jest community
 - [ ] More Resources
