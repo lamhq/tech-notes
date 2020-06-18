@@ -5,21 +5,12 @@
 ```tsx
 interface MyComponentProps {
   userName: string;
-  age: number;
-  isActive: boolean;
 }
 
-export function MyComponent({ userName, age, isActive }: MyComponentProps): React.ReactElement {
-  return (
-    <div>
-      <span>{`Hello, ${userName}`}</span>
-    </div>
-  );
-}
-
-export const MyComponent: React.FC<MyComponentProps> = ({ userName, age, isActive }: MyComponentProps) => (
+export const MyComponent: React.FC<MyComponentProps> = ({ userName, children }) => (
   <div>
     <span>{`Hello, ${userName}`}</span>
+    {children}
   </div>
 )
 ```
@@ -217,6 +208,40 @@ interface ContainerProps extends ButtonProps {
 const Container: React.FC<ContainerProps> = ({ color, height, width, text }) => {
   return <div style={{ backgroundColor: color, height: `${height}px` }}>{text}</div>
 }
+```
+
+
+## Context
+
+```tsx
+import React from 'react';
+
+// create context
+export interface IAlertContextValue {
+  message: string;
+}
+const AlertContext: React.Context<IAlertContextValue | null> = React.createContext<IAlertContextValue | null>(null);
+
+// define hook to get context value
+export default function useAlert(): IAlertContextValue | null {
+  return React.useContext(AlertContext);
+}
+
+// provider
+const AlertProvider: React.FC = ({ children }) => {
+  const [state, setState] = React.useState(reducer, '');
+  const contextVal: IAlertContextValue = { message: state };
+  return <AlertContext.Provider value={contextVal}>{children}</AlertContext.Provider>;
+};
+
+// consumer
+const AlertConsumer: React.FC = () => {
+  const alertContext = useAlert();
+  if (!alertContext) return null;
+
+  const { message } = alertContext;
+  return <Alert message={message} />;
+};
 ```
 
 
