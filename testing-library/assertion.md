@@ -212,7 +212,7 @@ expect(button).toHaveAttribute('type', expect.stringContaining('sub'))
 expect(button).toHaveAttribute('type', expect.not.stringContaining('but'))
 ```
 
-### `toHaveClass`
+### toHaveClass
 
 ```typescript
 toHaveClass(...classNames: string[], options?: {exact: boolean})
@@ -246,7 +246,7 @@ expect(deleteButton).not.toHaveClass('btn-danger extra', {exact: true}) // if it
 expect(noClasses).not.toHaveClass()
 ```
 
-### `toHaveTextContent`
+### toHaveTextContent
 
 ```typescript
 toHaveTextContent(text: string | RegExp, options?: {normalizeWhitespace: boolean})
