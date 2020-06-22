@@ -41,7 +41,22 @@ My new content here..
 1. Create any custom pages and/or customize the `website/core/Footer.js` file that provides the footer for your site.
 1. Place assets, such as images, in the `website/static/` directory.
 
-## Docs Landing Page
+
+## Publishing your site
+
+```sh
+yarn run build
+```
+
+Hosting on a Service:
+
+- ZEIT Now (recommended)
+- GitHub Pages
+- Netlify
+- Render
+
+
+## Docs Only
 
 If you prefer to have your landing page be straight to your documentation, you can do this through a redirect.
 
@@ -68,15 +83,3 @@ If you prefer to have your landing page be straight to your documentation, you c
   </body>
 </html>
 ```
-
-## Publishing your site
-
-```sh
-yarn run build
-```
-
-Hosting on a Service:
-- ZEIT Now (recommended)
-- GitHub Pages
-- Netlify
-- Render
