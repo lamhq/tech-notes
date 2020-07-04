@@ -9,3 +9,9 @@ git status
 ```shell
 git reset --hard HEAD
 ```
+
+## Revert to the previous commit by creating a new commit
+
+```sh
+git revert f294647
+```
