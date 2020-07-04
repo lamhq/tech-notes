@@ -1,5 +1,43 @@
 # Typescript for React
 
+## Project setup
+
+### Packages to install
+
+```sh
+yarn add --dev typescript @types/react @types/react-dom
+```
+
+### tsconfig.json
+
+#### Enable jsx
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "jsx": "react",
+    ...
+}
+```
+
+#### Synthetic default imports
+
+```tsx
+import React from 'react'
+```
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    ...
+}
+```
+
+
 ## Functional Components
 
 ```tsx
@@ -25,58 +63,330 @@ interface MyComponentProps {
   isActive: boolean
 }
 
-class MyComponent extends React.Component<MyComponentProps> { }
-```
-
-```tsx
-interface Props {}
-
-interface State {
-  isLoading: boolean
+type MyComponentState = {
+  isLoading: bool
 }
 
-class MyClassComponent extends React.PureComponent<Props, State> {
-  constructor(props: Props): {
+class MyComponent extends React.Component<MyComponentProps, MyComponentState> {
+  static defaultProps = {
+    isLoading: false
+  }
+
+  constructor(props: MyComponentProps): {
     super(props);
     this.state = {
       isLoading: false,
     }
   }
+
+  render() {
+    return <div>{this.props.children}</div>
+  }
 }
 ```
 
 
-## Common React Props
-
-### Inline Styles
+## Events
 
 ```tsx
-interface Props {
-  style: React.CSSProperties;
-}
-class InlineStyledComponent extends React.PureComponent<Props> { }
+import React, { Component, MouseEvent } from 'react';
 
-render() {
-  return <InlineStyledComponent style={{ backgroundColor: '#f2f2f2' }} />
+export class Button extends Component {
+  handleClick(event: MouseEvent) {
+    event.preventDefault();
+    alert(event.currentTarget.tagName); // alerts BUTTON
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>
+      {this.props.children}
+    </button>
+  }
 }
 ```
 
-### Styled Components
+### Supported events
+
+- AnimationEvent
+- [ChangeEvent](https://developer.mozilla.org/en-US/docs/Web/API/ChangeEvent)
+- ClipboardEvent
+- CompositionEvent
+- DragEvent
+- [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent)
+- FormEvent
+- [KeyboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent)
+- [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
+- PointerEvent
+- [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent)
+- TransitionEvent
+- WheelEvent
+- SyntheticEvent (all other events)
+
+
+### Restrictive Event Handling
+
+If you want to restrict your event handlers to specific elements, you can use a generic to be more specific:
 
 ```tsx
-interface StyledProps {
-  className?: string
-}
-class SomeComponent extends React.PureComponent<StyledProps> { }
+import React, { Component, MouseEvent } from 'react';
 
-// AnotherComponent.tsx
-const SomeComponentStyled = styled(SomeComponent)`
-  background-color: #f2f2f2;
-`
-<SomeComponentStyled />
+export class Button extends Component {
+  /*
+   Here we restrict all handleClicks to be exclusively on
+   HTMLButton Elements
+  */
+  handleClick(event: MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    alert(event.currentTarget.tagName); // alerts BUTTON
+  }
+
+  /*
+    Generics support union types. This event handler works on
+    HTMLButtonElement and HTMLAnchorElement (links).
+  */
+  handleAnotherClick(event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) {
+    event.preventDefault();
+    alert('Yeah!');
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>
+      {this.props.children}
+    </button>
+  }
+}
 ```
 
-### React DOM element
+### InputEvent
+
+InputEvent (SyntheticInputEvent respectively) is not supported by TypeScript typings. You can import SyntheticEvent from the React typings to get at least some type safety.
+
+```tsx
+import React, { Component, SyntheticEvent } from 'react';
+
+export class Input extends Component {
+
+  handleInput(event: SyntheticEvent) {
+    event.preventDefault();
+    // ...
+  }
+
+  render() {
+    return <>
+      <input type="text" onInput={this.handleInput}/>
+    </>
+  }
+}
+```
+
+
+## Prop Types
+
+Prop Types, together with TypeScript provides a full, end-to-end type-checking experience: Compiler and run-time.
+
+```tsx
+import PropTypes, { InferProps } from "prop-types";
+
+export function Article({
+  title,
+  price,
+  children
+}: InferProps<typeof Article.propTypes>) {
+  return (
+    <div className="article">
+      <h1>{title}</h1>
+      <span>Priced at (incl VAT): {price * 1.2}</span>
+      <div className="list">{children}</div>
+    </div>
+  );
+}
+
+Article.propTypes = {
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
+};
+```
+
+
+## Hooks
+
+### useState
+
+```tsx
+type User = {
+  email: string;
+  id: string;
+}
+
+const [user, setUser] = useState<User | null>(null);
+```
+
+
+### useEffect
+
+```tsx
+useEffect(() => {
+  const handler = () => {
+    document.title = window.width;
+  }
+  window.addEventListener('resize', handler);
+
+  return () => {
+    window.removeEventListener('resize', handler);
+  }
+})
+```
+
+
+### useContext
+
+```tsx
+import React from 'react';
+
+// create context
+export interface ILanguageContext {
+  lang: string;
+}
+const LanguageContext: React.Context<ILanguageContext> = React.createContext<ILanguageContext>({ lang: 'en' });
+
+const Display = () => {
+  const { lang } = React.useContext<ILanguageContext>(LanguageContext);
+  return <p>Your selected language: {lang}</p>;
+}
+```
+
+
+### useRef
+
+```tsx
+function TextInputWithFocusButton() {
+  // initialise with null, but tell TypeScript we are looking for an HTMLInputElement
+  const inputEl = useRef<HTMLInputElement>(null);
+  const onButtonClick = () => {
+    // strict null checks need us to check if inputEl and current exist.
+    // but once current exists, it is of type HTMLInputElement, thus it
+    // has the method focus! ✅
+    if(inputEl && inputEl.current) {
+      inputEl.current.focus();
+    }
+  };
+  return (
+    <>
+      { /* in addition, inputEl only can be used with input elements. Yay! */ }
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+```
+
+
+### useMemo
+
+Let’s say you have computation heavy methods, and only want to run them when their parameters change, not every time the component updates. `useMemo` returns a memoized result, and executes the callback function only when parameters change.
+
+```tsx
+/**
+ *  returns the occurence of if each shade of the
+ *  red color component. Needs to browse through every pixel
+ *  of an image for that.
+ */
+function getHistogram(image: ImageData): number[] {
+  // details not really necessary for us right now 😎
+  ...
+  return histogram;
+}
+
+function Histogram() {
+  ...
+  /*
+   * We don't want to run this method all the time, that's why we save
+   * the histogram and only update it if imageData (from a state or somewhere)
+   * changes.
+   *
+   * If you provide correct return types for your function or type inference is
+   * strong enough, your memoized value has the same type.
+   * In that case, our histogram is an array of numbers
+   */
+  const histogram = useMemo(() => getHistogram(imageData), [imageData]);
+}
+```
+
+
+### useCallback
+
+`useCallback` is very similar to `useMemo`, but it returns a callback function, not a value. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. `shouldComponentUpdate`).
+
+`useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+
+```tsx
+const memoCallback = useCallback((a: number) => {
+  // doSomething
+}, [a]);
+```
+
+
+### useReducer
+
+```tsx
+type StateType = {
+  count: number
+}
+
+type ActionType = {
+  type: 'reset' | 'decrement' | 'increment'
+}
+
+function reducer(state: StateType, action: ActionType): StateType {
+  ...
+}
+
+function Counter({ initialCount = 0 }) {
+  const [state, dispatch] = useReducer(reducer, { count: initialCount });
+  ...
+}
+```
+
+## Inline Styles
+
+```tsx
+const h1Styles: React.CSSProperties = {
+  backgroundColor: 'rgba(255, 255, 255, 0.85)',
+  position: 'absolute',
+  right: 0,
+  bottom: '2rem',
+  padding: '0.5rem',
+  fontFamily: 'sans-serif',
+  fontSize: '1.5rem',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
+};
+
+export function Heading({ title } : { title: string} ) {
+  return <h1 style={h1Styles}>{title}</h1>;
+}
+```
+
+## Styled Components
+
+```tsx
+type FlexProps = {
+  direction?: 'row' | 'column',
+}
+
+export const Flex = styled.div<FlexProps>`
+  display: flex;
+  flex-direction: ${props => props.direction};
+`;
+
+// use it like that:
+const el = <Flex direction="row"></Flex>
+```
+
+## React DOM element
 
 ```tsx
 interface Props {
@@ -85,169 +395,3 @@ interface Props {
 export default ButtonComponent extends React.PureComponent<Props> { }
 <ButtonComponent button={<button>Click me</button>} />
 ```
-
-
-### Children
-
-```tsx
-interface Props {
-  children: React.ReactNode
-}
-export default ComponentWithChildren extends React.PureComponent<Props> { }
-
-<ComponentWithChildren><div>Some content</div></ComponentWithChildren>
-```
-
-if you type it as `JSX.Element` (abstraction of `React.ReactElement<any>`) or as `React.ReactElement<some-type>` it might work as well, since `React.ReactNode` also abstracts `React.ReactElement<any>`.
-
-
-```tsx
-interface TextProps {
-  children: string
-}
-const Text = ({ children }: TextProps) => <span>{children}</span>
-interface Props {
-  children: React.ReactElement<Text>
-}
-export default class Modal extends React.PureComponent<Props> { ... }
-
-// Correct usage
-<Modal><Text>Some content</Text></Modal>
-// Wrong usage
-<Modal><Text>{true}</Text></Modal>
-```
-
-
-## Functions
-
-```ts
-interface Props {
-  sum: (firstValue: number, secondValue: number) => number
-}
-```
-
-### Mouse event
-
-```ts
-interface Props {
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
-}
-```
-
-### Form event
-
-```tsx
-import React from 'react'
-
-const MyInput = () => {
-  const [value, setValue] = React.useState('')
-
-  // The event type is a "ChangeEvent"
-  // We pass in "HTMLInputElement" to the input
-  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setValue(e.target.value)
-  }
-
-  return <input value={value} onChange={onChange} id="input-example"/>
-}
-```
-
-
-## Hooks
-
-```tsx
-type User = {
-  email: string;
-  id: string;
-}
-
-// the generic is the < >
-// the union is the User | null
-// together, TypeScript knows, "Ah, user can be User or null".
-const [user, setUser] = useState<User | null>(null);
-```
-
-
-### Extending Component Props
-
-```tsx
-import React from 'react';
-
-type ButtonProps = {
-  /** the background color of the button */
-  color: string;
-  /** the text to show inside the button */
-  text: string;
-}
-
-type ContainerProps = ButtonProps & {
-  /** the height of the container (value used with 'px') */
-  height: number;
-}
-
-const Container: React.FC<ContainerProps> = ({ color, height, width, text }) => {
-  return <div style={{ backgroundColor: color, height: `${height}px` }}>{text}</div>
-}
-```
-
-```tsx
-import React from 'react';
-
-interface ButtonProps {
-  /** the background color of the button */
-  color: string;
-  /** the text to show inside the button */
-  text: string;
-}
-
-interface ContainerProps extends ButtonProps {
-  /** the height of the container (value used with 'px') */
-  height: number;
-}
-
-const Container: React.FC<ContainerProps> = ({ color, height, width, text }) => {
-  return <div style={{ backgroundColor: color, height: `${height}px` }}>{text}</div>
-}
-```
-
-
-## Context
-
-```tsx
-import React from 'react';
-
-// create context
-export interface IAlertContextValue {
-  message: string;
-}
-const AlertContext: React.Context<IAlertContextValue | null> = React.createContext<IAlertContextValue | null>(null);
-
-// define hook to get context value
-export default function useAlert(): IAlertContextValue | null {
-  return React.useContext(AlertContext);
-}
-
-// provider
-const AlertProvider: React.FC = ({ children }) => {
-  const [state, setState] = React.useState(reducer, '');
-  const contextVal: IAlertContextValue = { message: state };
-  return <AlertContext.Provider value={contextVal}>{children}</AlertContext.Provider>;
-};
-
-// consumer
-const AlertConsumer: React.FC = () => {
-  const alertContext = useAlert();
-  if (!alertContext) return null;
-
-  const { message } = alertContext;
-  return <Alert message={message} />;
-};
-```
-
-
-## References
-
-- https://basarat.gitbook.io/typescript/
-- https://github.com/basarat/typescript-react
-- https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
-- https://github.com/vikpe/react-webpack-typescript-starter
