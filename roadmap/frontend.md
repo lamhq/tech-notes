@@ -2,15 +2,20 @@
 
 ## TypeScript
 
-- [ ] [TypeScript Handbook (official)](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [ ] [TypeScript Deep Dive book](https://basarat.gitbook.io/typescript/)
+- [ ] [TypeScript Handbook (official)](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 
 
 ## React TypeScript
 
 - [x] [TypeScript and React: Getting Started](https://fettblog.eu/typescript-react/getting-started/)
 - [x] [TypeScript section in the official React docs](https://reactjs.org/docs/static-type-checking.html#typescript)
-- [ ] [React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
+- [x] [React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
+- [ ] [React & Redux in TypeScript - Complete Guide](https://github.com/piotrwitek/react-redux-typescript-guide)
+- [ ] [Palmer Group's TypeScript + React Guidelines](https://github.com/formik/typescript)
+- [ ] [Next.js + Firebase Starter](https://github.com/rwieruch/nextjs-firebase-authentication)
+- [ ] [Create React App example with Material-UI, TypeScript, Redux and Routing](https://github.com/innFactory/create-react-app-material-typescript-redux)
+- [ ] Develop React React Boilerplate Project
 
 
 ## Create React App
@@ -21,6 +26,32 @@
 ## Next.js
 
 - [ ] [Official Docs](https://nextjs.org/learn/basics/create-nextjs-app)
+- [ ] Next Starter Kit Project
+
+
+## i18next
+
+- [x] [Official Docs](https://www.i18next.com/)
+
+
+## Jest
+
+- [x] [Official Docs](https://jestjs.io/)
+
+
+## Testing Library
+
+- [x] [Official Docs](https://testing-library.com/docs/intro)
+
+
+## React Hook Form
+
+- [x] [Official Docs](https://react-hook-form.com/get-started)
+
+
+## Formik
+
+- [x] [Official Docs](https://jaredpalmer.com/formik)
 
 
 ## Styled Components

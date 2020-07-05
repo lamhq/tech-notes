@@ -100,6 +100,11 @@ if ((pet as Fish).swim) {
 } else if ((pet as Bird).fly) {
   (pet as Bird).fly();
 }
+
+// Assert a property is non-null, when accessing it
+element.parentNode!.removeChild(element) // ! before the period
+myFunction(document.getElementById(dialog.id!)! // ! after the property accessing
+let userID!: string // definite assignment assertion... be careful!
 ```
 
 
@@ -181,3 +186,59 @@ if (padder instanceof StringPadder) {
 }
 ```
 
+
+## Overloading Function Types
+
+```ts
+function pickCard(x: { suit: string; card: number }[]): number;
+function pickCard(x: number): { suit: string; card: number };
+function pickCard(x): any {
+  // implementation with combined signature
+  // ...
+}
+```
+
+However, if you don't have an implementation, remember, functions are just callable objects with no key:
+
+```ts
+type pickCard = {
+  (x: { suit: string; card: number }[]): number;
+  (x: number): { suit: string; card: number };
+  // no need for combined signature in this form
+  // you can also type static properties of functions here eg `pickCard.wasCalled`
+};
+```
+
+
+## Using Inferred Types
+
+```ts
+const [state, setState] = React.useState({
+  foo: 1,
+  bar: 2,
+}); // state's type inferred to be {foo: number, bar: number}
+
+const someMethod = (obj: typeof state) => {
+  // grabbing the type of state even though it was inferred
+  // some code using obj
+  setState(obj); // this works
+};
+```
+
+
+## Using Partial Types
+
+```ts
+const [state, setState] = React.useState({
+  foo: 1,
+  bar: 2,
+}); // state's type inferred to be {foo: number, bar: number}
+
+// NOTE: stale state merging is not actually encouraged in React.useState
+// we are just demonstrating how to use Partial here
+const partialStateUpdate = (obj: Partial<typeof state>) =>
+  setState({ ...state, ...obj });
+
+// later on...
+partialStateUpdate({ foo: 2 }); // this works
+```

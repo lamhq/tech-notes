@@ -92,9 +92,13 @@ class MyComponent extends React.Component<MyComponentProps, MyComponentState> {
 import React, { Component, MouseEvent } from 'react';
 
 export class Button extends Component {
-  handleClick(event: MouseEvent) {
+  handleClick(event: MouseEvent): void {
     event.preventDefault();
     alert(event.currentTarget.tagName); // alerts BUTTON
+  }
+
+  onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    this.setState({text: e.currentTarget.value})
   }
 
   render() {
@@ -386,6 +390,7 @@ export const Flex = styled.div<FlexProps>`
 const el = <Flex direction="row"></Flex>
 ```
 
+
 ## React DOM element
 
 ```tsx
@@ -395,3 +400,57 @@ interface Props {
 export default ButtonComponent extends React.PureComponent<Props> { }
 <ButtonComponent button={<button>Click me</button>} />
 ```
+
+
+## Types or Interfaces
+
+Always use `interface` for public API's definition when authoring a library or 3rd party ambient type definitions.
+
+Consider using `type` for your React Component Props and State, because it is more constrained.
+
+
+## Useful React Prop Type Examples
+
+```ts
+export declare interface AppProps {
+  children1: JSX.Element; // bad, doesnt account for arrays
+  children2: JSX.Element | JSX.Element[]; // meh, doesn't accept strings
+  children3: React.ReactChildren; // despite the name, not at all an appropriate type; it is a utility
+  children4: React.ReactChild[]; // better
+  children: React.ReactNode; // best, accepts everything
+  functionChildren: (name: string) => React.ReactNode; // recommended function as a child render prop type
+  style?: React.CSSProperties; // to pass through style props
+  onChange?: React.FormEventHandler<HTMLInputElement>; // form events! the generic parameter is the type of event.target
+  props: Props & React.PropsWithoutRef<JSX.IntrinsicElements["button"]>; // to impersonate all the props of a button element without its ref
+}
+```
+
+
+## The Types I need weren't exported!
+
+### Grabbing the Prop types of a component
+
+```ts
+import { Button } from "library"; // but doesn't export ButtonProps! oh no!
+type ButtonProps = React.ComponentProps<typeof Button>; // no problem! grab your own!
+type AlertButtonProps = Omit<ButtonProps, "onClick">; // modify
+
+const AlertButton: React.FC<AlertButtonProps> = (props) => (
+  <Button onClick={() => alert("hello")} {...props} />
+);
+```
+
+You may also use `ComponentPropsWithoutRef` (instead of `ComponentProps`) and `ComponentPropsWithRef` (if your component specifically forwards refs)
+
+
+### Grabbing the return type of a function
+
+```ts
+function foo(bar: string) {
+  return { baz: 1 };
+}
+
+//  inside your app, if you need { baz: number }
+type FooReturn = ReturnType<typeof foo>; // { baz: number }
+```
+
