@@ -18,15 +18,15 @@
 - [ ] Develop React React Boilerplate Project
 
 
-## Create React App
-
-- [ ] [Official Docs](https://create-react-app.dev/)
-
-
 ## Next.js
 
 - [ ] [Official Docs](https://nextjs.org/learn/basics/create-nextjs-app)
-- [ ] Next Starter Kit Project
+- [ ] Next Boilerplate Project
+
+
+## Create React App
+
+- [ ] [Official Docs](https://create-react-app.dev/)
 
 
 ## i18next
