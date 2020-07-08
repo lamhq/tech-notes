@@ -173,7 +173,7 @@ export async function getStaticProps() {
 }
 ```
 
-`getStaticProps` runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
+`getStaticProps` and `getStaticPaths` runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
 
 - In development (`npm run dev` or `yarn dev`), `getStaticProps` runs on every request.
 - In production, `getStaticProps` runs at build time.
@@ -197,7 +197,7 @@ export async function getServerSideProps(context) {
 }
 ```
 
-`getServerSideProps`'s parameter (`context`) contains request specific parameters. You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time. It will be slower than getStaticProps because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+`getServerSideProps`'s parameter (`context`) contains request specific parameters. You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time. It will be slower than `getStaticProps` because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
 
 
 ### Client-side Rendering
@@ -353,8 +353,89 @@ API Routes let you create an API endpoint inside a Next.js app. You can do so by
 ```js
 // req = request data, res = response data
 export default (req, res) => {
+  res.status(200).json({ text: 'Hello' })
+}
+```
+
+Do Not Fetch an API Route from `getStaticProps` or `getStaticPaths`. Instead, write your server-side code directly in `getStaticProps` or `getStaticPaths` (or call a helper function).
+
+> Next.js’s scope is to UI-rendering, while abstracting away the client/server distinction. If you need "proper" backend logic, such as a database or an accounts server, you should keep that in a separate server application.
+
+
+## Deploying Your Next.js App
+
+- [Deploy a Next.js app on GitHub to Vercel](https://nextjs.org/learn/basics/deploying-nextjs-app/deploy)
+- [Use a custom domain for Vercel app](https://vercel.com/docs/v2/custom-domains)
+
+### Host your Next.js app to Node.js environment
+
+Deploy your code to a hosting provider that supports Node.js.
+
+```sh
+npm run build
+npm run start
+```
+
+
+## TypeScript
+
+Create an **empty** `tsconfig.json` file in the root of your project:
+
+```sh
+touch tsconfig.json
+```
+
+Install TypeScript:
+
+```sh
+yarn add --dev typescript @types/react @types/node
+```
+
+Now, try starting the development server again.
+
+```sh
+yarn dev
+```
+
+After starting the server, Next.js will:
+
+- Populate the `tsconfig.json` file for you. You may customize this file.
+= Create the `next-env.d.ts` file, which ensures Next.js types are picked up by the TypeScript compiler. You should not touch this file.
+
+
+### Next.js Specific Types
+
+```ts
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async context => {
+  // ...
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  // ...
+}
+
+export const getServerSideProps: GetServerSideProps = async context => {
   // ...
 }
 ```
 
-https://nextjs.org/learn/basics/api-routes/creating-api-routes
+```ts
+import { NextApiRequest, NextApiResponse } from 'next'
+
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  // ...
+}
+```
+
+```ts
+// pages/_app.tsx
+import { AppProps } from 'next/app'
+
+function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
+}
+
+export default App
+```
