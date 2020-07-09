@@ -2,7 +2,7 @@
 
 ## Project setup
 
-### Packages to install
+### Install packages
 
 ```sh
 yarn add --dev typescript @types/react @types/react-dom
@@ -37,6 +37,83 @@ import React from 'react'
 }
 ```
 
+
+### Add ESLint, Prettier, Airbnb Style Guide to project
+
+- [https://www.npmjs.com/package/eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript)
+- [https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a](https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a)
+
+```sh
+yarn add eslint@^6.0.0 \
+  prettier \
+  eslint-config-prettier \
+  eslint-plugin-prettier \
+  eslint-config-airbnb-typescript \
+  eslint-plugin-import@^2.20.1 \
+  eslint-plugin-jsx-a11y@^6.2.3 \
+  eslint-plugin-react@^7.19.0 \
+  eslint-plugin-react-hooks@^2.5.0 \
+  @typescript-eslint/eslint-plugin@^3.1.0 \
+  --dev
+touch .eslintrc.js .prettierrc.js
+```
+
+**.eslintrc.js**
+
+```js
+module.exports = {
+  extends: [
+    'airbnb-typescript',
+    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.],
+  ],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+};
+```
+
+**.prettierrc.js**
+
+```js
+module.exports = {
+  semi: true,
+  trailingComma: "all",
+  singleQuote: true,
+  printWidth: 120,
+  tabWidth: 2
+};
+```
+
+**.vscode/settings.json**
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}
+```
+
+**package.json**
+
+```json
+{
+  "scripts": {
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}
+```
 
 ## Functional Components
 

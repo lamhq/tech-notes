@@ -4,7 +4,7 @@
 
 - [ ] [TypeScript Deep Dive book](https://basarat.gitbook.io/typescript/)
 - [ ] [TypeScript Handbook (official)](https://www.typescriptlang.org/docs/handbook/basic-types.html)
-
+- [ ] [Types vs. interfaces in TypeScript](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
 
 ## React TypeScript
 

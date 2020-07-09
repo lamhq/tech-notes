@@ -3,7 +3,7 @@
 ## Create project
 
 ```sh
-npm init next-app nextdemo --example "https://github.com/zeit/next-learn-starter/tree/master/learn-starter"
+yarn create next-app
 ```
 
 
@@ -18,6 +18,7 @@ Pages are associated with a route based on their **file name**. For example, in 
 ## Navigate Between Pages
 
 ```js
+import Link from 'next/link'
 <Link href="/posts/first-post"><a>this page!</a></Link>
 ```
 
