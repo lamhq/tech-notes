@@ -95,6 +95,12 @@ module.exports = {
 }
 ```
 
+### Run ESLint before commit
+
+```sh
+yarn add husky lint-staged -D
+```
+
 **package.json**
 
 ```json
@@ -114,6 +120,7 @@ module.exports = {
   }
 }
 ```
+
 
 ## Functional Components
 
