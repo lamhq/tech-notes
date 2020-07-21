@@ -8,115 +8,21 @@
 yarn add --dev typescript @types/react @types/react-dom
 ```
 
+
 ### tsconfig.json
 
-#### Enable jsx
-
 ```json
 {
   "compilerOptions": {
-    ...
-    "jsx": "react",
-    ...
-}
-```
-
-#### Synthetic default imports
-
-```tsx
-import React from 'react'
-```
-
-```json
-{
-  "compilerOptions": {
-    ...
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    ...
-}
-```
-
-
-### Add ESLint, Prettier, Airbnb Style Guide to project
-
-- [https://www.npmjs.com/package/eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript)
-- [https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a](https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a)
-
-```sh
-yarn add eslint@^6.0.0 \
-  prettier \
-  eslint-config-prettier \
-  eslint-plugin-prettier \
-  eslint-config-airbnb-typescript \
-  eslint-plugin-import@^2.20.1 \
-  eslint-plugin-jsx-a11y@^6.2.3 \
-  eslint-plugin-react@^7.19.0 \
-  eslint-plugin-react-hooks@^2.5.0 \
-  @typescript-eslint/eslint-plugin@^3.1.0 \
-  --dev
-touch .eslintrc.js .prettierrc.js
-```
-
-**.eslintrc.js**
-
-```js
-module.exports = {
-  extends: [
-    'airbnb-typescript',
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.],
-  ],
-  parserOptions: {
-    project: './tsconfig.json',
-  },
-};
-```
-
-**.prettierrc.js**
-
-```js
-module.exports = {
-  semi: true,
-  trailingComma: "all",
-  singleQuote: true,
-  printWidth: 120,
-  tabWidth: 2
-};
-```
-
-**.vscode/settings.json**
-
-```json
-{
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-}
-```
-
-### Run ESLint before commit
-
-```sh
-yarn add husky lint-staged -D
-```
-
-**package.json**
-
-```json
-{
-  "scripts": {
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
+    "target": "es6", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "strict": true, /* Enable all strict type-checking options. */
+    "outDir": "./dist/", /* Redirect output structure to the directory. */
+    "sourceMap": true, /* Generates corresponding '.map' file. */
+    "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
+    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
+    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   }
 }
 ```
@@ -509,6 +415,41 @@ export declare interface AppProps {
 }
 ```
 
+## Interface for renderable
+
+React can render a few things like `JSX` or `string`. These are all consolidated into the type `React.ReactNode` so use it for when you want to accept renderables e.g.
+
+```tsx
+type Props = {
+  header: React.ReactNode;
+  body: React.ReactNode;
+}
+class MyComponent extends React.Component<Props, {}> {
+  render() {
+    return <div>
+      {this.props.header}
+      {this.props.body}
+    </div>;
+  }
+}
+
+<MyComponent header={<h1>Header</h1>} body={<i>body</i>} />
+```
+
+## Accept an instance of a Component
+
+The react type definitions provide `React.ReactElement<T>` to allow you to annotate the result of a `<T/>` class component instantiation. e.g.
+
+```tsx
+class MyAwesomeComponent extends React.Component {
+  render() {
+    return <div>Hello</div>;
+  }
+}
+
+const foo: React.ReactElement<MyAwesomeComponent> = <MyAwesomeComponent />; // Okay
+const bar: React.ReactElement<MyAwesomeComponent> = <NotMyAwesomeComponent />; // Error!
+```
 
 ## The Types I need weren't exported!
 

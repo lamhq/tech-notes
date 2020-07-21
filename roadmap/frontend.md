@@ -2,7 +2,7 @@
 
 ## TypeScript
 
-- [ ] [TypeScript Deep Dive book](https://basarat.gitbook.io/typescript/)
+- [x] [TypeScript Deep Dive book](https://basarat.gitbook.io/typescript/)
 - [ ] [TypeScript Handbook (official)](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [ ] [Types vs. interfaces in TypeScript](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
 
@@ -79,8 +79,8 @@
 
 ## ESLint
 
-- [ ] [Official Docs](https://eslint.org/docs/user-guide/getting-started)
-
+- [x] [Official Docs](https://eslint.org/docs/user-guide/getting-started)
+- [x] [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
 
 ## Prettier
 
