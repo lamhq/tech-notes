@@ -14,9 +14,9 @@
 
 ## Basic Demo Project
 
-- [ ] TypeScript
+- [x] TypeScript
 - [ ] Layout
-- [ ] Pages with Navigation
+- [x] Pages with Navigation
 - [ ] Server side rendering
 - [ ] Data fetching
 - [ ] 404 page
