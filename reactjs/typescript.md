@@ -1,33 +1,5 @@
 # Typescript for React
 
-## Project setup
-
-### Install packages
-
-```sh
-yarn add --dev typescript @types/react @types/react-dom
-```
-
-
-### tsconfig.json
-
-```json
-{
-  "compilerOptions": {
-    "target": "es6", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-    "module": "commonjs", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    "strict": true, /* Enable all strict type-checking options. */
-    "outDir": "./dist/", /* Redirect output structure to the directory. */
-    "sourceMap": true, /* Generates corresponding '.map' file. */
-    "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
-    "esModuleInterop": true, /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-    "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-  }
-}
-```
-
-
 ## Functional Components
 
 ```tsx

@@ -1,35 +1,5 @@
-# Setup linter for a React Typescript project
+// https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
 
-- ESLint
-- Airbnb TypeScript
-- Prettier
-- Jest
-- Husky (pre-commit)
-
-## Install packages
-
-```sh
-yarn add -D \
-  eslint@^7.5.0 \
-  eslint-config-airbnb@18.2.0 \
-  eslint-config-prettier@^6.11.0 \
-  eslint-plugin-import@^2.21.2 \
-  eslint-plugin-jest@^23.18.0 \
-  eslint-plugin-jsx-a11y@^6.3.0 \
-  eslint-plugin-prettier@^3.1.3 \
-  eslint-plugin-react@^7.20.0 \
-  eslint-plugin-react-hooks@4.0.0 \
-  @typescript-eslint/parser@^3.6.1 \
-  @typescript-eslint/eslint-plugin@^3.6.1 \
-  prettier \
-  husky \
-  lint-staged
-```
-
-
-## .eslintrc.js
-
-```js
 const { rules: baseBestPracticesRules } = require('eslint-config-airbnb-base/rules/best-practices');
 const { rules: baseErrorsRules } = require('eslint-config-airbnb-base/rules/errors');
 const { rules: baseES6Rules } = require('eslint-config-airbnb-base/rules/es6');
@@ -48,8 +18,15 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'jest'],
+  plugins: [
+    '@typescript-eslint', 
+    'react',
+    'jest', 
+    'prettier'
+  ],
   env: {
+    browser: true,
+    es2020: true,    
     'jest/globals': true,
   },
   settings: {
@@ -100,7 +77,7 @@ module.exports = {
 
         // Disable ESLint-based module resolution check for improved monorepo support
         // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-        'import/no-unresolved': 'off',
+        'import/no-unresolved': 'off',        
       },
     },
   ],
@@ -266,94 +243,3 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
   },
 };
-```
-
-
-## .prettierrc.js
-
-```js
-module.exports = {
-  semi: true,
-  trailingComma: "all",
-  singleQuote: true,
-  printWidth: 100,
-  tabWidth: 2
-};
-```
-
-
-## package.json
-
-```json
-{
-  "scripts": {
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
-  }
-}
-```
-
-
-## .vscode/settings.json
-```json
-{
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "eslint.options": {
-    "parserOptions": {
-      "project": [
-        "${workspaceFolder}/tsconfig.json"
-      ],
-    }
-  }
-}
-```
-
-
-## ci.yml (Github Action)
-
-```yml
-name: CI
-
-on: [push]
-
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node_version: [14]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node_version: ${{ matrix.node_version }}
-
-      - name: run CI
-        run: |
-          yarn install
-          yarn lint
-          yarn test
-          yarn build
-```
-
-
-## Reference
-
-- [TypeScript Handbook React & Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
-- [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript/blob/master/lib/shared.js)
-- [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
-- [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://medium.com/@brygrill/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
