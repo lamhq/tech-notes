@@ -1,6 +1,6 @@
 ### ConditionExpression
 
-```
+```js
 var params = {
   TableName: table,
   Key: {

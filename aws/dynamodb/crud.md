@@ -1,6 +1,6 @@
 ### Create
 
-```javascript
+```js
 var AWS = require("aws-sdk");
 AWS.config.update({
   region: "us-west-2",
@@ -31,7 +31,7 @@ docClient.put(params, function (err, data) {
 
 ### Read
 
-```javascript
+```js
 var params = {
   TableName: table,
   Key: {
@@ -45,7 +45,7 @@ docClient.get(params, function (err, data) {...});
 
 ### Update
 
-```javascript
+```js
 var params = {
   TableName: table,
   Key: {
@@ -65,7 +65,7 @@ docClient.update(params, function (err, data) {...});
 
 ### Delete
 
-```javascript
+```js
 var params = {
   TableName: table,
   Key: {
@@ -82,7 +82,7 @@ docClient.delete(params, function (err, data) {...});
 
 ### Increment/Decrement
 
-```javascript
+```js
 var params = {
   TableName: table,
   Key: {
@@ -101,7 +101,7 @@ docClient.update(params, function (err, data) {...);
 
 ### Conditionally update
 
-```javascript
+```js
 var params = {
   TableName: table,
   Key: {
