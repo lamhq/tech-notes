@@ -56,3 +56,4 @@ yarn add -D \
 - [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript/blob/master/lib/shared.js)
 - [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)
 - [Create-React-App with TypeScript, ESLint, Prettier, and Github Actions](https://medium.com/@brygrill/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97)
+- [Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/issues/1723#issuecomment-626766041)
