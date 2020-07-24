@@ -1,12 +1,5 @@
 # Basic
 
-## Install
-
-```sh
-yarn add --dev @testing-library/dom
-```
-
-
 ## getBy
 
 - `getBy*` return the first matching node for a query, and throw an error if no elements match or if more than one match is found (use `getAllBy` instead).

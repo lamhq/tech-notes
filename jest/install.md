@@ -7,12 +7,19 @@ yarn add --dev jest
 ```
 
 
+## For Snapshot Testing
+
+```sh
+yarn add react-test-renderer
+```
+
+
 ## TypeScript
 
 ### Install ts-jest
 
 ```sh
-yarn add --dev jest typescript ts-jest @types/jest
+yarn add --dev jest ts-jest @types/jest
 ```
 
 

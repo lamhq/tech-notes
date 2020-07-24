@@ -1,13 +1,6 @@
 # React Testing Library
 
 
-## Setup
-
-```sh
-yarn add --dev @testing-library/react
-```
-
-
 ## Mock api request
 
 ```js
