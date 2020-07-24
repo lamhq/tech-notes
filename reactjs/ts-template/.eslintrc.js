@@ -19,14 +19,14 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: [
-    '@typescript-eslint', 
+    '@typescript-eslint',
     'react',
-    'jest', 
+    'jest',
     'prettier'
   ],
   env: {
     browser: true,
-    es2020: true,    
+    es2020: true,
     'jest/globals': true,
   },
   settings: {
@@ -77,7 +77,7 @@ module.exports = {
 
         // Disable ESLint-based module resolution check for improved monorepo support
         // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-        'import/no-unresolved': 'off',        
+        'import/no-unresolved': 'off',
       },
     },
   ],
@@ -232,9 +232,11 @@ module.exports = {
       baseImportsRules['import/no-extraneous-dependencies'][0],
       {
         ...baseImportsRules['import/no-extraneous-dependencies'][1],
-        devDependencies: baseImportsRules[
-          'import/no-extraneous-dependencies'
-        ][1].devDependencies.map((glob) => glob.replace('js,jsx', 'js,jsx,ts,tsx')),
+        devDependencies: [
+          ...baseImportsRules['import/no-extraneous-dependencies'][1]
+            .devDependencies.map((glob) => glob.replace('js,jsx', 'js,jsx,ts,tsx')),
+          '**/jest.setup.ts',
+        ],
       },
     ],
 

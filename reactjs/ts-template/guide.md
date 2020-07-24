@@ -3,8 +3,13 @@
 - ESLint
 - Airbnb TypeScript
 - Prettier
-- Jest
 - Husky (pre-commit)
+- Jest
+- react-test-renderer (snapshot testing)
+- jest-dom (Custom jest matchers)
+- testing-library
+- testing-library (react)
+
 
 ## Install packages
 
@@ -26,7 +31,13 @@ yarn add -D \
   @typescript-eslint/eslint-plugin@^3.6.1 \
   prettier \
   husky \
-  lint-staged
+  lint-staged \
+  jest \
+  @types/jest \
+  @testing-library/jest-dom \
+  @testing-library/react \
+  react-test-renderer \
+  @types/react-test-renderer
 ```
 
 ## package.json
