@@ -1,4 +1,4 @@
-# Setup linter for a React Typescript project
+# TypeScript React Project Setup
 
 - ESLint
 - Airbnb TypeScript
@@ -13,7 +13,7 @@ yarn add -D \
   typescript \
   @types/react \
   @types/react-dom \
-  eslint@^7.5.0 \
+  eslint@^6.0.0 \
   eslint-config-airbnb@18.2.0 \
   eslint-config-prettier@^6.11.0 \
   eslint-plugin-import@^2.21.2 \
