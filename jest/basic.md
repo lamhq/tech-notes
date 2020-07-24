@@ -1,12 +1,5 @@
 # Basic
 
-## Install
-
-```sh
-yarn add --dev jest @types/jest
-```
-
-
 ## Sample test
 
 Create a file named `sum.test.js` that contain the test:
