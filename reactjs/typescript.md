@@ -364,7 +364,7 @@ export default ButtonComponent extends React.PureComponent<Props> { }
 ```
 
 
-## Types or Interfaces
+## When to use Types or Interfaces
 
 Always use `interface` for public API's definition when authoring a library or 3rd party ambient type definitions.
 
