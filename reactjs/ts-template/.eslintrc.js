@@ -19,14 +19,14 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: [
-    '@typescript-eslint',
+    '@typescript-eslint', 
     'react',
-    'jest',
+    'jest', 
     'prettier'
   ],
   env: {
     browser: true,
-    es2020: true,
+    es2020: true,    
     'jest/globals': true,
   },
   settings: {
@@ -77,7 +77,7 @@ module.exports = {
 
         // Disable ESLint-based module resolution check for improved monorepo support
         // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-        'import/no-unresolved': 'off',
+        'import/no-unresolved': 'off',        
       },
     },
   ],
