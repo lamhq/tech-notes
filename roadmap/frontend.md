@@ -18,50 +18,49 @@
 - [ ] Develop React React Boilerplate Project
 
 
-## Next.js
+## Testing
 
-- [ ] [Official Docs](https://nextjs.org/learn/basics/create-nextjs-app)
+- [x] [Jest](https://jestjs.io/)
+- [x] [Testing Library](https://testing-library.com/docs/intro)
+- [x] [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing)
+- [ ] [Testing React Apps](https://jestjs.io/docs/en/tutorial-react)
+- [ ] [Test Utilities](https://reactjs.org/docs/test-utils.html)
+- [ ] [Test Renderer](https://reactjs.org/docs/test-renderer.html)
+
+
+## Server Side Rendering
+
+- [ ] [Next.js](https://nextjs.org/learn/basics/create-nextjs-app)
+
+
+## Demo projects
+
+- [ ] Weather app
 - [ ] Next Boilerplate Project
+- [ ] Music app
 
 
-## Create React App
+## i18n
 
-- [ ] [Official Docs](https://create-react-app.dev/)
-
-
-## i18next
-
-- [x] [Official Docs](https://www.i18next.com/)
+- [x] [i18next](https://www.i18next.com/)
 
 
-## Jest
+## Boilerplates
 
-- [x] [Official Docs](https://jestjs.io/)
-
-
-## Testing Library
-
-- [x] [Official Docs](https://testing-library.com/docs/intro)
+- [ ] [Create React App](https://create-react-app.dev/)
 
 
-## React Hook Form
+## Form Handling
 
-- [x] [Official Docs](https://react-hook-form.com/get-started)
-
-
-## Formik
-
-- [x] [Official Docs](https://jaredpalmer.com/formik)
+- [x] [React Hook Form](https://react-hook-form.com/get-started)
+- [x] [Formik](https://jaredpalmer.com/formik)
+- [x] [Redux Form](https://redux-form.com/)
 
 
-## Styled Components
+## Styling
 
-- [x] [Official Docs](https://styled-components.com/)
-
-
-## Styled System
-
-- [x] [Official Docs](https://styled-system.com/getting-started)
+- [x] [Styled Components](https://styled-components.com/)
+- [x] [Styled System](https://styled-system.com/getting-started)
 
 
 ## CSS
@@ -77,21 +76,18 @@
 - [ ] [BEM](https://css-tricks.com/bem-101/)
 
 
-## ESLint
+## Scaffolding
 
-- [x] [Official Docs](https://eslint.org/docs/user-guide/getting-started)
+- [x] [ESLint](https://eslint.org/docs/user-guide/getting-started)
 - [x] [eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript)
-
-## Prettier
-
-- [ ] [Official Docs](https://prettier.io/)
+- [x] [Webpack](https://webpack.js.org/concepts/)
+- [ ] [Prettier](https://prettier.io/)
 
 
-## Webpack
+## UI Frameworks
 
-- [x] [Official Docs](https://webpack.js.org/concepts/)
+- [x] [Material UI](https://material-ui.com/getting-started/installation/)
+- [x] Ant Design
+- [ ] Fluent UI
 
 
-## Material UI
-
-- [ ] [Official Docs](https://material-ui.com/getting-started/installation/)

@@ -1,90 +1,106 @@
 # Backend Roadmap
 
+## Serverless Technology Stack
+
+- [ ] AWS Lambda
+- [ ] Amazon API Gateway
+- [ ] AWS Serverless Application Model
+- [ ] AWS CloudFormation
+- [x] Amazon Elastic Container Service (ECS)
+- [x] Amazon Elastic Compute Cloud (EC2)
+- [x] Amazon CloudFront
+- [x] Amazon DynamoDB
+- [x] Amazon Simple Storage Service (S3)
+
+
 ## Programming Languages
 
-- Javascript
-- NodeJs
-- ~~Python~~
-- Java
+- [x] Javascript (NodeJs)
+- [x] Python
+- [x] Java (basic)
 
 
-## Programming Frameworks
+## Frameworks
 
-- NestJS
+- [x] NestJS
+
+
+## Demo Project
+
+- [ ] Rest Boilerplate
+- [ ] GraphQL Boilerplate
 
 
 ## Databases
 
 ### Relational Databases
 
-- PostgreSQL
-- ~~MySQL~~
+- [ ] PostgreSQL
+- [x] MySQL
 
 
 ### NoSQL Databases
 
-- MongoDB
-- ~~DynamoDB~~
+- [x] MongoDB
+- [x] DynamoDB
 
 
 ### Advance Knowledge
 
-- ~~ORMs~~
-- ~~ACID~~
-- ~~Transactions~~
-- ~~N+1 problem~~
-- ~~Database Normalization~~
-- ~~Indexes and how they work~~
-- Data replication
-- Sharding strategies
+- [x] ORMs
+- [x] ACID
+- [x] Transactions
+- [x] N+1 problem
+- [x] Database Normalization
+- [x] Indexes and how they work
+- [ ] Data replication
+- [ ] Sharding strategies
 
 
 ## API Standards
 
-- ~~REST~~
-- GraphQL
+- [x] REST
+- [x] GraphQL
 
 
 ## Caching
 
-- Memcached
-- Redis
+- [ ] Memcached
+- [ ] Redis
 
 
 ## Testing
 
-- Integration Testing
-- Unit Testing
-- Functional Testing
+- [x] Unit Testing
+- [x] Functional Testing
+- [x] Integration Testing
 
 
 ## CI/CD
 
-- Docker
-- Bitbucket pipeline
-- Gitlab pipeline
-- Azure pipeline
-- Jenkin
+- [x] Docker
+- [x] Bitbucket pipeline
+- [x] Gitlab pipeline
+- [x] Azure pipeline
+- [x] Jenkin
 
 
 ## Search Engines
 
-- Elastic Search
+- [x] Elastic Search
 
 
 ## Architecture Patterns
 
-- Microservices
-- Serverless
-- Monolithic Apps
-- SOA
-- CQRS and Event Sourcing
+- [ ] Microservices
+- [ ] Serverless
+- [ ] Monolithic Apps
+- [ ] SOA
+- [ ] CQRS and Event Sourcing
 
 
 ## Design and Development Principles
 
-- Domain Driven Design
-- Test Driven Development- SOLID
-- KISS
-- YAGNI
-- DRY
+- [ ] Domain Driven Design
+- [ ] Test Driven Development
+
