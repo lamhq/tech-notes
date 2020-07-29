@@ -15,7 +15,7 @@
 
 ## Programming Languages
 
-- [x] Javascript (NodeJs)
+- [ ] Javascript (NodeJs)
 - [x] Python
 - [x] Java (basic)
 
