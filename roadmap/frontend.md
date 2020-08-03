@@ -6,6 +6,7 @@
 - [ ] [TypeScript Handbook (official)](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 - [ ] [Types vs. interfaces in TypeScript](https://blog.logrocket.com/types-vs-interfaces-in-typescript/)
 
+
 ## React TypeScript
 
 - [x] [TypeScript and React: Getting Started](https://fettblog.eu/typescript-react/getting-started/)
@@ -15,7 +16,6 @@
 - [ ] [Palmer Group's TypeScript + React Guidelines](https://github.com/formik/typescript)
 - [ ] [Next.js + Firebase Starter](https://github.com/rwieruch/nextjs-firebase-authentication)
 - [ ] [Create React App example with Material-UI, TypeScript, Redux and Routing](https://github.com/innFactory/create-react-app-material-typescript-redux)
-- [ ] Develop React React Boilerplate Project
 
 
 ## Testing
@@ -26,6 +26,16 @@
 - [ ] [Testing React Apps](https://jestjs.io/docs/en/tutorial-react)
 - [ ] [Test Utilities](https://reactjs.org/docs/test-utils.html)
 - [ ] [Test Renderer](https://reactjs.org/docs/test-renderer.html)
+
+
+## Performance
+
+- [ ] [Profiling Components with the Chrome Performance Tab](https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-chrome-performance-tab)
+- [ ] [Profiler API](https://reactjs.org/docs/profiler.html)
+- [ ] [Introducing the React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)
+- [ ] [Render Long Lists](https://reactjs.org/docs/optimizing-performance.html#virtualize-long-lists)
+- [ ] [Throttling and Debouncing Event Action in JavaScript](https://www.codementor.io/blog/react-optimization-5wiwjnf9hj)
+- [ ] [10 Ways to Optimize Your React App’s Performance](https://blog.bitsrc.io/10-ways-to-optimize-your-react-apps-performance-e5e437c9abce)
 
 
 ## Server Side Rendering
