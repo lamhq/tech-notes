@@ -85,6 +85,22 @@ export class CatsController {
 }
 ```
 
+## Property-based injection
+
+The technique we've used so far is called constructor-based injection, as providers are injected via the constructor method.
+
+In some very specific cases, property-based injection might be useful. For instance, if your top-level class depends on either one or multiple providers, passing them all the way up by calling super() in sub-classes from the constructor can be very tedious.
+
+```ts
+import { Injectable, Inject } from '@nestjs/common';
+
+@Injectable()
+export class HttpService<T> {
+  @Inject('HTTP_OPTIONS')
+  private readonly httpClient: T;
+}
+```
+
 
 ## Value Provider
 
