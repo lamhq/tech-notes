@@ -42,7 +42,7 @@
 ## AWS Cloudformation
 
 - [ ] [AWS CloudFormation Parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html)
-
+- [ ] [Passing Parameters to CloudFormation Stacks with the AWS CLI](https://aws.amazon.com/blogs/devops/passing-parameters-to-cloudformation-stacks-with-the-aws-cli-and-powershell/)
 
 ## AWS SAM
 

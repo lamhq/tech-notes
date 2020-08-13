@@ -61,6 +61,17 @@
 
 - [x] REST
 - [x] GraphQL
+- [ ] [PageDuty API](https://developer.pagerduty.com/docs/rest-api-v2/rest-api/)
+- [ ] [Paypal REST API](https://developer.paypal.com/docs/api/overview/)
+- [ ] [REST API Tutorial](https://restfulapi.net/resource-naming/)
+- [ ] [Best Practices for Designing a Pragmatic RESTful API](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+
+
+## API version strategy
+
+- [ ] [Most Mobile Projects Fail at the API: How to Minimize Risk](https://infinum.com/the-capsized-eight/most-mobile-projects-fail-at-the-api)
+- [ ] [How Shopify Manages API Versioning and Breaking Changes](https://engineering.shopify.com/blogs/engineering/shopify-manages-api-versioning-breaking-changes)
+
 
 
 ## Caching
