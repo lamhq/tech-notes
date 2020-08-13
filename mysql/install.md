@@ -60,6 +60,12 @@ GRANT ALL PRIVILEGES ON t2h.* TO 't2h'@'localhost';
 mysql -u t2h -pbangk0k
 ```
 
+## Execute sql script
+
+```shell
+mysql -u t2h -pbangk0k -D opencart < /Users/lam/Desktop/source/opencart/upload/install/opencart.sql
+mysql -u [username] -p[password] [datbase name] < file/path.sql
+```
 
 ## Stop mysql
 
