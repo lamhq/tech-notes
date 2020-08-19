@@ -1,21 +1,8 @@
 # Backend Roadmap
 
-## Serverless Technology Stack
-
-- [ ] AWS Lambda
-- [ ] Amazon API Gateway
-- [ ] AWS Serverless Application Model
-- [ ] AWS CloudFormation
-- [x] Amazon Elastic Container Service (ECS)
-- [x] Amazon Elastic Compute Cloud (EC2)
-- [x] Amazon CloudFront
-- [x] Amazon DynamoDB
-- [x] Amazon Simple Storage Service (S3)
-
-
 ## Programming Languages
 
-- [ ] Javascript (NodeJs)
+- [~] Javascript (NodeJs)
 - [x] Python
 - [x] Java (basic)
 
@@ -33,16 +20,16 @@
 
 ## Databases
 
+### NoSQL Databases
+
+- [ ] MongoDB
+- [x] DynamoDB
+
+
 ### Relational Databases
 
 - [ ] PostgreSQL
 - [x] MySQL
-
-
-### NoSQL Databases
-
-- [x] MongoDB
-- [x] DynamoDB
 
 
 ### Advance Knowledge
@@ -59,7 +46,7 @@
 
 ## API Standards
 
-- [x] REST
+- [x] RESTful
 - [x] GraphQL
 - [ ] [PageDuty API](https://developer.pagerduty.com/docs/rest-api-v2/rest-api/)
 - [ ] [Paypal REST API](https://developer.paypal.com/docs/api/overview/)
@@ -82,8 +69,8 @@
 ## Testing
 
 - [x] Unit Testing
-- [x] Functional Testing
-- [x] Integration Testing
+- [ ] Functional Testing
+- [ ] Integration Testing
 
 
 ## CI/CD

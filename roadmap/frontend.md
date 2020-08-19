@@ -43,10 +43,11 @@
 - [ ] [Next.js](https://nextjs.org/learn/basics/create-nextjs-app)
 
 
-## Demo projects
+## Projects
 
-- [ ] Weather app
-- [ ] Next Boilerplate Project
+- [x] Weather app
+- [ ] React TypeScript Boilerplate
+- [ ] Next.js
 - [ ] Music app
 
 
