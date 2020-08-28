@@ -114,6 +114,40 @@ test('should fetch users', () => {
 });
 ```
 
+### Mocking default exported value of a node module
+```js
+// mock default exported function from twilio module
+const createOtp = jest.fn();
+const checkOtp = jest.fn();
+jest.mock('twilio', () => ({
+  __esModule: true, // this property makes it work
+  default: () => ({
+    verify: {
+      services: () => ({
+        verifications: { create: createOtp },
+        verificationChecks: { create: checkOtp },
+      }),
+    },
+  }),
+}));
+
+describe('requestOtp', () => {
+  let service: TwilioService;
+
+  it('should return true', async () => {
+    createOtp.mockResolvedValue({ status: 'pending' });
+    await expect(service.requestOtp(phone)).resolves.toBe(true);
+    expect(createOtp).toHaveBeenCalledWith({ to: phone, channel: 'sms' });
+  });
+
+  it('should return false', async () => {
+    createOtp.mockRejectedValue('some errors');
+    await expect(service.requestOtp(phone)).resolves.toBe(false);
+    expect(createOtp).toHaveBeenCalledWith({ to: phone, channel: 'sms' });
+  });
+});
+```
+
 
 ### Mocking user modules
 

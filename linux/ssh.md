@@ -1,5 +1,7 @@
 ## Generate SSH key pair silently
 
+http://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/ssh-keygen.1?query=ssh-keygen&sec=1
+
 ```sh
 ssh-keygen -t rsa -b 4096 -q -N "" -f ~/Desktop/source/keys/id_rsa_hqlambt
 ```

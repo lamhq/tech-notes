@@ -1,4 +1,4 @@
-### basic usage
+## basic usage
 
 ```javascript
 var validate = require("validate.js");
@@ -26,7 +26,6 @@ var constraints = {
       return false;
     }
   },
-
   creditCardZip: function(value, attributes, attributeName, options, constraints) {
     if (!(/^(34|37).*$/).test(attributes.creditCardNumber)) return null;
     return {
@@ -40,25 +39,31 @@ validate({creditCardNumber: "4"}, constraints);
 ```
 
 
-### async validate
+## async validate
 
 ```javascript
 validate.validators.myAsyncValidator = function(value) {
   return new validate.Promise(function(resolve, reject) {
     setTimeout(function() {
-      if (value === "foo") 
+      if (value === "foo")
         resolve();
-      else 
+      else
         resolve("is not foo");
     }, 100);
   });
 };
 
-var constraints = {name: {myAsyncValidator: true}},
-  success = alert.bind(this, "The validations passed"),
-  error = function(errors) {
-    alert(JSON.stringify(errors, null, 2));
-  };
+var constraints = {
+  name: {
+    myAsyncValidator: true
+  }
+};
+
+var success = alert.bind(this, "The validations passed");
+
+var error = function(errors) {
+  alert(JSON.stringify(errors, null, 2));
+};
 
 // Will call the success callback
 validate.async({name: "foo"}, constraints).then(success, error);
@@ -68,7 +73,7 @@ validate.async({name: "bar"}, constraints).then(success, error);
 ```
 
 
-### custom validator
+## custom validator
 
 If the validator passes simply return `null` or `undefined`. Otherwise return a string or an array of strings containing the error message(s).
 
@@ -93,7 +98,7 @@ validate({foo: "some value"}, {foo: {custom: "some options"}});
 ```
 
 
-### custom error message
+## custom error message
 
 Since validators don't include the argument name in the error message, the validate function prepends it for them. This behaviour can be disabled by setting the `fullMessages` option to `false`.
 
@@ -128,3 +133,82 @@ validate({}, {username: {presence: {message: "^You must pick a username"}}});
 // => {"username": ["You must pick a username"]}
 ```
 
+
+## Conditional Validation
+
+```js
+async function asyncValidate(data, constraint, validators = {}) {
+  validate.Promise = global.Promise;
+  // set custom error format
+  validateJs.formatters.custom = formatErrors;
+
+  // set custom validators
+  Object.entries(validators).forEach(([name, func]) => {
+    validateJs.validators[name] = func;
+  });
+
+  let errors;
+  try {
+    await validateJs.async(data, constraint, { format: 'custom' });
+  } catch (err) {
+    errors = err;
+  }
+  return errors;
+}
+
+async function validateProfileData(data, user) {
+  // password validation
+  function checkPassword(value) {
+    if (value && !user.isPasswordValid(value)) {
+      return '^updateProfile:wrongPassword';
+    }
+    return null;
+  }
+
+  // validation rules
+  const constraints = {
+    displayName: {
+      presence: true,
+      length: { minimum: 3, maximum: 30 },
+    },
+    email: {
+      presence: {
+        allowEmpty: false,
+        message: '^common:requiredInput',
+      },
+      email: {
+        message: '^common:invalidEmail',
+      },
+      emailNotExists: {
+        user,
+      },
+    },
+    newPassword: (value) => {
+      // only validate when value is not empty
+      return value ? {
+        length: {
+          minimum: 6,
+          maximum: 30,
+          tooLong: '^common:passwordTooLong',
+          tooShort: '^common:passwordTooShort',
+        },
+      } : false;
+    },
+    currentPassword: (value, attributes) => {
+      // only validate when password is not empty
+      return attributes.newPassword ? {
+        presence: {
+          allowEmpty: false,
+          message: '^common:requiredInput',
+        },
+        checkPassword: true,
+      } : false;
+    },
+  };
+
+  return asyncValidate(data, constraints, {
+    emailNotExists: checkEmailNotExist,
+    checkPassword,
+  });
+}
+```
