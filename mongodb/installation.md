@@ -1,10 +1,11 @@
-### Install MongoDB Manually (Mac)
+## Install MongoDB Manually (Mac)
 
 Reference: [https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x)
 
-### Install MongoDB (Windows)
 
-#### Create a configuration file
+## Install MongoDB (Windows)
+
+### Create a configuration file
 
 Create file `d:\program\MongoDB\mongod.cfg`
 
@@ -20,26 +21,26 @@ storage:
 
 Run the following command in Command Prompt with "Administrative Privileges".
 
-#### Install the MongoDB service
+### Install the MongoDB service
 
 ```
 d:\program\MongoDB\bin\mongod.exe --config "d:\program\MongoDB\mongod.cfg" --install
 ```
 
-#### Start the MongoDB service
+### Start the MongoDB service
 
 ```
 net start MongoDB
 ```
 
-#### Remove the MongoDB service
+### Remove the MongoDB service
 
 ```
 d:\program\MongoDB\bin\mongod.exe --remove
 ```
 
 
-### (Ubuntu) Start/Stop MongoDB service
+## Start/Stop MongoDB service (Ubuntu)
 
 See: [https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/](https://www.howtoforge.com/tutorial/install-mongodb-on-ubuntu-16.04/)
 
@@ -53,7 +54,7 @@ netstat -plntu
 ```
 
 
-### (Ubuntu) Fix MongoDB service cannot start after installing
+## Fix MongoDB service cannot start after installing (Ubuntu)
 
 That is because mongodb does not have permissions on data directory (see mongo log)
 

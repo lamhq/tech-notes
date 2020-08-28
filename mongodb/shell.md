@@ -1,9 +1,11 @@
-# MongoDB shell
+# The `mongo` shell
 
-## Use MongoDB shell to connect to database
+## Start the `mongo` shell and Connect to MongoDB
 
 ```sh
 mongo
+mongo "mongodb://alice@mongodb0.examples.com:28015/?authSource=admin"
+mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA"
 ```
 
 
@@ -21,6 +23,8 @@ use <database>
 
 // see the list of collections in the current database
 show collections
+
+db.myCollection.insertOne( { x: 1 } );
 
 // insert documents into a collection
 // The operation returns a document that contains the acknowledgement indicator
@@ -45,3 +49,9 @@ db.inventory.find( { tags: "red" } )
 // list methods available on the collection objects
 db.collection.help()
 ```
+
+
+## Exit the Shell
+
+To exit the shell, type `quit()` or use the `<Ctrl-C>` shortcut.
+
