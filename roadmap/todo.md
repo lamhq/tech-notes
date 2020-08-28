@@ -26,5 +26,10 @@
 - [ ] Cleanup Ninh Binh photos on my phone
 - [ ] Download Ninh Binh photos to gdrive
 - [ ] Upload Ninh Binh photos
-
-
+- [ ] read all books i had
+- [ ] mua nồi chiên không dầu
+- [ ] mua máy lọc nước
+- [ ] mua bột thông cống
+- [ ] mua bao tay
+- [ ] mua bình xịt sát khuẩn đồ đạc
+- [ ] mua áo thun giảm giá 2/9 tại justmen
