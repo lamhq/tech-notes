@@ -1,5 +1,17 @@
 # Backend Roadmap
 
+## MongoDB Research progress
+
+- [x] Introduction
+- [x] Installation
+- [x] The mongo Shell
+- [ ] MongoDB CRUD Operations
+- [ ] Indexes
+- [~] Aggregation
+- [ ] Data Models
+- [ ] Transactions
+
+
 ## Programming Languages
 
 - [~] Javascript (NodeJs)
@@ -23,6 +35,9 @@
 ### NoSQL Databases
 
 - [ ] MongoDB
+  - [ ] [6 Rules of Thumb for MongoDB Schema Design: Part 1](https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1)
+  - [ ] [6 Rules of Thumb for MongoDB Schema Design: Part 2](https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-2)
+  - [ ] [6 Rules of Thumb for MongoDB Schema Design: Part 3](https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-3)
 - [x] DynamoDB
 
 

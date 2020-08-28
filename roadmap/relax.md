@@ -7,15 +7,26 @@
 - [ ] Prinny: Can I Really Be the Hero? (PSP)
 
 
-## Movies (Netflix)
+## Movies
+
+### Sources
+
+- Netflix
+- Ani4u.org Favorite List
+- Youtube
+- My laptop
+
+
+### Genre
 
 - Commedy
   - Hài hoài linh
-  - Anime
-    - Netflix
-    - ani4u.org
+  - [ ] How i met your mother
+
 - Suspenseful
+  - [ ] Black mirror
   - [ ] Elite
+
 - Documentary
   - [ ] Our planet
 
