@@ -249,3 +249,39 @@ db.articles.aggregate(
   ]
 )
 ```
+
+
+## Geospatial Queries
+
+In MongoDB, you can store geospatial data as [GeoJSON objects](https://docs.mongodb.com/manual/reference/geojson/). To specify GeoJSON data, use an embedded document with:
+
+- a field named type that specifies the GeoJSON object type and
+- a field named coordinates that specifies the object's coordinates (longitude first and then latitude).
+
+```js
+location: {
+  type: "Point",
+  coordinates: [-73.856077, 40.848447]
+}
+```
+
+- Valid longitude values are between **-180** and **180**, both inclusive.
+- Valid latitude values are between **-90** and **90**, both inclusive.
+
+### Geospatial Indexes
+
+**2dsphere**
+
+2dsphere indexes support queries that calculate geometries on an earth-like sphere.
+
+```js
+db.collection.createIndex( { <location field> : "2dsphere" } )
+```
+
+**2d**
+
+2d indexes support queries that calculate geometries on a two-dimensional plane.
+
+```js
+db.collection.createIndex( { <location field> : "2d" } )
+```

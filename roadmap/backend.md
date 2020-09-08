@@ -6,6 +6,7 @@
 - [x] Installation
 - [x] The mongo Shell
 - [ ] MongoDB CRUD Operations
+  - [ ] Geospatial Queries
 - [ ] Indexes
 - [~] Aggregation
 - [ ] Data Models
