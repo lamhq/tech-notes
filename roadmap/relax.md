@@ -11,11 +11,17 @@
 
 ### Sources
 
-- Netflix
 - Ani4u.org Favorite List
 - Youtube
 - My laptop
 
+
+### Netflix
+
+Black Mirror
+Peaky Blinder
+Umbrella Academy
+Emily in Paris
 
 ### Genre
 

@@ -1,3 +1,133 @@
+# Aggregation
+
+## Concepts
+
+The MongoDB aggregation pipeline consists of **stages**. Each stage transforms the documents as they pass through the pipeline, they may generate new documents or filter out documents.
+
+Some pipeline stages take a **pipeline expression** as the operand. Pipeline expressions specify the transformation to apply to the input documents. Generally, expressions are stateless and are only evaluated when seen by the aggregation process with one exception: **accumulator expressions**.
+
+The accumulators, used in the `$group` stage, maintain their state (e.g. totals, maximums, minimums, and related data) as documents progress through the pipeline.
+
+The aggregation pipeline provides better performance and a more coherent interface than map-reduce.
+
+
+## Aggregation Pipeline Behavior
+
+In MongoDB, the aggregate command operates on a single collection, logically passing the entire collection into the aggregation pipeline. To optimize the operation, wherever possible, use the following strategies to avoid scanning the entire collection.
+
+### Pipeline Operators and Indexes
+
+The following pipeline stages can take advantage of indexes:
+
+- `$match`
+- `$sort`
+- `$group`
+- `$geoNear`
+
+### Early Filtering
+
+Use the `$match`, `$limit`, and `$skip` stages to restrict the documents that enter **at the beginning of the pipeline**.
+
+
+## Examples
+
+### Zip Code Data Set
+
+https://docs.mongodb.com/manual/tutorial/aggregation-zip-code-data-set/
+
+```js
+// Return States with Populations above 10 Million
+db.zipcodes.aggregate( [
+  { $group: { _id: "$state", totalPop: { $sum: "$pop" } } },
+  { $match: { totalPop: { $gte: 10*1000*1000 } } }
+] )
+
+// Return Average City Population by State
+db.zipcodes.aggregate( [
+  { $group: { _id: { state: "$state", city: "$city" }, pop: { $sum: "$pop" } } },
+  { $group: { _id: "$_id.state", avgCityPop: { $avg: "$pop" } } }
+] )
+
+// Return Largest and Smallest Cities by State
+db.zipcodes.aggregate( [
+  { $group:
+    {
+      _id: { state: "$state", city: "$city" },
+      pop: { $sum: "$pop" }
+    }
+  },
+  { $sort: { pop: 1 } },
+  { $group:
+    {
+      _id : "$_id.state",
+      biggestCity:  { $last: "$_id.city" },
+      biggestPop:  { $last: "$pop" },
+      smallestCity: { $first: "$_id.city" },
+      smallestPop:  { $first: "$pop" }
+    }
+  },
+
+  // the following $project is optional, and
+  // modifies the output format.
+
+  { $project:
+   { _id: 0,
+    state: "$_id",
+    biggestCity:  { name: "$biggestCity",  pop: "$biggestPop" },
+    smallestCity: { name: "$smallestCity", pop: "$smallestPop" }
+   }
+  }
+] )
+```
+
+### User Preference Data
+
+https://docs.mongodb.com/manual/tutorial/aggregation-with-user-preference-data/
+
+```js
+// Normalize and Sort Documents
+db.users.aggregate(
+  [
+    { $project : { name:{$toUpper:"$_id"} , _id:0 } },
+    { $sort : { name : 1 } }
+  ]
+)
+
+// Return Usernames Ordered by Join Month
+db.users.aggregate(
+  [
+    { $project :
+       {
+         month_joined : { $month : "$joined" },
+         name : "$_id",
+         _id : 0
+       }
+    },
+    { $sort : { month_joined : 1 } }
+  ]
+)
+
+// Return Total Number of Joins per Month
+db.users.aggregate(
+  [
+    { $project : { month_joined : { $month : "$joined" } } } ,
+    { $group : { _id : {month_joined:"$month_joined"} , number : { $sum : 1 } } },
+    { $sort : { "_id.month_joined" : 1 } }
+  ]
+)
+
+// Return the Five Most Common “Likes”
+db.users.aggregate(
+  [
+    { $unwind : "$likes" },
+    { $group : { _id : "$likes" , number : { $sum : 1 } } },
+    { $sort : { number : -1 } },
+    { $limit : 5 }
+  ]
+)
+```
+
+
 ### Project, group, sort, limit, skip
 
 ```
@@ -114,4 +244,4 @@ db.employees.aggregate(
 
 ### Best practice
 
-Attempt to filter out as many documents (and as many fields from the documents) as possible at the beginning of your pipeline before hitting any "$project", "$group", or "$unwind" operations. 
+Attempt to filter out as many documents (and as many fields from the documents) as possible at the beginning of your pipeline before hitting any "$project", "$group", or "$unwind" operations.

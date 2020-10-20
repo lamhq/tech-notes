@@ -2,6 +2,8 @@
 
 ## MongoDB Research progress
 
+https://docs.mongodb.com/manual/
+
 - [x] Introduction
 - [x] Installation
 - [x] The mongo Shell
@@ -105,6 +107,7 @@
 
 ## Architecture Patterns
 
+- [ ] Reactive Programming
 - [ ] Microservices
 - [ ] Serverless
 - [ ] Monolithic Apps
