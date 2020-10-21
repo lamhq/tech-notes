@@ -1,5 +1,13 @@
 # Frontend Roadmap
 
+## Vue
+
+- [ ] Vue.js Doc (basic)
+- [ ] Nuxt.js Doc (basic)
+- [x] Vue i18n
+- [x] nuxt-i18n
+
+
 ## TypeScript
 
 - [x] [TypeScript Deep Dive book](https://basarat.gitbook.io/typescript/)

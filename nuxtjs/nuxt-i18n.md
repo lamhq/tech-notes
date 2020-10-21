@@ -1,4 +1,4 @@
-# Internationalization
+# nuxt-i18n
 
 ## Setup
 
@@ -34,6 +34,10 @@ yarn add nuxt-i18n
     }
   }
 }
+```
+
+```html
+<p>{{ $t('welcome') }}</p>
 ```
 
 
