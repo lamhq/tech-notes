@@ -71,4 +71,9 @@
 
 ## Firebase Hosting
 
-- [Connect a custom domain](https://firebase.google.com/docs/hosting/custom-domain)
+- [x] [Connect a custom domain](https://firebase.google.com/docs/hosting/custom-domain)
+
+
+## Bitbucket Pipeline
+
+- [x] [DevOps guidance](https://www.atlassian.com/solutions/devops/guides)

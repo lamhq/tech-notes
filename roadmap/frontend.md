@@ -4,7 +4,7 @@
 
 - [ ] Vue.js Doc (basic)
 - [ ] Nuxt.js Doc (basic)
-- [x] Vue i18n
+- [x] Vue I18n
 - [x] nuxt-i18n
 
 

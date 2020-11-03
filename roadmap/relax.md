@@ -9,6 +9,18 @@
 
 ## Movies
 
+### Kiếm hiệp
+
+- https://kenh14.vn/45-bo-phim-co-trang-hoa-ngu-gan-lien-voi-tuoi-tho-cua-mot-the-he-khan-gia-viet-nam-p1-20170916134236165.chn
+- https://kenh14.vn/45-bo-phim-co-trang-hoa-ngu-gan-lien-voi-tuoi-tho-cua-mot-the-he-khan-gia-viet-nam-p2-20171015143257492.chn
+- https://nguoi-noi-tieng.com/van-hoa/45-phim-co-trang-hoa-ngu-gan-lien-voi-tuoi-tho-cua-mot-the-he-khan-gia-viet-nam-p-3-520101
+
+
+### Hài
+
+- Highkick 3
+
+
 ### Sources
 
 - Ani4u.org Favorite List

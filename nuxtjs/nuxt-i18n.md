@@ -12,9 +12,7 @@ yarn add nuxt-i18n
 {
   modules: [
     'nuxt-i18n',
-    { /* module options */ }
   ],
-  // Or with global options
   i18n: {
     locales: ['en', 'fr', 'es'],
     defaultLocale: 'en',
@@ -206,6 +204,37 @@ To enable translations lazy-loading:
 - Each `file` can return either an `Object` or a `function` (supports `Promises`)
 
 ```js
+// nuxt.config.j
+{
+  modules: [
+    'nuxt-i18n',
+  ],
+  i18n: {
+    lazy: true,
+    langDir: 'lang/'
+    defaultLocale: 'en',
+    locales: [
+      {
+        code: 'en',
+        file: 'en-US.js'
+      },
+      {
+        code: 'es',
+        file: 'es-ES.js'
+      },
+      {
+        code: 'fr',
+        file: 'fr-FR.js'
+      }
+    ],
+    vueI18n: {
+      fallbackLocale: 'en',
+    }
+  }
+}
+```
+
+```js
 // nuxt.config.js
 ['nuxt-i18n', {
   locales: [
@@ -224,7 +253,9 @@ To enable translations lazy-loading:
   ],
   lazy: true,
   langDir: 'lang/'
-}]
+}],
+
+
 ```
 
 ```js
