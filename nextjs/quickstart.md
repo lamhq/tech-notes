@@ -6,6 +6,12 @@
 yarn create next-app
 ```
 
+In `package.json`, these scripts refer to the different stages of developing an application:
+
+- `dev` - Runs `next dev` which starts Next.js in development mode
+- `build` - Runs `next build` which builds the application for production usage
+- `start` - Runs `next start` which starts a Next.js production server
+
 
 ## Pages
 
@@ -51,6 +57,48 @@ export default function Home() {
 }
 ```
 
+## Layout Component
+
+```css
+/* components/layout.module.css */
+.container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+```
+
+```jsx
+// components/layout.js
+import styles from './layout.module.css'
+
+export default function Layout({ children }) {
+  return <div className={styles.container}>{children}</div>
+}
+```
+
+```jsx
+// pages/posts/first-post.js
+import Head from 'next/head'
+import Link from 'next/link'
+import Layout from '../../components/layout'
+
+export default function FirstPost() {
+  return (
+    <Layout>
+      <Head>
+        <title>First Post</title>
+      </Head>
+      <h1>First Post</h1>
+      <h2>
+        <Link href="/">
+          <a>Back to home</a>
+        </Link>
+      </h2>
+    </Layout>
+  )
+}
+```
 
 ## CSS Styling
 

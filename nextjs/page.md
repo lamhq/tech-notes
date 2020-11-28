@@ -15,6 +15,8 @@ Next.js supports pages with dynamic routes. For example, if you create a file ca
 
 ### Your page content depends on external data
 
+Example: Your blog page might need to fetch the list of blog posts from a CMS (content management system).
+
 ```jsx
 // TODO: Need to fetch `posts` (by calling some API endpoint)
 //       before this page can be pre-rendered.
@@ -47,6 +49,10 @@ export async function getStaticProps() {
 ```
 
 ### Your page paths depend on external data
+
+For example, you can create a file called `pages/posts/[id].js` to show a single blog post based on `id`. However, which `id` you want to pre-render at build time might depend on external data.
+
+To handle this, Next.js lets you export an async function called `getStaticPaths` from a dynamic page (`pages/posts/[id].js` in this case). This function gets called at build time and lets you specify which paths you want to pre-render.
 
 ```jsx
 function Post({ post }) {
