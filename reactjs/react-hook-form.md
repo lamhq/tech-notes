@@ -21,7 +21,7 @@ function Demo() {
   const newsletter = watch('newsletter');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="needs-validation was-validated">
       <input name="firstName" ref={register({ required: true, maxLength: 20 })} placeholder="first name" />
       {errors.firstName && <span>This field is required</span>}
 

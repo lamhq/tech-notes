@@ -1,30 +1,8 @@
 # Next.js Research Roadmap
 
-## Learn
+## Learn (docs)
 
-- [x] Create a Next.js App
-- [x] Navigate Between Pages
-- [x] Assets, Metadata, and CSS
-- [x] Pre-rendering and Data Fetching
-- [x] Dynamic Routes
-- [x] API Routes
-- [x] Deploying Your Next.js App
-- [x] TypeScript
-
-
-## Basic Demo Project
-
-- [x] TypeScript
-- [ ] Layout
-- [x] Pages with Navigation
-- [ ] Server side rendering
-- [ ] Data fetching
-- [ ] 404 page
-
-
-## Docs
-
-- [ ] Getting Started
+- [x] Getting Started
 - [ ] Basic Features
 - [ ] Routing
 - [ ] API Routes
@@ -32,3 +10,13 @@
 - [ ] Advanced Features
 - [ ] Upgrade Guide
 - [ ] FAQ
+
+
+## Basic Demo Project
+
+- [x] TypeScript
+- [x] Layout
+- [x] Pages with Navigation
+- [x] Server side rendering
+- [x] Data fetching
+- [ ] 404 page
