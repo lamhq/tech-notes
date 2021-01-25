@@ -18,7 +18,7 @@ tar -cvf files.tar -C /path/to/directory .; gzip -9 files.tar
 ## Extract an archive to a directory
 
 ```bash
-tar -xzvf -C /path/to/dir archive.tar.gz
+tar -xzvf archive.tar.gz -C /path/to/dir
 ```
 
 
