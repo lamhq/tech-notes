@@ -1,11 +1,18 @@
 # Frontend Roadmap
 
-## Vue
+## Priorities
 
-- [ ] Vue.js Doc (basic)
-- [ ] Nuxt.js Doc (basic)
-- [x] Vue I18n
-- [x] nuxt-i18n
+- [ ] Bootstrap 4
+- [ ] TypeScript
+- [ ] Next.js
+- [ ] CSS3
+- [ ] Fluent UI
+- [ ] React
+- [ ] Pet Projects
+- [ ] HTML5
+- [ ] React Testing
+- [ ] Webpack
+- [ ] Babel
 
 
 ## TypeScript
@@ -26,7 +33,7 @@
 - [ ] [Create React App example with Material-UI, TypeScript, Redux and Routing](https://github.com/innFactory/create-react-app-material-typescript-redux)
 
 
-## Testing
+## React Testing
 
 - [x] [Jest](https://jestjs.io/)
 - [x] [Testing Library](https://testing-library.com/docs/intro)
@@ -36,7 +43,7 @@
 - [ ] [Test Renderer](https://reactjs.org/docs/test-renderer.html)
 
 
-## Performance
+## Web Performance
 
 - [ ] [Profiling Components with the Chrome Performance Tab](https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-chrome-performance-tab)
 - [ ] [Profiler API](https://reactjs.org/docs/profiler.html)
@@ -51,15 +58,18 @@
 - [ ] [Next.js](https://nextjs.org/learn/basics/create-nextjs-app)
 
 
-## Projects
+## Pet Projects
 
 - [x] Weather app
 - [ ] React TypeScript Boilerplate
-- [ ] Next.js
+- [ ] Next.js boilerplate
+- [ ] Nestjs boilerplate
+- [ ] Notebook (ui remake)
+- [ ] FB Messeges viewer
 - [ ] Music app
 
 
-## i18n
+## I18n
 
 - [x] [i18next](https://www.i18next.com/)
 
@@ -69,22 +79,23 @@
 - [ ] [Create React App](https://create-react-app.dev/)
 
 
-## Form Handling
+## React Form
 
 - [x] [React Hook Form](https://react-hook-form.com/get-started)
 - [x] [Formik](https://jaredpalmer.com/formik)
 - [x] [Redux Form](https://redux-form.com/)
 
 
-## Styling
+## React Styling
 
 - [x] [Styled Components](https://styled-components.com/)
 - [x] [Styled System](https://styled-system.com/getting-started)
 
 
-## CSS
+## Styling
 
 - [x] Floats
+- [ ] Bootstrap 4
 - [ ] Positioning
 - [ ] [Display](https://css-tricks.com/almanac/properties/d/display/)
 - [ ] [Box Model](https://css-tricks.com/the-css-box-model/)
@@ -107,6 +118,14 @@
 
 - [x] [Material UI](https://material-ui.com/getting-started/installation/)
 - [x] Ant Design
+- [x] Elastic UI
 - [ ] Fluent UI
 
+
+## Vue
+
+- [x] Vue.js Doc (basic)
+- [x] Nuxt.js Doc (basic)
+- [x] Vue I18n
+- [x] nuxt-i18n
 

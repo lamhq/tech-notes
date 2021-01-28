@@ -21,7 +21,7 @@
 - [ ] Learn how to use [Cheat Engine](https://wiki.cheatengine.org/index.php?title=Tutorials:Cheat_Engine_Tutorial_Guide_x64)
 
 
-### Trivial
+### Trivials
 
 - [ ] Cleanup Ninh Binh photos on my phone
 - [ ] Download Ninh Binh photos to gdrive
