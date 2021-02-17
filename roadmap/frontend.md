@@ -3,6 +3,7 @@
 ## Priorities
 
 - [ ] Bootstrap 4
+- [ ] SASS
 - [ ] TypeScript
 - [ ] Next.js
 - [ ] CSS3
