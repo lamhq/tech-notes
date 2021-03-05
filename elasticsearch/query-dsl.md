@@ -1,44 +1,38 @@
-# Search
+# Query DSL
 
-## Search response
+Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:
 
-- `hits`: contains the `total` number of documents that matched our query, and a `hits` array containing the first 10 of those matching documents.
-- `took`: how many milliseconds the entire search request took to execute.
-- `shards`: the total number of `shards` that were involved in the query and, of them, how many were `successful` and how many `failed`.
-- `timeout`: whether the query timed out
+- **Leaf query clauses** look for a particular value in a particular field, such as the `match`, `term` or `range` queries.
+- **Compound query clauses** wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the `bool` or `dis_max` query), or to alter their behaviour (such as the `constant_score` query).
 
 
-## Search in multiple indices
+## Relevance score
 
-```
-GET /_search
-GET /_all/_search
-GET /gb,us/_search
-GET /g*,u*/_search
-GET /gb,us/user,tweet/_search
-```
+By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query. The higher the `_score`, the more relevant the document
 
 
-## Pagination
-- `size`: Indicates the number of results that should be returned, defaults to 10
-- `from`: Indicates the number of initial results that should be skipped, defaults to 0
+## Query context
 
-```
-GET /_search?size=5&from=10
-```
+In the **query context**, besides deciding whether or not the document matches, the query clause also calculates a relevance score .
+
+
+## Filter context
+
+In a filter context, a query clause answers the question *"Does this document match this query clause?"* no scores are calculated. Filter context is mostly used for filtering structured data.
+
 
 ## Compound queries
 
 ### Boolean
 
-The bool filter is used to combine multiple filter clauses using Boolean logic. It accepts three parameters:
+A query that matches documents matching boolean combinations of other queries. It is built using one or more boolean clauses, each clause with a typed occurrence:
 
-- `must`: These clauses must match, like `and`.
-- `filter`: These clauses must match, like `and`. However, filter clauses are executed in filter context, meaning that scoring is ignored and clauses are considered for caching.
-- `should`: At least one of these clauses must match, like `or`.
-- `must_not`: These clauses must not match, like `not`.
+- `must`: The clause (query) must appear in matching documents and will contribute to the score.
+- `should`: The clause (query) should appear in the matching document.
+- `filter`: The clause (query) must appear in matching documents. Scoring is ignored.
+- `must_not`: The clause (query) must not appear in the matching documents. Scoring is ignored.
 
-```
+```json
 POST _search
 {
   "query": {
@@ -215,3 +209,32 @@ GET /gb/tweet/_validate/query?explain
     }
 }
 ```
+
+
+## Search response
+
+- `hits`: contains the `total` number of documents that matched our query, and a `hits` array containing the first 10 of those matching documents.
+- `took`: how many milliseconds the entire search request took to execute.
+- `shards`: the total number of `shards` that were involved in the query and, of them, how many were `successful` and how many `failed`.
+- `timeout`: whether the query timed out
+
+
+## Search in multiple indices
+
+```
+GET /_search
+GET /_all/_search
+GET /gb,us/_search
+GET /g*,u*/_search
+GET /gb,us/user,tweet/_search
+```
+
+
+## Pagination
+- `size`: Indicates the number of results that should be returned, defaults to 10
+- `from`: Indicates the number of initial results that should be skipped, defaults to 0
+
+```
+GET /_search?size=5&from=10
+```
+
