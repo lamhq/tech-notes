@@ -318,8 +318,8 @@ Values:
 
 - `none`: Default value. Columns are created if needed
 - `auto`: The size of the columns is determined by the size of the container and on the size of the content of the items in the column
-- `max-content`: Sets the size of each column/row to depend on the largest item in the column/row
-- `min-content`: Sets the size of each column/row to depend on the smallest item in the column/row
+- `max-content`: Size of the largest item in the column/row
+- `min-content`: Size of the the smallest item in the column/row
 - `initial`: set a CSS property to its default value.
 - `inherit`: specifies that a property should inherit its value from its parent element.
 - length: `px`, `rem`, `%`, `fr`
@@ -348,6 +348,19 @@ If your definition contains repeating parts, you can use the `repeat()` notation
 }
 ```
 
+- `auto-fill`: **FILLS** the row with as many columns as it can fit. So it creates implicit columns whenever a new column can fit, because it’s trying to FILL the row with as many columns as it can. The newly added columns can and may be empty, but they will still occupy a designated space in the row.
+
+- `auto-fit`: **FITS** the CURRENTLY AVAILABLE columns into the space by expanding them so that they take up any available space. The browser does that after FILLING that extra space with extra columns (as with `auto-fill`) and then collapsing the empty ones.
+
+```css
+.container {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+```
+
+See demo [here](https://codepen.io/SaraSoueidan/pen/JrLdBQ).
+
+
 ### `minmax()`
 
 Sets a size range greater than or equal to min and less than or equal to max.
@@ -360,24 +373,155 @@ For example, set a column to be `1fr`, but shrink no further than `200px`:
 }
 ```
 
+## Properties for the Children
+
+### `grid-column-start`, `grid-column-end`, `grid-row-start`, `grid-row-end`
+
+Determines a grid item’s location within the grid by referring to specific grid lines.
+
+Values:
+
+- `<line>`: can be a number to refer to a numbered grid line, or a name to refer to a named grid line
+- `span <number>`: the item will span across the provided number of grid tracks
+- `span <name>`: the item will span across until it hits the next line with the provided name
+- `auto`: indicates auto-placement, an automatic span, or a default span of one
+
+```css
+.item {
+  grid-column-start: <number> | <name> | span <number> | span <name> | auto;
+  grid-column-end: <number> | <name> | span <number> | span <name> | auto;.item {
+  grid-column-start: <number> | <name> | span <number> | span <name> | auto;
+  grid-column-end: <number> | <name> | span <number> | span <name> | auto;
+  grid-row-start: <number> | <name> | span <number> | span <name> | auto;
+  grid-row-end: <number> | <name> | span <number> | span <name> | auto;
+}
+  grid-row-start: <number> | <name> | span <number> | span <name> | auto;
+  grid-row-end: <number> | <name> | span <number> | span <name> | auto;
+}
+```
+
+Examples:
+
+```css
+.item-a {
+  grid-column-start: 2;
+  grid-column-end: five;
+  grid-row-start: row1-start;
+  grid-row-end: 3;
+}
+```
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/grid-column-row-start-end-01.svg)
+
+```css
+.item-b {
+  grid-column-start: 1;
+  grid-column-end: span col4-start;
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+```
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/grid-column-row-start-end-02.svg)
+
+
+### `grid-column`, `grid-row`
+
+Shorthand for` grid-column-start` + `grid-column-end`, and `grid-row-start` + `grid-row-end`, respectively.
+
+```css
+.item {
+  grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+  grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+}
+```
+
+Example:
+
+```css
+.item-c {
+  grid-column: 3 / span 2;
+  grid-row: third-line / 4;
+}
+```
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/grid-column-row.svg)
+
+
+### `grid-area`
+
+Refer to the area created with the `grid-template-areas` property. Alternatively, this property can be used as an even shorter shorthand for `grid-row-start` + `grid-column-start` + `grid-row-end` + `grid-column-end`.
+
+Values:
+
+- `<name>`: a name of your choosing
+- `<row-start> / <column-start> / <row-end> / <column-end>`: can be numbers or named lines
+
+```css
+.item {
+  grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+}
+```
+
+Examples:
+
+```css
+.item-d {
+  grid-area: header;
+}
+
+.item-d {
+  grid-area: 1 / col4-start / last-line / 6;
+}
+```
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/grid-area.svg)
+
+
+### `justify-self`, `align-self`, `place-self`
+
+- `justify-self`: Aligns a grid item inside a cell along the inline (row) axis
+- `align-self`: Aligns a grid item inside a cell along the block (column) axis
+
+Values:
+
+- `start`: aligns the grid item to be flush with the start edge of the cell
+- `end`: aligns the grid item to be flush with the end edge of the cell
+- `center`: aligns the grid item in the center of the cell
+- `stretch`: fills the whole width of the cell (this is the default)
+
+```css
+.item {
+  justify-self: start | end | center | stretch;
+}
+```
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/justify-self-start.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/justify-self-end.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/justify-self-center.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/justify-self-stretch.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/align-self-start.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/align-self-end.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/align-self-center.svg)
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/align-self-stretch.svg)
+
+`place-self` sets both the `align-self` and `justify-self` properties in a single declaration. Values:
+
+- `auto`: The “default” alignment for the layout mode.
+- `<align-self> / <justify-self>`: If the second value is omitted, the first value is assigned to both properties.
+
+
 ## Demo
 
 ```html
-<div class="container">
-  <div class="item item1">1</div>
-  <div class="item item2">2</div>
-  <div class="item item3">3</div>
-  <div class="item item4" >4</div>
-  <div class="item item5">5</div>
-  <div class="item item6">6</div>
-  <div class="item item7">7</div>
-  <div class="item item8">8</div>
-  <div class="item item9">9</div>
-  <div class="item item10">10</div>
-</div>
-```
-
-```css
+<style>
 .container {
   background-image: linear-gradient(to right bottom, #ffa400, #e74c3c);
   height: auto;
@@ -396,4 +540,19 @@ For example, set a column to be `1fr`, but shrink no further than `200px`:
   border-radius: 4px;
   border: 2px solid orange;
 }
+</style>
+
+<div class="container">
+  <div class="item item1">1</div>
+  <div class="item item2">2</div>
+  <div class="item item3">3</div>
+  <div class="item item4">4</div>
+  <div class="item item5">5</div>
+  <div class="item item6">6</div>
+  <div class="item item7">7</div>
+  <div class="item item8">8</div>
+  <div class="item item9">9</div>
+  <div class="item item10">10</div>
+</div>
 ```
+
