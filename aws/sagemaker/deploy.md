@@ -9,12 +9,14 @@ tar tvfz model.tar.gz
 ```py
 import sagemaker
 
+# upload model artifact to s3
 sess = sagemaker.Session()
 role = sagemaker.get_execution_role()
 prefix = 'byo-tf'
 model_path = sess.upload_data(path='model.tar.gz', key_prefix=prefix)
 print(model_path)
 
+# create an estimator
 from sagemaker.tensorflow.model import TensorFlowModel
 tf_model = TensorFlowModel(
     model_data=model_path,
@@ -22,6 +24,7 @@ tf_model = TensorFlowModel(
     role=role)
 type(tf_model)
 
+# deploy model
 import time
 tf_endpoint_name = 'keras-tf-fmnist-'+time.strftime("%Y-%m-%d-%H-%M-%S", time.gmtime())
 tf_predictor = tf_model.deploy(
@@ -38,7 +41,7 @@ tf_predictor.predict(...)
 
 ## Deploy an existing model with AWS CloudFormation
 
-`endpoint-one-model.yml`:
+`endpoint-one-model.yml` (cloudformation template):
 
 ```yml
 AWSTemplateFormatVersion: 2010-09-09
@@ -109,12 +112,14 @@ import boto3
 sm = boto3.client('sagemaker')
 cf = boto3.client('cloudformation')
 
-# Update this with your own model name
+# Getting model location from an existing training job
+# (Update this with your own model name)
 training_job = 'tensorflow-training-2020-06-08-07-46-04-367'
 job = sm.describe_training_job(TrainingJobName=training_job)
 model_data_url = job['ModelArtifacts']['S3ModelArtifacts']
 role_arn       = job['RoleArn']
 
+# Define a docker container for running model
 # https://github.com/aws/deep-learning-containers/blob/master/available_images.md
 container_image = '763104351884.dkr.ecr.us-east-1.amazonaws.com/tensorflow-inference:2.1.0-cpu-py36-ubuntu18.04'
 
@@ -295,7 +300,6 @@ endpoint_step = EndpointStep(
     endpoint_name=execution_input['EndpointName'],
     endpoint_config_name=execution_input['ModelName']
 )
-
 
 # define workflow
 import time
