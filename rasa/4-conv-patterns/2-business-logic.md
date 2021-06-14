@@ -81,7 +81,7 @@ slots:
 
 ### Validating Slots
 
-Often, you'll want to validate the user's input before accepting it. See the docs on validating form input for more information about validation actions.
+Often, you'll want to validate the user's input before accepting it. See the docs on [validating form input](https://rasa.com/docs/rasa/forms#validating-form-input) for more information about validation actions.
 
 
 ### Requesting Slots

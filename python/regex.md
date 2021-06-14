@@ -9,7 +9,7 @@ Reference: [https://docs.python.org/3/library/re.html#regular-expression-syntax]
 
 The `re.search()` method is similar to `re.match()` but it doesn’t limit us to find matches at the beginning of the string only.
 
-The `re.findall()` helps to get a list of all matching patterns. It only returns all matched text, not  match objects. To return match objects instead of strings, use `re.finditer()`
+The `re.findall()` helps to get a list of all matching patterns. It only returns all matched text, not match objects. To return match objects instead of strings, use `re.finditer()`
 
 Raw string notation (`r"text"`) keeps regular expressions sane. Without it, every backslash (`'\'`) in a regular expression would have to be prefixed with another one to escape it.
 
