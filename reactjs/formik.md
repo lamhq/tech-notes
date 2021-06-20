@@ -1,6 +1,13 @@
 # Formik
 
-## basic
+## Installation
+
+```sh
+yarn add formik
+```
+
+## Basic
+
 ```js
 import React from 'react';
 import { Formik, Form, Field } from 'formik';

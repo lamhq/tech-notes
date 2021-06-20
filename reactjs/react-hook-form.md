@@ -1,82 +1,194 @@
 # React Hook Form
 
+## Installation
 
-## Conditional rendering
+```sh
+yarn add react-hook-form
+```
+
+## Basic
+
+- Registering form field with `register` function
+- Getting field's value
+- Getting form's validation errors
 
 ```tsx
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 
-function Demo() {
-  const { register, handleSubmit, errors, formState, watch } = useForm({
-    mode: 'onChange',
-    defaultValues: {
-      newsletter: false,
-      firstName: '',
-      lastName: '',
-      email: '',
-    },
-  });
-  const onSubmit = data => console.log(data);
-  const newsletter = watch('newsletter');
+type Inputs = {
+  example: string,
+  exampleRequired: string,
+  gender: string,
+};
+
+export default function App() {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
+  console.log(watch("example")) // watch input value by passing the name of it
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="needs-validation was-validated">
-      <input name="firstName" ref={register({ required: true, maxLength: 20 })} placeholder="first name" />
-      {errors.firstName && <span>This field is required</span>}
+    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {/* register your input into the hook by invoking the "register" function */}
+      <input defaultValue="test" {...register("example")} />
+      
+      {/* include validation with required or other standard HTML validation rules */}
+      <input {...register("exampleRequired", { required: true })} />
+      {/* errors will return when field validation fails  */}
+      {errors.exampleRequired && <span>This field is required</span>}
 
-      <input name="lastName" ref={register({ required: true, pattern: /^[A-Za-z]+$/i })} placeholder="last name" />
-      {errors.lastName && <span>This field is wrong</span>}
+      <select {...register("gender")} >
+        <option value="female">female</option>
+        <option value="male">male</option>
+        <option value="other">other</option>
+      </select>
+      
+      <input type="submit" />
+    </form>
+  );
+}
+```
 
-      <label>
-        <input type="checkbox" name="newsletter" ref={register} /> Receive newsletter email
-      </label>
+## Apply validation
 
-      {newsletter && (
-        <>
-          <input name="email" ref={register({ required: true })} placeholder="email" />
-          {errors.email && <span>This field is required</span>}
-        </>
-      )}
+List of validation rules supported:
 
-      <button type="submit" disabled={!formState.isValid}>
-        Submit
-      </button>
+- required
+- min
+- max
+- minLength
+- maxLength
+- pattern
+- validate
+
+```tsx
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+interface IFormInput {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+export default function App() {
+  const { register, handleSubmit } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
+   
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("firstName", { required: true, maxLength: 20 })} />
+      <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+      <input type="number" {...register("age", { min: 18, max: 99 })} />
+      <input type="submit" />
+    </form>
+  );
+}
+```
+
+
+## Integrating with UI libraries
+
+If the component doesn't expose input's `ref`, then you should use the `Controller` component, which will take care of the registration process.
+
+```tsx
+import React from "react";
+import Select from "react-select";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import Input from "@material-ui/core/Input";
+
+interface IFormInput {
+  firstName: string;
+  lastName: string;
+  iceCreamType: {label: string; value: string };
+}
+
+const App = () => {
+  const { control, handleSubmit } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = data => {
+    console.log(data)
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="firstName"
+        control={control}
+        defaultValue=""
+        render={({ field }) => <Input {...field} />}
+      />
+      <Controller
+        name="iceCreamType"
+        control={control}
+        render={({ field }) => <Select 
+          {...field} 
+          options={[
+            { value: "chocolate", label: "Chocolate" },
+            { value: "strawberry", label: "Strawberry" },
+            { value: "vanilla", label: "Vanilla" }
+          ]} 
+        />}
+      />
+      <input type="submit" />
     </form>
   );
 };
 ```
 
+## Schema Validation
 
-## Work with UI library
+```sh
+yarn add @hookform/resolvers yup
+```
 
-For components that don't expose `ref`
+```tsx
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
-```ts
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import TextField from '@material-ui/core/TextField';
+interface IFormInputs {
+  firstName: string
+  age: number
+}
 
-export default { title: 'Atoms|Abc' };
+const schema = yup.object().shape({
+  firstName: yup.string().required(),
+  age: yup.number().positive().integer().required(),
+});
 
-export const Demo = () => {
-  const { handleSubmit, errors, formState, control } = useForm({
-    mode: 'onChange',
-    defaultValues: {
-      email: '',
-    },
+export default function App() {
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({
+    resolver: yupResolver(schema)
   });
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data: IFormInputs) => console.log(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller name="email" as={TextField} label="Email" control={control} rules={{ required: true }} />
-      {errors.email && <span>This field is required</span>}
-
-      <button type="submit" disabled={!formState.isValid}>
-        Submit
-      </button>
+      <input {...register("firstName")} />
+      <p>{errors.firstName?.message}</p>
+        
+      <input {...register("age")} />
+      <p>{errors.age?.message}</p>
+      
+      <input type="submit" />
     </form>
   );
-};
+}
+```
+
+## Check if form is submitting
+
+```ts
+const { formState: { isSubmitting } } = useForm<IFormInputs>({...})
+```
+
+## Reset form's values
+
+```ts
+const { reset } = useForm<IFormInputs>({...})
+reset();
 ```
