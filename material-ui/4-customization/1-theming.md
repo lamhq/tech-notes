@@ -51,75 +51,56 @@ This can be really useful when dealing with different areas of your application 
 </ThemeProvider>
 ```
 
+## Default theme
+
+https://material-ui.com/customization/default-theme/
+
+
 ## Custom theme variables
 
 When adding custom properties to the `Theme`, you may continue to use it in a strongly typed way by exploiting [TypeScript's module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation).
 
 ```tsx
-import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import {
-  createMuiTheme,
-  makeStyles,
-  createStyles,
-  Theme as AugmentedTheme,
-  ThemeProvider,
-} from '@material-ui/core/styles';
-import { orange } from '@material-ui/core/colors';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
-    status: {
-      danger: string;
-    };
+    appDrawer: {
+      width: React.CSSProperties['width']
+      breakpoint: Breakpoint
+    }
   }
   // allow configuration using `createMuiTheme`
   interface ThemeOptions {
-    status?: {
-      danger?: string;
-    };
+    appDrawer?: {
+      width?: React.CSSProperties['width']
+      breakpoint?: Breakpoint
+    }
   }
 }
+```
 
-const useStyles = makeStyles((theme: AugmentedTheme) =>
-  createStyles({
-    root: {
-      color: theme.status.danger,
-      '&$checked': {
-        color: theme.status.danger,
-      },
+```ts
+import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles';
+
+export default function createMyTheme(options: ThemeOptions) {
+  return createMuiTheme({
+    appDrawer: {
+      width: 225,
+      breakpoint: 'lg',
     },
-    checked: {},
-  }),
-);
-
-function CustomCheckbox() {
-  const classes = useStyles();
-
-  return (
-    <Checkbox
-      defaultChecked
-      classes={{
-        root: classes.root,
-        checked: classes.checked,
-      }}
-    />
-  );
+    ...options,
+  })
 }
+```
 
-const theme = createMuiTheme({
-  status: {
-    danger: orange[500],
-  },
-});
+This could be used like:
 
-export default function CustomStyles() {
-  return (
-    <ThemeProvider theme={theme}>
-      <CustomCheckbox />
-    </ThemeProvider>
-  );
-}
+```tsx
+import createMyTheme from './styles/createMyTheme';
+
+const theme = createMyTheme({ appDrawer: { breakpoint: 'md' }});
 ```
 
 ## Palette
@@ -394,6 +375,48 @@ const theme = createMuiTheme({
       tablet: 640,
       laptop: 1024,
       desktop: 1280,
+    },
+  },
+});
+```
+
+
+## Globals
+
+The `overrides` key enables you to customize the appearance of all instances of a component type, while the `props` key enables you to change the default value(s) of a component's props.
+
+### CSS
+
+When the configuration variables aren't powerful enough, you can take advantage of the `overrides` key of the `theme` to potentially change **every single style** injected by Material-UI into the DOM.
+
+The list of these customization points for each component is documented under the **Component API** section.
+
+```ts
+const theme = createMuiTheme({
+  overrides: {
+    // Style sheet name ⚛️
+    MuiButton: {
+      // Name of the rule
+      text: {
+        // Some CSS
+        color: 'white',
+      },
+    },
+  },
+});
+```
+
+### Default props
+
+You can change the default props of all the Material-UI components. A `props` key is exposed in the `theme` for this use case.
+
+```ts
+const theme = createMuiTheme({
+  props: {
+    // Name of the component ⚛️
+    MuiButtonBase: {
+      // The default props to change
+      disableRipple: true, // No more ripple, on the whole application 💣!
     },
   },
 });

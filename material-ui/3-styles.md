@@ -508,3 +508,37 @@ const styles = {
   }
 }
 ```
+
+
+### Reference a local rule within the same style sheet
+
+```tsx
+const styles = {
+  root: {
+    '&$disabled': {
+      color: 'white',
+    },
+  },
+  disabled: {},
+};
+```
+
+compiles to:
+
+```css
+.root-x.disable-x {
+  color: white;
+}
+```
+
+You need to apply the two generated class names (`root` & `disabled`) to the DOM to make it work:
+
+```tsx
+<Button
+  disabled
+  classes={{
+    root: classes.root, // class name, e.g. `root-x`
+    disabled: classes.disabled, // class name, e.g. `disabled-x`
+  }}
+>
+```

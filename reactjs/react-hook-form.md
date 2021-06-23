@@ -192,3 +192,12 @@ const { formState: { isSubmitting } } = useForm<IFormInputs>({...})
 const { reset } = useForm<IFormInputs>({...})
 reset();
 ```
+
+
+## Setting default values
+
+```ts
+const { formState } = useForm<IFormInputs>({
+  defaultValues: {},  
+})
+```
