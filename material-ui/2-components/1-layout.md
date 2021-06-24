@@ -2,7 +2,17 @@
 
 ## Box
 
-The Box component serves as a wrapper component for most of the CSS utility needs.
+The Box component packages [all the style functions](https://material-ui.com/system/basics/#all-inclusive) that are exposed in `@material-ui/system`. It's created using the `styled()` function of `@material-ui/core/styles`.
+
+- borders
+- display
+- flexbox
+- palette
+- positions
+- shadows
+- sizing
+- spacing
+- typography
 
 ```tsx
 <Box component="span" m={1}>
@@ -52,6 +62,8 @@ The grid system is implemented with the Grid component:
 The `spacing` property is an integer between `0` and `10` inclusive. By default, the spacing between two grid items follows a linear function: `output(spacing) = spacing * 8px`, e.g. `spacing={2}` creates a 16px wide gap.
 
 ```tsx
+import Grid from '@material-ui/core/Grid';
+
 <Grid container className={classes.root} spacing={2}>
   <Grid item xs={12}>
   </Grid>
