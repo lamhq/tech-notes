@@ -18,7 +18,7 @@ Conversation-Driven Development (CDD) means letting real user conversations guid
 
 ### Review
 
-- Look at conversations where an “out_of_scope” intent or fallback behavior occurred. These could indicate a potential new skill, or just a misclassified user utterance.
+- Look at conversations where an `out_of_scope` intent or fallback behavior occurred. These could indicate a potential new skill, or just a misclassified user utterance.
 - Look for user frustration, such as requests for transfer to a human.
 
 

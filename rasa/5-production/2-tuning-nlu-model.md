@@ -178,7 +178,7 @@ If you can't find a pre-trained model for your language, you should use supervis
 
 #### Pre-trained Embeddings
 
-The advantage of using pre-trained word embeddings in your pipeline is that if you have a training example like: “I want to buy apples”, and Rasa is asked to predict the intent for “get pears”, your model already knows that the words “apples” and “pears” are very similar. This is especially useful if you don't have enough training data. 
+The advantage of using pre-trained word embeddings in your pipeline is that if you have a training example like: "I want to buy apples", and Rasa is asked to predict the intent for "get pears", your model already knows that the words "apples" and "pears" are very similar. This is especially useful if you don't have enough training data. 
 
 We support a few components that provide pre-trained word embeddings:
 
@@ -189,7 +189,7 @@ We support a few components that provide pre-trained word embeddings:
 
 If your training data is in English, we recommend using the **ConveRTFeaturizer**. The advantage of the **ConveRTFeaturizer** is that it doesn't treat each word of the user message independently, but creates a contextual vector representation for the complete sentence. 
 
-*For example, if you have a training example, like: “Can I book a car?”, and Rasa is asked to predict the intent for “I need a ride from my place”, since the contextual vector representation for both examples are already very similar, the intent classified for both is highly likely to be the same. This is also useful if you don't have enough training data.*
+*For example, if you have a training example, like: "Can I book a car?", and Rasa is asked to predict the intent for "I need a ride from my place", since the contextual vector representation for both examples are already very similar, the intent classified for both is highly likely to be the same. This is also useful if you don't have enough training data.*
 
 An alternative to **ConveRTFeaturizer** is the **LanguageModelFeaturizer** which uses pre-trained language models such as BERT, GPT-2, etc. to extract similar contextual vector representations for the complete sentence. See [HFTransformersNLP](https://huggingface.co/models) for a full list of supported language models.
 
@@ -201,7 +201,7 @@ If your training data is not in English you can also use a different variant of 
 
 If you don't use any pre-trained word embeddings inside your pipeline, you are not bound to a specific language and can train your model to be more domain specific.
 
-*For example, in general English, the word “balance” is closely related to “symmetry”, but very different to the word “cash”. In a banking domain, “balance” and “cash” are closely related and you'd like your model to capture that.*
+*For example, in general English, the word "balance" is closely related to "symmetry", but very different to the word "cash". In a banking domain, "balance" and "cash" are closely related and you'd like your model to capture that.*
 
 You should only use featurizers from the category [sparse featurizers](https://rasa.com/docs/rasa/components#featurizers), such as CountVectorsFeaturizer, RegexFeaturizer or LexicalSyntacticFeaturizer, if you don't want to use pre-trained word embeddings.
 

@@ -58,7 +58,7 @@ stories:
    - action: utter_ask_upgrade
 ```
 
-### Implementing Branching Logic#
+### Implementing Branching Logic
 
 In cases where a value is used only to determine the bot's response, consider embedding the decision logic inside a custom action as opposed to using a featurized slot in your stories. This can help reduce overall complexity and make your stories easier to manage.
 
