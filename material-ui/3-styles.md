@@ -173,6 +173,12 @@ import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 
+const MyThemeComponent = styled('div')(({
+  theme
+}) => ({
+  padding: theme.spacing(1),
+}));
+
 const MyButton = styled(Button)({
   background: (props: ButtonProps) =>
     props.color === 'primary'
@@ -192,10 +198,10 @@ const MyButton = styled(Button)({
 
 export const Default: React.VFC = () => {
   return (
-    <>
+    <MyThemeComponent>
       <MyButton color="primary">Red</MyButton>
       <MyButton color="secondary">Blue</MyButton>
-    </>
+    </MyThemeComponent>
   );
 };
 ```

@@ -177,3 +177,9 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
   }
 }
 ```
+
+## Custom HTTP status code
+
+Here's the full list of all the available/unavailable HTTP codes. You can use any unassigned status code in this list:
+
+https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml

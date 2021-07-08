@@ -41,7 +41,7 @@ db.inventory.find( { tags: "red" } )
 // Match array that contains at least one element meets the conditions
 db.inventory.find( { dim_cm: { $gt: 25 } } )
 
-// Query an Array with Compound Filter Conditions on the Array Elements¶
+// Query an Array with Compound Filter Conditions on the Array Elements
 // query for documents where the dim_cm array contains
 // one element can satisfy the greater than 15 condition
 // and another element can satisfy the less than 20 condition,

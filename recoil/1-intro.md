@@ -6,9 +6,13 @@
 
 Recoil lets you create a data-flow graph that flows from atoms (shared state) through selectors (pure functions) and down into your React components. 
 
-Atoms are units of state. They're updateable and subscribable: when an atom is updated, each subscribed component is re-rendered with the new value.
+Atoms are units of state. They're updateable and subscribable: when an atom is updated, each subscribed component is re-rendered with the new value. Selectors transform this state either synchronously or asynchronously.
 
-Selectors transform this state either synchronously or asynchronously.
+Atoms can be used in place of React local component state. If the same atom is used from multiple components, all those components share their state.
+
+Atoms cannot be used to store `Promise` or `RecoilValue` directly, you cannot currently assign a Promise when setting an atom.
+
+Atoms can be set to a function, as long as it is pure, but to do so you may need to use the updater form of setters. (e.g. `set(myAtom, () => myFunc);`).
 
 Atoms are created using the `atom` function:
 

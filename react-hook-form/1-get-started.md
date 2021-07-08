@@ -144,7 +144,7 @@ export default function App() {
 ## Schema Validation
 
 ```sh
-yarn add install @hookform/resolvers yup
+yarn add @hookform/resolvers yup
 ```
 
 ```tsx

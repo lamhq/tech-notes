@@ -5,6 +5,7 @@
 [https://github.com/jquense/yup](https://github.com/jquense/yup)
 
 ## Basic
+
 ```js
 const { object, string, number, date } = require('yup')
 
