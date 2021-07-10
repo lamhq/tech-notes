@@ -55,6 +55,7 @@ schema.validate(data).
 
 
 ## Custom validation (reusable)
+
 ```js
 Yup.addMethod(Yup.type, 'methodName', function (anyArgsYouNeed) {
   const { message } = anyArgsYouNeed;
