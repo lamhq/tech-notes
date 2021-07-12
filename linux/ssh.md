@@ -1,10 +1,26 @@
-## Generate SSH key pair silently
+## Use multiple SSH keys
 
-http://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/ssh-keygen.1?query=ssh-keygen&sec=1
+Edit file `~/.ssh/config` with the following content:
+
+```
+Host github.com
+    IdentityFile /home/lam/Desktop/source/keys/id_rsa
+```
+
+Don't forget to update permission for private key:
+
+```sh
+chmod 400 id_rsa
+```
+
+
+## Generate SSH key pair silently
 
 ```sh
 ssh-keygen -t rsa -b 4096 -q -N "" -f ~/Desktop/source/keys/id_rsa_hqlambt
 ```
+
+See [reference](http://man.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/ssh-keygen.1?query=ssh-keygen&sec=1)
 
 
 ## SSH to server without entering password
