@@ -1,4 +1,6 @@
-# Installing Google Cloud SDK for macOS
+# Google Cloud SDK
+
+## Installing Google Cloud SDK for macOS
 
 1. Cloud SDK requires Python 3 (preferred, 3.5 to 3.8) or Python 2 (2.7.9 or higher)
 
