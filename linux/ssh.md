@@ -10,7 +10,7 @@ Host github.com
 Don't forget to update permission for private key:
 
 ```sh
-chmod 400 id_rsa
+chmod 600 id_rsa
 ```
 
 

@@ -1,6 +1,6 @@
 # Quickstart
 
-## Sample
+## Define a simple workflow
 
 1. Create a new file `.github/workflows/github-actions-demo.yml` in your repository with the following contents:
 
@@ -36,3 +36,14 @@ Getting parameters in workflow definition file:
 - Repository: `${{ github.repository }}`
 - Event name: `${{ github.event_name }}`
 - Runner OS: `${{ runner.os }}`
+
+
+## Setting up continuous integration using workflow templates
+
+1. On GitHub, navigate to the main page of the repository.
+2. Under your repository name, click **Actions**.
+3. Find the template that matches the language and tooling you want to use, then click Set up this workflow.
+4. Click Start commit.
+5. At the bottom of the page, type a short, meaningful commit message that describes the change you made to the file.
+6. Below the commit message fields, decide whether to add your commit to the current branch or to a new branch. If your current branch is the default branch, you should choose to create a new branch for your commit and then create a pull request.
+7. Click Propose new file.
