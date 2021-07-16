@@ -91,3 +91,30 @@ on:
 - [pull_request_target](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target): This event runs in the context of the base of the pull request, rather than in the merge commit as the `pull_request` event does.
 - [push](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target): Runs your workflow when someone pushes to a repository branch
 - [workflow_run](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_run): This event occurs when a workflow run is requested or completed, and allows you to execute a workflow based on the finished result of another workflow. A workflow run is triggered regardless of the result of the previous workflow.
+
+
+## Triggering new workflows using a personal access token
+
+When you use the repository's `GITHUB_TOKEN` to perform tasks on behalf of the GitHub Actions app, events triggered by the `GITHUB_TOKEN` will not create a new workflow run. This prevents you from accidentally creating recursive workflow runs.
+
+If you would like to trigger a workflow from a workflow run, you can trigger the event using a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+
+
+## Trigger workflow on tags created
+
+```yml
+name: prod-sample
+
+on: create
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    if: ${{ startsWith(github.ref, 'refs/tags/') }}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world
+```
