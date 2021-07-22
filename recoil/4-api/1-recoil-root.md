@@ -5,8 +5,9 @@
 ### Props
 
 - `initializeState?: (MutableSnapshot => void)`
-
-An optional function that takes a [`MutableSnapshot`](/docs/api-reference/core/Snapshot#transforming-snapshots) to [initialize](/docs/api-reference/core/Snapshot#state-initialization) the `<RecoilRoot>` atom state.
+    - An optional function that takes a [`MutableSnapshot`](/docs/api-reference/core/Snapshot#transforming-snapshots) to [initialize](/docs/api-reference/core/Snapshot#state-initialization) the `<RecoilRoot>` atom state.
+- `override?: boolean`
+    - Defaults to `true`. This prop only matters when this `<RecoilRoot>` is nested within another `<RecoilRoot>`.
 
 ```ts
 class MutableSnapshot {
@@ -14,11 +15,6 @@ class MutableSnapshot {
   reset: <T>(RecoilState<T>) => void;
 }
 ```
-
-- `override?: boolean`
-
-Defaults to `true`. This prop only matters when this `<RecoilRoot>` is nested within another `<RecoilRoot>`.
-
 
 ### Using Multiple `<RecoilRoot>`'s
 
