@@ -30,3 +30,10 @@ uname -m
 ```sh
 ./google-cloud-sdk/bin/gcloud init
 ```
+
+## Add configuration
+
+```sh
+gcloud config configurations create <CONFIG_NAME_>
+gcloud config set project <PROJECT_ID>
+```
