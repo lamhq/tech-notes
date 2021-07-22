@@ -1,6 +1,23 @@
-### Delete branch
-git branch -d hotfix/1.6.5
-git push origin --delete hotfix/1.6.5
+# Tag
+
+## Create tag
+
+`git tag <tagname> <commit>`
+
+```sh
+git tag v1.0.0 HEAD
+```
+
+## List tag
+
+```sh
+git tag --list
+```
+
+## Push tag to remote
+
+- `git push origin :refs/tags/<tagname>`
+- `git push --follow-tags`
 
 
 ### Delete tag
