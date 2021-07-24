@@ -1,6 +1,6 @@
 # Narrowing
 
-the process of refining types to more specific types than declared is called **narrowing**
+The process of refining types to more specific types than declared is called **narrowing**
 
 ```ts
 function padLeft(padding: number | string, input: string) {
