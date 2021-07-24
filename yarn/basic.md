@@ -1,40 +1,47 @@
 ## Create package.json file
-```shell
+
+```sh
 yarn init
 ```
 
 ## Installing all the dependencies
-```shell
+
+```sh
 yarn
 ```
 
 ## Adding a dependency
-```shell
+```sh
 yarn add [package] --dev
 yarn add [package] --peer
 yarn add [package] --optional
 ```
 
 ## Removing a dependency
-```shell
+```sh
 yarn remove [package]
 ```
 
 
 ## Upgrading a dependency
-```shell
+```sh
 yarn upgrade [package]
 ```
 
+## Upgrade outdated packages
 
-## Running globally
-```shell
+```sh
+yarn upgrade-interactive [--latest]
+```
+
+## Add/List/Remove packages globally
+```sh
 yarn global <add/bin/list/remove/upgrade> [--prefix]
 ```
 
 
 ## Checks for outdated package dependencies
 
-```shell
+```sh
 yarn outdated
 ```

@@ -115,6 +115,7 @@ test('should fetch users', () => {
 ```
 
 ### Mocking default exported value of a node module
+
 ```js
 // mock default exported function from twilio module
 const createOtp = jest.fn();
@@ -148,6 +149,15 @@ describe('requestOtp', () => {
 });
 ```
 
+### Mocking exported functions of a node module
+
+```ts
+import { hash } from 'bcrypt';
+
+const mHash = hash as jest.MockedFunction<typeof hash>;
+mHash.mockImplementation(() => Promise.resolve('hashed'));
+expect(hash).toHaveBeenCalledWith('1234', 9);
+```
 
 ### Mocking user modules
 
