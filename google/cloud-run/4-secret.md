@@ -43,3 +43,15 @@ gcloud beta run deploy SERVICE --image IMAGE_URL \
 ```sh
 gcloud run services describe SERVICE
 ```
+
+## Deleting secret
+
+```sh
+gcloud secrets delete 'SMTP_USER' --quiet
+```
+
+## List secrets
+
+```sh
+gcloud secrets list
+```

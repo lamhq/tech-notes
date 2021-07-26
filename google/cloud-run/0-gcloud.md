@@ -34,6 +34,18 @@ uname -m
 ## Add configuration
 
 ```sh
-gcloud config configurations create <CONFIG_NAME_>
+gcloud config configurations create <CONFIG_NAME>
 gcloud config set project <PROJECT_ID>
+```
+
+## List configuration
+
+```sh
+gcloud config configurations list
+```
+
+## Active a configuration
+
+```sh
+gcloud config configurations activate notebook-test
 ```
