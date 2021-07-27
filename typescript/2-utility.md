@@ -1,0 +1,218 @@
+# Utility Types
+
+## `Partial<Type>`
+
+Constructs a type with all properties of `Type` set to optional.
+
+```ts
+interface Todo {
+  title: string;
+  description: string;
+}
+
+function updateTodo(todo: Todo, fieldsToUpdate: Partial<Todo>) {
+  return { ...todo, ...fieldsToUpdate };
+}
+
+const todo1 = {
+  title: "organize desk",
+  description: "clear clutter",
+};
+
+const todo2 = updateTodo(todo1, {
+  description: "throw out trash",
+});
+```
+
+## `Required<Type>`
+
+The opposite of `Partial`.
+
+
+## `Readonly<Type>`
+
+Constructs a type with all properties of `Type` set to `readonly`
+
+
+## `Record<Keys,Type>`
+
+Constructs an object type whose property keys are `Keys` and whose property values are `Type`
+
+```ts
+interface CatInfo {
+  age: number;
+  breed: string;
+}
+
+type CatName = "miffy" | "boris" | "mordred";
+
+const cats: Record<CatName, CatInfo> = {
+  miffy: { age: 10, breed: "Persian" },
+  boris: { age: 5, breed: "Maine Coon" },
+  mordred: { age: 16, breed: "British Shorthair" },
+};
+```
+
+
+## `Pick<Type, Keys>`
+
+Constructs a type by picking the set of properties `Keys` (string literal or union of string literals) from `Type`.
+
+```ts
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+type TodoPreview = Pick<Todo, "title" | "completed">;
+
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+};
+```
+
+## `Omit<Type, Keys>`
+
+Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals).
+
+```ts
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+  createdAt: number;
+}
+
+type TodoPreview = Omit<Todo, "description">;
+
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+  createdAt: 1615544252770,
+};
+```
+
+## `Exclude<Type, ExcludedUnion>`
+
+Constructs a type by excluding from `Type` all union members that are assignable to `ExcludedUnion`.
+
+```ts
+type T0 = Exclude<"a" | "b" | "c", "a">;
+// type T0 = "b" | "c"
+     
+type T1 = Exclude<"a" | "b" | "c", "a" | "b">;
+// type T1 = "c"
+     
+type T2 = Exclude<string | number | (() => void), Function>;
+// type T2 = string | number
+```
+
+## `Extract<Type, Union>`
+
+Constructs a type by extracting from `Type` all union members that are assignable to `Union`.
+
+```ts
+type T0 = Extract<"a" | "b" | "c", "a" | "f">;
+// type T0 = "a"
+     
+type T1 = Extract<string | number | (() => void), Function>;
+// type T1 = () => void
+```
+
+
+## `NonNullable<Type>`
+
+Constructs a type by excluding `null` and `undefined` from `Type`.
+
+
+## `Parameters<Type>`
+
+Constructs a tuple type from the types used in the parameters of a function type `Type`.
+
+```ts
+type T0 = Parameters<() => string>;
+// type T0 = []
+     
+type T1 = Parameters<(s: string) => void>;
+// type T1 = [s: string]
+
+declare function f1(arg: { a: number; b: string }): void;
+type T2 = Parameters<typeof f1>;
+// type T2 = [arg: {
+//   a: number;
+//   b: string;
+// }]
+```
+
+## `ConstructorParameters<Type>`
+
+Constructs a tuple or array type from the types of a constructor function type. 
+
+```ts
+type SomeConstructor = {
+  new (s: string): string;
+};
+
+type T0 = ConstructorParameters<SomeConstructor>;
+// type T0 = [s: string]
+```
+
+
+## `ReturnType<Type>`
+
+Constructs a type consisting of the return type of function `Type`
+
+```ts
+type T0 = ReturnType<() => string>;
+// type T0 = string
+
+declare function f1(): { a: number; b: string };
+type T1 = ReturnType<typeof f1>;
+// type T1 = {
+//   a: number;
+//   b: string;
+// }
+```
+
+## `InstanceType<Type>`
+
+Constructs a type consisting of the instance type of a constructor function in `Type`.
+
+
+## `ThisParameterType<Type>`
+
+Extracts the type of the `this` parameter for a function type, or `unknown` if the function type has no `this` parameter.
+
+```ts
+function toHex(this: Number) {
+  return this.toString(16);
+}
+
+function numberToString(n: ThisParameterType<typeof toHex>) {
+  return toHex.apply(n);
+}
+```
+
+
+## `OmitThisParameter<Type>`
+
+Removes the `this` parameter from `Type`
+
+```ts
+function toHex(this: Number) {
+  return this.toString(16);
+}
+
+const fiveToHex: OmitThisParameter<typeof toHex> = toHex.bind(5);
+console.log(fiveToHex());
+```
+
+
+## Intrinsic String Manipulation Types
+
+- `Uppercase<StringType>`
+- `Lowercase<StringType>`
+- `Capitalize<StringType>`
+- `Uncapitalize<StringType>`

@@ -105,8 +105,9 @@ type P = keyof Point;
 
 ```ts
 let s = "hello";
-// let n: string
+
 let n: typeof s;
+// let n: string
 ```
 
 
