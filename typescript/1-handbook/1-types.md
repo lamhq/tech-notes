@@ -194,6 +194,6 @@ function liveDangerously(x?: number | null) {
 
 ## `noImplicitAny`
 
-In some places, TypeScript doesn’t try to infer any types for us and instead falls back to the most lenient type: `any`.
+In some places, TypeScript doesn't try to infer any types for us and instead falls back to the most lenient type: `any`.
 
 Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as `any`.

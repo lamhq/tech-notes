@@ -54,7 +54,7 @@ class Greeter {
 
 - Constructors can't have type parameters - these belong on the outer class declaration
 - Constructors can't have return type annotations - the class instance type is always what's returned
-- if you have a base class, you’ll need to call `super();` in your constructor body before using any `this`.
+- if you have a base class, you'll need to call `super();` in your constructor body before using any `this`.
 
 ```ts
 class Base {
@@ -108,7 +108,7 @@ class MyClass {
 
 ### `implements` Clauses
 
-`implements` clause is only a check that the class can be treated as the interface type. It doesn’t change the type of the class or its methods at all.
+`implements` clause is only a check that the class can be treated as the interface type. It doesn't change the type of the class or its methods at all.
 
 ```ts
 interface Pingable {
@@ -195,7 +195,7 @@ The default visibility of class members is `public`. A `public` member can be ac
 
 ### `protected`
 
-`protected` members are only visible to subclasses of the class they’re declared in.
+`protected` members are only visible to subclasses of the class they're declared in.
 
 Derived classes can make `protected` members `public`
 
@@ -215,7 +215,7 @@ console.log(d.m); // OK
 
 ### `private`
 
-`private` is like `protected`, but doesn’t allow access to the member even from subclasses:
+`private` is like `protected`, but doesn't allow access to the member even from subclasses:
 
 ```ts
 class Base {
@@ -241,13 +241,13 @@ console.log(s.secretKey);
 
 ## Static Members
 
-Static Members aren’t associated with a particular instance of the class. They can be accessed through the class constructor object itself
+Static Members aren't associated with a particular instance of the class. They can be accessed through the class constructor object itself
 
 Static members can also use the same public, protected, and private visibility modifiers
 
 Static members are also inherited
 
-Because classes are themselves functions that can be invoked with `new`, certain `static` names can’t be used. Function properties like `name`, `length`, and `call` aren’t valid to define as `static` member
+Because classes are themselves functions that can be invoked with `new`, certain `static` names can't be used. Function properties like `name`, `length`, and `call` aren't valid to define as `static` member
 
 ```ts
 class Base {
@@ -272,7 +272,7 @@ Derived.printX();
 
 ## Generic Classes
 
-The `static` members of a generic class can never refer to the class’s type parameters.
+The `static` members of a generic class can never refer to the class's type parameters.
 
 ```ts
 class Box<Type> {
@@ -326,7 +326,7 @@ console.log(g());
 
 - The `this` value is guaranteed to be correct at runtime
 - This will use more memory, because each class instance will have its own copy of each function defined this way
-- You can’t use `super.getName` in a derived class, because there’s no entry in the prototype chain to fetch the base class method from
+- You can't use `super.getName` in a derived class, because there's no entry in the prototype chain to fetch the base class method from
 
 
 ## `this` parameters
@@ -453,7 +453,7 @@ const m = new someClass("Hello, world");
 
 The role of abstract classes is to serve as a base class for subclasses which do implement all the abstract members.
 
-When a class doesn’t have any abstract members, it is said to be **concrete**.
+When a class doesn't have any abstract members, it is said to be **concrete**.
 
 ```ts
 abstract class Base {

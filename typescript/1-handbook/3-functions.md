@@ -209,15 +209,15 @@ In JavaScript, a function that doesn't return any value will implicitly return t
 
 ### `object`
 
-`object` refers to any value that isn’t a primitive (`string`, `number`, `bigint`, `boolean`, `symbol`, `null`, or `undefined`).
+`object` refers to any value that isn't a primitive (`string`, `number`, `bigint`, `boolean`, `symbol`, `null`, or `undefined`).
 
-This is different from the empty object type `{ }`, and also different from the global type `Object` (it’s very likely you will never use `Object`).
+This is different from the empty object type `{ }`, and also different from the global type `Object` (it's very likely you will never use `Object`).
 
 `object` is not `Object`. Always use `object`!
 
 ### `unknown`
 
-The unknown type represents any value. This is similar to the `any` type, but is safer because it’s not legal to do anything with an `unknown` value:
+The unknown type represents any value. This is similar to the `any` type, but is safer because it's not legal to do anything with an `unknown` value:
 
 ```ts
 function f1(a: any) {
@@ -240,7 +240,7 @@ function fail(msg: string): never {
 }
 ```
 
-`never` also appears when TypeScript determines there’s nothing left in a union:
+`never` also appears when TypeScript determines there's nothing left in a union:
 
 ```ts
 function fn(x: string | number) {
@@ -264,7 +264,7 @@ function doSomething(f: Function) {
 }
 ```
 
-If you need to accept an arbitrary function but don’t intend to call it, the type `() => void` is generally safer.
+If you need to accept an arbitrary function but don't intend to call it, the type `() => void` is generally safer.
 
 
 ## Rest Parameters

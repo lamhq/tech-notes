@@ -190,7 +190,7 @@ type EmailMessageContents = MessageOf<Email>;
 ```
 
 ```ts
-// we wanted MessageOf to take any type, and default to something like never if a message property isn’t available
+// we wanted MessageOf to take any type, and default to something like never if a message property isn't available
 type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
 
 interface Email {

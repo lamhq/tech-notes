@@ -178,7 +178,7 @@ type StringBooleansNumber = [string, ...boolean[], number];
 type BooleansStringNumber = [...boolean[], string, number];
 ```
 
-We can also destructure tuples using JavaScript’s array destructuring:
+We can also destructure tuples using JavaScript's array destructuring:
 
 ```ts
 function doSomething(stringHash: [string, number]) {

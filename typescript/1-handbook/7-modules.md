@@ -13,7 +13,7 @@ Modules are executed within their own scope, not in the global scope.
 
 A file without any top-level `import` or `export` declarations is treated as a script whose contents are available in the global scope 
 
-If you have a file that doesn’t currently have any imports or exports, but you want to be treated as a module, add the line:
+If you have a file that doesn't currently have any imports or exports, but you want to be treated as a module, add the line:
 
 ```ts
 export {};
