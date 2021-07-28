@@ -97,6 +97,25 @@ Here's the order to how decorators applied to various declarations inside of a c
 1. *Class Decorators* are applied for the **class**.
 
 
+## Property Descriptor
+
+A **property descriptor** is an object which describes following attributes of the target property:
+
+- `value`: The value of the property.
+- `writable`: Can property be changed?.
+- `configurable`: Can property be changed and deleted?.
+- `enumerable`: Can property be looped over?.
+- `get`: The corresponding getter method of the property. If there's no getter then it is `undefined`.
+- `set`: The corresponding setter method of the property. If there's no setter then it is `undefined`.
+
+```ts
+const person = { name: 'Joe' };
+let propertyDescriptor = Object.getOwnPropertyDescriptor(person, 'name');
+console.log(propertyDescriptor);
+// {"value":"Joe","writable":true,"enumerable":true,"configurable":true}
+```
+
+
 ## Class Decorators
 
 The class decorator can be used to observe, modify, or replace a class definition.
@@ -201,6 +220,121 @@ class Point {
   @configurable(false)
   get y() {
     return this._y;
+  }
+}
+```
+
+
+## Property Decorators
+
+A Property Decorator is declared just before a property declaration.
+
+The expression for the property decorator will be called as a function at runtime, with the following two arguments:
+
+1. Either the constructor function of the class for a static member, or the prototype of the class for an instance member.
+1. The name of the member.
+
+A property decorator can only be used to observe that a property of a specific name has been declared for a class.
+
+```ts
+class Greeter {
+  @format("Hello, %s")
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet() {
+    let formatString = getFormat(this, "greeting");
+    return formatString.replace("%s", this.greeting);
+  }
+}
+```
+
+```ts
+import "reflect-metadata";
+
+const formatMetadataKey = Symbol("format");
+
+function format(formatString: string) {
+  return Reflect.metadata(formatMetadataKey, formatString);
+}
+
+function getFormat(target: any, propertyKey: string) {
+  return Reflect.getMetadata(formatMetadataKey, target, propertyKey);
+}
+```
+
+## Parameter Decorators
+
+The parameter decorator is applied to the function for a class constructor or method declaration.
+
+The expression for the parameter decorator will be called as a function at runtime, with the following three arguments:
+
+1. Either the constructor function of the class for a static member, or the prototype of the class for an instance member.
+1. The name of the member.
+1. The ordinal index of the parameter in the function's parameter list.
+
+A parameter decorator can only be used to observe that a parameter has been declared on a method.
+
+```ts
+class BugReport {
+  type = "report";
+  title: string;
+
+  constructor(t: string) {
+    this.title = t;
+  }
+
+  @validate
+  print(@required verbose: boolean) {
+    if (verbose) {
+      return `type: ${this.type}\ntitle: ${this.title}`;
+    } else {
+     return this.title; 
+    }
+  }
+}
+```
+
+```ts
+import "reflect-metadata";
+const requiredMetadataKey = Symbol("required");
+
+function required(target: Object, propertyKey: string | symbol, parameterIndex: number) {
+  let existingRequiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || [];
+  existingRequiredParameters.push(parameterIndex);
+  Reflect.defineMetadata( requiredMetadataKey, existingRequiredParameters, target, propertyKey);
+}
+
+function validate(target: any, propertyName: string, descriptor: TypedPropertyDescriptor<Function>) {
+  let method = descriptor.value!;
+
+  descriptor.value = function () {
+    let requiredParameters: number[] = Reflect.getOwnMetadata(requiredMetadataKey, target, propertyName);
+    if (requiredParameters) {
+      for (let parameterIndex of requiredParameters) {
+        if (parameterIndex >= arguments.length || arguments[parameterIndex] === undefined) {
+          throw new Error("Missing required argument.");
+        }
+      }
+    }
+    return method.apply(this, arguments);
+  };
+}
+```
+
+## Metadata
+
+Some examples use the reflect-metadata library which adds a polyfill for an [experimental metadata API](https://github.com/rbuckton/ReflectDecorators).
+
+TypeScript includes experimental support for emitting certain types of metadata for declarations that have decorators. To enable this experimental support, you must set the `emitDecoratorMetadata` compiler option either on the command line or in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
 ```
