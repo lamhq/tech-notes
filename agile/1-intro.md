@@ -25,3 +25,8 @@ Many agile frameworks have emerged such as Scrum, Kanban, Lean, and Extreme Prog
 Scrum and XP are favored by software development teams, while Kanban is a darling among service-oriented teams like IT or human resources.
 
 The agile teams of tomorrow will value their own effectiveness over adherence to doctrine.
+
+
+## Agile Manifesto
+
+The Agile Manifesto is a brief document built on 4 values and 12 principles for agile software development.
