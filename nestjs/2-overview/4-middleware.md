@@ -2,11 +2,13 @@
 
 Middleware is a function which is called before the route handler.
 
+
 ## Implementing middleware
 
-**logger.middleware.ts**:
+Nest middleware fully supports Dependency Injection through the constructor.
 
 ```ts
+// logger.middleware.ts
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response } from 'express';
 
@@ -22,9 +24,8 @@ export class LoggerMiddleware implements NestMiddleware {
 
 ## Applying middleware
 
-**app.module.ts**:
-
 ```ts
+// app.module.ts
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { CatsModule } from './cats/cats.module';
@@ -36,12 +37,13 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)
+      // .forRoutes(CatsController);
       .forRoutes({ path: 'cats', method: RequestMethod.GET });
   }
 }
 ```
 
-Multiple middleware:
+Multiple middlewares:
 
 ```ts
 consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
@@ -64,13 +66,19 @@ consumer
 
 ## Functional middleware
 
-**logger.middleware.ts**:
-
 ```ts
+// logger.middleware.ts
 export function logger(req, res, next) {
   console.log(`Request...`);
   next();
 };
+```
+
+```ts
+// app.module.ts
+consumer
+  .apply(logger)
+  .forRoutes(CatsController);
 ```
 
 

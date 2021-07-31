@@ -1,9 +1,22 @@
 # Controller
 
-## Create a controller
+## Creating a controller
 
 ```shell
 nest g controller posts
+```
+
+
+## Registering controllers with module
+
+```ts
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats/cats.controller';
+
+@Module({
+  controllers: [CatsController],
+})
+export class AppModule {}
 ```
 
 
@@ -12,7 +25,9 @@ nest g controller posts
 The route path for a handler is determined by concatenating the (optional) prefix declared for the controller, and any path specified in the request decorator.
 
 ```ts
-import { Controller, Get, Query, Post, Body, Put, Param, Delete, Headers } from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, Headers, Req, 
+  HttpCode, Header } from '@nestjs/common';
+import { Request } from 'express';
 
 export class CreateCatDto {
   name: string;
@@ -30,6 +45,18 @@ export class AppController {
   @Get()
   findAll(@Query() query: any, @Headers('authorization') auth: string) : string {
     return query;
+  }
+
+  @Get()
+  @Header('Cache-Control', 'none')
+  findAllCats(@Req() request: Request): string {
+    return 'This action returns all cats';
+  }
+
+  @Get('ab*cd')
+  @HttpCode(204)
+  findAll() {
+    return 'This route uses a wildcard';
   }
 
   @Get(':id')
@@ -55,7 +82,7 @@ export class AppController {
 
 You may want to determine the HTTP status code or the redirect URL dynamically. Do this by returning an object from the route handler method with the shape:
 
-```json
+```ts
 {
   "url": string,
   "statusCode": number

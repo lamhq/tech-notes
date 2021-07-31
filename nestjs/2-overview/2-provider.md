@@ -1,13 +1,16 @@
 # Providers
 
-A provider is simply a class annotated with an `@Injectable()` decorator.
+A provider is simply a class annotated with an `@Injectable()` decorator. 
+
+The main idea of a provider is that it can be injected as dependency.
+
+Many of the basic Nest classes may be treated as a provider – services, repositories, factories, helpers, and so on. 
 
 
-## Define a provider
-
-**cats.service.ts**:
+## Defining providers
 
 ```ts
+// cats.service.ts
 import { Injectable } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
 
@@ -30,8 +33,8 @@ export class CatsService {
 
 Short hand syntax:
 
-**app.module.ts**:
 ```ts
+// app.module.ts
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats/cats.controller';
 import { CatsService } from './cats/cats.service';
@@ -84,6 +87,19 @@ export class CatsController {
   }
 }
 ```
+
+
+## Optional providers
+
+```ts
+import { Injectable, Optional, Inject } from '@nestjs/common';
+
+@Injectable()
+export class HttpService<T> {
+  constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) {}
+}
+```
+
 
 ## Property-based injection
 
