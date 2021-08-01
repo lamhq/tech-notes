@@ -2,6 +2,7 @@
 
 Middleware is a function which is called before the route handler.
 
+![](https://docs.nestjs.com/assets/Middlewares_1.png)
 
 ## Implementing middleware
 

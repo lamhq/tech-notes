@@ -1,5 +1,8 @@
 # Exception filters
 
+When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
+
+![](https://docs.nestjs.com/assets/Filter_1.png)
 
 ## Throwing standard exceptions
 
@@ -36,9 +39,10 @@ async findAll() {
 
 ## Custom exceptions
 
-Implement a custom exception (*forbidden.exception.ts*):
+Implement a custom exception:
 
 ```ts
+// forbidden.exception.ts
 export class ForbiddenException extends HttpException {
   constructor() {
     super('Forbidden', HttpStatus.FORBIDDEN);
@@ -67,6 +71,8 @@ export class ForbiddenException extends HttpException {
 - BadGatewayException
 - ServiceUnavailableException
 - GatewayTimeoutException
+
+See more at https://docs.nestjs.com/exception-filters#built-in-http-exceptions
 
 
 ## Exception filters
@@ -113,6 +119,24 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
+```ts
+// cats.controller.ts
+@UseFilters(new HttpExceptionFilter())
+export class CatsController {}
+```
+
+To create a global-scoped filter, you would do the following:
+
+```ts
+// main.js
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new HttpExceptionFilter());
+  await app.listen(3000);
+}
+bootstrap();
+```
+
 To register a global-scoped filter directly from any module, you would do the following:
 
 ```ts
@@ -132,6 +156,8 @@ export class AppModule {}
 
 
 ## Catch everything
+
+In order to catch every unhandled exception (regardless of the exception type), leave the `@Catch()` decorator's parameter list empty.
 
 ```ts
 import {

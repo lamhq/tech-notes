@@ -2,6 +2,7 @@
 
 A module is a class annotated with a `@Module()` decorator.
 
+![](https://docs.nestjs.com/assets/Modules_1.png)
 
 ## Creating a module
 

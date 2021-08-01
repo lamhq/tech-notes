@@ -8,11 +8,13 @@ Interceptors have a set of useful capabilities which are inspired by the [Aspect
 - extend the basic function behavior
 - completely override a function depending on specific conditions (e.g., for caching purposes)
 
+![](https://docs.nestjs.com/assets/Interceptors_1.png)
 
-## Define Interceptor
 
-**logging.interceptor.ts**:
+## Defining Interceptors
+
 ```ts
+// logging.interceptor.ts
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -33,7 +35,7 @@ export class LoggingInterceptor implements NestInterceptor {
 ```
 
 
-## Use interceptor
+## Using interceptors
 
 Like **pipes** and **guards**, interceptors can be controller-scoped, method-scoped, or global-scoped.
 
@@ -41,6 +43,13 @@ Like **pipes** and **guards**, interceptors can be controller-scoped, method-sco
 // cats.controller.ts
 @UseInterceptors(LoggingInterceptor)
 export class CatsController {}
+```
+
+Setup global interceptor:
+
+```ts
+const app = await NestFactory.create(AppModule);
+app.useGlobalInterceptors(new LoggingInterceptor());
 ```
 
 Setup global interceptor directly from any module:

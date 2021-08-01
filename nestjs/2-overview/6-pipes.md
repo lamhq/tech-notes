@@ -1,25 +1,61 @@
 # Pipes
 
-A pipe is a class annotated with the `@Injectable()` decorator. Pipes should implement the `PipeTransform` interface.
-
 Pipes have two typical use cases:
 
 - **transformation**: transform input data to the desired output
 - **validation**: evaluate input data and if valid, simply pass it through unchanged; otherwise, throw an exception when the data is incorrect
 
+A pipe is a class annotated with the `@Injectable()` decorator.
+
 When an exception is thrown in a Pipe, no controller method is subsequently executed.
 
+Nest interposes a pipe just before a controller's method is invoked, and the pipe receives the arguments destined for the method and operates on them.
 
-## Define a validation pipe
+![](https://docs.nestjs.com/assets/Pipe_1.png)
+
+## Built-in pipes
+
+- `ValidationPipe`
+- `ParseIntPipe`
+- `ParseFloatPipe`
+- `ParseBoolPipe`
+- `ParseArrayPipe`
+- `ParseUUIDPipe`
+- `ParseEnumPipe`
+- `DefaultValuePipe`
+
+### Using built-in pipes
+
+```ts
+@Get()
+async findOne(@Query('id', ParseIntPipe) id: number) {
+  return this.catsService.findOne(id);
+}
+```
+
+
+## Custom pipes
+
+```ts
+import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
+
+@Injectable()
+export class ValidationPipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    return value;
+  }
+}
+```
+
+### Object schema validation pipe
 
 ```shell
 npm install --save @hapi/joi
 npm install --save-dev @types/hapi__joi
 ```
 
-**validation.pipe.ts**
-
 ```ts
+// validation.pipe.ts
 import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
 import { ObjectSchema } from '@hapi/joi';
 
@@ -38,7 +74,7 @@ export class JoiValidationPipe implements PipeTransform {
 ```
 
 
-## Using Pipe
+### Using Pipes
 
 Pipes, similar to exception filters, can be method-scoped, controller-scoped, or global-scoped.
 
@@ -61,9 +97,10 @@ Validate request data schemae based on class definition.
 npm i --save class-validator class-transformer
 ```
 
-**create-cat.dto.ts**:
+### Defining validation rules using decorators
 
 ```ts
+// create-cat.dto.ts
 import { IsString, IsInt } from 'class-validator';
 
 export class CreateCatDto {
@@ -78,9 +115,10 @@ export class CreateCatDto {
 }
 ```
 
-**validation.pipe.ts**
+### Defining a validation pipe
 
 ```ts
+// validation.pipe.ts
 import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
 import { validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
@@ -106,7 +144,11 @@ export class ValidationPipe implements PipeTransform<any> {
 }
 ```
 
-A pipe can be param-scoped. In the example below, we'll directly tie the pipe instance to the route param @Body() decorator:
+### Using validation pipes
+
+A pipe can be param-scoped. Parameter-scoped pipes are useful when the validation logic concerns only one specified parameter.
+
+In the example below, we'll directly tie the pipe instance to the route param `@Body()` decorator:
 
 ```ts
 // app.module.ts
@@ -118,22 +160,13 @@ async create(
 }
 ```
 
-Alternatively, pass the class (not an instance), thus leaving instantiation up to the framework, and enabling dependency injection.
 
-```ts
-// cats.controller.ts
-@Post()
-@UsePipes(ValidationPipe)
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+### Global scoped pipes
 
 This example below set it up as a global-scoped pipe, applied to every route handler across the entire application:
 
-**main.ts**
-
 ```ts
+// main.ts
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
@@ -147,8 +180,8 @@ bootstrap();
 
 ### Parsing a string into an integer value
 
-**parse-int.pipe.ts**:
 ```ts
+// parse-int.pipe.ts
 import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
 
 @Injectable()
@@ -180,7 +213,9 @@ async findOne(@Param('id', new ParseUUIDPipe()) id) {
 ```
 
 
-### Select entity from the database by id
+### Select an existing user
+
+Select an existing user entity from the database using an id supplied in the request:
 
 ```ts
 @Get(':id')
