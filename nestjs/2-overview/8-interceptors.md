@@ -73,9 +73,8 @@ export class AppModule {}
 
 ## Response transform
 
-**transform.interceptor.ts**:
-
 ```ts
+// transform.interceptor.ts
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -101,7 +100,72 @@ When someone calls the `GET /cats` endpoint, the response would look like the fo
 ```
 
 
-## Override thrown exceptions
+## Override exceptions
+
+```ts
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  BadGatewayException,
+  CallHandler,
+} from '@nestjs/common';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+@Injectable()
+export class ErrorsInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    return next
+      .handle()
+      .pipe(
+        catchError(err => throwError(new BadGatewayException())),
+      );
+  }
+}
+```
 
 
 ## Prevent handler's execution
+
+```ts
+// cache.interceptor.ts
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
+import { Observable, of } from 'rxjs';
+
+@Injectable()
+export class CacheInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const isCached = true;
+    if (isCached) {
+      return of([]);
+    }
+    return next.handle();
+  }
+}
+```
+
+
+## Handling timeouts
+
+```ts
+// timeout.interceptor.ts
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, RequestTimeoutException } from '@nestjs/common';
+import { Observable, throwError, TimeoutError } from 'rxjs';
+import { catchError, timeout } from 'rxjs/operators';
+
+@Injectable()
+export class TimeoutInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    return next.handle().pipe(
+      timeout(5000),
+      catchError(err => {
+        if (err instanceof TimeoutError) {
+          return throwError(new RequestTimeoutException());
+        }
+        return throwError(err);
+      }),
+    );
+  };
+};
+```

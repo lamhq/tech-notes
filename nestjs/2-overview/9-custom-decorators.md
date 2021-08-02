@@ -1,6 +1,20 @@
 # Decorator
 
-## Define custom decorator
+## Param decorators
+
+- `@Request()`, `@Req()`
+- `@Response()`, `@Res()`
+- `@Next()`
+- `@Session()`
+- `@Param(param?: string)`
+- `@Body(param?: string)`
+- `@Query(param?: string)`
+- `@Headers(param?: string)`
+- `@Ip()`
+- `@HostParam()`
+
+
+## Defining custom decorators
 
 ```ts
 // user.decorator.ts
@@ -29,7 +43,22 @@ async findOne(@User('firstName') firstName: string) {
 ```
 
 
-## Decorator composition
+## Working with pipes
+
+The same syntax with `@Body()`, `@Param()` and `@Query()`
+
+```ts
+@Get()
+async findOne(
+  @User(new ValidationPipe({ validateCustomDecorators: true }))
+  user: UserEntity,
+) {
+  console.log(user);
+}
+```
+
+
+## Decorator compositions
 
 ```ts
 import { applyDecorators } from '@nestjs/common';

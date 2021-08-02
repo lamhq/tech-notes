@@ -84,41 +84,84 @@ export class CatsModule {}
 
 ## Dynamic module
 
-### Declare dynamic module
+Dynamic modules give us the ability to pass parameters into the module being imported so we can change its behavior.
 
-The `forRoot()` method may return a dynamic module either synchronously or asynchronously (i.e., via a `Promise`).
+
+### Declaring dynamic modules
+
+The static `register()` method return an object that has the `DynamicModule` interface (synchronously or asynchronously).
 
 ```ts
-import { Module, DynamicModule } from '@nestjs/common';
-import { createDatabaseProviders } from './database.providers';
-import { Connection } from './connection.provider';
+import { DynamicModule, Module } from '@nestjs/common';
+import { ConfigService } from './config.service';
 
-@Module({
-  providers: [Connection],
-})
-export class DatabaseModule {
-  static forRoot(entities = [], options?): DynamicModule {
-    const providers = createDatabaseProviders(options, entities);
+@Module({})
+export class ConfigModule {
+  static register(options): DynamicModule {
     return {
       // global: true,
-      module: DatabaseModule,
-      providers: providers,
-      exports: providers,
+      module: ConfigModule,
+      providers: [
+        {
+          provide: 'CONFIG_OPTIONS',
+          useValue: options,
+        },
+        ConfigService,
+      ],
+      exports: [ConfigService],
+      // imports: []
     };
   }
 }
 ```
 
+A dynamic module is nothing more than a module created at run-time, with the same exact properties as a static module, plus one additional property called `module`. The `module` property serves as the name of the module, and should be the same as the class name of the module.
+
+### Accessing module configuration
+
+Our `ConfigModule` is providing `ConfigService`. `ConfigService` in turn depends on the `options` object that is only supplied at run-time. 
+
+Our remaining task is to somehow inject the `options` object from the `register()` step into our `ConfigService`.
+
+What we need to do is define our `options` object as a provider. This will make it injectable into the `ConfigService`.
+
+```ts
+// config.service.ts
+import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+import { Injectable, Inject } from '@nestjs/common';
+import { EnvConfig } from './interfaces';
+
+@Injectable()
+export class ConfigService {
+  private readonly envConfig: EnvConfig;
+
+  constructor(@Inject('CONFIG_OPTIONS') private options) {
+    const filePath = `${process.env.NODE_ENV || 'development'}.env`;
+    const envFile = path.resolve(__dirname, '../../', options.folder, filePath);
+    this.envConfig = dotenv.parse(fs.readFileSync(envFile));
+  }
+
+  get(key: string): string {
+    return this.envConfig[key];
+  }
+}
+```
 
 ### Using dynamic module
 
+The `@Module()` decorator's imports property can take not only a module class name (e.g., `imports: [UsersModule]`), but also a function returning a dynamic module (e.g., `imports: [ConfigModule.register(...)]`).
+
 ```ts
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from './database/database.module';
-import { User } from './users/entities/user.entity';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule } from './config/config.module';
 
 @Module({
-  imports: [DatabaseModule.forRoot([User])],
+  imports: [ConfigModule.register({ folder: './config' })],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
 ```

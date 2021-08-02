@@ -143,6 +143,8 @@ const mockCatsService = {
 export class AppModule {}
 ```
 
+### Non-class-based provider tokens
+
 Use string token instead of class token:
 
 ```ts
@@ -169,7 +171,7 @@ export class CatsRepository {
 
 ## Creating providers dynamically
 
-The actual provider will be supplied by the value returned from a factory function. The factory function can accept (optional) arguments. Provider injection can be done asynchronously
+The actual provider will be supplied by the value returned from a factory function. The factory function can accept (optional) arguments. Provider injection can be done **asynchronously**.
 
 ```ts
 const connectionFactory = {
@@ -224,6 +226,7 @@ const connectionFactory = {
 
 @Module({
   providers: [connectionFactory],
+  // export using the token
   exports: ['CONNECTION'],
 })
 export class AppModule {}
@@ -241,6 +244,7 @@ const connectionFactory = {
 
 @Module({
   providers: [connectionFactory],
+  // export with the full provider object
   exports: [connectionFactory],
 })
 export class AppModule {}
