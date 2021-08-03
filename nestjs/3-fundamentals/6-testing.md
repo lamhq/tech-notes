@@ -45,6 +45,8 @@ describe('CatsController', () => {
 
 As an application grows, it becomes hard to manually test the end-to-end behavior of each API endpoint. Automated end-to-end tests help us ensure that the overall behavior of the system is correct and meets project requirements.
 
+*HINT: Keep your e2e test files inside the test directory. The testing files should have a `.e2e-spec` suffix.*
+
 ```ts
 // cats.e2e-spec.ts
 import * as request from 'supertest';
@@ -90,3 +92,54 @@ In this example:
 - we use `overrideProvider()` to provide an alternate implementation of the `CatsService` which simply returns a hard-coded value.
 - we supply an instance that will override the object with `useValue`.
 - we route HTTP requests to our running Nest app by wrapping HTTP Server in the `request()` function.
+
+
+## Overriding providers
+
+Nest provides methods to override guards, interceptors, filters and pipes with the `overrideGuard()`, `overrideInterceptor()`, `overrideFilter()`, and `overridePipe()` methods respectively.
+
+Each of the override methods returns an object with 3 different methods:
+
+- `useClass`
+- `useValue`
+- `useFactory`
+
+
+## Overriding globally registered enhancers
+
+```ts
+providers: [
+  {
+    provide: APP_GUARD,
+    useExisting: JwtAuthGuard,
+  },
+  JwtAuthGuard,
+]
+```
+
+```ts
+const moduleRef = await Test.createTestingModule({
+  imports: [AppModule],
+})
+  .overrideProvider(JwtAuthGuard)
+  .useClass(MockAuthGuard)
+  .compile();
+```
+
+
+## Testing request-scoped instances
+
+Request-scoped providers are created uniquely for each incoming request.
+
+To retrieve a dynamically instantiated class, we need to generate a context identifier beforehand and force Nest to use this particular ID to create a sub-tree for all incoming requests.
+
+```ts
+const contextId = ContextIdFactory.create();
+jest
+  .spyOn(ContextIdFactory, 'getByRequest')
+  .mockImplementation(() => contextId);
+```
+
+```ts
+catsService = await moduleRef.resolve(CatsService, contextId);
+```

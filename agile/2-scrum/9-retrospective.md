@@ -38,4 +38,4 @@ Be careful to focus not on what was delivered, but rather on how the team worked
   - Start / Stop / Continue: What the team should start doing, stop doing, and continue doing.
   - More / less: What the team needs to do more and less of.
   - Glad / Sad / Mad: What made the team glad, sad, and mad. You guessed it, focus on the sad and mad lists and how to improve so there are only items in the glad column next time.
-- **Engage leadership**. After a major project has been rolled out, schedule an hour with a member of your leadership team and focus on how the team worked together
+- **Engage leadership**. After a major project has been rolled out, schedule an hour with a member of your leadership team and focus on how the team worked together.

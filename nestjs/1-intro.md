@@ -1,5 +1,9 @@
 # Overview
 
+## Version
+
+`8.0.4`
+
 ## Install NestJS cli
 
 ```shell
