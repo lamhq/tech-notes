@@ -6,8 +6,56 @@
 yarn add @nestjs/config
 ```
 
+```ts
+// app.module.ts
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
-## Configuration file
+@Module({
+  imports: [ConfigModule.forRoot()],
+})
+export class AppModule {}
+```
+
+`@nestjs/config` relies on [dotenv](https://github.com/motdotla/dotenv). The above code will load and parse a `.env` file from the default location (the project root directory) and store the result in a private structure that you can access through the `ConfigService`.
+
+When a key exists both in the runtime environment as an environment variable and in a .env file, the runtime environment variable takes precedence.
+
+## Expandable variables
+
+With this technique, you can create nested environment variables, where one variable is referred to within the definition of another. For example:
+
+```sh
+APP_URL=mywebsite.com
+SUPPORT_EMAIL=support@${APP_URL}
+```
+
+Enable environment variable expansion using the `expandVariables` option:
+
+```ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      // ...
+      expandVariables: true,
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+## Use module globally
+
+By declaring it as a global module, you will not need to import `ConfigModule` in other modules once it's been loaded in the root module.
+
+```ts
+ConfigModule.forRoot({
+  isGlobal: true,
+});
+```
+
+
+## Custom configuration files
 
 ```ts
 // config/configuration.ts
@@ -20,15 +68,9 @@ export default () => ({
 });
 ```
 
-
-## Register ConfigModule
-
 ```ts
 // app.module.ts
 import configuration from './config/configuration';
-
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -40,7 +82,7 @@ export class AppModule {}
 ```
 
 
-## Using ConfigService
+## Using the ConfigService
 
 You do not need to import `ConfigModule` when `isGlobal` is set to `true`.
 
@@ -61,8 +103,10 @@ export class AppController {
 
   @Post()
   create(@Body() data: any) {
+    // get an environment variable
+    const dbUser = this.configService.get<string>('DATABASE_USER');
+
     // get a custom configuration value
-    // use "localhost" when "database.host" is not defined
     const dbHost = this.configService.get<string>('database.host', 'localhost');
   }
 }
@@ -101,7 +145,7 @@ export class AppModule {}
 ```
 
 
-## Using ConfigService in `main.ts`
+## Using in the `main.ts`
 
 ```ts
 const configService = app.get(ConfigService);
