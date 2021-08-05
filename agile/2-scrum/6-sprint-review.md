@@ -47,3 +47,22 @@ For teams that are new to sprint reviews, there’s a strong temptation to bleed
 A sprint review is an independent ceremony from a sprint retrospective. Effective sprint reviews build up the morale and motivation of the team.
 
 Take the time to enjoy the fruit of your labors. Liberally celebrate accomplishments.
+
+
+# Note
+
+**Attendees (Primarily)**: development team, scrum master, product owner.
+Optional: stakeholders
+
+**When**: Typically on the last day of the sprint
+
+**Duration**: Typically two hours for a two-week sprint
+
+**Purpose**: Inspect the increment and collaboratively update the product backlog.
+
+**Questions to ask**:
+
+- Did the team meet the sprint forecast?
+- Was there work added or removed during the middle of the sprint?
+- Did any work not get completed within the sprint?
+- If so, why?

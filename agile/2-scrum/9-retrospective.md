@@ -39,3 +39,22 @@ Be careful to focus not on what was delivered, but rather on how the team worked
   - More / less: What the team needs to do more and less of.
   - Glad / Sad / Mad: What made the team glad, sad, and mad. You guessed it, focus on the sad and mad lists and how to improve so there are only items in the glad column next time.
 - **Engage leadership**. After a major project has been rolled out, schedule an hour with a member of your leadership team and focus on how the team worked together.
+
+
+# WHAT IS A SPRINT RETROSPECTIVE MEETING?
+Attendees: development team, scrum master, product owner.
+
+When: At the end of an iteration.
+
+Duration:  Typically 90 minutes for a two-week sprint.
+
+Purpose: The team inspects itself, including its processes, tools and team interaction. Improvement issues are often added to the next sprint's backlog.
+
+Retrospectives aren't just a time for complaints without action. Use retrospectives to find out what's working so the team can continue to focus on those areas. Also, find out what's not working and use the time to find creative solutions and develop an action plan. Continuous improvement is what sustains and drives development within an agile team, and retrospectives are a key part of that.
+
+Questions to ask:
+- What did we do well during the sprint?
+- What could we have done better?
+- What are we going to do better for next time?
+ 
+ProTip: Even if things are going well across the team, don't stop doing retrospectives. Retrospectives provide ongoing guidance for the team to keep things going well.

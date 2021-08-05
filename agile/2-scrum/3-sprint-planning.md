@@ -55,3 +55,29 @@ The sprint goal describes the objective of the sprint at a high level, but the b
 User stories are one great way of describing the work from a customer point of view. By adding clear, measurable results to the user story, the outcomes can be clearly measured, and you know when you are done.
 
 *Don’t ignore the unknowns, they are the reality of doing difficult work. But don’t hide them by using vague words. Instead, be clear when you don’t know something and frame the work in terms of gaining an understanding.*
+
+
+# WHAT IS THE SPRINT PLANNING MEETING?
+
+Attendees: Required: development team, scrum master, product owner
+
+When: At the beginning of a sprint.
+
+Duration: Usually two hours per week of iteration – e.g. a two-week sprint kicks off with a four-hour planning meeting. The meeting ends when its purpose has been achieved.
+
+Purpose: Plan the work of the sprint. The team agrees to the sprint goal and the sprint backlog.
+
+# WHAT IS A SPRINT GOAL?
+
+When creating a sprint, the product owner usually identifies a sprint goal. This provides a theme for the work to be completed in the sprint. A sprint goal also provides some flexibility in the number of stories that are completed in a sprint. A sprint is considered a success if the sprint goal is achieved.
+
+
+## What is Agile Estimation?
+
+Traditional software teams give estimates in a time format: days, weeks, months.
+
+Many agile teams, however, have transitioned to story points. Story points rate the relative effort of work, often in a Fibonacci-like format: 0, 0.5, 1, 2, 3, 5, 8, 13, 20, 40, 100. 
+
+## Why the Fibonacci series is used in Agile
+
+Check [here](https://www.lucidchart.com/blog/fibonacci-scale-for-agile-estimation).
