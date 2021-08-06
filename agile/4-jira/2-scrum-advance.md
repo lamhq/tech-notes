@@ -6,11 +6,13 @@
 
 *Epics are almost always delivered over a set of sprints. As a team learns more about an epic through development and customer feedback, some user stories will be added and removed to optimize the team's release time.*
 
+*You can also create an epic when you notice a pattern among several user stories, and you want to bundle them into one group.*
+
 If your team is working on user stories that build up a larger user story, which in turn affects multiple projects, go ahead and use epics — they can make project tracking easier in this scenario.
 
 To use epics, head to the Backlog of your board, and expand the Epics panel by clicking **EPICS**.
 
-## Linking a Confluence page to an epic
+### Linking a Confluence page to an epic
 
 If you have linked your Jira Software site to **Confluence**, you can create and link Confluence pages to your epics. For example, you may want to link your epic to a specification or design document in Confluence.
 
