@@ -32,7 +32,7 @@ git show c5826d
 
 ## Undoing changes
 
-## `git revert`
+### `git revert`
 
 - Revert the changes in one or more selected commits
 - Appends (or not) new commits with the inverse content.
@@ -47,9 +47,10 @@ git revert 8d87357...HEAD --no-commit
 ```
 
 
-## `git reset`
+### `git reset`
 
 Reset history to selected commit.
+
 
 `git reset [--mixed] <commit>`: 
 - not modifying files in the working directory.
@@ -62,3 +63,10 @@ Reset history to selected commit.
 `git reset --hard <commit>`: 
 - working directory is reset to selected commit.
 - any changes since selected commit are discarded.
+
+
+Use cases: revert multiple commits and combine them to one commit
+
+```shell
+git reset --soft HEAD~3
+```
