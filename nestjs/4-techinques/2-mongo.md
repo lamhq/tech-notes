@@ -48,7 +48,7 @@ export class Admin {
 ```
 
 
-## TypeORM integration
+## Register Entity Repository
 
 ```ts
 // admin.module.ts
@@ -58,6 +58,7 @@ import { AdminService } from './admin.service';
 import { Admin } from './admin.entity';
 
 @Module({
+  // allow injecting AdminRepository into the AdminService
   imports: [TypeOrmModule.forFeature([Admin])],
   providers: [AdminService],
 })
@@ -65,7 +66,7 @@ export class AdminModule {}
 ```
 
 
-## Accessing entity repository
+## Using Entity Repository
 
 ```ts
 // admin.service.ts
@@ -83,4 +84,16 @@ export class AdminService {
   async findOneByEmail(email: string): Promise<Admin | undefined> {
     return this.adminRepository.findOne({ email });
   }
+
+  async addAdmin(dto: CreateAdminDto): Promise<Admin> {
+    const saved = await this.adminRepository.save(adminDto);
+    return saved;
+  }    
+
+  async findAll(query: AdminQuery): Promise<Admin[]> {
+    const stages = [];
+    stages.push({ $skip: query.offset });
+    stages.push({ $limit: query.limit });    
+    return this.adminRepository.aggregateEntity(stages).toArray();
+  }    
 ```

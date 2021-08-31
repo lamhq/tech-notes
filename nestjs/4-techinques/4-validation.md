@@ -1,9 +1,10 @@
 # Validation
 
+## Registering ValidationPipe
+
 The `ValidationPipe` provides a convenient approach to enforce validation rules for all incoming client payloads, where the specific rules are declared with simple annotations in local class/DTO declarations in each module.
 
-
-## ValidationPipe options
+Options:
 
 - `skipMissingProperties`: skip validation of properties that are missing in the validating object.
 - `whitelist`: strip properties that do not use any validation decorators.

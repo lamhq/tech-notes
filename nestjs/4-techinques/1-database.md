@@ -116,6 +116,31 @@ export class UsersService {
 }
 ```
 
+## Relations
+
+```ts
+// user.entity.ts
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Photo } from '../photos/photo.entity';
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  firstName: string;
+
+  @Column()
+  lastName: string;
+
+  @Column({ default: true })
+  isActive: boolean;
+
+  @OneToMany(type => Photo, photo => photo.user)
+  photos: Photo[];
+}
+```
 
 ## Transactions
 
@@ -216,7 +241,7 @@ Check [here](https://docs.nestjs.com/techniques/database#multiple-databases)
 
 ## Testing
 
-Mock repositories:
+Mock entity repositories:
 
 ```ts
 import { getRepositoryToken } from '@nestjs/typeorm';
