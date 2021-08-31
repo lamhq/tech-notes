@@ -3,7 +3,7 @@
 ## Export all files in a commit
 
 ```sh
-git archive --format=tar --output=~/Desktop/notebook.tar.gz 7ddc9a3
+git archive --format=tar --output=nb-api.tar.gz HEAD
 git archive --format=zip --output=my-function.zip HEAD
 ```
 

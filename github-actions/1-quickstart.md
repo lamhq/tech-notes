@@ -23,6 +23,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      run: |
+        echo "This is a multti 
+        line string"
 ```
 
 2. Committing the workflow file to a branch in your repository triggers the `push` event and runs your workflow.

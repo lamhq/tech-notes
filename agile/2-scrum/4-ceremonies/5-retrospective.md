@@ -38,9 +38,9 @@ Find creative solutions and develop an action plan for improving the way the tea
     - What did we do well during the sprint?
     - What could we have done better?
     - What are we going to do better for next time?
-    - Start / Stop / Continue: What the team should start doing, stop doing, and continue doing.
-    - More / less: What the team needs to do more and less of.
-    - Glad / Sad / Mad: What made the team glad, sad, and mad. You guessed it, focus on the sad and mad lists and how to improve so there are only items in the glad column next time.
+    - What the team should start doing, stop doing, and continue doing?
+    - What the team needs to do more and less of?
+    - What made the team glad, sad, and mad. You guessed it, focus on the sad and mad lists and how to improve so there are only items in the glad column next time?
 2. **Prioritize this list by importance as a team.**
 3. **Discuss ways and tactics to improve the top two items on the "room for improvement" list**. Focus on outcomes, not actions or people, or the past.
 3. **Create an action plan.** By the end of the session, the team should have produced a few actionable ideas with clear owners and due dates to address the areas of improvement. 
