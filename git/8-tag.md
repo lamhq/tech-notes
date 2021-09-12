@@ -48,14 +48,14 @@ git push origin v1.4
 git push --tags
 ```
 
-### Delete tag
+## Delete tag
 
 ```sh
 git tag -d <tag-name>
 ```
 
 
-### create tag and push
+## create tag and push
 
 ```sh
 git tag <tag-name> <commit-checksum>
