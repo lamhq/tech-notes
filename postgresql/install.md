@@ -33,10 +33,14 @@ postgres -D /Users/lam/Desktop/program/pgsql/data
 ## Create database and user
 
 ```shell
-psql -h localhost -p 5432 postgres;
+psql \
+  --host=localhost \
+  --port=5432 \
+  --username=postgres \
+  --dbname=postgres
 
-CREATE DATABASE mobilesc_db;
-CREATE USER mscadmin PASSWORD 'abc@123!';
-ALTER USER mscadmin WITH SUPERUSER;
-GRANT ALL PRIVILEGES ON DATABASE mobilesc_db TO mscadmin;
+CREATE DATABASE wrx;
+CREATE USER wrxadmin PASSWORD '123';
+ALTER USER wrxadmin WITH SUPERUSER;
+GRANT ALL PRIVILEGES ON DATABASE wrx TO wrxadmin;
 ```
