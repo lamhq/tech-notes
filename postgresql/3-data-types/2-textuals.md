@@ -111,6 +111,15 @@ SELECT substring(
 ) As x;
 ```
 
+**Query using regular expression operator `~`**:
+
+```sql
+SELECT description
+FROM mytable
+WHERE description ~ E'[(]{0,1}[0-9]{3}[)-.]{0,1}[\\s]{0,1}[0-9]{3}[-.]{0,1}[0-9]{4}';
+```
+
+
 ### The `flag` parameter
 
 The last input to `regexp_matches` function is the flags parameter. We set this to `g`, which stands for global and returns all matches of a regular expression as separate elements.
