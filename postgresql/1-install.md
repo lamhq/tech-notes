@@ -2,9 +2,7 @@
 
 ## Download
 
-Download a zip archive for MacOS at [here](https://www.enterprisedb.com/download-postgresql-binaries)
-
-Then unzip the archive
+Download a zip archive for MacOS at [here](https://www.enterprisedb.com/download-postgresql-binaries), then unzip the archive:
 
 ```shell
 unzip postgre*.zip
@@ -30,17 +28,23 @@ Start PostgreSQL:
 postgres -D /Users/lam/Desktop/program/pgsql/data
 ```
 
-## Create database and user
 
-```shell
+## Connect to database
+
+```sh
 psql \
   --host=localhost \
   --port=5432 \
   --username=postgres \
   --dbname=postgres
+```
 
-CREATE DATABASE wrx;
+
+## Create database and user
+
+```sql
 CREATE USER wrxadmin PASSWORD '123';
 ALTER USER wrxadmin WITH SUPERUSER;
+CREATE DATABASE wrx;
 GRANT ALL PRIVILEGES ON DATABASE wrx TO wrxadmin;
 ```
