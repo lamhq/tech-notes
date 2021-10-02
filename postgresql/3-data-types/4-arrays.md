@@ -1,5 +1,119 @@
 # Arrays
 
+## Defining array column
+
+```sql
+CREATE TABLE contacts (
+	id serial PRIMARY KEY,
+	name VARCHAR (100),
+	phones TEXT []
+);
+```
+
+## Inserting array values
+
+```sql
+INSERT INTO contacts (name, phones) VALUES(
+  'John Doe',
+  ARRAY ['(408)-589-5846', '(408)-589-5555']
+);
+```
+
+## Modifying PostgreSQL array
+
+```sql
+UPDATE contacts
+SET phones [2] = '(408)-589-5843'
+WHERE ID = 3;
+```
+
+
+## Array Containment Checks
+
+**Check array contain value:**
+```sql
+SELECT name, phones
+FROM contacts
+WHERE '(408)-589-5555' = ANY (phones);
+```
+
+**Check array contain array:**
+
+```sql
+SELECT '{1,2,3}'::int[] @> '{3,2}'::int[] AS contains;
+
+SELECT '{1,2,3}'::int[] <@ '{3,2}'::int[] AS contained_by;
+```
+
+**Check arrays overlaps:**
+
+```sql
+SELECT fact_subcats
+FROM census.lu_fact_types
+WHERE fact_subcats && '{OCCUPANCY STATUS,For rent}'::varchar[];
+```
+
+
+## Unnesting Arrays to Rows
+
+**Expand arrays into a set of rows:**
+
+```sql
+SELECT unnest('{XOX,OXO,XOX}'::char(3)[]) As tic_tac_toe;
+```
+
+**Unnesting balanced arrays:**
+
+```sql
+SELECT
+  unnest('{three,blind,mice}'::text[]) As t,
+  unnest('{1,2,3}'::smallint[]) As i;
+```
+
+**Unnesting unbalanced arrays:**
+
+```sql
+SELECT
+  unnest( '{blind,mouse}'::varchar[]) AS v,
+  unnest('{1,2,3}'::smallint[]) AS i;
+```
+
+**Unnesting unbalanced arrays (2):**
+
+```sql
+SELECT * FROM unnest('{blind,mouse}'::text[], '{1,2,3}'::int[]) AS f(t,i);
+```
+
+## Array Slicing and Splicing
+
+**Slicing:**
+
+```sql
+SELECT fact_subcats[2:4] FROM census.lu_fact_types;
+```
+
+**Concat array:**
+
+```sql
+SELECT fact_subcats[1:2] || fact_subcats[3:4] 
+FROM census.lu_fact_types;
+
+SELECT '{1,2,3}'::integer[] || 4 || 5;
+```
+
+## Referencing Elements in an Array
+
+Elements in arrays are most commonly referenced using the index of the element. PostgreSQL array indexes start at 1
+
+**Get the first and last element of an array:**
+
+```sql
+SELECT
+  fact_subcats[1] AS primero,
+  fact_subcats[array_upper(fact_subcats, 1)] As segundo
+FROM census.lu_fact_types;
+```
+
 ## Array Constructors
 
 ```sql
@@ -35,6 +149,3 @@ SELECT array_agg(log_ts ORDER BY log_ts) As x
 FROM logs
 WHERE log_ts BETWEEN '2011-01-01'::timestamptz AND '2011-01-15'::timestamptz;
 ```
-
-
-## Unnesting Arrays to Rows
