@@ -1,17 +1,3 @@
-## Connect to db server
-
-```shell
-psql -h <host> -p <port> -U <username> -W <password> <database>
-```
-
-
-## Connect to db server uing psql without typing password
-
-```shell
-vi ~/.pgpass
-localhost:5432:mobilesc_dev:postgres:abc@123!
-```
-
 
 ## Display script running progress
 
@@ -25,32 +11,6 @@ pv /tmp/data.txt | psql -c "COPY mytest FROM STDIN;"
 ```
 
 Reference: [Stackoverflow](https://dba.stackexchange.com/questions/50602/how-do-i-find-out-how-far-along-my-postgresql-query-is)
-
-
-## Dump database schema with pg_dump
-
-```bash
-pg_dump -U postgres -h localhost mobilesc_db -s > schema.sql
-```
-
-
-## Install pgclient on Centos
-```bash
-yum install -y postgresql10
-```
-
-
-## Import database
-```bash
-psql -h localhost -p 5432 -U postgres mobilesc_db -f data.sql
-```
-
-
-## Fix pg_dump version mismatch
-
-```bash
-sudo ln -s /usr/pgsql-11/bin/pg_dump /usr/bin/pg_dump --force
-```
 
 
 ## Disable trigger for faster bulk loading data
