@@ -48,3 +48,10 @@ ALTER USER wrxadmin WITH SUPERUSER;
 CREATE DATABASE wrx;
 GRANT ALL PRIVILEGES ON DATABASE wrx TO wrxadmin;
 ```
+
+
+## Change user password
+
+```sql
+ALTER USER wrxadmin WITH PASSWORD 'jnCDxw72hTGq45nz';
+```
