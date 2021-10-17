@@ -1,7 +1,5 @@
 # Lexical Structure
 
-## Identifiers and Key Words
-
 **SQL input** consists of a sequence of commands. 
 
 A **command** is composed of a sequence of tokens, terminated by a semicolon (`;`).
@@ -149,3 +147,77 @@ $SomeTag$Dianne's horse$SomeTag$
 ```
 
 Inside the dollar-quoted string, no characters inside a dollar-quoted string are ever escaped (single quotes, backslashes, are dollar signs, unless they are part of a sequence matching the opening tag). The string content is always written literally.
+
+It is possible to nest dollar-quoted string constants by choosing different tags at each nesting level. This is most commonly used in writing function definitions. For example:
+
+```sql
+$function$
+BEGIN
+    RETURN ($1 ~ $q$[\t\r\n\v\\]$q$);
+END;
+$function$
+```
+
+The tag follows the same rules as an unquoted identifier. Tags are case sensitive, so $tag$String content$tag$ is correct, but $TAG$String content$tag$ is not.
+
+
+### Bit-String Constants
+
+e.g., `B'1001'`
+
+
+### Numeric Constants
+
+```
+42
+3.5
+4.
+.001
+5e2
+1.925e-3
+```
+
+When necessary, you can force a numeric value to be interpreted as a specific data type by casting it. For example, you can force a numeric value to be treated as type real (float4) by writing:
+
+```
+REAL '1.23'  -- string style
+1.23::REAL   -- PostgreSQL (historical) style
+```
+
+### Constants Of Other Types
+
+A constant of an arbitrary type can be entered using any one of the following notations:
+
+```
+type 'string'
+'string'::type
+CAST ( 'string' AS type )
+```
+
+
+## Operators
+
+An operator name is a sequence of characters from the following list:
+
+```
++ - * / < > = ~ ! @ # % ^ & | ` ?
+```
+
+
+## Special Characters
+
+- A dollar sign (`$`) followed by **digits** is used to represent a positional parameter in the body of a function definition or a prepared statement.
+- Parentheses (`()`) have their usual meaning to group expressions and enforce precedence.
+- Brackets (`[]`) are used to select the elements of an array.
+- Commas (`,`) are used in some syntactical constructs to separate the elements of a list.
+- The semicolon (`;`) terminates an SQL command.
+- The colon (`:`) is used to select “slices” from arrays.
+- The asterisk (`*`) is used in some contexts to denote all the fields of a table row or composite value.
+- The period (`.`) is used in numeric constants, and to separate schema, table, and column names.
+
+
+## Comments
+
+```
+-- This is a standard SQL comment
+```
