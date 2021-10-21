@@ -72,70 +72,20 @@ yesterday
 
 ## Time Zones
 
+PostgreSQL doesn’t store the time zone, but uses it only to convert the datetime to UTC before storage. 
+
 we recommend using date/time types that contain both date and time when using time zones. We do not recommend using the type `time with time zone`
 
+PostgreSQL allows you to specify time zones in three different forms:
 
-## PostgreSQL temporal types
+- A full time zone name `America/New_York`
+- A time zone abbreviation `PST`
+- POSIX-style time zone specifications
 
-In addition to the usual dates and times types, PostgreSQL supports time zones, enabling the automatic handling of daylight saving time (DST) conversions by region.
+The TimeZone configuration parameter can be set in the file `postgresql.conf`. There are also some special ways to set it:
 
-### `date`
-
-- Stores the month, day, and year
-- no time zone awareness and 
-- no concept of hours, minutes, or seconds.
-
-
-### `time` (time without time zone)
-
-- stores hours, minutes, and seconds with 
-- no awareness of time zone or calendar dates
-
-
-### `timestamp` (timestamp without time zone)
-
-- Stores both calendar dates and time (hours, minutes, seconds)
-- does not care about the time zone.
-
-
-### `timestamptz` (timestamp with time zone)
-
-- A time zone−aware date and time data type
-- Internally stored in Coordinated Universal Time (UTC)
-- display defaults to the time zone of the server, the service config, the database, the user, or the session
-
-
-### `timetz` (time with time zone)
-
-- It is time zone−aware but does not store the date
-- It always assumes DST of the current date and time.
-
-
-### `interval`
-
-- A duration of time in hours, days, months, minutes, and others.
-- It comes in handy for datetime arithmetic
-
-
-### `tsrange`
-
-- Allows you to define opened and closed ranges of `timestamp` with no timezone.
-- Example: `'[2012-01-01 14:00, 2012-01-01 15:00)'::tsrange`
-
-
-### `tstzrange`
-
-- Allows you to define opened and closed ranges of `timestamp` with timezone.
-
-
-### `daterange`
-
-- Allows you to define opened and closed ranges of dates.
-
-
-## Time Zones
-
-PostgreSQL doesn’t store the time zone, but uses it only to convert the datetime to UTC before storage. 
+- The SQL command `SET TIME ZONE` sets the time zone for the session.
+- The `PGTZ` environment variable is used by libpq clients to send a `SET TIME ZONE` command to the server upon connection.
 
 **Inputting time in one time zone and output in another:**
 
@@ -148,6 +98,20 @@ SELECT '2012-02-28 10:00 PM America/Los_Angeles'::timestamptz;
 ```sql
 SELECT '2012-02-28 10:00 PM America/Los_Angeles'::timestamptz AT TIME ZONE 'Europe/Paris';
 ```
+
+
+## Interval Input
+
+```
+1-2   # 1 year 2 months
+3 4:05:06   # 3 days 4 hours 5 minutes 6 seconds
+1 year 2 months 3 days 4 hours 5 minutes 6 seconds
+```
+
+```sql
+SELECT EXTRACT(hours from '80 minutes'::interval);
+```
+
 
 ## Datetime Operators and Functions
 
