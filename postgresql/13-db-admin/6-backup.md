@@ -33,6 +33,13 @@ pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
 pg_dump -h localhost -p 5432 -U someuser -C -F p -b -v -f mydb.backup mydb
 ```
 
+**Create a plain-text SQL backup:**
+
+```sh
+pg_dump -h localhost -p 5432 -U someuser -F p --column-inserts \
+  -f select_tables.backup mydb
+```
+
 **Create a compressed backup of tables whose names start with `pay` in any schema**
 
 ```sh
@@ -51,13 +58,6 @@ pg_dump -h localhost -p 5432 -U someuser -F c -b -v \
 ```sh
 pg_dump -h localhost -p 5432 -U someuser -F c -b -v -N public \
   -f all_sch_except_pub.backup mydb
-```
-
-**Create a plain-text SQL backup:**
-
-```sh
-pg_dump -h localhost -p 5432 -U someuser -F p --column-inserts \
-  -f select_tables.backup mydb
 ```
 
 **Create a directory format backup:**

@@ -1,4 +1,79 @@
-# Temporals
+# Date/Time Types
+
+## Date/Time Types
+
+```
+date
+time [ (p) ] [ without time zone ]
+time [ (p) ] with time zone
+timestamp [ (p) ] [ without time zone ]	
+timestamp [ (p) ] with time zone
+interval [ fields ] [ (p) ]
+```
+
+`time`, `timestamp`, and `interval` accept an optional precision value `p` which specifies the number of fractional digits retained in the seconds field. The allowed range of `p` is from 0 to 6.
+
+## Date/Time Input
+
+### Dates
+
+Possible inputs for the `date` type:
+
+```
+1999-01-08
+January 8, 1999
+```
+
+### Times
+
+```
+04:05:06.789
+04:05:06
+04:05
+04:05 AM
+04:05 PM
+04:05:06.789-8
+04:05:06-08:00
+```
+
+### Time Zone
+
+```
+-8:00:00
+-8:00
+PST
+America/New_York	
+```
+
+### Time Stamps
+
+For timestamp with time zone, the internally stored value is always in UTC
+
+To ensure that a literal is treated as timestamp with time zone, give it the correct explicit type:
+
+```
+TIMESTAMP '2004-10-19 10:23:54'
+TIMESTAMP WITH TIME ZONE '2004-10-19 10:23:54+02'
+```
+
+An input value that has an explicit time zone specified is converted to UTC using the appropriate offset for that time zone. If no time zone is stated in the input string, then it is assumed to be in the time zone indicated by the system's TimeZone parameter, and is converted to UTC using the offset for the `timezone` zone.
+
+### Special Values
+
+```
+epoch (1970-01-01 00:00:00+00, Unix system time zero)
+infinity	
+-infinity
+now
+today
+tomorrow
+yesterday
+```
+
+## Time Zones
+
+we recommend using date/time types that contain both date and time when using time zones. We do not recommend using the type `time with time zone`
+
 
 ## PostgreSQL temporal types
 
