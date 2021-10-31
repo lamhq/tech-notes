@@ -7,8 +7,6 @@ CREATE TABLE orders (
 	id serial NOT NULL PRIMARY KEY,
 	info json NOT NULL
 );
-
-CREATE TABLE persons (id serial PRIMARY KEY, person json);
 ```
 
 ## Inserting JSON Data
@@ -16,78 +14,31 @@ CREATE TABLE persons (id serial PRIMARY KEY, person json);
 ```sql
 INSERT INTO orders (info)
 VALUES('{ "customer": "John Doe", "items": {"product": "Beer","qty": 6}}');
-
-INSERT INTO persons (person)
-VALUES (
-  '{
-    "name":"Sonia",
-    "spouse":{
-      "name":"Alex",
-      "parents":{
-        "father":"Rafael",
-        "mother":"Ofelia"
-      },
-      "phones":[
-        {
-          "type":"work",
-          "number":"619-722-6719"
-        },
-        {
-          "type":"cell",
-          "number":"619-852-5083"
-        }
-      ],
-      "children":[
-        {
-          "name":"Brandon",
-          "gender":"M"
-        },
-        {
-          "name":"Azaleah",
-          "girl":true,
-          "phones":[
-            
-          ]
-        }
-      ]
-    }
-  }'
-)
 ```
 
 
 ## Querying JSON
 
+Get all customers in form of JSON:
+
 ```sql
-SELECT person->'name' FROM persons;
-SELECT person->'spouse'->'parents'->'father' FROM persons;
+SELECT info -> 'customer' AS customer
+FROM orders;
 ```
 
-**Query using a path array:**
+Get all customers in form of text:
 
 ```sql
-SELECT person#>array['spouse','parents','father'] FROM persons;
+SELECT info ->> 'customer' AS customer
+FROM orders;
 ```
 
-**Access JSON arrays:**
+Get all products sold (retrieve a specific node):
 
 ```sql
-SELECT person->'children'->0->'name' FROM persons;
-SELECT person#>array['children','0','name'] FROM persons;
-```
-
-**Return the text representation:**
-
-```sql
-SELECT person->'spouse'->'parents'->>'father' FROM persons;
-SELECT person#>>array['children','0','name'] FROM persons;
-```
-
-**Expand JSON array to rows:**
-
-```sql
-SELECT json_array_elements(person->'children')->>'name' As name 
-FROM persons;
+SELECT info -> 'items' ->> 'product' as product
+FROM orders
+ORDER BY product;
 ```
 
 ## Use JSON operator in WHERE clause
@@ -115,6 +66,27 @@ SELECT
    MAX (CAST (info -> 'items' ->> 'qty' AS INTEGER)),
    SUM (CAST (info -> 'items' ->> 'qty' AS INTEGER)),
    AVG (CAST (info -> 'items' ->> 'qty' AS INTEGER))
+FROM orders;
+```
+
+
+## PostgreSQL JSON functions
+
+### `json_each`
+
+Expand the outermost JSON object into a set of key-value pairs.
+
+```sql
+SELECT json_each (info)
+FROM orders;
+```
+
+### `json_object_keys`
+
+Get a set of keys in the outermost JSON object
+
+```sql
+SELECT json_object_keys (info->'items')
 FROM orders;
 ```
 

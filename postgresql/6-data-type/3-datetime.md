@@ -70,6 +70,18 @@ tomorrow
 yesterday
 ```
 
+
+## Date/Time Output
+
+The default output format of the date/time types is the ISO format. 
+
+The date/time style can be selected by the user using:
+
+- the `SET datestyle` command
+- the `DateStyle` parameter in the `postgresql.conf` configuration file
+- the `PGDATESTYLE` environment variable on the server or client
+
+
 ## Time Zones
 
 PostgreSQL doesn’t store the time zone, but uses it only to convert the datetime to UTC before storage. 
@@ -87,13 +99,13 @@ The TimeZone configuration parameter can be set in the file `postgresql.conf`. T
 - The SQL command `SET TIME ZONE` sets the time zone for the session.
 - The `PGTZ` environment variable is used by libpq clients to send a `SET TIME ZONE` command to the server upon connection.
 
-**Inputting time in one time zone and output in another:**
+### Inputting time in one time zone and output in another
 
 ```sql
 SELECT '2012-02-28 10:00 PM America/Los_Angeles'::timestamptz;
 ```
 
-**Display timestamp in a specific timezone:**
+### Display timestamp in a specific timezone
 
 ```sql
 SELECT '2012-02-28 10:00 PM America/Los_Angeles'::timestamptz AT TIME ZONE 'Europe/Paris';
@@ -115,7 +127,7 @@ SELECT EXTRACT(hours from '80 minutes'::interval);
 
 ## Datetime Operators and Functions
 
-**Add/subtract an interval to a timestamp:**
+### Add/subtract an interval to a timestamp
 
 ```sql
 SELECT '2012-02-10 11:00 PM'::timestamp + interval '1 hour';
@@ -123,13 +135,13 @@ SELECT '2012-02-10 11:00 PM'::timestamp + interval '1 hour';
 SELECT '2012-02-10 11:00 PM'::timestamptz - interval '1 hour';
 ```
 
-**Add intervals:**
+### Add intervals
 
 ```sql
 SELECT '23 hours 20 minutes'::interval + '1 hour'::interval;
 ```
 
-**Check temporal ranges overlap:**
+### Check temporal ranges overlap
 
 ```sql
 SELECT
@@ -144,14 +156,14 @@ SELECT
   ('2012-10-26'::date,'2012-10-27'::date) As y;
 ```
 
-**Generate time series:**
+### Generate time series
 
 ```sql
 SELECT (dt - interval '1 day')::date As eom
 FROM generate_series('2/1/2012', '6/30/2012', interval '1 month') As dt;
 ```
 
-**Extracting elements of a datetime value:**
+### Extracting elements of a datetime value
 
 ```sql
 SELECT 

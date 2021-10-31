@@ -1,4 +1,4 @@
-# Textuals
+# Character Types
 
 There are three primitive textual types in PostgreSQL: 
 
@@ -14,6 +14,7 @@ If your value is under the length specified, PostgreSQL automatically adds space
 
 There is absolutely no speed performance benefit of using char over varchar or text and char will always take up more disk space.
 
+
 ## `varchar`
 
 Use character varying to store strings with varying length. 
@@ -26,6 +27,11 @@ The max length modifier for varchar is optional. Without it, varchar behaves alm
 ## `text`
 
 With text, you cannot specify a maximum length.
+
+
+There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. 
+
+`character(n)` is usually the slowest of the three because of its additional storage costs. In most situations `text` or `character varying` should be used instead.
 
 
 ## String Functions

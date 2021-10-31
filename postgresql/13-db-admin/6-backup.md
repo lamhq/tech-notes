@@ -21,10 +21,11 @@ Directory backups allow parallel `pg_dump` of a large database.
 The directory format option backs up each table as a separate file in a folder and gets around file size limitations, results in multiple files.
 
 
-**Create a compressed, single database backup:**
+**Create a plain-text SQL backup:**
 
 ```sh
-pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
+pg_dump -h localhost -p 5432 -U someuser -F p --column-inserts \
+  -f select_tables.backup mydb
 ```
 
 **Create a plain-text single database backup:**
@@ -33,11 +34,10 @@ pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
 pg_dump -h localhost -p 5432 -U someuser -C -F p -b -v -f mydb.backup mydb
 ```
 
-**Create a plain-text SQL backup:**
+**Create a compressed, single database backup:**
 
 ```sh
-pg_dump -h localhost -p 5432 -U someuser -F p --column-inserts \
-  -f select_tables.backup mydb
+pg_dump -h localhost -p 5432 -U someuser -F c -b -v -f mydb.backup mydb
 ```
 
 **Create a compressed backup of tables whose names start with `pay` in any schema**

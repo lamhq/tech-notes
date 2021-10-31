@@ -19,6 +19,22 @@ INSERT INTO contacts (name, phones) VALUES(
 );
 ```
 
+You can also use curly braces as follows:
+
+```sql
+INSERT INTO contacts (name, phones)
+VALUES('Lily Bush','{"(408)-589-5841"}'),
+      ('William Gate','{"(408)-589-5842","(408)-589-58423"}');
+```
+
+
+## Query array data
+
+```sql
+SELECT name, phones [ 1 ]
+FROM contacts;
+```
+
 ## Modifying PostgreSQL array
 
 ```sql
@@ -28,7 +44,7 @@ WHERE ID = 3;
 ```
 
 
-## Array Containment Checks
+## Search in PostgreSQL Array
 
 **Check array contain value:**
 ```sql
@@ -101,18 +117,6 @@ FROM census.lu_fact_types;
 SELECT '{1,2,3}'::integer[] || 4 || 5;
 ```
 
-## Referencing Elements in an Array
-
-Elements in arrays are most commonly referenced using the index of the element. PostgreSQL array indexes start at 1
-
-**Get the first and last element of an array:**
-
-```sql
-SELECT
-  fact_subcats[1] AS primero,
-  fact_subcats[array_upper(fact_subcats, 1)] As segundo
-FROM census.lu_fact_types;
-```
 
 ## Array Constructors
 
