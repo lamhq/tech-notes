@@ -23,15 +23,28 @@ When defining varchar columns, you should specify the maximum length of a varcha
 
 The max length modifier for varchar is optional. Without it, varchar behaves almost identically to text.
 
+The only advantage of specifying the length specifier for the `VARCHAR` data type is that PostgreSQL will issue an error if you attempt to insert a string that has more than `n` characters into the `VARCHAR(n)` column.
+
 
 ## `text`
 
-With text, you cannot specify a maximum length.
-
+With text, you can store a string with unlimited length.
 
 There is no performance difference among these three types, apart from increased storage space when using the blank-padded type, and a few extra CPU cycles to check the length when storing into a length-constrained column. 
 
 `character(n)` is usually the slowest of the three because of its additional storage costs. In most situations `text` or `character varying` should be used instead.
+
+
+## Examples
+
+```sql
+CREATE TABLE character_tests (
+	id serial PRIMARY KEY,
+	x CHAR (1),
+	y VARCHAR (10),
+	z TEXT
+);
+```
 
 
 ## String Functions
