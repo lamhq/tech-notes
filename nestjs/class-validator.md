@@ -466,13 +466,12 @@ export class User {
 | `@Max(max: number)`                             | Checks if the given number is less than or equal to given number.                                                                |
 
 
-### Number validation decorators
+### Date validation decorators
 
 | Decorator                                       | Description                                                                                                                      |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| **Date validation decorators**                                                                                                                                                     |
 | `@MinDate(date: Date)`                          | Checks if the value is a date that's after the specified date.                                                                   |
-| `@MaxDate(date: Date)`                          | Checks if the value is a date that's before the specified date.                                                                  |                                                                                                                                                  |
+| `@MaxDate(date: Date)`                          | Checks if the value is a date that's before the specified date.                                                                  |
 
 
 ### String-type validation decorators
@@ -583,5 +582,3 @@ export class User {
 | Decorator                                       | Description                                                                                                                      |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | `@Allow()`                       | Prevent stripping off the property when no other constraint is specified for it.                                                                       |
-
-

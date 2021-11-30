@@ -20,6 +20,3 @@ A range of numerics or timestamps is continuous, because an infinite number of v
 - `daterange`: A discrete date range of calendar dates without time zone awareness
 - `tsrange, tstzrange`: A continuous date and time (timestamp) range allowing for fractional
 seconds
-
-
-## Defining Ranges
