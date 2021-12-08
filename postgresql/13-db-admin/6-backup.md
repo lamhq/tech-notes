@@ -101,6 +101,16 @@ Use `pg_basebackup` to do system-level disk backup of all databases.
 If you have a reasonably sized database, as in 500 GB or more, you should be using `pg_basebackup` as part of your backup strategy.
 
 
+### Export data from a table to CSV
+
+```sql
+COPY persons TO 'C:\tmp\persons_db.csv' DELIMITER ',' CSV HEADER;
+
+COPY persons(first_name,last_name,email) 
+TO 'C:\tmp\persons_partial_db.csv' DELIMITER ',' CSV HEADER;
+```
+
+
 ## Restoring Data
 
 - Use `psql` to restore plain-text backups generated with `pg_dumpall` or `pg_dump`.
@@ -150,4 +160,32 @@ you can take advantage of the --section option to restore just the structure wit
 
 ```sh
 pg_restore --dbname=mydb2 --section=pre-data --jobs=4 mydb.backup
+```
+
+### Import csv to table
+
+First, create a new table named persons:
+
+```sql
+CREATE TABLE persons (
+  id SERIAL,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  dob DATE,
+  email VARCHAR(255),
+  PRIMARY KEY (id)
+)
+```
+
+Second, prepare a CSV data file with the following format:
+
+![](https://www.postgresqltutorial.com/wp-content/uploads/2015/05/csv-data.jpg)
+
+To import this CSV file into the `persons` table, you use `COPY` statement as follows:
+
+```sql
+COPY sample_table_name
+FROM 'C:\sampledb\sample_data.csv' 
+DELIMITER ',' 
+CSV HEADER;
 ```

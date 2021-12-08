@@ -3,7 +3,7 @@
 ## Table Basics
 
 ```sql
-CREATE TABLE products (
+CREATE TABLE [IF NOT EXISTS] products (
     product_no SERIAL,
     name text,
     price numeric DEFAULT 9.99

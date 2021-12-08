@@ -139,7 +139,7 @@ Importing data with psql:
 ```sh
 \connect postgresql_book
 \cd /postgresql_book/ch03
-\copy staging.factfinder_import FROM DEC_10_SF1_QTH1_with_ann.csv CSV
+\copy staging.fCOPYactfinder_import FROM DEC_10_SF1_QTH1_with_ann.csv CSV
 ```
 
 - we launch interactive psql

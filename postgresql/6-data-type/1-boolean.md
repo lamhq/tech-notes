@@ -1,19 +1,13 @@
 # Boolean Type
 
-The boolean type can have several states: “true”, “false”, and a third state, “unknown”, which is represented by the SQL `null` value.
+A Boolean data type can hold one of three possible values: true, false or null.
 
 Boolean constants can be represented in SQL queries by the SQL key words `TRUE`, `FALSE`, and `NULL`.
 
-The datatype input function for type boolean:
+When you insert data into a Boolean column, PostgreSQL converts it to a Boolean value:
 
-| **True** | **False** |
-| ---- | --- |
-| true | false |
-| ‘t’ | ‘f ‘ |
-| ‘true’ | ‘false’ |
-| ‘y’ | ‘n’ |
-| ‘yes’ | ‘no’ |
-| ‘1’ | ‘0’ |
+- `1`, `yes`, `y`, `t`, `true` values are converted to true
+- `0`, `no`, `false`, `f` values are converted to false.
 
 
 The datatype output function for type boolean always emits either `t` or `f`
