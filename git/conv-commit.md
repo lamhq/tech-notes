@@ -52,26 +52,35 @@ The footer MUST contain meta-information about the commit, e.g., related pull-re
 The footer should contain a [closing reference to an issue](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if any.
 
 
-## Example
+## Examples
+
+### Commit message with description and breaking change footer
 
 ```
 feat: allow provided config object to extend other configs
 
 BREAKING CHANGE: `extends` key in config file is now used for extending other config files
-
-Closes #10
 ```
 
-```
-feat(lang): add polish language
-
-Fixes octo-org/octo-repo#100
-```
+### Commit message with `!` to draw attention to breaking change
 
 ```
-docs: correct spelling of CHANGELOG
+feat!: send an email to the customer when a product is shipped
+```
 
-Resolves #10, resolves #123, resolves octo-org/octo-repo#100
+### Commit message with multi-paragraph body and multiple footers
+
+```
+fix: prevent racing of requests
+
+Introduce a request id and a reference to latest request. Dismiss
+incoming responses other than from latest request.
+
+Remove timeouts which were used to mitigate the racing issue but are
+obsolete now.
+
+Reviewed-by: Z
+Refs: #123
 ```
 
 
