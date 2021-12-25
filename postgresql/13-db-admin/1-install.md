@@ -43,15 +43,15 @@ psql \
 ## Create database and user
 
 ```sql
-CREATE USER wrxadmin PASSWORD '123';
-ALTER USER wrxadmin WITH SUPERUSER;
+CREATE USER grvadmin PASSWORD '123';
+ALTER USER grvadmin WITH SUPERUSER;
 CREATE DATABASE wrx;
-GRANT ALL PRIVILEGES ON DATABASE wrx TO wrxadmin;
+GRANT ALL PRIVILEGES ON DATABASE wrx TO grvadmin;
 ```
 
 
 ## Change user password
 
 ```sql
-ALTER USER wrxadmin WITH PASSWORD 'jnCDxw72hTGq45nz';
+ALTER USER grvadmin WITH PASSWORD 'LpcCfWmYezV5UDSq';
 ```
