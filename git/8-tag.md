@@ -27,6 +27,18 @@ git tag -f v1.4 150279
 ```
 
 
+## Push tag to remote
+
+By default, `git push` will not push tags. Tags have to be explicitly passed to git push.
+
+```sh
+git push origin <tag-name>
+
+# push all tags
+git push --tags
+```
+
+
 ## List tag
 
 ```sh
@@ -37,27 +49,14 @@ git tag -l *-rc*
 ```
 
 
-## Push tag to remote
-
-By default, git push will not push tags. Tags have to be explicitly passed to git push.
-
-```sh
-git push origin v1.4
-
-# push all tags
-git push --tags
-```
-
 ## Delete tag
 
 ```sh
 git tag -d <tag-name>
 ```
 
-
-## create tag and push
+## Delete remote tag
 
 ```sh
-git tag <tag-name> <commit-checksum>
-git push origin <tag-name>
+git push --delete origin tagname --no-verify
 ```
