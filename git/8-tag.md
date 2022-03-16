@@ -58,5 +58,5 @@ git tag -d <tag-name>
 ## Delete remote tag
 
 ```sh
-git push --delete origin tagname --no-verify
+git push --delete origin <tagname> --no-verify
 ```
