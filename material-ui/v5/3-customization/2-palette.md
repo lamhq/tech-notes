@@ -1,69 +1,3 @@
-# Customization
-
-## ThemeProvider
-
-```ts
-import * as React from 'react';
-import ReactDOM from 'react-dom';
-import { red } from '@mui/material/colors';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: red[500],
-    },
-  },
-});
-
-function App() {
-  return <ThemeProvider theme={theme}>...</ThemeProvider>;
-}
-```
-
-You can check out the [default theme section](https://mui.com/customization/default-theme/) to view the default theme in full.
-
-
-## Theme configuration variables
-
-- `.palette`
-- `.typography`
-- `.spacing`
-- `.breakpoints`
-- `.zIndex`
-- `.transitions`
-- `.components`
-
-
-### Custom variables
-
-```ts
-const theme = createTheme({
-  status: {
-    danger: orange[500],
-  },
-});
-```
-
-If you are using TypeScript, you would also need to use module augmentation for the theme to accept the above values.
-
-```ts
-declare module '@mui/material/styles' {
-  interface Theme {
-    status: {
-      danger: string;
-    };
-  }
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    status?: {
-      danger?: string;
-    };
-  }
-}
-```
-
-
 ## Palette Customization
 
 ### Using a color object
@@ -169,6 +103,3 @@ declare module '@mui/material/styles' {
   </Button>
 </ThemeProvider>
 ```
-
-
-## Dark mode

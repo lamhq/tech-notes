@@ -21,9 +21,7 @@ const Div = styled('div')``;
 ```
 
 
-## Usage
-
-### Available Box's properties
+### System properties
 
 As a CSS utility component, the Box also supports all [system properties](https://mui.com/system/properties/). You can use them as prop directly on the component.
 
@@ -38,6 +36,8 @@ As a CSS utility component, the Box also supports all [system properties](https:
 // is equivalent to
 <Button sx={{ marginBottom: theme => theme.spacing(3)}} />
 ```
+
+Only the `Box`, `Stack`, `Typography`, and `Grid` components accept the system properties as *props*.
 
 ### Theme aware properties
 
@@ -199,6 +199,14 @@ The `fontFamily`, `fontSize`, `fontStyle`, `fontWeight` properties map their val
 >
   This box has a responsive width.
 </Box>
+
+<Box
+  sx={{
+    display: 'flex',
+    flexDirection: { xs: 'column', md: 'row' },
+    alignItems: 'center',
+  }}
+/>
 ```
 
 
@@ -322,7 +330,27 @@ Array type is useful when you want to partially override some styles in the form
 | Visible only on xl | `sx={{ display: { xs: 'none', xl: 'block' } }}`              |
 
 
-## Passing down `sx` prop
+### Overriding MUI components
+
+The `Box` component wraps your component. It creates a new DOM element, a `<div>` by default that can be changed with the `component` prop. 
+
+
+```jsx
+import * as React from 'react';
+import { Box } from '@mui/system';
+import Button from '@mui/material/Button';
+
+export default function BoxComponent() {
+  return (
+    <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
+      <Button>Save</Button>
+    </Box>
+  );
+}
+```
+
+
+### Passing `sx` prop
 
 If you want to receive sx prop from your component and pass it down to MUI's component, we recommend this approach:
 
@@ -366,27 +394,62 @@ export default function PassingSxProp() {
 }
 ```
 
-## Overriding MUI components
+### Adding the `sx` prop to your custom components
 
-The `Box` component wraps your component. It creates a new DOM element, a `<div>` by default that can be changed with the `component` prop. 
-
-
-```jsx
+```tsx
 import * as React from 'react';
-import { Box } from '@mui/system';
-import Button from '@mui/material/Button';
+import styled, { InterpolationFunction, ThemeProvider } from 'styled-components';
+import { unstable_styleFunctionSx, SxProps } from '@mui/system';
+import NoSsr from '@mui/base/NoSsr';
+import { createTheme } from '@mui/material/styles';
 
-export default function BoxComponent() {
+interface DivProps {
+  sx?: SxProps;
+}
+
+const theme = createTheme();
+
+const Div = styled('div')<DivProps>(
+  unstable_styleFunctionSx as InterpolationFunction<DivProps>,
+);
+
+export default function StyleFunctionSxDemo() {
   return (
-    <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
-      <Button>Save</Button>
-    </Box>
+    <NoSsr>
+      <ThemeProvider theme={theme}>
+        <Div sx={{ m: 1, p: 1, border: 1 }}>Custom component using the system</Div>
+      </ThemeProvider>
+    </NoSsr>
+  );
+}
+```
+
+### Add system properties to your component
+
+```tsx
+import * as React from 'react';
+import styled from 'styled-components';
+import { palette, PaletteProps, spacing, SpacingProps } from '@mui/system';
+import NoSsr from '@mui/base/NoSsr';
+
+const Div = styled.div<PaletteProps & SpacingProps>`
+  ${palette}
+  ${spacing}
+`;
+
+export default function CombiningStyleFunctionsDemo() {
+  return (
+    <NoSsr>
+      <Div color="white" bgcolor="palevioletred" p={1}>
+        Styled components
+      </Div>
+    </NoSsr>
   );
 }
 ```
 
 
-## Create your own `Box` component
+### Create your own `Box` component
 
 ```jsx
 import { createBox, createTheme } from '@mui/system';
@@ -398,4 +461,202 @@ const defaultTheme = createTheme({
 const Box = createBox({ defaultTheme });
 
 export default Box;
+```
+
+
+## `styled()`
+
+All the MUI components are styled with this `styled()` utility. This utility is built on top of the `styled()` module of` @mui/styled-engine` and provides additional features.
+
+It uses MUI's default `theme` if no theme is available in React context.
+
+It adds support for the the `sx` prop
+
+Check out the API [here](https://mui.com/system/styled/#api)
+
+
+### Basic usage
+
+```jsx
+import * as React from 'react';
+import { styled } from '@mui/system';
+
+const MyComponent = styled('div')({
+  color: 'darkslategray',
+  backgroundColor: 'aliceblue',
+  padding: 8,
+  borderRadius: 4,
+});
+
+export default function BasicUsage() {
+  return <MyComponent>Styled div</MyComponent>;
+}
+```
+
+
+### Using the theme
+
+```jsx
+const MyThemeComponent = styled('div')(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main,
+  padding: theme.spacing(1),
+  borderRadius: theme.shape.borderRadius,
+}));
+
+export default function ThemeUsage() {
+  return (
+    <MyThemeComponent>Styled div with theme</MyThemeComponent>
+  );
+}
+```
+
+
+### Custom components
+
+```jsx
+import * as React from 'react';
+import { styled, createTheme, ThemeProvider } from '@mui/system';
+
+interface MyThemeComponentProps {
+  color?: 'primary' | 'secondary';
+  variant?: 'normal' | 'dashed';
+}
+
+const customTheme = createTheme({
+  components: {
+    MyThemeComponent: {
+      styleOverrides: {
+        root: {
+          color: 'darkslategray',
+        },
+        primary: {
+          color: 'darkblue',
+        },
+        secondary: {
+          color: 'darkred',
+          backgroundColor: 'pink',
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'dashed', color: 'primary' },
+          style: {
+            border: '1px dashed darkblue',
+          },
+        },
+        {
+          props: { variant: 'dashed', color: 'secondary' },
+          style: {
+            border: '1px dashed darkred',
+          },
+        },
+      ],
+    },
+  },
+});
+
+const MyThemeComponent = styled('div', {
+  // Configure which props should be forwarded on DOM
+  shouldForwardProp: (prop) =>
+    prop !== 'color' && prop !== 'variant' && prop !== 'sx',
+  name: 'MyThemeComponent',
+  slot: 'Root',
+  // We are specifying here how the styleOverrides are being applied based on props
+  overridesResolver: (props, styles) => [
+    styles.root,
+    props.color === 'primary' && styles.primary,
+    props.color === 'secondary' && styles.secondary,
+  ],
+})<MyThemeComponentProps>(({ theme }) => ({
+  backgroundColor: 'aliceblue',
+  padding: theme.spacing(1),
+}));
+
+export default function UsingOptions() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <MyThemeComponent sx={{ m: 1 }} color="primary" variant="dashed">
+        Primary
+      </MyThemeComponent>
+      <MyThemeComponent sx={{ m: 1 }} color="secondary">
+        Secondary
+      </MyThemeComponent>
+    </ThemeProvider>
+  );
+}
+```
+
+
+### Difference with the `sx` prop
+
+#### `sx` provides more shortcuts than `styled`
+
+```jsx
+const MyStyledButton = styled('button')({
+  mx: 1, // ❌ don't use this! This shortcut is only provided by the `sx` prop
+});
+
+const MyStyledButton = (props) => (
+  <button sx={{
+    mx: 1, // ✔️ this shortcut is specific to the `sx` prop,
+  }}>
+     {props.children}
+  </button>
+})
+```
+
+#### The style definition varies slightly
+
+```jsx
+const MyStyledButton = styled('button')({
+  padding: 1, // means "1px", NOT "theme.spacing(1)"
+});
+
+const MyStyledButton = (props) => (
+  <button sx={{
+    padding: 1 // means "theme.spacing(1)", NOT "1px"
+  }}>
+     {props.children}
+  </button>
+})
+```
+
+
+### How can I use the `sx` syntax with the `styled()` utility?
+
+```jsx
+import * as React from 'react';
+import {
+  styled,
+  createTheme,
+  ThemeProvider,
+  experimental_sx as sx,
+} from '@mui/system';
+
+const customTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+      contrastText: 'white',
+    },
+  },
+});
+
+const MyThemeComponent = styled('div')(
+  sx({
+    color: 'primary.contrastText',
+    backgroundColor: 'primary.main',
+    padding: 1,
+    borderRadius: 1,
+  }),
+);
+
+export default function ThemeUsage() {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <MyThemeComponent>Styled div with theme</MyThemeComponent>
+    </ThemeProvider>
+  );
+}
 ```
