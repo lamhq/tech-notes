@@ -1,5 +1,7 @@
 # Virtual Environments and Packages
 
+A virtual environment is a semi-isolated Python environment that allows packages to be installed for use by a particular application, rather than being installed system wide.
+
 ## Creating Virtual Environments
 
 ```sh
