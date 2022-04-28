@@ -31,12 +31,3 @@ from information_schema.triggers
 group by 1,2,3
 order by table_schema, table_name;
 ```
-
-
-## List all indexes in database
-```sql
-SELECT tablename, indexname
-FROM pg_indexes
-WHERE schemaname = 'public'
-ORDER BY tablename, indexname;
-```

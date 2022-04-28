@@ -55,3 +55,9 @@ GRANT ALL PRIVILEGES ON DATABASE wrx TO grvadmin;
 ```sql
 ALTER USER grvadmin WITH PASSWORD 'LpcCfWmYezV5UDSq';
 ```
+
+# Install Postgresql client on Amazon Linux 2
+
+```sh
+sudo amazon-linux-extras install postgresql13
+```

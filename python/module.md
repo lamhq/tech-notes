@@ -72,3 +72,21 @@ echo.echofilter(input, output, delay=0.7, atten=4)
 from sound.effects.echo import echofilter
 echofilter(input, output, delay=0.7, atten=4)
 ```
+
+
+## Create a Module
+
+Save this code in a file named `mymodule.py`:
+
+```py
+def greeting(name):
+  print("Hello, " + name)
+```
+
+Import the module named `mymodule`, and call the `greeting` function:
+
+```py
+import mymodule
+
+mymodule.greeting("Jonathan")
+```

@@ -1,9 +1,9 @@
 # psql
 
-## Dump database schema
+## Dump database schema (with no password prompt)
 
 ```bash
-pg_dump -U postgres -h localhost mobilesc_db -s > schema.sql
+PGPASSWORD=YOUR_PASSRORD pg_dump -U postgres -h localhost mobilesc_db -s > schema.sql
 ```
 
 ## Connect to db server

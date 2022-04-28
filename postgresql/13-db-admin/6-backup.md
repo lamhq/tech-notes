@@ -6,7 +6,7 @@ You may also want to create a `~/.pgpass` file to store all passwords. Alternati
 
 ## Back up data
 
-### pg_dump
+### `pg_dump`
 
 - Use `pg_dump` to back up specific databases
 - `pg_dump` can selectively back up tables, schemas, and databases.
@@ -15,6 +15,11 @@ You may also want to create a `~/.pgpass` file to store all passwords. Alternati
 - **Directory backups** allow parallel `pg_dump` of a large database.
 - **The directory format optio**n backs up each table as a separate file in a folder and gets around file size limitations, results in multiple files.
 
+#### Use `pg_dump` with no password prompt
+
+```sh
+PGPASSWORD=YOUR_PASSRORD pg_dump -h <host> -p <port> -U <user> mobilesc_db -s > schema.sql
+```
 
 #### Create a plain-text SQL backup
 
@@ -148,7 +153,7 @@ pg_restore --dbname=mydb2 --section=pre-data --jobs=4 mydb.backup
 ```
 
 
-## CSV file (psql)
+## Import/export CSV file (psql)
 
 psql has a `\copy` command that lets you import data from and export data to a text file.
 
@@ -205,7 +210,7 @@ Export header columns:
 
 - `FORCE QUOTE *` double quotes all columns.
 
-## CSV file (SQL)
+## Import/export CSV file (SQL)
 
 ### Export data from a table to CSV
 

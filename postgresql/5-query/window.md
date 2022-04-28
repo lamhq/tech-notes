@@ -152,7 +152,7 @@ WINDOW w AS (PARTITION BY c1 ORDER BY c2);
 - `DENSE_RANK`: Rank the current row within its partition without gaps.
 - `ROW_NUMBER`: Number the current row within its partition starting from 1.
 
-The following statement uses the FIRST_VALUE() to return the lowest price for every product group:
+The following statement uses the `FIRST_VALUE()` to return the lowest price for every product group:
 
 ```sql
 SELECT
