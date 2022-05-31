@@ -2,7 +2,7 @@
 
 ## `os` module
 
-```python
+```py
 import os
 
 # Creating Directory
@@ -24,7 +24,7 @@ os.listdir("c:\python37")
 
 ## `shutil` module
 
-```python
+```py
 import os
 import shutil
 
@@ -52,7 +52,7 @@ print(shutil.which('bsondump'))
 
 ## File Wildcards
 
-```python
+```py
 import glob
 
 glob.glob('*.py')

@@ -2,7 +2,7 @@
 
 ## Create a dictionary
 
-```python
+```py
 thisdict = {
     "brand": "Ford",
     "model": "Mustang",
@@ -26,7 +26,7 @@ dict1 = dict(zip(keys, values))
 
 ## Accessing Items
 
-```python
+```py
 x = thisdict["model"]
 x = thisdict.get("model")
 thisdict["year"] = 2018
@@ -35,7 +35,7 @@ thisdict["year"] = 2018
 
 ## Loop Through a Dictionary
 
-```python
+```py
 # loop through all keys
 for key in thisdict:
     print(key)

@@ -6,7 +6,7 @@ A class in an `except` clause is compatible with an exception if it is the same 
 
 The last except clause may omit the exception name(s), to serve as a wildcard. Use this with extreme caution, since it is easy to mask a real programming error in this way
 
-```python
+```py
 import sys
 
 try:
@@ -24,7 +24,7 @@ except:
 
 The except clause may specify a variable after the exception name. The variable is bound to an exception instance with the arguments stored in `instance.args`.
 
-```python
+```py
 try:
     raise Exception('spam', 'eggs')
 except Exception as inst:
@@ -39,7 +39,7 @@ except Exception as inst:
 
 The `try` statement has another optional clause which is intended to define clean-up actions that must be executed under all circumstances.
 
-```python
+```py
 try:
     raise KeyboardInterrupt
 finally:
@@ -49,7 +49,7 @@ finally:
 
 ## User-defined Exceptions
 
-```python
+```py
 class Error(Exception):
     """Base class for exceptions in this module."""
     pass

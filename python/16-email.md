@@ -1,6 +1,6 @@
 # Sending email
 
-```python
+```py
 import smtplib
 
 message = """From: From Person <from@fromdomain.com>
@@ -23,7 +23,7 @@ except SMTPException:
    print("Error: unable to send email")
 ```
 
-```python
+```py
 import smtplib
 from string import Template
 from email.message import EmailMessage

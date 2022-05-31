@@ -2,7 +2,7 @@
 
 ## Create Date object
 
-```python
+```py
 import datetime
 x = datetime.datetime(2020, 5, 17)
 print(x)
@@ -11,7 +11,7 @@ print(x)
 
 ## Parse Date from string
 
-```python
+```py
 import datetime
 my_date = datetime.datetime.strptime('2019-10-31', '%Y-%m-%d')
 print(my_date)
@@ -20,7 +20,7 @@ print(my_date)
 
 ## Format Date
 
-```python
+```py
 x = datetime.datetime(2018, 6, 1, 10, 25, 0)
 print(x.strftime("%a, %d %b %Y - %I:%M %p"))
 # Fri, 01 Jun 2018 - 10:25 AM
@@ -30,7 +30,7 @@ print(x.strftime("%a, %d %b %Y - %I:%M %p"))
 
 
 ## Getting datetime's attribute
-```python
+```py
 import datetime
 import calendar
 x = datetime.datetime(2018, 6, 1, 10, 25, 0)
@@ -47,7 +47,7 @@ x.tzinfo
 
 
 ## Convert a Date Object into Unix Timestamp and Vice Versa
-```python
+```py
 from datetime import datetime
 now = datetime.now()
 # convert a date to unix timestamp
@@ -63,7 +63,7 @@ print("date from timestamp:", date2)
 
 ## Time Span operations
 
-```python
+```py
 from datetime import timedelta
 
 # create a timedelta object
@@ -80,7 +80,7 @@ td.total_seconds()
 
 Datetime manipulation:
 
-```python
+```py
 from datetime import datetime, timedelta
 
 # get current time
@@ -99,7 +99,7 @@ print('two_weeks_ago object type: ', type(two_weeks_ago))
 
 Find the difference between two dates:
 
-```python
+```py
 from datetime import datetime
 
 # Create two dates
@@ -115,7 +115,7 @@ print('delta object type: ', type(delta))
 
 ## Timezone
 
-```python
+```py
 from pytz import timezone
 from datetime import datetime
 

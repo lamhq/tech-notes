@@ -2,21 +2,30 @@
 
 List is a collection which is ordered and changeable. Allows duplicate members.
 
-```python
+```py
 # create a list
 squares = [1, 4, 9, 16, 25]
 x = [['a', 'b', 'c'], [1, 2, 3]]
 
 # get list's size
-squareSize = len(squares)
+len(squares)    # 5
 
 # access item
+squares[0]  # 1
+squares[-1] # 25
 a = squares[2:4]
 b = squares[:4]
 
-# Change Item Value
+# replace some values
 squares[2] = 64
 squares[2:5] = [15, 14, 33]
+
+# return a shallow copy of a list
+squares[:]  # [1, 4, 9, 16, 25]
+
+# concatenation
+squares + [36, 49, 64, 81, 100]
+# [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
 # loop through a List
 thislist = ["apple", "banana", "cherry"]
@@ -58,7 +67,7 @@ List comprehensions provide a concise way to create lists.
 
 Mapping example:
 
-```python
+```py
 # create a new list from a list
 squares = []
 for x in range(10):
@@ -73,7 +82,7 @@ squares = [x**2 for x in range(10)]
 
 Filtering example:
 
-```python
+```py
 vec = [-4, -2, 0, 2, 4]
 
 # filter the list to exclude negative numbers
@@ -82,7 +91,7 @@ filtered = [x for x in vec if x >= 0]
 
 Custom:
 
-```python
+```py
 # create a list from two loops
 combs = []
 for x in [1,2,3]:
@@ -94,7 +103,7 @@ for x in [1,2,3]:
 [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
 ```
 
-```python
+```py
 # apply a function to all the elements
 vec = [-4, -2, 0, 2, 4]
 v2 = [abs(x) for x in vec]

@@ -13,7 +13,7 @@ The `re.findall()` helps to get a list of all matching patterns. It only returns
 
 Raw string notation (`r"text"`) keeps regular expressions sane. Without it, every backslash (`'\'`) in a regular expression would have to be prefixed with another one to escape it.
 
-```python
+```py
 re.search(r"\W(.)\1\W", " ff ")
 re.search("\\W(.)\\1\\W", " ff ")
 ```
@@ -21,7 +21,7 @@ re.search("\\W(.)\\1\\W", " ff ")
 
 ## Check for a match
 
-```python
+```py
 import re
 
 # check if match
@@ -39,7 +39,7 @@ result = prog.search(string)
 
 ## Split string by pattern
 
-```python
+```py
 import re
 text = """Ross McFluff: 834.345.1254 155 Elm Street
 
@@ -56,7 +56,7 @@ print(entries)
 
 ## Replace string by pattern
 
-```python
+```py
 import re
 def repl(m):
     return m.group(1).lower() + m.group(2).upper() + m.group(3)

@@ -5,7 +5,7 @@ Available operators:
 - `+`, `-`, `*`, `/`
 - `//`, `%`, `**`
 
-```python
+```py
 # classic division returns a float
 17 / 3  # 5.666666666666667
 

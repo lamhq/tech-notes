@@ -14,7 +14,7 @@ When a module named spam is imported, the interpreter first searches for a built
 - PYTHONPATH (a list of directory names, with the same syntax as the shell variable PATH).
 - The installation-dependent default.
 
-```python
+```py
 import math
 import fibo as fib
 from fibo import fib, fib2
@@ -25,7 +25,7 @@ fib(500)
 
 The variable `sys.path` is a list of strings that determines the interpreter’s search path for modules. It is initialized to a default path taken from the environment variable `PYTHONPATH`. You can modify it using standard list operations:
 
-```python
+```py
 import sys
 sys.path.append('/ufs/guido/lib/python')
 ```
@@ -62,7 +62,7 @@ sound/                          Top-level package
 
 Users of the package can import individual modules from the package, for example:
 
-```python
+```py
 import sound.effects.echo
 sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
 

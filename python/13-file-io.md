@@ -2,7 +2,7 @@
 
 ## Open a file
 
-```python
+```py
 with open('workfile') as f:
     read_data = f.read()
 ```
@@ -31,7 +31,7 @@ If you’re not using the `with` keyword, then you should call `f.close()` to cl
 
 For reading lines from a file, you can loop over the file object. This is memory efficient, fast, and leads to simple code:
 
-```python
+```py
 for line in f:
     print(line, end='')
 ```

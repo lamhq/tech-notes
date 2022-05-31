@@ -4,7 +4,7 @@
 
 ### Basic
 
-```python
+```py
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -18,7 +18,7 @@ logging.critical('Critical error -- shutting down')
 
 ### Log to a file instead of the console
 
-```python
+```py
 import logging
 logging.basicConfig(level=logging.INFO, file='sample.log')
 ```
@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO, file='sample.log')
 
 ### Change the logging format
 
-```python
+```py
 import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
 logging.info("Just like that!")
@@ -34,7 +34,7 @@ logging.info("Just like that!")
 ```
 
 ### Use a separated logger
-```python
+```py
 logger = logging.getLogger(__name__)
 logger.info('my logging message')
 logger.setLevel(logging.WARNING)
@@ -58,7 +58,7 @@ logger.critical('Fatal error. Cannot continue')
 
 ### Include traceback information in logged messages
 
-```python
+```py
 import logging
 
 # Create or get the logger
@@ -89,7 +89,7 @@ logger.error("Divide {x} / {y} = {c}".format(x=10, y=0, c=divide(10,0)))
 
 ## Display variables
 
-```python
+```py
 import reprlib
 print(reprlib.repr(set('supercalifragilisticexpialidocious')))
 

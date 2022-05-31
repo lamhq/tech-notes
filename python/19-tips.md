@@ -2,7 +2,7 @@
 
 ## Measure time excution
 
-```python
+```py
 import time
 import datetime
 

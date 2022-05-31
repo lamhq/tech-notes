@@ -4,7 +4,7 @@ A set is an unordered collection with no duplicate elements.
 
 You cannot access items in a set by referring to an index. But you can loop through the set items using a `for` loop
 
-```python
+```py
 thisset = {"apple", "banana", "cherry"}
 
 # create an empty set
@@ -31,6 +31,6 @@ set3 = set1.union(set2)
 
 ## Set comprehensions
 
-```python
+```py
 a = {x for x in 'abracadabra' if x not in 'abc'}
 ```

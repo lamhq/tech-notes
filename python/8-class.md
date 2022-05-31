@@ -2,7 +2,7 @@
 
 ## Define a class
 
-```python
+```py
 class Employee:
     """Common base class for all employees"""
     empCount = 0    # class variable shared by all instances
@@ -21,7 +21,7 @@ class Employee:
 
 ## Inheritance
 
-```python
+```py
 class DerivedClassName(modname.BaseClassName):
     <statement-1>
     .
@@ -38,7 +38,7 @@ Python has two built-in functions that work with inheritance:
 
 ## Multiple Inheritance
 
-```python
+```py
 class DerivedClassName(Base1, Base2, Base3):
     <statement-1>
     .
@@ -52,7 +52,7 @@ If an attribute is not found in `DerivedClassName`, it is searched for in `Base1
 
 ## Using class
 
-```python
+```py
 x = Employee()
 x.displayCount()
 ```
@@ -62,7 +62,7 @@ x.displayCount()
 
 Declare an iterator class:
 
-```python
+```py
 class Reverse:
     """Iterator for looping over a sequence backwards."""
     def __init__(self, data):
@@ -81,7 +81,7 @@ class Reverse:
 
 Using iterator:
 
-```python
+```py
 rev = Reverse('spam')
 for char in rev:
     print(char)
@@ -90,7 +90,7 @@ for char in rev:
 
 ### Generators
 
-```python
+```py
 def reverse(data):
     for index in range(len(data)-1, -1, -1):
         yield data[index]
@@ -110,7 +110,7 @@ Anything that can be done with generators can also be done with class-based iter
 
 Some simple generators can be coded succinctly as expressions using a syntax similar to list comprehensions but with parentheses instead of square brackets.
 
-```python
+```py
 sum(i*i for i in range(10))                 # sum of squares
 # 285
 

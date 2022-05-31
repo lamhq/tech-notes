@@ -1,8 +1,8 @@
 ## Basic
 
-The first statement of the function body can optionally be a string literal; this string literal is the function's documentation string, or `docstring`.
+The first statement of the function body can optionally be a string literal; this string literal is the function's documentation string, or *docstring*. There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code; it’s good practice to include docstrings in code that you write, so make a habit of it.
 
-```python
+```py
 # Creating a Function
 def my_function():
     """Print a hello text."""
@@ -18,12 +18,13 @@ def my_function(x):
 
 ## Arguments
 
-```python
-# Arbitrary Arguments, *args
-def my_function(*kids):
-    print("The youngest child is " + kids[2])
+```py
+# Default argument value
+def my_function(country = "Norway"):
+    print("I am from " + country)
 
-my_function("Emil", "Tobias", "Linus")
+my_function("Sweden")
+my_function()
 
 
 # Keyword Arguments
@@ -33,19 +34,18 @@ def my_function(child3, child2, child1):
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
 
 
+# Arbitrary Arguments, *args
+def my_function(*kids):
+    print("The youngest child is " + kids[2])
+
+my_function("Emil", "Tobias", "Linus")
+
+
 # Arbitrary Keyword Arguments
 def my_function(**kid):
     print("His last name is " + kid["lname"])
 
 my_function(fname = "Tobias", lname = "Refsnes")
-
-
-# Default argument value
-def my_function(country = "Norway"):
-    print("I am from " + country)
-
-my_function("Sweden")
-my_function()
 ```
 
 
@@ -53,7 +53,7 @@ my_function()
 
 The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. Write the function call with the `*`-operator to unpack the arguments out of a list or tuple:
 
-```python
+```py
 # normal call with separate arguments
 list(range(3, 6))   # [3, 4, 5]
 
@@ -76,7 +76,7 @@ parrot(**d)
 
 Small anonymous functions can be created with the `lambda` keyword. Like nested function definitions, lambda functions can reference variables from the containing scope:
 
-```python
+```py
 def make_incrementor(n):
     return lambda x: x + n
 
@@ -88,7 +88,7 @@ f(1)    # 43
 
 ## Function Annotations
 
-```python
+```py
 def f(ham: str, eggs: str = 'eggs') -> str:
     print("Annotations:", f.__annotations__)
     print("Arguments:", ham, eggs)

@@ -2,14 +2,14 @@
 
 ## Getting environment variable value
 
-```python
+```py
 os.getenv(key, default=None)
 ```
 
 
 ## Getting command Line Arguments
 
-```python
+```py
 import sys
 print(sys.argv)
 # ['demo.py', 'one', 'two', 'three']
@@ -18,7 +18,7 @@ print(sys.argv)
 
 ## Error Output Redirection and Program Termination
 
-```python
+```py
 import sys
 
 # stdin, stdout, stderr

@@ -1,6 +1,6 @@
 ## Comment
 
-```python
+```py
 # this is a single line comment
 
 """
@@ -13,7 +13,7 @@ more than just one line
 
 ## Creating Variables
 
-```python
+```py
 x = 5
 y = "John"
 print(x)
@@ -31,7 +31,7 @@ NameError: name 'n' is not defined
 
 ## Types
 
-```python
+```py
 # getting data type
 x = 5
 print(type(x))
@@ -46,7 +46,7 @@ i = str(3.0)  # z will be '3.0'
 
 ## Check if a value is None
 
-```python
+```py
 if foo is None:
     print('foo is None')
 else:
@@ -54,7 +54,7 @@ else:
 ```
 
 ## Check variable is type
-```python
+```py
 val = 1.0
 isinstance(val, float)
 ```

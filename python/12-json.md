@@ -2,7 +2,7 @@
 
 ## Serialize object to JSON string
 
-```python
+```py
 import json
 json.dumps([1, 'simple', 'list'])
 # '[1, "simple", "list"]'
@@ -10,13 +10,12 @@ json.dumps([1, 'simple', 'list'])
 
 ## Serialize object to a text file
 
-```python
+```py
 json.dump(x, f)
 ```
 
 ## Deserialize object from a text file
 
-```python
+```py
 x = json.load(f)
 ```
-
