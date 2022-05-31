@@ -2,7 +2,7 @@
 
 Python strings cannot be changed - they are immutable.
 
-```python
+```py
 a = 'a sample string'
 b = "string with double quotes"
 c = 'doesn\'t'
@@ -11,12 +11,21 @@ d = "doesn't"
 
 If you don’t want characters prefaced by `\` to be interpreted as special characters, you can use raw strings by adding an `r` before the first quote:
 
-```python
+```py
 print(r'C:\some\name')
 ```
 
+Strings can be concatenated (glued together) with the `+` operator, and repeated with `*`:
+
+```py
+>>> # 3 times 'un', followed by 'ium'
+>>> 3 * 'un' + 'ium'
+'unununium'
+```
+
 ## Raw string
-```python
+
+```py
 raw_s = r'Hi\nHello'
 print(raw_s)
 # Hi\nHello
@@ -24,9 +33,11 @@ print(raw_s)
 
 ## Multiline string
 
-End of lines are automatically included in multiline string, but it's possible to prevent this by adding a `\` at the end of the line.
+String literals can span multiple lines. One way is using triple-quotes: `"""..."""` or `'''...'''`
 
-```python
+End of lines are automatically included in multiline string, but it's possible to prevent this by adding a `\` at the end of the line:
+
+```py
 str1 = """\
 Usage: thingy [OPTIONS]
      -h                        Display this usage message
@@ -37,22 +48,28 @@ str2 = '''Lorem ipsum dolor sit amet,
 consectetur adipiscing elit,
 sed do eiusmod tempor incididunt
 ut labore et dolore magna aliqua.'''
-
-# string literals next to each other are automatically concatenated
-str3 = ('Put several strings within parentheses '
-    'to have them joined together.')
 ```
 
+String literals next to each other are automatically concatenated:
+
+```py
+str3 = ('Put several strings within parentheses '
+    'to have them joined together.')
+# 'Put several strings within parentheses to have them joined together.'
+```
 
 ## Get string's length
-```python
+
+```py
 f = len('abc')
 ```
 
 
 ## Indexing
 
-```python
+Strings can be indexed (subscripted), with the first character having index `0`.
+
+```py
 word = 'Python'
 f = word[0]  # character in position 0: 'P'
 l = word[5]  # character in position 5: 'n'
@@ -63,7 +80,7 @@ w3 = word[-6]   # 'P'
 
 ## Slicing
 
-```python
+```py
 s1 = word[0:2]  # characters from position 0 (included) to 2 (excluded): 'Py'
 s2 = word[:2]   # character from the beginning to position 2 (excluded): 'Py'
 s3 = word[4:]   # characters from position 4 (included) to the end: 'on'
@@ -71,7 +88,7 @@ s3 = word[4:]   # characters from position 4 (included) to the end: 'on'
 
 ## String methods
 
-```python
+```py
 a = " Hello, World!"
 b = a.lower()
 c = a.upper()
@@ -89,11 +106,12 @@ x = "Hello" in a # returns True
 - `split`: Splits the string at the specified separator, and returns a list
 - `splitlines`: Splits the string at line breaks and returns a list
 
+
 ## Format a string
 
 ### `printf`
 
-```python
+```py
 import math
 print('The value of pi is approximately %5.3f.' % math.pi)
 # The value of pi is approximately 3.142.
@@ -101,7 +119,7 @@ print('The value of pi is approximately %5.3f.' % math.pi)
 
 ### `str.format`
 
-```python
+```py
 str1 = "My name is John, and I am {}".format(36)
 
 str2 = "I want to pay {price} dollars for {quantity} pieces of item {item}.".format(price = 5, quantity = 2, itemno = 'abcd')
@@ -117,7 +135,7 @@ print('Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; '
 
 Begin a string with `f` or `F` before the opening quotation mark or triple quotation mark. Inside this string, you can write a Python expression between `{` and `}` characters that can refer to variables or literal values.
 
-```python
+```py
 year = 2016
 event = 'Referendum'
 #'Results of the 2016 Referendum'
@@ -138,7 +156,7 @@ print(f'{2:10} ==> {4:10d}')
 
 The `str()` function is meant to return representations of values which are fairly human-readable, while `repr()` is meant to generate representations which can be read by the interpreter
 
-```python
+```py
 s = 'Hello, world.'
 
 str(s)

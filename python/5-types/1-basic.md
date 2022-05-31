@@ -1,4 +1,5 @@
 ## Comment
+
 ```python
 # this is a single line comment
 
@@ -19,6 +20,14 @@ print(x)
 print(y)
 ```
 
+If a variable is not “defined” (assigned a value), trying to use it will give you an error:
+
+```py
+>>> n  # try to access an undefined variable
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'n' is not defined
+```
 
 ## Types
 
@@ -44,7 +53,7 @@ else:
     print('foo is not None')
 ```
 
-## Check variable is int
+## Check variable is type
 ```python
 val = 1.0
 isinstance(val, float)
