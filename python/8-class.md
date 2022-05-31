@@ -19,7 +19,7 @@ class Employee:
         print("Name : ", self.name,  ", Salary: ", self.salary)
 ```
 
-## Inheritance:
+## Inheritance
 
 ```python
 class DerivedClassName(modname.BaseClassName):

@@ -1,21 +1,17 @@
-# Python tips
+# Getting Started
 
-## Measure time excution
+## Install a Python interpreter
 
-```python
-import time
-import datetime
+To install Python using Homebrew on macOS use `brew install python3` at the Terminal prompt.
 
-start = time.time()
 
-# your code here ...
+## Verify the Python installation
 
-end = time.time()
-seconds = end - start
-elapsed = str(datetime.timedelta(seconds=seconds))
-print(elapsed)
+open a Terminal Window and type the following command:
+
+```sh
+python3 --version
 ```
-
 
 ## Fix bug SSL: CERTIFICATE_VERIFY_FAILED with Python3
 

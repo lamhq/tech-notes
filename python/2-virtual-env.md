@@ -1,6 +1,12 @@
 # Virtual Environments and Packages
 
+## Install and use packages
+
+A best practice among Python developers is to avoid installing packages into a global interpreter environment. You instead use a project-specific `virtual environment` that contains a copy of a global interpreter.
+
 A virtual environment is a semi-isolated Python environment that allows packages to be installed for use by a particular application, rather than being installed system wide.
+
+Once you activate that environment, any packages you then install are isolated from other environments. Such isolation reduces many complications that can arise from conflicting package versions.
 
 ## Creating Virtual Environments
 
@@ -65,4 +71,10 @@ The `requirements.txt` can be used to install all the necessary packages with `i
 
 ```sh
 pip install -r requirements.txt
+```
+
+### Upgrade pip
+
+```sh
+pip install --upgrade pip
 ```
