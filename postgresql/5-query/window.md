@@ -52,8 +52,7 @@ VALUES
 SELECT
 	group_name,
 	AVG (price)
-FROM
-	products
+FROM products
 INNER JOIN product_groups USING (group_id)
 GROUP BY
 	group_name;
@@ -65,8 +64,7 @@ The following example returns the average price for every product group:
 SELECT
 	group_name,
 	AVG (price)
-FROM
-	products
+FROM products
 INNER JOIN product_groups USING (group_id)
 GROUP BY
 	group_name;

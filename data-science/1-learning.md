@@ -79,3 +79,5 @@ pip install ipython-sql
         - Forward/backward Fill (time series)
         - Predictive model
     - Extreme values (outliers)
+      - Outlier Detection: Histogram, Boxplot, Scatterplot
+      - Outlier Treatment: Removal, Transformation, Binning (discretization), Imputation

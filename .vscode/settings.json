@@ -1,9 +1,7 @@
 {
     "files.trimFinalNewlines": true,
-    "python.pythonPath": ".venv/bin/python",
     "[python]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
-    },
-    "explorer.sortOrder": "mixed"
+    }
 }
