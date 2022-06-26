@@ -77,6 +77,30 @@ To give that permission to App Runner, you need to provide App Runner with an **
 
 When you use the App Runner console to create the service, you can choose an existing role in your account. Alternatively, you can use the IAM console to create a new custom role. Or, you can choose for the App Runner console to create a role for you based on managed policies.
 
+
+## Custom domain
+
+If you own a domain name, you can associate it to your App Runner service. After App Runner validates your new domain, it can be used to access your application in addition to the App Runner domain. You can associate up to five custom domains.
+
+When you associate a custom domain with your service, App Runner provides you with a set of CNAME records to add to your Domain Name System (DNS). Add certificate validation records to your DNS. This way, App Runner can validate that you own or control the domain.
+
+In addition, add DNS target records to your DNS to target the App Runner domain. Add one record for the custom domain, and another for the `www` subdomain, if you chose this option. Then, wait for the custom domain status to become **Active** in the App Runner console. At this point, your custom domain is validated, and App Runner starts routing traffic from this domain to your web application.
+
+You can specify a domain to associate with your App Runner service in the following ways:
+
+- A root domain – *example.com*. You can optionally associate www.example.com too as part of the same operation.
+- A subdomain – *login.example.com* or *admin.login.example.com*. 
+- A wildcard – **.example.com*. You can't use the `www` option in this case.
+
+
+## Limitation
+
+There're limitations at the time of research (June 2022):
+- Just support a few regions
+- Don't support setting environment variables through AWS Secret Manager
+
+Consider using Google Cloud Run instead.
+
 ## Code Snippets
 
 ```sh

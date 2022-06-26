@@ -46,5 +46,14 @@ for k, v in knights.items():
     print(k, v)
 ```
 
-questions = ['name', 'quest', 'favorite color']
-answers = ['lancelot', 'the holy grail', 'blue']
+## Check if a key exists in a dictionary
+
+```py
+d = {"key1": 10, "key2": 23}
+
+if "key1" in d:
+    print("this will execute")
+
+if "nonexistent key" in d:
+    print("this will not")
+```
