@@ -1,6 +1,8 @@
 # Strings
 
-Python strings cannot be changed - they are immutable.
+## Introduction
+
+A string is a series of characters. In Python, anything inside quotes is a string. And you can use either single or double quotes.
 
 ```py
 a = 'a sample string'
@@ -9,21 +11,9 @@ c = 'doesn\'t'
 d = "doesn't"
 ```
 
-If you don’t want characters prefaced by `\` to be interpreted as special characters, you can use raw strings by adding an `r` before the first quote:
-
-```py
-print(r'C:\some\name')
-```
-
-Strings can be concatenated (glued together) with the `+` operator, and repeated with `*`:
-
-```py
->>> # 3 times 'un', followed by 'ium'
->>> 3 * 'un' + 'ium'
-'unununium'
-```
-
 ## Raw string
+
+If you don’t want characters prefaced by `\` to be interpreted as special characters, you can use raw strings by adding an `r` before the first quote:
 
 ```py
 raw_s = r'Hi\nHello'
@@ -31,11 +21,12 @@ print(raw_s)
 # Hi\nHello
 ```
 
+
 ## Multiline string
 
 String literals can span multiple lines. One way is using triple-quotes: `"""..."""` or `'''...'''`
 
-End of lines are automatically included in multiline string, but it's possible to prevent this by adding a `\` at the end of the line:
+**End of lines** are automatically included in multiline string, but it's possible to prevent this by adding a `\` at the end of the line:
 
 ```py
 str1 = """\
@@ -65,6 +56,16 @@ f = len('abc')
 ```
 
 
+## Concatenating
+
+Strings can be concatenated with the `+` operator, and repeated with `*`:
+
+```py
+>>> # 3 times 'un', followed by 'ium'
+>>> 3 * 'un' + 'ium'
+'unununium'
+```
+
 ## Indexing
 
 Strings can be indexed (subscripted), with the first character having index `0`.
@@ -78,13 +79,20 @@ w2 = word[-2]   # second-last character: 'o'
 w3 = word[-6]   # 'P'
 ```
 
+
 ## Slicing
 
 ```py
-s1 = word[0:2]  # characters from position 0 (included) to 2 (excluded): 'Py'
-s2 = word[:2]   # character from the beginning to position 2 (excluded): 'Py'
-s3 = word[4:]   # characters from position 4 (included) to the end: 'on'
+# characters from position 0 (included) to 2 (excluded): 'Py'
+s1 = word[0:2]  
+
+# character from the beginning to position 2 (excluded): 'Py'
+s2 = word[:2]   
+
+# characters from position 4 (included) to the end: 'on'
+s3 = word[4:]   
 ```
+
 
 ## String methods
 
@@ -93,9 +101,15 @@ a = " Hello, World!"
 b = a.lower()
 c = a.upper()
 d = a.strip()
+
+# replace
 e = a.replace("H", "J")
+
+# split a string by delimiter
 f = a.split(",") # returns ['Hello', ' World!']
-x = "Hello" in a # returns True
+
+# check string contains a sub string
+x = "Hello" in " Hello, World!"
 ```
 
 - `endswith`: Returns true if the string ends with the specified value
@@ -169,4 +183,27 @@ hello = 'hello, world\n'
 hellos = repr(hello)
 print(hellos)
 # 'hello, world\n'
+```
+
+
+## Immutable
+
+Python strings cannot be changed - they are immutable, You cannot change the string. For example, you’ll get an error if you update one or more characters in a string:
+
+```py
+str = "Python String"
+str[0] = 'J'
+
+Traceback (most recent call last):
+  File "app.py", line 2, in <module>
+    str[0] = 'J'
+TypeError: 'str' object does not support item assignment</module>
+```
+
+When want to modify a string, you need to create a new one from the existing string. For example:
+
+```py
+str = "Python String"
+new_str = 'J' + str[1:]
+print(new_str)
 ```

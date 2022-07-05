@@ -31,3 +31,13 @@ from information_schema.triggers
 group by 1,2,3
 order by table_schema, table_name;
 ```
+
+
+## List all tables in database, order by size
+
+```sql
+select table_name, pg_size_pretty(pg_relation_size(quote_ident(table_name)))
+from information_schema.tables
+where table_schema = 'public'
+order by pg_relation_size(quote_ident(table_name)) DESC;
+```

@@ -11,7 +11,7 @@ more than just one line
 ```
 
 
-## Creating Variables
+## Variables
 
 ```py
 x = 5
@@ -29,32 +29,10 @@ Traceback (most recent call last):
 NameError: name 'n' is not defined
 ```
 
-## Types
+## Constants
+
+Python doesn’t support constants. To work around this, you use all capital letters to name a variable to indicate that the variable should be treated as a constant. For example:
 
 ```py
-# getting data type
-x = 5
-print(type(x))
-
-# type conversion
-x = float(1) # x will be 1.0
-y = int(2.8) # y will be 2
-z = int("3") # z will be 3
-w = float("4.2") # w will be 4.2
-i = str(3.0)  # z will be '3.0'
-```
-
-## Check if a value is None
-
-```py
-if foo is None:
-    print('foo is None')
-else:
-    print('foo is not None')
-```
-
-## Check variable is type
-```py
-val = 1.0
-isinstance(val, float)
+FILE_SIZE_LIMIT = 2000
 ```

@@ -37,3 +37,19 @@ for line in f:
 ```
 
 If you want to read all the lines of a file in a list you can also use `list(f)` or `f.readlines()`.
+
+## Write text to file
+
+```py
+with open('target.txt', 'w', encoding='utf-8') as f_out:
+    f_out.write('data')
+```
+
+
+## Check if file exists
+
+```py
+from os.path import exists
+
+file_exists = exists(path_to_file)
+```

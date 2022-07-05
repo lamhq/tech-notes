@@ -27,9 +27,3 @@ If you want to select any group of cells, hold down `Cmd` and click the cells yo
 - Undo your last change: `z`
 - Switche the cell type to Markdown: `M`
 - Switche the cell type to code: `Y`
-
-https://code.visualstudio.com/docs/languages/python
-
-https://code.visualstudio.com/docs/python
-
-https://code.visualstudio.com/docs/datascience/jupyter-notebooks
