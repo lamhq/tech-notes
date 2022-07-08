@@ -100,5 +100,22 @@ FROM
   pg_index As idx 
   JOIN pg_class AS i ON i.oid = idx.indexrelid 
 WHERE 
-  idx.indrelid = 'line_items' :: regclass;
+  idx.indrelid = 'line_items'::regclass;
+```
+
+
+## List all indexes of the schema `public`
+
+```sql
+SELECT
+    tablename,
+    indexname
+FROM
+    pg_indexes
+WHERE
+    schemaname = 'public'
+    AND indexname ILIKE 'IDX_%'
+ORDER BY
+    tablename,
+    indexname;
 ```
