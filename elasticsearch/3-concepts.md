@@ -1,4 +1,4 @@
-# Các khái niệm cơ bản
+# Basic concepts
 
 ## Elasticsearch là gì ?
 
@@ -123,7 +123,7 @@ Khi người dùng tìm kiếm thì sẽ tìm kiếm trên Elasticsearch, tốc 
 
 When we discussed index, get, and delete requests previously, we pointed out that every document has a `_version` number that is incremented whenever a document is changed. Elasticsearch uses this `_version` number to ensure that changes are applied in the correct order. If an older version of a document arrives after a new version, it can simply be ignored.
 
-We can take advantage of the `_version` number to ensure that conflicting changes made by our application do not result in data loss. We do this by specifying the ver sion number of the document that we wish to change. If that version is no longer current, our request fails.
+We can take advantage of the `_version` number to ensure that conflicting changes made by our application do not result in data loss. We do this by specifying the version number of the document that we wish to change. If that version is no longer current, our request fails.
 
 Now imagine that we want to edit the document: we load its data into a web form, make our changes, and then save the new version.
 
@@ -145,7 +145,7 @@ PUT /website/blog/1?version=1
 
 This request succeeds, and the response body tells us that the `_version` has been incremented to 2
 
-However, if we were to rerun the same index request, still specifying version=1, Elas‐ ticsearch would respond with a 409 Conflict HTTP response code.
+However, if we were to rerun the same index request, still specifying version=1, Elasticsearch would respond with a 409 Conflict HTTP response code.
 
 All APIs that update or delete a document accept a version parameter, which allows you to apply optimistic concurrency control to just the parts of your code where it makes sense.
 

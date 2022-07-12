@@ -1,3 +1,13 @@
+## Querying data
+
+Query DSL
+Relevance score
+Pagination
+Leaf query
+Compound query
+Query context
+Filter context
+
 # Query DSL
 
 Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:
@@ -237,4 +247,3 @@ GET /gb,us/user,tweet/_search
 ```
 GET /_search?size=5&from=10
 ```
-

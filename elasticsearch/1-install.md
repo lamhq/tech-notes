@@ -1,3 +1,5 @@
+# Installation
+
 ## Install ELastic Search using docker
 
 1. update `/etc/sysctl.conf`, add this line:

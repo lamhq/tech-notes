@@ -1,6 +1,19 @@
 # Common tasks
 
-## Getting version
+## Indexing data
+
+- Indexing a document
+- Indexing documents in bulk
+
+## Retrieving a document
+
+
+## Deleting a Document
+
+
+
+
+## Checking Elasticsearch is running
 
 ```
 GET /
@@ -40,7 +53,7 @@ GET /{index}/{type}/{id}?_source=title,text
 ```
 
 
-## Checking Whether a Document Exists
+## Checking whether a Document exists
 
 ```
 HEAD /{index}/{type}/{id}
@@ -55,6 +68,7 @@ DELETE /website/blog/123
 
 
 ## Create an index with an explicit mapping
+
 ```
 PUT /my-index
 {
