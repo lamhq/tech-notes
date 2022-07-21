@@ -1,19 +1,28 @@
-## Querying data
+# Querying data
 
-Query DSL
-Relevance score
-Pagination
-Leaf query
-Compound query
-Query context
-Filter context
+## Query DSL (Domain Specific Language)
 
-# Query DSL
+The Elasticsearch DSL enable developers to write both basic and complex queries for Elasticsearch
 
-Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:
+Consisting of two types of clauses: **Leaf query clauses** and **Compound query clause**.
 
-- **Leaf query clauses** look for a particular value in a particular field, such as the `match`, `term` or `range` queries.
-- **Compound query clauses** wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the `bool` or `dis_max` query), or to alter their behaviour (such as the `constant_score` query).
+
+## Leaf query clauses
+
+Search for a particular value in a particular field, such as the `match`, `term` or `range` queries.
+
+```
+GET /customers/_search
+{
+  "query: {
+    "match_all": { "age": "32" }
+  }
+}
+```
+
+## Compound query clauses
+
+Wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the `bool` or `dis_max` query), or to alter their behaviour (such as the `constant_score` query).
 
 
 ## Relevance score
@@ -23,7 +32,7 @@ By default, Elasticsearch sorts matching search results by **relevance score**, 
 
 ## Query context
 
-In the **query context**, besides deciding whether or not the document matches, the query clause also calculates a relevance score .
+In the **query context**, besides deciding whether or not the document matches, the query clause also calculates a relevance score.
 
 
 ## Filter context

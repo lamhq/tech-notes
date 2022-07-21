@@ -15,7 +15,7 @@ npm install ajv
 To validate an object that has a **required property** "foo" (an integer number), an **optional property** "bar" (a string) and **no other properties**:
 
 ```ts
-const Ajv = require("ajv")
+import Ajv from "ajv"
 const ajv = new Ajv() // options can be passed, e.g. {allErrors: true}
 
 const schema = {
