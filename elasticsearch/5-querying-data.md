@@ -11,7 +11,7 @@ Consisting of two types of clauses: **Leaf query clauses** and **Compound query 
 
 Search for a particular value in a particular field, such as the `match`, `term` or `range` queries.
 
-```
+```json
 GET /customers/_search
 {
   "query: {
@@ -22,7 +22,7 @@ GET /customers/_search
 
 ## Compound query clauses
 
-Wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the `bool` or `dis_max` query), or to alter their behaviour (such as the `constant_score` query).
+Compound queries are combinations of leaf query clauses and other compound queries.
 
 
 ## Relevance score
@@ -32,13 +32,124 @@ By default, Elasticsearch sorts matching search results by **relevance score**, 
 
 ## Query context
 
-In the **query context**, besides deciding whether or not the document matches, the query clause also calculates a relevance score.
+In the query context, a query clause answers the question _"How well does this document match this query clause?"_ Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 
+Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the search API.
 
 ## Filter context
 
 In a filter context, a query clause answers the question *"Does this document match this query clause?"* no scores are calculated. Filter context is mostly used for filtering structured data.
 
+Filter context is in effect whenever a query clause is passed to a `filter` parameter, such as the `filter` or `must_not` parameters in the `bool` query, the filter parameter in the `constant_score` query, or the `filter` aggregation.
+
+## Example of query and filter contexts
+
+This query will match documents where all of the following conditions are met:
+
+- The `title` field contains the word search.
+- The `content` field contains the word elasticsearch.
+- The `status` field contains the exact word published.
+- The `publish_date` field contains a date from 1 Jan 2015 onwards.
+
+```json
+GET /_search
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "Search"        }},
+        { "match": { "content": "Elasticsearch" }}
+      ],
+      "filter": [ 
+        { "term":  { "status": "published" }},
+        { "range": { "publish_date": { "gte": "2015-01-01" }}}
+      ]
+    }
+  }
+}
+```
+
+- The `query` parameter indicates query context.
+- The `bool` and two `match` clauses are used in query context, which means that they are used to score how well each document matches.
+- The `filter` parameter indicates filter context. Its `term` and `range` clauses are used in filter context. They will filter out documents which do not match, but they will not affect the score for matching documents.
+
+## Modiying score
+
+### Boosting Query
+
+Returns documents matching a positive query while reducing the relevance score of documents that also match a negative query.
+
+You can use the boosting query to demote certain documents without excluding them from the search results.
+
+```json
+GET /_search
+{
+  "query": {
+    "boosting": {
+      "positive": {
+        "term": {
+          "text": "apple"
+        }
+      },
+      "negative": {
+        "term": {
+          "text": "pie tart fruit crumble tree"
+        }
+      },
+      "negative_boost": 0.5
+    }
+  }
+}
+```
+
+### Constant Score
+
+```json
+GET /_search
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "term": { "user.id": "kimchy" }
+      },
+      "boost": 1.2
+    }
+  }
+}
+```
+
+### Disjunction max
+
+```json
+GET /_search
+{
+  "query": {
+    "dis_max": {
+      "queries": [
+        { "term": { "title": "Quick pets" } },
+        { "term": { "body": "Quick pets" } }
+      ],
+      "tie_breaker": 0.7
+    }
+  }
+}
+```
+
+### Function Score
+
+```json
+GET /_search
+{
+  "query": {
+    "function_score": {
+      "query": { "match_all": {} },
+      "boost": "5",
+      "random_score": {}, 
+      "boost_mode": "multiply"
+    }
+  }
+}
+```
 
 ## Compound queries
 
@@ -75,33 +186,6 @@ POST _search
       "boost" : 1.0
     }
   }
-}
-```
-
-### Boosting
-
-Returns documents matching a positive query while reducing the relevance score of documents that also match a negative query.
-
-You can use the boosting query to demote certain documents without excluding them from the search results.
-
-```
-GET /_search
-{
-    "query": {
-        "boosting" : {
-            "positive" : {
-                "term" : {
-                    "text" : "apple"
-                }
-            },
-            "negative" : {
-                 "term" : {
-                     "text" : "pie tart fruit crumble tree"
-                }
-            },
-            "negative_boost" : 0.5
-        }
-    }
 }
 ```
 

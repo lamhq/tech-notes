@@ -41,3 +41,14 @@ from information_schema.tables
 where table_schema = 'public'
 order by pg_relation_size(quote_ident(table_name)) DESC;
 ```
+
+## Log SQL Queries
+
+- Open you `data/postgresql.conf` in your data directory:
+  ```sh
+  cd /opt/homebrew/var/postgres
+  code postgresql.conf
+  ```
+- change the `log_statement` setting to `'all'`
+- make sure that the `log_directory` directory already exists inside of the data directory, and that the postgres user can write to it. If not, run these command:
+- restart Postgres

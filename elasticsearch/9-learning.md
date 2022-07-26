@@ -87,3 +87,55 @@ GET /accounts/_search
   }
 }
 ```
+
+
+## Fuzzy Query
+
+Return documents that contain terms similar to search terms (close to what we're looking for).
+
+```json
+GET /_search
+{
+  "query": {
+    "fuzzy": {
+      "user.id": {
+        "value": "ki"
+      }
+    }
+  }
+}
+```
+
+
+## Regular Expression
+
+```json
+GET /_search
+{
+  "query": {
+    "regexp": {
+      "user.id": {
+        "value": "k.*y",
+        "flags": "ALL"
+      }
+    }
+  }
+}
+```
+
+
+## Range
+
+```json
+GET /accounts/_search
+{
+  "query": {
+    "range": {
+      "balance": {
+        "gte": 10000,
+        "lte": 40000
+      }
+    }
+  }
+}
+```
