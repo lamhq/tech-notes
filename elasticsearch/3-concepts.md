@@ -1,14 +1,18 @@
-# Basic concepts
+# Basic
 
-## Elasticsearch là gì ?
+## How Does Elasticsearch Work?
 
-- Elasticsearch là một search engine.
-- Elasticsearch được kế thừa từ Lucene Apache
-- Elasticsearch thực chất hoặt động như 1 web server, có khả năng tìm kiếm nhanh chóng (near realtime) thông qua giao thức RESTful
-- Elasticsearch có khả năng phân tích và thống kê dữ liệu
-- Elasticsearch chạy trên server riêng và đồng thời giao tiếp thông qua RESTful do vậy nên nó không phụ thuộc vào client viết bằng gì hay hệ thống hiện tại của bạn viết bằng gì. Nên việc tích hợp nó vào hệ thống bạn là dễ dàng, bạn chỉ cần gửi request http lên là nó trả về kết quả.
-- Elasticsearch là 1 hệ thống phân tán và có khả năng mở rộng tuyệt vời (horizontal scalability). Lắp thêm node cho nó là nó tự động auto mở rộng cho bạn.
-- Elasticsearch là 1 open source được phát triển bằng Java
+Elasticsearch uses shipping agents, called beats, to transfer raw data from multiple sources into Elasticsearch. After data is shipped into Elasticsearch, the engine runs data ingestion processes, which parse, normalize, enrich, and prepare data for indexing.
+
+After the data is indexed, users can run complex queries and use aggregations to retrieve complex data summaries.
+
+For visualization and management, the Elastic Stack offers a tool called Kibana, which enables users to create real-time data visualizations, such as pie charts, maps, line graphs, and histograms.
+
+## Elasticsearch Architecture
+
+![https://www.dbi-services.com/blog/wp-content/uploads/sites/2/2022/01/Elasticsearch-index-shards.png](https://www.dbi-services.com/blog/wp-content/uploads/sites/2/2022/01/Elasticsearch-index-shards.png)
+
+## Cluster
 
 
 ## Node

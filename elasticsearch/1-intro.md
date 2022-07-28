@@ -22,7 +22,9 @@ Search with keyword `run` (exact match):
 - I'm too d**run**k to drive
 - This text will be t**run**cated
 
-> SELECT text FROM phrases WHERE text LIKE '%run%'
+```sql
+SELECT text FROM phrases WHERE text LIKE '%run%';
+```
 
 Search with keyword `run` (full-text search):
 
@@ -50,8 +52,9 @@ Elasticsearch provides near real-time search and analytics for all types of data
 
 Elasticsearch can efficiently store and index data in a way that supports fast searches.
 
-Elasticsearch is open source, developed in Java, so inherently cross-platform. It's based on Apache Lucene library (free & open source search engine library)
+Elasticsearch is open source (before 7.11), developed in Java, so inherently cross-platform. It's based on Apache Lucene library (free & open source search engine library)
 
+Elasticsearch is deployable in various cloud environments as well as on-premises. You can self-host Elasticsearch or use a cloud service
 
 ## Why Elasticsearch?
 
@@ -62,7 +65,6 @@ Elasticsearch allows you to start small, but will grow with your business. It is
 As you need more capacity, just add more nodes, and
 let the cluster reorganize itself to take advantage of
 the extra hardware.
-
 
 ### RESTFUL API
 
@@ -80,7 +82,6 @@ Elasticsearch uses Lucene under the covers to provide the most powerful full tex
 
 Search comes with multi-language support, a powerful query language, support for geolocation, context aware did-you-mean suggestions, autocomplete and search snippets.
 
-
 ### Document Oriented
 
 Store complex real world entities in Elasticsearch as structured JSON documents.
@@ -88,13 +89,11 @@ Store complex real world entities in Elasticsearch as structured JSON documents.
 All fields are indexed by default, and all the indices can be
 used in a single query, to return results at breath taking speed.
 
-
 ### Schema free
 
 Elasticsearch allows you to get started easily. Toss it a JSON document and it will try to detect the data structure, index the data and make it searchable.
 
 Later, apply your domain specific knowledge of your data to customize how your data is indexed.
-
 
 ### Active community
 

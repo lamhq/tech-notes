@@ -18,3 +18,70 @@ GET /my-index-000001/_search
   }
 }
 ```
+
+## Common search options
+
+### Query DSL
+
+### Aggregations
+
+### Search multiple data streams and indices
+
+You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices.
+
+### Paginate search results
+
+By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see Paginate search results.
+
+### Retrieve selected fields
+
+The search response’s `hit.hits` property includes the full document `_source` for each hit. To retrieve only a subset of the `_source` or other fields, see Retrieve selected fields.
+
+### Sort search results
+
+By default, search hits are sorted by `_score`, a relevance score that measures how well each document matches the query. 
+
+To customize the calculation of these scores, use the `script_score` query. 
+
+To sort search hits by other field values, see Sort search results.
+
+### Run an async search
+
+### Search timeout
+
+### Track total hits
+
+The `track_total_hits` parameter allows you to control how the total number of hits should be tracked.
+
+The default is set to 10,000. This means that requests will count the total hit accurately up to 10,000 hits. It is a good trade off to speed up searches if you don’t need the accurate number of hits after a certain threshold.
+
+When set to `true` the search response will always track the number of hits that match the query accurately
+
+```json
+GET my-index-000001/_search
+{
+  "track_total_hits": true,
+  "query": {
+    "match" : {
+      "user.id" : "elkbee"
+    }
+  }
+}
+```
+
+### Quickly check for matching docs
+
+If you only want to know if there are any documents matching a specific query, you can set the `size` to 0 to indicate that we are not interested in the search results.
+
+You can also set `terminate_after` to `1` to indicate that the query execution can be terminated whenever the first matching document was found (per shard).
+
+The response will not contain any hits as the size was set to 0. 
+
+The hits.total will be either equal to 0, indicating that there were no matching documents, or greater than 0 meaning that there were at least as many documents matching the query when it was early terminated. 
+
+Also if the query was terminated early, the terminated_early flag will be set to true in the response.
+
+
+## Response fields
+
+The `took` time in the response contains the milliseconds that this request took for processing, beginning quickly after the node received the query, up until all search related work is done and before the above JSON is returned to the client.
