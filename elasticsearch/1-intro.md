@@ -102,17 +102,13 @@ The community, other than creating nice **tools** and **plugins**, is very helpf
 There are also some **books** currently being written by community members, and many **blog posts** around the net sharing experiences and knowledge
 
 
-## Comparing Elasticsearch and Relational Database
+## How Does Elasticsearch Work?
 
-| Relational Database | Elasticsearch |
-| -- | -- |
-| SQL | DSL |
-| Rows | Documents |
-| Table | Index |
-| Column | Field |
+Elasticsearch uses shipping agents, called beats, to transfer raw data from multiple sources into Elasticsearch. After data is shipped into Elasticsearch, the engine runs data ingestion processes, which parse, normalize, enrich, and prepare data for indexing.
 
+After the data is indexed, users can run complex queries and use aggregations to retrieve complex data summaries.
 
-## Usecases
+For visualization and management, the Elastic Stack offers a tool called Kibana, which enables users to create real-time data visualizations, such as pie charts, maps, line graphs, and histograms.
 
 
 ## Which companies use Elasticsearch
