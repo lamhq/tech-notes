@@ -102,6 +102,15 @@ The community, other than creating nice **tools** and **plugins**, is very helpf
 There are also some **books** currently being written by community members, and many **blog posts** around the net sharing experiences and knowledge
 
 
+## Which companies use Elasticsearch
+
+- Netflix
+- Linkedin
+- Stackoverflow
+- Github
+- Facebook
+
+
 ## How Does Elasticsearch Work?
 
 Elasticsearch uses shipping agents, called beats, to transfer raw data from multiple sources into Elasticsearch. After data is shipped into Elasticsearch, the engine runs data ingestion processes, which parse, normalize, enrich, and prepare data for indexing.
@@ -111,10 +120,28 @@ After the data is indexed, users can run complex queries and use aggregations to
 For visualization and management, the Elastic Stack offers a tool called Kibana, which enables users to create real-time data visualizations, such as pie charts, maps, line graphs, and histograms.
 
 
-## Which companies use Elasticsearch
+## Why Elasticsearch should not be your Primary Data Store
 
-- Netflix
-- Linkedin
-- Stackoverflow
-- Github
-- Facebook
+### It is a search engine not a database
+
+Most databases are ACID compliant. Elasticsearch is not which means it is inherently riskier to use it like a database. Elasticsearch offers atomicity only on a per-document basis, not on a transaction basis.
+
+### Search engines and databases perform differently
+
+Elasticsearch focuses on making data available in “near real-time.” In order to do that, it requires making engineering choices focused on speed rather than perfectly reliable results.
+
+It’s better to use Elasticsearch to only host data you’ll need to search quickly, and let a database host anything that needs permanence, transactions, consistency, etc.
+
+### Changing Data Structures is Complicated
+
+Unlike a database that can validate a migration before committing any changes, Elasticsearch usually requires a full reindex from the data source to safely apply those changes.
+
+The whole process becomes pretty involved if you have a large amount of data, especially if Elasticsearch is your only data store.
+
+### Where Elasticsearch Shines
+
+- Full Text Search
+- Analytics
+- Fuzzy Searching
+- Logging and Log Analysis
+- Autocompletion and Instant Search

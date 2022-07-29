@@ -19,6 +19,38 @@ GET /my-index-000001/_search
 }
 ```
 
+## Highlighting
+
+Highlighters enable you to get highlighted snippets from one or more fields in your search results so you can show users where the query matches are.
+
+When you request highlights, the response contains an additional `highlight` element for each search hit that includes the highlighted fields and the highlighted fragments.
+
+_For example, to get highlights for the `content` field in each search hit using the default highlighter, include a `highlight` object in the request body that specifies the `content` field:_
+
+```json
+GET /_search
+{
+  "query": {
+    "match": { "content": "kimchy" }
+  },
+  "highlight": {
+    "fields": {
+      "content": {}
+    }
+  }
+}
+```
+
+## Paginate search results
+
+By default, searches return only the top 10 matching hits.  To page through a larger set of results, you can use the search API's `from` and `size` parameters:
+
+- The `from` parameter defines the number of hits to skip, defaulting to `0`.
+- The `size` parameter is the maximum number of hits to return.
+
+Avoid using `from` and `size` to page too deeply or request too many results at once. For deep pages or large sets of results, these operations can significantly increase memory and CPU usage, resulting in degraded performance or node failures.
+
+
 ## Common search options
 
 ### Query DSL
@@ -28,10 +60,6 @@ GET /my-index-000001/_search
 ### Search multiple data streams and indices
 
 You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices.
-
-### Paginate search results
-
-By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see Paginate search results.
 
 ### Retrieve selected fields
 
