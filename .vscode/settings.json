@@ -4,5 +4,7 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4
     },
-    "explorer.sortOrder": "mixed"
+    "explorer.sortOrder": "mixed",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.snippetSuggestions": "top"
 }
