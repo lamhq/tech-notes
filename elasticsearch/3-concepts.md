@@ -80,7 +80,7 @@ Khi người dùng tìm kiếm thì sẽ tìm kiếm trên Elasticsearch, tốc 
 - Schema less, document-oriented, the data is presented in the form of JSON format, which is a widely accepted web format.
 - Có khả năng phân tích, thống kê dữ liệu (aggregation)
 
-### Nhược điểm
+### Disadvantage
 
 - It is a flexible and powerful data storage search engine, but it is a bit difficult to learn
 - Does not support database transaction
