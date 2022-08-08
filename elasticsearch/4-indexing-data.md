@@ -52,87 +52,123 @@ In some situations, it is preferable to integrate data ingestion with your custo
 Our recommended tool of choice for developing and debugging Elasticsearch requests is the [Kibana Dev Tools Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html). You can use Dev Tools Console to PUT raw JSON documents into Elasticsearch.
 
 
-## Index API
+## CRUD API
 
 ### Indexing a document
+
+Adds a JSON document to the specified data stream or index and makes it searchable. If the target is an index and the document already exists, the request updates the document and increments its version.
 
 ```json
 PUT /<target>/_doc/<_id>
 {
-  "field": "value"
+  <field>: <value>
 }
 ```
-
-- Adds a JSON document to the specified data stream or index and makes it searchable.
-- If the target is an index and the document already exists, the request updates the document and increments its version.
 
 **Path parameters:**
 
-- `<target>`(Required, string) : Name of the data stream or index to target.
-- `<_id>`(Optional, string): Unique identifier for the document.
+- `<target>`: Name of the data stream or index to target.
+- `<_id>`: Unique identifier for the document.
 
+**Request body**
 
-### Indexing documents in bulk
+`<field>`: Request body contains the JSON source for the document data.
 
-
-
-## Retrieving a document
-
-```
-GET /{index}/{type}/{id}?pretty
-```
-
-## Deleting a Document
-
-```
-DELETE /website/blog/123
-```
-
-
-
-## Retrieving Part of a Document
-
-```
-GET /{index}/{type}/{id}?_source=title,text
-```
-
-
-## Checking whether a Document exists
-
-```
-HEAD /{index}/{type}/{id}
-```
-
-## Partial Updates to Documents
+**Example:**
 
 ```json
-POST /website/blog/1/_update
+PUT /accounts/_doc/1
 {
-  "script" : "ctx._source.views+=1"
-}
-
-POST /website/blog/1/_update
-{
-  "script" : "ctx._source.tags+=new_tag",
-  "params" : {
-    "new_tag" : "search"
-  }
+  "account_number": 1,
+  "balance": 39225,
+  "firstname": "Amber",
+  "lastname": "Duke",
+  "age": 32,
+  "gender": "M",
+  "address": "880 Holmes Lane",
+  "employer": "Pyrami",
+  "email": "amberduke@pyrami.com",
+  "city": "Brogan",
+  "state": "IL"
 }
 ```
 
-## Updating a Document That May Not Yet Exist
+### Retrieving a document
+
+```
+GET <index>/_doc/<_id>
+```
+
+### Deleting a Document
+
+```
+DELETE /<index>/_doc/<_id>
+```
+
+### Bulk operation
+
+Provides a way to perform multiple `index`, `create`, `delete`, and `update` actions in a single request.
+
+**Request:**
 
 ```json
-POST /website/pageviews/1/_update
-{
-  "script" : "ctx._source.views+=1",
-  "upsert": {
-    "views": 1
-  }
-}
+POST /_bulk
+POST /<target>/_bulk
+{ "index" : { "_index" : "test", "_id" : "1" } }
+{ "field1" : "value1" }
+{ "delete" : { "_index" : "test", "_id" : "2" } }
+{ "create" : { "_index" : "test", "_id" : "3" } }
+{ "field1" : "value3" }
+{ "update" : {"_id" : "1", "_index" : "test"} }
+{ "doc" : {"field2" : "value2"} }
 ```
 
-## Create an index with an explicit mapping
+**Path parameters**
+
+- `<target>` (Optional, string) Name of the data stream, index, or index alias to perform bulk actions on.
+
+**Request body**
+
+The request body contains a newline-delimited list of create, delete, index, and update actions and their associated source data.
+
+- `doc` (Optional, object) The partial document to index. Required for update operations.
+- `<fields>` (Optional, object) The document source to index. Required for create and index operations.
+
+**Example:**
+
+```json
+POST /_bulk
+{"index":{"_id":"1", "_index" : "accounts" }}
+{"account_number":1,"balance":39225,"firstname":"Amber","lastname":"Duke","age":32,"gender":"M","address":"880 Holmes Lane","employer":"Pyrami","email":"amberduke@pyrami.com","city":"Brogan","state":"IL"}
+{"index":{"_id":"6", "_index" : "accounts" }}
+{"account_number":6,"balance":5686,"firstname":"Hattie","lastname":"Bond","age":36,"gender":"M","address":"671 Bristol Street","employer":"Netagy","email":"hattiebond@netagy.com","city":"Dante","state":"TN"}
+
+```
+
+### Checking whether a Document exists
+
+```
+HEAD /<index>/_doc/<_id>
+```
+
+## Import sample data for testing
+
+Download the sample data
+
+```sh
+curl -O https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
+unzip accounts.zip
+```
+
+Run Bulk API to index data
+
+```bash
+curl  -XPOST "localhost:9200/accounts/_bulk" -H "Content-Type: application/json" --data-binary "@accounts.json"
+```
+
+## Mapping API
+
+### Create an index with an explicit mapping
 
 ```
 PUT /my-index
@@ -147,14 +183,14 @@ PUT /my-index
 }
 ```
 
-## View mapping of an index
+### View mapping of an index
 
 ```
 GET /my-index/_mapping
 ```
 
 
-## View the mapping of specific field
+### View the mapping of specific field
 
 ```
 GET /my-index/_mapping/field/employee-id
@@ -167,18 +203,3 @@ If your main database already has version numbers—or a value such as timestamp
 The way external version numbers are handled is a bit different from the internal version numbers we discussed previously. Instead of checking that the current `_version` is the same as the one specified in the request, Elasticsearch checks that the current `_version` is less than the specified version. If the request succeeds, the external ver‐ sion number is stored as the document’s new `_version`.
 
 External version numbers can be specified not only on index and delete requests, but also when creating new documents.
-
-## Import sample data for testing
-
-Download the sample data
-
-```sh
-curl -O https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
-unzip accounts.zip
-```
-
-Index data from json file
-
-```bash
-curl  -XPOST "localhost:9200/accounts/_bulk" -H "Content-Type: application/json" --data-binary "@accounts.json"
-```
