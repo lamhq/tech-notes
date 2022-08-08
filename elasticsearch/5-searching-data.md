@@ -2,11 +2,12 @@
 
 ## Run a search
 
-A search consists of one or more queries that are combined and sent to Elasticsearch. Documents that match a search’s queries are returned in the _hits_, or _search results_, of the response.
-
 You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/search-search.html) to search and aggregate data stored in Elasticsearch data streams or indices. The API’s query request body parameter accepts queries written in Query DSL.
 
-The following request searches `my-index-000001 `using a `match` query. This query matches documents with a `user.id` value of `kimchy`.
+A search consists of one or more queries that are combined and sent to Elasticsearch. Documents that match a search’s queries are returned in the _hits_, or _search results_, of the response.
+
+
+_Example: Search documents with a `user.id` value of `kimchy` of index `my-index-000001`_
 
 ```json
 GET /my-index-000001/_search
@@ -19,23 +20,54 @@ GET /my-index-000001/_search
 }
 ```
 
+## Search API
+
+```
+GET /<target>/_search
+
+GET /_search
+
+POST /<target>/_search
+
+POST /_search
+```
+
+
 ## Highlighting
 
 Highlighters enable you to get highlighted snippets from one or more fields in your search results so you can show users where the query matches are.
 
 When you request highlights, the response contains an additional `highlight` element for each search hit that includes the highlighted fields and the highlighted fragments.
 
-_For example, to get highlights for the `content` field in each search hit using the default highlighter, include a `highlight` object in the request body that specifies the `content` field:_
+_Example, get highlights for the `address` field in each search hit using the default highlighter, include a `highlight` object in the request body that specifies the `address` field:_
 
 ```json
 GET /_search
 {
   "query": {
-    "match": { "content": "kimchy" }
+    "match": { "address": "lane" }
   },
   "highlight": {
     "fields": {
-      "content": {}
+      "address": {}
+    }
+  }
+}
+```
+
+### Configure highlighting tags
+
+```json
+GET /_search
+{
+  "query" : {
+    "match": { "user.id": "kimchy" }
+  },
+  "highlight" : {
+    "pre_tags" : ["<tag1>"],
+    "post_tags" : ["</tag1>"],
+    "fields" : {
+      "body" : {}
     }
   }
 }

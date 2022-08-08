@@ -52,7 +52,7 @@ In some situations, it is preferable to integrate data ingestion with your custo
 Our recommended tool of choice for developing and debugging Elasticsearch requests is the [Kibana Dev Tools Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html). You can use Dev Tools Console to PUT raw JSON documents into Elasticsearch.
 
 
-## CRUD API
+## Document API
 
 ### Indexing a document
 
@@ -145,25 +145,26 @@ POST /_bulk
 
 ```
 
+### Reindex API
+
+Copies documents from a source to a destination.
+
+```json
+POST _reindex
+{
+  "source": {
+    "index": "my-index-000001"
+  },
+  "dest": {
+    "index": "my-new-index-000001"
+  }
+}
+```
+
 ### Checking whether a Document exists
 
 ```
 HEAD /<index>/_doc/<_id>
-```
-
-## Import sample data for testing
-
-Download the sample data
-
-```sh
-curl -O https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
-unzip accounts.zip
-```
-
-Run Bulk API to index data
-
-```bash
-curl  -XPOST "localhost:9200/accounts/_bulk" -H "Content-Type: application/json" --data-binary "@accounts.json"
 ```
 
 ## Mapping API
@@ -203,3 +204,19 @@ If your main database already has version numbers—or a value such as timestamp
 The way external version numbers are handled is a bit different from the internal version numbers we discussed previously. Instead of checking that the current `_version` is the same as the one specified in the request, Elasticsearch checks that the current `_version` is less than the specified version. If the request succeeds, the external ver‐ sion number is stored as the document’s new `_version`.
 
 External version numbers can be specified not only on index and delete requests, but also when creating new documents.
+
+
+## Import sample data for testing
+
+Download the sample data
+
+```sh
+curl -O https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
+unzip accounts.zip
+```
+
+Run Bulk API to index data
+
+```bash
+curl  -XPOST "localhost:9200/accounts/_bulk" -H "Content-Type: application/json" --data-binary "@accounts.json"
+```
