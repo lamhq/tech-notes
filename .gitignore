@@ -2,3 +2,5 @@
 
 # python virtual env
 .venv
+
+.DS_Store
