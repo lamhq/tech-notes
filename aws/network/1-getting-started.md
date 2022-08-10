@@ -1,4 +1,4 @@
-# AWS Basic
+# AWS Network Design: Getting Started
 
 ## Region
 
@@ -165,3 +165,138 @@ VPC peering allows you to take two different VPCs (same or different accounts) a
 VPC peering is not transitive. For example, if I have VPCs A and B peered, as well as A and C, B and C cannot communicate directly with each other unless they were also peered.
 
 ![VPC Peeing](vpc-peering.png)
+
+
+## Elastic Load Balancing
+
+ELB Distribute incoming traffic to:
+
+- EC2 instances
+  - Auto scaling group
+- Containers
+- IP addresses
+- Lambda functions (serverless)
+- On-premises resources (hybrid)
+
+There are two load balancer types, an application load balancer and a network load balancer.
+
+Load balancers can be internal (only receiving traffic from private subnets), or external (receiving traffic from the outside internet). 
+
+You can define your listeners by protocol and port, and indicate which availability zones your load balancer will service. 
+
+The target group is how you identify where you will send the traffic, be it instances, Lambdas, whatever it is that you're distributing the traffic to goes in the target group. 
+
+You will also specify health checks to ensure that no traffic is sent to unhealthy targets.
+
+### Network load balancer
+
+- Operates on TCP and TLS protocols
+- Layer 4 routing (connection level)
+- Can handle millions of requests per second with very low latency
+
+### Application load balancer
+
+- Handle HTTP and HTTPS traffic
+- Layer 7 routing (request level)
+- Allow user authentication by integrating with an identity provider
+- Supports sticky sessions, redirects
+
+Security:
+
+- support HTTPS termination and certificate management
+- SSL/TLS decryption
+- user authentication via direct connection to identity provider
+- monitor and audit traffic with CloudWatch metrics
+
+
+## Route 53
+
+- Amazon Route 53 is a domain name system web service (53 is the port where DNS server requests are addressed)
+- Fully IPv6 compliant
+- Include:
+  - domain name registration
+  - manage record sets for your domains
+  - DNS health checks for all regions
+  - provides a few different options for managing your global traffic, including latency-based routing, geo-proximity, and weighted round robin. 
+
+Map to several different AWS services:
+- Elastic Load Balancing
+- Amazon CloudFront: CDN
+- Elastic Beanstalk: auto-scaling application deployment service
+- API Gateway
+- Targets in your VPC
+- Amazon S3 Bucket
+
+
+## API Gateway
+
+- AWS service to accept and process API calls
+- supports HTTP, REST, WebSocket
+- can auto-scale to handle hundreds of thousands API calls
+- supports data extraction from request:
+  - path variables
+  - URL query string parameters
+  - headers
+  - request body
+- can send requests to: 
+  - Lambda functions
+  - EC2 instances
+  - containers
+  - other AWS services
+  - public / private endpoints
+
+Monitoring:
+- API calls
+- latency for getting response
+- error rates 
+
+Authentication and authorization:
+- Amazon Cognito (Google, Facebook, and Amazon)
+- AWS Identity and Access Manager (IAM)
+- Lambda authorizer: a Lambda function that will interact using OAuth, SAML, or JWT tokens.
+
+Throttling:
+- rate: max requests per second
+- burst: max concurrent requests
+
+You can use API key to:
+- set a quota (10,000 requests per week)
+- set rate and burst limits for a particular key
+
+API stages:
+- a released version of your API (dev, test, prod)
+- you can run multiple stages at the same time
+
+Canary release:
+- send a percentage of traffic to a particular stage
+
+Mock:
+- allow you to mock responses 
+- allow client development to move forward
+
+Cient support:
+- SDK generation
+- Documentation: Export Swagger, OpenAPI, JSON, YAML  
+
+## CloudFront (CDN)
+
+- a content delivery network (CDN) service
+- supports both IPv4 or IPv6
+- provide static asset caching:
+  - images
+  - style sheets
+  - javaScript files
+  - installs or patches
+- video streaming: live or on-demand
+- integrate with AWS Services:
+  - S3
+  - API Gateway
+  - EC2
+  - ELB
+  - Route 53
+  - Elemental MediaLive
+- report & analytics
+  - request & data transfer trends
+  - error rate
+  - cache statistics
+  - access logs

@@ -7,20 +7,22 @@ You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/refer
 A search consists of one or more queries that are combined and sent to Elasticsearch. Documents that match a search’s queries are returned in the _hits_, or _search results_, of the response.
 
 
-_Example: Search documents with a `user.id` value of `kimchy` of index `my-index-000001`_
+_Example: Search documents with a `address` value of `lane` of index `accounts`_
 
 ```json
-GET /my-index-000001/_search
+GET /accounts/_search
 {
   "query": {
-    "match": {
-      "user.id": "kimchy"
-    }
+    "match": { "address": "lane" }
   }
 }
 ```
 
 ## Search API
+
+Reference: https://www.elastic.co/guide/en/elasticsearch/reference/7.17/search-search.html
+
+**Request**
 
 ```
 GET /<target>/_search
@@ -31,6 +33,58 @@ POST /<target>/_search
 
 POST /_search
 ```
+
+**Request body**
+
+- `from`: (Optional, integer) Starting document offset. Defaults to `0`.
+- `query`: (Optional, query object) Defines the search definition using the Query DSL.
+- `size`: (Optional, integer) The number of hits to return. Defaults to 10.
+
+**Response body**
+
+```json
+{
+  "took": 15,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 16,
+      "relation": "eq"
+    },
+    "max_score": 4.1042743,
+    "hits": [
+      {
+        "_index": "accounts",
+        "_type": "_doc",
+        "_id": "1",
+        "_score": 4.1042743,
+        "_source": {
+          ...
+        }
+      },
+    ]
+  }
+}
+```
+
+- `hits`: (object) Contains returned documents and metadata.
+  - `total`: (object) Metadata about the number of returned documents.
+    - `value`: (integer) Total number of returned documents.
+    - `relation`: (string) whether the number of returned documents is accurate (`eq`) or a lower bound (`gte`).
+  - `hits`: (array of objects) Array of returned document objects.
+    - `_index`: (string) Name of the index containing the returned document.
+    - `_id`: (string) Unique identifier for the returned document.
+    - `_score`: (float) number used to determine the relevance of the returned document.
+    - `_source`: (object) Original JSON body passed for the document at index time.
+  - `max_score`: (float) Highest returned document `_score`.This value is null for requests that do not sort by `_score`.
+- `took`: (integer) Milliseconds it took Elasticsearch to execute the request.
+- `_shards`: (object) Contains a count of shards used for the request.
 
 
 ## Highlighting
@@ -55,7 +109,7 @@ GET /_search
 }
 ```
 
-### Configure highlighting tags
+**Configure highlighting tags:**
 
 ```json
 GET /_search
@@ -73,15 +127,104 @@ GET /_search
 }
 ```
 
+See more:
+- Highlighter types: 
+  - Unified highlighter
+  - Plain highlighter
+  - Fast vector highlighter
+- How highlighters work internally
+- Offsets strategy
+- Highlighting settings
+- Override global settings for individual fields
+- Specify a highlight query
+- Set highlighter type
+- Highlight on source
+- Highlight in all fields
+- Combine matches on multiple fields
+- Control highlighted fragments
+- Specify a fragmenter for the plain highlighte
+
+
 ## Paginate search results
 
-By default, searches return only the top 10 matching hits.  To page through a larger set of results, you can use the search API's `from` and `size` parameters:
+By default, searches return only the top 10 matching hits. To page through a larger set of results, you can use the search API's `from` and `size` parameters:
 
 - The `from` parameter defines the number of hits to skip, defaulting to `0`.
 - The `size` parameter is the maximum number of hits to return.
 
 Avoid using `from` and `size` to page too deeply or request too many results at once. For deep pages or large sets of results, these operations can significantly increase memory and CPU usage, resulting in degraded performance or node failures.
 
+By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the `search_after` parameter.
+
+```json
+GET /_search
+{
+  "from": 5,
+  "size": 20,
+  "query": {
+    "match": { "address": "lane" }
+  }
+}
+```
+
+See more:
+- Search after
+
+
+## Search multiple data streams and indices
+
+Searches the `index-1` and `index-2` indices:
+
+```
+GET /index-1,index-2/_search
+```
+
+Searches any data streams or indices in the cluster that start with `my-index-`:
+
+```
+GET /my-index-*/_search
+```
+
+To search all data streams and indices in a cluster, omit the target from the request path:
+
+```
+GET /_search
+```
+
+See more:
+- Index boost
+
+
+## Sort search results
+
+Allows you to add one or more sorts on specific fields. The sort is defined on a per field level, with special field name for `_score` to sort by score, and `_doc` to sort by index order.
+
+```json
+GET /accounts/_search
+{
+  "query": {
+    "match": {
+      "address": "lane"
+    }
+  },
+  "sort" : [
+    { "age": "asc" },
+    { "city.keyword" : "desc" }
+  ]
+}
+```
+
+See more:
+- Sort values
+- Sort mode
+- Sorting numeric fields
+- Sorting within nested objects
+- Missing values
+- Ignoring unmapped fields
+- Geo distance sorting
+- Script based sorting
+- Track Scores
+- Memory considerations
 
 ## Common search options
 
@@ -89,21 +232,9 @@ Avoid using `from` and `size` to page too deeply or request too many results at 
 
 ### Aggregations
 
-### Search multiple data streams and indices
-
-You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices.
-
 ### Retrieve selected fields
 
 The search response’s `hit.hits` property includes the full document `_source` for each hit. To retrieve only a subset of the `_source` or other fields, see Retrieve selected fields.
-
-### Sort search results
-
-By default, search hits are sorted by `_score`, a relevance score that measures how well each document matches the query. 
-
-To customize the calculation of these scores, use the `script_score` query. 
-
-To sort search hits by other field values, see Sort search results.
 
 ### Run an async search
 
