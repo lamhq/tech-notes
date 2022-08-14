@@ -226,21 +226,127 @@ See more:
 - Track Scores
 - Memory considerations
 
-## Common search options
 
-### Query DSL
+## Retrieve inner hits
 
-### Aggregations
+Returns additional nested hits (per search hit in the search response) that caused a search hit to match in a different scope.
 
-### Retrieve selected fields
+**Create index & initialize data**
 
-The search response’s `hit.hits` property includes the full document `_source` for each hit. To retrieve only a subset of the `_source` or other fields, see Retrieve selected fields.
+```json
+PUT test
+{
+  "mappings": {
+    "properties": {
+      "comments": {
+        "type": "nested"
+      }
+    }
+  }
+}
 
-### Run an async search
+PUT test/_doc/1?refresh
+{
+  "title": "Test title",
+  "comments": [
+    {
+      "author": "kimchy",
+      "number": 1
+    },
+    {
+      "author": "nik9000",
+      "number": 2
+    }
+  ]
+}
+```
 
-### Search timeout
+Search by nestest documents and retrive nested hits:
 
-### Track total hits
+```json
+POST test/_search
+{
+  "query": {
+    "nested": {
+      "path": "comments",
+      "query": {
+        "match": { "comments.number": 2 }
+      },
+      "inner_hits": {} 
+    }
+  }
+}
+```
+
+Sample response:
+
+```json
+{
+  ...,
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "test",
+        "_type": "_doc",
+        "_id": "1",
+        "_score": 1.0,
+        "_source": ...,
+        "inner_hits": {
+          "comments": { 
+            "hits": {
+              "total": {
+                "value": 1,
+                "relation": "eq"
+              },
+              "max_score": 1.0,
+              "hits": [
+                {
+                  "_index": "test",
+                  "_type": "_doc",
+                  "_id": "1",
+                  "_nested": {
+                    "field": "comments",
+                    "offset": 1
+                  },
+                  "_score": 1.0,
+                  "_source": {
+                    "author": "nik9000",
+                    "number": 2
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+## Retrieve selected fields
+
+The search response’s `hit.hits` property includes the full document `_source` for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](elastic.co/guide/en/elasticsearch/reference/7.17/search-fields.html).
+
+
+## Quickly check for matching docs
+
+If you only want to know if there are any documents matching a specific query, you can set the `size` to 0 to indicate that we are not interested in the search results.
+
+You can also set `terminate_after` to `1` to indicate that the query execution can be terminated whenever the first matching document was found (per shard).
+
+The response will not contain any hits as the size was set to 0. 
+
+The hits.total will be either equal to 0, indicating that there were no matching documents, or greater than 0 meaning that there were at least as many documents matching the query when it was early terminated. 
+
+Also if the query was terminated early, the terminated_early flag will be set to true in the response.
+
+## Track total hits
 
 The `track_total_hits` parameter allows you to control how the total number of hits should be tracked.
 
@@ -259,20 +365,3 @@ GET my-index-000001/_search
   }
 }
 ```
-
-### Quickly check for matching docs
-
-If you only want to know if there are any documents matching a specific query, you can set the `size` to 0 to indicate that we are not interested in the search results.
-
-You can also set `terminate_after` to `1` to indicate that the query execution can be terminated whenever the first matching document was found (per shard).
-
-The response will not contain any hits as the size was set to 0. 
-
-The hits.total will be either equal to 0, indicating that there were no matching documents, or greater than 0 meaning that there were at least as many documents matching the query when it was early terminated. 
-
-Also if the query was terminated early, the terminated_early flag will be set to true in the response.
-
-
-## Response fields
-
-The `took` time in the response contains the milliseconds that this request took for processing, beginning quickly after the node received the query, up until all search related work is done and before the above JSON is returned to the client.
