@@ -87,6 +87,15 @@ POST /_search
 - `_shards`: (object) Contains a count of shards used for the request.
 
 
+
+## Search response
+
+- `hits`: contains the `total` number of documents that matched our query, and a `hits` array containing the first 10 of those matching documents.
+- `took`: how many milliseconds the entire search request took to execute.
+- `shards`: the total number of `shards` that were involved in the query and, of them, how many were `successful` and how many `failed`.
+- `timeout`: whether the query timed out
+
+
 ## Highlighting
 
 Highlighters enable you to get highlighted snippets from one or more fields in your search results so you can show users where the query matches are.
@@ -365,3 +374,290 @@ GET my-index-000001/_search
   }
 }
 ```
+
+## Source filtering
+
+You can use the `_source` parameter to select what fields of the source are returned.
+
+The following search API request returns the source for only the `obj` field and its properties.
+
+```json
+GET /_search
+{
+  "_source": "obj.*",
+  "query": {
+    "match": {
+      "user.id": "kimchy"
+    }
+  }
+}
+```
+
+```json
+GET /_search
+{
+  "_source": {
+    "includes": [ "obj1.*", "obj2.*" ],
+    "excludes": [ "*.description" ]
+  },
+  "query": {
+    "term": {
+      "user.id": "kimchy"
+    }
+  }
+}
+```
+
+
+## Suggesters
+
+### Term suggester
+
+Suggests similar looking terms based on a provided text by using a suggester.
+
+The suggest request part is defined alongside the query part in a `_search` request. If the query part is left out, only suggestions are returned.
+
+`term` suggester is for spell checking and finding similar terms.
+
+```json
+POST my-index-000001/_search
+{
+  "query" : {
+    "match": {
+      "message": "tring out Elasticsearch"
+    }
+  },
+  "suggest" : {
+    "my-suggestion" : {
+      "text" : "tring out Elasticsearch",
+      "term" : {
+        "field" : "message"
+      }
+    }
+  }
+}
+```
+
+Example response:
+
+```json
+{
+  "_shards": ...
+  "hits": ...
+  "took": 2,
+  "timed_out": false,
+  "suggest": {
+    "my-suggestion": [ {
+      "text": "tring",
+      "offset": 0,
+      "length": 5,
+      "options": [ {"text": "trying", "score": 0.8, "freq": 1 } ]
+    }, {
+      "text": "out",
+      "offset": 6,
+      "length": 3,
+      "options": []
+    }, {
+      "text": "elasticsearch",
+      "offset": 10,
+      "length": 13,
+      "options": []
+    } ]
+  }
+}
+```
+
+Common suggest options:
+
+- `text`: The suggest text.
+- `field`: The field to fetch the candidate suggestions from.
+- `analyzer`: The analyzer to analyse the suggest text with. Defaults to the search analyzer of the suggest field.
+- `size`: The maximum corrections to be returned per suggest text token.
+- `sort`: Defines how suggestions should be sorted per suggest text term: `score` or `frequency`
+- `suggest_mode`: The suggest mode controls what suggestions are included or controls for what suggest text terms, suggestions should be suggested. `missing` (default), `popular`, `always`.
+
+
+### Completion Suggester
+
+The `completion` suggester provides auto-complete/search-as-you-type functionality. It is not meant for spell correction or did-you-mean functionality like the `term` or `phrase` suggesters.
+
+`completion` suggester is optimized for speed. The suggester uses data structures that enable fast lookups, but are costly to build and are stored in-memory.
+
+To use this feature, specify a special mapping for this field, which indexes the field values for fast completions.
+
+**Mapping**
+
+```json
+PUT music
+{
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "completion"
+      }
+    }
+  }
+}
+```
+
+**Indexing**
+
+You index suggestions like any other field. A suggestion is made of an `input` and an optional `weight` attribute. 
+
+An `input` is the expected text to be matched by a suggestion query and the `weight` determines how the suggestions will be scored.
+
+```json
+PUT music/_doc/1?refresh
+{
+  "title" : {
+    "input": [ "Nevermind", "Nirvana" ],
+    "weight" : 34
+  }
+}
+```
+
+```json
+PUT music/_doc/1?refresh
+{
+  "title": [
+    {
+      "input": "Nevermind",
+      "weight": 10
+    },
+    {
+      "input": "Nirvana",
+      "weight": 3
+    }
+  ]
+}
+```
+
+```json
+PUT music/_doc/1?refresh
+{
+  "title" : [ "Nevermind", "Nirvana" ]
+}
+```
+
+**Querying**
+
+You have to specify the suggest type as `completion`
+
+```json
+POST music/_search?pretty
+{
+  "suggest": {
+    "song-suggest": {
+      "prefix": "nir",        
+      "completion": {         
+        "field": "title"  
+      }
+    }
+  }
+}
+```
+
+**Response**
+
+```json
+{
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits": ...,
+  "took": 2,
+  "timed_out": false,
+  "suggest": {
+    "song-suggest" : [ {
+      "text" : "nir",
+      "offset" : 0,
+      "length" : 3,
+      "options" : [ {
+        "text" : "Nirvana",
+        "_index": "music",
+        "_type": "_doc",
+        "_id": "1",
+        "_score": 1.0,
+        "_source": {
+          "title": ["Nevermind", "Nirvana"]
+        }
+      } ]
+    } ]
+  }
+}
+```
+
+Suggestions return the full document `_source` by default. The size of the `_source` can impact performance due to disk fetch and network transport overhead. To save some network overhead, filter out unnecessary fields from the `_source` using source filtering to minimize `_source` size
+
+```json
+POST music/_search
+{
+  "_source": "suggest",     
+  "suggest": {
+    "song-suggest": {
+      "prefix": "nir",
+      "completion": {
+        "field": "suggest", 
+        "size": 5           
+      }
+    }
+  }
+}
+```
+
+**Skip duplicate suggestions**
+
+```json
+POST music/_search?pretty
+{
+  "suggest": {
+    "song-suggest": {
+      "prefix": "nor",
+      "completion": {
+        "field": "suggest",
+        "skip_duplicates": true
+      }
+    }
+  }
+}
+```
+
+**Fuzzy queries**
+
+You can have a typo in your search and still get results back.
+
+```json
+POST music/_search?pretty
+{
+  "suggest": {
+    "song-suggest": {
+      "prefix": "nor",
+      "completion": {
+        "field": "suggest",
+        "fuzzy": {
+          "fuzziness": 2
+        }
+      }
+    }
+  }
+}
+```
+
+**Regex queries**
+
+```json
+POST music/_search?pretty
+{
+  "suggest": {
+    "song-suggest": {
+      "regex": "n[ever|i]r",
+      "completion": {
+        "field": "suggest"
+      }
+    }
+  }
+```
+}'

@@ -1,99 +1,38 @@
 # Query DSL
 
-The API response returns the top 10 documents matching the query in the `hits.hits` property:
-
-```json
-{
-  "took": 5,
-  "timed_out": false,
-  "_shards": {
-    "total": 1,
-    "successful": 1,
-    "skipped": 0,
-    "failed": 0
-  },
-  "hits": {
-    "total": {
-      "value": 1,
-      "relation": "eq"
-    },
-    "max_score": 1.3862942,
-    "hits": [
-      {
-        "_index": "my-index-000001",
-        "_type": "_doc",
-        "_id": "kxWFcnMByiguvud1Z8vC",
-        "_score": 1.3862942,
-        "_source": {
-          "@timestamp": "2099-11-15T14:12:12",
-          "http": {
-            "request": {
-              "method": "get"
-            },
-            "response": {
-              "bytes": 1070000,
-              "status_code": 200
-            },
-            "version": "1.1"
-          },
-          "message": "GET /search HTTP/1.1 200 1070000",
-          "source": {
-            "ip": "127.0.0.1"
-          },
-          "user": {
-            "id": "kimchy"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
-
 ## Query DSL (Domain Specific Language)
 
 The Elasticsearch DSL enable developers to write both basic and complex queries for Elasticsearch
 
-Consisting of two types of clauses: **Leaf query clauses** and **Compound query clause**.
+The query consisting of two types of clauses: **Leaf query clauses** and **Compound query clause**.
 
 
-## Leaf query clauses
+## Query context & Filter context
 
-Search for a particular value in a particular field, such as the `match`, `term` or `range` queries.
+### Relevance score
 
-```json
-GET /customers/_search
-{
-  "query: {
-    "match_all": { "age": "32" }
-  }
-}
-```
+By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query. 
 
-## Compound query clauses
+The relevance score is a positive floating point number, returned in the `_score` metadata field of the search API.
 
-Compound queries are combinations of leaf query clauses and other compound queries.
+The higher the `_score`, the more relevant the document.
 
 
-## Relevance score
+### Query context
 
-By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query. The higher the `_score`, the more relevant the document
-
-
-## Query context
+Query clauses behave differently depending on whether they are used in query context or filter context.
 
 In the query context, a query clause answers the question _"How well does this document match this query clause?"_ Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 
 Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the search API.
 
-## Filter context
+### Filter context
 
 In a filter context, a query clause answers the question *"Does this document match this query clause?"* no scores are calculated. Filter context is mostly used for filtering structured data.
 
 Filter context is in effect whenever a query clause is passed to a `filter` parameter, such as the `filter` or `must_not` parameters in the `bool` query, the filter parameter in the `constant_score` query, or the `filter` aggregation.
 
-## Example of query and filter contexts
+## Example
 
 This query will match documents where all of the following conditions are met:
 
@@ -124,94 +63,39 @@ GET /_search
 - The `bool` and two `match` clauses are used in query context, which means that they are used to score how well each document matches.
 - The `filter` parameter indicates filter context. Its `term` and `range` clauses are used in filter context. They will filter out documents which do not match, but they will not affect the score for matching documents.
 
-## Modiying score
 
-### Boosting Query
+## Leaf query clauses
 
-Returns documents matching a positive query while reducing the relevance score of documents that also match a negative query.
-
-You can use the boosting query to demote certain documents without excluding them from the search results.
+Search for a particular value in a particular field, such as the `match`, `term` or `range` queries.
 
 ```json
-GET /_search
+GET /customers/_search
 {
-  "query": {
-    "boosting": {
-      "positive": {
-        "term": {
-          "text": "apple"
-        }
-      },
-      "negative": {
-        "term": {
-          "text": "pie tart fruit crumble tree"
-        }
-      },
-      "negative_boost": 0.5
-    }
+  "query: {
+    "match_all": { "age": "32" }
   }
 }
 ```
 
-### Constant Score
+## Compound query clauses
 
-```json
-GET /_search
-{
-  "query": {
-    "constant_score": {
-      "filter": {
-        "term": { "user.id": "kimchy" }
-      },
-      "boost": 1.2
-    }
-  }
-}
-```
+Compound queries are combinations of leaf query clauses and other compound queries.
 
-### Disjunction max
+Either to combine their results and scores, to change their behaviour, or to switch from query to filter context.
 
-```json
-GET /_search
-{
-  "query": {
-    "dis_max": {
-      "queries": [
-        { "term": { "title": "Quick pets" } },
-        { "term": { "body": "Quick pets" } }
-      ],
-      "tie_breaker": 0.7
-    }
-  }
-}
-```
+### Boolean query
 
-### Function Score
+The default query for combining multiple leaf or compound query clauses.
 
-```json
-GET /_search
-{
-  "query": {
-    "function_score": {
-      "query": { "match_all": {} },
-      "boost": "5",
-      "random_score": {}, 
-      "boost_mode": "multiply"
-    }
-  }
-}
-```
+Matches documents matching boolean combinations of other queries. 
 
-## Compound queries
+It is built using one or more boolean clauses, each clause with a typed occurrence:
 
-### Boolean
-
-A query that matches documents matching boolean combinations of other queries. It is built using one or more boolean clauses, each clause with a typed occurrence:
-
-- `must`: The clause (query) must appear in matching documents and will contribute to the score.
+- `must`: The clause (query) must appear in matching documents.
 - `should`: The clause (query) should appear in the matching document.
 - `filter`: The clause (query) must appear in matching documents. Scoring is ignored.
 - `must_not`: The clause (query) must not appear in the matching documents. Scoring is ignored.
+
 
 ```json
 POST _search
@@ -240,26 +124,104 @@ POST _search
 }
 ```
 
+- `must` and `should` clauses have their scores combined
+ - `must_not` and `filter` clauses are executed in filter context.
 
-### Disjunction max
+### Boosting query
 
-Returns documents matching one or more wrapped queries, called query clauses or clauses.
+Return documents which match a `positive` query.
 
-```
+Reduce the score of documents which match a `negative` query.
+
+You can use the boosting query to demote certain documents without excluding them from the search results.
+
+```json
 GET /_search
 {
-    "query": {
-        "dis_max" : {
-            "queries" : [
-                { "term" : { "title" : "Quick pets" }},
-                { "term" : { "body" : "Quick pets" }}
-            ],
-            "tie_breaker" : 0.7
+  "query": {
+    "boosting": {
+      "positive": {
+        "term": {
+          "text": "apple"
         }
+      },
+      "negative": {
+        "term": {
+          "text": "pie tart fruit crumble tree"
+        }
+      },
+      "negative_boost": 0.5
     }
+  }
 }
 ```
 
+### Constant Score query
+
+Wraps a **filter query** and returns every matching document with a relevance score equal to the `boost` parameter value.
+
+```json
+GET /_search
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "term": { "user.id": "kimchy" }
+      },
+      "boost": 1.2
+    }
+  }
+}
+```
+
+### Disjunction max query
+
+Returns documents matching one or more wrapped queries
+
+If a returned document matches multiple query clauses, the `dis_max` query assigns the document the highest relevance score from any matching clause, plus a tie breaking increment for any additional matching subqueries.
+
+```json
+GET /_search
+{
+  "query": {
+    "dis_max": {
+      "queries": [
+        { "term": { "title": "Quick pets" } },
+        { "term": { "body": "Quick pets" } }
+      ],
+      "tie_breaker": 0.7
+    }
+  }
+}
+```
+
+### Function Score query
+
+Allows you to modify the score of documents that are retrieved by a query
+
+```json
+GET /_search
+{
+  "query": {
+    "function_score": {
+      "query": { "match_all": {} },
+      "boost": "5",
+      "random_score": {}, 
+      "boost_mode": "multiply"
+    }
+  }
+}
+```
+
+## Full text queries
+
+The full text queries enable you to search analyzed text fields.
+
+The query string is processed using the same analyzer that was applied to the field during indexing.
+
+
+
+## Term-level queries
 
 ### term Filter
 
@@ -365,29 +327,21 @@ GET /gb/tweet/_validate/query?explain
 ```
 
 
-## Search response
 
-- `hits`: contains the `total` number of documents that matched our query, and a `hits` array containing the first 10 of those matching documents.
-- `took`: how many milliseconds the entire search request took to execute.
-- `shards`: the total number of `shards` that were involved in the query and, of them, how many were `successful` and how many `failed`.
-- `timeout`: whether the query timed out
+## Expensive queries
 
+Certain types of queries will generally execute slowly. Those queries can be categorised as follows:
 
-## Search in multiple indices
-
-```
-GET /_search
-GET /_all/_search
-GET /gb,us/_search
-GET /g*,u*/_search
-GET /gb,us/user,tweet/_search
-```
-
-
-## Pagination
-- `size`: Indicates the number of results that should be returned, defaults to 10
-- `from`: Indicates the number of initial results that should be skipped, defaults to 0
-
-```
-GET /_search?size=5&from=10
-```
+- Queries that need to do linear scans to identify matches:
+  - `script` queries
+- Queries that have a high up-front cost:
+  - `fuzzy` queries (except on `wildcard` fields)
+  - `regexp` queries (except on `wildcard` fields)
+  - `prefix` queries (except on `wildcard` fields or those without `index_prefixes`)
+  - `wildcard` queries (except on `wildcard` fields)
+  - `range` queries on text and keyword fields
+- Joining queries
+- Queries on deprecated geo-shapes
+- Queries that may have a high per-document cost:
+  - `script_score` queries
+  - `percolate` queries
