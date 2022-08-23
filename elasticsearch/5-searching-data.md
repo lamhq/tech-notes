@@ -36,8 +36,8 @@ POST /_search
 
 **Request body**
 
-- `from`: (Optional, integer) Starting document offset. Defaults to `0`.
 - `query`: (Optional, query object) Defines the search definition using the Query DSL.
+- `from`: (Optional, integer) Starting document offset. Defaults to `0`.
 - `size`: (Optional, integer) The number of hits to return. Defaults to 10.
 
 **Response body**
