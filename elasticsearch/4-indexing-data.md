@@ -113,14 +113,14 @@ Provides a way to perform multiple `index`, `create`, `delete`, and `update` act
 
 ```json
 POST /_bulk
-POST /<target>/_bulk
-{ "index" : { "_index" : "test", "_id" : "1" } }
+{ "index" : { "_index" : "index-1", "_id" : "1" } }
 { "field1" : "value1" }
-{ "delete" : { "_index" : "test", "_id" : "2" } }
-{ "create" : { "_index" : "test", "_id" : "3" } }
+{ "delete" : { "_index" : "index-2", "_id" : "2" } }
+{ "create" : { "_index" : "index-1", "_id" : "3" } }
 { "field1" : "value3" }
-{ "update" : {"_id" : "1", "_index" : "test"} }
+{ "update" : { "_index" : "index-1", "_id" : "1" } }
 { "doc" : {"field2" : "value2"} }
+
 ```
 
 **Path parameters**

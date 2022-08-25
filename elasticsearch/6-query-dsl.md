@@ -71,8 +71,8 @@ Search for a particular value in a particular field, such as the `match`, `term`
 ```json
 GET /customers/_search
 {
-  "query: {
-    "match_all": { "age": "32" }
+  "query": {
+    "match": { "age": "32" }
   }
 }
 ```
@@ -98,7 +98,7 @@ It is built using one or more boolean clauses, each clause with a typed occurren
 
 
 ```json
-POST _search
+GET /customers/_search
 {
   "query": {
     "bool" : {
@@ -125,7 +125,7 @@ POST _search
 ```
 
 - `must` and `should` clauses have their scores combined
- - `must_not` and `filter` clauses are executed in filter context.
+- `must_not` and `filter` clauses are executed in filter context.
 
 ### Boosting query
 
