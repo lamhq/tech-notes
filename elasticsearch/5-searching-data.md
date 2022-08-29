@@ -163,7 +163,7 @@ By default, searches return only the top 10 matching hits. To page through a lar
 
 Avoid using `from` and `size` to page too deeply or request too many results at once. For deep pages or large sets of results, these operations can significantly increase memory and CPU usage, resulting in degraded performance or node failures.
 
-By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the `search_after` parameter.
+By default, you cannot page through more than 10,000 hits using the `from` and `size` parameters. To page through more hits, use the `search_after` parameter.
 
 ```json
 GET /_search
@@ -171,7 +171,7 @@ GET /_search
   "from": 5,
   "size": 20,
   "query": {
-    "match": { "address": "lane" }
+    "match_all": {}
   }
 }
 ```
@@ -212,9 +212,7 @@ Allows you to add one or more sorts on specific fields. The sort is defined on a
 GET /accounts/_search
 {
   "query": {
-    "match": {
-      "address": "lane"
-    }
+    "match_all": {}
   },
   "sort" : [
     { "age": "asc" },

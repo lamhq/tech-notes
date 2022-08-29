@@ -7,9 +7,7 @@ The Elasticsearch DSL enable developers to write both basic and complex queries 
 The query consisting of two types of clauses: **Leaf query clauses** and **Compound query clause**.
 
 
-## Query context & Filter context
-
-### Relevance score
+## Relevance score
 
 By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query. 
 
@@ -17,6 +15,8 @@ The relevance score is a positive floating point number, returned in the `_score
 
 The higher the `_score`, the more relevant the document.
 
+
+## Query context & Filter context
 
 ### Query context
 
@@ -263,6 +263,7 @@ Parameters for `<field>`:
 - `query`: (Required) Text, number, boolean value or date you wish to find in the provided `<field>`.
 - `operator`: Boolean logic used to interpret text in the query value. Valid values are: `OR` (default), `AND`
 - `minimum_should_match`: (Optional, string) Minimum number of clauses that must match for a document to be returned.
+- `fuzziness`: allows fuzzy matching based on the type of field being queried
 
 ```json
 GET /_search
@@ -270,6 +271,22 @@ GET /_search
   "query": {
     "match": {
       "message": "this is a test"
+    }
+  }
+}
+```
+
+### Fuzziness in the match query
+
+```json
+GET /articles/_search
+{
+  "query": {
+    "match": {
+      "content": {
+        "query": "node ks documentatiom",
+        "fuzziness": "AUTO"
+      }
     }
   }
 }
@@ -340,140 +357,6 @@ GET /_search
 ```
 
 
-## Joining queries
-
-Performing full SQL-style joins in a distributed system like Elasticsearch is prohibitively expensive. Instead, Elasticsearch offers two forms of join which are designed to scale horizontally.
-
-### `nested` query
-
-Search [nested](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/nested.html) fields.
-
-Nested fields are used to index arrays of objects
-
-If an object matches the search, the `nested` query returns the root parent document.
-
-To use the nested query, your index must include a nested field mapping.
-
-```json
-PUT /my-index-000001
-{
-  "mappings": {
-    "properties": {
-      "obj1": {
-        "type": "nested"
-      }
-    }
-  }
-}
-```
-
-```json
-GET /my-index-000001/_search
-{
-  "query": {
-    "nested": {
-      "path": "obj1",
-      "query": {
-        "bool": {
-          "must": [
-            { "match": { "obj1.name": "blue" } },
-            { "range": { "obj1.count": { "gt": 5 } } }
-          ]
-        }
-      },
-      "score_mode": "avg"
-    }
-  }
-}
-```
-
-
-### `has_child` query
-
-The `has_child` query returns parent documents whose child documents match the specified query,
-
-To use the `has_child` query, your index must include a [join](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/parent-join.html) field mapping.
-
-```json
-PUT /my-index-000001
-{
-  "mappings": {
-    "properties": {
-      "my-join-field": {
-        "type": "join",
-        "relations": {
-          "parent": "child"
-        }
-      }
-    }
-  }
-}
-```
-
-Example query:
-
-```json
-GET /_search
-{
-  "query": {
-    "has_child": {
-      "type": "child",
-      "query": {
-        "match_all": {}
-      },
-      "max_children": 10,
-      "min_children": 2,
-      "score_mode": "min"
-    }
-  }
-}
-```
-
-### `has_parent` query
-
-The `has_parent` query returns child documents whose parent document matches the specified query.
-
-To use the `has_parent` query, your index must include a [join](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/parent-join.html) field mapping.
-
-```json
-PUT /my-index-000001
-{
-  "mappings": {
-    "properties": {
-      "my-join-field": {
-        "type": "join",
-        "relations": {
-          "parent": "child"
-        }
-      },
-      "tag": {
-        "type": "keyword"
-      }
-    }
-  }
-}
-```
-
-Example query:
-
-```json
-GET /my-index-000001/_search
-{
-  "query": {
-    "has_parent": {
-      "parent_type": "parent",
-      "query": {
-        "term": {
-          "tag": {
-            "value": "Elasticsearch"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
 ## Term-level queries
 
 Term-level queries do not analyze search terms. Instead, term-level queries match the exact terms stored in a field.
@@ -490,8 +373,7 @@ GET /_search
   "query": {
     "term": {
       "user.id": {
-        "value": "kimchy",
-        "boost": 1.0
+        "value": "kimchy"
       }
     }
   }
@@ -650,6 +532,140 @@ GET /_search
         "case_insensitive": true,
         "max_determinized_states": 10000,
         "rewrite": "constant_score"
+      }
+    }
+  }
+}
+```
+
+## Joining queries
+
+Performing full SQL-style joins in a distributed system like Elasticsearch is prohibitively expensive. Instead, Elasticsearch offers two forms of join which are designed to scale horizontally.
+
+### `nested` query
+
+Search [nested](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/nested.html) fields.
+
+Nested fields are used to index arrays of objects
+
+If an object matches the search, the `nested` query returns the root parent document.
+
+To use the nested query, your index must include a nested field mapping.
+
+```json
+PUT /my-index-000001
+{
+  "mappings": {
+    "properties": {
+      "obj1": {
+        "type": "nested"
+      }
+    }
+  }
+}
+```
+
+```json
+GET /my-index-000001/_search
+{
+  "query": {
+    "nested": {
+      "path": "obj1",
+      "query": {
+        "bool": {
+          "must": [
+            { "match": { "obj1.name": "blue" } },
+            { "range": { "obj1.count": { "gt": 5 } } }
+          ]
+        }
+      },
+      "score_mode": "avg"
+    }
+  }
+}
+```
+
+
+### `has_child` query
+
+The `has_child` query returns parent documents whose child documents match the specified query,
+
+To use the `has_child` query, your index must include a [join](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/parent-join.html) field mapping.
+
+```json
+PUT /my-index-000001
+{
+  "mappings": {
+    "properties": {
+      "my-join-field": {
+        "type": "join",
+        "relations": {
+          "parent": "child"
+        }
+      }
+    }
+  }
+}
+```
+
+Example query:
+
+```json
+GET /_search
+{
+  "query": {
+    "has_child": {
+      "type": "child",
+      "query": {
+        "match_all": {}
+      },
+      "max_children": 10,
+      "min_children": 2,
+      "score_mode": "min"
+    }
+  }
+}
+```
+
+### `has_parent` query
+
+The `has_parent` query returns child documents whose parent document matches the specified query.
+
+To use the `has_parent` query, your index must include a [join](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/parent-join.html) field mapping.
+
+```json
+PUT /my-index-000001
+{
+  "mappings": {
+    "properties": {
+      "my-join-field": {
+        "type": "join",
+        "relations": {
+          "parent": "child"
+        }
+      },
+      "tag": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+```
+
+Example query:
+
+```json
+GET /my-index-000001/_search
+{
+  "query": {
+    "has_parent": {
+      "parent_type": "parent",
+      "query": {
+        "term": {
+          "tag": {
+            "value": "Elasticsearch"
+          }
+        }
       }
     }
   }
