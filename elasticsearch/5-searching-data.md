@@ -216,7 +216,8 @@ GET /accounts/_search
   },
   "sort" : [
     { "age": "asc" },
-    { "city.keyword" : "desc" }
+    { "city.keyword" : "desc" },
+    { "_score" : "desc" }
   ]
 }
 ```
