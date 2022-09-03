@@ -4,21 +4,49 @@
 
 ```py
 import os
+```
 
-# Creating Directory
+### Creating Directory
+
+```py
 os.mkdir("d:\\tempdir")
+```
 
-# Changing the Current Working Directory
+### Changing the Current Working Directory
+
+```py
 os.chdir("d:\\tempdir")
+```
 
-# Get current working directory
+### Get current working directory
+
+```py
 os.getcwd()
+```
 
-# Removing a Directory
+### Removing a Directory
+
+```py
 os.rmdir("d:\\tempdir")
+```
 
-# List Files and Sub-directories
-os.listdir("c:\python37")
+### List Files and Sub-directories
+
+```py
+os.listdir('c:\python37')
+```
+
+### Get path of executable file
+
+```py
+import sys
+os.path.dirname(sys.executable)
+```
+
+### Joining file paths
+
+```py
+os.path.join(application_path, filename)
 ```
 
 
@@ -27,25 +55,40 @@ os.listdir("c:\python37")
 ```py
 import os
 import shutil
+```
 
-# Copy File
+### Copy File
+
+```py
 print('BEFORE:', os.listdir('.'))
 shutil.copyfile('file_copy.py', 'file_copy.py.copy')
 print('AFTER:', os.listdir('.'))
+```
 
-# Copying Files to another directory
+### Copying Files to another directory
+
+```py
 os.mkdir('journaldev')
 print('BEFORE:', os.listdir('journaldev'))
 shutil.copy('file_copy.py', 'journaldev')
 print('AFTER:', os.listdir('journaldev'))
+```
 
-# Replicating complete directory
+### Replicating complete directory
+
+```py
 shutil.copytree('../shutil', './journaldev')
+```
 
-# Removing a Directory
+### Removing a Directory
+
+```py
 shutil.rmtree('journaldev')
+```
 
-# Finding files
+### Finding files
+
+```py
 print(shutil.which('bsondump'))
 ```
 
@@ -59,3 +102,8 @@ glob.glob('*.py')
 
 glob.glob('./[0-9].*')
 ```
+
+
+## Convert python code to executable file
+
+Use [PyInstaller](https://pyinstaller.org/en/stable/)

@@ -1,10 +1,15 @@
 {
-    "files.trimFinalNewlines": true,
+    "explorer.sortOrder": "mixed",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.snippetSuggestions": "top",
     "[python]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
     },
-    "explorer.sortOrder": "mixed",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.snippetSuggestions": "top"
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "markdown.styles": ["preview.css"],
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
 }

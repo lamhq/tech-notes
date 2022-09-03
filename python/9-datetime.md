@@ -26,7 +26,8 @@ print(x.strftime("%a, %d %b %Y - %I:%M %p"))
 # Fri, 01 Jun 2018 - 10:25 AM
 ```
 
-[Format code reference.](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)
+- [Python `strftime` cheatsheet](https://strftime.org/)
+- [`strftime()` and `strptime()` Format Codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)
 
 
 ## Getting datetime's attribute
