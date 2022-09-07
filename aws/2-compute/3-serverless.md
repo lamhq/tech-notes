@@ -34,7 +34,7 @@ AWS Lambda lets you run code without provisioning or managing servers or contain
 
 AWS Lambda requires zero administration from the user. You upload your source code and Lambda takes care of everything required to run and scale your code with high availability.
 
-## How Lambda Works
+### How Lambda Works
 
 There are three primary components of a Lambda function: the trigger, code, and configuration.
 
@@ -46,7 +46,7 @@ The **configuration** of a Lambda function consists of information that describe
 
 **Triggers** describe when the Lambda function should run. A trigger integrates your Lambda function with other AWS services, enabling you to run your Lambda function in response to certain API calls that occur in your AWS account. 
 
-## Billing Granularity
+### Billing Granularity
 
 You are charged for the number of times your code is triggered (requests) and for the time your code executes, rounded up to the nearest 1ms (duration).
 
