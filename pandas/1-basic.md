@@ -16,7 +16,7 @@ Pandas allows us to analyze big data and make conclusions based on statistical t
 Pandas can clean messy data sets, and make them readable and relevant.
 
 
-## Installation of Pandas
+## Installation
 
 ```sh
 pip install pandas
