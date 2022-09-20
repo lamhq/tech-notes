@@ -50,7 +50,7 @@ df = pd.DataFrame({
 # read in the data and print the first five rows
 # use the Symbol column as the index, and 
 # only read in columns in positions 0, 2, 3, 7
-sp500 = pd.read_csv("data/sp500.csv", 
+df = pd.read_csv("data/df.csv", 
   index_col='Symbol', 
   usecols=[0, 2, 3, 7])
 ```
@@ -71,13 +71,13 @@ len(df)
 
 ```py
 # printing the first 5 rows of the DataFrame
-sp500.head()
+df.head()
 
 # Print the last 5 rows of the DataFrame
-sp500.tail()
+df.tail()
 
 # Print information about the data
-sp500.info()
+df.info()
 ```
 
 ## Row access
@@ -138,10 +138,10 @@ df.iat[2, 0]
 
 ```py
 # first five rows
-sp500[:5]
+df[:5]
 
 # from row with index `ABT` to `ACN`
-sp500['ABT':'ACN']
+df['ABT':'ACN']
 ```
 
 ### Slicing Columns
@@ -149,29 +149,39 @@ sp500['ABT':'ACN']
 ```py
 # get rows from location 1 through 4 
 # of the Price column
-sp500.Price[1:4]
+df.Price[1:4]
 ```
 
 ```py
 # get the values in the Price column 
 # from rows at location 1, 3 and 5
-sp500.iloc[[1, 3, 5]].Price
+df.iloc[[1, 3, 5]].Price
 ```
 
 ## Filtering
 
 ```py
 # what rows have a price < 100?
-sp500.Price < 100
+df.Price < 100
 
 # get the rows with Price < 100
-sp500[sp500.Price < 100]
+df[df.Price < 100]
 
 # get the Price and Sector column from Rows where Price is < 40 and Sector = Health Care
-r = sp500[(sp500.Price < 40) & (sp500.Sector == 'Health Care')] [['Price','Sector']]
+r = df[(df.Price < 40) & (df.Sector == 'Health Care')] [['Price','Sector']]
 
 # get the Price and Sector column from Rows at index ABT and ZTS
-sp500.loc[['ABT', 'ZTS']][['Sector', 'Price']]
+df.loc[['ABT', 'ZTS']][['Sector', 'Price']]
+
+# negative filter
+selection = df.Price > 300
+price_less_than_300 = df[~selection]
+```
+
+## Sorting
+
+```py
+df.sort_values(by=['Letter'], ascending=False)
 ```
 
 ## Re-order columns

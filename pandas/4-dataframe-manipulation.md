@@ -1,6 +1,8 @@
 # Manipulating DataFrame Structure
 
-## Renaming columns
+## Column
+
+### Renaming columns
 
 ```py
 # rename the Book Value column,
@@ -17,7 +19,7 @@ df.rename(columns= {'Book Value': 'BookValue'}, inplace=True)
 df.columns
 ```
 
-## Adding new columns
+### Adding new columns
 
 ```py
 df['RoundedPrice'] = df.Price.round()
@@ -41,20 +43,20 @@ concatenated = pd.concat([sp500, rounded_price], axis=1)
 ```
 
 
-## Reverse columns's order
+### Reverse columns's order (out-of-place)
 
 ```py
 # return a new DataFrame with the columns reversed
 reversed_column_names = sp500.columns[::-1]
 ```
 
-## Replacing the contents of a column
+### Replacing the contents of a column
 
 ```py
 copy.Price = rounded_price.RoundedPrice
 ```
 
-## Deleting columns
+### Deleting columns
 
 ```py
 # remove column in-place
@@ -70,4 +72,33 @@ popped = copy.pop('Sector')
 # return a new DataFrame without the Sector column
 # the original DataFrame object is not modified
 afterdrop = df.drop(['Sector'], axis=1)
+```
+
+## Row
+
+### Appending new rows
+
+```py
+appended = df1.append(df2)
+```
+
+### Concatenating rows
+
+```py
+pd.concat([df1, df2])
+```
+
+### Append or replacing row
+
+```py
+# create a new row with index label FOO
+# and assign some values to the columns via a list
+df.loc['FOO'] = ['the sector', 100, 110]
+```
+
+### Removing rows
+
+```py
+# drop rows with labels ABT and ACN (out-of-place)
+afterdrop = df.drop(['ABT', 'ACN'])
 ```
