@@ -50,9 +50,7 @@ df = pd.DataFrame({
 # read in the data and print the first five rows
 # use the Symbol column as the index, and 
 # only read in columns in positions 0, 2, 3, 7
-df = pd.read_csv("data/df.csv", 
-  index_col='Symbol', 
-  usecols=[0, 2, 3, 7])
+df = pd.read_csv("data/df.csv", index_col='Symbol', usecols=[0, 2, 3, 7])
 ```
 
 ## Get column list
@@ -120,6 +118,9 @@ df[['Philadelphia', 'Missoula']]
 
 # get column using property syntax
 df.Missoula.head()
+
+# select column Price from rows with range indexes
+df.loc['2016-04-01':'2016-04-03', 'Price']
 ```
 
 ## Cell access

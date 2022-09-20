@@ -42,6 +42,12 @@ rounded_price = pd.DataFrame({'RoundedPrice': sp500.Price.round()})
 concatenated = pd.concat([sp500, rounded_price], axis=1)
 ```
 
+Use list comprehension:
+
+```py
+df['Direction'] = [ 1 if df.loc[ei, 'PriceDiff'] > 0 else -1 
+  for ei in fb.index ]
+```
 
 ### Reverse columns's order (out-of-place)
 
