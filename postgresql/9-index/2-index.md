@@ -42,6 +42,14 @@ The index is larger and updating the index is slower than a comparable GiST inde
 
 ## Functional Indexes
 
+```sql
+CREATE INDEX index_name ON table_name [USING method]
+(
+  column_name [ASC | DESC] [NULLS {FIRST | LAST }],
+  ...
+);
+```
+
 Create a functional index for uppercase value of the fullname column:
 
 ```sql

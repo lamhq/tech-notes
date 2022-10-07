@@ -83,7 +83,7 @@ A recursive CTE has three elements:
 - Termination check: the recursion stops when no rows are returned from the previous iteration.
 
 
-### Example
+Example:
 
 ```sql
 CREATE TABLE employees (
@@ -191,3 +191,107 @@ PostgreSQL returns the final result set that is the union of all result sets in 
 |          18 |          8 | Frank Tucker |
 |          19 |          8 | Nathan Ferguson |
 |          20 |          8 | Kevin Rampling |
+
+
+## Examples
+
+```sql
+DROP TABLE orders;
+
+CREATE TABLE orders (
+	order_id serial PRIMARY KEY,
+	product_id INT NOT NULL,
+	product_name VARCHAR (255) NOT NULL,
+	price DECIMAL (11, 2),
+	group_id INT NOT NULL,
+	qty INT NOT NULL,
+  order_date DATE,
+  total INT NOT NULL,
+	FOREIGN KEY (group_id) REFERENCES product_groups (group_id)
+);
+
+INSERT INTO orders (product_id, product_name, group_id,price,qty,order_date,total)
+VALUES
+	(1, 'Microsoft Lumia', 1, 200, 10, '2022-09-24', 100),
+	(1, 'Microsoft Lumia', 1, 400, 30, '2022-09-24', 150),
+	(2, 'Nexus', 1, 500, 12, '2022-09-23', 300),
+	(2, 'Nexus', 1, 900, 110, '2022-09-23', 10),
+	(2, 'Nexus', 2, 1200, 6, '2022-09-23', 200),
+	(3, 'Lenovo Thinkpad', 2, 700, 10, '2022-09-22', 10),
+	(3, 'Lenovo Thinkpad', 2, 700, 30, '2022-09-22', 20),
+	(3, 'Lenovo Thinkpad', 2, 800, 5, '2022-09-22', 45),
+	(3, 'Lenovo Thinkpad',  3, 700, 20, '2022-09-22', 10),
+	(4, 'Kindle Fire', 3, 150, 10, '2022-09-21', 10),
+	(4, 'Kindle Fire', 3, 200, 60, '2022-09-22', 50);
+```
+
+### Get order count of each day of each product
+
+```sql
+SELECT product_id, order_date, count(order_id) 
+FROM orders 
+GROUP BY product_id, order_date;
+```
+
+### Get average daily order count of each product
+
+```sql
+WITH daily_order_count AS (
+  SELECT product_id, order_date, count(order_id) cnt
+  FROM orders 
+  GROUP BY product_id, order_date
+),
+avg_order_count AS (SELECT product_id, AVG(cnt) avgcnt
+  FROM daily_order_count
+  GROUP BY product_id
+)
+SELECT product_id, 
+  (SELECT (CASE 
+      WHEN avgcnt > 20 THEN 'Short Tail'
+      WHEN avgcnt >=10 AND avgcnt <= 20 THEN 'Mid Tail'
+      WHEN avgcnt < 10 THEN 'Long Tail'
+    END) 
+  FROM avg_order_count 
+  WHERE avg_order_count.product_id=orders.product_id)
+FROM orders
+GROUP BY product_id;
+
+SELECT ROW_NUMBER() OVER (), sum(qty) AS "Total Qty Sold"
+FROM orders
+GROUP BY product_id
+ORDER BY "Total Qty Sold" DESC;
+```
+
+### GET `Rank`
+
+```sql
+WITH daily_order_count AS (
+  SELECT product_id, order_date, count(order_id) cnt
+  FROM orders 
+  GROUP BY product_id, order_date
+),
+avg_order_count AS (SELECT product_id, AVG(cnt) avgcnt
+  FROM daily_order_count
+  GROUP BY product_id
+)
+SELECT 
+  ROW_NUMBER() OVER () AS "Rank",
+  product_id AS "Product ID",
+  product_name AS "Item Name",
+  l1_cat AS "Category",
+  (SELECT (CASE 
+      WHEN avgcnt > 20 THEN 'Short Tail'
+      WHEN avgcnt >=10 AND avgcnt <= 20 THEN 'Mid Tail'
+      WHEN avgcnt < 10 THEN 'Long Tail'
+    END) 
+  FROM avg_order_count 
+  WHERE avg_order_count.product_id=orders.product_id) AS "Tier",
+  MIN(price) AS "Min. Selling Price",
+  SUM(qty_sold) AS "Total Qty Sold",
+  SUM(gmv) AS "Total GMV",
+  COUNT(order_id) AS "Total Orders"
+FROM my_order_trans
+WHERE order_date BETWEEN ('2022-09-01', '2022-09-30')
+GROUP BY product_id
+ORDER BY "Total Qty Sold" DESC
+LIMIT 10;

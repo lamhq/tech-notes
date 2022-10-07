@@ -70,7 +70,7 @@ GROUP BY
 	group_name;
 ```
 
-The following query returns the product name, the price, product group name, along with the average prices of each product group:
+The following query returns the **product name**, the **price**, **product group name**, along with the **average prices of each product group**:
 
 ```sql
 SELECT
@@ -167,7 +167,7 @@ FROM
 INNER JOIN product_groups USING (group_id);
 ```
 
-The following statement uses the LAST_VALUE() function to return the highest price for every product group:
+The following statement uses the `LAST_VALUE()` function to return the highest price for every product group:
 
 ```sql
 SELECT
@@ -184,3 +184,8 @@ FROM
 	products
 INNER JOIN product_groups USING (group_id);
 ```
+
+
+## Reference
+
+[PostgreSQL Window Functions](https://www.postgresqltutorial.com/postgresql-window-function/)
