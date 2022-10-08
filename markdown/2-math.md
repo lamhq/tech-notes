@@ -1,13 +1,5 @@
 # Math
 
-## Set theory
-
-| Symbol | Description |
-|---|---|
-| $A \subset B$ | subset |
-| $A \subseteq B$ | subset equal |
-| $A \cap B$ | intersection |
-
 ## Operator
 
 | Symbol | Description |
@@ -18,8 +10,10 @@
 | $\times$ |  |
 | $*$ |  |
 | $\div$ |  |
-| $$ |  |
-| $$ |  |
+| $\leq$ |  |
+| $\geq$ |  |
+| $\approx$ | approximate |
+| $\text{abcd}$ | normal text |
 
 ## Combination & permutation
 
@@ -48,3 +42,17 @@
 | $$ |  |
 | $$ |  |
 | $$ |  |
+
+
+## Set theory
+
+| Symbol | Description |
+|---|---|
+| $A \subset B$ | subset |
+| $A \subseteq B$ | subset equal |
+| $A \cap B$ | intersection |
+
+
+## Reference
+
+[TEX Reference Card - Brown Math](https://www.math.brown.edu/~jhs/ReferenceCards/TeXRefCard.v1.5.pdf)
