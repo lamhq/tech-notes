@@ -100,7 +100,7 @@ The root user has complete access to all AWS services and resources in your acco
 - Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
 - [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
 
-## AWS Identity and Access Management
+## AWS Identity and Access Management (IAM)
 
 IAM is a web service that enables you to manage access to your AWS account and resources.
 
@@ -173,6 +173,8 @@ Whenever a user or role makes a request, AWS evaluates the policies associated w
 - The **Action** element describes the type of action that should be allowed or denied.
 - The **Resource** element specifies the object or objects that the policy statement covers.
 
+You can test IAM policies with the IAM policy simulator [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html).
+
 
 ### IAM Role
 
@@ -190,4 +192,4 @@ To create a role, you have to select what trusted entity is allowed to assume th
 
 If one AWS service needs to send an API call to another AWS service, it will most likely use role-based access where the AWS service assumes a role, gains access to the temporary credentials, and then sends the API call to the other AWS service who then verifies the request.
 
-Another identity that can assume an IAM role to gain access to AWS is external identity providers. You can leverage IAM roles to grant access to existing identities from your enterprise user directory. These are known as federated users. AWS assigns a role to a federated user when access is requested through an identity provider. We also have AWS services that can make this process a little bit easier, such as AWS Single Sign-On.
+**Another identity that can assume an IAM role to gain access to AWS is external identity providers**. You can leverage IAM roles to grant access to existing identities from your enterprise user directory. These are known as federated users. AWS assigns a role to a federated user when access is requested through an identity provider. We also have AWS services that can make this process a little bit easier, such as AWS Single Sign-On.
