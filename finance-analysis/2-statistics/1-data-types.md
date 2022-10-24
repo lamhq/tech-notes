@@ -34,6 +34,8 @@ Observations for a single unit of one variable collected over time (Ex. Daily cl
 
 A mix of time-series and cross sectional data
 
+Panel data consist of observations through time on one or more variables for multiple observational units. 
+
 Ex. data table showing EPS over time for a number of companies
 
 ### Structured

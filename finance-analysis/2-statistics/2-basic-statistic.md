@@ -86,7 +86,13 @@ print(weighted_avg_m3)
 
 ## Geometric Mean
 
-The geometric mean is most frequently used to average rates of change over time or the growth rate of a variable. Ex. compound growth rates.
+The geometric mean is most frequently used to average rates of change over time or the growth rate of a variable. 
+
+*Ex. compound growth rates.*
+
+*The most appropriate “mean” to use when calculating the mean annual return from an investment portfolio over a 10-year period is Geometric mean*.
+
+**Lợi nhuận trung bình hàng năm của một khoản đầu tư được tính bằng trung bình hình học của lợi nhuận hằng năm.**
 
 Formula:
 
@@ -111,6 +117,8 @@ print(x-1)
 ## Harmonic Mean
 
 The hamornic mean, similar to the weighted mean, is most frequently used to calculate the average cost of, for example, stock based on the same investment amount.
+
+The harmonic mean is appropriate for determining the average price per unit.
 
 Formula:
 
