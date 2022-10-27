@@ -39,7 +39,7 @@ The MAD is the sum of the deviations of each observation from the mean. It ignor
 
 ```py
 import statistics as stat
-data1 = [-20, 23, -14, 5, -14, -4, 17.8]
+data = [-20, 23, -14, 5, -14, -4, 17.8]
 
 mean = stat.mean(data1)
 mad = sum([abs(x-mean) for x in data]) / len(data1)
