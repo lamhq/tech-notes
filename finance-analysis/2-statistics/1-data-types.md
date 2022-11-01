@@ -36,6 +36,8 @@ A mix of time-series and cross sectional data
 
 Panel data consist of observations through time on one or more variables for multiple observational units. 
 
+A two-dimensional rectangular array, or data table would be suitable for panel data because it is comprised of columns to hold the variable(s) for the observational units and rows to hold the observations through time.
+
 Ex. data table showing EPS over time for a number of companies
 
 ### Structured
