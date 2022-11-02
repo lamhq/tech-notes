@@ -213,7 +213,7 @@ P_n(k) = C_n^kp^kq^{n-k}
 k = 0, 1, 2, ..., n
 $$
 
-Công thức excel:
+**Công thức excel**:
 
 $$
 P(X=k) = \text{BINOM.DIST}(k, n, p, \text{FALSE})
@@ -222,6 +222,22 @@ $$
 f(k) = P(X \le k) = \text{BINOM.DIST}(k, n, p, \text{TRUE})
 $$
 
+**Python**:
+
+```py
+from scipy import stats
+pk = stats.binom.pmf(k, n, p)
+```
+
+```py
+# calculate probability for a range of outcome
+from scipy import stats
+import numpy as np
+n = 5
+p = 0.1
+k = np.arange(n+1)
+sum(stats.binom.pmf(k, n, p))
+```
 
 **Example:**
 
