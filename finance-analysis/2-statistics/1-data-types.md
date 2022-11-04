@@ -9,18 +9,21 @@ Data is a collection of:
 - audio collected by your smart speakers,
 - video collected by your smart doorbells.
 
+We can clasify data in two main ways:
+- Base on its types: types of data
+- Measument levels
 
-## Data Types
+## Types of data
 
-### Numerical (quantitative)
-
-- Continuous: data that can take any numerical value within a specified range (Ex. temperature, height, weight)
-- Discrete: Data resulting from a counting process (Ex. frequency of discrete compounding, money)
-
-### Categorical (qualitative)
+### Categorical
 
 - Nominal: Data that cannot be organized into a logical order (Ex. industry classification of stocks, telecom, energy)
 - Ordinal: Data that can be logically organized or ranked (Ex. ranking investment funds, 5 star to 1 star)
+
+### Numerical
+
+- Discrete: Data resulting from a counting process (Ex. number of children you have)
+- Continuous: data that can take any numerical value within a specified range (Ex. temperature, height, weight)
 
 ### Cross sectional
 
@@ -57,3 +60,32 @@ Unstructured data does not follow any conventionally organized form and includes
 
 - One-Dimension array: This is time-series data and tabulating it in this way facilitates analysis, such as identifying trends
 - Two-Dimension array: consists of columns and rows
+
+
+## Levels of measurement
+
+### Qualitative
+
+Qualitative are not numbers
+
+- Nominal: car brands, seasons (winter, spring, ...)
+- Ordinal: consist of group and categories which follow a strict order. ex: rating (worse, bad, neutral, tasty, delicious)
+
+### Quantitative
+
+Quantitative are numbers. They are also split into two groups
+
+- Ratio: has a true zero. Ex: number of objects, distance, time
+- Interval: doesn't have a true zero. Ex: temperature
+
+
+## Visualization techniques
+
+### Categorical variables
+
+- Frequency distribution tables
+- Bar charts
+- Pie charts
+- Pareto diagrams: Biểu đồ Pareto được phân tích theo “quy tắc 80/20” tức là 20% nguyên nhân tạo ra 80% kết quả. Ta kẻ một đường thẳng từ 80% chạm đến đường tỷ lệ phần trăm tích lũy, sau đó kẻ thẳng xuống phía dưới. Khi đó những công việc bên trái đường thẳng xuống là những công việc chiếm 80% kết quả.
+
+![](https://cdn.tgdd.vn/hoi-dap/1390412/video-bieu-do-pareto-la-gi-cach-ve-va-phan-tich-tren-excel%20(9).jpg)
