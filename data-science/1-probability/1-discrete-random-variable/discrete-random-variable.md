@@ -1,6 +1,6 @@
 # Discrete Random Variables
 
-## Discrete Random Variables
+## Definition
 
 A random variable assigns a single numerical value to every basic outcome.
 
@@ -288,3 +288,9 @@ $$
 Let's say we sell $200$ tickets, the average revenue is $\$55,800$.
 
 To maximize revenue ($E(X) = \$60,000$), the number of tickets to sell is $215$. We can prove that by plotting the revenue in the Excel sheet.
+
+
+## References
+
+- [An Intuitive Introduction to Probability](https://www.coursera.org/learn/introductiontoprobability/home/week/1)
+- [Introduction to Probability, Statistics, and Random Processes by Hossein Pishro-Nik](https://www.probabilitycourse.com/videos/videos.php)

@@ -1,4 +1,4 @@
-# Basic Statistic - Measures of Central Tendency
+# Measures of Central Tendency
 
 ## Mean
 

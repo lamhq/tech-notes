@@ -25,6 +25,53 @@ Biểu đồ Pareto được phân tích theo “quy tắc 80/20” tức là 20
 ![](https://cdn.tgdd.vn/hoi-dap/1390412/video-bieu-do-pareto-la-gi-cach-ve-va-phan-tich-tren-excel%20(9).jpg)
 
 
+### Cross tables (contingency table)
+
+<table>
+  <tr>
+    <th>Type of investment \ Investor</th>
+    <th>Investor A</th>
+    <th>Investor B</th>
+    <th>Investor C</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td>Stocks</td>
+    <td>96</td>
+    <td>185</td>
+    <td>39</td>
+    <td style="font-weight: bold">320</td>
+  </tr>
+  <tr>
+    <td>Bonds</td>
+    <td>182</td>
+    <td>3</td>
+    <td>29</td>
+    <td style="font-weight: bold">213</td>
+  </tr>
+  <tr>
+    <td>Real Estate</td>
+    <td>88</td>
+    <td>152</td>
+    <td>142</td>
+    <td style="font-weight: bold">382</td>
+  </tr>
+  <tr style="font-weight: bold">
+    <td>Total</td>
+    <td>365</td>
+    <td>340</td>
+    <td>210</td>
+    <td>915</td>
+  </tr>
+</table>
+
+### Side-by-side bar chart
+
+It is often used together with Cross tables.
+
+![](https://service.vhslearning.org/servlet/rtaImage?eid=ka04S0000000WWt&feoid=00N4S000000SR7U&refid=0EM4S000000g8ry)
+
+
 ## Numerical Variables
 
 ### Frequency distribution tables
@@ -63,3 +110,12 @@ Frequency distribution table
 ### Histogram
 
 ![](https://www.mathsisfun.com/data/images/histogram-heights.svg)
+
+
+### Scatter plot
+
+It is used when representing two numerical variables.
+
+Example: ice cream sales versus the noon temperature of that day
+
+![](https://www.mathsisfun.com/data/images/scatter-ice-cream1.svg)
