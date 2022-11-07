@@ -77,15 +77,3 @@ Quantitative are numbers. They are also split into two groups
 
 - Ratio: has a true zero. Ex: number of objects, distance, time
 - Interval: doesn't have a true zero. Ex: temperature
-
-
-## Visualization techniques
-
-### Categorical variables
-
-- Frequency distribution tables
-- Bar charts
-- Pie charts
-- Pareto diagrams: Biểu đồ Pareto được phân tích theo “quy tắc 80/20” tức là 20% nguyên nhân tạo ra 80% kết quả. Ta kẻ một đường thẳng từ 80% chạm đến đường tỷ lệ phần trăm tích lũy, sau đó kẻ thẳng xuống phía dưới. Khi đó những công việc bên trái đường thẳng xuống là những công việc chiếm 80% kết quả.
-
-![](https://cdn.tgdd.vn/hoi-dap/1390412/video-bieu-do-pareto-la-gi-cach-ve-va-phan-tich-tren-excel%20(9).jpg)
