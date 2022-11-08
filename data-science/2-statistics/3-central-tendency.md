@@ -4,13 +4,19 @@
 
 The arithmetic mean is the sum of values of the observations divided by the number of observations.
 
+It is denoted by $\mu$ for a population and $\overline{x}$ for a sample
+
 Properties:
 
 - There is only one mean
 - May not be one of the observed values
 - Highly influenced by outliers
 
-Calculate the mean using `numpy`:
+Formular:
+
+$$
+\mu = \frac{\displaystyle\sum_{i=1}^Nx_i}{N}
+$$
 
 ```py
 import numpy as np
@@ -50,7 +56,7 @@ The most frequently occurring value
 Properties:
 
 - there may be more than one mode or no mode
-- It can be used with nominal data (eg. it could indicate which investment style is most popular_
+- It can be used with nominal data (eg. it could indicate which investment style is most popular)
 - Not influenced by outliers
 
 ```py
@@ -137,7 +143,7 @@ Reference:
 - https://tintuctuyensinh.vn/harmonic-mean-la-gi-xem-xong-5-phut-hieu-luon/
 
 
-## Use cases
+## In finance
 
 When calculating a **mean return over multiple periods**, a more approriate measure of average return is the **geometric mean**, which take into account the compounding nature of returns.
 
