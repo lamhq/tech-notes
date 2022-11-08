@@ -13,7 +13,7 @@ Khi Skewness = 0:
 
 Khi Skewness > 0: 
 - Phân phối lệch phải (độ lệch dương). 
-- Right skewness means that the outliers are to the right.
+- Right skewness means that the outliers are to the right. The data points are concentrated to the left (low values).
 - mean > median > mode
 
 Khi Skewness < 0:

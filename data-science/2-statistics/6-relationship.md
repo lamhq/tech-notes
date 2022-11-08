@@ -37,6 +37,7 @@ The correlation between two variables $x$ and $y$ is the same as the correlation
 
 The correlation does not imply **causation**. E.g: In the housing business, size causes the price, and not vice versa.
 
+A common practice is to disregard correlations that are below $0.2$.
 
 Population Formula:
 
