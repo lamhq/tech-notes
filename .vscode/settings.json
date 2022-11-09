@@ -11,5 +11,8 @@
     },
     "markdown.styles": ["preview.css"],
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.ipynb_checkpoints": true
+    }
 }
