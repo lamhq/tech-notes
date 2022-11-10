@@ -38,6 +38,7 @@ Using concatenation:
 ```py
 # create a DataFrame with only the RoundedPrice column
 rounded_price = pd.DataFrame({'RoundedPrice': sp500.Price.round()})
+
 # concatenate along the columns axis
 concatenated = pd.concat([sp500, rounded_price], axis=1)
 ```
@@ -64,15 +65,25 @@ copy.Price = rounded_price.RoundedPrice
 
 ### Deleting columns
 
+Remove single column (in-place):
+
 ```py
-# remove column in-place
 del df['Book Value']
 ```
 
+Remove sing column and return it as a series (in-place):
+
 ```py
-# remove Sector column and return it as a series (in-place)
 popped = copy.pop('Sector')
 ```
+
+Remove multiple columns (in-place):
+
+```py
+df.drop(['Sector'], axis=1, inplace=True)
+```
+
+Remove multiple columns and return modified dataframe:
 
 ```py
 # return a new DataFrame without the Sector column

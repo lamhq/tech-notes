@@ -214,3 +214,9 @@ df=df[new_cols]
 # display plots chart for the values in the Close column
 df.Close.plot()
 ```
+
+## Copy dataframe
+
+```py
+df_copy = df.copy()
+```
