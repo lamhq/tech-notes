@@ -6,3 +6,8 @@
 - Quantile: phân vị
 - Firms: công ty
 - Market capitalization: vốn hóa thị trường
+- Variance: Phương sai
+- Standard Deviation: Độ lệch chuẩn
+- Coefficient of Variation: Hệ số biến thiên
+- Covariance: Hiệp phương sai
+- Correlation Coefficient: Hệ số tương quan

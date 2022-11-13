@@ -40,13 +40,13 @@ There's also population and sample standard deviation.
 Population formula:
 
 $$
-\sigma^2 = \sqrt{\sigma^2} \\
+\sigma = \sqrt{\sigma^2} \\
 $$
 
 Sample formula:
 
 $$
-S^2 = \sqrt{S^2}
+S = \sqrt{S^2}
 $$
 
 ```py
