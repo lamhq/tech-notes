@@ -9,7 +9,7 @@ Most people prefer to have a good idea about the rate of return they can expect 
 Statistical measures to quantify risk are: variance, **standard deviation**
 
 
-## Portfolio Diversification
+## Portfolio Diversification (relationship)
 
 You should by stocks from companies operate in different industries (so they are independent).
 
