@@ -53,20 +53,36 @@ Beta is calculated by the **covariance between the stock and the market** devide
 ## The CAPM formula
 
 $$
-r_i = r_f + \beta_{im}*(r_m - r_f)
+r_i = r_f + \beta_{im} \times (r_m - r_f)
 $$
 
 - $r_i$: expected return of the securities $i$
 - $r_f$: return of the risk free asset
 - $r_m$: return of the market
 - $\beta_{im}$: covariance between the stock and the market
-- $r_m - r_f$: equity Risk Premium
+- $r_m - r_f$: Equity Risk Premium
 
 ### Risk-free asset
 
 There's no risk-free asset in the real world. The closest asset we choose is 10-years US goverment bond, whose expected return is approximately 2.5%
 
+### Beta
+
+The best proxy for the market portfolio is a wide index traded in the country of the security. Example: S&P500
 
 ### Equity Risk Premium
 
 Academic research has proven the market risk premium for equities in the US has been between 4.5% and 5.5%
+
+
+## Sharpe ratio
+
+Investors want to be able to compare stocks in terms of risk-return performance. They wiil be interested in investing in the ones that will provide the highest return for a given amount of risk.
+
+$$
+\text{Sharpe Ratio} = \frac{r_i-r_f}{\sigma_i}
+$$
+
+- $r_f$: risk free rate
+- $r_i$: rate of return of the stock $i$
+- $\sigma_i$: standard deviation of the stock $i$
