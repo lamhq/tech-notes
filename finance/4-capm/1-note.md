@@ -53,14 +53,16 @@ Beta is calculated by the **covariance between the stock and the market** devide
 ## The CAPM formula
 
 $$
-r_i = r_f + \beta_{im} \times (r_m - r_f)
+r_i = r_f + \beta_{im}(r_m - r_f)
 $$
 
 - $r_i$: expected return of the securities $i$
 - $r_f$: return of the risk free asset
 - $r_m$: return of the market
-- $\beta_{im}$: covariance between the stock and the market
 - $r_m - r_f$: Equity Risk Premium
+- $\beta_{im}$: covariance between the stock and the market
+- $\beta_{im}(r_m - r_f)$: compensation for risk of the investment
+
 
 ### Risk-free asset
 
@@ -86,3 +88,39 @@ $$
 - $r_f$: risk free rate
 - $r_i$: rate of return of the stock $i$
 - $\sigma_i$: standard deviation of the stock $i$
+
+
+## Alpha
+
+Alpha is a measure of how good or poor the performance of a fund manager has been.
+
+The standard CAPM setting assumes an alpha equal to 0.
+
+$$
+r_i = \alpha + r_f + \beta_{im}(r_m - r_f)
+$$
+
+Alpha show how much return we get without bearing extra risk.
+
+A good portfolio manager outperforms the market and earns a positive alpha.
+
+A poor portfolio manager underperforms the market and earns a negative or zero alpha.
+
+An investment manager:
+- Industry knowledge
+- Company-specific information
+- Trading know-how
+
+**How does an investment manager outperform the market?**
+- Passive trading: investing in a market index and waiting patiently
+- Active trading: adjusting investmentportfolios on a frequent basis (days to months)
+
+If an investment professional charges you 1% of the invested amount, he needs to outperform the market by over 1%. Otherwise, you'd be better off investing in a passive fund that charges you a tiny portion of the invest income.
+
+William Sharpe believes investors should bet on the efficiency of markets and shouldn't bother paying high management fees, given only 2% of funds have a positive alpha consistently.
+
+### Comparing investments
+
+Alpha is comparable only when the risk profile of the investments being compared is similar.
+
+We shouldn't compare a portfolio of small illiquid companies (operating in an emerging market) with a well diversified portfolio of blue chip companies.
