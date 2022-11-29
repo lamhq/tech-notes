@@ -31,11 +31,11 @@ EC2 instances are a combination of virtual processors (vCPUs), memory, network, 
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/XcYIwNOlTlqGCMDTpR5aZg_98c7357638de4ad0bac00230536a94ba_image-14-.png?expiry=1662336000000&hmac=eVsc6Gvh_rWnBf6h_CWhllvxHDyXGeohmELcxerB_3s)
 
-Instance types consist of a prefix identifying the type of workloads they’re optimized for, followed by a size.
+Instance types consist of a prefix identifying the type of workloads they're optimized for, followed by a size.
 
 For example, the instance type `c5.large` can be broken down into the following elements.
 
-- `c5` determines the instance family and generation number. Here, the instance belongs to the fifth generation of instances in an instance family that’s optimized for generic computation.
+- `c5` determines the instance family and generation number. Here, the instance belongs to the fifth generation of instances in an instance family that's optimized for generic computation.
 - `large`, which determines the amount of instance capacity.
 
 

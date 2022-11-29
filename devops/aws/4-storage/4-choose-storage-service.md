@@ -37,13 +37,13 @@ Most EBS volumes can only be attached to a single EC2 instance at a time.
 
 ## Amazon S3
 
-If your data doesn’t change that often, Amazon S3 might be a more cost-effective and scalable storage solution.
+If your data doesn't change that often, Amazon S3 might be a more cost-effective and scalable storage solution.
 
 S3 is ideal for storing static web content and media, backups and archiving, data for analytics, and can even be used to host entire static websites with custom domain names.
 
 It is object storage.
 
-You pay for what you use (you don’t have to provision storage in advance).
+You pay for what you use (you don't have to provision storage in advance).
 
 Amazon S3 replicates your objects across multiple Availability Zones in a Region.
 
@@ -63,5 +63,5 @@ For file storage that can mount on to multiple EC2 instances, you can use Amazon
 Here are a few important features of Amazon EFS and FSx to know about when comparing them to other services:
 
 - It is file storage.
-- You pay for what you use (you don’t have to provision storage in advance).
+- You pay for what you use (you don't have to provision storage in advance).
 - Amazon EFS and Amazon FSx can be mounted onto multiple EC2 instances.

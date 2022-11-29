@@ -9,7 +9,7 @@ The ELB service integrates seamlessly with EC2 Auto Scaling. As soon as a new EC
 
 ## Differentiate Between Traditional Scaling and Auto Scaling
 
-With a **traditional approach** to scaling, you buy and provision enough servers to handle traffic at its peak. However, this means that at night time, there is more capacity than traffic. This also means you’re wasting money. Turning off those servers at night or at times where the traffic is lower only saves on electricity. 
+With a **traditional approach** to scaling, you buy and provision enough servers to handle traffic at its peak. However, this means that at night time, there is more capacity than traffic. This also means you're wasting money. Turning off those servers at night or at times where the traffic is lower only saves on electricity. 
 
 The EC2 Auto Scaling service works to add or remove capacity to keep a steady and predictable performance at the lowest possible cost. By adjusting the capacity to exactly what your application uses, you only pay for what your application needs. 
 
@@ -57,7 +57,7 @@ Once this scaling policy is triggered, it waits a **cooldown period** before tak
 
 Step scaling policies respond to additional alarms even while a scaling activity or health check replacement is in progress.
 
-*For example, you decide to add two more instances in case the CPU utilization is at 85%, and four more instances when it’s at 95%.*
+*For example, you decide to add two more instances in case the CPU utilization is at 85%, and four more instances when it's at 95%.*
 
 [AWS: Step and simple scaling policies for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html)
 

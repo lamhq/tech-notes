@@ -33,7 +33,7 @@ https://docs.aws.amazon.com/whitepapers/latest/efs-encrypted-file-systems/encryp
 
 You can create an encrypted file system so all your data and metadata is encrypted at rest using an industry-standard AES-256 encryption algorithm.
 
-Encryption and decryption is handled automatically and transparently, so you don’t have to modify your applications.
+Encryption and decryption is handled automatically and transparently, so you don't have to modify your applications.
 
 
 ## Database Encryption

@@ -64,7 +64,7 @@ In AWS, you can make API calls to services and resources through:
 
 ## Security: What Is the Customer Responsible For?
 
-When using any AWS service, you’re responsible for properly configuring the service and your applications, as well as ensuring your data is secure.
+When using any AWS service, you're responsible for properly configuring the service and your applications, as well as ensuring your data is secure.
 
 **Infrastructure services**: You control the operating system and application platform, as well as encrypting, protecting, and managing customer data.
 

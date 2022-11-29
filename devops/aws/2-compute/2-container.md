@@ -19,7 +19,7 @@ Docker makes it easy to create, package, deploy, and run containers.
 
 Containers share the same operating system and kernel as the host they exist on, whereas virtual machines contain their operating system.
 
-Since each virtual machine has to maintain a copy of an operating system, there’s a degree of wasted space.
+Since each virtual machine has to maintain a copy of an operating system, there's a degree of wasted space.
 
 A container is more lightweight. They spin up quicker, almost instantly.
 
@@ -28,7 +28,7 @@ While containers can provide speed, virtual machines offer you the full strength
 
 ## Orchestrate Containers
 
-If you’re trying to manage your compute at a large scale, you need to know:
+If you're trying to manage your compute at a large scale, you need to know:
 
 - How to place your containers on your instances.
 - What happens if your container fails.

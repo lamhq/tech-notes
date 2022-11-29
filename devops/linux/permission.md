@@ -83,7 +83,7 @@ passwd userp
 
 - Log in to your server as the root user.
 - Add a new user to your system
-- update the new user’s password.
+- update the new user's password.
 - add the user to the wheel group
 - Test sudo access on new user account
 

@@ -43,7 +43,7 @@ Then, you select the subnets that you want the DB instances to be placed in. Thi
 - The Availability Zones (AZs) that include the subnets you want to add
 - The subnets in that AZ where your DB instance are placed
 
-The subnets you add should be private so they don’t have a route to the internet gateway. This ensures your DB instance, and the cat data inside of it, can only be reached by the app backend.
+The subnets you add should be private so they don't have a route to the internet gateway. This ensures your DB instance, and the cat data inside of it, can only be reached by the app backend.
 
 Access to the DB instance can be further restricted by using network access control lists (ACLs) and security groups. 
 
@@ -92,8 +92,8 @@ The primary copy of your database provides access to your data so that applicati
 
 The data in the primary copy is synchronously replicated to the standby copy. The standby copy is not considered an active database, and does not get queried by applications.
 
-If there’s an availability issue, such as the primary database losing connectivity, Amazon RDS triggers an automatic failover.
+If there's an availability issue, such as the primary database losing connectivity, Amazon RDS triggers an automatic failover.
 
 When you create a DB instance, a domain name system (DNS) name is provided. AWS uses that DNS name to failover to the standby database. In an automatic failover, the standby database is promoted to the primary role and queries are redirected to the new primary database.
 
-The reason you can select multiple subnets for an Amazon RDS database is because of the Multi-AZ configuration. You’ll want to ensure that you have used subnets in different AZs for your primary and standby copies.
+The reason you can select multiple subnets for an Amazon RDS database is because of the Multi-AZ configuration. You'll want to ensure that you have used subnets in different AZs for your primary and standby copies.

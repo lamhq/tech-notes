@@ -22,7 +22,7 @@ Amazon ECS and Amazon EKS enable you to run your containers in two modes:
 - Amazon EC2 mode
 - AWS Fargate mode
 
-AWS Fargate abstracts the EC2 instance so you’re not required to manage it.
+AWS Fargate abstracts the EC2 instance so you're not required to manage it.
 
 It natively integrates with AWS Identity and Access Management (IAM) and Amazon Virtual Private Cloud (VPC). 
 

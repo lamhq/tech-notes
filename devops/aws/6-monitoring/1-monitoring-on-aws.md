@@ -31,5 +31,5 @@ Different resources in AWS create different types of metrics.
 - Respond to operational issues proactively before your end users are aware of them.
 - Improve the performance and reliability of your resources.
 - Recognize security threats and events.
-- Make data-driven decisions for your business. *Let’s say you launched a new feature for your cat photo app, and want to know whether it’s being used. You can collect application-level metrics and view the number of users who use the new feature. With your findings, you decide whether to invest more time into improving the new feature.*
-- Create more cost-effective solutions. *You can view resources that are being underutilized and rightsize your resources to your usage. This helps you optimize cost and make sure you aren’t spending more money than necessary.*
+- Make data-driven decisions for your business. *Let's say you launched a new feature for your cat photo app, and want to know whether it's being used. You can collect application-level metrics and view the number of users who use the new feature. With your findings, you decide whether to invest more time into improving the new feature.*
+- Create more cost-effective solutions. *You can view resources that are being underutilized and rightsize your resources to your usage. This helps you optimize cost and make sure you aren't spending more money than necessary.*

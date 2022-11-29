@@ -1,12 +1,12 @@
 # Route Traffic with Amazon Elastic Load Balancing
 
-## What’s a Load Balancer?
+## What's a Load Balancer?
 
 Load balancing refers to the process of distributing tasks across a set of resources.
 
 To distribute the requests across all the servers hosting the application, you first need to enable the load balancer to take all of the traffic and redirect it to the backend servers based on an algorithm. The most popular algorithm is round-robin, which sends the traffic to each server one after the other.
 
-A typical request for the application would start from the browser of the client. It’s sent to a load balancer. Then, it’s sent to one of the instances that hosts the application. The return traffic would go back through the load balancer and back to the client browser.
+A typical request for the application would start from the browser of the client. It's sent to a load balancer. Then, it's sent to one of the instances that hosts the application. The return traffic would go back through the load balancer and back to the client browser.
 
 AWS provides a service for that called Elastic Load Balancing (ELB):
 - It can distribute incoming application traffic across EC2 instances as well as containers, IP addresses, and AWS Lambda functions.
@@ -22,7 +22,7 @@ Taking the time to define an appropriate health check is critical. Simply making
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/HAix_5anRTiIsf-WpyU4Ew_399d176189a7467795b6ffb2847106e8_healthCheck.jpeg?expiry=1663286400000&hmac=TTQDRpVHvow2ZrHkSQdkXCqxswT14JrFduZpQTZKUac)
 
-If ELB determines that an instance is no longer working, it stops sending traffic to it and lets Auto Scaling know. Auto Scaling’s responsibility is to remove it from the group and replace it with a new instance. Traffic only sends to the new instance if it passes the health check.
+If ELB determines that an instance is no longer working, it stops sending traffic to it and lets Auto Scaling know. Auto Scaling's responsibility is to remove it from the group and replace it with a new instance. Traffic only sends to the new instance if it passes the health check.
 
 In the case of a scale down action that Auto Scaling needs to take due to a scaling policy, it lets ELB know that instances will be terminated. ELB can prevent Auto Scaling from terminating the instance until all connections to that instance end, while preventing any new connections. That feature is called **connection draining**.
 
@@ -72,7 +72,7 @@ If all of these parameters are the same, then the packets are sent to the exact 
 
 **NLB handles millions of requests per second**. While ALB can also support this number of requests, it needs to scale to reach that number. This takes time. NLB can instantly handle this amount of requests.
 
-**NLB supports static and elastic IP addresses**. There are some situations where the application client needs to send requests directly to the load balancer IP address instead of using DNS. For example, this is useful if your application can’t use DNS or if the connecting clients require firewall rules based on IP addresses. In this case, NLB is the right type of load balancer to use.
+**NLB supports static and elastic IP addresses**. There are some situations where the application client needs to send requests directly to the load balancer IP address instead of using DNS. For example, this is useful if your application can't use DNS or if the connecting clients require firewall rules based on IP addresses. In this case, NLB is the right type of load balancer to use.
 
 **NLB preserves source IP address**. NLB preserves the source IP address of the client when sending the traffic to the backend. With ALB, if you look at the source IP address of the requests, you will find the IP address of the load balancer. While with NLB, you would see the real IP address of the client, which is required by the backend application in some cases. 
 

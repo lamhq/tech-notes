@@ -8,7 +8,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout example.com.key -out example.co
 
 `req`: enables the part of OpenSSL that handles certificate requests signing.
 `-newkey rsa:2048 `creates a 2048-bit RSA key.
-`-nodes` means "don’t encrypt the key".
+`-nodes` means "don't encrypt the key".
 `-keyout example.com.key` specifies the filename to write on the created private key.
 `-out example.com.csr` specifies the filename to write the CSR to.
 
@@ -66,7 +66,7 @@ cat ./pem/AddTrustExternalCARoot.pem >> ./pem/CAChain.pem
 
 ## Make Sure Your CSR, SSL Certificate and Private Key Match
 
-To check whether a certificate matches a private key, or a CSR matches a certificate, you’ll need to run following OpenSSL commands:
+To check whether a certificate matches a private key, or a CSR matches a certificate, you'll need to run following OpenSSL commands:
 
 ```sh
 openssl pkey -in PRIVATEKEY.key -pubout -outform pem | sha256sum

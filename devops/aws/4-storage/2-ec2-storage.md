@@ -6,7 +6,7 @@ Amazon EC2 Instance Store provides **temporary block-level** storage for your in
 
 If you delete your instance, the instance store is deleted as well. Instance store is considered ephemeral storage.
 
-It’s ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
+It's ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
 
 
 ## Amazon Elastic Block Storage (Amazon EBS) 
@@ -23,7 +23,7 @@ EBS volumes have a max limitation of how much content you can store on the volum
 
 You can scale Amazon EBS volumes in two ways:
 
-- Increase the volume size, as long as it doesn’t increase above the maximum size limit. For EBS volumes, the maximum amount of storage you can have is 16 TB.
+- Increase the volume size, as long as it doesn't increase above the maximum size limit. For EBS volumes, the maximum amount of storage you can have is 16 TB.
 - Attach multiple volumes to a single Amazon EC2 instance.
 
 ### Amazon EBS Use Cases
@@ -51,7 +51,7 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
 ### Benefits of Using Amazon EBS
 
 - **High availability**: When you create an EBS volume, it is automatically replicated within its Availability Zone to prevent data loss from single points of failure.
-- **Data persistence**: The storage persists even when your instance doesn’t.
+- **Data persistence**: The storage persists even when your instance doesn't.
 - **Data encryption**: All EBS volumes support encryption.
 - **Flexibility**: EBS volumes support on-the-fly changes. You can modify volume type, volume size, and input/output operations per second (IOPS) capacity without stopping your instance.
 - **Backups**: Amazon EBS provides you the ability to create backups of any EBS volume.
@@ -59,10 +59,10 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
 
 ### EBS Snapshots
 
-Since your EBS volumes consist of the data from your Amazon EC2 instance, you’ll want to take backups of these volumes, called snapshots.
+Since your EBS volumes consist of the data from your Amazon EC2 instance, you'll want to take backups of these volumes, called snapshots.
 
-EBS snapshots can be used to create multiple new volumes, whether they’re in the same Availability Zone or a different one.
+EBS snapshots can be used to create multiple new volumes, whether they're in the same Availability Zone or a different one.
 
 EBS snapshots are incremental backups that only save the blocks on the volume that have changed after your most recent snapshot.
 
-When you take a snapshot of any of your EBS volumes, these backups are stored redundantly in multiple Availability Zones using Amazon S3. This aspect of storing the backup in Amazon S3 will be handled by AWS, so you won’t need to interact with Amazon S3 to work with your EBS snapshots. You simply manage them in the EBS console (which is part of the EC2 console).
+When you take a snapshot of any of your EBS volumes, these backups are stored redundantly in multiple Availability Zones using Amazon S3. This aspect of storing the backup in Amazon S3 will be handled by AWS, so you won't need to interact with Amazon S3 to work with your EBS snapshots. You simply manage them in the EBS console (which is part of the EC2 console).
