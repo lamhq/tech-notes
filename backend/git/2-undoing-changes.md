@@ -1,36 +1,28 @@
-# Undoing changes on your local machine
+# Undoing changes
 
-## Find changes on your local system
-
-```sh
-git status
-```
-
-## List the project history
+## Abort a merge
 
 ```sh
-git log
-
-# Display each commit on a single line
-git log --oneline
-
-# Limits the commits shown to the correlating time frame
-git log --after 2017-07-04
-
-# Lists all commits whose author matches the name
-git log --author="Alana"
-
-# Returns any commit with a commit message which matches the string you entered
-git log --grep="HOT-"
+git merge --abort
 ```
 
-## View commit details
+## Revert to a commit
+
+Revert changes from the `HEAD` commit to a previous commit:
 
 ```sh
-git show c5826d
+git reset --hard <commit>
 ```
 
-## Undoing changes
+## Combine previous commits
+
+Revert multiple commits and combine them to one commit
+
+```shell
+git reset --soft HEAD~3
+```
+
+## More on reverting
 
 ### `git revert`
 
@@ -40,12 +32,13 @@ git show c5826d
 
 ```sh
 git revert <commit1> <commit2> ...
-
-# Revert the changes from commit 8d87357 (not included) to HEAD (included)
-# but do not create any commit with the reverted changes.
-git revert 8d87357...HEAD --no-commit
 ```
 
+Example: revert the changes from commit `8d87357` (not included) to HEAD (included)  but do not create any commit with the reverted changes.
+
+```sh
+git revert 8d87357...HEAD --no-commit
+```
 
 ### `git reset`
 
@@ -65,8 +58,32 @@ Reset history to selected commit.
 - any changes since selected commit are discarded.
 
 
-Use cases: revert multiple commits and combine them to one commit
+## List the project history
 
-```shell
-git reset --soft HEAD~3
+```sh
+git log
+
+# Display each commit on a single line
+git log --oneline
+
+# Limits the commits shown to the correlating time frame
+git log --after 2017-07-04
+
+# Lists all commits whose author matches the name
+git log --author="Alana"
+
+# Returns any commit with a commit message which matches the string you entered
+git log --grep="HOT-"
+```
+
+## Find changes on your local system
+
+```sh
+git status
+```
+
+## View commit details
+
+```sh
+git show c5826d
 ```

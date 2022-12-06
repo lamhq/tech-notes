@@ -49,7 +49,7 @@ openssl x509 -in ./COMODORSADomainValidationSecureServerCA.crt -outform pem -out
 openssl x509 -in ./cdn_guillaumemaka_com.crt -outform pem -out ./pem/cdn_guillaumemaka_com.pem
 ```
 
-- `x509`: The x509 command is a multi purpose certificate utility. It can be used to display certificate information, convert certificates to various forms, sign certificate requests like a “mini CA” or edit certificate trust settings.
+- `x509`: The x509 command is a multi purpose certificate utility. It can be used to display certificate information, convert certificates to various forms, sign certificate requests like a "mini CA” or edit certificate trust settings.
 - `-in <filename>`: This specifies the input filename to read a certificate from or standard input if this option is not specified.
 - `-outform PEM`: This specifies the output format. In this case PEM.
 - `-out filename` : This specifies the output filename to write to or standard output by default.

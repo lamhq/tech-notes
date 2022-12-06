@@ -19,7 +19,7 @@ CIDR notation looks like this:
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Il8JdbD0SKyfCXWw9FisKg_c44173255ee944ef8e784fa3865bf677_network4.jpeg?expiry=1662508800000&hmac=yz_q3f5YPYmmSIzbqO8moDT_wdthFIulfbHUGpOPX0Y)
 
-It begins with a starting IP address and is separated by a forward slash (the “/” character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
+It begins with a starting IP address and is separated by a forward slash (the "/” character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
 
 In AWS, the smallest IP range you can have is `/28`, which provides you **16** IP addresses. The largest IP range you can have is a `/16`, which provides you with **65,536** IP addresses.
 
