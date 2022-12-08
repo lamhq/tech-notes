@@ -22,9 +22,24 @@ VPCs provide a global distributed firewall, which can be controlled to restrict 
 
 Firewall rules can be defined through network tags on Compute Engine instances. For example, you can tag all your web servers with, say, "WEB" and write a firewall rule saying that traffic on ports 80 or 443 is allowed into all VMs with the "WEB" tag.
 
+Every VPC network has two implied IPv4 firewall rule:
+- An egress rule lets (allow) any instance send traffic to any destination
+- An ingress rule protects (deny) all instances by blocking incoming connections to them
+
+The implied rules cannot be removed, but they have the lowest possible priorities.
+
 ### VPC Peering
 
 If your company has several Google Cloud projects, and the VPCs need to talk to each other? With VPC Peering, a relationship between two VPCs can be established to exchange traffic.
+
+### Connecting networks to Google VPC
+
+Many google cloud customers want to connect their google virtual private clouds to other networks in their system, There are several effective ways to accomplish this:
+
+- start with a virtual private network connection over the Internet and use the IPsec VPN protocol to create a tunnel connection
+- using Direct Peering. Peering means putting a router in the same public data center as a google point of presence, and using it to exchange traffic between networks.
+- if getting the highest up times for interconnection is important, using Dedicated Interconnect would be a good solution.
+- a Partner Interconnect connection is useful if a data center is in a physical location that can't reach a Dedicated Interconnect co location facility. 
 
 
 ## Compute Engine
@@ -63,4 +78,21 @@ If you need cross-regional load balancing for a web application, use **Global HT
 
 If you want to load balance UDP traffic, or traffic on any port number, you can still load balance across a Google Cloud region with the **Regional load balancer**.
 
-If you want to load balance traffic inside your project, say, between the presentation layer and the business layer of your application? For that, use the **Regional internal load balancer**. It accepts traffic on a Google Cloud internal IP address and load balances it across Compute Engine VMs
+If you want to load balance traffic inside your project, say, between the presentation layer and the business layer of your application? For that, use the **Regional internal load balancer**. It accepts traffic on a Google Cloud internal IP address and load balances it across Compute Engine VMs.
+
+
+## Cloud DNS
+
+Cloud DNS is a managed DNS service. The DNS information you publish is served from redundant locations around the world.
+
+Cloud DNS is also programmable. You can publish and manage millions of DNS zones and records using the Cloud Console, the command line interface or the API.
+
+
+## Cloud CDN
+
+Google also has a global system of edge caches. Edge caching refers to the use of caching servers to store content closer to end users.
+
+
+## Reference
+
+https://cloud.google.com/vpc/docs/overview
