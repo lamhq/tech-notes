@@ -104,3 +104,79 @@ Compare with GKE:
 - App Engine standard environment is for people who want the service to take maximum control of their web and mobile applications deployment and scaling. 
 - Google Kubernetes Engine, however, gives the application owner the full flexibility of Kubernetes
 - App Engine's flexible environment is somewhere between the two.
+
+
+## Google Cloud API management tools
+
+Google Cloud provides three API management tools: Cloud Endpoints, API Gateway, and Apigee Edge.
+
+### Cloud Endpoints
+
+- Distributed API management system
+- Provides an API console, hosting, logging, monitoring, and other features
+- Use with any APIs that support the OpenAPI specification
+- Supports applications running in App Engine, Google Kubernetes Engine, Compute Engine
+- Clients include Android, iOS, and Javascript
+
+### API Gateway
+
+- Backend implementations can vary for a single service provider
+- Provide secure access to your backend services through a well-defined REST API
+- Clients consume your REST APIs to implement standalone apps
+
+### Apigee Edge
+
+- Specific focus on business problems, like rate limiting, quotas, and analytics
+- Many Apigee Edge users provide a software service to other companies.
+- Backend services for Apigee Edge don't have to be in Google Cloud
+
+
+## Cloud Run
+
+- A managed compute platform that lets you run stateless Containers
+- Serverless, removing all infrastructure management tasks
+- Built on Knative, an open API and runtime environment built on Kubernetes 
+- Can automatically scale up and down from zero almost instantaneously
+- Charging only for the resources used
+
+Development workflow:
+- Write code
+- Build and package
+- Deploy to Cloud Run (can only deploy images that are stored in Artifact Registry)
+
+Once you've deployed your container image, you'll get a unique HTTPS URL back. By default, your application is exposed on a unique sub domain of the `globalrun.appdomain`. You can also use your own custom domain.
+
+You can use Cloud Run to run any binary as long as it's compiled for Linux 64 bit.
+
+You can use a container-based workflow as well as a source-based workflow. If you use the source-based approach, you'll deploy your source code instead of a container image.
+
+Pricing:
+
+- You only pay for the system resources you use while a container is handling web requests and when it's starting or shutting down.
+- You don't pay for anything if your container doesn't handle requests.
+- There was a small fee for every one million requests you serve.
+- The price of container time increases with CPU and memory
+
+
+## Quiz
+
+1. App Engine is best suited to the development and hosting of which type of application?
+    > web application
+
+2. Which statements are true about App Engine?
+    > The daily billing for an App Engine application can drop to zero.
+    > App Engine manages the hardware and networking infrastructure required to run your code. 
+
+3. What are the advantages of using App Engine’s flexible environment instead of its standard environment?
+    > Your application can write to the local disk.
+    > You can use SSH to connect to the virtual machines on which your application runs.
+    > You can install third-party binaries.
+
+4. Which Google Cloud service should you choose to perform business analytics and billing on a customer-facing API?
+    > Apigee Edge
+
+5. Select the managed compute platform that lets you run stateless containers through web requests or Pub/Sub events.
+    > Cloud Run
+
+6. Cloud Run can only pull images from: 
+    > Artifact Registry
