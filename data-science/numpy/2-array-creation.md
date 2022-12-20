@@ -38,11 +38,32 @@ print(arr)
 ```
 
 
-## Check Number of Dimensions
+## Inspecting array
 
 - `ndarray.ndim`: the number of axes (dimensions) of the array.
 - `ndarray.shape`: the dimensions of the array.
 - `ndarray.size`: the total number of elements of the array.
 - `ndarray.dtype`: an object describing the type of the elements in the array.
 - `ndarray.itemsize`: the size in bytes of each element of the array.
-- `ndarray.data`: the buffer containing the actual elements of the array. Normally, we won’t need to use this attribute because we will access the elements in an array using indexing facilities.
+
+
+```py
+import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+# 2
+arr.ndim
+
+# (2, 3)
+arr.shape
+
+# 6
+arr.size
+
+# dtype('int64')
+arr.dtype
+
+# 8
+arr.itemsize
+```

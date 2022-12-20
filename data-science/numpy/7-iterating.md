@@ -66,7 +66,7 @@ for x in np.nditer(arr[:, ::2]):
 """
 ```
 
-## Enumerated Iteration Using ndenumerate()
+## Enumerated Iteration Using `ndenumerate()`
 
 ```py
 import numpy as np

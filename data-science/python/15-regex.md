@@ -1,4 +1,4 @@
-# Regular expression
+# Regular expression (regex)
 
 ## Regular Expression Syntax
 
