@@ -91,6 +91,7 @@ we can consider a Redis `HASH` as being similar to a **document** in a document 
 | HGET | Fetches the value at the given hash key |
 | HGETALL | Fetches the entire hash |
 | HDEL | Removes a key from the hash, if it exists |
+| HINCRBY | Increments the number stored at `field` in the hash |
 
 ```sh
 hset hash-key sub-key1 value1
@@ -98,4 +99,33 @@ hset hash-key sub-key2 value2
 hgetall hash-key
 hget hash-key sub-key1
 hdel hash-key sub-key2
+```
+
+## Sorted set
+
+Like Redis `HASH`es, `ZSET`s also hold a type of key and value.
+
+The keys (called **members**) are unique, and the values (called **scores**) are limited to **floating-point numbers**.
+
+Members are ordered by associated score. Scores, ordered by numeric value.
+
+| Command | What it does |
+|---|---|
+| ZADD | Adds member with the given score to the ZSET |
+| ZSCORE | Returns the score of `member` in the sorted set `key` |
+| ZRANGE | Fetches the items in the ZSET from their positions in sorted order |
+| ZRANGEBYSCORE | Fetches items in the ZSET based on a range of scores |
+| ZREM | Removes the item from the ZSET, if it exists |
+| ZINCRBY | Increments the score of `member` in the sorted set |
+
+```sh
+zadd zset-key 728 member1
+zadd zset-key 982 member0
+
+# fetch all items
+zrange zset-key 0 -1 withscores
+
+# fetch items based on their scores
+zrangebyscore zset-key 0 800 withscores
+zrem zset-key member1
 ```
