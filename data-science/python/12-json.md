@@ -14,7 +14,7 @@ json.dumps([1, 'simple', 'list'])
 json.dump(x, f)
 ```
 
-## Deserialize object from a text file
+## Load from file
 
 ```py
 x = json.load(f)
