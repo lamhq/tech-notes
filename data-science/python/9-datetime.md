@@ -30,47 +30,56 @@ print(x.strftime("%a, %d %b %Y - %I:%M %p"))
 - [`strftime()` and `strptime()` Format Codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)
 
 
-## Getting datetime's attribute
+## Datetime's attributes
+
 ```py
 import datetime
-import calendar
+
 x = datetime.datetime(2018, 6, 1, 10, 25, 0)
+
 x.year
 x.month
 x.day
-calendar.day_name[x.weekday()]
 x.hour
 x.minute
 x.second
 x.microsecond
 x.tzinfo
+
+import calendar
+calendar.day_name[x.weekday()]
 ```
 
 
 ## Convert a Date Object into Unix Timestamp and Vice Versa
+
 ```py
 from datetime import datetime
 now = datetime.now()
+
 # convert a date to unix timestamp
 timestamp = datetime.timestamp(now)
-print("Date and Time :", now)
-print("Timestamp:", timestamp)
 
 # create a date from unix timestamp
 date2 = datetime.fromtimestamp(timestamp)
-print("date from timestamp:", date2)
 ```
 
 
-## Time Span operations
+## Timespan
+
+A timespan is a duration of time that is used to represent the difference between two points in time. 
+
+It is usually represented as a combination of days, hours, minutes, seconds, and fractions of a second.
+
+
+### Create a timespan
 
 ```py
 from datetime import timedelta
 
 # create a timedelta object
 td = timedelta(days=64, seconds=29156, microseconds=10)
-print(td)
-# 64 days, 8:05:56.000010
+print(td)   # 64 days, 8:05:56.000010
 
 # timedelta instance attributes
 td.days
@@ -79,7 +88,7 @@ td.microseconds
 td.total_seconds()
 ```
 
-Datetime manipulation:
+### Datetime manipulation
 
 ```py
 from datetime import datetime, timedelta
@@ -98,7 +107,7 @@ print('Date two weeks ago: ', two_weeks_ago)
 print('two_weeks_ago object type: ', type(two_weeks_ago))
 ```
 
-Find the difference between two dates:
+### Find the difference between two dates
 
 ```py
 from datetime import datetime
@@ -113,6 +122,7 @@ delta = date2 - date1
 print("Difference: ", delta.days)
 print('delta object type: ', type(delta))
 ```
+
 
 ## Timezone
 
