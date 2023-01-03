@@ -38,4 +38,16 @@ x + 2
 x * 2
 x ^ 2
 x + y
+x / y
+```
+
+Aggregation
+
+```
+sum(x)
+mean(x)
+```
+
+```
+length(x)
 ```
