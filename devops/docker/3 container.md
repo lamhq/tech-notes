@@ -26,13 +26,13 @@ docker run -d <image name>
 docker run --rm <image name>
 ```
 
-### Start one or more stopped containers
+### Start a stopped containers
 
 ```shell
 docker start <CONTAINER>
 ```
 
-### Run and open terminal
+### Run container and open terminal
 
 ```shell
 docker run -it --entrypoint /bin/bash <image name>

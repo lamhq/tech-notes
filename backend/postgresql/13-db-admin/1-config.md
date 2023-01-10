@@ -134,3 +134,16 @@ ORDER BY context, name;
 ```sql
 ALTER SYSTEM SET work_mem = '500MB';
 ```
+
+
+## Allow connections from outside
+
+To allow connections to a PostgreSQL server from a public IP address, you will need to modify the `pg_hba.conf` file and the `postgresql.conf` file.
+
+The `pg_hba.conf` file controls which IP addresses are allowed to connect to the PostgreSQL server. You will need to add a line to the file:
+
+```
+host    all             all             0.0.0.0/0              trust
+```
+
+The `postgresql.conf` file controls the network settings for the PostgreSQL server. To allow connections from a public IP address, you will need to ensure that the `listen_addresses` setting is set to `'*'`.
