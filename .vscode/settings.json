@@ -14,9 +14,5 @@
     "files.trimTrailingWhitespace": true,
     "files.exclude": {
         "**/.ipynb_checkpoints": true
-    },
-    "cSpell.words": [
-        "OPEX",
-        "Scholes"
-    ]
+    }
 }
