@@ -14,6 +14,12 @@ json.dumps([1, 'simple', 'list'])
 json.dump(x, f)
 ```
 
+## Load from string
+
+```py
+x = json.loads('[1, 2, 3]')
+```
+
 ## Load from file
 
 ```py

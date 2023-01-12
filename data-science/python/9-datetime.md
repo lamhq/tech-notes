@@ -22,6 +22,9 @@ print(my_date)
 
 ```py
 x = datetime.datetime(2018, 6, 1, 10, 25, 0)
+print(x.strftime("%Y-%m-%d"))
+# 2013-09-08
+
 print(x.strftime("%a, %d %b %Y - %I:%M %p"))
 # Fri, 01 Jun 2018 - 10:25 AM
 ```
@@ -51,7 +54,7 @@ calendar.day_name[x.weekday()]
 ```
 
 
-## Convert a Date Object into Unix Timestamp and Vice Versa
+## Unix Timestamp conversion
 
 ```py
 from datetime import datetime
