@@ -7,18 +7,16 @@ The time value of money means that a sum of money is worth more now than the sam
 Opportunity cost is key to the concept of the time value of money. Money can grow only if it is invested over time and earns a positive return. Money that is not invested loses value over time. 
 
 
-## Finding the future value of a cash flow
+## Finding the future value of a cash flow (FV)
 
 $$
-FV = PV (1 + \frac{i}{n})^{n \times t}
+FV = PV \times (1 + r)^{T}
 $$
 
-- $FV$: Future value of money
+- $FV$: Future value of money (the amount you get after `n` compounding periods)
 - $PV$: Present value of money
-- $i$: Interest rate
-- $n$: Number of compounding periods per year
-- $t$: Number of years
-​
+- $r$: Interest rate per period
+- $T$: Number of compounding periods
 
 **Excel formula**:
 
@@ -38,7 +36,7 @@ FV(rate, nper, pmt, [pv], [type])
 Let's assume a sum of $10,000 is invested for one year at 10% interest compounded annually. The future value of that money after 2 year is:
 
 $$
-FV = 10,000 \times (1 + \frac{0.1}{1})^{1 \times 2}
+FV = 10,000 \times (1 + 0.1)^{2}
  = 12,100
 $$
 
@@ -48,8 +46,14 @@ In excel:
 = FV(0.1, 2, 0, -10000)
 ```
 
-## Finding the present value of a cash flow
+## Finding the present value of a cash flow (PV)
 
 $$
-PV = \frac{FV}{(1 + \frac{i}{n})^{n \times t}}
+PV = \frac{FV}{(1 + r)^{T}}
 $$
+
+In excel:
+
+```
+PV(rate, nper, 0, fv) = PV(r, T, 0, FV)
+```

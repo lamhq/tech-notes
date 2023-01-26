@@ -4,12 +4,12 @@ An annuity is a series of equal fixed payments for a specified number of periods
 
 Example of annuities: mortgage payment, car loan payments, bonds payments
 
-## Finding future value of Annuities
+## Finding future value of Annuities (FV)
 
 Annuity Compound Factor, $ACF(r, n)$, sum up the compounding factors for $n$ payments at a constant interest rate $r$.
 
 $$
-ACF(r, n) = \frac{(1 + r)^n - 1}{n}
+ACF(r, n) = \frac{(1 + r)^n - 1}{r}
 $$
 
 $$
@@ -20,6 +20,12 @@ $$
 - $C$: cash flow per period
 - $r$: interest rate
 - $n$: number of payments
+
+Excel formula:
+
+```
+= FV(rate, nper, pmt) = FV(r, n, C)
+```
 
 **Example**: Retirement problem
 
@@ -35,6 +41,11 @@ C &= \frac{FV_{35}}{ACF(0.06, 35)} = \frac{1,000,000 \times 0.06}{(1 + 0.06)^{35
 \end{align*}
 $$
 
+Excel formula:
+
+```
+C = PMT(rate, nper, pv) = PMT(r, n, FV)
+```
 
 ## Finding present value of Annuities
 
@@ -61,7 +72,7 @@ C &= \frac{V_0}{ADF(0.04 / 12, 60)} = \frac{37150}{54.2990689} = 684
 \end{align*}
 $$
 
-## Example
+## Examples
 
 ### Example 1
 
