@@ -1,9 +1,40 @@
+
 # Installation
 
-The preferred way to manage Yarn is through Corepack, a new binary shipped with all Node.js releases starting from 16.10.
+## Version
 
-With Node.js >=16.10, Corepack is included by default with all Node.js installs, but is currently opt-in. To enable it, run the following command:
+This document is for version: `3.3.1`
 
-```sh
+
+## Requirements
+
+- Node.js >=16.10 (with Corepack shipped)
+
+
+## Instructions
+
+Enable Corepack:
+
+```bash
 corepack enable
+```
+
+Migrate Yarn to new version:
+
+```bash
+corepack prepare yarn@stable --activate
+```
+
+
+## Initializing your project
+
+```bash
+yarn init -2
+```
+
+
+## Updating to the latest versions
+
+```bash
+yarn set version stable
 ```
