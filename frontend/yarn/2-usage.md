@@ -35,3 +35,16 @@ yarn remove [package]
 ```bash
 yarn up [package]
 ```
+
+## Get peer dependencies of a package
+
+```bash
+npm view "@mui/lab" peerDependencies
+```
+
+## Open the upgrade interface
+
+```bash
+yarn plugin import interactive-tools
+yarn upgrade-interactive
+```

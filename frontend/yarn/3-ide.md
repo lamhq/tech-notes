@@ -1,4 +1,4 @@
-# Editor setup
+# Editor setup for Plug'n'Play
 
 Smart IDEs require special configuration for TypeScript to work when using Plug'n'Play installs.
 
@@ -13,6 +13,7 @@ Configured VSCode to use TypeScript in the workspace:
 - Press `cmd+shift+p` in a TypeScript file
 - Choose "Select TypeScript Version"
 - Pick "Use Workspace Version"
+
 
 ## Go to code definition
 
