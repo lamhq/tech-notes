@@ -30,13 +30,13 @@ $$
 
 ## Examples
 
-## Example 1
+### Example 1
 
 An annual interest rate quoted at $6\%$ compounded monthly means interest is paid at a rate of $6\%/12=0.5\%$ each month.
 
 An annual interest rate quoted at $8\%$ compounded quarterly means interest is paid at a rate of $8\%/4=2\%$ every three months.
 
-## Example 2
+### Example 2
 
 What is the effective annual rate on 1–year CD with a stated annual rate of $8\%$ compounded quarterly?
 
@@ -46,7 +46,7 @@ $$
 AER = (1+\frac{8\%}{4})^4 - 1 = 8.243\%
 $$
 
-## Example 3
+### Example 3
 
 What is the effective six-month rate if the stated annual rate is $8\%$ compounded quarterly?
 
@@ -54,7 +54,7 @@ $$
 \text{6 Month Rate} = (1+\frac{8\%}{4})^2 - 1 = 4.04\%
 $$
 
-## Example 4
+### Example 4
 
 What is the effective six-month rate if the stated annual rate is $8\%$ compounded monthly? Round off your final answer to three digits after the decimal point. 
 
@@ -62,7 +62,7 @@ $$
 \text{6 Month Rate} = (1+\frac{8\%}{12})^6 - 1 = 4.067\%
 $$
 
-## Example 5
+### Example 5
 
 What is the five-year effective rate if the stated annual rate is $6\%$ compounded semi- annually?
 
@@ -71,7 +71,7 @@ $$
 $$
 
 
-## Example 6
+### Example 6
 
 Which one would you prefer as an investment return?
 
@@ -86,3 +86,26 @@ In order to compare these alternatives, we need to find the effective annual rat
 2. EAR = $(1+ 7\%/4)^4 − 1 = 7.185\%$
 3. EAR = $(1+ 6.5\%/2)^2 − 1 = 6.605\%$
 4. EAR = $(1+ 2\%)^4 − 1 = 8.24\%$ (highest)
+
+
+### Example 7
+
+Let's say you have $1000, after 3 years, it becomes $1400. What is the average annual interest rate?
+
+The interest rate of 3 years period is: 
+
+$$
+r = \frac{1400 - 1000}{100} = 0.4
+$$
+
+The average annual interest rate is:
+
+$$
+(1+0.4)^{1/3} - 1 = 0.11868894208
+$$
+
+Let's check if it's the right value, by calculating the amount you have after 3 years with that interest rate:
+
+$$
+F_3 = 1000 \times (1+0.11868894208)^3 \approx 1400
+$$

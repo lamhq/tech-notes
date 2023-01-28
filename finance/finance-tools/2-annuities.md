@@ -157,3 +157,26 @@ $$
 - Option 3, C = 3064.515
 
 You should choose option 1, the lowest.
+
+
+# Growing Annuities
+
+An annuity is a series of payments increasing at a constant growth rate for a specified number of periods.
+
+## Formula
+
+$$
+ADF(r, n, g) = \frac{1 - \frac{(1+g)^n}{(1+r)^n}}{r - g}
+$$
+
+$$
+ACF(r, n, g) = \frac{(1+r)^n-(1+g)^n}{r - g}
+$$
+
+## Example
+
+Suppose you estimated your salary will start at $90K and will grow at 5% per year for the next five years. What is the present value of your future salary if the interest rate is 8% per year?
+
+$$
+V_0 = 90000 \times ADF(r=8\%, n=5\%, g=5\%)
+$$
