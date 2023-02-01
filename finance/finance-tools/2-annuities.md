@@ -54,7 +54,7 @@ ADF(r, n) = \frac{1 - (1+r)^{-n}}{r}
 $$
 
 $$
-V_{0} = C \times ADF(r, n)
+PV = C \times ADF(r, n)
 $$
 
 **Example**: Loan problem
@@ -64,7 +64,7 @@ Suppose you borrow $\$37,150$ with a maturity of 60 months. The interest rate is
 $$
 \begin{align*}
 
-V_{0} &= 37,150 \\
+PV &= 37,150 \\
 r &= 4\% / 12 \\
 n &= 60 \\
 C &= \frac{V_0}{ADF(0.04 / 12, 60)} = \frac{37150}{54.2990689} = 684
@@ -89,7 +89,7 @@ So you need to calculate the present value of an annuity.
 
 $$
 \begin{align*}
-V_{0} &= C \times ADF(r, n) \\
+PV &= C \times ADF(r, n) \\
   &= 1000 \times \frac{1 - (1+0.04)^{-13}}{0.04} \\
   &= 9985.65
 \end{align*}
@@ -127,7 +127,7 @@ You are buying a new car. The car dealer gives you three financing options. If y
 We need to compare the present value of each of these payment plans using the present value of an annuity.
 
 $$
-V_{0} = C \times ADF(r, n)
+PV = C \times ADF(r, n)
 $$
 
 - The present value for option 1 is 16,435.51
@@ -149,7 +149,7 @@ You are buying a new house for $450,000. Reviewing different financing options, 
 We need to solve for the fixed monthly mortgage payments using the present value formula of annuities.
 
 $$
-C = \frac{V_{0}}{ADF(r, n)}
+C = \frac{PV}{ADF(r, n)}
 $$
 
 - Option 1, C = 2020.70
