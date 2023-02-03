@@ -38,3 +38,15 @@ yarn init -2
 ```bash
 yarn set version stable
 ```
+
+## Install For CI environment
+
+- Commit `.yarnrc.yml` to git repo
+- Run `yarn install` locally and commit `yarn.lock`
+- Make sure the yarn version of CI match with the one used in project 
+
+```bash
+corepack enable
+corepack prepare yarn@3.3.1 --activate
+yarn install --immutable
+```
