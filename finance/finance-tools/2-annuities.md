@@ -49,6 +49,19 @@ C = PMT(rate, nper, pv) = PMT(r, n, FV)
 
 ## Finding present value of Annuities
 
+Suppose you will get a fixed payment $C$ every year for $n$ years. The opportunity cost of funds is $r$%. How much would you be willing to pay to receive this cash flows? (what is the present value?)
+
+To do that, we need to discount each cash flow back to time zero and then add them.
+
+$$
+\begin{align*}
+PV &= \frac{C}{1+r} + \frac{C}{(1+r)^2} + .. + \frac{C}{(1+r)^n} \\
+  &= C \times ADF(r, n)
+\end{align*}
+$$
+
+### Formula
+
 $$
 ADF(r, n) = \frac{1 - (1+r)^{-n}}{r}
 $$
@@ -57,9 +70,9 @@ $$
 PV = C \times ADF(r, n)
 $$
 
-**Example**: Loan problem
+### Example: Loan problem
 
-Suppose you borrow $\$37,150$ with a maturity of 60 months. The interest rate is $4\%$ per year, compounded monthly. What are the monthly payments?
+Suppose you borrow $\$37,150$ with a maturity of 60 months. The interest rate is $4\%$ per year, compounded monthly. What are the monthly payments? (what is the equivalent cashflow you have to pay?)
 
 $$
 \begin{align*}
