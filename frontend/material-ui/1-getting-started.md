@@ -1,48 +1,61 @@
 # Getting Started
 
+## Version
+
+This document is for version: `v5.11.6`
+
+
+## Requirements
+
+- react >= 17.0.0 
+- react-dom >= 17.0.0
+
+
 ## Installation
 
 ```bash
-yarn add @material-ui/core
+yarn add @mui/material @emotion/react @emotion/styled
 ```
 
 ### Adding Roboto Font
 
-```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-```
+Material UI uses the Roboto font by default.
 
-### Adding SVG Icons
-
-```bash
-yarn add @material-ui/icons
-```
-
-### Adding Responsive meta tag
+Add the following code snippet inside your project's `<head />` tag:
 
 ```html
-<meta
-  name="viewport"
-  content="minimum-scale=1, initial-scale=1, width=device-width"
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 />
 ```
+
+### Icons
+
+```bash
+yarn add @mui/icons-material
+```
+
+### Responsive meta tag
+
+```html
+<meta name="viewport" content="initial-scale=1, width=device-width" />
+```
+
 
 ## Usage
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
+import * as React from 'react';
+import Button from '@mui/material/Button';
 
-function App() {
+export default function MyApp() {
   return (
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
+    <div>
+      <Button variant="contained">Hello World</Button>
+    </div>
   );
 }
-
-ReactDOM.render(<App />, document.querySelector('#app'));
 ```
 
 ## Templates
