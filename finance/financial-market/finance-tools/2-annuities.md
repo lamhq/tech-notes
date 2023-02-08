@@ -19,7 +19,7 @@ $$
 - $FV$: future value of annuity
 - $C$: cash flow per period
 - $r$: interest rate
-- $n$: number of payments
+- $n$: number of periods
 
 Excel formula:
 
@@ -69,6 +69,11 @@ $$
 $$
 PV = C \times ADF(r, n)
 $$
+
+- $PV$: present value
+- $C$: the cash flow you receive each period
+- $r$: interest rate
+- $n$: number of periods
 
 ### Example: Loan problem
 
