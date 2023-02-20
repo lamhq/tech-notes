@@ -62,6 +62,106 @@ console.log(plainToClass(User, fromPlainUser, { excludeExtraneousValues: true })
 // }
 ```
 
+### Сonverting date strings into Date objects
+
+```ts
+import { Type } from "class-transformer";
+
+export class User {
+
+  id: number;
+
+  email: string;
+
+  password: string;
+
+  @Type(() => Date)
+  registrationDate: Date;
+}
+```
+
+
+### Working with Nested objects
+
+```ts
+import { Type, plainToClass } from "class-transformer";
+
+export class Album {
+
+  id: number;
+
+  name: string;
+
+  @Type(() => Photo)
+  photos: Photo[];
+}
+
+export class Photo {
+  id: number;
+  filename: string;
+}
+
+let album = plainToClass(Album, albumJson);
+// now album is Album object with Photo objects inside
+```
+
+Specifying type for nested object:
+
+```json
+{
+  "id": 1,
+  "name": "foo",
+  "topPhoto": {
+    "id": 9,
+    "filename": "cool_wale.jpg",
+    "depth": 1245,
+    "__type": "underwater"
+  }
+}
+```
+
+```ts
+import { Type, plainToClass } from "class-transformer";
+
+export abstract class Photo {
+  id: number;
+  filename: string;
+}
+
+export class Landscape extends Photo {
+  panorama: boolean;
+}
+
+export class Portrait extends Photo {
+  person: Person;
+}
+
+export class UnderWater extends Photo {
+  depth: number;
+}
+
+export class Album {
+  id: number;
+  name: string;
+
+  @Type(() => Photo, {
+    discriminator: {
+      property: "__type",
+      subTypes: [
+        { value: Landscape, name: "landscape" },
+        { value: Portrait, name: "portrait" },
+        { value: UnderWater, name: "underwater" }
+      ]
+    }
+  })
+  topPhoto: Landscape | Portrait | UnderWater;
+}
+
+let album = plainToClass(Album, albumJson);
+// now album is Album object with a UnderWater object without `__type` property.
+```
+
+
 ## Class to plain
 
 ```ts
@@ -152,87 +252,6 @@ let photo = deserialize(Photo, photo);
 // deserializeArray
 import {deserializeArray} from "class-transformer";
 let photos = deserializeArray(Photo, photos);
-```
-
-
-## Working with Nested objects
-
-```ts
-import { Type, plainToClass } from "class-transformer";
-
-export class Album {
-
-  id: number;
-
-  name: string;
-
-  @Type(() => Photo)
-  photos: Photo[];
-}
-
-export class Photo {
-  id: number;
-  filename: string;
-}
-
-let album = plainToClass(Album, albumJson);
-// now album is Album object with Photo objects inside
-```
-
-### Specifying type for nested object
-
-```json
-{
-  "id": 1,
-  "name": "foo",
-  "topPhoto": {
-    "id": 9,
-    "filename": "cool_wale.jpg",
-    "depth": 1245,
-    "__type": "underwater"
-  }
-}
-```
-
-```ts
-import { Type, plainToClass } from "class-transformer";
-
-export abstract class Photo {
-  id: number;
-  filename: string;
-}
-
-export class Landscape extends Photo {
-  panorama: boolean;
-}
-
-export class Portrait extends Photo {
-  person: Person;
-}
-
-export class UnderWater extends Photo {
-  depth: number;
-}
-
-export class Album {
-  id: number;
-  name: string;
-
-  @Type(() => Photo, {
-    discriminator: {
-      property: "__type",
-      subTypes: [
-        { value: Landscape, name: "landscape" },
-        { value: Portrait, name: "portrait" },
-        { value: UnderWater, name: "underwater" }
-      ]
-    }
-  })
-  topPhoto: Landscape | Portrait | UnderWater;
-}
-
-let album = plainToClass(Album, albumJson);
-// now album is Album object with a UnderWater object without `__type` property.
 ```
 
 
@@ -357,25 +376,6 @@ let user2 = classToPlain(user, { version: 0.7 }); // will contain id, name and e
 let user3 = classToPlain(user, { version: 1 }); // will contain id and name
 let user4 = classToPlain(user, { version: 2 }); // will contain id and name
 let user5 = classToPlain(user, { version: 2.1 }); // will contain id, name nad password
-```
-
-
-## Сonverting date strings into Date objects
-
-```ts
-import { Type } from "class-transformer";
-
-export class User {
-
-  id: number;
-
-  email: string;
-
-  password: string;
-
-  @Type(() => Date)
-  registrationDate: Date;
-}
 ```
 
 
