@@ -1,4 +1,4 @@
-# Calculate return of financial assets
+# Calculate Rate of Return of a financial asset
 
 ## Return over a holding periods
 
