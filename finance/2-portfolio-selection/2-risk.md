@@ -9,6 +9,39 @@ Most people prefer to have a good idea about the rate of return they can expect 
 Statistical measures to quantify risk are: **variance**, **standard deviation**
 
 
+## Annualize volatility (risk)
+
+$$
+\text{annual volatility} = \text{monthly volatility} \times \sqrt{12}
+$$
+
+$$
+\text{annual volatility} = \text{weekly volatility} \times \sqrt{52}
+$$
+
+
+## Value at risk
+
+Value at Risk (VaR) is used as a risk measure when volatility (standard deviation) is not an appropriate measure, particularly for investment strategies with an extreme crash risk.
+
+VaR attempts to capture tail risk, which is the risk of an investment experiencing losses outside the range of normal expectations. 
+
+It measures the **maximum loss** that can be incurred with a certain confidence level, such as a 95% or 99% confidence.
+
+*For example, a 95% confidence level means that you are 95% confident that the actual loss will not exceed the VaR.*
+
+You can estimate the VaR by sorting past returns and then finding the return that has 5% worse days, and 95% better days
+
+
+## Expected shortfall
+
+The VaR doesn’t really tell us how much you lose if you do lose.
+
+Expected shortfall is another risk measure that captures the magnitude of extreme tail losses if the loss exceeds the VaR. 
+
+Expected shortfall is the expected loss given that you are losing more than the VaR.
+
+
 ## Portfolio Diversification (relationship)
 
 You should by stocks from companies operate in different industries (so they are independent).

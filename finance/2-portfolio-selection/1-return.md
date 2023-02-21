@@ -1,4 +1,4 @@
-# Calculate Rate of Return of a financial asset
+# Calculate Rate of Return of a Financial Asset
 
 ## Return over a holding periods
 
@@ -45,6 +45,7 @@ $$
 r = \sqrt[5]{0.8811 \times 0.7790 \times 1.2869 \times 1.1088 \times 1.0491} - 1 = 0.005438504
 $$
 
+
 ## Expected return
 
 Expected return are the probability weighted average of the possible outcomes.
@@ -59,4 +60,21 @@ Expected return are the probability weighted average of the possible outcomes.
 
 $$
 E(r) = (0.25 \times 0.31) + (0.45 \times 0.14) + (0.25 \times -0.0675) + (0.05 \times -0.52)
+$$
+
+
+## Annualize returns
+
+$$
+\text{annual return} = \text{monthly return} \times 12
+$$
+
+$$
+\text{annual return} = \text{daily return} \times 252
+$$
+
+*252 is the number of trading days.*
+
+$$
+\text{annual return} = \text{weekly return} \times 52
 $$
