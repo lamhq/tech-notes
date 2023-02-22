@@ -1,22 +1,33 @@
 # Getting Started
 
-## Install a Python interpreter
+## Install multiple Python versions on macOS
 
-To install Python using Homebrew on macOS use `brew install python3` at the Terminal prompt.
+Install pyenv
 
-
-## Verify the Python installation
-
-open a Terminal Window and type the following command:
-
-```sh
-python3 --version
+```bash
+brew install pyenv
 ```
 
-## Fix bug SSL: CERTIFICATE_VERIFY_FAILED with Python3
+Add pyenv init to `~/.zshrc` (or equivalent shell configuration file):
 
-This solution work on MacOS.
+```bash
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+```
 
-Go to the folder where Python is installed, e.g., in my case it is installed in the Applications folder with the folder name 'Python 3.6'. Now double click on 'Install Certificates.command'. After that error was gone.
+Reload shell configuration:
 
-Reference: [https://stackoverflow.com/questions/35569042/ssl-certificate-verify-failed-with-python3](https://stackoverflow.com/questions/35569042/ssl-certificate-verify-failed-with-python3)
+```bash
+source ~/.zshrc
+```
+
+Install a Python version (example: 3.7.0):
+
+```bash
+pyenv install 3.7.0
+```
+
+Set global Python version:
+
+```bash
+pyenv global 3.7.0
+```
