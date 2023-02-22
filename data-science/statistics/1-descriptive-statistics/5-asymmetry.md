@@ -20,6 +20,7 @@ Khi Skewness < 0:
 - Phân phối lệch trái (độ lệch âm).
 - Left skewness means that the outliers are to the left.
 - mean < median < mode
+- extreme negative values will dominate the distribution.
 
 ![](https://miro.medium.com/max/1200/1*nj-Ch3AUFmkd0JUSOW_bTQ.jpeg)
 
@@ -39,11 +40,11 @@ Giá trị dương cho biết phân phối tương đối nhọn và giá trị 
 
 Các phân phối cao hơn hoặc nhọn hơn so với phân phối chuẩn được gọi là leptokurtic, trong khi phân phối phẳng hơn được gọi là platykurtic.
 
-Kurtosis reflects the probabilities of extreme values occurring when compared to a normal distribution.
+Kurtosis reflects the probabilities of **extreme values** occurring when compared to a normal distribution.
 
-Leptokurtic or fat tails is when the frequency of extreme moves is greater than a normal distribution. This is referred to as excess positive kurtosis.
+Leptokurtic or **fat tails** is when the frequency of extreme moves is greater than a normal distribution. This is referred to as excess positive kurtosis.
 
-Platykurtic, or thin-tails is when the frequency of extreme moves is less than a normal distribution, this is referred to as excess negative kurtosis.
+Platykurtic, or **thin-tails** is when the frequency of extreme moves is less than a normal distribution, this is referred to as excess negative kurtosis.
 
 Mesokurtic is when the frequency in the tails is similar to a normal distribution.
 
