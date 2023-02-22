@@ -38,12 +38,3 @@ Overall, the use of logarithmic returns is a well-established convention in fina
 $$
 \text{annual return} = [(\text{daily return} + 1)^{365}]*100
 $$
-
-
-## Calculating the Rate of Return of a Portfolio of Securities
-
-Most investors own several stocks. The set of stocks that an investor owns is called an **investment portfolio**.
-
-Every investor tries to select and add stocks that will optimize the overall rate of return of his portfolio.
-
-The historical rate of return of a portfolio is the total of rate of return for a security * weight in portfolio.

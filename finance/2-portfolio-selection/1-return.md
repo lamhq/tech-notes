@@ -21,7 +21,7 @@ $$
 
 ## Annual return
 
-The geometric mean is useful for measuring performance over a past sample period, such as annual returns over `t` periods.
+The geometric mean is useful for measuring performance of an asset over a past sample period, such as annual returns over `t` periods.
 
 $$
 (1+r)^t = (1 + r_1) \times ... \times (1 + r_t)
@@ -48,7 +48,9 @@ $$
 
 ## Expected return
 
-Expected return are the probability weighted average of the possible outcomes.
+Given the distribution of returns, we use the central tendency, or the average, as the measure of the expected return.
+
+If we had a probability distribution of possible outcomes, the expected return is the probability-weighted average of the possible outcomes.
 
 |            | Probability | Return   |
 |------------|-------------|----------|
@@ -78,3 +80,12 @@ $$
 $$
 \text{annual return} = \text{weekly return} \times 52
 $$
+
+
+# Return of a portfolio
+
+Most investors own several stocks. The set of stocks that an investor owns is called an **investment portfolio**.
+
+## Expected return
+
+Expected return of a portfolio is the weighted average of the expected returns of the individual assets.
