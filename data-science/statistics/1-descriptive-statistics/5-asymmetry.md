@@ -22,8 +22,7 @@ Khi Skewness < 0:
 - mean < median < mode
 - extreme negative values will dominate the distribution.
 
-![](https://miro.medium.com/max/1200/1*nj-Ch3AUFmkd0JUSOW_bTQ.jpeg)
-
+![Image](https://miro.medium.com/max/1200/1*nj-Ch3AUFmkd0JUSOW_bTQ.jpeg)
 
 A distribution with frequent small losses and a few extreme losses gains has a positive skew. The mean is greater than the median and mode. There is more probability in the tails of the distribution relative to the normal distribution.
 
