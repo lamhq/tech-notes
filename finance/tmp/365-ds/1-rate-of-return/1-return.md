@@ -31,10 +31,3 @@ Logarithmic returns are commonly used in finance and investment analysis for a n
 1. Interpretability: Logarithmic returns are expressed in percentage terms, which makes them more easily interpretable than simple returns, which are expressed as absolute differences in prices or values.
 
 Overall, the use of logarithmic returns is a well-established convention in financial analysis, and their many useful properties make them a preferred choice for many financial professionals.
-
-
-### Annual (yearly) Returns
-
-$$
-\text{annual return} = [(\text{daily return} + 1)^{365}]*100
-$$

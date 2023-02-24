@@ -1,4 +1,4 @@
-# Measuring Investment Risk
+# Asset Risk
 
 ## Calculating a Security's Risk
 
@@ -6,8 +6,32 @@ Risk is the chance of losing money. Variability is the best measure of risk.
 
 Most people prefer to have a good idea about the rate of return they can expect (from a security or a portfolio of securities) and are doing their best to reduce the risk they are exposed to.
 
-Statistical measures to quantify risk are: **variance**, **standard deviation**
+Statistical measures to quantify risk are: **variance**, **standard deviation**.
 
+Variance is the probability weighted average of the square deviations from the mean.
+
+| State of the economy | Prob. | Toyota |
+|----------------------|-------|--------|
+| Expansion            | 0.1   | 6%     |
+| Normal               | 0.4   | 7.5    |
+| Recession            | 0.3   | 2.0    |
+| Depression           | 0.2   | -3     |
+| Expected return E(R) |       | 3.6    |
+| Standard deviation   |       | 4.02   |
+
+$$
+\begin{align*}
+\sigma^2 &= 0.1 \times (6 - 3.6)^2 + \\
+ & 0.4 \times (7.5 - 3.6)^2 + \\
+ & 0.4 \times (2 - 3.6)^2 + \\
+ & 0.4 \times (-3 - 3.6)^2 + \\
+ &= 16.14
+\end{align*}
+$$
+
+$$
+\sigma = 4.02
+$$
 
 ## Annualize volatility (risk)
 
@@ -42,6 +66,8 @@ Expected shortfall is another risk measure that captures the magnitude of extrem
 Expected shortfall is the expected loss given that you are losing more than the VaR.
 
 
+# Portfolio risk
+
 ## Portfolio Diversification (relationship)
 
 You should by stocks from companies operate in different industries (so they are independent).
@@ -58,7 +84,7 @@ Correlation between prices and correlation between returns may show different va
 - The correlation between the rate of returns reflects the dependence between prices at different times and focuses on the returns of your portfolio. As an investor, returns is what you care about.
 
 
-## Portfolio Risk
+## Calculating a Portfolio's Risk
 
 If a portfolio contain multiple stocks, its risk will be a function of the **variances** of the stocks, and of the **correlation** (and Covariance) between them.
 
@@ -97,8 +123,6 @@ There are two types of investment risk:
 
 ![](https://cdn.corporatefinanceinstitute.com/assets/Screen-Shot-2018-09-26-at-10.09.31-AM.png)
 
-$$
-$$
 
 ### Un-diversifiable (Systematic) risk
 
@@ -112,4 +136,40 @@ $$
 - Driven by company-specific events.
 - Can be eliminated if we invest in non-correlated assets.
 
-Academic research has show if we build a portfolio containing at least 25-30 not correlated stocks, unsystematic will almost disappear. Some institutional investors go even further and build portfolio of securiites from different countries.
+Academic research has show if we build a portfolio containing at least **25-30** not correlated stocks, unsystematic will almost disappear. Some institutional investors go even further and build portfolio of securiites from different countries.
+
+## Example
+
+| State of the economy | Prob. | Toyota | Pfizer | ½ Toyota + ½ Pfizer |
+|----------------------|-------|--------|--------|---------------------|
+| Expansion            | 0.1   | 6%     | 2.5%   | 4.25%               |
+| Normal               | 0.4   | 7.5    | -0.5   | 3.5                 |
+| Recession            | 0.3   | 2      | 1      | 1.5                 |
+| Depression           | 0.2   | -3     | 13     | 5                   |
+| Expected return E(R) |       | 3.6%   | 2.95   | 3.275%              |
+| Standard deviation σ |       | 4.02%  | 5.11   |                     |
+
+First, we calculate the expected return of the portfolio in each state of economy:
+
+- Expansion: $0.5 \times 6 + 0.5 \times 2.5 = 4.25$
+- Normal: $0.5 \times 7.5 + 0.5 \times -0.5 = 3.5$
+- Recession: $0.5 \times 2 + 0.5 \times 1 = 4.25$
+- Depression: $0.5 \times -3 + 0.5 \times 13 = 4.25$
+
+We calculate the variance by taking probability weighted average of the square deviations from the mean:
+
+$$
+\begin{align*}
+\sigma_p^2 &= 0.1 \times (4.25 - 3.275)^2 + \\ 
+  & 0.4 \times (3.5 - 3.275)^2 + \\
+  & 0.3 \times (1.5 - 3.275)^2 + \\ 
+  & 0.2 \times (5 - 3.275)^2 \\
+  &= 1.66
+\end{align*}
+$$
+
+$$
+\sigma_p = 1.29%
+$$
+
+Please check the code file for alternative method (using Covariance Matrix).

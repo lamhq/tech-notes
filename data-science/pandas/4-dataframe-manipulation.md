@@ -93,12 +93,6 @@ afterdrop = df.drop(['Sector'], axis=1)
 
 ## Row
 
-### Appending new rows
-
-```py
-appended = df1.append(df2)
-```
-
 ### Concatenating rows
 
 ```py
