@@ -94,20 +94,27 @@ $$
 
 ### Annualize returns
 
+*Arithmetic mean:*
+
 $$
-\text{expected annual return} = \text{expected monthly return} \times 12
+\text{annual return} = \text{monthly return} \times 12
 $$
 
 $$
-\text{expected annual return} = \text{expected daily return} \times 252
+\text{annual return} = \text{daily return} \times 252
 $$
 
 *252 is the number of trading days.*
 
 $$
-\text{expected annual return} = \text{expected weekly return} \times 52
+\text{annual return} = \text{weekly return} \times 52
 $$
 
+*Geometric mean:*
+
+$$
+\text{annual return} = (1+\text{monthly return})^{12} - 1
+$$
 
 ## Measuring Risk
 
