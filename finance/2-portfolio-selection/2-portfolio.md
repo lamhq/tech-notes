@@ -4,6 +4,10 @@
 
 Expected return of a portfolio is the weighted average of the expected returns of the individual assets.
 
+$$
+E(P) = \sum_{i=1}^nw_iE_i
+$$
+
 | State of the economy | Prob. | Toyota | Pfizer | ½ Toyota + ½ Pfizer |
 |---|---|---|---|---|
 | Expansion | 0.1 | 6% | 2.5% |  |
