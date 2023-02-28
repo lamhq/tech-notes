@@ -56,8 +56,6 @@ $$
 
 If we had a probability distribution of possible outcomes, the expected return is the probability-weighted average of the possible outcomes.
 
-**Example 1**:
-
 | State of the Economy | Probability | Return  |
 |----------------------|-------------|---------|
 | Excellent            | 0.25        | 0.31    |
@@ -75,7 +73,7 @@ E(r) &= (0.25 \times 0.31) \\
 \end{align*}
 $$
 
-**Example 2**:
+If we had a time series of return, you can compute the average return using arithmetic mean:
 
 Suppose you have five years of past returns, you can compute the expected return for the next year using the arithmetic mean
 
@@ -97,23 +95,23 @@ $$
 ### Annualize returns
 
 $$
-\text{annual return} = \text{expected monthly return} \times 12
+\text{expected annual return} = \text{expected monthly return} \times 12
 $$
 
 $$
-\text{annual return} = \text{expected daily return} \times 252
+\text{expected annual return} = \text{expected daily return} \times 252
 $$
 
 *252 is the number of trading days.*
 
 $$
-\text{annual return} = \text{expected weekly return} \times 52
+\text{expected annual return} = \text{expected weekly return} \times 52
 $$
 
 
 ## Measuring Risk
 
-### Volatility of returns
+### Dispersion of returns (volatility)
 
 We measure the dispersion by using the standard deviation of the distribution of returns.
 
@@ -157,7 +155,35 @@ $$
 \sigma = 0.21%
 $$
 
+
+### Annualize volatility (risk)
+
+$$
+\text{annual volatility} = \text{monthly volatility} \times \sqrt{12}
+$$
+
+$$
+\text{annual volatility} = \text{weekly volatility} \times \sqrt{52}
+$$
+
 ### Skewness
+
+Skewness is a measure of asymmetry.
+- Normal distribution has a skewness measure of zero.
+- When a distribution is skewed to the left, the extreme negative values dominate and the measure is negative.
+- When a distribution is skewed to the right, the extreme positive values dominate and the measure is positive.
+- When the distribution is skewed to the left, the standard deviation will underestimate risk.
+
+
+### Kurtosis
+
+Kurtosis measure the degree of fat tails.
+
+- Normal distribution has a kurtosis of 3.
+- Fat tails implies there is greater probability mass in extreme events in
+the tails.
+- Standard deviation will underestimate the likelihood of extreme events.
+
 
 ### Value at risk
 
