@@ -39,7 +39,13 @@ The core workflow depends on your data stack, but it will usually involve:
 pip install "meltano"
 ```
 
-Getting version:
+Installs dependencies of your project based on the `meltano.yml` file:
+
+```bash
+meltano install
+```
+
+Verify installation:
 
 ```bash
 meltano --version
