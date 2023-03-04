@@ -1,5 +1,10 @@
 # R Basic
 
+## Markdown syntax example
+
+https://gist.github.com/szaydel/b6d6b30ea3237616e229cc0471377369
+
+
 ## Assignment Operators
 
 Assign a value to a name.

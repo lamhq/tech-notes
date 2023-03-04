@@ -148,3 +148,42 @@ Correlation coefficient can only take values between `-1` to `+1`.
 | 0 | Considerable risk reduction is possible |
 | - 0.5 | Most risk can be eliminated |
 | - 1.0 | All risk can be eliminated |
+
+
+## Portfolio's Risk Types
+
+### Un-diversifiable risk
+
+- aka. Systematic risk
+- Depends on the variance of each individual security.
+- Cannot be eliminated. Is characteristic of the entier market.
+- Example: recession of the economy, low consumer spending, wars, forces of nature.
+
+### Diversifiable risk
+
+- aka. Idiosyncratic (company specific) risk.
+- Driven by company-specific events.
+- Can be eliminated if we invest in non-correlated assets.
+
+Academic research has show if we build a portfolio containing at least 25-30 not correlated stocks, unsystematic will almost disappear. Some institutional investors go even further and build portfolio of securiites from different countries.
+
+
+## Mean-variance frontier
+
+Mean-variance frontier is the locus of the portfolios in expected return-standard deviation space that have the minimum variance for each expected return. For two assets, it consists simply of all possible portfolio combinations of the two assets.
+
+*The mean-variance frontier (also known as efficient frontier) is a graphical representation of the set of portfolios that provide the highest expected return for a given level of risk or the lowest risk for a given level of expected return. This frontier is obtained by optimizing the portfolio's weights to achieve the minimum variance for each expected return level.*
+
+*The mean-variance frontier is typically used by investors to identify the optimal mix of assets in their portfolio, based on their risk tolerance and investment objectives.*
+
+The mean variance frontier expands as we add more assets to the mix.
+
+![mean-variance frontier](https://analystprep.com/study-notes/wp-content/uploads/2020/01/efficient-frontier-ifm.png)
+
+The top half of the mean-variance frontier is **efficient**: An investor cannot obtain a higher reward – or expected return – for a given level of risk measured by volatility.
+
+The left-most point on the minimum variance frontier is called the **minimum variance portfolio**.
+
+All individual assets lie inside the frontier – diversified **portfolios on the frontier do better than assets held individually**.
+
+Diversification removes idiosyncratic risk and reduces the overall risk of the portfolio.
