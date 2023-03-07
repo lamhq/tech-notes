@@ -154,14 +154,14 @@ Correlation coefficient can only take values between `-1` to `+1`.
 
 ### Un-diversifiable risk
 
-- aka. Systematic risk
+- aka. Systematic/market risk
 - Depends on the variance of each individual security.
 - Cannot be eliminated. Is characteristic of the entier market.
 - Example: recession of the economy, low consumer spending, wars, forces of nature.
 
 ### Diversifiable risk
 
-- aka. Idiosyncratic (company specific) risk.
+- aka. Idiosyncratic/unique (company specific) risk.
 - Driven by company-specific events.
 - Can be eliminated if we invest in non-correlated assets.
 
@@ -187,3 +187,28 @@ The left-most point on the minimum variance frontier is called the **minimum var
 All individual assets lie inside the frontier – diversified **portfolios on the frontier do better than assets held individually**.
 
 Diversification removes idiosyncratic risk and reduces the overall risk of the portfolio.
+
+
+## Exercise
+
+Consider a portfolio of risky equities and Treasury bills. 
+
+Suppose the expected return on equities is 12% per year with a volatility of 18%. Let's also suppose that T-bills offer a risk-free 7% rate of return. 
+
+What would be the volatility of your portfolio if you have 60% in equities and 40% in Treasuries?
+
+**Answer:**
+
+The volatility of a two-asset portfolio is given by:
+
+$$
+\sigma_{p}^2 = 
+  w_1^2\sigma_1^2 + w_2^2\sigma_2^2  + 2w_1\sigma_1w_2\sigma_2\rho_{12} 
+$$
+
+Note, however, the risk-free asset has zero variance and zero covariance. Therefore,
+
+$$
+\sigma_{p}^2 = w_1^2\sigma_1^2 \\
+\sigma_{p} = 0.6 \times 18 = 10.8
+$$
