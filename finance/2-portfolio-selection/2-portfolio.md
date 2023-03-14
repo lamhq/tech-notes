@@ -182,9 +182,9 @@ The mean variance frontier expands as we add more assets to the mix.
 
 The top half of the mean-variance frontier is **efficient**: An investor cannot obtain a higher reward – or expected return – for a given level of risk measured by volatility.
 
-The left-most point on the minimum variance frontier is called the **minimum variance portfolio**.
+The left-most point on the minimum variance frontier is called the **minimum variance portfolio**. We can find the minimum variance portfolio using Excel Solver, by changing weight to have the minimum variance.
 
-All individual assets lie inside the frontier – diversified **portfolios on the frontier do better than assets held individually**.
+All individual assets lie inside the frontier. **Diversified portfolios on the frontier do better than assets held individually**.
 
 Diversification removes idiosyncratic risk and reduces the overall risk of the portfolio.
 
