@@ -31,10 +31,12 @@ def to_lower(s: str) -> str:
 `list`, `tuple`, and `dict`:
 
 ```py
-def first_and_last(l: list[int]) -> tuple[int, int]:
+from typing import List, Tuple, Dict
+
+def first_and_last(l: List[int]) -> Tuple[int, int]:
     return (l[0], l[-1])
 
-def word_count(s: str) -> dict[str, int]:
+def word_count(s: str) -> Dict[str, int]:
     words = s.split()
     counts = {}
     for word in words:
