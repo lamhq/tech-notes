@@ -26,10 +26,18 @@ This tangency portfolio is called the mean-variance efficient portfolio.
 
 Steps to find the mean-variance efficient portfolio:
 
-1. Calculate **expected return** of the risky portfolio consist of the two assets from **asset's weight**, asset's return.
-1. Calculate portfolio's **volatility** from asset's volatility, assets's correlation.
-1. Calculate **sharpe ratio** from risk-free asset's return, expected return, volatility
+1. Given the two assets with Expected Return $E_1$, $E_2$, volatility $\sigma_1$, $\sigma_2$, with weights $w_1$, $w_2$ ($= 1- w_1$) and the correlation $\sigma_{12}$. The risk-free return is given by $E(r_f)$
+1. Construct the formula to calculate **sharpe ratio** from $w_1$, $w_2$
 1. Use Excel Solver to find the **weight** that have highest **sharpe ratio**
+$$
+S = \frac{E(r_s) - E(r_f)}{\sigma_s}
+$$
+$$
+E(r_s) = w_1E_1 + w_2E_2
+$$
+$$
+\sigma_s = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\sigma_{12} }
+$$
 
 
 ## Capital Allocation Line
