@@ -68,7 +68,7 @@ $$
 \sigma = 1.29\%
 $$
 
-Other method for calculating portfolio's risk:
+### Calculate portfolio's variance using matrix operation
 
 $$
 \begin{align*}

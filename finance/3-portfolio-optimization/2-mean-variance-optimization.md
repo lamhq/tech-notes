@@ -20,25 +20,77 @@ Let's suppose that we have two risky assets and the risk-free asset.
 
 To determine the best combination of two risky assets and a risk-free asset, we look at several capital location lines to determine the highest Sharpe ratio or the steepest capital allocation line.
 
-This tangency portfolio is called the mean-variance efficient portfolio.
+This tangency portfolio is called the **mean-variance efficient portfolio**.
 
 ![Image of mean-variance efficient portfolio](https://quantpedia.com/app/uploads/2021/04/obr1-intro.png)
 
-Steps to find the mean-variance efficient portfolio:
+Steps to find the **mean-variance efficient portfolio**:
 
-1. Given the two assets with Expected Return $E_1$, $E_2$, volatility $\sigma_1$, $\sigma_2$, with weights $w_1$, $w_2$ ($= 1- w_1$) and the correlation $\sigma_{12}$. The risk-free return is given by $E(r_f)$
+1. Given the two assets with:
+    - $E_1$, $E_2$: Expected Return of the two risky assets
+    - $\sigma_1$, $\sigma_2$: standard deviation (volatility)
+    - $w_1$, $w_2$: weights of each asset in the portfolio
+    - $\sigma_{12}$: correlation between two assets
+    - $E(r_f)$: return of risk-free asset
 1. Construct the formula to calculate **sharpe ratio** from $w_1$, $w_2$
+    $$
+    S = \frac{E(r_s) - E(r_f)}{\sigma_s}
+    $$
+    
+    with:
+    
+    $$
+    E(r_s) = w_1E_1 + w_2E_2
+    $$
+    
+    $$
+    \sigma_s = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\sigma_{12} }
+    $$
 1. Use Excel Solver to find the **weight** that have highest **sharpe ratio**
-$$
-S = \frac{E(r_s) - E(r_f)}{\sigma_s}
-$$
-$$
-E(r_s) = w_1E_1 + w_2E_2
-$$
-$$
-\sigma_s = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\sigma_{12} }
-$$
 
+
+### Multiple risky assets case
+
+The minimum variance frontier is the locus of all portfolios that give minimum risk for a given level of return.
+ 
+To find that frontier, we only need to know the composition of two portfolios: **mean-variance efficient portfolio** and **global minimum variance portfolio**, and trace out their combination.
+
+Given the following inputs:
+
+- $n$: number of risky assets
+- $R$: matrix of returns, size $(n, 1)$
+- $\sigma$: matrix of standard deviations, size $(n, 1)$
+- $\rho$: correlation matrix of risky assets, size $(n, n)$
+- $w$: matrix of assets's weights, size $(1, n)$
+- $R_f$: return of the risk-free asset
+
+Steps to find the **mean-variance efficient portfolio**:
+
+1. Construct the formula to calculate Expected Return of the result portfolio from weights:
+    $$
+    R_p = w \times R
+    $$
+1. Find the covariance matrix
+    $$
+    cov = \rho \cdot (R \times R^T)
+    $$
+    - $\cdot$ is scalar multiplication between two matrices
+    - $\times$ is matrix multiplication operator
+    - $R^T$: transpose matrix of matrix $R$
+1. Construct the formula to calculate Standard Deviation of the result portfolio from weights:
+    $$
+    \sigma_p = \sqrt{w \times cov \times w^T}
+    $$
+1. Construct the formula to calculate Sharpe Ratio:
+    $$
+    S = \frac{R_p-R_f}{\sigma_p}
+    $$
+1. Use Excel solver to find the weight matrix that has highest Sharpe Ratio.
+
+Steps to find the **global minimum variance portfolio**:
+
+1. Repeat step 1 to 3 of finding mean-variance efficient portfolio.
+1. Use Excel solver to find the weight matrix that has smallest Standard Deviation.
 
 ## Capital Allocation Line
 
