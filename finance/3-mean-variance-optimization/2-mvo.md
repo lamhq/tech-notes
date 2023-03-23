@@ -143,7 +143,7 @@ The slope of the line delivers a special name called the **Sharpe ratio**. It te
 Reference: https://www.wallstreetmojo.com/capital-allocation-line/
 
 
-## Optimal capital allocation between Risky Portfolio and Risk-free Asset
+## Optimal capital allocation
 
 Where you would choose to be on capital allocation line is depend in your attitude toward risk.
 
@@ -164,9 +164,44 @@ $$
 Replace $E(r)$ and $\sigma$ from Capital Allocation Line formula, we have:
 
 $$
-U = r_f + w \times E(r_s - r_f) - \frac{1}{2}Aw^2\sigma_s^2
+U = r_f + w \times E(r_{mve} - r_f) - \frac{1}{2}Aw^2\sigma_{mve}^2
 $$
 
+The optimal capital allocation for an investor with a risk aversion coefficient of $A$ is given by:
+
 $$
-w^{\infty} = \frac{E(r_s - r_f)}{A\sigma_s^2}
+w = \frac{E(r_{mve}) - r_f}{A\sigma_{mve}^2}
 $$
+
+Where:
+
+- $w$: weight of the risky portfolio
+- MVE is the optimal risky portfolio that maximizes the Sharpe ratio
+
+
+## Investment decision process
+
+The investment decision process can be viewed as a top-down process. It involves three steps: capital allocation, asset allocation, and security selection.
+
+The **capital allocation decision** is the most important as it determines the amount of risk exposure an investor would like to have based on their risk aversion and expectations about the risk-return trade-off of the risky portfolio. 
+
+The **asset allocation decision and security selection** can be combined as finding the combinations of risky securities that have the minimum risk for a given level of return and identifying the one risky portfolio that maximizes the Sharpe ratio. 
+
+Investors may also have additional constraints, such as restrictions on short positions, minimum dividend yield requirements, or socially responsible investing considerations. However, more constraints can result in an inferior solution with a lower Sharpe ratio.
+
+
+## Limitations
+
+Limitations of the mean-variance investing framework:
+
+The first limitation is that it only takes into account the first two modes, mean and variance, when it comes to return distributions, while investors typically care about downside risk and other movements of risks.
+
+The second limitation is that mean-variance utility does not distinguish between gains and losses, even though investors often exhibit loss aversion
+
+Thirdly, mean-variance utility assumes constant risk aversion, but our attitudes toward risk may change depending on external factors.
+
+Fourthly, it assumes that investors have short horizons and only live one period, which has implications for long-run investment decisions.
+
+Finally, the results obtained from mean-variance analysis are extremely sensitive to the inputs used, such as expected returns and variances, and historical data may not be indicative of the future.
+
+Despite these limitations, mean-variance investing is still the most common way to choose portfolios, and the main takeaway from portfolio choice problem is to select the most diversified portfolio to reduce risk and increase return.
