@@ -175,8 +175,7 @@ $$
 
 Where:
 
-- $w$: weight of the risky portfolio
-- MVE is the optimal risky portfolio that maximizes the Sharpe ratio
+- $w$: weight of the optimal risky portfolio that maximizes the Sharpe ratio. In this case, that is the MVE portfolio.
 
 
 ## Investment decision process

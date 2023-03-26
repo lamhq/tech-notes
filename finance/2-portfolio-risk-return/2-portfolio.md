@@ -170,13 +170,13 @@ Academic research has show if we build a portfolio containing at least 25-30 not
 
 ## Mean-variance frontier
 
-Mean-variance frontier is the locus of the portfolios in expected return-standard deviation space that have the minimum variance for each expected return. For two assets, it consists simply of all possible portfolio combinations of the two assets.
+The Mean-variance frontier is the locus of the portfolios in expected return-standard deviation space that have the minimum variance for each expected return.
 
-*The mean-variance frontier (also known as efficient frontier) is a graphical representation of the set of portfolios that provide the highest expected return for a given level of risk or the lowest risk for a given level of expected return. This frontier is obtained by optimizing the portfolio's weights to achieve the minimum variance for each expected return level.*
+For two assets, the mean variance frontier consists simply of all possible portfolio combinations of the two assets. It expands as we add more assets to the mix.
 
-*The mean-variance frontier is typically used by investors to identify the optimal mix of assets in their portfolio, based on their risk tolerance and investment objectives.*
+On the other hand, the **efficient frontier** refers to the set of portfolios that offer the highest expected return for a given level of risk or the lowest risk for a given level of expected return. The efficient frontier represents the combination of portfolios that provide the highest return per unit of risk, and any portfolio that lies below the efficient frontier is considered inefficient.
 
-The mean variance frontier expands as we add more assets to the mix.
+In summary, while both the Mean-variance frontier and the efficient frontier relate to the concept of risk and return, the Mean-variance frontier represents a curve that connects different portfolios while **the efficient frontier is a subset of those portfolios that offer the highest returns per unit of risk**.
 
 ![mean-variance frontier](https://analystprep.com/study-notes/wp-content/uploads/2020/01/efficient-frontier-ifm.png)
 
