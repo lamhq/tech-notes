@@ -35,9 +35,34 @@ The Fama-French three-factor model is a parsimonious model that captures the siz
 
 The size effect refers to the fact that small-cap stocks have tended to do better than large-cap stocks even after adjusting for their CAPM betas. In contrast, larger stocks' returns cannot be explained by higher market risk. 
 
+The size effect has dissipated significantly since its discovery.
+
+The size effect refers to the fact historical average returns on stocks with small capitalization are higher than predicted by the Capital Asset Pricing Model.
+
+The size factor is captured by the return on a  zero-net-investment portfolio that is constructed by going long the small-cap and going short large-cap stocks.
+
+
 ### Value Effect
 
 Value stocks on average outperform growth stocks. Value stocks are those with low prices relative to their book value or high book-to-market equity ratios. Growth stocks, on the other hand, have high prices relative to their book value or low book-to-market equity ratios. 
+
+High book-to-market stocks are called value assets because, for the large part, their market values derive from assets in place – the book value of the assets are high relative to their market value.
+
+Low book-to-market stocks are called growth assets because the market value of their assets is high relative to their value, indicating that the value is coming from expected growth in future cash flows – that is, one anticipates growth to justify the current market value of the assets.
+
+The HML factor in the Fama-French three-factor model is constructed by going long in high book-to-market stocks and going short in low book-to-market stocks.
+
+
+### "Going short" and "going long"
+
+"Going short" and "going long" refer to two different strategies that investors can use when trading assets. 
+
+- Going long means buying an asset with the expectation that its value will increase over time. 
+
+- Going short means selling an asset that you do not own with the expectation that its value will decrease over time. To go short, an investor borrows shares of the asset from a broker and sells them in the market. Later, the investor buys back those shares to return them to the broker, hoping that the price has fallen, allowing them to profit from the difference between their sale price and their repurchase price.
+
+In both cases, the ultimate goal is to earn a profit from the investment, but the strategies are different depending on whether the investor thinks the asset's value will increase (long) or decrease (short).
+
 
 ### Fama-French Three-Factor Model equation
 
@@ -53,7 +78,9 @@ $$
 
 ### SMB and HML
 
-SMB refers to small minus big stocks and is constructed to capture the size effect. HML refers to high book-to-market minus low book-to-market stocks and captures the value effect. 
+SMB refers to small minus big stocks and is constructed to capture the size effect.
+
+HML refers to high book-to-market minus low book-to-market stocks and captures the value effect. 
 
 
 ### Debate over Risk Factors
