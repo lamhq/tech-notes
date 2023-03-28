@@ -131,7 +131,7 @@ All assets should lie on the equilibrium market line in equilibrium.
 ![Image: Security Market Line](https://cdn.wallstreetmojo.com/wp-content/uploads/2021/06/SML-Graph-Done.jpg)
 
 If an asset has a higher expected return than the one
-suggested by the SML, that means that the asset's price is too low.
+suggested by the SML, that means that the asset's price is too low (underpriced).
 
 This means that everybody would want to buy the asset, so the price will rise. As the price of the asset goes up, the expected return goes down, until we reach an equilibrium.
 
