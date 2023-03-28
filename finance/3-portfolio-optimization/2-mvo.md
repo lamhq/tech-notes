@@ -92,7 +92,12 @@ Steps to find the **global minimum variance portfolio**:
 1. Repeat step 1 to 3 of finding mean-variance efficient portfolio.
 1. Use Excel solver to find the weight matrix that has smallest Standard Deviation.
 
+
 ## Capital Allocation Line
+
+The Capital Allocation Line is a line drawn in the mean variance, in the expected return-volatility space, indicating all the risk and return of portfolios that can be created by combining the risky portfolio and risk-free assets. 
+
+![Capital Allocation Line image](https://cdn.wallstreetmojo.com/wp-content/uploads/2019/07/Capital-Allocation-Line-1.jpg)
 
 The expected return that we would get from combining the risky portfolio with the risk-free asset:
 
@@ -131,10 +136,6 @@ E(r_p) &= r_f + \frac{\sigma_p}{\sigma_s} \times E(r_s - r_f) \\
   &= r_f + \frac{E(r_s) - E(r_f)}{\sigma_s}\sigma_p
 \end{align*}
 $$
-
-The Capital Allocation Line is a line drawn in the mean variance, in the expected return-volatility space, indicating all the risk and return combinations that can be created using the risky portfolio and risk-free assets. 
-
-![Capital Allocation Line image](https://cdn.wallstreetmojo.com/wp-content/uploads/2019/07/Capital-Allocation-Line-1.jpg)
 
 The slope of the line delivers a special name called the **Sharpe ratio**. It tells you how much additional reward you get per unit of risk for holding in the risky portfolio. So it's the return premium that you get for investing in the risky portfolio per unit of risk. It's also sometimes called the reward to volatility ratio.
 
