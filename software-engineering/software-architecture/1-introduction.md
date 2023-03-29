@@ -77,3 +77,48 @@ Simplifying designs helps cut through confusion and allows for effective communi
 Simplicity is important because it increases the chances of success and makes knowledge transfer to others easier.
 
 Keeping things simple reduces the cost of knowledge transfer since the solution is easier to explain and understand.
+
+
+## What is a typical career path for a software architect?
+
+The path to becoming a software architect is not a straightforward career path.
+
+Most architects begin as software engineers and gradually work their way up by taking on more responsibilities and demonstrating their ability to build bigger and more complex systems.
+
+As they become more comfortable, they start pushing themselves outside of their code base and involve themselves in discussions about the larger impacts of their work.
+
+The role of an architect entails more responsibility than that of a programmer, but it's achieved through gradual building of one's reputation rather than a fixed career path.
+
+
+## What skills are needed in being a software designer or architect?
+
+- Deep technical expertise (technical guru)
+- Empathic communication
+- Project planning and organizational skills
+- Ability to juggle multiple competing concerns at the same time
+- Soft people skills to get clients to express their requirements
+- Meta-skill of quickly assessing various technologies and fitting them into an understanding of the discipline.
+
+To become a successful software architect, technical expertise is essential but not enough. Project planning, organizational skills, and the ability to communicate effectively with people at their level of understanding are also crucial. 
+
+Empathy in communication is important in understanding business problems and communicating solutions to clients and engineers. An architect must possess soft skills to get clients to express where their understanding of a problem is incomplete, as this helps identify and solve the real issues.
+
+An architect must also possess the meta-skill of quickly assessing various technologies and fitting them into an understanding of the discipline to make better decisions while building software systems.
+
+
+## How do you keep yourself up to date with new technologies?
+
+The key to staying up-to-date in the tech industry is to expose yourself to as much information as possible from both outside and inside your own company.
+
+This involves researching what big companies like Apple, Google, and Amazon are doing by reading their blogs and using their software for inspiration.
+
+Additionally, keeping up with the general tech press and academic journals can help you stay informed about what's coming in the future.
+
+
+## Advices for new software architect
+
+The advice for new software architects is to become comfortable talking to and meeting as many people as possible to expose themselves to new ideas and share their own perspectives. 
+
+Leveraging the community will inspire creativity in architecture and provide a better understanding of the technology landscape. 
+
+Working with people who are better than you, reading foundational literature, writing code, and learning from mistakes are all important steps to becoming a successful software architect.
