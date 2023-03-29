@@ -19,7 +19,7 @@ The eight primitive data types supported by the Java programming language are:
 - `short`: 16-bit signed two's complement integer. -32,768 to 32,767. You can use a `short` (instead of `int` and `long`) to save memory in large arrays.
 - `int`: 32-bit signed two's complement integer, -2<sup>31</sup> to 2<sup>31</sup>-1
 - `long`: 64-bit two's complement integer, , -2<sup>63</sup> to 2<sup>63</sup>-1
-- `float`: single-precision 32-bit IEEE 754 floating point.  You can use a `float` (instead of `double`) to save memory in large arrays. This data type should never be used for precise values, such as currency (use the java.math.BigDecimal class instead).
+- `float`: single-precision 32-bit IEEE 754 floating point.  You can use a `float` (instead of `double`) to save memory in large arrays. This data type should never be used for precise values, such as currency (use the `java.math.BigDecimal` class instead).
 - `double`: double-precision 64-bit IEEE 754 floating point. For decimal values, this data type is generally the default choice. This data type should never be used for precise values, such as currency.
 - `boolean`: has only two possible values: `true` and `false`. Use this data type for simple flags that track true/false conditions.
 - `char`: single 16-bit Unicode character, `\u0000` (or 0) to `\uffff` (or 65,535 inclusive).
@@ -50,7 +50,7 @@ int hexVal = 0x1a;
 int binVal = 0b11010;
 
 double d1 = 123.4;
-// same value as d1, but in scientific notation
+// 123.4, scientific notation
 double d2 = 1.234e2;
 float f1  = 123.4f;
 

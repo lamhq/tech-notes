@@ -22,17 +22,17 @@ if (testscore >= 90) {
 ```java
 switch (month) {
     case 1:  monthString = "January";
-                break;
+        break;
     case 2:  monthString = "February";
-                break;
+        break;
     case 3:  monthString = "March";
-                break;
+        break;
     case 4:  monthString = "April";
-                break;
+        break;
     case 5:  monthString = "May";
-                break;
+        break;
     default: monthString = "Invalid month";
-                break;
+        break;
 }
 ```
 

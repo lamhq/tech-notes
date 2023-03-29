@@ -3,24 +3,20 @@
 ## Declare array
 
 ```java
-class ArrayDemo {
-    public static void main(String[] args) {
-        // declares an array of integers
-        int[] anArray;
+// declares an array of integers
+int[] anArray;
 
-        // create an array of integers
-        anArray = new int[10];
+// create an array of integers
+anArray = new int[10];
 
-        // create and initialize an array
-        int[] anOtherArray = { 100, 200, 300 };
+// create and initialize an array
+int[] anOtherArray = { 100, 200, 300 };
 
-        // create and initialize a multidimensional array
-        String[][] names = {
-            {"Mr. ", "Mrs. ", "Ms. "},
-            {"Smith", "Jones"}
-        };
-    }
-}
+// create and initialize a multidimensional array
+String[][] names = {
+    {"Mr. ", "Mrs. ", "Ms. "},
+    {"Smith", "Jones"}
+};
 ```
 
 

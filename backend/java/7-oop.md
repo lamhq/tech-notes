@@ -4,7 +4,7 @@
 
 - The first letter of a class name should be capitalized, and
 - The first (or only) word in a method name should be a verb.
-- If your class has no explicit superclass, then it has an implicit superclass of Object
+- If your class has no explicit superclass, then it has an implicit superclass of `Object`
 
 ```java
 public class Bicycle implements YourInterface {
