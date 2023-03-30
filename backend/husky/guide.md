@@ -14,18 +14,29 @@ npx husky-init@^7.0.0 && yarn
 ## Lint commit message
 
 ```sh
-yarn add -D @commitlint/{cli@^12.1.4,config-conventional@^12.1.4}
+# Install and configure if needed
+yarn add -D @commitlint/{cli,config-conventional}
+
+# Configure commitlint to use conventional config
 echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
-npx husky add .husky/commit-msg "yarn commitlint --edit $1"
+
+# Add hook
+npx husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
+
+# test the hook
+git commit -m "foo: this will fail"
 ```
+
+Reference: https://commitlint.js.org/#/guides-local-setup
 
 
 ## Check branch name before commit
 
 ```sh
 yarn add -D git-branch-is@^4.0.0 
-npx husky add .husky/pre-commit "yarn check-branch"
-npm pkg set scripts.check-branch="git-branch-is -r \"^(feature|fix|hotfix)/NB-\\d+/[a-z\\-\\d\\.]+$\""
+
+# Add hook
+npx husky add .husky/pre-commit "npx git-branch-is -r '^(feature|fix|hotfix|release)/[a-z\\-\\d\\.]+$'"
 ```
 
 ## Run linter before commit
