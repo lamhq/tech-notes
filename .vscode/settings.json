@@ -14,5 +14,6 @@
     "files.trimTrailingWhitespace": true,
     "files.exclude": {
         "**/.ipynb_checkpoints": true
-    }
+    },
+    "editor.tabSize": 2
 }

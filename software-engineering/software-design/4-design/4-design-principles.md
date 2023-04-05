@@ -175,3 +175,111 @@ classDiagram
         +setDegreeProgram( String ): void
     }
 ```
+
+```java
+public class Student {
+  private float gpa;
+
+  public float getGPA() {
+    return gpa;
+  }
+
+  public void setGPA(float newGPA) {
+    gpa = newGPA;
+  }
+}
+```
+
+## Decomposition
+
+There are three types of relationships found in decomposition - association, aggregation, and composition, which define the interaction between the whole and the parts.
+
+### Association Relationship
+
+Association is a loose relationship between two objects where they can interact with each other but do not belong to each other.
+
+An example of this relationship is between a person and an airline.
+
+The UML diagram notation for an association is a straight line between two objects denoting that the relationship between them is an association.
+
+The number found on both sides of the relationship indicates how many objects are associated with each other.
+
+```mermaid
+classDiagram
+    class Person{
+    }
+
+    class Airline{
+    }
+
+    Person "0..*" -- "0..*" Airline : 
+```
+
+```java
+public class Student {
+  public void play(Sport sport) { ... }
+}
+```
+
+### Aggregation Relationship
+
+Aggregation is a has-a relationship where a whole has multiple parts that belong to it, but both can exist independently.
+
+For example, an airliner and its crew have an aggregation relationship.
+
+The UML notation for aggregation is an empty diamond symbol next to the whole object. 
+
+```mermaid
+classDiagram
+    class Airline{
+    }
+
+    class CrewMember{
+    }
+
+    Airline "0..*" o-- "0..*" CrewMember : 
+```
+
+```java
+public class Airliner {
+  private ArrayList<CrewMember> crew;
+
+  public Airliner() {
+    crew = new ArrayList<CrewMember>()
+  }
+
+  public void add(CrewMember crewMember) { ... }
+}
+```
+
+
+### Composition Relationship
+
+Composition is an exclusive containment of parts, otherwise known as a strong has-a relationship. A whole cannot exist without its parts, and if one part is destroyed, the whole ceases to exist.
+
+An example of this relationship is between a house and its rooms.
+
+The UML notation for composition is a filled diamond symbol next to the whole object. 
+
+All three relationships have their uses and benefits and can be applied in software designs as required.
+
+```mermaid
+classDiagram
+    class House{
+    }
+
+    class Room{
+    }
+
+    House *-- "1..*" Room : 
+```
+
+```java
+public class Human {
+  private Brain brain;
+
+  public Human() {
+    brain = new Brain();
+  }
+}
+```
