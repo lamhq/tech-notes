@@ -1,10 +1,4 @@
-# Design
-
-The next step in software development process is to produce a conceptual design and a technical design. 
-
-This results in the creation of two different kinds of artifacts: **conceptual mock-ups** and **technical diagrams**.
-
-## Conceptual Design
+# Conceptual Design
 
 Conceptual designs are created with an initial set of requirements and recognize appropriate components, connections, and responsibilities of the software product.
 
@@ -19,14 +13,14 @@ Ultimately, conceptual designs help to ensure that important components are not 
 *For example, let us return to the metaphor of building a house. The components for the architectural example of building a house might be: the lot the house will be built on, the house, and rooms inside the house. Connections might be how rooms are accessible to each other. The house has the responsibility of providing enough power, water, and support for all the components within it. Rooms in the house, such as the kitchen, may also have responsibilities, such as providing space for storing kitchenware, appliances, food supplies, plus power and water for meal preparation. However, specifics about wiring and plumbing are not mentioned in the conceptual design. These technical details cannot be fully addressed until the conceptual mock-ups are completely understood. For example, the size of the electrical distribution panel for the house will require adding up the power requirements of each of the rooms.*
 
 
-### Class Responsibility Collaborator
+## Class Responsibility Collaborator
 
 CRC (Class, Responsibility, Collaborator) cards are used to record, organize, and refine the components of system design.
 
 They help represent components, responsibilities, and connections at a high level during conceptual design, allowing for better refinement of components in software design. 
 
 
-#### How to use CRC Cards
+### How to use CRC Cards
 
 CRC cards are designed with three sections: class name, responsibilities of the class, and collaborators.
 
@@ -39,22 +33,8 @@ This process is repeated iteratively until all classes, responsibilities, and co
 CRC cards should be organized by placing closely collaborating components together to facilitate discussions or simulations with software development team meetings, visually explain a system, and gain potential input from other parties.
 
 
-#### Benefits of Using CRC Cards
+### Benefits of Using CRC Cards
 
 Using CRC Cards helps sort information into manageable pieces, which can be physically reorganized to explore a system's theoretical workings, identify shortcomings in design, and play around with alternative designs. 
 
 CRC cards can also be used to prototype and simulate a system for conceptual design.
-
-
-
-## Technical Design
-
-Technical designs build on conceptual designs and requirements to define the technical details of a software solution.
-
-It describes how technical designs break down components into smaller, more specific ones to be designed in detail, ensuring that each component has its technical details specified. 
-
-Technical diagrams are used to communicate technical design, as they visualize how to address specific issues for each component. 
-
-Technical diagrams help to coordinate development work and ensure that everyone involved in the project has a clear understanding of the technical details of the solution.
-
-*To continue with the architectural example used throughout this lesson, imagine having to design a kitchen. A kitchen is a component of a house on its own, but it will require further smaller components, such as flooring. The technical design may indicate that the flooring will need to be made of a material that is easy to clean, particularly if the client plans on doing a lot of cooking— cooking can be a messy business!*
