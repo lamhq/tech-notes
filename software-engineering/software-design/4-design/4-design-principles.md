@@ -125,3 +125,53 @@ Both cat and dog subclasses inherit these attributes and behaviors from the anim
 Generalization can make code more reusable by allowing different classes or methods to share the same blocks of code. Systems become easier to maintain because there is no repetitious code. 
 
 By learning how to identify commonalities between classes and their behaviors, you can design highly robust software solutions that are easier to expand, apply changes to, and maintain.
+
+
+# Design principles in UML class diagram
+
+## Abstraction
+
+Each class in the Class Diagram is represented by a box. Each box has three sections. 
+
+The top part is the **Class Name**. This would be the same as the class name in your Java class. 
+
+The middle part is the **Property** section. This would be equivalent to the member variables in your Java class and defines the attributes of the abstraction. 
+
+The bottom part is the **operations** section which is equivalent to the methods in your Java class and defines the behaviors of the abstraction.
+
+```mermaid
+classDiagram
+    class Food {
+        groceryID: string
+        name: string
+        manufacturer: string
+        expireDate: Date
+        price: double
+        isOnSale(): boolean
+    }
+```
+
+
+## Encapsulation
+
+If you are creating a system that models a university student using encapsulation, you would have all of the student's relevant data defined in attributes of a student class. You would also need specific public methods that access the attributes.
+
+In this example, our student's relevant data could be their degree program and GPA. This would be the UML class diagram for the student class.
+
+The student class has its attributes hidden from public accessibility. This is denoted by the minus signs before GPA and degree program. These minus signs indicate that a method or attribute is private. 
+
+Private attributes can only be accessed from within the class. 
+
+Outside this class, instead of being able to directly manipulate the student's GPA attribute, you must set the GPA through a public method `setGPA`. By only allowing an object's data to be manipulated via a public method, you can control how and when that data is accessed.
+
+```mermaid
+classDiagram
+    class Student {
+        -gpa: float
+        -degreeProgram: String
+        +getGPA(): float
+        +setGPA( float ): void
+        +getDegreeProgram(): String
+        +setDegreeProgram( String ): void
+    }
+```
