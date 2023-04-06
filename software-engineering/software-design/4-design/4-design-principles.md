@@ -283,3 +283,76 @@ public class Human {
   }
 }
 ```
+
+
+## Generalization
+
+### Using Inheritance
+
+To show inheritance in a UML class diagram, simply connect two classes with a solid lined arrow. The superclass is at the head of the arrow, and the subclass is at the tail. Inheritance means that the subclass will have all attributes and methods from the superclass, making the superclass the generalized class and the subclass the specialized class.
+
+```mermaid
+classDiagram
+  class Person {
+    -name: string
+    -age: int
+    +speak()
+  }
+  
+  class Employee {
+    -department: string
+    -salary: int
+    +work()
+  }
+  
+  Person <|-- Employee
+```
+
+```java
+public abstract class Animal {
+  protected int numberOfLegs;
+  protected int numberOfTails;
+  protected String name;
+
+  public Animal(String petName, int legs, int tails) {
+    this.name = petName;
+    this.numberOfLegs = legs;
+    this.numberOfTails = tails;
+  }
+
+  public void walk() {}
+  
+  public void run() {}
+  
+  public void eat() {}
+}
+
+public class Dog extends Animal {
+  public Dog(String name, int legs, int tails) {
+    super(name, legs, tails);
+  }
+  
+  public void playFetch() {}
+}
+```
+
+
+### Using Interfaces
+
+Interfaces are drawn in UML class diagrams using guillemets and indicated by a dotted arrow, and the standard way to draw interfaces on diagrams is to have the arrow pointing upwards.
+
+Interfaces can inherit from other interfaces. Interface A should only inherit from interface B if the behaviors in interface A can fully be used as a substitution for interface B.
+
+```mermaid
+classDiagram
+  class IAnimal{
+    <<interface>>
+    +eat()
+  }
+
+  class Dog{
+    +eat()
+  }
+
+  IAnimal <|.. Dog
+```
