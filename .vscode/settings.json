@@ -15,5 +15,6 @@
     "files.exclude": {
         "**/.ipynb_checkpoints": true
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "markdown-mermaid.darkModeTheme": "default"
 }

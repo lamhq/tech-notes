@@ -217,6 +217,8 @@ classDiagram
 
 ```java
 public class Student {
+  // Sport is not a member of Student
+  // Sport is created independently and interact with Student at runtime
   public void play(Sport sport) { ... }
 }
 ```
@@ -242,9 +244,11 @@ classDiagram
 
 ```java
 public class Airliner {
+  // CrewMember belong to Airliner as a member variable
   private ArrayList<CrewMember> crew;
 
   public Airliner() {
+    // CrewMember can be created outside of Airliner
     crew = new ArrayList<CrewMember>()
   }
 
@@ -279,6 +283,8 @@ public class Human {
   private Brain brain;
 
   public Human() {
+    // Brain object can not be created outside Human class
+    // Brain object will be destroyed when Human is destroyed
     brain = new Brain();
   }
 }
