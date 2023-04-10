@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-yarn add @nestjs/swagger swagger-ui-express
+yarn add @nestjs/swagger
 ```
 
 

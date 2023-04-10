@@ -56,25 +56,6 @@ jobs:
 - check **Allow GitHub Actions to create and approve pull requests**.
 
 
-### Setup Pull Requests behavior
-
-- Go to repository **Settings > General > Pull Requests**
-- Check **Allow squash merging**, **Default to pull request title and description**
-- Uncheck **Allow merge commits**, **Allow rebase merging**
-- Check **Allow auto-merge**
-- Check **Automatically delete head branches**
-
-### Protect main branch
-
-- Go to repository **Settings > Branches > Branch protection rules**
-- Click **Add rule**
-  - Branch name pattern: `master`
-  - Check **Require a pull request before merging**, **Require approvals**
-  - Check **Require status checks to pass before merging**, **Require branches to be up to date before merging**
-  - Check **Require linear history**
-  - Check **Do not allow bypassing the above settings**
-
-
 ## Reference
 
 - https://github.com/google-github-actions/release-please-action

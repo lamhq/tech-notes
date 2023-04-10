@@ -2,16 +2,22 @@
 
 ## Branch protection
 
-Default branch (`master`, `main`):
-- Require a pull request before merging
-  - Require approvals
-- Require status checks to pass before merging
-  - Require branches to be up to date before merging
-- Require linear history
-- Do not allow bypassing the above settings
+- Go to repository **Settings > Branches > Branch protection rules**
+- Click **Add rule**
+  - Branch name pattern: `master`
+  - Check **Require a pull request before merging**, **Require approvals**
+  - Check **Require status checks to pass before merging**, **Require branches to be up to date before merging**
+  - Check **Require linear history**
+  - Check **Do not allow bypassing the above settings**
+
+Add status checks:
+
+- Run Linter
+- Run Unit test
+- [Check PR's title follows Conventional Commits](https://github.com/marketplace/actions/conventional-pr-title)
 
 
-## Environment
+## Environments
 
 Should have 3 environment:
 
@@ -31,22 +37,19 @@ Environment protection rules:
 - `dev`:
   - no protection, code is automatic deploy.
 
-## Pull request
 
-Repository settings:
+## Pull Requests
 
-- Disable **Allow merge commits**
-- Enable **Allow squash merging**, *Default to pull request title and description*.
-- Enable **Allow auto-merge**
-- Enable **Automatically delete head branches**
+- Go to repository **Settings > General > Pull Requests**
+- Check **Allow squash merging**, **Default to pull request title and description**
+- Uncheck **Allow merge commits**, **Allow rebase merging**
+- Check **Allow auto-merge**
+- Check **Automatically delete head branches**
 
-Add status checks:
 
-- Run Linter
-- Run Unit test
-- [Check PR's title follows Conventional Commits](https://github.com/marketplace/actions/conventional-pr-title)
+## Pull request template
 
-Add [pull request template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository):
+Add file `.github/pull_request_template.md` with content:
 
 ```md
 ## Description
@@ -88,13 +91,9 @@ Ticket ID: [name](link)
 - [ ] New and existing unit tests pass locally with my changes
 ```
 
-## Commit check
+Reference:
 
-Setup `pre-commit` hook:
-
-- Check commit message follows Conventional Commits.
-- Check branch name follows patterns: `type/ticket-id/description`.
-- Run Linter.
+https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository
 
 
 ## Add `README.md` file
