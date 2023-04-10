@@ -64,3 +64,32 @@ public void get (int controlFlag) {
 - In the `get` method, it is unclear what `controlFlag` means, we would have to read inside the method itself in order to know what values to give it. This is not respecting **encapsulation** which also shows our method is unclear and lacks **ease**. This lack of ease makes get method harder to use and in turn makes any color tightly coupled to it.
 
 Let's look at a new design of the same system:
+
+```mermaid
+classDiagram
+  class ISensor {
+    <<interface>>
+    +get()
+  }
+  
+  class HumiditySensor {
+    +get()
+  }
+  
+  class TemperatureSensor {
+    +get()
+  }
+  
+  ISensor <|.. HumiditySensor
+  ISensor <|.. TemperatureSensor
+```
+
+- The sensor class is now replaced with `HumiditySensor` class and the `TemperatureSensor` class. Each of these classes has one clearly defined purpose. Since each has a clear purpose, you can say that these classes are **highly cohesive**.
+-  The get method is now not hiding any information like before. We don't have to break encapsulation to look inside the method. You could reasonably assume that humidity sensors get method returns humidity and temperature sensors get method returns temperature. This makes another module that uses either be **loosely couple**.
+
+
+## Balance between low coupling and high cohesion
+
+As modules are simplified to achieve high cohesion, they may need to depend more on other modules thus increasing coupling.
+
+As connections between modules are simplified to achieve low coupling, the modules may need to take on more responsibilities thus lowering cohesion.
