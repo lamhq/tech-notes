@@ -58,7 +58,7 @@ classDiagram
     class Airline{
     }
 
-    Person "0..*" -- "0..*" Airline :
+    Person "0..*" -- "0..*" Airline
 ```
 
 ```java
@@ -85,7 +85,7 @@ classDiagram
     class CrewMember{
     }
 
-    Airline "0..*" o-- "0..*" CrewMember :
+    Airline "0..*" o-- "0..*" CrewMember
 ```
 
 ```java
@@ -115,13 +115,13 @@ All three relationships have their uses and benefits and can be applied in softw
 
 ```mermaid
 classDiagram
-    class House{
-    }
+  class House{
+  }
 
-    class Room{
-    }
+  class Room{
+  }
 
-    House *-- "1..*" Room :
+  House *-- "1..*" Room
 ```
 
 ```java

@@ -41,7 +41,7 @@ On the other hand, if your module tries to encapsulate more than one purpose or 
 You want *high cohesion* to ensure that your module is clear and concise.
 
 
-## Example
+## Example: Sensor class
 
 Suppose we have a class called sensor that has two purposes, getting humidity and getting temperature sensor readings. Here we have a `get` method that takes a zero flag if you wanted to return the humidity value, and takes the one flag if you want it to return the temperature value.
 
