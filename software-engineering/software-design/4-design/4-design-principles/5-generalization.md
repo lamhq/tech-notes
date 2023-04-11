@@ -7,9 +7,13 @@ It allows us to model behaviors using methods and eliminates the need to have id
 
 ## Applying Generalization through Inheritance
 
-Generalization can be applied to classes through inheritance.
+Generalization can be applied to classes through **inheritance**.
 
-In this process, we take repeated or shared characteristics between two or more classes and factor them out into another class. Specifically, we create a parent class and a child class. When a child class inherits from a parent class, it receives the attributes and behaviors of the parent class. The parent class is known as a superclass, and the child class is called a subclass.
+In this process, we take repeated or shared characteristics between two or more classes and factor them out into another class.
+
+Specifically, we create a parent class and a child class. When a child class inherits from a parent class, it receives the attributes and behaviors of the parent class.
+
+The parent class is known as a superclass, and the child class is called a subclass.
 
 
 ## Example: Generalizing Animal Characteristics
@@ -96,4 +100,81 @@ classDiagram
   }
 
   IAnimal <|.. Dog
+```
+
+## When to use inheritance?
+
+Inheritance is a powerful design tool that can help create clean, reusable, and maintainable software systems. However, its misuse can lead to poor code.
+
+### Sub class not adding anything special
+
+A question to ask yourself about whether a subclass should exist:
+
+*"Am I using inheritance to simply share attributes or behaviour without further adding anything special in my subclasses?"*
+
+**If the answer to this question is "yes", then inheritance is being misused**, as there is no point for the subclasses to exist. The superclass should already be enough.
+
+*For example, an employee is a general type for managers, salespeople, and cashiers, but each of those subtypes of employee perform specific functions. Inheritance makes sense in this case. However, if you are creating different kinds of pizza, there is no true specialization between different kinds of pizza, so subclasses are unnecessary.*
+
+### Liskov substitution principle
+
+*The Liskov substitution principle states that a subclass can replace a superclass, if and only if, the subclass does not change the functionality of the superclass.*
+
+This means that if a subclass replaces a superclass, but replaces all the superclass behaviours with something **totally different, then inheritance is being misused**.
+
+*For example, if a Whale class which exhibits swimming behaviour is substituted for an Animal class, then functions such as running and walking will be overridden. The Whale no longer behaves in the way we would expect its superclass to behave, violating the Liskov substitution principle.*
+
+
+## Consider to use decomposition
+
+In cases where inheritance is not appropriate, decomposition may be the solution.
+
+For example, a smartphone is better suited for decomposition than inheritance. A smartphone might have the two functions of a traditional phone and as a camera.
+
+In this example, it does not make sense to use inheritance from a traditional phone to a smartphone, and then to add camera methods to smartphone subclass.
+
+```mermaid
+classDiagram
+  class Phone {
+    +makePhoneCall(): void
+    +encryptOutgoingSound(): void
+    +decipherIncomingSound(): void
+  }
+  
+  class SmartPhone {
+    +takePhoto(): void
+    +savePhote(): void
+    +cameraFlash(): void
+  }
+
+  Phone <|-- SmartPhone
+```
+
+Instead, decomposition helps extract the camera’s responsibilities into their own class. This allows the SmartPhone class to provide the responsibilities of the camera and the phone through separate classes. The SmartPhone class does not need to know how these classes work.
+
+```mermaid
+classDiagram
+  class SmartPhone {
+    -myCamera: Camera
+    -myPhone: Phone
+  }
+
+  class IPhone {
+    <<interface>>
+    +makePhoneCall(): void
+    +encryptOutgoingSound(): void
+    +decipherIncomingSound(): void
+  }
+  
+  class ICamera {
+    <<interface>>
+    +takePhoto(): void
+    +savePhote(): void
+    +cameraFlash(): void
+  }
+  
+  IPhone <|.. TraditionalPhone
+  ICamera <|.. FirstGenCamera
+  SmartPhone *-- IPhone
+  SmartPhone *-- ICamera
 ```
