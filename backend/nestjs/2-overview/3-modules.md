@@ -31,10 +31,21 @@ import { CatsModule } from './cats/cats.module';
 export class AppModule {}
 ```
 
+## Module re-exporting
 
-## Using providers in other modules
+Modules can export their internal providers. In addition, they can re-export modules that they import.
 
-Let's imagine that we want to share an instance of the `CatsService` between several other modules. In order to do that, we first need to export the `CatsService` provider by adding it to the module's `exports` array, as shown below:
+```ts
+@Module({
+  imports: [CommonModule],
+  exports: [CommonModule],
+})
+export class CoreModule {}
+```
+
+## Inject providers to module class
+
+A module class can inject providers as well (e.g., for configuration purposes):
 
 ```ts
 // cats.module.ts
@@ -45,22 +56,10 @@ import { CatsService } from './cats.service';
 @Module({
   controllers: [CatsController],
   providers: [CatsService],
-  exports: [CatsService]
 })
 export class CatsModule {
-  // A module class can have injected dependencies as well
-  // (e.g., for configuration purposes)
   constructor(private catsService: CatsService) {}
 }
-```
-
-Now any module that imports the `CatsModule` has access to the `CatsService` and will share the same instance with all other modules that import it as well. You aren't able to use a module's providers elsewhere without first importing the encapsulating module.
-
-```ts
-@Module({
-  imports: [CatsModule],
-})
-export class CoreModule {}
 ```
 
 ## Global modules

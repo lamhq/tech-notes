@@ -1,10 +1,23 @@
 # Exception filters
 
-When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
-
 ![](https://docs.nestjs.com/assets/Filter_1.png)
 
+Nest comes with a **built-in exceptions layer** which is responsible for processing all unhandled exceptions across an application.
+
+When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
+
+When an exception is unrecognized (is neither `HttpException` nor a class that inherits from `HttpException`), the built-in exception filter generates the following default JSON response:
+
+```ts
+{
+  "statusCode": 500,
+  "message": "Internal server error"
+}
+```
+
 ## Throwing standard exceptions
+
+Nest provides a built-in `HttpException` class. For typical HTTP REST/GraphQL API based applications, it's best practice to send standard HTTP response objects when certain error conditions occur.
 
 ```ts
 // cats.controller.ts
@@ -14,7 +27,7 @@ async findAll() {
 }
 ```
 
-Sample error response:
+When the client calls this endpoint, the response looks like this:
 
 ```json
 {
@@ -29,17 +42,24 @@ To override the entire response body:
 // cats.controller.ts
 @Get()
 async findAll() {
-  throw new HttpException({
-    status: HttpStatus.FORBIDDEN,
-    error: 'This is a custom message',
-  }, HttpStatus.FORBIDDEN);
+  try {
+    await this.service.findAll()
+  } catch (error) { 
+    throw new HttpException({
+      status: HttpStatus.FORBIDDEN,
+      error: 'This is a custom message',
+    }, HttpStatus.FORBIDDEN, {
+      cause: error
+    });
+  }
 }
 ```
 
+The `cause` object is not serialized into the response object, but it can be useful for logging purposes, providing valuable information about the inner error that caused the `HttpException` to be thrown.
 
 ## Custom exceptions
 
-Implement a custom exception:
+Define a custom exception:
 
 ```ts
 // forbidden.exception.ts
@@ -71,11 +91,12 @@ export class ForbiddenException extends HttpException {
 - BadGatewayException
 - ServiceUnavailableException
 - GatewayTimeoutException
+- PreconditionFailedException
 
 See more at https://docs.nestjs.com/exception-filters#built-in-http-exceptions
 
 
-## Exception filters
+## Custom Exception filters
 
 You may want to add logging or use a different JSON schema based on some dynamic factors. Exception filters are designed for exactly this purpose. They let you control the exact flow of control and the content of the response sent back to the client.
 
@@ -104,6 +125,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
   }
 }
 ```
+
+The `@Catch(HttpException)` decorator binds the required metadata to the exception filter, telling Nest that this particular filter is looking for exceptions of type `HttpException` and nothing else.
 
 
 ## Using filter
@@ -137,7 +160,9 @@ async function bootstrap() {
 bootstrap();
 ```
 
-To register a global-scoped filter directly from any module, you would do the following:
+Global-scoped filters registered from outside of any module (with `useGlobalFilters()` as in the example above) cannot inject dependencies since this is done outside the context of any module.
+
+In order to solve this issue, you can register a global-scoped filter directly from any module using the following construction:
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -190,7 +215,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
 ```
 
 
-## Extend base exception filter
+## Extend the built-in exception filter
 
 ```ts
 import { Catch, ArgumentsHost } from '@nestjs/common';

@@ -4,6 +4,13 @@ Middleware is a function which is called before the route handler.
 
 ![](https://docs.nestjs.com/assets/Middlewares_1.png)
 
+Middleware functions can perform the following tasks:
+- execute any code.
+- make changes to the request and the response objects.
+- end the request-response cycle.
+- call the next middleware function in the stack.
+- if the current middleware function does not end the request-response cycle, it must call `next()` to pass control to the next middleware function. Otherwise, the request will be left hanging.
+
 ## Implementing middleware
 
 Nest middleware fully supports Dependency Injection through the constructor.
@@ -50,6 +57,11 @@ Multiple middlewares:
 consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
 ```
 
+## Route wildcards
+
+```ts
+forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
+```
 
 ## Excluding routes
 

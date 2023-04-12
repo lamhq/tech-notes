@@ -77,6 +77,69 @@ export class AppController {
 }
 ```
 
+## Request object
+
+```ts
+import { Controller, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Get()
+  findAll(@Req() request: Request): string {
+    return 'This action returns all cats';
+  }
+}
+```
+
+## Response Object
+
+```ts
+import { Controller, Get, Post, Res, HttpStatus } from '@nestjs/common';
+import { Response } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(@Res() res: Response) {
+    res.status(HttpStatus.CREATED).send();
+  }
+
+  @Get()
+  findAll(@Res() res: Response) {
+     res.status(HttpStatus.OK).json([]);
+  }
+}
+```
+
+## Route wildcards
+
+```ts
+@Get('ab*cd')
+findAll() {
+  return 'This route uses a wildcard';
+}
+```
+
+## Status code
+
+```ts
+@Post()
+@HttpCode(204)
+create() {
+  return 'This action adds a new cat';
+}
+```
+
+## Headers
+
+```ts
+@Post()
+@Header('Cache-Control', 'none')
+create() {
+  return 'This action adds a new cat';
+}
+```
 
 ## Redirection
 
@@ -99,6 +162,34 @@ getDocs(@Query('version') version) {
 }
 ```
 
+## Route parameters
+
+```ts
+@Get(':id')
+findOne(@Param() params): string {
+  console.log(params.id);
+  return `This action returns a #${params.id} cat`;
+}
+```
+
+```ts
+@Get(':id')
+findOne(@Param('id') id: string): string {
+  return `This action returns a #${id} cat`;
+}
+```
+
+## Sub-Domain Routing
+
+```ts
+@Controller({ host: 'admin.example.com' })
+export class AdminController {
+  @Get()
+  index(): string {
+    return 'Admin page';
+  }
+}
+```
 
 ## Asynchronicity
 

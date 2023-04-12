@@ -57,9 +57,21 @@ ConfigModule.forRoot({
 
 ## Custom configuration files
 
+For more complex projects, you may utilize custom configuration files to return nested configuration objects.
+
+This allows you to group related configuration settings by function (e.g., database-related settings), and to store related settings in individual files to help manage them independently.
+
 ```ts
 // config/configuration.ts
-export default () => ({
+export interface IConfiguration {
+  port: number;
+  database: {
+    host: string;
+    port: number;
+  }
+}
+
+export const configFactory = (): IConfiguration => ({
   port: parseInt(process.env.PORT, 10) || 3000,
   database: {
     host: process.env.DATABASE_HOST,
@@ -70,12 +82,12 @@ export default () => ({
 
 ```ts
 // app.module.ts
-import configuration from './config/configuration';
+import { configFactory } from './config/configuration';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-    load: [configuration],
+    load: [configFactory],
   })],
 })
 export class AppModule {}
@@ -99,15 +111,14 @@ Using it in the code:
 ```ts
 @Controller('test')
 export class AppController {
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService<IConfiguration, true>) {}
 
   @Post()
   create(@Body() data: any) {
-    // get an environment variable
-    const dbUser = this.configService.get<string>('DATABASE_USER');
+    const port = this.configService.get('port', { infer: true });
 
     // get a custom configuration value
-    const dbHost = this.configService.get<string>('database.host', 'localhost');
+    const dbHost = this.configService.get('database.host', { infer: true });
   }
 }
 ```
@@ -148,6 +159,8 @@ export class AppModule {}
 ## Using in the `main.ts`
 
 ```ts
-const configService = app.get(ConfigService);
-const port = configService.get('PORT');
+import { ConfigService } from '@nestjs/config';
+
+const configService = app.get(ConfigService<IConfiguration, true>);
+const port = configService.get('port', { infer: true });
 ```

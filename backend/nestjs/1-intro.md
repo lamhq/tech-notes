@@ -16,3 +16,10 @@ yarn global add @nestjs/cli
 ```shell
 nest new project-name
 ```
+
+
+## Running the application
+
+```bash
+yarn start:dev
+```
