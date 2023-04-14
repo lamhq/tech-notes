@@ -11,22 +11,23 @@ test('two plus two is four', () => {
 });
 ```
 
-If you want to check the value of an object, use `toEqual`:
-
-```js
-test('object assignment', () => {
-  const data = {one: 1};
-  data['two'] = 2;
-  expect(data).toEqual({one: 1, two: 2});
-});
-```
-
 - `toBeNull` matches only `null`
 - `toBeUndefined` matches only `undefined`
 - `toBeDefined` is the opposite of `toBeUndefined`
 - `toBeTruthy` matches anything that an if statement treats as `true`
 - `toBeFalsy` matches anything that an if statement treats as `false`
 
+
+## Object
+
+```js
+test('Checking object structure', () => {
+  expect(object).toMatchObject({ 
+    name: expect.any(String), 
+    birthday: expect.any(Date) 
+  });
+});
+```
 
 ## Numbers
 

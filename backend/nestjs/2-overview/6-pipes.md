@@ -33,7 +33,6 @@ async findOne(@Query('id', ParseIntPipe) id: number) {
 }
 ```
 
-
 ## Custom pipes
 
 ```ts
@@ -49,15 +48,14 @@ export class ValidationPipe implements PipeTransform {
 
 ### Object schema validation pipe
 
-```shell
-npm install --save @hapi/joi
-npm install --save-dev @types/hapi__joi
+```bash
+yarn add joi
 ```
 
 ```ts
 // validation.pipe.ts
 import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
-import { ObjectSchema } from '@hapi/joi';
+import { ObjectSchema } from 'joi';
 
 @Injectable()
 export class JoiValidationPipe implements PipeTransform {
@@ -88,13 +86,23 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
+Global scoped pipes:
+
+```ts
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(3000);
+}
+bootstrap();
+```
 
 ## Class validator
 
 Validate request data schemae based on class definition.
 
-```shell
-npm i --save class-validator class-transformer
+```bash
+yarn add class-validator class-transformer
 ```
 
 ### Defining validation rules using decorators
@@ -160,20 +168,9 @@ async create(
 }
 ```
 
+### The built-in ValidationPipe
 
-### Global scoped pipes
-
-This example below set it up as a global-scoped pipe, applied to every route handler across the entire application:
-
-```ts
-// main.ts
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
-}
-bootstrap();
-```
+you don't have to build a generic validation pipe on your own since the `ValidationPipe` is provided by Nest out-of-the-box.
 
 
 ## Transformation Pipes
@@ -211,7 +208,6 @@ async findOne(@Param('id', new ParseUUIDPipe()) id) {
   return this.catsService.findOne(id);
 }
 ```
-
 
 ### Select an existing user
 

@@ -51,7 +51,7 @@ export class RolesGuard implements CanActivate {
 ```
 
 
-## Registering guards
+## Using guards
 
 Like pipes and exception filters, guards can be controller-scoped, method-scoped, or global-scoped.
 
@@ -69,7 +69,7 @@ const app = await NestFactory.create(AppModule);
 app.useGlobalGuards(new RolesGuard());
 ```
 
-Set up a global guard directly from any module (for dependency injection):
+Set up a global guard directly from any module (for enabling dependency injection):
 
 ```ts
 // app.module.ts
