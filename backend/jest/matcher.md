@@ -22,6 +22,15 @@ test('two plus two is four', () => {
 
 ```js
 test('Checking object structure', () => {
+  const user = new User({ name: 'John' });
+  expect(object).toBeInstanceOf(User);
+});
+```
+
+## Class
+
+```ts
+test('Checking object instance', () => {
   expect(object).toMatchObject({ 
     name: expect.any(String), 
     birthday: expect.any(Date) 
@@ -29,7 +38,7 @@ test('Checking object structure', () => {
 });
 ```
 
-## Numbers
+## Number
 
 - `toBeGreaterThan`
 - `toBeGreaterThanOrEqual`
@@ -38,7 +47,7 @@ test('Checking object structure', () => {
 - `toBeGreaterThan`
 
 
-## Strings
+## String
 
 ```js
 test('there is no I in team', () => {
@@ -68,6 +77,11 @@ test('the shopping list has beer on it', () => {
 });
 ```
 
+```ts
+items = await getData();
+expect(items).toEqual(expect.any(Array));
+expect(items.length).toBe(query.limit);
+```
 
 ## Exceptions
 

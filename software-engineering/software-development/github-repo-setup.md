@@ -8,7 +8,6 @@
   - Check **Require a pull request before merging**, **Require approvals**
   - Check **Require status checks to pass before merging**, **Require branches to be up to date before merging**
   - Check **Require linear history**
-  - Check **Do not allow bypassing the above settings**
 
 Add status checks:
 
@@ -19,7 +18,7 @@ Add status checks:
 
 ## Environments
 
-Should have 3 environment:
+Create 3 environment:
 
 - `dev`: for development team to test
 - `staging`: for QA team to test before release
