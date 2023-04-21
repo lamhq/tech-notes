@@ -1,5 +1,7 @@
-# Snippets
+# Learning Notes
 
-## Introduction
+## Overview
 
-This is my code snippets and tutorials. Every time i forgot some commands or code, i open them, copy and paste it quickly without using google
+Welcome to my personal repository of learning programming! Here, I store all of my helpful notes, code snippets, and tutorials in one convenient location. This way, whenever I forget a command or need a reference for certain code, I can easily access it without having to search online.
+
+Additionally, this repository serves as a great tool for reviewing my knowledge. Instead of reading through long official documentation again, I can simply revisit my notes and quickly refresh my memory.
