@@ -36,7 +36,7 @@ Reference: https://commitlint.js.org/#/guides-local-setup
 yarn add -D git-branch-is@^4.0.0 
 
 # Add hook
-npx husky add .husky/pre-commit "npx git-branch-is -r '^(feature|fix|hotfix|release)/[a-z\\-\\d\\.]+$'"
+npx husky add .husky/pre-commit "npx git-branch-is -r '^(feature|fix)/[a-z\\-\\d\\.]+$'"
 ```
 
 ## Run linter before commit
