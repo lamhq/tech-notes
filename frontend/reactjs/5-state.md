@@ -8,7 +8,9 @@
 
 ## Queueing a series of state updates
 
-Queue multiple state updates:
+Remember that state doesn’t update synchronously. It means after calling `set` state function, the new state value only available in the next render.
+
+To queue multiple state updates:
 
 ```jsx
 import { useState } from 'react';

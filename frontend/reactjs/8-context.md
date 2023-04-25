@@ -2,6 +2,17 @@
 
 Context lets the parent component make some information available to any component in the tree below it—no matter how deep it is—without passing it explicitly through props.
 
+## Prop drilling
+
+Passing props is a great way to explicitly pipe data through your UI tree to the components that use it.
+
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop.
+
+React’s context feature allow passing data to the components in the tree that need it without passing props.
+
+
+## Using context with reducer
+
 ```jsx
 // App.js
 import AddTask from './AddTask.js';
