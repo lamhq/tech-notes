@@ -63,3 +63,10 @@ React makes UI trees from your JSX. Then React DOM updates the browser DOM eleme
 *From components, React creates a UI tree which React DOM uses to render the DOM:*
 
 ![](https://react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Fpreserving_state_dom_tree.dark.png&w=1920&q=75)
+
+
+## Component lifecycle
+
+- A component **mounts** when it’s added to the screen.
+- A component **updates** when it receives new props or state, usually in response to an interaction.
+- A component **unmounts** when it’s removed from the screen.
