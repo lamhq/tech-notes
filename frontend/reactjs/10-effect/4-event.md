@@ -19,7 +19,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Code inside event handlers should not run again only because the reactive value has changed.
+Code inside event handlers **should not run again only because the reactive value has changed**.
 
 Event handlers aren’t reactive, so `sendMessage(message)` will only run when the user clicks the **Send** button.
 
@@ -149,3 +149,63 @@ function Page({ url }) {
 Here, `onVisit` is an Effect Event. The code inside it isn’t reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
 
 As a result, you will call `logVisit` for every change to the url, and always read the latest `numberOfItems`. However, if `numberOfItems` changes on its own, this will not cause any of the code to re-run.
+
+
+## Limitations of Effect Events
+
+- Only call them from inside Effects.
+- Never pass them to other components or Hooks.
+
+For example, don’t declare and pass an Effect Event like this:
+
+```jsx
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  const onTick = useEffectEvent(() => {
+    setCount(count + 1);
+  });
+
+  useTimer(onTick, 1000); // 🔴 Avoid: Passing Effect Events
+
+  return <h1>{count}</h1>
+}
+
+function useTimer(callback, delay) {
+  useEffect(() => {
+    const id = setInterval(() => {
+      callback();
+    }, delay);
+    return () => {
+      clearInterval(id);
+    };
+  }, [delay, callback]); // Need to specify "callback" in dependencies
+}
+```
+
+Instead, always declare Effect Events directly next to the Effects that use them:
+
+```jsx
+function Timer() {
+  const [count, setCount] = useState(0);
+  useTimer(() => {
+    setCount(count + 1);
+  }, 1000);
+  return <h1>{count}</h1>
+}
+
+function useTimer(callback, delay) {
+  const onTick = useEffectEvent(() => {
+    callback();
+  });
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      onTick(); // ✅ Good: Only called locally inside an Effect
+    }, delay);
+    return () => {
+      clearInterval(id);
+    };
+  }, [delay]); // No need to specify "onTick" (an Effect Event) as a dependency
+}
+```
