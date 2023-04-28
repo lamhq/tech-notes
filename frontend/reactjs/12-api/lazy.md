@@ -9,7 +9,7 @@
 lazy(load)
 ```
 
-A function that returns a Promise or another *thenable* (a Promise-like object with a `then` method).
+`load`: A function that returns a Promise or another *thenable* (a Promise-like object with a `then` method).
 
 After React first calls `load`, it will wait for it to resolve, and then render the resolved value as a React component. React will not call `load` more than once.
 
