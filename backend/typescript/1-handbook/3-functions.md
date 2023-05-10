@@ -217,16 +217,15 @@ This is different from the empty object type `{ }`, and also different from the 
 
 ### `unknown`
 
-The unknown type represents any value. This is similar to the `any` type, but is safer because it's not legal to do anything with an `unknown` value:
+The unknown type represents any value. This is similar to the `any` type, but you cannot perform any operations on an `unknown` value without first checking its type.
+
+*For example, if you have a variable of type unknown, you cannot call any methods or properties on it without first checking its type*
 
 ```ts
-function f1(a: any) {
-  a.b(); // OK
-}
-
-function f2(a: unknown) {
-  // Error: Object is of type 'unknown'.
-  a.b();
+function foo(bar: unknown) {
+  if (typeof bar === 'string') {
+    console.log(bar.toUpperCase());
+  }
 }
 ```
 
