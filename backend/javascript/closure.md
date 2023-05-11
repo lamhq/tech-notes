@@ -1,6 +1,8 @@
 # Closure
 
-A function in JavaScript has access to any variables defined in the outer scope. We called this feature is: `closure`.
+## Introduction
+
+A function in JavaScript has access to any variables defined in the outer scope (even when the outer function has finished executing). This feature is called a `closure`.
 
 ```ts
 function outerFunction(arg) {
@@ -19,6 +21,7 @@ outerFunction("hello closure"); // logs hello closure!
 
 
 ### Reason why it's awesome
+
 It allows you to compose objects easily e.g. the revealing module pattern:
 
 ```ts

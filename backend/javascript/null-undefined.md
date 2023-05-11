@@ -1,38 +1,47 @@
 # Null and Undefined
 
-JavaScript (and by extension TypeScript) has two bottom types : `null` and `undefined`. They are *intended* to mean different things:
+JavaScript (and by extension TypeScript) has two bottom types : `null` and `undefined`.
 
-* Something hasn't been initialized : `undefined`.
-* Something is currently unavailable: `null`.
+- `undefined`: something hasn't been assigned a value. Variables that have not been assigned a value will have their value is `undefined`
+- `null`: intentional absence of value, need to be assigned.
 
 
-## Checking for either
+`null` and `undefined` are falsy values.
 
-Recommend `== null` to check for both `undefined` or `null`. You generally don't want to make a distinction between the two.
+
+## Checking for `undefined`
+
+You can check if a variable is undefined in JavaScript using the `typeof` operator::
 
 ```ts
-function foo(arg: string | null | undefined) {
-  if (arg != null) {
-    // arg must be a string as `!=` rules out both null and undefined.
-  }
+if (typeof myVariable === 'undefined') {
+  /* Do this if variable is undefined */
+  console.log('myVariable is undefined')
 }
 ```
 
-## Checking a variable undefined
+If you use the strict equality operator (`===`) to check if a variable is `undefined`, it will throw an error if the variable is not declared yet:
 
-To check if a variable is defined or not at a *global* level you normally use `typeof`:
+```js
+if (myVariable === undefined) {
+  /* Do this if variable is undefined */
+}
+```
 
-```ts
-if (typeof someglobal !== 'undefined') {
-  // someglobal is now safe to use
-  console.log(someglobal);
+## Checking for `null`
+
+```js
+if (myVariable === null) { 
+  /* Do this if variable is null */ 
 }
 ```
 
 
 ## JSON and serialization
 
-The JSON standard has support for encoding `null` but not `undefined`. When JSON-encoding an object with an attribute that is `null`, the attribute will be included with its null value, whereas an attribute with an `undefined` value will be excluded entirely.
+The JSON standard has support for encoding `null` but not `undefined`.
+
+When JSON-encoding an object with an attribute that is `null`, the attribute will be included with its null value, whereas an attribute with an `undefined` value will be excluded entirely.
 
 ```ts
 JSON.stringify({willStay: null, willBeGone: undefined}); // {"willStay":null}
