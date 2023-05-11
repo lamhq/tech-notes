@@ -18,7 +18,7 @@ function foo(arg: string | null | undefined) {
 }
 ```
 
-## Checking for root level undefined
+## Checking a variable undefined
 
 To check if a variable is defined or not at a *global* level you normally use `typeof`:
 
