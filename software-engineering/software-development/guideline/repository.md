@@ -1,6 +1,35 @@
 # Repository Setup
 
-## Branch protection
+## Requirement checklist
+
+- The main branch should be protected, and direct commits should not be allowed.
+- A linear history is required on the main branch.
+- Changes must be submitted via pull requests.
+- Merging pull requests must be done through squash merge to achieve a linear history.
+- Must have a `README.md` file that information for the repo.
+
+
+### README file checklist
+
+A `README.md` file should contains:
+
+- Description about the project
+- Technology stack
+- Instructions to setup the development environment and run the code locally
+- Development workflow: develop new feature, fix bugs, hot fix.
+- Branching strategy
+- Source code structure
+- Standards used in the code:
+  - Code style
+  - Commit message
+  - File naming
+  - Database design
+  - API design
+
+
+## Github repo setting
+
+### Branch protection
 
 - Go to repository **Settings > Branches > Branch protection rules**
 - Click **Add rule**
@@ -16,7 +45,7 @@ Add status checks:
 - [Check PR's title follows Conventional Commits](https://github.com/marketplace/actions/conventional-pr-title)
 
 
-## Environments
+### Environments
 
 Create 3 environment:
 
@@ -37,7 +66,7 @@ Environment protection rules:
   - no protection, code is automatic deploy.
 
 
-## Pull Requests
+### Pull Requests
 
 - Go to repository **Settings > General > Pull Requests**
 - Check **Allow squash merging**, **Default to pull request title and description**
@@ -46,7 +75,7 @@ Environment protection rules:
 - Check **Automatically delete head branches**
 
 
-## Pull request template
+### Pull request template
 
 Add file `.github/pull_request_template.md` with content:
 
@@ -93,21 +122,3 @@ Ticket ID: [name](link)
 Reference:
 
 https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository
-
-
-## Add `README.md` file
-
-The content of the README file should have:
-
-- Instructions to setup the local environment and run the code locally
-- Development workflow: develop new feature, fix bugs, hot fix.
-- Branching strategy
-- Directory structure
-- Standards used in the code:
-  - Code style
-  - Commit message
-  - File naming
-  - Database design
-  - API design
-- Available scripts
-- Tech stack

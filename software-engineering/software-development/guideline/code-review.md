@@ -6,7 +6,3 @@
 - Methods in correct class
 - Avoid using handlers
 - No circular dependencies
-
-## API Design
-
-- Endpoint format is `{module}/{entities}/{custom-method?}`
