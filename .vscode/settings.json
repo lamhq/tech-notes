@@ -1,7 +1,13 @@
 {
-    "explorer.sortOrder": "mixed",
+    "editor.tabSize": 2,
     "editor.tabCompletion": "onlySnippets",
     "editor.snippetSuggestions": "top",
+    "explorer.sortOrder": "mixed",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.ipynb_checkpoints": true
+    },
     "[python]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
@@ -10,11 +16,5 @@
         "files.trimTrailingWhitespace": false
     },
     "markdown.styles": ["preview.css"],
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.ipynb_checkpoints": true
-    },
-    "editor.tabSize": 2,
     "markdown-mermaid.darkModeTheme": "default"
 }
