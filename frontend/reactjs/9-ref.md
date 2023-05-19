@@ -97,6 +97,28 @@ const myRef = useRef(null);
 myRef.current.scrollIntoView();
 ```
 
+### Getting ref from an array of elements
+
+```tsx
+// the ref that hold a list of img elements
+const refs = useRef<HTMLImageElement[]>([]);
+
+function setRef(ref: HTMLImageElement | null, index: number) {
+  if (ref) {
+    refs.current[index] = ref;
+  }
+}
+
+images.map((image, index) => (
+  <img
+    src={image}
+    ref={(ref) => setRef(ref, index)}
+    key={image}
+    alt=""
+  />
+))
+```
+
 ## forward ref
 
 Components that want to expose their DOM nodes have to specify that it “forwards” its ref to one of its children:
