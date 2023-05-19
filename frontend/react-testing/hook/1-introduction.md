@@ -4,6 +4,7 @@
 
 This document is for version **8.0.1**.
 
+**THIS LIBRARY DOES NOT SUPPORT React 18**
 
 ## Introduction
 
@@ -29,8 +30,8 @@ yarn add --dev @testing-library/react-hooks
 Peer dependencies:
 
 ```bash
-npm install react@^16.9.0
-npm install --save-dev react-test-renderer@^16.9.0
+yarn add react@^16.9.0
+yarn add --dev react-test-renderer@^16.9.0
 ```
 
 

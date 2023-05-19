@@ -20,14 +20,14 @@ Add the following `jest.config.js` file to the root of your project:
 
 ```js
 module.exports = {
-  "roots": [
+  roots: [
     "<rootDir>/src"
   ],
-  "testMatch": [
+  testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",
     "**/?(*.)+(spec|test).+(ts|tsx|js)"
   ],
-  "transform": {
+  transform: {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
 }

@@ -36,12 +36,6 @@ yarn remove [package]
 yarn up [package]
 ```
 
-## Get peer dependencies of a package
-
-```bash
-npm view "@mui/lab" peerDependencies
-```
-
 ## Open the upgrade interface
 
 ```bash

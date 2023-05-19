@@ -17,7 +17,7 @@ yarn add typedi reflect-metadata
 
 ```ts
 import "reflect-metadata";
-import {Container, Inject, Service} from "typedi";
+import { Container, Inject, Service } from "typedi";
 
 @Service()
 class BeanFactory {
@@ -97,7 +97,7 @@ export interface Factory {
   create(): void;
 }
 
-export const FactoryService = new Token < Factory > ();
+export const FactoryService = new Token<Factory>();
 
 @Service(FactoryService)
 export class BeanFactory implements Factory {
