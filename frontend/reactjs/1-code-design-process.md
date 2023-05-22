@@ -7,7 +7,7 @@ aka: *Thinking in React*
 <img src="https://react.dev/images/docs/s_thinking-in-react_ui.png" width="350">
 
 
-## Step 1: Break the UI into a component hierarchy
+## 1: Break the UI into a component hierarchy
 
 One technique is the single responsibility principle, that is, a component should ideally only do one thing.
 
@@ -28,7 +28,7 @@ Now that you’ve identified the components in the mockup, arrange them into a h
     - `ProductRow`
 
 
-## Step 2: Build a static version in React
+## 2: Build a static version in React
 
 Build a version that renders the UI from your data model without adding any interactivity
 
@@ -131,7 +131,7 @@ export default function App() {
 ```
 
 
-## Step 3: Find the minimal but complete representation of UI state
+## 3: Find the minimal but complete representation of UI state
 
 Figure out the absolute minimal representation of the state your application needs and compute everything else on-demand.
 
@@ -151,7 +151,7 @@ Let’s go through data in the example application:
 - The **filtered list of products** isn’t state because it can be computed by taking the original list of products and filtering it according to the search text and value of the checkbox.
 
 
-## Step 4: Identify where your state should live 
+## 4: Identify where your state should live 
 
 After identifying your app’s minimal state data, you need to identify which component is responsible for changing this state, or owns the state.
 
@@ -198,7 +198,7 @@ Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as p
 ```
 
 
-## Step 5: Add inverse data flow
+## 5: Add inverse data flow
 
 To change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
 

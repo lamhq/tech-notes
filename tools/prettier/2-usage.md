@@ -40,6 +40,38 @@ yarn prettier --write .
 
 If you use ESLint, install `eslint-config-prettier` to make ESLint and Prettier play nice with each other. It turns off all ESLint rules that are unnecessary or might conflict with Prettier.
 
+```bash
+yarn add -D eslint-config-prettier
+```
+
+`.eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "some-other-config-you-use",
+    "prettier"
+  ]
+}
+```
+
+We have plugins that let you run Prettier as if it was a linter rule `eslint-plugin-prettier`. By running Prettier inside your linters, you didn’t have to set up any new infrastructure and you could re-use your editor integrations for the linters:
+
+```bash
+yarn add -D eslint-plugin-prettier
+```
+
+`.eslintrc.json`:
+
+```json
+{
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+
 
 ### Git hooks
 

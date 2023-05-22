@@ -1,4 +1,4 @@
-# Sprint Workflow
+# Project Manager Workflow
 
 ## Planning
 
@@ -11,13 +11,16 @@
 1. Ensure tickets are estimated
 
 
-## Monitoring
+## Development
 
 1. Ensure daily code submissions to Github
 1. Ensure no tickets take more than two days to complete
 1. Ensure sprints are finished on time
 
 
-## Delivery
+## Testing
 
 1. Test all tickets before and after deployment
+
+
+## Release and deploy

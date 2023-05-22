@@ -2,64 +2,65 @@
 
 ## Updating NPM
 
-``` bash
+```bash
 npm install npm@latest -g
 ```
 
 ## Creating a package.json
 
-``` bash
+```bash
 npm init --yes
 npm init -y
 ```
 
 ## Install package locally
 
-``` bash
+```bash
 npm install <package_name> --save
 npm install <package_name> --save-dev
 ```
 
 ## Updating local packages
 
-``` bash
+```bash
 npm update
 ```
 
 ## List outdated packages
 
-``` bash
+```bash
 npm outdated
 ```
 
 ## List global installed packages
 
-``` bash
+```bash
 npm list -g --depth=0
 ```
 
 ## Uninstalling local packages
 
-``` bash
+```bash
 npm uninstall <package> --save
 npm uninstall <package> --save-dev
 ```
 
 ## Installing npm packages globally
 
-``` bash
+```bash
 npm install -g <package>
 ```
 
 ## Updating global packages
 
-``` bash
+```bash
 npm update -g <package>
 ```
 
+
 ## Uninstalling global packages
 
-``` bash
+```bash
 npm uninstall -g <package>
 ```
 
