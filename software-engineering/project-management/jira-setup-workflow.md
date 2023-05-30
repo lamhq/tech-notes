@@ -1,0 +1,26 @@
+# Jira project setup workflow
+
+- Create a Jira project
+- Setup workflows: To do, In Progress, Code Review, Awaiting QA, Done
+- Setup board (columns): TO DO, IN PROGRESS, CODE REVIEW, QA REVIEW, DONE
+- Create epics (using roadmap view)
+- Use Roadmap to make plan for epics
+- Integrate with development tools (GitHub)
+- Setup project automation
+    - When a branch is created, move issue to `IN PROGRESS` (library)
+    - When a commit is made, move issue to `IN PROGRESS` (library)
+    - When a pull request is created, move issue to `CODE REVIEW` (library)
+    - When a pull request is merged, move issue to `AWAITING QA`
+    - When all stories are done, close epic (library)
+    - When stories are in progress, move epic to `IN PROGRESS`
+- Create issues (stories, tasks, sub-tasks)
+- Enable Story Point for Stories, Tasks, Bugs
+- Estimate issues with story point (use planning poker)
+- Use Release to manage which will be released to customer
+- Create a sprint and start it
+- Use Burndown chart to track sprint progress
+- Use Velocity chart to find team velocity
+- Use Release Burndown chart to estimate release date
+- Check which issues has been deployed to an environment
+- Add your Jira roadmap to a Confluence page.
+- Genere Status Report to external stakeholders

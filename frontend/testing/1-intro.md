@@ -44,19 +44,70 @@ If it did what we said it should, the test passed. If it didn't, it failed.
 - Accessibility testing checks if an application is coded in a way that is accessible for people with different disabilities.
 
 
-### Unit vs Integration testing vs End-to-end testing
+### Unit vs Integration testing vs E2E testing
 
 Another way to classify testing is depending how broad or comprehensive it is.
 
-**Unit testing** aims to test individual functions, methods or small chunks of code in an independent way. In unit testing, small pieces of code are checked in an isolated way.
+#### Unit testing
 
-**Integration testing** checks how individual pieces of code interact with each other and work together. In integration testing, we put pieces together and see if they interact correctly.
+aims to test individual functions, methods or small chunks of code in an independent way. In unit testing, small pieces of code are checked in an isolated way.
 
-**End-to-end testing**, also known as E2E, executes programs in a simulated environment that emulates actual user behavior.
+#### Integration testing
+
+checks how individual pieces of code interact with each other and work together. In integration testing, we put pieces together and see if they interact correctly.
+
+#### End-to-end testing
+
+also known as E2E, executes programs in a simulated environment that emulates actual user behavior.
 
 Having a website as an example, our code would open in an actual browser and all the features would be executed in the same way a user would use them. E2E testing is a lot like manual testing in that sense, but fully automated.
 
 E2E testing is the most broad or comprehensive type of these three, as it evaluates whole features and behaviors, not specific parts of our code.
+
+**Benefits of end-to-end tests**:
+
+- Ensure your app is functioning as a cohesive whole
+- Tests match the user experience
+- Can be written by developers or QA Teams
+- Can be used for integration testing as well
+
+**Considerations for end-to-end tests:**
+
+- More difficult to set up, run, and maintain
+- Provision testing infrastructure in CI
+- Testing certain scenarios require more setup
+
+**Common scenarios for end-to-end tests**
+
+- Validating critical workflows like authentication and purchasing
+- Ensuring data is persisted and displayed through multiple screens
+Running Smoke Tests and System Checks before deployment
+
+#### Component Testing
+
+Modern web frameworks provide ways to write applications by breaking them into smaller logical units called components. 
+
+Components tend to be easily testable, a component can be "mounted" and tested on its own. This allows you to focus on testing only the component's functionality and not worrying about other nuances with testing a component as part of the larger application.
+
+**Benefits of component tests:**
+
+- Easier to test components in isolation
+- Fast and reliable
+- Easy to set up specific scenarios in tests
+- Don't rely on any external system to run
+
+**Considerations for component tests:**
+
+- Do not ensure overall app quality
+- Do not call into external APIs/Services
+- Usually written by developers working on the component
+
+**Common scenarios for component tests:**
+
+- Testing a date picker works properly for a variety of scenarios
+- That a form shows and hides specific sections based on input
+- Testing components coming out of a design system
+- Testing logic not tied to a component (like unit tests!)
 
 
 ### White box vs Black box vs Grey box testing

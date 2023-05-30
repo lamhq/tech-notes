@@ -203,6 +203,15 @@ Referenced projects must have the new composite setting enabled. This setting is
 
 Specify an array of file patterns that are included in the compilation.
 
+These filenames are resolved relative to the directory containing the tsconfig.json file.
+
+include and exclude support wildcard characters to make glob patterns:
+
+- `*` matches zero or more characters (excluding directory separators)
+- `?` matches any one character (excluding directory separators)
+- `**/` matches any directory nested to any level
+
+If a glob pattern doesn’t include a file extension, then only files with supported extensions are included (e.g. `.ts`, `.tsx`, and `.d.ts` by default, with `.js` and `.jsx` if `allowJs` is set to `true`).
 
 ## `exclude`
 
