@@ -64,3 +64,66 @@ Adding a `tsconfig.json` inside your `cypress` folder with the following configu
   "include": ["**/*.*"]
 }
 ```
+
+
+## TypeScript
+
+Cypress ships with official type declarations for TypeScript.
+
+We recommend creating a `tsconfig.json` inside your `cypress` folder with the following configuration:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"]
+  },
+  "include": ["**/*.ts"]
+}
+```
+
+The `"types"` will tell the TypeScript compiler to only include type definitions from Cypress.
+
+
+### Types for Custom Commands
+
+When adding custom commands to the `cy` object, you can manually add their types to avoid TypeScript errors.
+
+For example if you add the command `cy.dataCy` into your supportFile like this:
+
+```js
+// cypress/support/index.ts
+Cypress.Commands.add('dataCy', (value) => {
+  return cy.get(`[data-cy=${value}]`)
+})
+```
+
+Then you can add the `dataCy` command to the global Cypress Chainable interface:
+
+```js
+// cypress/support/index.ts
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Custom command to select DOM element by data-cy attribute.
+       * @example cy.dataCy('greeting')
+       */
+      dataCy(value: string): Chainable<JQuery<HTMLElement>>
+    }
+  }
+}
+```
+
+In your specs, you can now use the custom command as expected:
+
+```js
+it('works', () => {
+  // from your cypress/e2e/spec.cy.ts
+  cy.visit('/')
+  // IntelliSense and TS compiler should
+  // not complain about unknown method
+  cy.dataCy('greeting')
+})
+```
