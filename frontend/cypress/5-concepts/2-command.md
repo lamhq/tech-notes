@@ -106,20 +106,6 @@ cy.get('.main-container') // Yields an array of matching DOM elements
 
 Remmember: **Don't continue a chain after acting on the DOM**.
 
-## Aliases
-
-To work around the need to reference elements, Cypress has a feature known as aliasing. Aliasing helps you to store and save references for future use.
-
-```js
-cy.get('.my-selector')
-  .as('myElement') // sets the alias
-  .click()
-
-/* many more actions */
-
-cy.get('@myElement') // re-queries the DOM as before
-  .click()
-```
 
 ## Commands Are Asynchronous
 
