@@ -1,4 +1,4 @@
-# Repository Setup
+# Repository Setup Guidelines
 
 ## Requirement checklist
 
