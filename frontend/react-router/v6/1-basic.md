@@ -8,12 +8,14 @@ Version: 6
 yarn add react-router-dom
 ```
 
-## Defining Routes
+## Defining Routes (recommended)
 
 Define routes using route config object:
 
 ```jsx
-let router = [
+import { createBrowserRouter } from 'react-router-dom';
+
+let router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
@@ -35,10 +37,6 @@ let router = [
             element: <Team />,
           },
           {
-            path: ":teamId/edit",
-            element: <EditTeam />,
-          },
-          {
             path: "new",
             element: <NewTeamForm />,
           },
@@ -58,12 +56,8 @@ let router = [
         path: "/tos",
       },
     ],
-  },
-  {
-    element: <Contact />,
-    path: "/contact-us",
-  },
-];
+  }
+]);
 ```
 
 Render routes:
@@ -79,10 +73,43 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 ```
 
 
+## Defining Routes (using jsx)
+
+```jsx
+// main.tsx
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+```
+
+```jsx
+// App.tsx
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
+  );
+}
+```
+
+
 ## Route params
 
 ```jsx
-let router = [
+let router = createBrowserRouter([
   {
     path: "teams",
     element: <Teams />,
@@ -93,7 +120,7 @@ let router = [
       },
     ]
   }
-]
+]);
 ```
 
 The `:teamId` segment is a dynamic segment of the path pattern, meaning it doesn't match the URL statically (the actual characters) but it matches it dynamically. Any value can fill in for `:teamId`. Both `/teams/123` or `/teams/cupcakes` will match.
@@ -109,18 +136,18 @@ function Team() {
 ```
 
 
-## Nested routes and Outlet
+## Nested routes (WIP)
 
 ```jsx
 <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="teams" element={<Teams />}>
-          <Route path=":teamId" element={<Team />} />
-        </Route>
+  <Routes>
+    <Route path="/" element={<App />}>
+      <Route path="teams" element={<Teams />}>
+        <Route path=":teamId" element={<Team />} />
       </Route>
-    </Routes>
-  </BrowserRouter>
+    </Route>
+  </Routes>
+</BrowserRouter>
 ```
 
 Let's use the `/teams/firebirds` URL as an example. Above will render a React element tree like this:
