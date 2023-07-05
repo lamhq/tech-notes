@@ -2,66 +2,49 @@
 
 The theme's `components` key allows you to customize a component without wrapping it in another component. You can change the styles, the default props, and more.
 
-## Default props
+## Component default props
 
 ```tsx
-import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-
 const theme = createTheme({
   components: {
-    // Name of the component ⚛️
+    // Name of the component
     MuiButtonBase: {
       defaultProps: {
-        // The default props to change
+        // The props to change the default for.
         disableRipple: true, // No more ripple, on the whole application 💣!
       },
     },
   },
 });
-
-export default function DefaultProps() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button>Change default props</Button>
-    </ThemeProvider>
-  );
-}
 ```
 
 
-## Global style overrides
+## Style overrides
+
+This is useful if you want to apply a fully custom design system to Material UI's components. It can be specified in `styleOverrides` key:
 
 ```tsx
-import * as React from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-
 const theme = createTheme({
   components: {
+    // Name of the component
     MuiButton: {
       styleOverrides: {
+        // Name of the slot
         root: {
+          // Some CSS
           fontSize: '1rem',
         },
       },
     },
   },
 });
-
-export default function GlobalThemeOverride() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button>font-size: 1rem</Button>
-    </ThemeProvider>
-  );
-}
 ```
 
-## Overrides based on props
+### Overrides based on props
 
 You can pass a callback as a value in each slot of the component's `styleOverrides` to apply styles based on props.
+
+The `ownerState` prop is a combination of public props that you pass to the component + internal state of the component.
 
 ```tsx
 const finalTheme = createTheme({
@@ -80,60 +63,14 @@ const finalTheme = createTheme({
 });
 ```
 
+### Use `sx` prop
 
-## Using sx (experimental) syntax in theme's style overrides
+You can use the `sx` prop to override component's style.
 
-```tsx
-import * as React from 'react';
-import {
-  ThemeProvider,
-  createTheme,
-  experimental_sx as sx,
-} from '@mui/material/styles';
-import Chip from '@mui/material/Chip';
-import Check from '@mui/icons-material/Check';
 
-const finalTheme = createTheme({
-  components: {
-    MuiChip: {
-      styleOverrides: {
-        root: sx({
-          // https://mui.com/system/the-sx-prop/#spacing
-          px: 1,
-          py: 0.25,
-          // https://mui.com/system/borders/#border-radius
-          borderRadius: 1, // 4px as default.
-        }),
-        label: {
-          padding: 'initial',
-        },
-        icon: sx({
-          mr: 0.5,
-          ml: '-2px',
-        }),
-      },
-    },
-  },
-});
+## Creating new component variants
 
-export default function GlobalThemeOverride() {
-  return (
-    <ThemeProvider theme={finalTheme}>
-      <Chip
-        color="success"
-        label={
-          <span>
-            <b>Status:</b> Completed
-          </span>
-        }
-        icon={<Check fontSize="small" />}
-      />
-    </ThemeProvider>
-  );
-}
-```
-
-## Adding new component variants
+New variants can specify what styles the component should have when that specific variant prop value is applied.
 
 ```ts
 const theme = createTheme({
@@ -159,6 +96,23 @@ const theme = createTheme({
 });
 ```
 
+```tsx
+<ThemeProvider theme={theme}>
+  <Button variant="dashed" sx={{ m: 1 }}>
+    Dashed
+  </Button>
+  <Button variant="dashed" color="secondary" sx={{ m: 1 }}>
+    Secondary
+  </Button>
+  <Button variant="dashed" size="large" sx={{ m: 1 }}>
+    Large
+  </Button>
+  <Button variant="dashed" color="secondary" size="large" sx={{ m: 1 }}>
+    Secondary large
+  </Button>
+</ThemeProvider>
+```
+
 If you're using TypeScript, you'll need to specify your new variants/colors, using module augmentation.
 
 ```ts
@@ -166,75 +120,6 @@ declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     dashed: true;
   }
-}
-```
-
-```tsx
-import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    dashed: true;
-  }
-}
-
-const defaultTheme = createTheme();
-
-const theme = createTheme({
-  components: {
-    MuiButton: {
-      variants: [
-        {
-          props: { variant: 'dashed' },
-          style: {
-            textTransform: 'none',
-            border: `2px dashed ${defaultTheme.palette.primary.main}`,
-            color: defaultTheme.palette.primary.main,
-          },
-        },
-        {
-          props: { variant: 'dashed', color: 'secondary' },
-          style: {
-            border: `2px dashed ${defaultTheme.palette.secondary.main}`,
-            color: defaultTheme.palette.secondary.main,
-          },
-        },
-        {
-          props: { variant: 'dashed', size: 'large' },
-          style: {
-            borderWidth: 4,
-          },
-        },
-        {
-          props: { variant: 'dashed', color: 'secondary', size: 'large' },
-          style: {
-            fontSize: 18,
-          },
-        },
-      ],
-    },
-  },
-});
-
-export default function GlobalThemeVariants() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Button variant="dashed" sx={{ m: 1 }}>
-        Dashed
-      </Button>
-      <Button variant="dashed" color="secondary" sx={{ m: 1 }}>
-        Secondary
-      </Button>
-      <Button variant="dashed" size="large" sx={{ m: 1 }}>
-        Large
-      </Button>
-      <Button variant="dashed" color="secondary" size="large" sx={{ m: 1 }}>
-        Secondary large
-      </Button>
-    </ThemeProvider>
-  );
 }
 ```
 

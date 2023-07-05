@@ -1,25 +1,8 @@
 # Theming
 
-## ThemeProvider
+## Enable theming
 
-```ts
-import * as React from 'react';
-import ReactDOM from 'react-dom';
-import { red } from '@mui/material/colors';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: red[500],
-    },
-  },
-});
-
-function App() {
-  return <ThemeProvider theme={theme}>...</ThemeProvider>;
-}
-```
+Check [Adding MUI to your project](../2-installation.md#adding-mui-to-your-project)
 
 
 ## Theme configuration variables
@@ -34,7 +17,10 @@ function App() {
 
 You can check out the [default theme section](https://mui.com/customization/default-theme/) to view the default theme in full.
 
+
 ### Custom variables
+
+It can be convenient to add additional variables to the theme so you can use them everywhere
 
 ```ts
 const theme = createTheme({
@@ -44,7 +30,7 @@ const theme = createTheme({
 });
 ```
 
-If you are using TypeScript, you would also need to use module augmentation for the theme to accept the above values.
+If you are using TypeScript, You have to use [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) to add new variables to the `Theme` and `ThemeOptions`
 
 ```ts
 declare module '@mui/material/styles' {
@@ -63,6 +49,36 @@ declare module '@mui/material/styles' {
 ```
 
 
-## Theme builder
+## Tools
 
-- [mui-theme-creator](https://bareynol.github.io/mui-theme-creator/): A tool to help design and customize themes for the MUI component library. Includes basic site templates to show various components and how they are affected by the theme
+- [mui-theme-creator](https://zenoo.github.io/mui-theme-creator/): A tool to help design and customize theme.
+- [Material palette generator](https://m2.material.io/inline-tools/color/): generate a palette for any color you input.
+
+
+## Accessing the theme in a component
+
+```tsx
+import { useTheme } from '@material-ui/core/styles';
+
+function DeepChild() {
+  const theme = useTheme();
+  return <span>{`spacing ${theme.spacing}`}</span>;
+}
+```
+
+
+## Nesting the theme
+
+```jsx
+<ThemeProvider theme={outerTheme}>
+  <Checkbox defaultChecked />
+  <ThemeProvider theme={innerTheme}>
+    <Checkbox defaultChecked />
+  </ThemeProvider>
+</ThemeProvider>
+```
+
+
+## Theme default values
+
+You can explore the default values of the typography using the [theme explorer](https://mui.com/material-ui/customization/default-theme/?expand-path=$.typography) or by opening the dev tools console on this page (`window.theme.typography`).

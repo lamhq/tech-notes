@@ -406,15 +406,3 @@ function App() {
   );
 }
 ```
-
-
-## Lazy
-
-```jsx
-let routes = createRoutesFromElements(
-  <Route path="/" element={<Layout />}>
-    <Route path="a" lazy={() => import("./a")} />
-    <Route path="b" lazy={() => import("./b")} />
-  </Route>
-);
-```
