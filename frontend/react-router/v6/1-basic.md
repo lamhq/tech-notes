@@ -8,14 +8,17 @@ Version: 6
 yarn add react-router-dom
 ```
 
-## Defining Routes (recommended)
+## Defining Routes
+
+### Using router
 
 Define routes using route config object:
 
 ```jsx
+// router.tsx
 import { createBrowserRouter } from 'react-router-dom';
 
-let router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
@@ -62,7 +65,8 @@ let router = createBrowserRouter([
 
 Render routes:
 
-```jsx
+```tsx
+// main.tsx
 import { RouterProvider } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -73,7 +77,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 ```
 
 
-## Defining Routes (using jsx)
+### Using jsx
 
 ```jsx
 // main.tsx
@@ -106,6 +110,50 @@ export default function App() {
 ```
 
 
+### Using router & jsx
+
+```jsx
+// router.jsx
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<h2>Index</h2>} />
+      <Route path="one" element={<h2>One</h2>} />
+      <Route path="two" element={<h2>Two</h2>} />
+      <Route
+        path="three"
+        action={() => json({ ok: true })}
+        element={
+          <>
+            <h2>Three</h2>
+            <ImportantForm />
+          </>
+        }
+      />
+      <Route path="four" element={<h2>Four</h2>} />
+      <Route path="five" element={<h2>Five</h2>} />
+    </Route>
+  )
+);
+```
+
+```jsx
+// main.jsx
+import { RouterProvider } from 'react-router-dom';
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
+```
+
 ## Route params
 
 ```jsx
@@ -136,7 +184,7 @@ function Team() {
 ```
 
 
-## Nested routes (WIP)
+## Nested routes
 
 ```jsx
 <BrowserRouter>
@@ -175,7 +223,7 @@ function App() {
 ```
 
 
-## Layout Routes
+## Layout
 
 To define a layout component, use it as a `element` in a parent route like this:
 
@@ -211,6 +259,22 @@ if the URL were `/teams`, the element tree would be:
 ```
 
 
+## Not found page
+
+```jsx
+let router = [
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  }
+]
+```
+
+
 ## Navigate API
 
 ```jsx
@@ -231,6 +295,14 @@ Go back
 
 ```js
 navigate(-1);
+```
+
+Using component:
+
+```jsx
+import { Route, Navigate } from 'react-router-dom';
+
+<Route index element={<Navigate to="account" replace />} />
 ```
 
 
@@ -264,6 +336,19 @@ function Teams() {
 The full path for links in `Teams` page will be `/teams/psg`. They inherit the route within which they are rendered. 
 
 
+### Setting state for a location
+
+The `state` property can be used to set a stateful value for the new location. This value can subsequently be accessed via `useLocation()`.
+
+```jsx
+<Link to="new-path" state={{ some: "value" }} />
+```
+
+```js
+let { state } = useLocation();
+```
+
+
 ## `<NavLink>` and active state
 
 A `<NavLink>` is a special kind of `<Link>` that knows whether or not it is "active" or "pending"
@@ -285,22 +370,6 @@ import { NavLink } from "react-router-dom";
 >
   Messages
 </NavLink>;
-```
-
-
-## Not found page
-
-```jsx
-let router = [
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  }
-]
 ```
 
 
