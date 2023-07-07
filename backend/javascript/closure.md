@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A function in JavaScript has access to any variables defined in the outer scope (even when the outer function has finished executing). This feature is called a `closure`.
+Closure is a feature in JavaScript, that allow code inside a function has access to any variables defined in the outer scope,  even when the outer function has finished executing.
 
 ```ts
 function outerFunction(arg) {
@@ -20,22 +20,24 @@ outerFunction("hello closure"); // logs hello closure!
 ```
 
 
-### Reason why it's awesome
+## Reason why it's awesome
 
-It allows you to compose objects easily e.g. the revealing module pattern:
-
-```ts
-function createCounter() {
-  let val = 0;
-  return {
-    increment() { val++ },
-    getVal() { return val }
+- Encapsulation: Closures can be used to create private variables and methods.
+  ```ts
+  function createCounter() {
+    let val = 0;
+    return {
+      increment() { val++ },
+      getVal() { return val }
+    }
   }
-}
 
-let counter = createCounter();
-counter.increment();
-console.log(counter.getVal()); // 1
-counter.increment();
-console.log(counter.getVal()); // 2
-```
+  let counter = createCounter();
+  counter.increment();
+  console.log(counter.getVal()); // 1
+  counter.increment();
+  console.log(counter.getVal()); // 2
+  ```
+- Data hiding: Closures can be used to hide implementation details.
+- Partial application: Closures can be used to create new functions with pre-set arguments.
+- Memoization: Closures can be used to cache the results of expensive function calls.
