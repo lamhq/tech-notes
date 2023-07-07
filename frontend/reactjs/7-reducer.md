@@ -158,5 +158,6 @@ export default function TaskApp() {
 
 ### Cons
 
-- Code Size: you have to write both a reducer function and dispatch actions
-- 
+- **Code size**: you have to write both a reducer function and dispatch actions.
+
+We recommend using a reducer if you often encounter bugs due to incorrect state updates in some component, and want to introduce more structure to its code.

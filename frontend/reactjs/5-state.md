@@ -271,7 +271,7 @@ It is common to call a component with some local state **“uncontrolled”**.
 
 In contrast, you might say a component is **“controlled”** when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. 
 
-For inputs, U=uncontrolled components are components that are not controlled by the React state and are handled by the DOM (Document Object Model)1. So in order to access any value that has been entered we take the help of refs1
+For inputs, uncontrolled components are components that are not controlled by the React state and are handled by the DOM (Document Object Model)1. So in order to access any value that has been entered we take the help of refs1
 
 
 ## Preserving state
