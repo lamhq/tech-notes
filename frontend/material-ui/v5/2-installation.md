@@ -110,7 +110,7 @@ export default function App() {
 ## Examples
 
 - [Material UI - Vite.js](https://github.com/mui/material-ui/tree/master/examples/material-vite/)
-- [React Admin](https://github.com/marmelab/react-admin)
+
 
 
 ## Templates
