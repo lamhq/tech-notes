@@ -31,13 +31,6 @@ export const FancyButton = forwardRef<Ref, Props>((props, ref) => (
 ));
 ```
 
-If you are grabbing the props of a component that forwards refs, use `ComponentPropsWithRef`:
-
-```tsx
-type ButtonProps = React.ComponentPropsWithRef<"button">;
-
-const Button = ({ children, onClick, type }: ButtonProps) => { ... }
-```
 
 ## Generic forwardRefs
 
