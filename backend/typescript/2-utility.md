@@ -165,20 +165,46 @@ type T0 = ConstructorParameters<SomeConstructor>;
 Constructs a type consisting of the return type of function `Type`
 
 ```ts
-type T0 = ReturnType<() => string>;
-// type T0 = string
+// inside some library - return type { baz: number } is inferred but not exported
+function foo(bar: string) {
+  return { baz: 1 };
+}
 
-declare function f1(): { a: number; b: string };
-type T1 = ReturnType<typeof f1>;
-// type T1 = {
-//   a: number;
-//   b: string;
-// }
+//  inside your app, if you need { baz: number }
+type FooReturn = ReturnType<typeof foo>; // { baz: number }
 ```
+
+To grab the sub types of function's return type:
+
+```tsx
+function foo() {
+  return {
+    a: 1,
+    b: 2,
+    subInstArr: [
+      {
+        c: 3,
+        d: 4,
+      },
+    ],
+  };
+}
+
+type InstType = ReturnType<typeof foo>;
+type SubInstArr = InstType["subInstArr"];
+type SubInstType = SubInstArr[0];
+
+let baz: SubInstType = {
+  c: 5,
+  d: 6, // type checks ok!
+};
+```
+
 
 ## `InstanceType<Type>`
 
 Constructs a type consisting of the instance type of a constructor function in `Type`.
+
 
 
 ## `ThisParameterType<Type>`

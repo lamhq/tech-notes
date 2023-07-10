@@ -103,11 +103,19 @@ type P = keyof Point;
 
 ## `typeof` operator
 
-```ts
-let s = "hello";
+When you need a type that was inferred from an object and don't want to explicit;y declare it:
 
-let n: typeof s;
-// let n: string
+```tsx
+const [state, setState] = useState({
+  foo: 1,
+  bar: 2,
+}); // state's type inferred to be {foo: number, bar: number}
+
+const someMethod = (obj: typeof state) => {
+  // grabbing the type of state even though it was inferred
+  // some code using obj
+  setState(obj); // this works
+};
 ```
 
 

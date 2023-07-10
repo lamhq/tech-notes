@@ -73,3 +73,27 @@ TL;DR: use **Interface** until You Need **Type**
 - consider using `type` for your React Component Props and State, for consistency and because it is more constrained.
 
 Read more [here](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#more-advice).
+
+
+## Grabbing component prop type
+
+If you are grabbing the props of a component that forwards refs, use `ComponentPropsWithRef`:
+
+```tsx
+type ButtonProps = React.ComponentPropsWithRef<"button">;
+
+const Button = ({ children, onClick, type }: ButtonProps) => { ... }
+```
+
+You may also use `React.ComponentProps` and `ComponentPropsWithoutRef`.
+
+```tsx
+import { Button } from "library"; // but doesn't export ButtonProps! oh no!
+
+type ButtonProps = React.ComponentProps<typeof Button>; // no problem! grab your own!
+type AlertButtonProps = Omit<ButtonProps, "onClick">; // modify
+
+const AlertButton = (props: AlertButtonProps) => (
+  <Button onClick={() => alert("hello")} {...props} />
+);
+```
