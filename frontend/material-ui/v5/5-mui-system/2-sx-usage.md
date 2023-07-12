@@ -155,7 +155,7 @@ Array types are useful when you want to partially override some styles in the fo
 
 ## Passing the sx prop
 
-If you want to receive the sx prop from a custom component and pass it down to an MUI component, we recommend this approach:
+If you want to receive the `sx` prop from a custom component and pass it down to an MUI component, we recommend this approach:
 
 ```tsx
 import ListItem from '@mui/material/ListItem';

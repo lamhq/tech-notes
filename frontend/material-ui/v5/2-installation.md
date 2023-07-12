@@ -1,7 +1,7 @@
 # Installation
 
 ```bash
-yarn add @mui/material @emotion/react @emotion/styled
+yarn add @mui/material @emotion/react @emotion/styled @mui/icons-material
 ```
 
 ## Install Roboto font
