@@ -83,9 +83,15 @@ You can read more detail on each rule in the [register section](https://react-ho
 ## Integrating with UI libraries
 
 ```tsx
-import React from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import Input from "@material-ui/core/Input";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import TextField from '@mui/material/TextField';
+
+const schema = yup.object().shape({
+  firstName: yup.string().required('Please fill out this field.'),
+});
+
 
 interface IFormInput {
   firstName: string;
@@ -103,11 +109,26 @@ const App = () => {
       <Controller
         name="firstName"
         control={control}
-        defaultValue=""
-        rules={{ required: true }}
-        render={({ field }) => <Input {...field} />}
-      />
-      <input type="submit" />
+        render={({ field }) => (
+          <TextField
+            label="First name"
+            required
+            error={!!errors.firstName}
+            helperText={errors.firstName?.message}
+            {...field}
+          />
+        )}
+      />    
+      <LoadingButton
+        loading={isSubmitting}
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        fullWidth
+      >
+        SIGN IN
+      </LoadingButton>
     </form>
   );
 };

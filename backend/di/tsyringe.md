@@ -1,6 +1,8 @@
 # TSyringe
 
-A lightweight dependency injection container for TypeScript/JavaScript for **constructor injection** (maintained by Microsoft). Support:
+A lightweight dependency injection container for TypeScript/JavaScript for **constructor injection** (maintained by Microsoft).
+
+Support:
 - class-based and token-based injections.
 - provide parameterless constructor that has dependencies auto-resolved.
 
@@ -90,8 +92,8 @@ export class Foo {}
 
 ```ts
 // Bar.ts
-import { Foo } from "./Foo";
 import { injectable } from "tsyringe";
+import { Foo } from "./Foo";
 
 @injectable()
 export class Bar {
