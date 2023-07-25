@@ -1,7 +1,5 @@
 # What are Microservices
 
-This document is a shorten version of the book "**Building Microservices, 2nd Edition**".
-
 ## Microservices at a Glance
 
 1. Microservices are **independently releasable services** that are modeled around a business domain (a **service** here typically means a completely separate operating system process).

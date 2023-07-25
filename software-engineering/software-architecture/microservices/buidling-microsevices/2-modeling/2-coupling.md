@@ -58,3 +58,57 @@ For this specific example, I might consider a simpler change, to totally hide th
 **Order Processor** still send the **Shipping Manifest** to the **Shipping** microservice via the **Warehouse**, but to have the **Warehouse** be totally unaware of the structure of the **Shipping Manifest** itself. The **Order Processor** sends the manifest as part of the order request, but the **Warehouse** makes no attempt to look at or process the field. Instead, it just sends it along.
 
 A change in the format of the the **Shipping Manifest** would still require a change to both the **Order Processor** and the **Shipping** microservice, but as the **Warehouse** doesn’t care about what is actually in the manifest, it doesn’t need to change.
+
+## Common Coupling
+
+- Common coupling occurs when two or more microservices make use of a common set of data.
+- Changes to the structure of the data can impact multiple microservices at once.
+- Common coupling becomes more problematic if the structure of the common data changes frequently or if multiple microservices are reading and writing to the same data.
+
+In this example, **Order Processor** and **Warehouse** service are both reading and writing from a shared `Order` table to help manage the process of dispatching products to customers. Both microservices are updating the `Status` column. The **Order Processor** can set the `PLACED`, `PAID`, and `COMPLETED` statuses, whereas the **Warehouse** will apply `PICKING` or `SHIPPED` statuses.
+
+![](images/cm-c1.png)
+
+When making changes in **Order Processor**, can I be sure that I am not changing the order data in such a way that it breaks **Warehouse**’s view of the world, or vice versa?
+
+One way to ensure that the state of something is changed in a correct fashion would be to create a finite state machine. A state machine can be used to manage the transition of some entity from one state to another, ensuring invalid state transitions are prohibited.
+
+![](images/cm-c-sm.png)
+
+The problem in this specific example is that both **Warehouse** and **Order Processor** share responsibilities for managing this state machine. How do we ensure that they are in agreement as to what transitions are allowed?
+
+Managing processes like state transitions across microservice boundaries can be done using sagas.
+
+A potential solution here would be to ensure that a **single microservice manages the order state**. So either **Warehouse** or **Order Processor** can send status update requests to the **Order** service. Here, the **Order** microservice is the source of truth for any given order.
+
+If the **Order** service received a request from **Order Processor** to move a status straight from `PLACED` to `COMPLETED`, it is free to reject that request if that is an invalid change.
+
+- Sources of common coupling can also be sources of resource contention, potentially causing problems if the shared resource becomes slow or unavailable.
+- Common coupling limits the changes that can be made to shared data and can indicate a lack of cohesion in code.
+- So common coupling is sometimes OK, but often it’s not. It is one of the least desirable forms of coupling, but it can get worse.
+
+
+## Content Coupling
+
+- Content coupling occurs when an upstream service reaches into the internals of a downstream service and changes its internal state.
+- The most common manifestation of this is an external service accessing another microservice’s database and changing it directly.
+- Common coupling and content coupling both involve two or more microservices reading and writing to the same set of data, but with common coupling, the shared dependency is understood to be external and not under your control.
+- In content coupling, the lines of ownership become less clear and it becomes more difficult for developers to change a system.
+- Problems that occur with common coupling also apply with content coupling, but content coupling has some additional headaches that make it problematic enough that some people refer to it as pathological coupling.
+- Content coupling can lead to duplication of logic and confusion in the system's state.
+- Internal data structures are exposed to outside parties, making subsequent changes more difficult and increasing the risk of breaking upstream consumers.
+- Allowing direct access to the database by an outside party eliminates information hiding and makes it difficult to define what can or cannot be changed.
+- In short, avoid content coupling.
+
+
+In the previous example, we have an Order service that is supposed to manage the allowable state changes to orders in our system.
+
+The Order Processor is sending requests to the Order service. On the other hand, the Warehouse service is directly updating the table in which order data is stored, bypassing any functionality in the Order service that might check for allowable changes.
+
+We have to hope that the Warehouse service has a consistent set of logic to ensure that only valid changes are made. At best, this represents a duplication of logic. In the worst case, the checking around allowable changes in Warehouse is different from that in the Order service, and as a result we could end up with orders in very odd, confusing states.
+
+![](images/content-coupling.png)
+
+When changing the Order service, we now have to be extremely careful about making changes to that particular table, it’s obvious to us that this table is being directly accessed by an outside party.
+
+The easy fix here is to have the **Warehouse** send requests to the **Order** service itself, where we can vet the request but also hide the internal detail, making subsequent changes to the Order service much easier.
