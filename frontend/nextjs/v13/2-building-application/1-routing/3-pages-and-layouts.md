@@ -66,3 +66,55 @@ export default function RootLayout({
 ### Nesting Layouts
 
 - Layouts in a route are **nested** by default. Each parent layout wraps child layouts below it using the React `children` prop.
+
+
+## Templates
+
+- Templates are similar to layouts in that they wrap each child layout or page.
+- Unlike layouts that persist across routes and maintain state, templates create a new instance for each of their children on navigation.
+
+There may be cases where you need those specific behaviors, and templates would be a more suitable option than layouts. For example:
+
+- Enter/exit animations using CSS or animation libraries.
+- Features that rely on `useEffect` (e.g logging page views) and `useState` (e.g a per-page feedback form).
+- To change the default framework behavior.
+
+We recommend using Layouts unless you have a specific reason to use Template.
+
+A template can be defined by exporting a default React component from a `template.js` file.
+
+```tsx filename="app/template.tsx" switcher
+export default function Template({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>
+}
+```
+
+The rendered output of a route segment with a layout and a template will be as such:
+
+```jsx filename="Output"
+<Layout>
+  {/* Note that the template is given a unique key. */}
+  <Template key={routeParam}>{children}</Template>
+</Layout>
+```
+
+
+## Modifying `<head>`
+
+In the `app` directory, you can modify the `<head>` HTML elements such as `title` and `meta` using the built-in SEO support.
+
+Metadata can be defined by exporting a `metadata` object or `generateMetadata` function in a `layout.js` or `page.js` file.
+
+```tsx filename="app/page.tsx" switcher
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Next.js',
+}
+
+export default function Page() {
+  return '...'
+}
+```
+
+You should not manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you should use the Metadata API which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
