@@ -36,6 +36,7 @@
 | `template`                 | `.js` `.jsx` `.tsx` | Re-rendered layout           |
 | `default`                   | `.js` `.jsx` `.tsx` | Parallel route fallback page |
 
+
 ### Nested Routes
 
 |                                                                              |                      |
