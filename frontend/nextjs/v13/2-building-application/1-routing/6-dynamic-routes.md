@@ -23,3 +23,35 @@ export async function generateStaticParams() {
   }))
 }
 ```
+
+
+## Catch-all Segments
+
+Dynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...folderName]`.
+
+For example, `app/shop/[...slug]/page.js` will match:
+- `/shop/clothes`
+- `/shop/clothes/tops`
+- `/shop/clothes/tops/t-shirts`.
+
+
+## Optional Catch-all Segments
+
+Catch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...folderName]]`.
+
+For example, `app/shop/[[...slug]]/page.js` will **also** match:
+- `/shop`
+- `/shop/clothes`
+- `/shop/clothes/tops`
+- `/shop/clothes/tops/t-shirts`
+
+
+## TypeScript
+
+When using TypeScript, you can add types for `params` depending on your configured route segment.
+
+```tsx filename="app/blog/[slug]/page.tsx" switcher
+export default function Page({ params }: { params: { slug: string } }) {
+  return <h1>My Page</h1>
+}
+```
