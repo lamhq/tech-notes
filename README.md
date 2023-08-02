@@ -1,4 +1,4 @@
-# Learning Notes
+# Tech Notes
 
 ## Overview
 
