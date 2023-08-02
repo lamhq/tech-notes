@@ -3,6 +3,8 @@
 ## Firing Events
 
 ```js
+import {render, screen, fireEvent} from '@testing-library/react'
+
 fireEvent.change(getByLabelText(/username/i), {target: {value: 'a'}})
 
 // note: attempting to manually set the files property of an HTMLInputElement

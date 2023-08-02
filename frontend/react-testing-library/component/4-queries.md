@@ -4,7 +4,7 @@
 
 Queries are the methods to find elements on the page.
 
-There are several types of queries ("get", "find", "query"). The difference between them is whether the query will throw an error if no element is found or if it will return a Promise and retry. 
+There are several types of queries (`get`, `find`, `query`). The difference between them is whether the query will throw an error if no element is found or if it will return a Promise and retry. 
 
 After selecting an element, you can:
 - use the Events API or user-event to fire events and simulate user interactions with the page.
@@ -30,7 +30,10 @@ test('should show login form', () => {
 
 ## Types of Queries
 
-- Single Elements: `getBy` (throw an error if no elements match), `queryBy` (return `null`), `findBy` (return a Promise)
+- Single Elements:
+  - `getBy`: throw an error if no elements match
+  - `queryBy`: return `null`
+  - `findBy`: return a Promise
 - Multiple Elements: `getAllBy`, `queryAllBy`, `findAllBy`
 
 

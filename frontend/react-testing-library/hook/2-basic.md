@@ -16,7 +16,7 @@ export default function useCounter() {
 
 ## Render hook
 
-To test `useCounter` we need to render it using the `renderHook` function provided by `react-hooks-testing-library`:
+To test `useCounter` we need to render it using the `renderHook` function:
 
 ```js
 // useCounter.test.js

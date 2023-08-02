@@ -2,9 +2,26 @@
 
 ## Installation
 
+Install required packages:
+
 ```sh
-yarn add --dev @testing-library/react
+yarn add --dev @testing-library/react @testing-library/jest-dom jest-environment-jsdom
 ```
+
+- `jest-dom` is a companion library for Testing Library that provides custom DOM element matchers for Jest.
+- `jest-environment-jsdom` to inform Jest we're testing browser interactions through the DOM
+
+Update your jest test setup file to import `@testing-library/jest-dom`.
+
+
+```ts
+// In your own jest-setup.js (or any other name)
+import '@testing-library/jest-dom'
+
+// In jest.config.js add (if you haven't already)
+setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
+```
+
 
 ## The component to test
 

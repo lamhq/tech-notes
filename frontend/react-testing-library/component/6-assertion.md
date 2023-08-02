@@ -1,14 +1,5 @@
 # Assertion
 
-## `jest-dom`
-
-`jest-dom` is a companion library for Testing Library that provides custom DOM element matchers for Jest.
-
-```bash
-yarn add --dev @testing-library/jest-dom
-```
-
-
 ## Asserting elements are not present
 
 if you want to make an assertion that an element is not present in the DOM, you can use `queryBy` APIs
