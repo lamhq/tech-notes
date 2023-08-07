@@ -86,7 +86,7 @@ test('should use custom step when incrementing', () => {
 ```
 
 
-## Async
+## Async Update
 
 In this example, `useCounter` hook have an `incrementAsync` callback that will update the count after 100ms:
 
@@ -95,35 +95,58 @@ In this example, `useCounter` hook have an `incrementAsync` callback that will u
 import React, { useState, useContext, useCallback } from 'react'
 
 export function useCounter(initialValue = 0) {
-  const [count, setCount] = useState(initialValue)
-  const step = useContext(CounterStepContext)
-  const increment = useCallback(() => setCount((x) => x + step), [step])
-  const incrementAsync = useCallback(() => setTimeout(increment, 100), [increment])
-  const reset = useCallback(() => setCount(initialValue), [initialValue])
-  return { count, increment, incrementAsync, reset }
+  const [count, setCount] = useState(initialValue);
+  const incrementAsync = useCallback(
+    () =>
+      setTimeout(() => {
+        setCount((cnt) => cnt + 1);
+      }, 100),
+    [setCount]
+  );
+  return { count, incrementAsync };
 }
 ```
 
-To test `incrementAsync` we need to await `waitForNextUpdate()` before making our assertions:
+To test `incrementAsync` we need to use `waitFor` to wrap our assertions:
 
 ```js
 // useCounter.test.js
-import { renderHook } from '@testing-library/react-hooks'
+import { useCallback, useState } from 'react';
+import { act, renderHook } from '@testing-library/react';
 import { useCounter } from './counter'
 
-test('should increment counter after delay', async () => {
-  const { result, waitForNextUpdate } = renderHook(() => useCounter())
+describe('useCounter', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
 
-  result.current.incrementAsync()
+  it('should increment counter after delay', async () => {
+    const { result } = renderHook(() => useCounter());
 
-  await waitForNextUpdate()
+    // increase the counter after a delay
+    result.current.incrementAsync();
+    // expect the counter has not been increased yet
+    expect(result.current.count).toBe(0);
 
-  expect(result.current.count).toBe(1)
-})
+    act(() => {
+      // Fast-forward until all timers have been executed
+      // it need to be wrapped in `act`, since the state is updated after timeout
+      jest.runAllTimers();
+    });
+
+    // expect the counter is increased after delay
+    expect(result.current.count).toBe(1);
+  });
+
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+});
 ```
 
 
-## Catching Erors
+## Catching Errors
 
 In this example, `useCounter` hook threw an error if the count reached a specific value:
 

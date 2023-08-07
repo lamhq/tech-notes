@@ -33,7 +33,7 @@ test('should show login form', () => {
 - Single Elements:
   - `getBy`: throw an error if no elements match
   - `queryBy`: return `null`
-  - `findBy`: return a Promise
+  - `findBy`: return a Promise. Wait until element appears
 - Multiple Elements: `getAllBy`, `queryAllBy`, `findAllBy`
 
 

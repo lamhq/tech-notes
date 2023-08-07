@@ -278,9 +278,26 @@ The native timer functions (i.e., `setTimeout()`, `setInterval()`, `clearTimeout
 
 ### Enable Fake Timers
 
-We enable fake timers by calling `jest.useFakeTimers()`. This is replacing the original implementation of `setTimeout()` and other timer functions.
+```tsx
+// Fake timers using Jest
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+```
 
-Timers can be restored to their normal behavior with `jest.useRealTimers()`.
+### Restore the timers after your test runs
+
+```tsx
+// Running all pending timers and switching to real timers using Jest
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+```
+
+### Using fake timers
+
+The function `timerGame` call the callback after 1 second:
 
 ```js
 // timerGame.js
@@ -295,30 +312,12 @@ function timerGame(callback) {
 module.exports = timerGame;
 ```
 
-```js
-// __tests__/timerGame-test.js
-jest.useFakeTimers();
-jest.spyOn(global, 'setTimeout');
-
-test('waits 1 second before ending the game', () => {
-  const timerGame = require('../timerGame');
-  timerGame();
-
-  expect(setTimeout).toHaveBeenCalledTimes(1);
-  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-});
-```
-
-### Run All Timers
-
-Fast-forward until all timers have been executed
+Fast-forward until all timers have been executed:
 
 ```js
-jest.useFakeTimers();
 test('calls the callback after 1 second', () => {
   const timerGame = require('../timerGame');
   const callback = jest.fn();
-
   timerGame(callback);
 
   // At this point in time, the callback should not have been called yet
@@ -333,7 +332,7 @@ test('calls the callback after 1 second', () => {
 });
 ```
 
-### Run Pending Timers
+### Run only Pending Timers
 
 There are also scenarios where you might have a recursive timer – that is a timer that sets a new timer in its own callback. For these, running all the timers would be an endless loop, throwing the following error: "Aborting after running 100000 timers, assuming an infinite loop!"
 

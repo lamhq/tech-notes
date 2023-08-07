@@ -1,6 +1,6 @@
 # Basic Usage
 
-Imagine we have a simple hook that we want to test:
+Here's a hook that return a counter and a function to increase that counter:
 
 ```js
 // useCounter.js
@@ -36,6 +36,8 @@ test('should use counter', () => {
 We call the `increment` function and check that the `count` value increases:
 
 ```js
+import { renderHook, act } from '@testing-library/react-hooks'
+
 test('should increment counter', () => {
   const { result } = renderHook(() => useCounter())
 
