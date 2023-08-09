@@ -2,7 +2,7 @@
 
 ## Why Cypress?
 
-Cypress is a next generation front end testing tool built for the modern web. This enables you to **write faster**, **easier** and **more reliable** tests.
+Cypress is a front end testing tool built for the modern web. This enables you to **write faster**, **easier** and **more reliable** tests.
 
 Cypress enables you to write all types of tests:
 
@@ -11,25 +11,23 @@ Cypress enables you to write all types of tests:
 - Integration tests
 - Unit tests
 
-Cypress is most often compared to **Selenium**; however Cypress is both fundamentally and architecturally different. Cypress is not constrained by the same restrictions as Selenium.
+Cypress can test anything that runs in a browser.
 
 
 ## Features
 
-- Time Travel
-- Debuggability
-- Automatic Waiting
-- Spies, Stubs, and Clocks
-- Network Traffic Control:
-- Consistent Results
-- Screenshots and Videos
-- Cross Browser Testing:
-- Smart Orchestration
-- Flake Detection
+- Time Travel: Cypress takes snapshots as your tests run
+- Debuggability: readable errors and stack traces make debugging lightning fast.
+- Automatic Waiting: Cypress automatically waits for commands and assertions before moving on.
+- Spies, Stubs, and Clocks: control the behavior of functions, server responses, or timers.
+- Network Traffic Control: stub, and test edge cases without involving your server.
+- Consistent Results: consistent and reliable tests that are flake-free.
+- Screenshots and Videos: View screenshots taken automatically on failure, or videos of your entire test suite when run from the CLI. 
+- Cross Browser Testing
+- Smart Orchestration: easily parallelize your test suite, rerun failed specs.
+- Flake Detection: Discover and diagnose unreliable tests
 
 
-## Example app
+## Example
 
-You'll often wonder if you're using best practices or scalable strategies.
-
-To guide the way, the Cypress team has created the Real World App (RWA), a full stack example application that demonstrates testing with **Cypress in practical and realistic scenarios**.
+The Cypress team has created the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app), a full stack example application that demonstrates testing with Cypress in practical and realistic scenarios.

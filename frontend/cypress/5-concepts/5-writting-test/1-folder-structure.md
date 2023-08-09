@@ -1,6 +1,4 @@
-# Writing and Organizing Tests
-
-## Folder structure
+# Folder structure
 
 After adding a new project, Cypress will automatically scaffold out a suggested folder structure. By default it will create:
 
@@ -12,32 +10,25 @@ E2E:
 /cypress/support/e2e.ts
 ```
 
-### Spec files
+## Spec files
 
 Test files are located in `cypress/e2e` by default.
 
-### Fixture Files
+## Fixture Files
 
 Fixtures are used as external pieces of static data that can be used by your tests. Fixture files are located in `cypress/fixtures` by default.
 
-### Asset Files
 
-There are some folders that may be generated after a test run, containing assets that were generated during the test run.
+## Asset Files
+
+- Download Files: `/cypress/downloads`
+- Screenshot Files: `/cypress/screenshots`
+- Video Files: `/cypress/videos`
 
 You may consider adding these folders to your `.gitignore` file to ignore checking these files into source control.
 
-```
-/cypress
-  /downloads
-    - records.csv
-  /screenshots
-    /app.cy.js
-      - Navigates to main menu (failures).png
-  /videos
-    - app.cy.js.mp4
-```
 
-### Support file
+## Support file
 
 To include code before your test files, set the `supportFile` path. By default, `supportFile` is set to look for one of the following files:
 
@@ -49,9 +40,7 @@ cypress/support/component.js
 cypress/support/e2e.js
 ```
 
-This file runs before every single spec file. You don't have to import this file.
-
-The support file is a great place to put reusable behavior such as custom commands or global overrides that you want applied and available to all of your spec files.
+The support file is a great place to put reusable behavior such as **custom commands** or **global overrides** that you want applied and available to all of your spec files.
 
 From your support file you can import or require other files to keep things organized.
 
@@ -63,10 +52,22 @@ beforeEach(() => {
 })
 ```
 
+### Execution
+
+Support files run before every single spec file. You don't have to import this file.
+
+### Troubleshooting
+
 If Cypress does not find the spec files for some reason, you can troubleshoot its logic by opening or running Cypress with debug logs enabled:
 
 ```bash
 DEBUG=cypress:server:specs npx cypress open
-## or
+# or
 DEBUG=cypress:server:specs npx cypress run
 ```
+
+
+## What files should be in '.gitignore file' ?
+
+- `screenshotsFolder`: `cypress/screenshots`
+- `videosFolder`: `cypress/videos`

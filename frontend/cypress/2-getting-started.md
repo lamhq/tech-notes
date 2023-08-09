@@ -27,6 +27,12 @@ npx cypress open
 npm run cypress:open
 ```
 
-## Running tests
+## The Launchpad
 
-You can run a test by clicking on the spec filename. 
+On opening Cypress, your testing journey begins with the Launchpad.
+
+![](https://docs.cypress.io/img/guides/core-concepts/cypress-app/the-launchpad.png)
+
+The Launchpad presents you with testing type options: **E2E Testing** or **Component Testing**.
+
+The Launchpad will scaffold out a set of configuration files appropriate to your chosen testing type.

@@ -1,4 +1,4 @@
-# Calibre ebook viewer software
+# Calibre (ebook viewer software)
 
 ## Font for Calibre
 
