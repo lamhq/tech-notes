@@ -20,6 +20,15 @@ You don't need to write `.should('exist')` after querying the DOM.
 cy.get('.my-slow-selector', { timeout: 10000 })
 ```
 
+Disable retry:
+
+```ts
+// check synchronously that the element does not exist (no retry)
+// for example just after a server-side render
+cy.get('[data-testid="ssr-error"]', { timeout: 0 }).should('not.exist')
+```
+
+
 You can also set the timeout globally via the configuration setting: `defaultCommandTimeout`.
 
 

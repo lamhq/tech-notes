@@ -27,7 +27,8 @@ Cypress can test anything that runs in a browser.
 - Smart Orchestration: easily parallelize your test suite, rerun failed specs.
 - Flake Detection: Discover and diagnose unreliable tests
 
-
+> What is a flaky test?
+A test is considered to be flaky when it can pass and fail across multiple retry attempts without any code changes.
 ## Example
 
 The Cypress team has created the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app), a full stack example application that demonstrates testing with Cypress in practical and realistic scenarios.

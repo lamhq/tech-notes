@@ -1,5 +1,10 @@
 # Commands
 
+## Commands, Queries and Assertions
+
+There are some different types of commands: queries, assertions and actions.
+
+
 ## Commands are chained
 
 - Cypress manages a Promise chain on your behalf
@@ -37,11 +42,6 @@ This type of conditional control flow ends up being non-deterministic. This mean
 As long as you are aware of the potential pitfalls with control flow, it is possible to do this in Cypress! 
 
 Read more [here](https://docs.cypress.io/guides/core-concepts/conditional-testing)
-
-
-## Retry ability
-
-Almost all commands come with built-in retry-ability. Without retry-ability, assertions would randomly fail. This would lead to flaky, inconsistent results.
 
 
 ## Using `.then()` to access subject
@@ -97,20 +97,6 @@ it('does not work as we expect', () => {
 // Ok, the test function has finished executing...
 // We've queued all of these commands and now
 // Cypress will begin running them in order!
-```
-
-
-## Using Aliases to Refer to Previous Subjects
-
-```ts
-cy.get('.my-selector')
-  .as('myElement') // sets the alias
-  .click()
-
-/* many more actions */
-
-cy.get('@myElement') // re-queries the DOM as before
-  .click()
 ```
 
 
