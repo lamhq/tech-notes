@@ -19,6 +19,27 @@ You can set environment variables by:
 - Pass in the CLI as --env
 - Set an environment variable within test configuration.
 
+### Configuration file
+
+```js
+import { defineConfig } from 'cypress'
+
+export default defineConfig({
+  projectId: '128076ed-9868-4e98-9cef-98dd8b705d75',
+  env: {
+    login_url: '/login',
+    products_url: '/products',
+  },
+})
+```
+
+Test file:
+
+```js
+Cypress.env() // {login_url: '/login', products_url: '/products'}
+Cypress.env('login_url') // '/login'
+Cypress.env('products_url') // '/products'
+```
 
 ### `cypress.env.json`
 
@@ -47,6 +68,18 @@ Benefits:
 - Enables you to generate this file from other build processes.
 - Values can be different on each machine (if not checked into source control).
 - Supports nested fields (objects), e.g. `{ testUser: { name: '...', email: '...' } }`.
+
+
+### `CYPRESS_*`
+
+Any exported environment variables set on the command line or in your CI provider that start with either `CYPRESS_` or `cypress_` will automatically be parsed by Cypress.
+
+Environment variables that match a corresponding configuration option will override any value set in the Cypress configuration.
+
+```shell
+export CYPRESS_VIEWPORT_WIDTH=800
+export CYPRESS_VIEWPORT_HEIGHT=600
+```
 
 
 ### Test Configuration
@@ -79,4 +112,22 @@ describe(
     )
   }
 )
+```
+
+
+## Overriding Configuration
+
+If your environment variables match a standard configuration key, then instead of setting an `environment variable` they will instead override the configuration value.
+
+**Change the `baseUrl` configuration value / not set env var in
+`Cypress.env()`**
+
+```shell
+export CYPRESS_BASE_URL=http://localhost:8080
+```
+
+**'foo' does not match config / sets env var in `Cypress.env()`**
+
+```shell
+export CYPRESS_FOO=bar
 ```
