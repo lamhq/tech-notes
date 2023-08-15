@@ -221,12 +221,16 @@ Values:
 }
 ```
 
+`start`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/justify-items-start.svg)
 
+`end`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/justify-items-end.svg)
 
+`center`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/justify-items-center.svg)
 
+`stretch`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/justify-items-stretch.svg)
 
 
@@ -238,12 +242,16 @@ Values:
 }
 ```
 
+`start`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/align-items-start.svg)
 
+`end`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/align-items-end.svg)
 
+`center`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/align-items-center.svg)
 
+`stretch`:
 ![](https://css-tricks.com/wp-content/uploads/2018/11/align-items-stretch.svg)
 
 
