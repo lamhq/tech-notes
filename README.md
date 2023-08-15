@@ -2,6 +2,6 @@
 
 ## Overview
 
-Welcome to my personal repository of learning programming! Here, I store all of my helpful notes, code snippets, and tutorials in one convenient location. This way, whenever I forget a command or need a reference for certain code, I can easily access it without having to search online.
+This repository contains code snippets and knowledge notes (mostly about programming) from my learning journey.
 
-Additionally, this repository serves as a great tool for reviewing my knowledge. Instead of reading through long official documentation again, I can simply revisit my notes and quickly refresh my memory.
+I use it as a reference to quickly review my knowledge, which saves me a lot of time compared to searching on the internet.
