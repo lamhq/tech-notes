@@ -1,6 +1,14 @@
 # Flex Layout
 
-## Basics
+> *Use grid when you already have the layout structure in mind, and flex when you just want everything to fit. Layout first vs content first.*
+
+
+## Reference
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+
+## Concepts
 
 ![](https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg)
 
@@ -10,13 +18,9 @@
 - `cross axis`: The axis perpendicular to the main axis is called the cross axis. Its direction depends on the main axis direction.
 - `cross-start | cross-end`: Flex lines are filled with items and placed into the container starting on the cross-start side of the flex container and going toward the cross-end side.
 - `cross size`: The width or height of a flex item, whichever is in the cross dimension, is the item’s cross size.
-
-Flex container:
-
+- Flex container:
 ![](https://css-tricks.com/wp-content/uploads/2018/10/01-container.svg)
-
-Flex items:
-
+- Flex items:
 ![](https://css-tricks.com/wp-content/uploads/2018/10/02-items.svg)
 
 
@@ -145,6 +149,23 @@ This property only takes effect on multi-line flexible containers, where `flex-f
 
 Demo: [https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_align-content](https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_align-content)
 
+
+### gap, row-gap, column-gap
+
+The gap property explicitly controls the space between flex items.
+
+![](https://css-tricks.com/wp-content/uploads/2021/09/gap-1.svg)
+
+```css
+.container {
+  display: flex;
+  ...
+  gap: 10px;
+  gap: 10px 20px; /* row-gap column gap */
+  row-gap: 10px;
+  column-gap: 20px;
+}
+```
 
 ## Properties for the Children
 

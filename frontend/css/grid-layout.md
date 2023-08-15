@@ -1,6 +1,6 @@
 # CSS Grid Layout
 
-## Important Terminology
+## Concepts
 
 ### Grid Container
 
@@ -112,21 +112,98 @@ Defines a grid template by referencing the names of the grid areas
 ![](https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-template-areas.svg)
 
 
-### `column-gap`, `row-gap`, `grid-gap`
+### `grid-auto-columns`, `grid-auto-rows`
 
-Specifies the size of the grid lines
+Specifies the size of any auto-generated grid tracks
 
 ```css
 .container {
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 80px 80px 80px;
-  row-gap: 15px;
-  column-gap: 10px;
-  /* gap: <grid-row-gap> <grid-column-gap>; */
+  grid-template-columns: 60px 60px;
+  grid-template-rows: 90px 90px;
+  grid-auto-columns: 60px;
+}
+
+.item-a {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.item-b {
+  grid-column: 5 / 6;
+  grid-row: 2 / 3;
 }
 ```
 
-![](https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-gap.svg)
+We told `.item-b` to start on column line 5 and end at column line 6, **but we never defined a column line 5 or 6**. Because we referenced lines that don’t exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use `grid-auto-columns` and `grid-auto-rows` to specify the widths and heights of these implicit tracks:
+
+![](https://css-tricks.com/wp-content/uploads/2018/11/grid-auto-columns-rows-03.svg)
+
+
+### `grid-auto-flow`
+
+If you have grid items that you don’t explicitly place on the grid, the *auto-placement algorithm* kicks in to automatically place the items. This property controls how the auto-placement algorithm works.
+
+- `row`: tells the auto-placement algorithm to add new rows as necessary (default)
+- `column`: tells the auto-placement algorithm to add new columns as necessary
+- `dense`: tells the auto-placement algorithm to fill in holes earlier in the grid if smaller items come up later, might cause items to appear out of order.
+
+```css
+.container {
+  grid-auto-flow: row | column | row dense | column dense;
+}
+```
+
+### `grid-template`
+
+A shorthand for setting all of the following properties in a single declaration:
+
+- `grid-template-rows`
+- `grid-template-columns`
+- `grid-template-areas`
+
+Values:
+
+- `none`: sets all three properties to their initial values
+- `<grid-template-rows> / <grid-template-columns>`
+
+
+The following two code blocks are equivalent:
+
+```css
+.container {
+  grid-template:
+    [row1-start] "header header header" 25px [row1-end]
+    [row2-start] "footer footer footer" 25px [row2-end]
+    / auto 50px auto;
+}
+
+.container {
+  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
+  grid-template-columns: auto 50px auto;
+  grid-template-areas:
+    "header header header"
+    "footer footer footer";
+}
+```
+
+
+### `grid`
+
+A shorthand for setting all of the following properties in a single declaration:
+
+- `grid-template-rows`
+- `grid-template-columns`
+- `grid-template-areas`
+- `grid-auto-rows`
+- `grid-auto-columns`
+- `grid-auto-flow`
+
+Values:
+
+- `none`
+- `<grid-template>`: works the same as the `grid-template` shorthand.
+- `<grid-template-rows> / [ auto-flow && dense? ] <grid-auto-columns>?`
+- `[ auto-flow && dense? ] <grid-auto-rows>? / <grid-template-columns>`
 
 
 ### `justify-items`, `align-items`, `place-items`
@@ -221,97 +298,22 @@ Sometimes the total size of your grid might be less than the size of its grid co
 }
 ```
 
-### `grid-auto-columns`, `grid-auto-rows`
 
-Specifies the size of any auto-generated grid tracks
+### `column-gap`, `row-gap`, `gap`
 
-```css
-.container {
-  grid-template-columns: 60px 60px;
-  grid-template-rows: 90px 90px;
-  grid-auto-columns: 60px;
-}
-
-.item-a {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-}
-.item-b {
-  grid-column: 5 / 6;
-  grid-row: 2 / 3;
-}
-```
-
-We told `.item-b` to start on column line 5 and end at column line 6, **but we never defined a column line 5 or 6**. Because we referenced lines that don’t exist, implicit tracks with widths of 0 are created to fill in the gaps. We can use `grid-auto-columns` and `grid-auto-rows` to specify the widths and heights of these implicit tracks:
-
-![](https://css-tricks.com/wp-content/uploads/2018/11/grid-auto-columns-rows-03.svg)
-
-
-### `grid-auto-flow`
-
-If you have grid items that you don’t explicitly place on the grid, the *auto-placement algorithm* kicks in to automatically place the items. This property controls how the auto-placement algorithm works.
-
-- `row`: tells the auto-placement algorithm to add new rows as necessary (default)
-- `column`: tells the auto-placement algorithm to add new columns as necessary
-- `dense`: tells the auto-placement algorithm to fill in holes earlier in the grid if smaller items come up later, might cause items to appear out of order.
+Specifies the size of the grid lines
 
 ```css
 .container {
-  grid-auto-flow: row | column | row dense | column dense;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 80px 80px 80px;
+  row-gap: 15px;
+  column-gap: 10px;
+  /* gap: <grid-row-gap> <grid-column-gap>; */
 }
 ```
 
-### `grid-template`
-
-A shorthand for setting all of the following properties in a single declaration:
-
-- `grid-template-rows`
-- `grid-template-columns`
-- `grid-template-areas`
-
-Values:
-
-- `none`: sets all three properties to their initial values
-- `<grid-template-rows> / <grid-template-columns>`
-
-
-The following two code blocks are equivalent:
-
-```css
-.container {
-  grid-template:
-    [row1-start] "header header header" 25px [row1-end]
-    [row2-start] "footer footer footer" 25px [row2-end]
-    / auto 50px auto;
-}
-
-.container {
-  grid-template-rows: [row1-start] 25px [row1-end row2-start] 25px [row2-end];
-  grid-template-columns: auto 50px auto;
-  grid-template-areas:
-    "header header header"
-    "footer footer footer";
-}
-```
-
-
-### `grid`
-
-A shorthand for setting all of the following properties in a single declaration:
-
-- `grid-template-rows`
-- `grid-template-columns`
-- `grid-template-areas`
-- `grid-auto-rows`
-- `grid-auto-columns`
-- `grid-auto-flow`
-
-Values:
-
-- `none`
-- `<grid-template>`: works the same as the `grid-template` shorthand.
-- `<grid-template-rows> / [ auto-flow && dense? ] <grid-auto-columns>?`
-- `[ auto-flow && dense? ] <grid-auto-rows>? / <grid-template-columns>`
+![](https://css-tricks.com/wp-content/uploads/2018/11/dddgrid-gap.svg)
 
 
 ## Length values
@@ -555,4 +557,3 @@ Values:
   <div class="item item10">10</div>
 </div>
 ```
-
