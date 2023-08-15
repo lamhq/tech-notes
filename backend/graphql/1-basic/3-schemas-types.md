@@ -204,3 +204,116 @@ Union types are very similar to interfaces, but they don't get to specify any co
 ```graphql
 union SearchResult = Human | Droid | Starship
 ```
+
+Members of a union type need to be concrete object types; you can't create a union type out of interfaces or other unions.
+
+If you query a field that returns union type, you need to use an inline fragment to be able to query any fields at all.
+
+```graphql
+union SearchResult = Human | Droid | Starship
+```
+
+Wherever we return a `SearchResult` type in our schema, we might get a `Human`, a `Droid`, or a `Starship`.
+
+
+```graphql
+{
+  search(text: "an") {
+    __typename
+    ... on Human {
+      name
+      height
+    }
+    ... on Droid {
+      name
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}
+```
+
+The `__typename` field resolves to a `String` which lets you differentiate different data types from each other on the client.
+
+```json
+{
+  "data": {
+    "search": [
+      {
+        "__typename": "Human",
+        "name": "Han Solo",
+        "height": 1.8
+      },
+      {
+        "__typename": "Human",
+        "name": "Leia Organa",
+        "height": 1.5
+      },
+      {
+        "__typename": "Starship",
+        "name": "TIE Advanced x1",
+        "length": 9.2
+      }
+    ]
+  }
+}
+```
+
+If your types share a common interface, you can query their common fields in one place rather than having to repeat the same fields across multiple types:
+
+```graphql
+{
+  search(text: "an") {
+    __typename
+    ... on Character {
+      name
+    }
+    ... on Human {
+      height
+    }
+    ... on Droid {
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}
+```
+
+- `Human` and `Droid` share a common interface (`Character`)
+- `name` is still specified on `Starship` because `Starship` is not a `Character`
+
+## Input types (mutation)
+
+You can pass complex objects as arguments into a field.
+
+This is particularly valuable in the case of mutations, where you might want to pass in a whole object to be created.
+
+In the GraphQL schema language, input types are declared with the keyword `input`:
+
+```graphql
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+```
+
+Here is how you could use the input object type in a mutation:
+
+```graphql
+mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+  createReview(episode: $ep, review: $review) {
+    stars
+    commentary
+  }
+}
+```
+
+The fields on an input object type can themselves refer to input object types, but you can't mix input and output types in your schema. 
+
+Input object types can't have arguments on their fields.
