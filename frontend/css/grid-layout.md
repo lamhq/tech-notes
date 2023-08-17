@@ -1,5 +1,9 @@
 # CSS Grid Layout
 
+> *You could think of grid as "two dimensional"*.
+
+> *Use grid when you already have the layout structure in mind, and flex when you just want everything to fit. Layout first vs content first.*
+
 ## Concepts
 
 ### Grid Container

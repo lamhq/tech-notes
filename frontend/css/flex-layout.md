@@ -1,6 +1,6 @@
 # Flex Layout
 
-> *Use grid when you already have the layout structure in mind, and flex when you just want everything to fit. Layout first vs content first.*
+> *You could think of flexbox as "one dimensional."*
 
 
 ## Reference
