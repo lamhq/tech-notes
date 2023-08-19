@@ -1,4 +1,4 @@
-# Docs Theme Get started
+# Get started
 
 This guide will help you create a software documentation website.
 
