@@ -61,4 +61,6 @@ Chrome DevTools has created a way to [see the full accessibility tree](https://d
 
 ## When to use ARIA
 
-Next: https://web.dev/learn/accessibility/aria-html/#when-to-use-aria
+https://web.dev/learn/accessibility/aria-html/#when-to-use-aria
+
+https://github.com/GoogleChrome/web.dev/blob/main/src/site/content/en/learn/accessibility/aria-html/index.md?plain=1

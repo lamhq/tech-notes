@@ -99,7 +99,7 @@ By defining a top-level page or folder as `"type": "page"`, it
 ```
 
 You can also hide links like `Home` from the navbar with the
-[`"display": "hidden"`](#hidden-routes) option.
+`"display": "hidden"` option.
 
 ### Menus
 
