@@ -139,3 +139,32 @@ export default function Layout({ children }) {
   )
 }
 ```
+
+
+## Dynamic Routes
+
+A Dynamic Segment can be created by wrapping a folder's name in square brackets: `[folderName]`. For example, `[id]` or `[slug]`.
+
+For example, a blog could include the following route `pages/blog/[slug].js` where `[slug]` is the Dynamic Segment for blog posts.
+
+```jsx filename="pages/blog/[slug].js"
+import { useRouter } from 'next/router'
+
+export default function Page() {
+  const router = useRouter()
+  return <p>Post: {router.query.slug}</p>
+}
+```
+
+### Catch-all Segments
+
+Dynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...folderName]`.
+
+For example, `pages/shop/[...slug].js` will match `/shop/clothes`, but also `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`, and so on.
+
+
+### Optional Catch-all Segments
+
+Catch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...folderName]]`.
+
+For example, `pages/shop/[[...slug]].js` will **also** match `/shop`, in addition to `/shop/clothes`, `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`.
