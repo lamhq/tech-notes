@@ -87,3 +87,62 @@ You can learn more about Cypress and Continuous Integration from these resources
 - [Cypress GitHub Actions Guide](https://on.cypress.io/github-actions)
 - [Official Cypress GitHub Action](https://github.com/cypress-io/github-action)
 - [Cypress Discord](https://discord.com/invite/cypress)
+
+
+## Jest and React Testing Library
+
+There are three ways you can start using Jest within your Next.js application:
+
+1. Using one of our quickstart examples
+2. With the Next.js Rust Compiler
+3. With Babel
+
+### 1. Quickstart
+
+You can use `create-next-app` with the [with-jest](https://github.com/vercel/next.js/tree/canary/examples/with-jest) example to quickly get started with Jest and React Testing Library:
+
+```bash filename="Terminal"
+npx create-next-app@latest --example with-jest with-jest-app
+```
+
+### 2. Setting up Jest (with the Rust Compiler)
+
+Since the release of [Next.js 12](https://nextjs.org/blog/next-12), Next.js now has built-in configuration for Jest.
+
+To set up Jest, install `jest`, `jest-environment-jsdom`, `@testing-library/react`, `@testing-library/jest-dom`:
+
+```bash filename="Terminal"
+npm install --save-dev jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+```
+
+Create a `jest.config.mjs` file in your project's root directory and add the following:
+
+```js filename="jest.config.mjs"
+import nextJest from 'next/jest.js'
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+
+// Add any custom config to be passed to Jest
+/** @type {import('jest').Config} */
+const config = {
+  // Add more setup options before each test is run
+  // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+
+  testEnvironment: 'jest-environment-jsdom',
+}
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+export default createJestConfig(config)
+```
+
+Under the hood, `next/jest` is automatically configuring Jest for you, including:
+
+- Setting up `transform` using SWC
+- Auto mocking stylesheets (`.css`, `.module.css`, and their scss variants), image imports and `next/font`
+- Loading `.env` (and all variants) into `process.env`
+- Ignoring `node_modules` from test resolving and transforms
+- Ignoring `.next` from test resolving
+- Loading `next.config.js` for flags that enable SWC transforms
