@@ -28,7 +28,7 @@ export const authOptions = {
 export default NextAuth(authOptions)
 ```
 
-### Configure Shared session state
+### Add `SessionProvider`
 
 To be able to use `useSession` first you'll need to expose the session context, `<SessionProvider />`, at the top level of your application:
 
