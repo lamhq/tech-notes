@@ -115,32 +115,6 @@ export default Page
 ```
 
 
-### Data Fetching
-
-Inside your layout, you can fetch data on the client-side using `useEffect` or a library like SWR, you cannot use `getStaticProps` or `getServerSideProps`.
-
-```jsx filename="components/layout.js"
-import useSWR from 'swr'
-import Navbar from './navbar'
-import Footer from './footer'
-
-export default function Layout({ children }) {
-  const { data, error } = useSWR('/api/navigation', fetcher)
-
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
-
-  return (
-    <>
-      <Navbar links={data.links} />
-      <main>{children}</main>
-      <Footer />
-    </>
-  )
-}
-```
-
-
 ## Dynamic Routes
 
 A Dynamic Segment can be created by wrapping a folder's name in square brackets: `[folderName]`. For example, `[id]` or `[slug]`.

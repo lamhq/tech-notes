@@ -49,7 +49,7 @@ For example, you can create a file called `pages/posts/[id].js` to show a single
 
 In this case, you'd only want to pre-render `posts/1` at build time. Later, you might add the second post with `id: 2`. Then you'd want to pre-render `posts/2` as well.
 
-So your page **paths** that are pre-rendered depend on external data**.** To handle this, Next.js lets you `export` an `async` function called `getStaticPaths` from a dynamic page (`pages/posts/[id].js` in this case). This function gets called at build time and lets you specify which paths you want to pre-render.
+So your page **paths** that are pre-rendered depend on external data. To handle this, Next.js lets you `export` an `async` function called `getStaticPaths` from a dynamic page (`pages/posts/[id].js` in this case). This function gets called at build time and lets you specify which paths you want to pre-render.
 
 ```jsx
 // This function gets called at build time

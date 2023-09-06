@@ -67,6 +67,8 @@ Run `npm run build` and `npm run start`, then run `npm run cypress -- --e2e` in 
 
 ## Running for Continuous Integration (CI)
 
+You can install the `start-server-and-test` package and add it to the `package.json` `scripts` field: `"test": "start-server-and-test start http://localhost:3000 cypress"` to start the Next.js production server in conjunction with Cypress.
+
 You will have noticed that running Cypress so far has opened an interactive browser which is not ideal for CI environments. You can also run Cypress headlessly using the `cypress run` command:
 
 ```json filename="package.json"
