@@ -26,10 +26,10 @@ GITHUB_SECRET=""
 To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`. This contains the dynamic route handler for NextAuth.js which will also contain all of your global NextAuth.js configurations.
 
 ```javascript title="pages/api/auth/[...nextauth].js" showLineNumbers
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GithubProvider({

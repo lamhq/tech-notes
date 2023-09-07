@@ -233,6 +233,7 @@ import { signIn } from "next-auth/react"
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
 
+
 ### Redirect to OAuth sign-in page when clicked
 
 By default, when calling the `signIn()` method with no arguments, you will be redirected to the NextAuth.js sign-in page.
@@ -288,7 +289,7 @@ For that, you can pass `redirect: false` in the second parameter object.
 - `signIn('credentials', { redirect: false, password: 'password' })`
 - `signIn('email', { redirect: false, email: 'bill@fillmurray.com' })`
 
-`signIn` will then return a Promise, that resolves to the following:
+If `redirect` is `false`, `signIn` will then return a Promise, that resolves to the following:
 
 ```ts
 {

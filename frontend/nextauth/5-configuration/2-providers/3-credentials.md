@@ -63,7 +63,7 @@ The function returns either:
 
 - A `user` object, which indicates the credentials are valid.
 - If you return `null` then an error will be displayed advising the user to check their details.
--  If you throw an Error, the user will be sent to the error page with the error message as a query parameter.
+- If you throw an Error, the user will be sent to the error page with the error message as a query parameter.
 
 ```js title="pages/api/auth/[...nextauth].js"
 import CredentialsProvider from "next-auth/providers/credentials";
