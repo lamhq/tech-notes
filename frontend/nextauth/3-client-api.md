@@ -263,7 +263,7 @@ export default ({ email }) => (
 ```
 
 
-### Specifying a `callbackUrl`
+### `callbackUrl` after signing in
 
 The `callbackUrl` specifies to which URL the user will be redirected after signing in. Defaults to the page URL the sign-in is initiated from.
 
