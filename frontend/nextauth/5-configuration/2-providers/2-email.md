@@ -77,7 +77,7 @@ providers: [
 
 ### Setup database adapter
 
-Setup one of the database adapters for storing the Email verification token.
+[Setup a database adapter](https://authjs.dev/guides/adapters/creating-a-database-adapter) for storing the Email verification token.
 
 You can now sign in with an email address at `/api/auth/signin`.
 

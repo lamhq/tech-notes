@@ -111,73 +111,120 @@ export default async function RootLayout({
 }
 ```
 
-## Authentication in client component
+## Securing Pages (client)
 
-The `useSession()` React Hook in the NextAuth.js client is 
-the easiest way to check if someone is signed in.
+You can use the `useSession()` React Hook to secure pages
 
 ```jsx title="components/login-btn.jsx" showLineNumbers
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
 
-export default function Component() {
-  const { data: session } = useSession()
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
+export default function Page() {
+  const { data: session, status } = useSession()
+
+  if (status === "loading") {
+    return <p>Loading...</p>
   }
+
+  if (status === "unauthenticated") {
+    return <p>Access Denied</p>
+  }
+
   return (
     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <h1>Protected Page</h1>
+      <p>You can view this page because you are signed in.</p>
     </>
   )
 }
 ```
 
+## Securing routes with middleware
 
-## Authentication in Server Components
+You can create a `middleware.js` file at the root or in the src directory which look like this:
+
+```tsx
+export { default } from "next-auth/middleware"
+
+export const config = { matcher: ["/dashboard"] }
+```
+
+
+## Securing Pages (server side)
 
 ```jsx title="pages/api/restricted.js" showLineNumbers
+import { getServerSession } from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]"
+import { useSession } from "next-auth/react"
+
+export default function Page() {
+  const { data: session } = useSession()
+
+  if (typeof window === "undefined") return null
+
+  if (session) {
+    return (
+      <>
+        <h1>Protected Page</h1>
+        <p>You can view this page because you are signed in.</p>
+      </>
+    )
+  }
+  return <p>Access Denied</p>
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      session: await getServerSession(
+        context.req,
+        context.res,
+        authOptions
+      ),
+    },
+  }
+}
+```
+
+### With React Server Component
+
+```jsx
 import { getServerSession } from 'next-auth'
 
-export default async function Home() {
+export default function Page() {
   const session = await getServerSession();
+
   if (session) {
-    return <>{session?.user?.name}</>
+    return (
+      <>
+        <h1>Protected Page</h1>
+        <p>You can view this page because you are signed in.</p>
+      </>
+    )
   }
 
-  return (
-    <>Not logged in</>
-  )
+  return <p>Access Denied</p>
 }
 ```
 
 
-## Authentication in API Route
+## Securing API Routes
 
-To protect an API Route, you can use the `getServerSession()` method.
+You can protect an API Route using the `getServerSession()` method.
 
 ```javascript title="pages/api/restricted.js" showLineNumbers
-import { getServerSession } from "next-auth/next"
+import { getServerSession } from "next-auth"
 import { authOptions } from "./auth/[...nextauth]"
 
 export default async (req, res) => {
   const session = await getServerSession(req, res, authOptions)
-
   if (session) {
-    res.send({
-      content:
-        "This is protected content. You can access this content because you are signed in.",
-    })
+    // Signed in
+    console.log("Session", JSON.stringify(session, null, 2))
   } else {
-    res.send({
-      error: "You must be signed in to view the protected content on this page.",
-    })
+    // Not Signed in
+    res.status(401)
   }
+  res.end()
 }
 ```
 
@@ -189,3 +236,8 @@ When deploying your site set the `NEXTAUTH_URL` environment variable to the cano
 ```
 NEXTAUTH_URL=https://example.com
 ```
+
+
+## References
+
+https://next-auth.js.org/tutorials/securing-pages-and-api-routes
