@@ -7,7 +7,7 @@ There are four ways you can fetch data:
 3. On the client, via a Route Handler
 4. On the client, with third-party libraries
 
-## Fetching Data on the Server with `fetch`
+## 1. Fetching Data on the Server with `fetch`
 
 Next.js extends the native `fetch` Web API to allow you to configure the caching and revalidating behavior for each fetch request on the server.
 
@@ -125,7 +125,7 @@ export const dynamic = 'force-dynamic'
 There's an extensive list of Segment Config options, giving you fine-grained control of static and dynamic behavior of a route segment.
 
 
-## Fetching data on the Server with third-party libraries
+## 2. Fetching data on the Server with third-party libraries
 
 In cases where you're using a third-party library that doesn't support or expose `fetch` (for example, a database, CMS, or ORM client), you can configure the caching and revalidating behavior of those requests using the Route Segment Config Option and React's `cache` function.
 
@@ -152,7 +152,7 @@ export const getItem = cache(async (id: string) => {
 ```
 
 
-## Fetching Data on the Client with Route Handlers
+## 3. Fetching Data on the Client with Route Handlers
 
 If you need to fetch data in a client component, you can call a Route Handler from the client.
 
@@ -161,6 +161,6 @@ Route Handlers execute on the server and return the data to the client. This is 
 > Since Server Components render on the server, you don't need to call a Route Handler from a Server Component to fetch data. Instead, you can fetch the data directly inside the Server Component.
 
 
-## Fetching Data on the Client with third-party libraries
+## 4. Fetching Data on the Client with third-party libraries
 
 You can also fetch data on the client using a third-party library such as SWR or React Query. These libraries provide their own APIs for memoizing requests, caching, revalidating, and mutating data.

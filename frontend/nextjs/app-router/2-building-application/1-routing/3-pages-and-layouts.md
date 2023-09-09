@@ -18,6 +18,7 @@ export default function Page() {
 - On navigation, layouts preserve state, remain interactive, and do not re-render.
 - Layouts can also be nested.
 - You can define a layout by `default` exporting a React component from a `layout.js` file. The component should accept a `children` prop that will be populated with a child layout or a child page during rendering.
+- It's not possible to pass data between a parent layout and its children.
 
 ```tsx
 export default function DashboardLayout({

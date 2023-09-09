@@ -39,28 +39,27 @@ import { Button } from '@/components/button'
 
 ### Route Groups
 
-https://nextjs.org/docs/app/building-your-application/routing/colocation#route-groups
-
+Check [here](./5-route-groups.md).
 
 ## Project organization strategies
 
 Ways to organize code files and folders in a Next.js project.
 
-### Store project files outside of `app`
+### 1. Store project files outside of `app`
 
 This strategy stores all application code in shared folders in the **root of your project** and keeps the `app` directory purely for routing purposes.
 
 ![](https://nextjs.org/_next/image?url=%2Fdocs%2Flight%2Fproject-organization-project-root.png&w=3840&q=75&dpl=dpl_DMzbjJ6qfcbNz3HGySe9uGAgJ5sK)
 
 
-### Store project files in top-level folders inside of `app`
+### 2. Store project files in top-level folders inside of `app`
 
 This strategy stores all application code in shared folders in the **root of the `app` directory**.
 
 ![](https://nextjs.org/_next/image?url=%2Fdocs%2Flight%2Fproject-organization-app-root.png&w=3840&q=75&dpl=dpl_DMzbjJ6qfcbNz3HGySe9uGAgJ5sK)
 
 
-### Split project files by feature or route (recommended)
+### 3. Split project files by feature or route (recommended)
 
 This strategy stores globally shared application code in the root `app` directory and **splits** more specific application code into the route segments that use them.
 
