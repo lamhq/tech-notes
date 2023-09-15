@@ -247,26 +247,29 @@ By defining component classes in the `components` layer, you can still use utili
 </div>
 ```
 
-The `components` layer is also a good place to put custom styles for any third-party components you're using:
+### Working with third-party libraries
+
+If you're working with any third-party libraries (for example [Select2](https://select2.org/)) and styling that library with your own custom CSS, we recommend writing those styles _without_ using Tailwind's `@layer` feature:
 
 ```css {{ filename: 'main.css' }}
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
-@layer components {
-  .select2-dropdown {
-    @apply rounded-b-lg shadow-md;
-  }
-  .select2-search {
-    @apply border border-gray-300 rounded;
-  }
-  .select2-results__group {
-    @apply text-lg font-bold text-gray-900;
-  }
-  /* ... */
+.select2-dropdown {
+  @apply rounded-b-lg shadow-md;
 }
+.select2-search {
+  @apply border border-gray-300 rounded;
+}
+.select2-results__group {
+  @apply text-lg font-bold text-gray-900;
+}
+/* ... */
+
+@tailwind utilities;
 ```
+
+This will ensure that Tailwind _always_ includes those styles in your CSS, which is a lot easier than configuring Tailwind to scan the source code of a third-party library.
 
 ### Adding custom utilities
 

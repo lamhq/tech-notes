@@ -27,3 +27,11 @@ This is easily solved by:
 - using editor and language features like multi-cursor editing and simple loops.
 
 Maintaining a utility-first CSS project turns out to be a lot easier than maintaining a large CSS codebase, simply because HTML is so much easier to maintain than CSS. 
+
+
+## Usage
+
+### Dynamic class names
+
+- Don’t construct class names dynamically. If you use string interpolation or concatenate partial class names together, Tailwind will not find them and therefore will not generate the corresponding CSS.
+- Always use complete class names.
