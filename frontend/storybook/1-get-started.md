@@ -1,8 +1,8 @@
-# Basic
+# Get started
 
 ## Version
 
-This document is for version `v6.5`.
+This document is for version `v7.4` (2023).
 
 The document assumes that your app is using Vite.js.
 
