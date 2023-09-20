@@ -87,7 +87,8 @@ const preview: Preview = {
 export default preview;
 ```
 
-## Use args in `render`
+
+## Render custom args
 
 ```ts
 // Page.stories.ts|tsx
