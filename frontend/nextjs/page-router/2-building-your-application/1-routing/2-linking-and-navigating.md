@@ -3,7 +3,7 @@
 A React component called `Link` is provided to do this client-side route transition.
 
 ```jsx
-import Link from 'next/link'
+import Link from 'next/link';
 
 function Home() {
   return (
