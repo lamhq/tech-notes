@@ -52,6 +52,8 @@ In this screenshot, there are two footers: one in an `<article>` and one top lev
 
 *Let's say you have a blog. The blog has a site footer with an implicit `contentinfo` role. Each blog post can also have a `<footer>`. On your blog's main landing page, the browser, search engine, and screen reader know the main footer is the top-level footer, and that all the other footers are related to the posts in which they are nested.*
 
+Navigation elements within a footer don't have specific requirements. Generally, the footer will include corporate links, such as legal statements, about the company, and careers, and can lead to external sources, such as social media icons.
+
 
 ## Document structure
 
