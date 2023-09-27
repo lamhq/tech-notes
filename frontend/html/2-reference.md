@@ -4,6 +4,7 @@
 
 - `html`
 
+
 ## Metadata
 
 - `base`
@@ -12,6 +13,7 @@
 - `meta`
 - `title`
 - `style`
+
 
 ## Sections
 
@@ -30,7 +32,8 @@
 ## Text: Headings
 
 - `h1`: : The H1 tag marks the top level heading. There’s usually only one H1 heading per page.
-- `h2`, `h3`, `h4`, `h5`, `h6`: he subheadings of various levels of importance. There can be multiple headings of the same level on a single page. 
+- `h2`, `h3`, `h4`, `h5`, `h6`: he subheadings of various levels of importance. There can be multiple headings of the same level on a single page.
+
 
 ## Text: Grouping Elements
 
@@ -113,6 +116,7 @@
 - `menu (5)`
 - `menuitem (5)`
 - `summary (5)`
+
 
 ## Embedded Content
 

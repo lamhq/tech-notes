@@ -2,7 +2,7 @@
 
 ## What does Semantic in HTML mean?
 
-Semantics is the use of HTML tags that accurately reflect the content they contain.
+Semantic means "relating to meaning". Writing semantic HTML means using HTML elements to structure your content based on each element's meaning, not its appearance.
  
 For instance, using the `<div>` tag doesn’t suggest the content it will carry, however using the `<p>` tag suggests it can be used to hold paragraph information. 
 
@@ -32,16 +32,87 @@ HTML semantic tags make sure that your code can be integrated with future techno
 Additionally, each browser interacts with semantic elements differently, semantic elements make it simple to utilize larger coverage of your website across platforms.
 
 
-## HTML Semantic Tags
+## Accessibility object model (AOM)
 
-Some of the most commonly used semantic HTML tags include
+As the browser parses the content received, it builds the document object model (DOM) and the CSS object model (CSSOM). It then also builds an accessibility tree.
 
-- `<header>`: The header tag defines content that should be considered the introductory information of a page or section
-- `<nav>`: The navigation tag is used for navigation links. It can be nested within the `<header>` tag, but secondary navigation `<nav>` tags are also commonly used elsewhere on the page.
-- `<main>`: This tag contains the main content (also called the body) of a page. There should be only one tag per page.
-- `<section>`: Using `<section>` is a way of grouping nearby content of a similar theme. A section tag differs from an article tag. It isn’t necessarily self-contained, but it forms part of something else. 
-- `<article>`: The article tag defines content that could stand independently of the page or site it’s on. It does not necessarily mean a “blog post.” Think of it more as “an article of clothing”—a self-contained item that can be used in various contexts.
-- `<aside>`: An aside element defines content that’s less important. It’s often used for sidebars—areas that add complementary but nonessential information.
-- `<footer>`: You use `<footer`> at the bottom of a page. It usually includes contact information, copyright information, and some site navigation.
+Assistive devices, such as screen readers, use the AOM to parse and interpret content.
 
-![](https://static.semrush.com/blog/uploads/media/9f/f4/9ff4decb66abd1d1b2bfff1afbca5a68/Semantic-html.webp)
+The DOM is a tree of all the nodes in the document. The AOM is like a semantic version of the DOM.
+
+The following code snippet use semantic elements:
+
+```html
+<header>
+  <h1>Three words</h1>
+  <nav>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+  </nav>
+</header>
+<main>
+  <header>
+    <h1>five words</h1>
+  </header>
+  <section>
+    <h2>three words</h2>
+    <p>forty-six words</p>
+    <p>forty-four words</p>
+  </section>
+  <section>
+    <h2>seven words</h2>
+    <p>sixty-eight words</p>
+    <p>forty-four words</p>
+  </section>
+</main>
+<footer>
+  <p>five words</p>
+</footer>
+```
+
+Chrome's AOM shows this as follows:
+
+![](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/svdGvQhpNlk7UiFgoCpH.png?auto=format&w=1164)
+
+It's pretty clear that semantic element usage helps accessibility, and using non-semantic elements reduces accessibility.
+
+You can [inspect the AOM in developer tools](https://developer.chrome.com/docs/devtools/accessibility/reference/#explore-tree).
+
+
+### Landmarks
+
+HTML5 elements such as `main`, `nav`, and `aside` act as landmarks, or special regions on the page to which a screen reader can jump.
+
+Landmark tags are used to define major sections of your page.
+
+
+### The `role` attribute
+
+The `role` attribute describes the role an element has in the context of the document. The `role` attribute is a global attribute—meaning it is valid on all elements.
+
+Semantic elements each have an implicit role, some depending on the context.
+
+For above HTML snippet, The Chrome screenshot lists these elements' [ARIA  roles](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles): 
+- `<main>` is `main`
+- `<nav>` is `navigation`
+- `<footer>` as it was the footer of the document, is `contentinfo`.
+- When `<header>` is the header for the document, the default role is `banner`, which defines the section as the global site header.
+- When a `<header>` or `<footer>` is nested within a sectioning element, it is not a landmark role.
+
+The element's role enables a user to access the content they seek quickly and, possibly, more importantly, the role informs the screen reader user how to interact with an interactive element once it has focus.
+
+Non-semantic elements don't have implicit roles. We can make the non-semantic version semantic by assigning each element a role:
+
+```html
+<div role="banner">
+  <span role="heading" aria-level="1">Three words</span>
+  <div role="navigation">
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+  </div>
+</div>
+```
