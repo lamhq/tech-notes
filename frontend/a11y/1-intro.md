@@ -1,19 +1,27 @@
 # Intro
 
-## What is digital accessibility?
+## What is Web Accessibility and Why Does It Matter?
 
-Digital accessibility is about designing and building websites and web apps that disabled people can interact with in a meaningful and equivalent way.
+Web accessibility means that websites, tools, and technologies are designed and developed in a way so that people with disabilities can both use them and contribute to the Web. 
+
+When software is correctly written for the Web, the Web removes the barriers to communication and interaction that many people face in the physical world.
+
+It is important to remember that all of us are just an accident or a few years of age away from needing to use assistive technology, so it is in all of our best interest to strive towards creating an inclusive infrastructure for our ever increasingly digital lives.
 
 
-## What is the individual impact?
+## Types of Disabilities
 
-The World Health Organization (WHO) estimates that over 15% of the world's population—or 1.3 billion people—self-identify as having a disability, making this group the largest minority group globally.
+Web Accessibility encompasses all disabilities that affect access to the Web, including:
 
-Inaccessible digital products impact people with disabilities. Some types of disabilities are impacted more in the digital world than others.
+- **Motor** (Mobility impairments): Partial or total loss of the function of a body part.
+- **Visual** (Visual impairments): Partial or total loss of vision.
+- **Auditory** (Hearing impairments): Partial or total loss of hearing.
+- **Cognitive** (Cognitive impairments): One who has a greater difficulty with one or more types of mental tasks than the average person.
+- **Neurological**: One who experiences seizures or vestibular issues when exposed to certain images and animations.
+- **Situational**: Certain situations where one becomes temporarily disabled. Examples include parents holding a new born while trying to operate a computer, reading text on a phone in direct sunlight, and watching Netflix in class or during a meeting.
+
 
 ### Visual impairments
-
-Visual impairment (vision impairment, vision disability) is a decreased ability to see to the degree that causes problems not fixable by usual means, such as glasses or medication.
 
 Tools include: 
 - Screen reader software
@@ -29,8 +37,6 @@ Pain points:
 
 ### Mobility impairments
 
-Mobility impairment is a category of disability that includes people with various physical disabilities. This type of disability includes upper or lower limb loss or disability, manual dexterity, and disability in coordination with different organs of the body.
-
 Tools include: 
 - Adaptive switches
 - eye tracking devices
@@ -43,8 +49,6 @@ Pain points:
 
 ### Hearing impairments
 
-A hearing impairment or hearing loss is a full or partial decrease in the ability to detect or understand sounds
-
 Tools include:
 - hearing aids
 - captions, transcripts
@@ -56,8 +60,6 @@ Pain points:
 
 
 ### Cognitive impairments
-
-A cognitive disability covers a variety of medical conditions affecting cognitive ability. People with cognitive disabilities include various intellectual or cognitive deficits, deficits too mild to properly qualify as intellectual disability, specific conditions, and problems acquired later in life through acquired brain injuries or neurodegenerative diseases like dementia.
 
 Tools include:
 - Screen readers
@@ -83,99 +85,28 @@ Pain points:
 - Voice-activated technology such as smart home devices and apps.
 
 
-## How is digital accessibility measured?
+## How Web Accessibility is Evaluated?
 
-Accessibility measurement ensures everyone, including people with disabilities, can still interact with your website in a meaningful and equal way.
+Each country has different accessibility requirements for companies, and government organizations, however, many have adopted the same criteria that the W3C has created.
 
-There are many ways to test a digital product for accessibility. One fundamental approach is to evaluate it against a set of accessibility standards.
+This standard is called the Web Content Accessibility Guidelines (WCAG).
 
-The standard recommendation is to follow the latest version of the [Web Content Accessibility Guidelines (WCAG)](https://web.dev/learn/accessibility/measure/#wcag).
+### WCAG
 
-Testing your digital product against an accessibility standard and conformance level is commonly referred to as an accessibility audit.
+WCAG is a document that explains how to make web content more accessible for people with disabilities.
 
-You should run this audit multiple times throughout the software product lifecycle to check for changes in the level of conformance, against a set of pre-determined accessibility checkpoints or guidelines.
+There are 3 levels of conformance within the WCAG: A, AA, AAA. 
 
+Single A criteria is the bare minimum needed for a disabled user to be able to use a website while AAA conformance also encompasses all A, AA, and AAA criteria and is the most inclusive standard to strive for. However, in many cases, AAA conformance is impractical or impossible to reach. Therefore, most governments and organization strive to conform to the WCAG AA standard.
 
-## Web Content Accessibility Guidelines (WCAG)
-
-The Web Content Accessibility Guidelines (WCAG) are an international set of accessibility standards developed through the W3C, in cooperation with individuals and organizations.
-
-The goal of WCAG is to provide a single shared standard for digital accessibility that meets the needs of individuals, organizations, and governments worldwide.
-
-WCAG is primarily intended for web-based and native mobile app designers and developers.
-
-The WCAG guidelines have three levels of success criteria: A, AA, and AAA.
-
-For the current standard (WCAG 2.1), there are 78 success criteria in total, split across each level.
-
-- A success: 30 success criteria
-- AA success: 20 success criteria
-- AAA success: 28 success criteria
+WCAG's core concepts boil down to making web content P.O.U.R.. 
 
 
-## Accessibility principles
+### P.O.U.R
 
-Principles of WCAG: Perceivable, Operable, Understandable, and Robust (POUR)
+P.O.U.R. stands for Perceivable, Operable, Understandable, and Robust. 
 
-The whole point of POUR is not about rigidly adhering to hard and fast rules. Instead, it is a way to help you understand and meet the diverse needs of your users.
-
-
-### Perceivable
-
-This principle states that users must be able to perceive all essential information on the screen, and it must be conveyed to multiple senses.
-
-**Ask yourself**: Is there any content or functionality in your digital product that a person with a specific disability would not be able to perceive? Be sure to consider all the different types of disabilities—visual, mobility, hearing, cognitive, and speech impairments, vestibular and seizure disorders, and more.
-
-**Examples of Perceivable:**
-
-- Adding text alternatives to all non-decorative images and essential icons.
-- Adding captions, transcripts, and audio descriptions to videos.
-- Ensuring color is not the only method of conveying meaning.
-
-
-### Operable
-
-For this principle, users must be able to operate the digital product's interface. The interface cannot require interaction that a user cannot perform.
-
-Ask yourself:
-- Can users control the interactive elements of your digital product?
-- Are there any focus order issues or keyboard traps?
-- How are touch interfaces handled?
-
-Examples of Operable:
-
-- Adding keyboard and touchscreen support to all active elements.
-- Ensuring slideshows and videos have all of the necessary controls available.
-- Giving users enough time to fill out a form or a method to extend the time.
-
-
-### Understandable
-
-For this principle, users must understand the information and the operation of the user interface.
-
-Ask yourself:
-- Is all of the content clearly written?
-- Are all of the interactions easy to understand?
-- Does the order of the page make sense—to sighted users, keyboard-only users, screen reader users?
-
-Examples of Understandable:
-
-- Writing simply—don't use a complex word when a simple one will do.
-- Ensuring your digital product has predictable navigation.
-- Ensuring error messages are clear and easy to resolve.
-
-
-### Robust
-
-This principle focuses on supporting assistive technologies and ensuring that, as devices and user agents evolve, the digital product remains accessible.
-
-Ask yourself:
-- What types of assistive technology are you supporting?
-- Does your digital product only work on the newest browsers or operating systems?
-- Does it work at all breakpoints and in different device orientations?
-
-Examples of Robust:
-
-- Testing keyboard-only navigation.
-- Testing with different screen reader technologies.
-- Ensuring all of the content and functionality can be accessed, regardless of device size or orientation.
+- **Perceivable**: Users are able to perceive the content through their senses via the browser or other assistive technology.
+- **Operable**:  Users can interact with all controls and interactive elements using either the mouse, keyboard, or an assistive device.
+- **Understandable**: Content is clear and limits confusion and ambiguity.
+- **Robust**: A wide range of technologies and devices can access the content.
