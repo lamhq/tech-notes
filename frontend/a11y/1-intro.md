@@ -85,6 +85,18 @@ Pain points:
 - Voice-activated technology such as smart home devices and apps.
 
 
+## Assistive Technologies
+
+People with disabilities use technology in a variety of ways. Here are some examples:
+
+- People with hand tremors cannot grip a mouse. They use the **keyboard** to navigate.
+- People with mobility disabilities use their **voice** to control the computer or mobile device.
+- People with mobility disabilities use **eye tracking** to move the screen cursor.
+- People with mobility disabilities use **switch devices** to operate the computer or mobile device.
+- People who are blind use **screen readers, braille displays** or **speech recognition** software.
+- People with low vision use screen magnification.
+
+
 ## How Web Accessibility is Evaluated?
 
 Each country has different accessibility requirements for companies, and government organizations, however, many have adopted the same criteria that the W3C has created.
