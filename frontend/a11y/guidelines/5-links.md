@@ -33,6 +33,11 @@ Bad:
 - Buy tickets to Mars [here](#)
 
 
+## Logo
+
+If your logo is an image wrapped by a link. Add `aria-label="Website front page"` on the `<a>` tag. The label should explain clearly what information the reader will get by clicking on that link.
+
+
 ## Skip link
 
 People use skip links to reach main content or other important sections easier and faster.

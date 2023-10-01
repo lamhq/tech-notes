@@ -1,5 +1,25 @@
 # Sections
 
+## Document structure
+
+A layout with a header, two sidebars, and a  footer, is known as the [holy grail layout](/patterns/layout/holy-grail/):
+
+![](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/LJs8vlTVDYBmM6t1z6rD.png?auto=format&w=1600)
+
+```html
+<body>
+  <header>Header</header>
+  <nav>Nav</nav>
+  <main>
+    <article>First post</article>
+    <article>Second post</article>
+  </main>
+  <aside>Aside</aside>
+  <footer>Footer</footer>
+</body>
+```
+
+
 ## `<header>`
 
 ```html
@@ -54,25 +74,6 @@ In this screenshot, there are two footers: one in an `<article>` and one top lev
 
 Navigation elements within a footer don't have specific requirements. Generally, the footer will include corporate links, such as legal statements, about the company, and careers, and can lead to external sources, such as social media icons.
 
-
-## Document structure
-
-A layout with a header, two sidebars, and a  footer, is known as the [holy grail layout](/patterns/layout/holy-grail/):
-
-![](https://web-dev.imgix.net/image/kheDArv5csY6rvQUJDbWRscckLr1/LJs8vlTVDYBmM6t1z6rD.png?auto=format&w=1600)
-
-```html
-<body>
-  <header>Header</header>
-  <nav>Nav</nav>
-  <main>
-    <article>First post</article>
-    <article>Second post</article>
-  </main>
-  <aside>Aside</aside>
-  <footer>Footer</footer>
-</body>
-```
 
 ## `<main>`
 
