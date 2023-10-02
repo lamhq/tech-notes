@@ -70,7 +70,7 @@ This is convenient for everybody. This is very helpful for user with motor impai
 
 Autocomplete can be used on `<input>`, `<textarea>`, `<select>` and `<form>` elements.
 
-Here're [the complete list of values for `autocomplete` attribute](https://www.w3.org/TR/WCAG21/#input-purposes).
+Here're [the complete list of Input Purposes for `autocomplete` attribute](https://www.w3.org/TR/WCAG21/#input-purposes).
 
 ```html
 <input id="email" autocomplete="email" name="email" aria-required="true" placeholder="Email" required>
