@@ -240,3 +240,17 @@ This allows the default alignment (in cross axis) to be overridden for individua
 ```
 
 ![](https://css-tricks.com/wp-content/uploads/2018/10/align-self.svg)
+
+
+## Tips
+
+### Fill parent's width
+
+Make children's width fill parent container using `flex-auto` (`flex: 1 1 auto`)
+
+```html
+<div class="flex">
+  <label>Name:</label>
+  <input class="flex-auto w-1" type="text">
+</div>
+```
