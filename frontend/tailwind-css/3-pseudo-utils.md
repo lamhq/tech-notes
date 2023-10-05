@@ -188,6 +188,14 @@ Check out the [Responsive Design](https://tailwindcss.com/docs/responsive-design
 
 ### Data attributes
 
+```html
+<!-- Will apply -->
+<div data-size="large" class="data-[size=large]:p-8">
+  <!-- ... -->
+</div>
+```
+
+
 ### RTL support
 
 ### Open/closed state
