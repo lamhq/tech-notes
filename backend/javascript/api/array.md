@@ -1,5 +1,11 @@
 # Array
 
+## Create an array with `n` items
+
+```js
+Array.from({length: n}, (_, i) => i + 1);
+```
+
 ## Determining the location of an item in an array
 
 ```ts
