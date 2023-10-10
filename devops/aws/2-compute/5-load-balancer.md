@@ -1,4 +1,4 @@
-# Route Traffic with Amazon Elastic Load Balancing
+# Directing Traffic with Elastic Load Balancing
 
 ## What's a Load Balancer?
 

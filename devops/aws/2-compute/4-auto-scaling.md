@@ -1,10 +1,27 @@
 # Amazon EC2 Auto Scaling
 
-## Introduction
+## Scalability
 
-Amazon EC2 Auto Scaling service can create more instances when required and shut them down when the traffic decreases, by automatically creating and removing EC2 instances based on metrics from Amazon CloudWatch.
+Scalability involves beginning with only the resources you need and designing your architecture to automatically respond to changing demand by scaling out or in. As a result, you pay for only the resources you use.
 
-The ELB service integrates seamlessly with EC2 Auto Scaling. As soon as a new EC2 instance is added to or removed from the EC2 Auto Scaling group, ELB is notified. However, before it can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.
+
+## Intro
+
+**Amazon EC2 Auto Scaling** enables you to automatically add or remove Amazon EC2 instances in response to changing application demand.
+
+Within Amazon EC2 Auto Scaling, you can use two approaches:
+- **Dynamic scaling** responds to changing demand. 
+- **Predictive scaling** automatically schedules the right number of Amazon EC2 instances based on predicted demand.
+
+**Example:**
+
+When you create an Auto Scaling group, you can set the minimum number of Amazon EC2 instances. The **minimum capacity** is the number of Amazon EC2 instances that launch immediately after you have created the Auto Scaling group.
+
+Next, you can set the **desired capacity** at two Amazon EC2 instances even though your application needs a minimum of a single Amazon EC2 instance to run.
+
+The third configuration that you can set in an Auto Scaling group is the **maximum capacity**.
+
+![](auto-scaling.jpg.png)
 
 
 ## Differentiate Between Traditional Scaling and Auto Scaling
@@ -68,3 +85,10 @@ If your application scales based on average CPU utilization, average network uti
 To create a target tracking scaling policy, you specify an Amazon CloudWatch metric and a target value that represents the ideal average utilization or throughput level for your application. Amazon EC2 Auto Scaling can then scale out your group (add more instances) to handle peak traffic, and scale in your group (run fewer instances) to reduce costs during periods of low utilization or throughput.
 
 *For example, let's say that you currently have an application that runs on two instances, and you want the CPU utilization of the Auto Scaling group to stay at around 50 percent when the load on the application changes. This gives you extra capacity to handle traffic spikes without maintaining an excessive number of idle resources.*
+
+
+## Elastic Load balancer and EC2 Auto Scaling
+
+The ELB service integrates seamlessly with EC2 Auto Scaling. As soon as a new EC2 instance is added to or removed from the EC2 Auto Scaling group, ELB is notified.
+
+However, before it can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.

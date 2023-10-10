@@ -1,5 +1,8 @@
 # Cloud computing
 
+*The information in this document is from [AWS Cloud Practitioner Essentials course](https://www.coursera.org/learn/aws-cloud-practitioner-essentials).*
+
+
 ## Intro
 
 Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
