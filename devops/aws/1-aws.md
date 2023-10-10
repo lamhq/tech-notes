@@ -1,17 +1,8 @@
-# Getting Started with AWS Cloud
+## Introduction of AWS
 
 ## What is AWS?
 
 AWS is cloud computing provider.
-
-## The Six Benefits of Cloud Computing
-
-- **Pay as you go**. Instead of investing in data centers and hardware before you know how you are going to use them, you pay only when you use computing resources, and pay only for how much you use.
-- **Benefit from massive economies of scale**.
-- **Stop guessing capacity**. Eliminate guessing on your infrastructure capacity needs.
-- **Increase speed and agility**. IT resources are only a click away, which means that you reduce the time to make those resources available to your developers from weeks to just minutes.
-- **Stop spending money running and maintaining data centers**
-- **Go global in minutes**. Easily deploy your application in multiple Regions around the world with just a few clicks.
 
 
 ## AWS Global Infrastructure

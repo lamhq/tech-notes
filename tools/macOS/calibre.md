@@ -2,7 +2,7 @@
 
 ## Font for Calibre
 
-- Open an ebook in E-book viewer, go to Settings (`Cmd + ,`)
+- Open an ebook in E-book viewer, go to Settings `Cmd+,`
 - Choose `Fonts`
 - Select `Baskerville`
 
