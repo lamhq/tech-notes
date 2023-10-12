@@ -21,7 +21,7 @@ Next, you can set the **desired capacity** at two Amazon EC2 instances even thou
 
 The third configuration that you can set in an Auto Scaling group is the **maximum capacity**.
 
-![](auto-scaling.jpg.png)
+![](auto-scaling.jpg)
 
 
 ## Differentiate Between Traditional Scaling and Auto Scaling

@@ -30,7 +30,7 @@ Having native integration with Amazon VPC allows you to launch Fargate container
 
 ## Run Your Code on AWS Lambda
 
-AWS Lambda lets you run code without provisioning or managing servers or containers.
+AWS Lambda is a service that lets you run code without provisioning or managing servers or containers.
 
 AWS Lambda requires zero administration from the user. You upload your source code and Lambda takes care of everything required to run and scale your code with high availability.
 
@@ -46,9 +46,17 @@ The **configuration** of a Lambda function consists of information that describe
 
 **Triggers** describe when the Lambda function should run. A trigger integrates your Lambda function with other AWS services, enabling you to run your Lambda function in response to certain API calls that occur in your AWS account. 
 
+![](aws-lambda.png)
+
+1. You upload your code to Lambda. 
+1. You set your code to trigger from an event source, such as AWS services, mobile applications, or HTTP endpoints.
+1. Lambda runs your code only when triggered.
+1. You pay only for the compute time that you use. 
+
+
 ### Billing Granularity
 
-You are charged for the number of times your code is triggered (requests) and for the time your code executes, rounded up to the nearest 1ms (duration).
+You pay only for the compute time that you consume. Charges apply only when your code is running, rounded up to the nearest 1ms (duration).
 
 AWS rounds up duration to the nearest millisecond with no minimum execution time.
 

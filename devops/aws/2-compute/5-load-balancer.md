@@ -8,10 +8,14 @@ To distribute the requests across all the servers hosting the application, you f
 
 A typical request for the application would start from the browser of the client. It's sent to a load balancer. Then, it's sent to one of the instances that hosts the application. The return traffic would go back through the load balancer and back to the client browser.
 
-AWS provides a service for that called Elastic Load Balancing (ELB):
-- It can distribute incoming application traffic across EC2 instances as well as containers, IP addresses, and AWS Lambda functions.
-- ELB is highly available. It is deployed across multiple Availability Zones.
-- In terms of scalability, ELB automatically scales to meet the demand of the incoming traffic.
+
+## Elastic Load Balancing
+
+Elastic Load Balancing is the AWS service that automatically distributes incoming application traffic across multiple resources, such as Amazon EC2 instances. 
+
+**Elastic Load Balancing** and **Amazon EC2 Auto Scaling** are separate services, they work together to help ensure that applications running in Amazon EC2 can provide high performance and availability.
+
+![](elb.jpg)
 
 
 ## Health Checks
