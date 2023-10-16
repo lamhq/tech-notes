@@ -82,7 +82,7 @@ The **downstream microservice** consumes messages from this queue when it is abl
 
 The microservice that receives the request needs either to know implicitly where to **route the response** or else to be told where the response should go, typically, send the response back to a queue that the original microservice is reading from.
 
-When **using a queue**, multiple requests could be buffered up in the queue waiting to be handled. This can help in situations in which the requests can’t be handled quickly enough. The microservice can consume the next request when it is ready, rather than being overwhelmed by too many calls.
+When **using a queue**, multiple requests could be buffered up in the queue waiting to be handled. This can help in situations in which the requests can't be handled quickly enough. The microservice can consume the next request when it is ready, rather than being overwhelmed by too many calls.
 
 When a microservice receives a response in this way, it might need to **relate the response to the original request**. An easy way to handle this would be to store any state associated with the original request into a database, such that when the response comes in, the receiving instance can reload any associated state and act accordingly.
 
@@ -157,7 +157,7 @@ In a situation where loose coupling is prioritized, event-driven collaboration i
 
 Event-driven collaboration can introduce new sources of complexity, especially if you have limited exposure to it.
 
-Microservice architecture can contain a mix of different styles of interaction, so it’s not necessary to go all in with event-driven collaboration. Starting with just one event can be a good way to begin.
+Microservice architecture can contain a mix of different styles of interaction, so it's not necessary to go all in with event-driven collaboration. Starting with just one event can be a good way to begin.
 
 Far more teams replacing request-response interactions with event-driven interactions.
 

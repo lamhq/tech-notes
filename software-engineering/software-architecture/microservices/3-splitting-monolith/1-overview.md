@@ -2,9 +2,9 @@
 
 ## Have a Goal
 
-Microservices are not the goal. You don’t "win" by having microservices.
+Microservices are not the goal. You don't "win" by having microservices.
 
-When embarking on work to migrate functionality from a monolithic architecture to a microservice architecture, you must have a clear understanding of what you expect to achieve. This goal will shape how you go about the work and will also help you understand whether you’re moving in the right direction.
+When embarking on work to migrate functionality from a monolithic architecture to a microservice architecture, you must have a clear understanding of what you expect to achieve. This goal will shape how you go about the work and will also help you understand whether you're moving in the right direction.
 
 Don't be obsessed with creating microservices without ever asking why.
 
@@ -33,11 +33,11 @@ Once you have a firm grasp on why you think microservices are a good idea, you c
 
 **Want to scale the application?**
 
-Functionality that currently constrains the system’s ability to handle load is going to be high on the list.
+Functionality that currently constrains the system's ability to handle load is going to be high on the list.
 
 **Want to improve time to market?**
 
-Look at the system’s volatility to identify those pieces of functionality that change most frequently, and see if they would work as microservices.
+Look at the system's volatility to identify those pieces of functionality that change most frequently, and see if they would work as microservices.
 
 > You can use static analysis tools like [CodeScene](https://www.codescene.com/) to quickly find volatile parts of your codebase.
 
@@ -60,7 +60,7 @@ In traditional three tiers of a web-based services stack, we can look at the fun
 - Ignoring the user interface part of the equation can lead to an overly siloed approach to any architectural restructuring.
 - Sometimes the biggest benefits can come from decomposition of the UI, so ignoring it can be perilous.
 - Decomposition of the UI tends to lag behind decomposition of the backend into microservices.
-- Until the microservices are available, it’s difficult to see the possibilities for UI decomposition; just make sure it doesn’t lag too much.
+- Until the microservices are available, it's difficult to see the possibilities for UI decomposition; just make sure it doesn't lag too much.
 
 
 ### Extracting code first

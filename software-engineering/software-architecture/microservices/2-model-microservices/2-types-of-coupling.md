@@ -57,7 +57,7 @@ For this specific example, I might consider a simpler change, to totally hide th
 
 **Order Processor** still send the **Shipping Manifest** to the **Shipping** microservice via the **Warehouse**, but to have the **Warehouse** be totally unaware of the structure of the **Shipping Manifest** itself. The **Order Processor** sends the manifest as part of the order request, but the **Warehouse** makes no attempt to look at or process the field. Instead, it just sends it along.
 
-A change in the format of the the **Shipping Manifest** would still require a change to both the **Order Processor** and the **Shipping** microservice, but as the **Warehouse** doesn’t care about what is actually in the manifest, it doesn’t need to change.
+A change in the format of the the **Shipping Manifest** would still require a change to both the **Order Processor** and the **Shipping** microservice, but as the **Warehouse** doesn't care about what is actually in the manifest, it doesn't need to change.
 
 ## Common Coupling
 
@@ -69,7 +69,7 @@ In this example, **Order Processor** and **Warehouse** service are both reading 
 
 ![](images/cm-c1.png)
 
-When making changes in **Order Processor**, can I be sure that I am not changing the order data in such a way that it breaks **Warehouse**’s view of the world, or vice versa?
+When making changes in **Order Processor**, can I be sure that I am not changing the order data in such a way that it breaks **Warehouse**'s view of the world, or vice versa?
 
 One way to ensure that the state of something is changed in a correct fashion would be to create a finite state machine. A state machine can be used to manage the transition of some entity from one state to another, ensuring invalid state transitions are prohibited.
 
@@ -85,13 +85,13 @@ If the **Order** service received a request from **Order Processor** to move a s
 
 - Sources of common coupling can also be sources of resource contention, potentially causing problems if the shared resource becomes slow or unavailable.
 - Common coupling limits the changes that can be made to shared data and can indicate a lack of cohesion in code.
-- So common coupling is sometimes OK, but often it’s not. It is one of the least desirable forms of coupling, but it can get worse.
+- So common coupling is sometimes OK, but often it's not. It is one of the least desirable forms of coupling, but it can get worse.
 
 
 ## Content Coupling
 
 - Content coupling occurs when an upstream service reaches into the internals of a downstream service and changes its internal state.
-- The most common manifestation of this is an external service accessing another microservice’s database and changing it directly.
+- The most common manifestation of this is an external service accessing another microservice's database and changing it directly.
 - Common coupling and content coupling both involve two or more microservices reading and writing to the same set of data, but with common coupling, the shared dependency is understood to be external and not under your control.
 - In content coupling, the lines of ownership become less clear and it becomes more difficult for developers to change a system.
 - Problems that occur with common coupling also apply with content coupling, but content coupling has some additional headaches that make it problematic enough that some people refer to it as pathological coupling.
@@ -109,6 +109,6 @@ We have to hope that the Warehouse service has a consistent set of logic to ensu
 
 ![](images/content-coupling.png)
 
-When changing the Order service, we now have to be extremely careful about making changes to that particular table, it’s obvious to us that this table is being directly accessed by an outside party.
+When changing the Order service, we now have to be extremely careful about making changes to that particular table, it's obvious to us that this table is being directly accessed by an outside party.
 
 The easy fix here is to have the **Warehouse** send requests to the **Order** service itself, where we can vet the request but also hide the internal detail, making subsequent changes to the Order service much easier.

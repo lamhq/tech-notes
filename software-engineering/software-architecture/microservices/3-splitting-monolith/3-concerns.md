@@ -2,7 +2,7 @@
 
 ## Performance
 
-When we split databases apart in the name of microservices, we end up having to move join operations from the data tier (database) up into the microservices themselves. And try as we might, it’s unlikely to be as fast.
+When we split databases apart in the name of microservices, we end up having to move join operations from the data tier (database) up into the microservices themselves. And try as we might, it's unlikely to be as fast.
 
 That's because the microservice has to call other microservices to request information that it doesn't own.
 
@@ -27,7 +27,7 @@ You can no longer rely on your database to enforce the integrity of inter-entity
 
 There are a number of work-arounds:
 
-- We could use a soft delete so that we don’t actually remove a record but just mark it as deleted.
+- We could use a soft delete so that we don't actually remove a record but just mark it as deleted.
 - Another option could be to copy the data to another microservice, but we would have to resolve how we wanted to handle synchronizing changes in that data.
 
 
@@ -35,7 +35,7 @@ There are a number of work-arounds:
 
 Once we start splitting data across multiple databases, though, we lose the safety of the ACID transactions.
 
-We try to implement **distributed transactions** to regain the guarantees that ACID transactions, but they are not only complex to implement, even when done well, but they also don’t actually give us the same guarantees that we came to expect with more narrowly scoped database transactions.
+We try to implement **distributed transactions** to regain the guarantees that ACID transactions, but they are not only complex to implement, even when done well, but they also don't actually give us the same guarantees that we came to expect with more narrowly scoped database transactions.
 
 
 ## Tooling

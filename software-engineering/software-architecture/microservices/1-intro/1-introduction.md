@@ -48,7 +48,7 @@
 ### Owning Their Own State
 
 - Microservices should **avoid using shared databases** and instead access data from other microservices when needed.
-- Sharing databases is one of the worst things you can do if you’re trying to achieve independent deployability.
+- Sharing databases is one of the worst things you can do if you're trying to achieve independent deployability.
 - This allows microservices to have control over what data is shared and what is hidden, separating internal implementation from external contract.
 - Hiding internal state in a microservice is similar to encapsulation in object-oriented programming, where data is hidden and only accessed through defined interfaces.
 - Services should be seen as end-to-end slices of business functionality, encapsulating UI, business logic, and data.

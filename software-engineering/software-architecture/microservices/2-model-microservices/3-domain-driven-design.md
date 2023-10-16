@@ -43,7 +43,7 @@ Core concepts of DDD:
 
 ![](images/aggregate-uri.png)
 
-*But what if you aren’t building a REST system? a variation of this approach is a pseudo-URI scheme for cross-service references.*
+*But what if you aren't building a REST system? a variation of this approach is a pseudo-URI scheme for cross-service references.*
 
 *For example, `soundcloud:tracks:123` would be a reference to a track with the ID of `123`. This is much more explicit for a human looking at this identifier, but it is also a useful enough scheme that it would be easy to imagine creating code that could ease cross-microservice aggregate lookups if needed.*
 
@@ -88,9 +88,9 @@ Example:
 - Consider decomposing the larger, coarser-grained contexts into smaller nested contexts to gain the benefits of splitting seams.
 - You can hide the decision to split a service into smaller parts from the outside world by presenting a coarser-grained API to consumers.
 
-*We’ve split Warehouse down into Inventory and Shipping. As far as the outside world is concerned, there is still just the Warehouse microservice.* 
+*We've split Warehouse down into Inventory and Shipping. As far as the outside world is concerned, there is still just the Warehouse microservice.* 
 
-*Internally though, we’ve further decomposed things to allow Inventory to manage Stock Items and have Shipping manage Shipments. Remember, we want to keep the ownership of a single aggregate inside a single microservice.*
+*Internally though, we've further decomposed things to allow Inventory to manage Stock Items and have Shipping manage Shipments. Remember, we want to keep the ownership of a single aggregate inside a single microservice.*
 
 ![](images/mapping-agbc.png)
 
@@ -98,7 +98,7 @@ Example:
 - Hiding implementation details in this way ensures that consumers are unaware if the implementation changes in the future.
 - The nested approach can also simplify testing and provide unit isolation when considering larger-scoped tests.
 
-*For example, when testing services that consume the warehouse, I don’t have to stub each service inside the warehouse context—just the more coarse-grained API.*
+*For example, when testing services that consume the warehouse, I don't have to stub each service inside the warehouse context—just the more coarse-grained API.*
 
 *I may, for example, decide to have end-to-end tests in which I launch all services inside the warehouse context, but for all other collaborators I might stub them out.*
 

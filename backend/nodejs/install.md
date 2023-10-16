@@ -16,9 +16,9 @@ nvm install 14.18.3
 ### Install new nodejs version with nvm
 
 ```shell
-nvm install 16.16.0
-nvm use 16.16.0
-nvm alias default v16.16.0
+nvm install 18.18.1
+nvm use 18.18.1
+nvm alias default 18.18.1
 ```
 
 ## Uninstall an old version
