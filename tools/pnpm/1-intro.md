@@ -11,6 +11,13 @@
 
 pnpm already installed when installing node.js 16 with nvm.
 
+### Using Homebrew
+
+```shell
+brew install pnpm
+```
+
+
 ### Using a standalone script (POSIX)
 
 ```bash

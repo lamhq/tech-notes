@@ -1,5 +1,14 @@
 # String
 
+## Raw string
+
+In this example, the `String.raw()` method returns the raw string form of the template literal, which is `"Hello\\nWorld"`. The escape sequence `\\n` is not processed and is returned as is.
+
+```tsx
+const str = String.raw`Hello\nWorld`;
+console.log(str); // Output: "Hello\\nWorld"
+```
+
 ## Format a number with leading zeros
 
 ```ts
