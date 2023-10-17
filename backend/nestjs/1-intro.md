@@ -7,7 +7,7 @@
 ## Install NestJS cli
 
 ```shell
-yarn global add @nestjs/cli
+npm i -g @nestjs/cli
 ```
 
 
@@ -21,5 +21,5 @@ nest new project-name
 ## Running the application
 
 ```bash
-yarn start:dev
+npm run start:dev
 ```

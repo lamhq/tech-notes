@@ -34,9 +34,9 @@ Brokers provide some capabilities that can be very useful for asynchronous commu
 
 **Guaranteed delivery** describes a commitment by the broker to ensure that the message is delivered.
 
-> It’s not a problem if the downstream destination is unavailable—the broker will hold on to the message until it can be delivered.
+> It's not a problem if the downstream destination is unavailable—the broker will hold on to the message until it can be delivered.
 > 
-> Compare that to a synchronous direct call—for example, an HTTP request: if the downstream destination isn’t reachable, the upstream microservice will need to work out what to do with the request; should it retry the call or give up?
+> Compare that to a synchronous direct call—for example, an HTTP request: if the downstream destination isn't reachable, the upstream microservice will need to work out what to do with the request; should it retry the call or give up?
 
 
 ## Other characteristics

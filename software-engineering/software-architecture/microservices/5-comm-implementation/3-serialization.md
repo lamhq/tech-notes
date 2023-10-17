@@ -28,7 +28,7 @@ Schemas are used to define what our endpoints expose and what they accept.
 
 Schemas can come in lots of different types, and picking a serialization format will typically define which schema technology you can use.
 
-> If you’re working with raw XML, you’d use XML Schema Definition (XSD). If you’re working with raw JSON, you’d use JSON Schema.
+> If you're working with raw XML, you'd use XML Schema Definition (XSD). If you're working with raw JSON, you'd use JSON Schema.
 
 Some of the technology choices require the use of **explicit schemas**. SOAP works through the use of a WSDL, while gRPC requires the use of a protocol buffer specification.
 
@@ -56,7 +56,7 @@ By using schemas and comparing different versions of schemas, we can catch struc
 
 ### Semantic breakages
 
-A semantic breakage refers to a situation in which the structure of the microservices endpoint remains the same but the behavior changes in such a way as to break consumers’ expectations.
+A semantic breakage refers to a situation in which the structure of the microservices endpoint remains the same but the behavior changes in such a way as to break consumers' expectations.
 
 > In the previous version of the "calculate" method, it added two provided integers and returned the result. However, in the new version, the method has been changed to multiply the integers and return the result.
 > 

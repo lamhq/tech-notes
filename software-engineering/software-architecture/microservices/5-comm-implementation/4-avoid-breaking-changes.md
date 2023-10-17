@@ -4,7 +4,7 @@ Here are a few key ideas worth exploring to avoid making breaking changes:
 
 ## Expansion Changes
 
-Add new things to a microservice interface; don’t remove old things.
+Add new things to a microservice interface; don't remove old things.
 
 ## Tolerant Reader
 
@@ -12,9 +12,9 @@ When consuming a microservice interface, be flexible in what you expect.
 
 Avoid client code binding too tightly to the interface of a microservice.
 
-The pattern of implementing a reader able to ignore changes we don’t care about is a **tolerant reader**.
+The pattern of implementing a reader able to ignore changes we don't care about is a **tolerant reader**.
 
-> Let’s consider an Email microservice whose job it is to send out emails to our customers. To send the email, the microservice needs only the `firstname`, `lastname`, and `email` fields. We don’t need to know the `telephoneNumber`. We want to simply pull out those fields we care about and ignore the rest.
+> Let's consider an Email microservice whose job it is to send out emails to our customers. To send the email, the microservice needs only the `firstname`, `lastname`, and `email` fields. We don't need to know the `telephoneNumber`. We want to simply pull out those fields we care about and ignore the rest.
 
 Some binding technology, especially that used by strongly typed languages, can attempt to bind all fields whether the consumer wants them or not. When removing a field that aren't used, this still cause  consumers to break needlessly.
 
@@ -25,7 +25,7 @@ Pick technology that makes it easier to make backward-compatible changes to the 
 
 Some technology can be more brittle when it comes to allowing us to change interfaces (such as Java RMI).
 
-**Protocol buffers** (used with gRPC) have the concept of field number. Each entry in a protocol buffer has to define a field number, which client code expects to find. If new fields are added, the client doesn’t care.
+**Protocol buffers** (used with gRPC) have the concept of field number. Each entry in a protocol buffer has to define a field number, which client code expects to find. If new fields are added, the client doesn't care.
 
 **Avro** allows for the schema to be sent along with the payload, allowing clients to potentially interpret a payload much like a dynamic type.
 
@@ -62,7 +62,7 @@ Using schemas can help us pick up structural changes (assuming we use some sort 
 - openapi-diff for the OpenAPI specification
 - The open source Confluent Schema Registry (supports JSON Schema, Avro, and protocol buffers) is capable of comparing newly uploaded versions for backward compatibility.
 
-The tool should allow you to fail a CI build if incompatible schemas are found, ensuring that your microservice won’t get deployed.
+The tool should allow you to fail a CI build if incompatible schemas are found, ensuring that your microservice won't get deployed.
 
 ### Semantic breakages
 
@@ -70,7 +70,7 @@ Consumer-driven contract testing, exemplified by tools like Pact, is highlighted
 
 However, it's emphasized that without schemas, testing becomes more challenging, and it's necessary to put extra effort into catching breaking changes.
 
-If you’re supporting multiple different client libraries, running tests using each library you support against the latest service is another technique that can help.
+If you're supporting multiple different client libraries, running tests using each library you support against the latest service is another technique that can help.
 
 
 # Semantic Versioning
