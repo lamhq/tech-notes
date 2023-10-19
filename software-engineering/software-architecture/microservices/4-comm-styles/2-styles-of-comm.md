@@ -4,7 +4,7 @@ A microservice architecture may have a mix of styles of collaboration.
 
 > Consider an Order microservice that exposes a request-response API that allows for orders to be placed or changed and then fires events when these changes are made.
 
-![](styles-of-comm.jpg.png)
+![](images/styles-of-comm.png)
 
 
 ## Synchronous blocking

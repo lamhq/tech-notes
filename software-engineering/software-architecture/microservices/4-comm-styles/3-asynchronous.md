@@ -78,7 +78,7 @@ With an asynchronous request-response, the request is sent as a **message over a
 
 The **downstream microservice** consumes messages from this queue when it is able. It reads the request, carries out the associated work.
 
-![](async-req-res.png)
+![](images/async-req-res.png)
 
 The microservice that receives the request needs either to know implicitly where to **route the response** or else to be told where the response should go, typically, send the response back to a queue that the original microservice is reading from.
 

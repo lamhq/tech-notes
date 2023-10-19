@@ -34,7 +34,7 @@ The load balancer, in turn, points to the instances of the service. When deployi
 
 This strategy can help manage DNS entries in a way that minimizes service disruptions during updates and ensures that clients gradually shift to the new instances without relying on cached DNS entries.
 
-![](dns.png)
+![](images/dns.png)
 
 > Some people use DNS round-robining, where the DNS entries themselves refer to a group of machines. This technique is extremely problematic, as the client is hidden from the underlying host and therefore cannot easily stop routing traffic to one of the hosts should it become sick.
 

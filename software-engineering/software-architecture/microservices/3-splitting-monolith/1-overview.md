@@ -41,7 +41,7 @@ Look at the system's volatility to identify those pieces of functionality that c
 
 > You can use static analysis tools like [CodeScene](https://www.codescene.com/) to quickly find volatile parts of your codebase.
 
-![](codescene.jpg.png)
+![](images/codescene.png)
 
 The decision about which functionality to split into a microservice will end up being a balance between these two forces: **how easy the extraction is** versus **the benefit of extracting** the microservice in the first place.
 
@@ -65,7 +65,7 @@ In traditional three tiers of a web-based services stack, we can look at the fun
 
 ### Extracting code first
 
-![](code-first.jpg.png)
+![](images/code-first.png)
 
 - The code associated with the functionality is extracted into microservice. However, the data remains in the monolithic database.
 - Extracting application code before data tends to deliver more short-term benefit and it's easier.
@@ -75,7 +75,7 @@ In traditional three tiers of a web-based services stack, we can look at the fun
 
 ### Extracting data first
 
-![](data-first.jpg.png)
+![](images/data-first.png)
 
 The data being extracted first, before the application code.
 

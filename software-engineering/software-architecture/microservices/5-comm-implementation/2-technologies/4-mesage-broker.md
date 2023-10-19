@@ -17,11 +17,11 @@ A **consumer** could represent one or more microservices—typically modeled as 
 
 When a message is put into the **queue**, only one member of the consumer group will receive that message; this means the queue works as a load distribution mechanism.
 
-![](queue.png)
+![](images/queue.png)
 
 With **topics**, you can have multiple consumer groups. When an event is put onto a topic. A copy of that event is received by all consumer groups. Only one instance of each consumer group will see that event.
 
-![](topic.png)
+![](images/topic.png)
 
 A large part of the **distinction** between the two is that when a message is sent over a queue, there is information of what the message is being sent to. With a topic, the sender is unaware of who will end up receiving the message.
 

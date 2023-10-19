@@ -10,7 +10,7 @@ That's because the microservice has to call other microservices to request infor
 > 
 > Then, it need to call the Catalog microservice, requesting information on each of these SKUs.
 > 
-> ![](joining-data.jpg.png)
+> ![](images/joining-data.png)
 >
 > We can mitigate the likely impact of report generating latency by allowing for SKUs to be looked up in the Catalog microservice in bulk, or perhaps even by caching the required album information locally.
 
@@ -59,7 +59,7 @@ To solve this problem, a reporting database is designed amd created for external
 
 The reporting database allows hiding internal state management while still presenting the data in a database. This can be useful for allowing people to run off ad hoc defined SQL queries, run large-scale joins, or make use of existing toolchains that expect to have access to a SQL endpoint.
 
-![](reporting-db.jpg.png)
+![](images/reporting-db.png)
 
 ### How is it created?
 

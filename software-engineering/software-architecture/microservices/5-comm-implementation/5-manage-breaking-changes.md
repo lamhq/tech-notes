@@ -17,7 +17,7 @@ Run old and new versions of the microservice side by side.
 
 Older consumers continue to use the older version, while newer consumers access the new one.
 
-![](coexist-versions.png)
+![](images/coexist-versions.png)
 
 > This is the approach used sparingly by Netflix in situations in which the cost of changing older consumers is too high, especially in rare cases in which legacy devices are still tied to older versions of the API.
 
@@ -41,7 +41,7 @@ When releasing a breaking change, a new version of the service is deployed, expo
 
 This allows us to get the new microservice out as soon as possible, along with the new interface, while giving time for consumers to move over. Once all the consumers are no longer using the old endpoint, you can remove it along with any associated code.
 
-![](emulate-old-interface.png)
+![](images/emulate-old-interface.png)
 
 This is in effect an example of the **expand and contract pattern**, which allows us to phase in breaking changes. We expand the capabilities we offer, supporting both old and new ways of doing something. Once the old consumers do things in the new way, we contract our API, removing the old functionality.
 

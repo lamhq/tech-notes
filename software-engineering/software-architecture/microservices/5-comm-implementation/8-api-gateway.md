@@ -14,7 +14,7 @@ In a networked perimeter, an **API gateway** typically handles **"north-south"**
 
 A **service mesh**, on the other hand, primarily addresses **"east-west"** traffic, focusing on the communication between microservices within the networked perimeter.
 
-![](api-gateway-service-mesh.png)
+![](images/api-gateway-service-mesh.png)
 
 
 ## Reverse proxy
@@ -29,7 +29,7 @@ In contrast to a forward proxy, which is used to protect clients’ privacy and 
 
 Reverse proxies can also be used to provide additional services such as load balancing, SSL encryption, and content filtering. They are commonly used in large-scale web applications and content delivery networks (CDNs).
 
-![](reverse-proxy-vs-forward-proxy.png)
+![](images/reverse-proxy-vs-forward-proxy.png)
 
 
 ## API Gateways
@@ -85,7 +85,7 @@ One key strategy for achieving this goal is to distribute the proxy processes on
 >
 > The Order Processor thinks it’s making a normal network call, unaware that the call is routed locally on the machine, which is significantly faster (and also less prone to partitions).
 
-![](service-mesh.png)
+![](images/service-mesh.png)
 
 A control plane in a service mesh architecture is positioned above the local mesh proxies. It serves as a central point for altering the behavior of these proxies and gathering information about their activities.
 

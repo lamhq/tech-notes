@@ -8,7 +8,7 @@ You intercept calls to the existing monolithic application,
 - If the call to that piece of functionality is implemented in our new microservice architecture, it is redirected to the microservice.
 - If the functionality is still provided by the monolith, the call is allowed to continue to the monolith itself.
 
-![](strangler-fig.jpg.png)
+![](images/strangler-fig.png)
 
 The beauty of this pattern is that it can often be done without making any changes to the underlying monolithic application. The monolith is unaware that it has even been "wrapped" with a newer system.
 
