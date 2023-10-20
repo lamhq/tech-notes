@@ -56,21 +56,28 @@ In traditional three tiers of a web-based services stack, we can look at the fun
 
 ### Decomposing UI
 
-- Extracting user interface functionality related to the microservice could be considered a separate step.
-- Ignoring the user interface part of the equation can lead to an overly siloed approach to any architectural restructuring.
-- Sometimes the biggest benefits can come from decomposition of the UI, so ignoring it can be perilous.
-- Decomposition of the UI tends to lag behind decomposition of the backend into microservices.
-- Until the microservices are available, it's difficult to see the possibilities for UI decomposition; just make sure it doesn't lag too much.
+Extracting user interface functionality related to the microservice could be considered a separate step.
+
+Ignoring the user interface part of the equation can lead to an overly siloed approach to any architectural restructuring.
+
+Sometimes the biggest benefits can come from decomposition of the UI, so ignoring it can be perilous.
+
+Decomposition of the UI tends to lag behind decomposition of the backend into microservices.
+
+Until the microservices are available, it's difficult to see the possibilities for UI decomposition; just make sure it doesn't lag too much.
 
 
 ### Extracting code first
 
 ![](images/code-first.png)
 
-- The code associated with the functionality is extracted into microservice. However, the data remains in the monolithic database.
-- Extracting application code before data tends to deliver more short-term benefit and it's easier.
-- If it is impossible to extract the application code cleanly, we could abort any further work, avoiding the need to detangle the database.
-- However, if the application code is cleanly extracted but extracting data proves to be impossible, we could be in trouble. Therefore, it's essential to have looked at the associated data storage and have some idea as to whether extraction is viable and how you will go about it.
+The code associated with the functionality is extracted into microservice. However, the data remains in the monolithic database.
+
+Extracting application code before data tends to deliver more short-term benefit and it's easier.
+
+If it is impossible to extract the application code cleanly, we could abort any further work, avoiding the need to detangle the database.
+
+However, if the application code is cleanly extracted but extracting data proves to be impossible, we could be in trouble. Therefore, it's essential to have looked at the associated data storage and have some idea as to whether extraction is viable and how you will go about it.
 
 
 ### Extracting data first
