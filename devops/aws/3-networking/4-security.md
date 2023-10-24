@@ -1,8 +1,15 @@
 # Security
 
-## Secure Your Subnets with Network ACLs
+## Network Traffic in a VPC
 
-Think of a network ACL as a firewall at the subnet level. A network ACL enables you to control what kind of traffic is allowed to enter or leave your subnet.
+When a customer requests data from an application hosted in the AWS Cloud, this request is sent over the internet.
+
+It enters into a VPC through an internet gateway. Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
+
+
+## Network ACLs (secure subnets)
+
+A network access control list (ACL) is a virtual firewall that controls what kind of traffic is allowed to enter or leave your subnet.
 
 For example, if you have a web application, you might restrict your network to allow HTTPS traffic and remote desktop protocol (RDP) traffic to your web servers.
 
@@ -24,17 +31,21 @@ For example, if you have a web application, you might restrict your network to a
 
 *Notice that in the network ACL example above, you allow inbound 443 and outbound range 1025-65535. That's because HTTP uses port 443 to initiate a connection and will respond to an ephemeral port.*
 
-Network ACL's are considered stateless, so you need to include both the inbound and outbound ports used for the protocol. If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
+Network ACLs perform stateless packet filtering. They remember nothing and check packets that cross the subnet border each way: inbound and outbound.
+
+If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
 
 
-## Secure Your EC2 Instances with Security Groups
+## Security Groups (Secure Your EC2 Instances)
+
+A security group is a virtual firewall that controls inbound and outbound traffic for a particular entity, such as an EC2 instance.
 
 The default configuration of a security group blocks all inbound traffic and allows all outbound traffic.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/LoWSavO8Ss-FkmrzvBrPZg_976ab1cb999648f4bffd70512bd32d27_SG.jpeg?expiry=1662595200000&hmac=UOzeJSU8iN1VuamFjJQSAt1VmE_ea45Aw3RAxB0DR8g)
+![](images/sg.png)
 
-Security groups are stateful, meaning they will remember if a connection is originally initiated by the EC2 instance or from the outside and temporarily allow traffic to respond without having to modify the inbound rules. 
+Security groups perform stateful packet filtering. They remember if a connection is originally initiated by the EC2 instance or from the outside and temporarily allow traffic to respond without having to modify the inbound rules. 
 
 A common design pattern is organizing your resources into different groups and creating security groups for each to control network communication between them.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/ZnKJspBYSOeyibKQWDjnYQ_6e94f0f1d04e4409a37ce7b5ada5c75b_SG2.jpeg?expiry=1662595200000&hmac=tG-E-_GEGyXf2XIY8YrqeyKVqe5eMp9LrevJEXca2eI)
+![](images/layer-sg.png)
