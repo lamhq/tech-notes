@@ -2,13 +2,10 @@
 
 ## What Is Amazon DynamoDB?
 
-Amazon DynamoDB is a fully managed NoSQL database service.
+Amazon DynamoDB is a key-value database service.
 
-DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. 
-
-You can scale up or scale down your tables' throughput capacity without downtime or performance degradation.
-
-DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance.
+- **Serverless**: DynamoDB is serverless, which means that you do not have to provision, patch, manage servers, install, maintain, or operate software.. 
+- **Automatic Scaling**: As the size of your database shrinks or grows, DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
 
 All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability. 
 
