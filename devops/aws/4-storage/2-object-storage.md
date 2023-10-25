@@ -1,25 +1,121 @@
-# Object Storage with Amazon S3
+# Object Storage
+
+## Overview
+
+In object storage, each object consists of data, metadata, and a key.
+
+The data might be an image, video, text document, or any other type of file. Unlike file storage, these objects are stored in a flat structure instead of a hierarchy.
+
+Metadata contains information about what the data is, how it is used, the object size, and so on.
+
+An object’s key is its unique identifier.
+
+![](images/obj-str.png)
+
+When a file in object storage is modified, the entire object is updated.
+
+![](images/object-storage.png)
+
+Object storage is generally useful when storing large data sets, unstructured files like media assets, and static assets, such as photos.
+
 
 ## What Is Amazon S3?
 
-Unlike Amazon EBS, Amazon S3 is a standalone storage solution that isn't tied to compute. It enables you to retrieve your data from anywhere on the web.
+Amazon S3 is a service that provides object-level storage.
 
-Amazon S3 is an **object storage** service. Object storage stores data in a flat structure, using unique identifiers to look up objects when requested.
+Amazon S3 stores data as objects in **buckets**.
 
-An object is simply a file combined with metadata.
+Amazon S3 offers unlimited storage space. The maximum file size for an object in Amazon S3 is 5 TB.
+
+When you upload a file to Amazon S3, you can set permissions to control visibility and access to it. You can also use the Amazon S3 versioning feature to track changes to your objects over time.
 
 
-## Understand Amazon S3 Concepts
+## S3 Bucket
 
-In Amazon S3, you have to store your objects in containers called buckets.
+Amazon S3 store your objects in containers called buckets.
 
-When you create a bucket, you choose, at the very minimum, two things: the bucket name and the AWS Region you want the bucket to reside in.
+When you create a bucket, you choose at least two things: the bucket name and the AWS Region you want the bucket to reside in.
 
-AWS stops you from choosing a **bucket name** that has already been chosen by someone else in another AWS account.
+**Bucket name** is unique.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/KRgCnEr0RY-YApxK9HWPyQ_78588d339d804b78b26f905033288350_bucket2.jpeg?expiry=1662681600000&hmac=dfFvvTloKeB5zQKI4FfhUdTUrPnE1gUSwGKZBfsnN08)
+![](images/s3.png)
 
-Note, you can have folders inside of buckets to help you organize objects. However, remember that there's no actual file hierarchy that supports this on the back end. It is instead a flat structure where all files and folders live at the same level. Using buckets and folders implies a hierarchy, which makes it easy to understand for the human eye.
+
+## Storage Classes
+
+S3 storage classes let you change your storage tier as your data characteristics change. 
+
+When selecting an Amazon S3 storage class, consider these two factors:
+
+- How often you plan to retrieve your data
+- How available you need your data to be
+
+> For example, if you are now accessing your old photos infrequently, you may want to change the storage class those photos are stored in to save on costs.
+
+There are six S3 storage classes:
+
+
+### Amazon S3 Standard
+
+- Designed for frequently accessed data
+- Stores data in a minimum of three Availability Zones
+- Has a higher cost than other storage classes
+- For websites, content distribution, and data analytics...
+
+
+### Amazon S3 Intelligent-Tiering
+
+- Ideal for data with unknown or changing access patterns
+- Requires a small monthly monitoring and automation fee per object
+- Automatically moves your data to the most cost-effective storage tier based on frequency of access.
+
+> If you haven’t accessed an object for 30 consecutive days, Amazon S3 automatically moves it to the infrequent access tier, Amazon S3 Standard-IA.
+>
+> If you access an object in the infrequent access tier, Amazon S3 automatically moves it to the frequent access tier, Amazon S3 Standard.
+
+
+### Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
+- Ideal for infrequently accessed data
+- Similar to Amazon S3 Standard but has a lower storage price and higher retrieval price
+- For long-term backups, disaster recovery files, and so on.
+
+
+### Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)
+- Stores data in a single Availability Zone
+- Has a lower storage price than Amazon S3 Standard-IA
+
+Good storage class to consider if the following conditions apply:
+
+- You want to save costs on storage.
+- Storing secondary backup copies of on-premises data or easily re-creatable data.
+
+### Amazon S3 Glacier Instant Retrieval
+
+- Works well for archived data that requires immediate access
+- Can retrieve objects within a few milliseconds (same as Amazon S3 Standard)
+
+
+### Amazon S3 Glacier Flexible Retrieval
+
+- Low-cost storage designed for data archiving
+- Able to retrieve objects within a few minutes to hours
+- Example: store archived customer records or older photos and video files.
+
+
+### Amazon S3 Glacier Deep Archive
+
+- Lowest-cost object storage class ideal for archiving
+- Able to retrieve objects within 12 hours
+- Data is replicated and stored across at least three geographically dispersed Availability Zones.
+- For data that might be accessed once or twice in a year.
+
+
+### Amazon S3 Outposts
+
+- Delivers object storage to your on-premises AWS Outposts environment
+- Store data durably and redundantly across multiple devices and servers on your Outposts
+- For workloads with local data residency requirements that must satisfy demanding performance needs by keeping data close to on-premises applications.
+
 
 ## S3 Use Cases
 
@@ -27,7 +123,7 @@ Note, you can have folders inside of buckets to help you organize objects. Howev
 
 **Media hosting**: Because you can store unlimited objects, and each individual object can be up to 5 TBs, S3 is an ideal location to host video, photo, or music uploads.
 
-**Software delivery**: You can use S3 to host your software applications that customers can download.
+**Software delivery**: host your software applications that customers can download.
 
 **Data lakes**: S3 is an optimal foundation for a data lake because of its virtually unlimited scalability. You can increase storage from gigabytes to petabytes of content, paying only for what you use.
 
@@ -35,15 +131,8 @@ Note, you can have folders inside of buckets to help you organize objects. Howev
 
 **Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
 
+
 ## Security
-
-Everything in Amazon S3 is private by default. All S3 resources, such as buckets, folders, and objects can only be viewed by the user or AWS account that created that resource.
-
-If you decide that you want everyone on the internet to see your photos, you can choose to make your buckets, folders, and objects public.
-
-Most of the time, you don't want your permissions to be all or nothing. Typically, you want to be more granular about the way you provide access to your resources.
-
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/m84sK4KBQOuOLCuCgSDraw_5954b495bbd6412083446e2c2a7c0224_secure1.jpeg?expiry=1662681600000&hmac=IfdHSXo7zYqNGcaz4_la8S_keuh9q4yCQE94VFvJGxc)
 
 To be more specific about who can do what with your S3 resources, Amazon S3 provides two main access management features: **IAM policies** and **S3 bucket policies**.
 
@@ -129,24 +218,6 @@ Buckets can be in one of three states:
 - Versioning-suspended: This suspends versioning for new objects. All new objects in the bucket will not have a version. However, all existing objects keep their object versions.
 
 The versioning state applies to all of the objects in that bucket. Keep in mind that storage costs are incurred for all objects in your bucket and all versions of those objects. To reduce your S3 bill, you may want to delete previous versions of your objects that are no longer in use.
-
-## Storage Classes
-
-S3 storage classes let you change your storage tier as your data characteristics change. For example, if you are now accessing your old photos infrequently, you may want to change the storage class those photos are stored in to save on costs.
-
-There are six S3 storage classes:
-
-**Amazon S3 Standard**: This is considered general purpose storage for cloud applications, dynamic websites, content distribution, mobile and gaming applications, and big data analytics.
-
-**Amazon S3 Intelligent-Tiering**: This tier is useful if your data has unknown or changing access patterns. S3 Intelligent-Tiering stores objects in two tiers, a frequent access tier and an infrequent access tier. Amazon S3 monitors access patterns of your data, and automatically moves your data to the most cost-effective storage tier based on frequency of access.
-
-**Amazon S3 Standard-Infrequent Access (S3 Standard-IA)**: S3 Standard-IA is for data that is accessed less frequently, but requires rapid access when needed. S3 Standard-IA offers the high durability, high throughput, and low latency of S3 Standard, with a low per-GB storage price and per-GB retrieval fee. This storage tier is ideal if you want to store long-term backups, disaster recovery files, and so on.
-
-**Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)**: Unlike other S3 storage classes which store data in a minimum of three Availability Zones (AZs), S3 One Zone-IA stores data in a single AZ and costs 20% less than S3 Standard-IA. S3 One Zone-IA is ideal for customers who want a lower-cost option for infrequently accessed data but do not require the availability and resilience of S3 Standard or S3 Standard-IA. It's a good choice for storing secondary backup copies of on-premises data or easily re-creatable data.
-
-**Amazon S3 Glacier**: S3 Glacier is a secure, durable, and low-cost storage class for data archiving. You can reliably store any amount of data at costs that are competitive with or cheaper than on-premises solutions. To keep costs low yet suitable for varying needs, S3 Glacier provides three retrieval options that range from a few minutes to hours.
-
-**Amazon S3 Glacier Deep Archive**: S3 Glacier Deep Archive is Amazon S3's lowest-cost storage class and supports long-term retention and digital preservation for data that may be accessed once or twice in a year. It is designed for customers—particularly those in highly regulated industries, such as the Financial Services, Healthcare, and Public Sectors—that retain data sets for 7 to 10 years or longer to meet regulatory compliance requirements.
 
 
 ## Automate Tier Transitions
