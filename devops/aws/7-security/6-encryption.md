@@ -2,31 +2,31 @@
 
 ## AWS Key Management Service (KMS)
 
-AWS Key Management Service (KMS) makes it easy for you to create and manage keys and control the use of encryption across a wide range of AWS services and in your applications. 
+[AWS Key Management Service (AWS KMS)](https://aws.amazon.com/kms) enables you to perform encryption operations through the use of cryptographic keys.
+
+A cryptographic key is a random string of digits used for locking (encrypting) and unlocking (decrypting) data.
+
+You can use AWS KMS to create, manage, and use cryptographic keys.
+
+With AWS KMS, you can choose the specific levels of access control that you need for your keys. For example, you can specify which IAM users and roles are able to manage keys. Alternatively, you can temporarily disable keys so that they are no longer in use by anyone.
 
 AWS KMS is integrated with AWS CloudTrail to provide you with logs of all key usage to help meet your regulatory and compliance needs.
-
-https://aws.amazon.com/kms/
 
 
 ## AWS CloudHSM
 
-AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud.
+[AWS CloudHSM](https://aws.amazon.com/cloudhsm/) is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud.
 
 It is a fully-managed service that automates time-consuming administrative tasks for you, such as hardware provisioning, software patching, high-availability, and backups. CloudHSM also enables you to scale quickly by adding and removing HSM capacity on-demand, with no up-front costs.
-
-https://aws.amazon.com/cloudhsm/
 
 
 ## Encryption of Data in Transit
 
-You can mount a file system so all NFS traffic is encrypted in transit using Transport Layer Security 1.2 (TLS) with an industry-standard AES-256 cipher.
+You can mount a file system so all NFS traffic is [encrypted in transit](https://docs.aws.amazon.com/whitepapers/latest/efs-encrypted-file-systems/encryption-of-data-in-transit.html) using Transport Layer Security 1.2 (TLS) with an industry-standard AES-256 cipher.
 
 TLS is a set of industry-standard cryptographic protocols used for encrypting information that is exchanged over the wire.
 
 AES-256 is a 256-bit encryption cipher used for data transmission in TLS.
-
-https://docs.aws.amazon.com/whitepapers/latest/efs-encrypted-file-systems/encryption-of-data-in-transit.html
 
 
 ## Encryption of Data at Rest

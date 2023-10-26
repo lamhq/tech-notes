@@ -24,13 +24,11 @@ https://aws.amazon.com/config/
 
 ## Amazon Inspector
 
-Amazon Inspector automatically assesses applications for exposure, vulnerabilities, and deviations from best practices.
+[Amazon Inspector](https://aws.amazon.com/inspector) helps to improve the security and compliance of applications by running automated security assessments.
 
-After performing an assessment, Amazon Inspector produces a detailed list of security findings prioritized by level of severity. These findings can be reviewed directly or as part of detailed assessment reports which are available via the Amazon Inspector console or API.
+It checks applications for security vulnerabilities and deviations from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions. 
 
-Amazon Inspector assessments are offered to you as pre-defined rules packages mapped to common security best practices and vulnerability definitions. These rules are regularly updated by AWS security researchers.
-
-https://aws.amazon.com/inspector/
+After performing an assessment, Amazon Inspector produces a detailed list of security findings prioritized by level of severity and a recommendation for how to fix it.
 
 
 ## AWS Trusted Advisor

@@ -1,11 +1,15 @@
 # Amazon GuardDuty
 
-Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts and workloads.
+[Amazon GuardDuty](https://aws.amazon.com/guardduty) is a service that provides intelligent threat detection for your AWS infrastructure and resources.
 
-The service uses machine learning, anomaly detection, and integrated threat intelligence to identify and prioritize potential threats.
+It identifies threats by continuously monitoring the network activity and account behavior within your AWS environment.
 
-GuardDuty analyzes tens of billions of events across multiple AWS data sources, such as AWS CloudTrail, Amazon VPC Flow Logs, and DNS logs.
+After you have enabled GuardDuty for your AWS account, GuardDuty begins monitoring your network and account activity.
 
-GuardDuty can be enabled with no software or hardware to deploy or maintain.
+You do not have to deploy or manage any additional security software. GuardDuty then continuously analyzes data from multiple AWS sources, including VPC Flow Logs and DNS logs. 
 
-https://aws.amazon.com/guardduty/ 
+If GuardDuty detects any threats, you can review detailed findings about them from the AWS Management Console. Findings include recommended steps for remediation.
+
+> You can also configure AWS Lambda functions to take remediation steps automatically in response to GuardDuty’s security findings.
+
+![](images/guardduty.png)
