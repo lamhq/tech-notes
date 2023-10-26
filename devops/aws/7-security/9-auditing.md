@@ -1,16 +1,5 @@
 # Auditing
 
-## AWS CloudTrail
-
-It enables you to see who is doing what in your AWS infrastructure. You can track user usage of the console API calls, AWS SDKs, command line tools, and other AWS services themselves
-
-You can view account activity right in the CloudTrail console.
-
-You can direct CloudTrail events to Amazon S3, Amazon CloudWatch Events logs, and events. This allows you to perform analysis, archive events, and even remediate on an unexpected change.
-
-https://aws.amazon.com/cloudtrail/
-
-
 ## AWS Config
 
 This service records your AWS configuration, changes to that configuration, or a history, and even change notifications, so you're notified proactively.
@@ -33,8 +22,22 @@ After performing an assessment, Amazon Inspector produces a detailed list of sec
 
 ## AWS Trusted Advisor
 
-AWS Trusted Advisor is an online tool that provides you real time guidance to help you provision your resources following AWS best practices.
+[AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor) is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
 
-Taking advantage of the recommendations provided by Trusted Advisor on a regular basis to help keep your solutions provisioned optimally.
+Trusted Advisor compares its findings to AWS best practices in five categories: cost optimization, performance, security, fault tolerance, and service limits.
 
-https://aws.amazon.com/premiumsupport/technology/trusted-advisor/
+Trusted Advisor offers a list of recommended actions and additional resources to learn more about AWS best practices. 
+
+> You can use AWS Trusted Advisor to assist you while you are creating new workflows and developing new applications. Or you can use it while you are making ongoing improvements to existing applications and resources.
+
+### AWS Trusted Advisor Dashboard
+
+![](images/trusted-advisor.png)
+
+When you access the Trusted Advisor dashboard on the AWS Management Console, you can review completed checks for cost optimization, performance, security, fault tolerance, and service limits.
+
+For each category:
+
+- The green check indicates the number of items for which it detected **no problems**.
+- The orange triangle represents the number of recommended **investigations**.
+- The red circle represents the number of recommended **actions**.
