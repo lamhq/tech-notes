@@ -8,7 +8,7 @@ Clients can subscribe to the SNS topic and receive published messages by using a
 
 It is possible for subscribers to subscribe to a single topic or to multiple topics.
 
-![](amazon-sns.jpg)
+![](images/amazon-sns.jpg)
 
 
 ## Use cases
