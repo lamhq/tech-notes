@@ -27,11 +27,21 @@ Amazon RDS is available on six database engines:
 
 ## Amazon Aurora
 
-Amazon Aurora is an enterprise-class relational database.
+Amazon Aurora is a fully managed relational database engine that's compatible with MySQL and PostgreSQL. You can use the code, tools, and applications for your existing MySQL and PostgreSQL databases with Aurora. 
 
 It is compatible with MySQL and PostgreSQL relational databases. It is up to five times faster than standard MySQL databases and up to three times faster than standard PostgreSQL databases.
 
+Aurora includes a high-performance storage subsystem. Its MySQL-compatible and PostgreSQL-compatible database engines are customized to take advantage of that fast, distributed storage.
+
 Consider Amazon Aurora if your workloads require high availability. It replicates six copies of your data across three Availability Zones and continuously backs up your data to Amazon S3.
+
+The underlying storage grows automatically as needed. An Aurora cluster volume can grow to a maximum size of 128 tebibytes (TiB).
+
+### Aurora Serverless v2
+
+Aurora Serverless v2 is an on-demand, automatic scaling configuration for Aurora. You're charged only for the resources that your database clusters consume.
+
+Aurora Serverless v2 can help you to stay within budget and reduce the need to pay for computer resources that you don't use. It is especially valuable for multitenant databases, distributed databases, development and test systems, and other environments with highly variable and unpredictable workloads.
 
 
 ## DB Instances
@@ -99,3 +109,14 @@ If there's an availability issue, such as the primary database losing connectivi
 When you create a DB instance, a domain name system (DNS) name is provided. AWS uses that DNS name to failover to the standby database. In an automatic failover, the standby database is promoted to the primary role and queries are redirected to the new primary database.
 
 The reason you can select multiple subnets for an Amazon RDS database is because of the Multi-AZ configuration. You'll want to ensure that you have used subnets in different AZs for your primary and standby copies.
+
+
+## Amazon RDS Proxy
+
+By using Amazon RDS Proxy, your applications can pool and share database connections to improve their ability to scale.
+
+By using RDS Proxy, you can also enforce AWS Identity and Access Management (IAM) authentication for databases, and securely store credentials in AWS Secrets Manager.
+
+RDS Proxy establishes a database connection pool and reuses connections in this pool without the memory and CPU overhead of opening a new database connection each time.
+
+To protect the database against oversubscription, you can control the number of database connections that are created.
