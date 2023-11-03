@@ -38,8 +38,6 @@ It supports two types of data stores: Redis and Memcached.
 
 Use Cases: Caching, session management, gaming leaderboards, geospatial applications.
 
-**Amazon DynamoDB Accelerator (DAX)** is an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
-
 
 ## Time series
 

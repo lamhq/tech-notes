@@ -38,3 +38,16 @@ DynamoDB Streams writes stream records in near-real time so that you can build a
 You can enable a stream on a new table during its creation using the AWS CLI or one of the AWS SDKs.
 
 DynamoDB Streams operates asynchronously, and enabling a stream doesn't affect the performance of the table.
+
+
+## Amazon DynamoDB Accelerator (DAX)
+
+DAX is an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
+
+DAX does the heavy lifting that’s required to add in-memory acceleration to your DynamoDB tables—and developers don’t need to manage cache invalidation, data population, or cluster management.
+
+A benefit of using DAX is that you don’t need to modify the application logic because DAX is compatible with existing DynamoDB API calls.
+
+DAX run within an Amazon VPC. You can launch a DAX cluster in your VPC, and control access to the cluster by using Amazon VPC security groups.
+
+![](images/dax.png)
