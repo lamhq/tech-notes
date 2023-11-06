@@ -48,6 +48,8 @@ DAX does the heavy lifting that’s required to add in-memory acceleration to yo
 
 A benefit of using DAX is that you don’t need to modify the application logic because DAX is compatible with existing DynamoDB API calls.
 
+DAX is not designed for applications that are write-intensive. It can also add cost to applications that do not perform much read activity.
+
 DAX run within an Amazon VPC. You can launch a DAX cluster in your VPC, and control access to the cluster by using Amazon VPC security groups.
 
 ![](images/dax.png)

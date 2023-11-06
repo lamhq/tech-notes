@@ -2,12 +2,12 @@
 
 EventBridge is a serverless event bus service that you can use to connect your applications with data from various sources. 
 
-EventBridge delivers a stream of real-time data **from** your applications, software as a service (SaaS) applications, and AWS services **to** targets such as AWS Lambda functions, HTTP invocation endpoints using API destinations, or event buses in other AWS accounts.
+EventBridge delivers a stream of real-time data **from** your applications, software as a service applications, and AWS services **to** targets such as AWS Lambda functions, HTTP invocation endpoints using API destinations, or event buses in other AWS accounts.
 
 EventBridge receives an event, which is an indicator of a change in environment. EventBridge then applies a rule to route the event to a 
 target.
 
-Rules match events to targets based on either the structure of the event (which is called an event pattern), or on a schedule.
+Rules match events to targets based on either the structure of the event (event pattern), or on a schedule.
 
 > For example, when an EC2 instance changes from pending to running, you can have a rule that sends the event to a Lambda function.
 

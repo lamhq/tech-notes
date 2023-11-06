@@ -65,6 +65,10 @@ There are six S3 storage classes:
 
 ### Amazon S3 Intelligent-Tiering
 
+S3 Intelligent-Tiering is designed to optimize storage costs by automatically moving data to the most cost-effective access tier when access patterns change. 
+
+There are no retrieval charges in S3 Intelligent-Tiering. S3 Intelligent-Tiering has no minimum eligible object size, but objects smaller than 128 KB are not eligible for automatic tiering. 
+
 - Ideal for data with unknown or changing access patterns
 - Requires a small monthly monitoring and automation fee per object
 - Automatically moves your data to the most cost-effective storage tier based on frequency of access.
@@ -73,8 +77,11 @@ There are six S3 storage classes:
 >
 > If you access an object in the infrequent access tier, Amazon S3 automatically moves it to the frequent access tier, Amazon S3 Standard.
 
+![](images/int-tiering.png)
+
 
 ### Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
+
 - Ideal for infrequently accessed data
 - Similar to Amazon S3 Standard but has a lower storage price and higher retrieval price
 - For long-term backups, disaster recovery files, and so on.
@@ -108,6 +115,8 @@ Good storage class to consider if the following conditions apply:
 - Able to retrieve objects within 12 hours
 - Data is replicated and stored across at least three geographically dispersed Availability Zones.
 - For data that might be accessed once or twice in a year.
+
+![](images/s3-glacier.png)
 
 
 ### Amazon S3 Outposts
@@ -220,14 +229,15 @@ Buckets can be in one of three states:
 The versioning state applies to all of the objects in that bucket. Keep in mind that storage costs are incurred for all objects in your bucket and all versions of those objects. To reduce your S3 bill, you may want to delete previous versions of your objects that are no longer in use.
 
 
-## Automate Tier Transitions
+## S3 Lifecycle
 
-If you keep manually changing your objects, you may want to look into automating this process using a lifecycle policy.
+Amazon S3 Lifecycle is a feature that enables you to manage your objects so that they are stored cost-effectively throughout their lifecycle. It is a set of rules that define actions that Amazon S3 applies to a group of objects.
 
-When you define a lifecycle policy configuration for an object or group of objects, you can choose to automate two actions: transition and expiration actions.
+There are two types of actions:
 
 - **Transition actions** are used to define when you should transition your objects to another storage class.
 - **Expiration actions** define when objects expire and should be permanently deleted.
+
 
 *For example, you might choose to transition objects to S3 Standard-IA storage class 30 days after you created them, or archive objects to the S3 Glacier storage class one year after creating them.*
 
@@ -235,3 +245,16 @@ The following use cases are good candidates for lifecycle management:
 
 - **Periodic logs**: If you upload periodic logs to a bucket, your application might need them for a week or a month. After that, you might want to delete them.
 - **Data that changes in access frequency**: Some documents are frequently accessed for a limited period of time. After that, they are infrequently accessed. At some point, you might not need real-time access to them, but your organization or regulations might require you to archive them for a specific period. After that, you can delete them.
+
+
+## Cross-Region Replication
+
+With S3 Cross-Region Replication (CRR), you can replicate objects into other AWS Regions for reduced latency, compliance, security, disaster recovery, ...
+
+With CRR, you can set up replication at a bucket level, a shared prefix level, or an object level (by using Amazon S3 object tags).
+
+Example use cases:
+
+- **Compliance**: Amazon S3 stores your data across multiple geographically distant Availability Zones by default. However, compliance requirements might require you to store data at even greater distances. You can use CRR to replicate data between distant AWS Regions to satisfy these requirements.
+- **Latency performance**: If your customers or end users are distributed across one or more geographic locations, you can minimize latency for data access by maintaining multiple object copies in AWS Regions that are geographically closer to your customers.
+- **Regional efficiency**: If you have compute clusters in two or more AWS Regions that analyze the same set of objects, you might choose to maintain object copies in all of those AWS Regions.
