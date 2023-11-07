@@ -12,6 +12,13 @@ You can use a data lake to break down data silos and combine different types of 
 AWS Lake Formation is a service that you can use to set up a secure data lake in days.
 
 
+## Amazon Redshift
+
+Amazon Redshift is a data warehousing service that you can use for big data analytics.
+
+It offers the ability to collect data from many sources and helps you to understand relationships and trends across your data.
+
+
 ## Amazon Athena
 
 Amazon Athena is an interactive query service that you can use to analyze data in Amazon S3 by using standard Structured Query Language (SQL). Most results are delivered within seconds.
