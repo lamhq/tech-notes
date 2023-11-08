@@ -1,6 +1,4 @@
-# User Permission and Access
-
-## AWS Identity and Access Management (IAM)
+# AWS Identity and Access Management (IAM)
 
 IAM enables you to manage access to AWS services and resources securely.
 
@@ -16,7 +14,7 @@ IAM is integrated with many AWS services  by default.
 No additional charge.
 
 
-### AWS Account Root User
+## Root User
 
 The root user is accessed by signing in with the email address and password that you used to create your AWS account.
 
@@ -30,8 +28,7 @@ The AWS root user has two sets of credentials associated with it:
 
 The root user has complete access to all AWS services and resources in your account, as well as your billing and personal information.
 
-#### Best Practices
-
+**Best Practices**:
 - Choose a strong password for the root user.
 - [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
 - Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
@@ -39,7 +36,7 @@ The root user has complete access to all AWS services and resources in your acco
 - Use the root user to create **IAM user** and assign it permissions to create other users.
 
 
-### IAM User
+## IAM User
 
 An IAM user is an identity that you create in AWS. It represents the person or application that interacts with AWS services and resources.
 
@@ -53,7 +50,7 @@ To allow the IAM user to perform specific actions in AWS, you must grant the IAM
 **Best practice**: Create individual IAM users for each person who needs to access AWS. This provides additional security by allowing each IAM user to have a unique set of security credentials.
 
 
-### IAM Group
+## IAM Group
 
 An IAM group is a collection of users. All users in the group inherit the permissions assigned to the group.
 
@@ -62,7 +59,7 @@ An IAM group is a collection of users. All users in the group inherit the permis
 - Groups cannot belong to groups.
 
 
-### IAM Policy
+## IAM Policy
 
 An IAM policy is a document that allows or denies permissions to AWS services and resources.
 
@@ -103,17 +100,19 @@ Whenever a user or role makes a request, AWS evaluates the policies associated w
 You can test IAM policies with the [IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html).
 
 
-### IAM Role
+## IAM Role
 
-An IAM role is an identity that you can assume to gain temporary access to permissions.
+An IAM role is an identity that you allow you to delegate access to a user or a service temporarily.
 
-Before an IAM user, application, or service can assume an IAM role, they must be granted permissions to switch to the role. When someone assumes an IAM role, they abandon all previous permissions that they had under a previous role and assume the permissions of the new role. 
+Before an IAM user, application, or service can use/assume an IAM role, they must be granted permissions to switch to the role.
+
+When someone assumes an IAM role, they abandon all previous permissions that they had under a previous role and assume the permissions of the new role.
 
 **Best practice:**
-IAM roles are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term.  
+IAM roles are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term.
 
 
-#### API authentication with IAM Role
+### API authentication with IAM Role
 
 Most AWS API calls that are made must be signed and authenticated. When you send an HTTP request to AWS, you must sign the request.
 
@@ -128,10 +127,3 @@ To create a role, you have to select what trusted entity is allowed to assume th
 If one AWS service needs to send an API call to another AWS service, it will most likely use role-based access where the AWS service assumes a role, gains access to the temporary credentials, and then sends the API call to the other AWS service who then verifies the request.
 
 **Another identity that can assume an IAM role to gain access to AWS is external identity providers**. You can leverage IAM roles to grant access to existing identities from your enterprise user directory. These are known as federated users. AWS assigns a role to a federated user when access is requested through an identity provider. We also have AWS services that can make this process a little bit easier, such as AWS Single Sign-On.
-
-
-## Multi-factor Authentication
-
-You can enable MFA for the root user and IAM users.
-
-As a best practice, enable MFA for the root user and all IAM users in your account. By doing this, you can keep your AWS account safe from unauthorized access.
