@@ -7,13 +7,12 @@ AWS is cloud computing provider.
 
 ## Regions
 
-Regions are geographically isolated areas where AWS hosts its data centers.
+A Region is a physical location in the world that consists of two or more Availability Zones (AZs).
 
-Each AWS Region is associated with a geographical name and a Region code: *us-east-1*, *ap-northeast-1*, ...
+Example: `us-east-1`, `ap-northeast-1`, ...
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/Qum59ddKRmOpufXXSoZjhQ_95fce241b88c4c7bac1aa88954d013cb_globalinfra_2.jpeg?expiry=1662163200000&hmac=4gXK19tzYnVBD_WUTccxS3VWU68nOgA0CEaklNlMu6k)
 
-**Choose the Right AWS Region**
+Choose the Right AWS Region:
 
 - **Latency**: choose a Region that is close to your user base.
 - **Price**: prices may vary from one Region to another.
@@ -23,23 +22,25 @@ Each AWS Region is associated with a geographical name and a Region code: *us-ea
 
 ## Availability Zones
 
-An Availability Zone is a single data center or a group of data centers within a Region.
+An Availability Zone is one or more discrete data centers - each with redundant power, networking and connectivity, housed in separate facilities.
 
-Availability Zones are located tens of miles apart from each other. This is close enough to have low latency. They are distant enough to reduce the chance that multiple Availability Zones are affected if a disaster occurs.
+AZs are located tens of miles apart from each other. This is close enough to have low latency. They are distant enough to reduce the chance that multiple Availability Zones are affected if a disaster occurs.
 
 AZs also have a code name:
 
-- *us-east-1a*: an AZ in *us-east-1* (Northern Virginia Region)
-- *sa-east-1b*: an AZ in *sa-east-1* (São Paulo Region in South America)
+- `us-east-1a`: an AZ in *us-east-1* (Northern Virginia Region)
+- `sa-east-1b`: an AZ in *sa-east-1* (São Paulo Region in South America)
 
 A best practice is to run applications across at least two Availability Zones in a Region.
-
-A well-known best practice for cloud architecture is to use Region-scoped, managed services. These services come with availability and resiliency built in (e.g. Elastic load balancing).
 
 
 ## Edge Locations
 
-An edge location is a site that Amazon CloudFront uses to store cached copies of your content closer to your customers for faster delivery.
+Edge locations are endpoints for AWS that are used for caching content.
+
+Typically, this consists of Cloudfront, Amazon's content delivery network (CDN).
+
+There are many more edge location than Regions (> 215).
 
 > Suppose that your company’s data is stored in Brazil, and you have customers who live in China. To provide content to these customers, you don’t need to move all the content to one of the Chinese Regions.
 >

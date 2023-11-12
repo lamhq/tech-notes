@@ -9,6 +9,7 @@
 - **Study frequently but in small chunks** to give brain time to absorb information (spreading, not compressing)
 - **Frequently change tasks and topics** so that you are forced to think about the material in different ways
 - **Review information** before you forget it completely
+- **Always ask questions**
 
 
 ## How to know when you're ready?
