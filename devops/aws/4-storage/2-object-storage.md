@@ -29,6 +29,8 @@ Amazon S3 offers unlimited storage space. The maximum file size for an object in
 
 When you upload a file to Amazon S3, you can set permissions to control visibility and access to it. You can also use the Amazon S3 versioning feature to track changes to your objects over time.
 
+The consistency model for S3 is Strong Read-After-Write. That means as soon as you've written something to S3, it should be immediately available.
+
 
 ## S3 Bucket
 
@@ -39,6 +41,21 @@ When you create a bucket, you choose at least two things: the bucket name and th
 **Bucket name** is unique.
 
 ![](images/s3.png)
+
+
+## S3 Use Cases
+
+**Backup and storage**: S3 is a natural place to back up files because it is highly redundant. As mentioned in the last unit, AWS stores your EBS snapshots in S3 to take advantage of its high availability.
+
+**Media hosting**: Because you can store unlimited objects, and each individual object can be up to 5 TBs, S3 is an ideal location to host video, photo, or music uploads.
+
+**Software delivery**: host your software applications that customers can download.
+
+**Data lakes**: S3 is an optimal foundation for a data lake because of its virtually unlimited scalability. You can increase storage from gigabytes to petabytes of content, paying only for what you use.
+
+**Static websites**: You can configure your bucket to host a static website of HTML, CSS, and client-side scripts.
+
+**Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
 
 
 ## Storage Classes
@@ -126,42 +143,23 @@ Good storage class to consider if the following conditions apply:
 - For workloads with local data residency requirements that must satisfy demanding performance needs by keeping data close to on-premises applications.
 
 
-## S3 Use Cases
+## Secure your data
 
-**Backup and storage**: S3 is a natural place to back up files because it is highly redundant. As mentioned in the last unit, AWS stores your EBS snapshots in S3 to take advantage of its high availability.
+### Server-side Encrypt
 
-**Media hosting**: Because you can store unlimited objects, and each individual object can be up to 5 TBs, S3 is an ideal location to host video, photo, or music uploads.
-
-**Software delivery**: host your software applications that customers can download.
-
-**Data lakes**: S3 is an optimal foundation for a data lake because of its virtually unlimited scalability. You can increase storage from gigabytes to petabytes of content, paying only for what you use.
-
-**Static websites**: You can configure your bucket to host a static website of HTML, CSS, and client-side scripts.
-
-**Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
+You can set default encryption on a bucket to encrypt new objects when they are stored in the bucket and then decrypt them when you download the objects.
 
 
-## Security
 
 To be more specific about who can do what with your S3 resources, Amazon S3 provides two main access management features: **IAM policies** and **S3 bucket policies**.
-
-### IAM Policies
-
-When IAM policies are attached to IAM users, groups, and roles, the policies define which actions they can perform.
-
-You should use IAM policies for private buckets when:
-
-- You have many buckets with different permission requirements. Instead of defining many different S3 bucket policies, you can use IAM policies instead.
-- You want all policies to be in a centralized location. Using IAM policies allows you to manage all policy information in one location.
 
 
 ### S3 Bucket Policies
 
-S3 bucket policies are similar to IAM policies, in that they are both defined using the same policy language in a JSON format.
+S3 Bucket Policies sepcify what actions are allowed or denied
+for a particular bucket.
 
-The difference is IAM policies are attached to users, groups, and roles, whereas S3 bucket policies are only attached to buckets.
-
-S3 bucket policies specify what actions are allowed or denied on the bucket.
+Bucket policies are attached to buckets and they will apply across the bucket as a whole.
 
 ```json
 {
@@ -182,36 +180,34 @@ S3 bucket policies specify what actions are allowed or denied on the bucket.
 }
 ```
 
-S3 Bucket policies can only be placed on buckets, and cannot be used for folders or objects. However, the policy that is placed on the bucket applies to every object in that bucket.
-
-You should use S3 bucket policies when:
+Use cases:
 
 - You need a simple way to do cross-account access to S3, without using IAM roles.
 - Your IAM policies bump up against the defined size limit. S3 bucket policies have a larger size limit.
 
 
-## Encrypt
+### Access Control Lists (ACLs)
 
-Amazon S3 reinforces encryption in transit (as it travels to and from Amazon S3) and at rest.
+Define which AWS accounts or groups are granted access and the type of access.
 
-To protect data at rest, you can use:
+You can attach S3 ACLs to individual objects within a bucket.
 
-- Server-side encryption: This allows Amazon S3 to encrypt your object before saving it on disks in its data centers and then decrypt it when you download the objects.
-- Client-side encryption: Encrypt your data client-side and upload the encrypted data to Amazon S3. In this case, you manage the encryption process, the encryption keys, and all related tools.
 
-To encrypt in transit, you can use client-side encryption or Secure Sockets Layer (SSL).
+### IAM Policies
+
+When IAM policies are attached to IAM users, groups, and roles, the policies define which actions they can perform.
+
+You should use IAM policies for private buckets when:
+
+- You have many buckets with different permission requirements. Instead of defining many different S3 bucket policies, you can use IAM policies instead.
+- You want all policies to be in a centralized location. Using IAM policies allows you to manage all policy information in one location.
 
 
 ## Versioning
 
-If you don't use Amazon S3 versioning, anytime you upload an object called `employee.jpg` to the `employees` folder, it overwrites the original file.
+If you enable versioning for a bucket, Amazon S3 automatically generates a unique version ID for the object being stored.
 
-This can be an issue for several reasons:
-
-- `employee.jpg` is a common name for an employee photo object. You or someone else who has access to that bucket might not have intended to overwrite it, and now that you have, you no longer have access to the original file.
-- You may want to preserve different versions of `employee.jpg`. Without versioning, if you wanted to create a new version of `employee.jpg`, you would need to upload the object and choose a different name for it. Having several objects all with slight differences in naming variations may cause confusion and clutter in your bucket.
-
-If you enable versioning for a bucket, Amazon S3 automatically generates a unique version ID for the object being stored. In one bucket, for example, you can have two objects with the same key, but different version IDs, such as `employeephoto.gif` (version `111111`) and `employeephoto.gif` (version `121212`).
+In one bucket, for example, you can have two objects with the same key, but different version IDs, such as `employeephoto.gif` (version `111111`) and `employeephoto.gif` (version `121212`).
 
 Versioning-enabled buckets let you recover objects from accidental deletion or overwrite.
 
@@ -231,7 +227,7 @@ The versioning state applies to all of the objects in that bucket. Keep in mind 
 
 ## S3 Lifecycle
 
-Amazon S3 Lifecycle is a feature that enables you to manage your objects so that they are stored cost-effectively throughout their lifecycle. It is a set of rules that define actions that Amazon S3 applies to a group of objects.
+Amazon S3 Lifecycle is a feature that enables you to define rules to automatically transition objects to a cheaper storage tier or delete objects that are no longer required after a set period of time.
 
 There are two types of actions:
 
