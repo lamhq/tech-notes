@@ -97,3 +97,20 @@ Objects smaller than 128 KB are not eligible for automatic tiering.
 - For data that might be accessed once or twice in a year.
 
 ![](images/s3-glacier.png)
+
+
+## Manage lifecycle rule in AWS Management Console
+
+To enable S3 lifecycle rules in the AWS Management Console, follow these steps:
+
+1. Open the Amazon S3 console.
+2. Choose the bucket that you want to apply lifecycle rules to.
+3. Choose the **Management** tab and then choose **Lifecycle**.
+4. Choose **Add lifecycle rule**.
+5. In the **Add lifecycle rule** dialog box, specify the following:
+    - **Name**: A name for the lifecycle rule.
+    - **Filter scope**: The scope of the objects that you want to apply the rule to.
+    - **Transitions**: The transitions that you want to apply to the objects.
+    - **Expiration**: The expiration action that you want to apply to the objects.
+    - **Noncurrent version expiration**: The expiration action that you want to apply to the noncurrent versions of the objects.
+    - **Noncurrent version transitions**: The transitions that you want to apply to the noncurrent versions of the objects.
