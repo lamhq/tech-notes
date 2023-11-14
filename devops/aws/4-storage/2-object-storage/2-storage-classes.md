@@ -83,7 +83,7 @@ Objects smaller than 128 KB are not eligible for automatic tiering.
 
 - For archived data that does not require immediate access but needs the flexibility to retrieve large sets of data at no cost (backup or disaster recovery).
 - Low-cost storage designed for data archiving
-- Can retrieve objects within minutes or up to 12 hours.
+- Standard retrieval time of 3-5 hours, but also supports expedited retrievals in as little as 1-5 minutes.
 - Example: store archived customer records or older photos and video files.
 
 

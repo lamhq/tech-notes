@@ -1,6 +1,6 @@
 # Object Storage
 
-## Overview
+## Overview of object storage
 
 In object storage, each object consists of data, metadata, and a key.
 
@@ -60,6 +60,8 @@ When you create a bucket, you choose at least two things: the bucket name and th
 
 ## Secure your data
 
+Bucket are private by default. You have to allow public access on bucket and its objects to make the bucket public.
+
 ### Server-side Encrypt
 
 You can set default encryption on a bucket to encrypt new objects when they are stored in the bucket and then decrypt them when you download the objects.
@@ -93,6 +95,7 @@ Bucket policies are attached to buckets and they will apply across the bucket as
 
 Use cases:
 
+- You can make entire buckets public using bucket policies.
 - You need a simple way to do cross-account access to S3, without using IAM roles.
 - Your IAM policies bump up against the defined size limit. S3 bucket policies have a larger size limit.
 
@@ -102,6 +105,8 @@ Use cases:
 Define which AWS accounts or groups are granted access and the type of access.
 
 You can attach S3 ACLs to individual objects within a bucket.
+
+You can make individual objects public using object ACLs.
 
 
 ### IAM Policies
