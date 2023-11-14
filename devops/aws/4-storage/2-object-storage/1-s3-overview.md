@@ -32,7 +32,7 @@ When you upload a file to Amazon S3, you can set permissions to control visibili
 The consistency model for S3 is Strong Read-After-Write. That means as soon as you've written something to S3, it should be immediately available.
 
 
-## S3 Bucket
+## Bucket
 
 Amazon S3 store your objects in containers called buckets.
 
@@ -43,7 +43,7 @@ When you create a bucket, you choose at least two things: the bucket name and th
 ![](images/s3.png)
 
 
-## S3 Use Cases
+## Use cases
 
 **Backup and storage**: S3 is a natural place to back up files because it is highly redundant. As mentioned in the last unit, AWS stores your EBS snapshots in S3 to take advantage of its high availability.
 
@@ -58,100 +58,11 @@ When you create a bucket, you choose at least two things: the bucket name and th
 **Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
 
 
-## Storage Classes
-
-S3 storage classes let you change your storage tier as your data characteristics change. 
-
-When selecting an Amazon S3 storage class, consider these two factors:
-
-- How often you plan to retrieve your data
-- How available you need your data to be
-
-> For example, if you are now accessing your old photos infrequently, you may want to change the storage class those photos are stored in to save on costs.
-
-There are six S3 storage classes:
-
-
-### Amazon S3 Standard
-
-- Designed for frequently accessed data
-- Stores data in a minimum of three Availability Zones
-- Has a higher cost than other storage classes
-- For websites, content distribution, and data analytics...
-
-
-### Amazon S3 Intelligent-Tiering
-
-S3 Intelligent-Tiering is designed to optimize storage costs by automatically moving data to the most cost-effective access tier when access patterns change. 
-
-There are no retrieval charges in S3 Intelligent-Tiering. S3 Intelligent-Tiering has no minimum eligible object size, but objects smaller than 128 KB are not eligible for automatic tiering. 
-
-- Ideal for data with unknown or changing access patterns
-- Requires a small monthly monitoring and automation fee per object
-- Automatically moves your data to the most cost-effective storage tier based on frequency of access.
-
-> If you haven’t accessed an object for 30 consecutive days, Amazon S3 automatically moves it to the infrequent access tier, Amazon S3 Standard-IA.
->
-> If you access an object in the infrequent access tier, Amazon S3 automatically moves it to the frequent access tier, Amazon S3 Standard.
-
-![](images/int-tiering.png)
-
-
-### Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
-
-- Ideal for infrequently accessed data
-- Similar to Amazon S3 Standard but has a lower storage price and higher retrieval price
-- For long-term backups, disaster recovery files, and so on.
-
-
-### Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)
-- Stores data in a single Availability Zone
-- Has a lower storage price than Amazon S3 Standard-IA
-
-Good storage class to consider if the following conditions apply:
-
-- You want to save costs on storage.
-- Storing secondary backup copies of on-premises data or easily re-creatable data.
-
-### Amazon S3 Glacier Instant Retrieval
-
-- Works well for archived data that requires immediate access
-- Can retrieve objects within a few milliseconds (same as Amazon S3 Standard)
-
-
-### Amazon S3 Glacier Flexible Retrieval
-
-- Low-cost storage designed for data archiving
-- Able to retrieve objects within a few minutes to hours
-- Example: store archived customer records or older photos and video files.
-
-
-### Amazon S3 Glacier Deep Archive
-
-- Lowest-cost object storage class ideal for archiving
-- Able to retrieve objects within 12 hours
-- Data is replicated and stored across at least three geographically dispersed Availability Zones.
-- For data that might be accessed once or twice in a year.
-
-![](images/s3-glacier.png)
-
-
-### Amazon S3 Outposts
-
-- Delivers object storage to your on-premises AWS Outposts environment
-- Store data durably and redundantly across multiple devices and servers on your Outposts
-- For workloads with local data residency requirements that must satisfy demanding performance needs by keeping data close to on-premises applications.
-
-
 ## Secure your data
 
 ### Server-side Encrypt
 
 You can set default encryption on a bucket to encrypt new objects when they are stored in the bucket and then decrypt them when you download the objects.
-
-
-
-To be more specific about who can do what with your S3 resources, Amazon S3 provides two main access management features: **IAM policies** and **S3 bucket policies**.
 
 
 ### S3 Bucket Policies
@@ -254,3 +165,10 @@ Example use cases:
 - **Compliance**: Amazon S3 stores your data across multiple geographically distant Availability Zones by default. However, compliance requirements might require you to store data at even greater distances. You can use CRR to replicate data between distant AWS Regions to satisfy these requirements.
 - **Latency performance**: If your customers or end users are distributed across one or more geographic locations, you can minimize latency for data access by maintaining multiple object copies in AWS Regions that are geographically closer to your customers.
 - **Regional efficiency**: If you have compute clusters in two or more AWS Regions that analyze the same set of objects, you might choose to maintain object copies in all of those AWS Regions.
+
+
+## S3 Outposts
+
+- Delivers object storage to your on-premises AWS Outposts environment
+- Store data durably and redundantly across multiple devices and servers on your Outposts
+- For workloads with local data residency requirements that must satisfy demanding performance needs by keeping data close to on-premises applications.
