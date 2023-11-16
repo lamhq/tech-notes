@@ -1,9 +1,4 @@
-# AWS Global Infrastructure
-
-## What is AWS?
-
-AWS is cloud computing provider.
-
+# Infrastructure
 
 ## Regions
 
@@ -47,20 +42,3 @@ There are many more edge location than Regions (> 215).
 > Instead of requiring your customers to get their data from Brazil, you can cache a copy locally at an edge location that is close to your customers in China.
 > 
 > When a customer in China requests one of your files, Amazon CloudFront retrieves the file from the cache in the edge location and delivers the file to the customer. The file is delivered to the customer faster because it came from the edge location near China instead of the original source in Brazil.
-
-
-## AWS Outpost
-
-Allow you to run AWS infrastructure right in your own data center.
-
-
-## Interacting with AWS
-
-In AWS, you can make API calls to services and resources through:
-
-- **The AWS Management Console (web-based console)**: includes wizards and automated workflows that can simplify the process of completing tasks.
-- **AWS Console mobile**: monitoring resources, viewing alarms, and accessing billing information
-- **The AWS Command Line Interface (CLI)**: control multiple AWS services directly from the command line.
-- **The AWS Software Development Kits (SDKs)**: use AWS services through an API designed for your programming language or platform.
-- **AWS Elastic Beanstalk**: you provide code and configuration settings, Elastic Beanstalk perform : Adjust capacity, Load balancing, Automatic scaling, Application health monitoring
-- **AWS Cloudformation**: treat your infrastructure as code. Enabling you to frequently build your infrastructure and applications without having to perform manual actions or write custom scripts.

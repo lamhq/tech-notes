@@ -102,28 +102,37 @@ You can test IAM policies with the [IAM policy simulator](https://docs.aws.amazo
 
 ## IAM Role
 
-An IAM role is an identity that you allow you to delegate access to a user or a service temporarily.
+An IAM role is a **temporary identity** that can be assumed by users or services to **delegate access**.
 
-Before an IAM user, application, or service can use/assume an IAM role, they must be granted permissions to switch to the role.
+Roles are not tied to a specific person and can be assumed by anyone who needs it.
 
-When someone assumes an IAM role, they abandon all previous permissions that they had under a previous role and assume the permissions of the new role.
+Before an IAM user, application, or service can use/assume a role, they must be granted permissions to switch to that role.
 
-**Best practice:**
-IAM roles are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term.
+When someone assumes a role, they abandon their previous permissions and instead assume the permissions of the new role.
+
+Roles can enable cross-account access, allowing one AWS account to interact with resources in other AWS accounts.
+
+Using roles is preferred for security reasons as it allows you to avoid hard-coding credentials.
+
+You can attach and detach roles to running EC2 instances without stopping or terminating them.
+
+Roles are ideal for granting temporary access to services or resources rather than long-term access.
 
 
 ### API authentication with IAM Role
 
-Most AWS API calls that are made must be signed and authenticated. When you send an HTTP request to AWS, you must sign the request.
+Most AWS API calls require authentication via signing.
 
-IAM users have associated credentials like an access key ID and secret access key that are used to sign requests. IAM roles are identities in AWS also have associated AWS credentials used to sign requests.
+When making an HTTP request to AWS, signing the request is necessary.
 
-The credentials of IAM roles used to sign requests are programmatically acquired, temporary in nature, and they are automatically rotated. The credentials that roles provide expire and roles are assumed programmatically.
+IAM users have associated credentials (access key ID and secret access key) to sign requests. IAM roles are also identities in AWS that have associated credentials for signing requests.
 
-> For example, the EC2 instance will be assigned an IAM role whenever you launch it. This role can then be assumed by the application running on the virtual machine to gain access to the temporary credentials needed to sign the AWS API calls being made.
+The credentials for IAM roles are programmatically obtained, temporary, and rotated automatically. The roles assumed programmatically expire.
 
-To create a role, you have to select what trusted entity is allowed to assume the role.
+> When launching an EC2 instance, for instance, an IAM role is assigned that the application running on the virtual machine can assume to gain access to the temporary credentials needed for signing API calls.
 
-If one AWS service needs to send an API call to another AWS service, it will most likely use role-based access where the AWS service assumes a role, gains access to the temporary credentials, and then sends the API call to the other AWS service who then verifies the request.
+Creating a role involves selecting a trusted entity that can assume the role.
 
-**Another identity that can assume an IAM role to gain access to AWS is external identity providers**. You can leverage IAM roles to grant access to existing identities from your enterprise user directory. These are known as federated users. AWS assigns a role to a federated user when access is requested through an identity provider. We also have AWS services that can make this process a little bit easier, such as AWS Single Sign-On.
+When one AWS service sends an API call to another, role-based access is often used, where the AWS service assumes a role, gains access to temporary credentials, and sends the API call to the verifying AWS service.
+
+IAM roles can also allow external identity providers to assume roles for AWS access. Federated users can be granted access through IAM roles, and AWS Single Sign-On can simplify the process.
