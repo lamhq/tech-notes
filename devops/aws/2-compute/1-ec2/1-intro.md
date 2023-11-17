@@ -110,28 +110,12 @@ Use cases:
 - NoSQL databases, such as Cassandra, MongoDB, and Redis
 - in-memory databases
 - scale-out transactional databases
-- data warehousing, Elasticsearch, and analytics. |
+- data warehousing, Elasticsearch, and analytics.
 
-
-## AMI?
-
-When launching an EC2 instance, the first setting you configure is which operating system you want by selecting an Amazon Machine Image (AMI).
-
-AMI let you configure which operating system you want, you can also select storage mappings, the architecture type (such as 32-bit, 64-bit, or 64-bit ARM), and additional software installed.
-
-The AMI is how you model and define your instance, while the EC2 instance is the entity you interact with, where you can install your web server, and serve your content to users.
-
-When you launch a new instance, AWS allocates a virtual machine that runs on a hypervisor. Then the AMI you selected is copied to the root device volume, which contains the image used to boot the volume. In the end, you get a server you can connect to and install packages and any additional software. In this case, you install a web server along with the properly configured source code of your employee directory app.
-
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/uKHYVtl7R0Sh2FbZe6dESw_e92f04dcceed4d23862545b3ccc4f759_f5b8552a9bc44aebb2f2c3c3a54948cd_b-61-b-3-ee-6-29-e-3-4-edd-8-f-81-3-a-1-aa-8919-c-21.png?expiry=1662336000000&hmac=xMNq6o4ha7ekQjtRjQRIsdQy_feK1T2e3IVHxOO4sMg)
-
-One advantage of using AMIs is that they are reusable. You can create an AMI from your running instance and use this AMI to start a new instance. This way, your new instance will have all the same configurations as your current instance, because the configurations set in the AMIs are the same.
 
 ## What Makes Up an EC2 Instance?
 
 EC2 instances are a combination of virtual processors (vCPUs), memory, network, and in some cases, instance storage and graphics processing units (GPUs)
-
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/XcYIwNOlTlqGCMDTpR5aZg_98c7357638de4ad0bac00230536a94ba_image-14-.png?expiry=1662336000000&hmac=eVsc6Gvh_rWnBf6h_CWhllvxHDyXGeohmELcxerB_3s)
 
 Instance types consist of a prefix identifying the type of workloads they're optimized for, followed by a size.
 
@@ -142,8 +126,6 @@ For example, the instance type `c5.large` can be broken down into the following 
 
 
 ## EC2 Instance Lifecycle
-
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/vgBOJqw6TMyATiasOizM8g_8d882217f0044106a24b7d6c69549207_image-11-.png?expiry=1662336000000&hmac=vmqT_M1sZK0NsXY0MoiWx0aJhefFX_1mmmQV6KN6oAs)
 
 When the instance is **pending** (1), billing has not started.
 
@@ -156,24 +138,20 @@ When you stop your instance, it enters the **stopping** state, and then the **st
 When you **terminate** an instance (5), the instance store are erased, and you lose both the public IP address and private IP address of the machine. Termination of an instance means you can no longer access the machine.
 
 
-## Your responsibilities
+## E2C Hibernation
 
-If you have applications that you want to run in Amazon EC2, you must do the following:
+When you hibernate an EC2 instance, the operating system is told to perform **hibernation** (suspend-to-disk).
 
-- Provision instances (virtual servers).
-- Upload your code.
-- Continue to manage the instances while your application is running.
+- EC2 hibernation preserves the in-memory RAM on persistent storage (EBS).
+- Much faster to boot up because you do not need to reload the operating system.
+- Instance RAM must be less than **150 GB**.
+- Instance families include instances in General Purpose, Compute, Memory and Storage Optimized groups.
+- Available for Windows, Amazon Linux 2 AMI, and Ubuntu.
+- Instances can't be hibernated for more than **60 days**.
+- Available for On-Demand instances and Reserved Instances.
 
-
-## Deploying vCenter in AWS
-
-You can deploy vCenter on the AWS cloud using VMware to extend your private VMware cloud into the AWS public cloud.
-
-You order it through VMware themselves.
-
-Use cases for VMware:
-- Hybrid cloud: Connect your on-premises cloud to the AWS public cloud, and manage a hybrid workload.
-- Cloud Migration: Migrate your existing cloud environment to AWS using
-VMware's built-in tools.
-- Disaster Recovery: VMware is famous for its disaster recovery technology. Using hybrid cloud, you can have an inexpensive disaster recovery environment on AWS.
-- Leverage AWS: Use over 200 AWS services to update your applications or to create new ones.
+When you start your instance out of hibernation:
+- The Amazon EBS root volume is restored to its previous state.
+- The RAM contents are reloaded.
+- The processes that were previously running on the instance are resumed.
+- Previously attached data volumes are reattached and the instance retains its instance ID.

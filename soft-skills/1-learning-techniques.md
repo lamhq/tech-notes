@@ -98,3 +98,28 @@ Have you ever wondered whether you are best off studying topics in blocks or “
 ## So why do we use the wrong techniques and which should we use?
 
 The review looked at a range of educational psychology textbooks and found that despite the wealth of research evidence, none of the textbooks that were reviewed covered all of the methods described above – and in those that covered one or more, the coverage was minimal. So if you happen to be an educational psychologist looking to write a textbook, you’re not in a bad position. We are all expected to be able to learn but currently we don’t ever really get taught how to learn. So next time you have something to learn why not take a second to create a schedule to distribute your practice, while you’re reading – instead (or as well as) taking extensive notes why not write yourself some practice questions with a special focus on why questions; and when you are learning a new skill why not write a detailed explanation of how you answer the questions. This doesn’t mean you should rush out and bin all the highlighters, but maybe try to gradually incorporate a new technique every time you study and see which techniques work best for you!
+
+
+## Reference
+
+1. **Elaborative Interrogation (Rating = moderate):** Involves creating explanations for facts. Simple and time-efficient, but requires prior knowledge.
+
+2. **Self Explanation (Rating = moderate):** Useful for abstract learning. Involves explaining problem-solving processes. More effective when done during learning.
+
+3. **Summarization (Rating = low):** Beneficial for written exams, less useful for tests not requiring information generation. Effective for learners skilled at summarizing.
+
+4. **Highlighting and underlining (Rating = low):** Popular but performs poorly alone. Effectiveness might improve when combined with other techniques.
+
+5. **Keyword Mnemonic (Rating = low):** Useful for short-term memorization but may have negative long-term effects. Effective only in situations with easily memorizable keywords.
+
+6. **Imagery for Text Learning (Rating = low):** Advantageous for memorizing sentences, less so for longer texts. Effectiveness varies and may not aid in making inferences from text.
+
+7. **Rereading (Rating = low):** Less effective than other techniques. Spaced rereading is more beneficial than massed rereading.
+
+8. **Practice Testing (Rating = High):** Highly effective for learning. Practice tests, especially those requiring detailed answers, can double free recall. Self-generated questions during learning enhance effectiveness.
+
+9. **Distributed Practice (Rating = High):** Optimal learning involves spaced sessions, with 10-20% of the time needed for long-term retention. Cramming before exams is ineffective.
+
+10. **Interleaved Practice (Rating = Moderate):** Studying topics in a more haphazard fashion benefits motor and cognitive learning. Interleaved practice aids longer-term retention.
+
+The review highlights the prevalence of ineffective techniques in educational psychology textbooks and emphasizes the importance of learning how to learn effectively.

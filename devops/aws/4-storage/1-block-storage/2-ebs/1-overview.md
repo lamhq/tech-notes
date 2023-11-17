@@ -2,9 +2,31 @@
 
 ## Overview
 
-Amazon EBS is a service that provides block-level storage volumes you can attach to your EC2 instances. They're just virtual hard disks in the cloud.
+Amazon EBS is a service that provides block-level storage volumes you can attach to your EC2 instances.
 
-EBS are storage volumes you can attach to your EC2 instances. It's just a virtual hard disk in the cloud.
+EBS is highly available. Automatically replicated within a single AZ to protect against hardware failures.
+
+EBS is scalable. Dynamically **increase capacity** and **change the volume type** with no downtime or performance impact.
+
+## Use Cases
+
+Designed for production workloads, mission-critical workloads.
+
+Useful when you need to retrieve data quickly and have data persist long-term.
+
+Volumes are commonly used in the following scenarios:
+
+- Operating systems: Boot/root volumes to store an operating system.
+- Databases: A storage layer for databases running on Amazon EC2 that rely on transactional reads and writes.
+- Enterprise applications: provides reliable block storage to run business-critical applications.
+- Throughput-intensive applications: Applications that perform long, continuous reads and writes.
+
+
+## Volumes
+
+Volumes are simply virtual hard disks. You need a minimum of 1 volume per EC2 instance.
+
+Volumes always are in the same AZ as EC2.
 
 You use them the same way you would you any system disk:
 - create a file
@@ -13,11 +35,19 @@ You use them the same way you would you any system disk:
 - run an operating system
 - run a database
 
-Designed for production workloads, mission-critical workloads.
 
-EBS is highly available. Automatically replicated within a single AZ to protect against hardware failures.
+## Snapshots
 
-EBS is scalable. Dynamically increase capacity and change the volume type with no downtime or performance impact.
+- A snapshots is a point-in-time copy of a volume
+- Snapshots exist on S3
+- Snapshots are incremental. Only the data that has been changed since your last snapshot are moved to S3. This saves space and time to take a snapshot.
+
+For a consistent snapshot, it's recommended to stop the instance before taking.
+
+If you take a snapshot of an encrypted EBS volume, the snapshot will be encrypted automatically.
+
+You can share snapshots, but only in the region in which they were created. To share to other regions, you will need to copy them to the destination region first.
+
 
 ## IOPS and Throughput
 
@@ -98,6 +128,29 @@ HDDs provide strong performance for sequential I/O.
 - Good for applications that need the lowest cost and performance is not a factor.
 
 
+## Encryption
+
+You can encrypt your EBS Volumes with a data key (AES-256 standard) and you can either manage the key yourself (CMK)
+or you can have Amazon manage (AWS KMS) it for you.
+
+Encryption has a minimal impact on larency. You won't get any performance degradation.
+
+You can encrypt root device volume upon creation.
+
+You can allow encryption when copying an unencrypted snapshot.
+
+When you encrypt an EBS volume:
+- data inside the volume is encrypted
+- data moving between instance and volume is encrypted
+- snapshots are encrypted
+- volumes created from snapshots are encrypted
+
+To encrypt an volume:
+- create a snapshot of unencrypted volume
+- copy the snapshot with encryption enabled.
+- create an AMI from the encrypted snapshot
+- use that AMI to launch new instances
+
 ## EBS and EC2
 
 If you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.
@@ -107,35 +160,3 @@ Amazon EBS volumes can only be connected with one computer at a time. You can de
 You can scale Amazon EBS volumes in two ways:
 - Increase the volume size, as long as it doesn't increase above the maximum size limit. For EBS volumes, the maximum amount of storage you can have is 16 TB.
 - Attach multiple volumes to a single Amazon EC2 instance.
-
-
-### Use Cases
-
-Amazon EBS is useful when you need to retrieve data quickly and have data persist long-term. Volumes are commonly used in the following scenarios:
-
-- Operating systems: Boot/root volumes to store an operating system.
-- Databases: A storage layer for databases running on Amazon EC2 that rely on transactional reads and writes.
-- Enterprise applications: Amazon EBS provides reliable block storage to run business-critical applications.
-- Throughput-intensive applications: Applications that perform long, continuous reads and writes.
-
-
-### Benefits
-
-- **High availability**: When you create an EBS volume, it is automatically replicated within its Availability Zone to prevent data loss from single points of failure.
-- **Data persistence**: The storage persists even when your instance doesn't.
-- **Data encryption**: All EBS volumes support encryption.
-- **Flexibility**: EBS volumes support on-the-fly changes. You can modify volume type, volume size, and input/output operations per second (IOPS) capacity without stopping your instance.
-- **Backups**: Amazon EBS provides you the ability to create backups of any EBS volume.
-
-
-### EBS Snapshots
-
-Since your EBS volumes consist of the data from You can take incremental backups of EBS volumes by creating Amazon EBS snapshots.
-
-An EBS snapshot is an incremental backup. The first backup taken of a volume copies all the data. For subsequent backups, only the blocks of data that have changed since the most recent snapshot are saved. 
-
-> EBS snapshots can be used to create multiple new volumes, whether they're in the same Availability Zone or a different one.
-> 
-> When you take a snapshot of any of your EBS volumes, these backups are stored redundantly in multiple Availability Zones using Amazon S3.
-> 
-> This aspect of storing the backup in Amazon S3 will be handled by AWS, so you won't need to interact with Amazon S3 to work with your EBS snapshots. You simply manage them in the EBS console (which is part of the EC2 console).
