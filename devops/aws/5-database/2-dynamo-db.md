@@ -47,6 +47,19 @@ A strongly consistent read returns a result that reflects all writes that receiv
 - Integrate with CloudWatch, CloudTrail, VPC endpoints
 
 
+## Backup & Restore
+
+On-demand backup:
+- DynamoDB has on-demand backup and restore.
+- You can do full backups at any time. No impact on table performance or availability.
+- You get consistent within seconds and retained until deleted.
+- Operates within same region as the source table.
+
+Point-in-time Recovery (PITR):
+- You can restore to any point in the last 35 days. Latest restorable: 5 minutes in the past.
+- It's done using incremental backups.
+- not enabled by default.
+
 ## Core Components
 
 A table is a collection of items.
@@ -88,3 +101,10 @@ DynamoDB Streams operates asynchronously, and enabling a stream doesn't affect t
 - Run within an Amazon VPC.
 
 ![](images/dax.png)
+
+
+## DynamoDB Transactions
+
+DynamoDB Transactions address ACID requirements.
+
+DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across 1 or more tables within a single AWS account and region.
