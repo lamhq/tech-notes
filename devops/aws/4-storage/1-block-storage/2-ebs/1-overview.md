@@ -72,60 +72,60 @@ When you hear things like big data, data warehousing, ETL, think of **throughput
 
 There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs**) and hard-disk drives (**HDDs**). 
 
-SSDs provide strong performance for random input/output (I/O).
-
-HDDs provide strong performance for sequential I/O.
+- SSDs provide strong performance for random input/output (I/O).
+- HDDs provide strong performance for sequential I/O.
 
 ### General Purpose SSD (gp2)
 
+- Suitable for boot disks and general applications (development, test, not latency sensitive).
 - A balance of price and performance.
-- 16,000 IOPS/Volume. 250 MB/s throughput/volume.
-- Suitable for boot volume or development and test applications that are not latency sensitive.
+- Up to 16,000 IOPS/Volume. 250 MB/s throughput/volume.
+- Up to 99.9% durability.
 
 
 ### General Purpose SSD (gp3)
 
-- New generation of gp. 4 times faster than gp2.
-- 99.9% durability.
-- Choose gp3, don't use gp2.
+- Suitable for high performance applications (MySQL, Cassandra, virtual desktops, Hadoop analytics...)
+- Up to 99.9% durability.
 - 3000 IOPS baseline performance and 125 MB/s regardless of volumne size.
 - Can scale up to 16,000 IOPS and 1,000 MiB/s for an additional fee.
-- Suitable for high performance applications: MySQL, Cassandra, virtual desktops, and Hadoop analytics.
+- New generation of gp. 4 times faster than gp2.
 
+Choose gp3, don't use gp2.
 
 ### Provisioned IOPS SSD (io1)
 
-- High performance & most expensive.
-- 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
+- Suitable for OLTP (online transaction processing, high performance databases) and latency-sensitive applications.
 - Use if you need more than **16,000 IOPS**.
-- Suitable for OLTP (high performance databases) and latency-sensitive applications.
-
+- High performance & most expensive.
+- 50 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
+- Up to 99.9% durability.
 
 ### Provisioned IOPS SSD (io2)
 
+- Suitable for OLTP and latency-sensitive applications.
 - Latest generation.
 - Same price as io1.
-- Higher durability & more IOPS. 99.999% durability.
-- Suitable for OLTP and latency-sensitive applications.
-
+- 500 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
+- 99.999% durability.
 
 ### Throughput Optimized HDD (st1)
 
+- Suitable for big data, data warehouses, ETL, log processing
 - Low-cost HDD volume.
 - Cost-effective way to store mountains of data.
 - Cannot be a boot volume.
-- 99.9% durability.
+- Up to 99.9% durability.
 - 500 MB/s throughput/volume.
 - Designed for frequently accessed, throughput intensive workloads
-- Suitable for big data, data warehouses, ETL, log processing
 
-### Cold HDD (SC1)
+### Cold HDD (sc1)
 
-- Lowest cost option
-- Cannot be a boot volume
-- Max 250 MB/s throughput/volume. Baseline throughput of 12 MB/s per TB. Ability to burst up to 80 MB/s per TB
-- A good choice for colder data requiring fewer scans per day. Less frequently accessed data.
 - Good for applications that need the lowest cost and performance is not a factor.
+- Lowest cost.
+- Cannot be a boot volume.
+- Max 250 MB/s throughput/volume. Baseline throughput of 12 MB/s per TB. Ability to burst up to 80 MB/s per TB
+- For less frequently accessed data.
 
 
 ## Encryption

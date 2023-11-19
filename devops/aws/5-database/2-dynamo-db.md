@@ -4,26 +4,63 @@
 
 Amazon DynamoDB is a key-value database service.
 
-- **Serverless**: DynamoDB is serverless, which means that you do not have to provision, patch, manage servers, install, maintain, or operate software.. 
-- **Automatic Scaling**: As the size of your database shrinks or grows, DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
+Stored on SSD storage.
 
-By using DynamoDB, you can offload the administrative burdens of operating and scaling a distributed database so that you can reduce your need to handle hardware provisioning, setup and configuration, replication, software patching, or cluster scaling.
+Spread across 3 geographically distinct data centers.
 
-DynamoDB also offers encryption at rest, which reduces your operational burden and the complexity involved in protecting sensitive data. 
+You get eventually consistent reads (default). You can opt in for strongly consistent reads.
 
-You can scale up or scale down your tables' throughput capacity with minimal downtime or performance degradation.
+**Serverless**: you do not have to provision, patch, manage servers, install, maintain, or operate software.. 
 
-All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability. 
+**Automatic Scaling**: As the size of your database shrinks or grows, DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
+
+You can scale up or scale down tables' throughput capacity with minimal downtime or performance degradation.
+
+
+## Read consistency
+
+### Eventually consistent reads
+
+Consistency across all copies of data is usually reached within a second.
+
+Repeating a read after a short time should return the updated data. Best read performance.
+
+### Strongly consistent reads
+
+A strongly consistent read returns a result that reflects all writes that received a successful response prior to the read (you don't need to wait).
+
+
+## Pricing
+
+- Pay per request
+- Balance cost & performance
+- Pay more per request than with provisioned capacity
+- Use for new products launches
+
+
+## Security
+
+- Encryption at rest using KMS.
+- Can connect to DynamoDB using a Site-to-site VPN.
+- Support Direct Connect (DX)
+- Work with IAM policies & roles
+- Integrate with CloudWatch, CloudTrail, VPC endpoints
 
 
 ## Core Components
 
-A table is a collection of items. Each table contains zero or more items. An item is a group of attributes that is uniquely identifiable among all of the other items. An attribute is a fundamental data element, something that does not need to be broken down any further. 
+A table is a collection of items.
+
+Each table contains zero or more items.
+
+An item is a group of attributes that is uniquely identifiable among all of the other items.
+
+An attribute is a fundamental data element, something that does not need to be broken down any further. 
 
 *For example, a table called People that you could use to store personal contact information about friends, family, or anyone else of interest. In a People table, each item represents a person. An item in a People table contains attributes called PersonID, LastName, FirstName, and so on.*
 
 
-## Amazon DynamoDB Streams
+## DynamoDB Streams
 
 DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table, and stores this information in a log for up to 24 hours.
 
@@ -40,16 +77,14 @@ You can enable a stream on a new table during its creation using the AWS CLI or 
 DynamoDB Streams operates asynchronously, and enabling a stream doesn't affect the performance of the table.
 
 
-## Amazon DynamoDB Accelerator (DAX)
+## DynamoDB Accelerator (DAX)
 
-DAX is an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
-
-DAX does the heavy lifting that’s required to add in-memory acceleration to your DynamoDB tables—and developers don’t need to manage cache invalidation, data population, or cluster management.
-
-A benefit of using DAX is that you don’t need to modify the application logic because DAX is compatible with existing DynamoDB API calls.
-
-DAX is not designed for applications that are write-intensive. It can also add cost to applications that do not perform much read activity.
-
-DAX run within an Amazon VPC. You can launch a DAX cluster in your VPC, and control access to the cluster by using Amazon VPC security groups.
+- Fully managed, highly available, in-memory cache
+- 10× performance improvement than using just DynamoDB on its own.
+- Reduces request time from milliseconds to microseconds - even under load
+- No need for developers to manage caching logic. Application interact with DAX only.
+- Compatible with DynamoDB API calls.
+- Is not designed for applications that are write-intensive.
+- Run within an Amazon VPC.
 
 ![](images/dax.png)

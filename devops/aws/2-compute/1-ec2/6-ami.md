@@ -2,7 +2,7 @@
 
 ## Overview
 
-An AMI provides the information required to launch an instance.
+An AMI provides the information required to launch an instance. It's just a blueprint for an EC2 instance.
 
 You must specify an AMI when you launch an instance.
 
@@ -37,8 +37,6 @@ created from an Amazon EBS snapshot.
 
 Instance store volumes are sometimes called ephemeral storage.
 
-Instance store volumes cannot be stopped. If the underlying host fails, you will lose your data.
+EC2 instances with Instance store volumes cannot be stopped. If the underlying host fails, you will lose your data. You can, however, reboot the instance without losing your data.
 
-You can, however, reboot the instance without losing your data.
-
-If you delete the instance, you will lose the instance store volume.
+If you delete the instance, you will lose the instance store volume. With EBS volumes, you can keep the root device volume.
