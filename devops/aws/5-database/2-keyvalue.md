@@ -88,9 +88,9 @@ An attribute is a fundamental data element, something that does not need to be b
 
 ## DynamoDB Transactions
 
-DynamoDB Transactions address ACID requirements.
+If you have any scenario that mentions ACID requirements, think of DynamoDB Transactions.
 
-DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across 1 or more tables within a single AWS account and region.
+DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across one or more tables within a single AWS account and region.
 
 
 ## DynamoDB Streams

@@ -21,7 +21,11 @@ CIDR notation looks like this:
 
 It begins with a starting IP address and is separated by a forward slash (the "/” character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
 
-In AWS, the smallest IP range you can have is `/28`, which provides you **16** IP addresses. The largest IP range you can have is a `/16`, which provides you with **65,536** IP addresses.
+In AWS, the smallest IP range you can have is `/28`, which provides you **16** IP addresses. 
+
+The largest IP range you can have is a `/16`, which provides you with **65,536** IP addresses.
 
 - `10.0.0.0/16` -> 65,536 possible addresses (`10.0.0.0` - `10.0.255.255`)
 - `10.0.0.0/28` -> 16 possible addresses (`10.0.0.0` - `10.0.0.15`)
+
+You can use [CIDR.xyz](cidr.xyz) to calculate IP address ranges.

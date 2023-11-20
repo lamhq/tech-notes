@@ -56,8 +56,7 @@ The DB instance uses Amazon Elastic Block Store (EBS) volumes as its storage lay
 
 ## Multi-AZ
 
-An exact copy of your production database in another Availability
-Zone.
+An exact copy of your production database in another Availability Zone.
 
 Used for disaster recovery.
 

@@ -8,6 +8,7 @@ During the migration, your source database remains operational, reducing downtim
 
 > For example, you can migrate your data from a MySQL database that is stored on premises in an Amazon EC2 instance to an Amazon Aurora database.
 
+
 ## Other use cases for AWS DMS
 
 ### Development and test database migrations
