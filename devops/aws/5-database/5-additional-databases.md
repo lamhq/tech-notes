@@ -2,13 +2,6 @@
 
 AWS has a variety of different database options for different use cases. 
 
-## Document
-
-Amazon DocumentDB is a document database service that supports MongoDB workloads.
-
-Use Cases: Content management, catalogs, user profiles.
-
-
 ## Graph
 
 You can use Amazon Neptune to build and run applications that work with highly connected datasets, such as recommendation engines, fraud detection, and knowledge graphs.

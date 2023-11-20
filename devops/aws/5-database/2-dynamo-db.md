@@ -73,23 +73,6 @@ An attribute is a fundamental data element, something that does not need to be b
 *For example, a table called People that you could use to store personal contact information about friends, family, or anyone else of interest. In a People table, each item represents a person. An item in a People table contains attributes called PersonID, LastName, FirstName, and so on.*
 
 
-## DynamoDB Streams
-
-DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table, and stores this information in a log for up to 24 hours.
-
-Encryption at rest is applied to the data in DynamoDB Streams for security.
-
-DynamoDB Streams helps ensure the following:
-- Each stream record appears exactly one time in the stream.
-- For each item that is modified in a DynamoDB table, the stream records appear in the same sequence as the actual modifications to the item.
-
-DynamoDB Streams writes stream records in near-real time so that you can build applications that consume these streams and take action based on the contents.
-
-You can enable a stream on a new table during its creation using the AWS CLI or one of the AWS SDKs.
-
-DynamoDB Streams operates asynchronously, and enabling a stream doesn't affect the performance of the table.
-
-
 ## DynamoDB Accelerator (DAX)
 
 - Fully managed, highly available, in-memory cache
@@ -108,3 +91,29 @@ DynamoDB Streams operates asynchronously, and enabling a stream doesn't affect t
 DynamoDB Transactions address ACID requirements.
 
 DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across 1 or more tables within a single AWS account and region.
+
+
+## DynamoDB Streams
+
+DynamoDB Streams are time-ordered sequence of item-level changes in a table.
+
+Every time your data changes (insert, update, delete), it comes with a sequence number. These squences are stored in DynamoDB Streams. They are stored for 24 hours.
+
+The records are broken into shards to make it manageable.
+
+You can combine with Lambda functions for functionality like stored procedures.
+
+
+## Global Tables
+
+Global Tables are managed multi-master, multi-region replication. 
+
+It's a way to replicate your tables from one to another region. For disaster recovery or high availability.
+
+Great for globally distributed applications.
+
+Need to turn on on DynamoDB Streams to enable this.
+
+Replication latency under 1 second.
+
+Work transparently. No code rewrites.
