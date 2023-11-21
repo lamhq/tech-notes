@@ -1,17 +1,29 @@
 # Security
 
-## Network Traffic in a VPC
+## Trafic flow in a VPC
 
-When a customer requests data from an application hosted in the AWS Cloud, this request is sent over the internet.
+**Internet Gateway** > **Router** > **Route Table** > **Network ACL** > **Subnet** > **Security Group** > **Instance**.
 
-It enters into a VPC through an internet gateway. Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
-
+![](images/traffic-flow.png)
 
 ## Network ACLs (secure subnets)
 
-A network access control list (ACL) is a virtual firewall that controls what kind of traffic is allowed to enter or leave your subnet.
+Network ACLs are the first line of defense. Internet packet enters into a VPC through an internet gateway. Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
 
-For example, if you have a web application, you might restrict your network to allow HTTPS traffic and remote desktop protocol (RDP) traffic to your web servers.
+A network access control list (ACL) is a virtual firewall that controls trafic in and out of subnet.
+
+The **default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
+
+You can block IP addresses using network ACLs, not security groups.
+
+You can associate a network ACL with multiple subnets; however, **a subnet can be associated with only 1 network ACL** at a time. When you associate a network ACL with a subnet, the previous association is removed.
+
+Network ACLs contain a numbered list of rules that are **evaluated in order**, starting with the **lowest** numbered rule.
+
+Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
+
+**Network ACLs are stateless**; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa). If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
+
 
 **Inbound**:
 
@@ -31,20 +43,24 @@ For example, if you have a web application, you might restrict your network to a
 
 *Notice that in the network ACL example above, you allow inbound 443 and outbound range 1025-65535. That's because HTTP uses port 443 to initiate a connection and will respond to an ephemeral port.*
 
-Network ACLs perform stateless packet filtering. They remember nothing and check packets that cross the subnet border each way: inbound and outbound.
 
-If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
+## Security Groups (secure instances)
 
+Security group are virtual firewalls for a particular entity, such as an EC2 instance.
 
-## Security Groups (Secure Your EC2 Instances)
+By default, all inbound traffic are blocked, all outbound traffic are allowed.
 
-A security group is a virtual firewall that controls inbound and outbound traffic for a particular entity, such as an EC2 instance.
+Security groups are the last line of defense.
 
-The default configuration of a security group blocks all inbound traffic and allows all outbound traffic.
+To allow everything, use `0.0.0.0/0`.
 
 ![](images/sg.png)
 
-Security groups perform stateful packet filtering. They remember if a connection is originally initiated by the EC2 instance or from the outside and temporarily allow traffic to respond without having to modify the inbound rules. 
+Security groups are stateful: if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules.
+
+Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+
+### Security group pattern
 
 A common design pattern is organizing your resources into different groups and creating security groups for each to control network communication between them.
 

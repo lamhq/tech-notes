@@ -1,4 +1,4 @@
-# AWS Networking services
+# AWS Networking Services
 
 ## Building networks
 
