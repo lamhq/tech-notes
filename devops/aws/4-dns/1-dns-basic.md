@@ -80,26 +80,3 @@ Can be used for a naked domain name/ zone apex record.
 TTL is the length that a DNS record is cached.
 
 The lower the time to live, the faster changes to DNS records take to propagate throughout the internet.
-
-
-## Amazon Route 53
-
-Route 53 is Amazon's DNS service.
-
-It allows you to register domain names, create hosted zones, and manage and create DIS records.
-
-Route 53 is named after Route 66 (one of the original highways across the United States) but is called 53 because DNS operates on port 53.
-
-Route 53 supports IPv4 and IPv6.
-
-
-## How Amazon Route 53 and Amazon CloudFront deliver content 
-
-![](images/route-53-cloudfront.png)
-
-Suppose that AnyCompany’s application is running on several Amazon EC2 instances. These instances are in an Auto Scaling group that attaches to an Application Load Balancer. 
-
-1. A customer requests data from the application by going to AnyCompany’s website. 
-1. Amazon Route 53 uses DNS resolution to identify AnyCompany.com’s corresponding IP address, 192.0.2.0. This information is sent back to the customer. 
-1. The customer’s request is sent to the nearest edge location through Amazon CloudFront. 
-1. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet to an Amazon EC2 instance.
