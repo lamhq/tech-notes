@@ -16,8 +16,6 @@ Docker makes it easy to create, package, deploy, and run containers.
 
 ## What Is the Difference Between Containers and VMs?
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/YmDaQPNCTNug2kDzQvzb8g_a0cec7d6f09746809164174945769eed_image-17-.png?expiry=1662422400000&hmac=BUEwqE33sze-8ifg742S_fsTsygYhKAXm-A5DulFmvQ)
-
 Containers share the same operating system and kernel as the host they exist on, whereas virtual machines contain their operating system.
 
 Since each virtual machine has to maintain a copy of an operating system, there's a degree of wasted space.

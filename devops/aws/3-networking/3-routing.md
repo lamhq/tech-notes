@@ -17,8 +17,6 @@ If you associate a custom route table with a subnet, the subnet will use it inst
 
 By default, each custom route table you create will have the local route already inside it, allowing communication to flow between all resources and subnets inside the VPC.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/69m1UQ52QS6ZtVEOdsEuvg_6d98f06359fd4ce9bd3233180011cf7d_Screen-Shot-2021-01-19-at-1.24.00-PM.png?expiry=1662595200000&hmac=Eqa_nS16LUS5lBykUe3FuEe_KHDVeCE7RhZM_XC2P6I)
-
 Each subnet in your VPC must be associated with a route table, which controls the routing for the subnet. You can explicitly associate a subnet with a particular route table. Otherwise, the subnet is implicitly associated with the main route table.
 
 ## Route table concepts

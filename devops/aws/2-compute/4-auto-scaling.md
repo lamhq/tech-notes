@@ -1,39 +1,30 @@
 # Amazon EC2 Auto Scaling
 
-## Scalability
-
-Scalability involves beginning with only the resources you need and designing your architecture to automatically respond to changing demand by scaling out or in. As a result, you pay for only the resources you use.
-
-
-## Intro
+## Overview
 
 **Amazon EC2 Auto Scaling** enables you to automatically add or remove Amazon EC2 instances in response to changing application demand.
 
-Within Amazon EC2 Auto Scaling, you can use two approaches:
-- **Dynamic scaling** responds to changing demand. 
-- **Predictive scaling** automatically schedules the right number of Amazon EC2 instances based on predicted demand.
+When creating an **Auto Scaling group**, you can set the following capacity attributes:
 
-**Example:**
-
-When you create an Auto Scaling group, you can set the minimum number of Amazon EC2 instances. The **minimum capacity** is the number of Amazon EC2 instances that launch immediately after you have created the Auto Scaling group.
-
-Next, you can set the **desired capacity** at two Amazon EC2 instances even though your application needs a minimum of a single Amazon EC2 instance to run.
-
-The third configuration that you can set in an Auto Scaling group is the **maximum capacity**.
+- **Desired capacity**: The number of instances that should be running in the group after creation. This value can be adjusted manually or automatically based on scaling policies.
+- **Minimum capacity**: The minimum number of instances that should be running in the group at any given time. This value is used to ensure that the group always has a minimum number of instances running, even if demand is low.
+- **Maximum capacity**: The maximum number of instances that should be running in the group at any given time. This value is used to ensure that the group does not exceed a certain size, even if demand is high.
 
 ![](auto-scaling.jpg)
 
+Auto-scaling groups will contain the location of where your instances will live (VPC, subnet).
 
-## Differentiate Between Traditional Scaling and Auto Scaling
-
-With a **traditional approach** to scaling, you buy and provision enough servers to handle traffic at its peak. However, this means that at night time, there is more capacity than traffic. This also means you're wasting money. Turning off those servers at night or at times where the traffic is lower only saves on electricity. 
-
-The EC2 Auto Scaling service works to add or remove capacity to keep a steady and predictable performance at the lowest possible cost. By adjusting the capacity to exactly what your application uses, you only pay for what your application needs. 
-
-If there is an issue with an EC2 instance, EC2 Auto Scaling can automatically replace that instance. This means that EC2 Auto Scaling helps both to scale your infrastructure and ensure high availability. 
+You can leverage SNS for notifications of different event types.
 
 
-## EC2 Auto Scaling Components
+## Scaling types
+
+- **Reactive scaling**: You're playing catchup. Once the load is there, you measure it and then determine if you need to create more resources.
+- **Scheduled scaling**: If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed.
+- **Predictive scaling**: AWS uses its machine learning algorithms to determine when you'll need to scale. They are reevaluated every 24 hours to create a forecast for the next 48.
+
+
+## Components
 
 ### Launch Templates
 
@@ -41,7 +32,7 @@ The infomation required to create EC2 instances is stored in a launch template.
 
 It also supports **versioning**, which allows for quickly rolling back if there was an issue.
 
-You can create a launch template one of three ways. 
+You can create a launch template one of three ways.
 
 - use an existing EC2 instance.
 - from an already existing template or a previous version of a launch template.
@@ -58,17 +49,16 @@ There are three capacity settings to configure how many instances EC2 Auto Scali
 - **Maximum**: The maximum number of instances running in your ASG even if **the threshold for adding new instances** is reached.
 - **Desired capacity**: The amount of instances that should be in your ASG. This number can only be within or equal to the minimum or maximum. EC2 Auto Scaling automatically adds or removes instances to match the desired capacity number.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/XjjkveWuRWK45L3lruVi2A_4ae21a0774ed4fcab37c18dc2d66566a_minMaxDC.jpeg?expiry=1663718400000&hmac=1hjsru_OMzuLzMhYNBi4917NNSFbrlRaC6lV9sdsRnc)
-
 
 ### Scaling Policies
 
 #### Simple Scaling Policy
 
-You use a CloudWatch alarm and specify what to do when it is triggered. This can be a number of EC2 instances to add or remove, or a specific number to set the desired capacity to.
+You use a CloudWatch alarm and specify what to do when it is triggered.
 
-Once this scaling policy is triggered, it waits a **cooldown period** before taking any other action. This is important as it takes time for the EC2 instances to start and the CloudWatch alarm may still be triggered while the EC2 instance is booting. 
+Example: add 1 instance if CPU utilization metric > 80%.
 
+Once this scaling policy is triggered, it waits a **cooldown period** before taking any other action. This is important as it takes time for the EC2 instances to start and the CloudWatch alarm may still be triggered while the EC2 instance is booting.
 
 #### Step Scaling Policy
 
@@ -76,15 +66,32 @@ Step scaling policies respond to additional alarms even while a scaling activity
 
 *For example, you decide to add two more instances in case the CPU utilization is at 85%, and four more instances when it's at 95%.*
 
-[AWS: Step and simple scaling policies for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html)
 
 #### Target Tracking Scaling Policy
 
-If your application scales based on average CPU utilization, average network utilization (in or out), or based on request count, then this scaling policy type is the one to use. All you need to provide is the target value to track and it automatically creates the required CloudWatch alarms.
+Target Tracking use a scaling metric and value that your Auto Scaling Group should maintain at all times.
 
-To create a target tracking scaling policy, you specify an Amazon CloudWatch metric and a target value that represents the ideal average utilization or throughput level for your application. Amazon EC2 Auto Scaling can then scale out your group (add more instances) to handle peak traffic, and scale in your group (run fewer instances) to reduce costs during periods of low utilization or throughput.
+Example: maintain ASGAverageCPUUtilization = 50%
 
-*For example, let's say that you currently have an application that runs on two instances, and you want the CPU utilization of the Auto Scaling group to stay at around 50 percent when the load on the application changes. This gives you extra capacity to handle traffic spikes without maintaining an excessive number of idle resources.*
+To create a target tracking scaling policy, you specify an Amazon CloudWatch metric and a target value that represents the ideal average utilization or throughput level for your application. Amazon EC2 Auto Scaling can then scale out your group to handle peak traffic, and scale in your group to reduce costs during periods of low utilization or throughput.
+
+
+## Lifecycle hooks
+
+It allows you to perform custom actions on instances when corresponding lifecycle events occur.
+
+Capability to wait for up to 2 hours. You could have an instance waiting to complete some type of action for up to two hours before it gets moved into an active state.
+
+![](https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/lifecycle_hooks.png)
+
+
+## Instance Warm-up and Cooldown
+
+Instance Warm-up and Cooldown give instances the amount of time to respond to load and respond to health checks.
+
+**Instance Warm-up** stops instances from being placed behind the load balancer. It helps your instances to avoid fail the health check, and being terminated prematurely.
+
+**Instance cooldown** pauses auto scaling for a set amount of time. Helps ASG to scale successfully without overdoing it.
 
 
 ## Elastic Load balancer and EC2 Auto Scaling
@@ -92,3 +99,12 @@ To create a target tracking scaling policy, you specify an Amazon CloudWatch met
 The ELB service integrates seamlessly with EC2 Auto Scaling. As soon as a new EC2 instance is added to or removed from the EC2 Auto Scaling group, ELB is notified.
 
 However, before it can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.
+
+
+## Tips
+
+- Scale Out Aggressively: Get ahead of the workload if you need to.
+- Scale In Conservatively: Once the instances are up, slowly roll them back when not needed.
+- Provisioning: Keep an eye on provisioning times. You can bake AMls to minimize it.
+- Cost: Use EC2 RIs for minimum count of EC2 instances to save money.
+- CloudWatch: Your go-to tool for alerting Auto Scaling that you need more or less instances.
