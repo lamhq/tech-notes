@@ -60,6 +60,7 @@ Point-in-time Recovery (PITR):
 - It's done using incremental backups.
 - not enabled by default.
 
+
 ## Core Components
 
 A table is a collection of items.
@@ -71,6 +72,18 @@ An item is a group of attributes that is uniquely identifiable among all of the 
 An attribute is a fundamental data element, something that does not need to be broken down any further. 
 
 *For example, a table called People that you could use to store personal contact information about friends, family, or anyone else of interest. In a People table, each item represents a person. An item in a People table contains attributes called PersonID, LastName, FirstName, and so on.*
+
+
+## Scaling
+
+You have to know the access patterns of your database is predictable or unpredictable.
+
+There're two capacity mode: provisioned and on-demand:
+- provisioned is for **predictable workloads**.
+- on-demand is for **sporadic workloads**. On-demand
+is less cost effective than provisioned.
+
+You can switch between the different capacity modes twice per 24 hours per table.
 
 
 ## DynamoDB Accelerator (DAX)

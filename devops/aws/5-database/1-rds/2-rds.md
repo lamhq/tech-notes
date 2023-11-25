@@ -58,14 +58,14 @@ The DB instance uses Amazon Elastic Block Store (EBS) volumes as its storage lay
 
 An exact copy of your production database in another Availability Zone.
 
-Used for disaster recovery.
+Used for disaster recovery, not for performance.
 
 In the event of a failure, RDS will automatically fail over to the standby instance.
 
-With multi-AZ, you have a unique DNS endpoint. It's to failover to the standby database.
+With multi-AZ, you have a unique DNS endpoint.
 
 
-## Read replica
+## Read replicas
 
 A read replica is a read-only copy of your primary database.
 
@@ -82,6 +82,15 @@ Support multiple read replicas. 5 for each DB Instance. MySQL, MariaDB, PostgreS
 Each read replica has its own DNS endpoint. One for primary, one for your read replica.
 
 Read replicas can be promited to be their own databases. But this breaks the replication.
+
+
+## Scaling
+
+You can scale relational database by:
+- Vertical scaling: increase database size for greater performance.
+- Scaling storage: resize storage size, but it's only able to go up, not down.
+- Create read replicas: creating read-only copies of your data.
+- Using Aurora serverless: offload scaling to AWS. Good for unpredictable workloads.
 
 
 ## Amazon RDS Proxy

@@ -10,11 +10,18 @@ When creating an **Auto Scaling group**, you can set the following capacity attr
 - **Minimum capacity**: The minimum number of instances that should be running in the group at any given time. This value is used to ensure that the group always has a minimum number of instances running, even if demand is low.
 - **Maximum capacity**: The maximum number of instances that should be running in the group at any given time. This value is used to ensure that the group does not exceed a certain size, even if demand is high.
 
-![](auto-scaling.jpg)
+![](images/auto-scaling.jpg)
 
 Auto-scaling groups will contain the location of where your instances will live (VPC, subnet).
 
 You can leverage SNS for notifications of different event types.
+
+
+## Steady state groups
+
+They're auto scaling group that have min, max, desired capacity of 1.
+
+It's a highly available solution for **a legacy codebase/resource that can't be scaled** can automatically recover from failure.
 
 
 ## Scaling types
@@ -96,15 +103,18 @@ Instance Warm-up and Cooldown give instances the amount of time to respond to lo
 
 ## Elastic Load balancer and EC2 Auto Scaling
 
-The ELB service integrates seamlessly with EC2 Auto Scaling. As soon as a new EC2 instance is added to or removed from the EC2 Auto Scaling group, ELB is notified.
+**ELBs are essential.**
 
-However, before it can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.
+Make sure you enable health checks from load balancers. Otherwise, instances won't be terminated and replaced when they fail health checks.
+
+For a ELB can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.
 
 
 ## Tips
 
-- Scale Out Aggressively: Get ahead of the workload if you need to.
-- Scale In Conservatively: Once the instances are up, slowly roll them back when not needed.
-- Provisioning: Keep an eye on provisioning times. You can bake AMls to minimize it.
-- Cost: Use EC2 RIs for minimum count of EC2 instances to save money.
-- CloudWatch: Your go-to tool for alerting Auto Scaling that you need more or less instances.
+- **Scale Out Aggressively**: Get ahead of the workload if you need to.
+- **Spread out**: Make sure you're spreading your Auto Scaling groups over multiple Availability Zones.
+- **Scale In Conservatively**: Once the instances are up, slowly roll them back when not needed.
+- **Minimize provisioning time**: Keep an eye on provisioning times. You can bake AMls to minimize it.
+- **Cost**: Use EC2 Revered Instances for minimum count of EC2 instances to save money.
+- **CloudWatch**: Your go-to tool for alerting Auto Scaling that you need more or less instances.
