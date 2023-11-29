@@ -55,7 +55,7 @@ Long polling offers the following benefits:
 ### Standard queues
 
 - Messages could be received out of order in your application
-- You can receive duplicate messages (Visibility timeout is too low).
+- You can receive duplicate messages (visibility timeout is too low or delete API is not called).
 - Nearly unlimited transactions per second.
 
 ### FIFO queues

@@ -35,7 +35,9 @@ It can be used for applications requiring high fan-out, which means sending mess
 - **Message Filtering**: allow defining JSON policies to define which messages get sent to specific subscribers based on contents and attributes of messages.
 ![](images/sns-filter-policy.png)
 
-SNS only supports custom retry policies for HTTP(S) endpoints.
+Amazon SNS defines a delivery policy for each delivery protocol. The delivery policy defines how Amazon SNS retries the delivery of messages when server-side errors occur.
+
+You can use a delivery policy and its four phases to define how Amazon SNS retries the delivery of messages to HTTP/S endpoints. With the exception of HTTP/S, you can't change Amazon SNS-defined delivery policies. **Only HTTP/S supports custom policies**.
 
 
 ## Architectures for SNS Fanout
