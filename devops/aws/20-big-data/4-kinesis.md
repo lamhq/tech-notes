@@ -1,8 +1,6 @@
 # Amazon Kinesis Services
 
-Amazon Kinesis Family helps collect, process, and analyze real-time streaming data. you can get timely insights and react quickly to new information.
-
-Amazon Kinesis offers cost-effective processing of streaming data at any scale.
+Kinesis helps ingest, process, and analyze **real-time streaming data**.
 
 With Amazon Kinesis, you can can ingest various types of real-time data such as video, audio, logs, clickstreams, and IoT telemetry data for machine learning, analytics, and other applications.
 
@@ -11,41 +9,39 @@ Amazon Kinesis enables processing and analysis of data as it arrives, allowing f
 
 ## Amazon Kinesis Data Streams
 
-Amazon Kinesis Data Streams is a massively scalable and durable real-time data streaming service.
+Amazon Kinesis Data Streams is a **real-time** data streaming service for ingesting data.
 
 It can capture gigabytes of data per second from hundreds of thousands of sources: website clickstreams, database event streams, financial transactions, social media feeds, IT logs, and location-tracking events.
 
 The collected data is available in milliseconds.
 
-Kinesis Data Streams is used for real-time analytics, such as real-time dashboards, anomaly detection, dynamic pricing, and more.
-
+You're responsible for creating the consumer and scaling the stream. It's a bit complicated to configure.
+ 
 
 ## Amazon Kinesis Data Firehose
 
-Amazon Kinesis Data Firehose is designed to load streaming data into data lakes, data stores, and analytics services reliably.
+Amazon Kinesis Data Firehose is data transfer tool to get information to data lakes, data stores, and analytics services reliably.
 
 It supports various destinations including Amazon S3, Amazon Redshift, Amazon Elasticsearch Service, generic HTTP endpoints, and service providers like Datadog, New Relic, MongoDB, and Splunk.
 
-It is a fully managed service that automatically scales based on the data throughput and requires minimal ongoing administration.
+It automatically scales based on the data throughput and requires minimal ongoing administration.
 
 It can batch, compress, transform, and encrypt data streams before loading, optimizing storage usage and increasing security.
 
-Compared to Amazon Kinesis Data Streams, Kinesis Data Firehose is easier to operate, but has higher latency from the moment that data is ingested.
-
-The batch interval can be set to receive new data within a specific time frame (e.g., 60 seconds).
+Compared to Amazon Kinesis Data Streams, Kinesis Data Firehose is easier to operate, but has higher latency from the moment that data is ingested (within 1 minute). Data Firehose has limited supported third party endpoints.
 
 
 ## Amazon Kinesis Data Analytics
 
-Amazon Kinesis Data Analytics allows real-time transformation and analysis of streaming data using Apache Flink.
+Kinesis Data Stream or Firehose, it's not really going to process information as it goes through. We can use **Kinesis Data Analytics** paired with Firehose or Data Stream, to process our information using standard **SQL**.
 
-Apache Flink is an open-source framework and engine for processing data streams.
+Amazon Kinesis Data Analytics allows real-time transformation and analysis of streaming data using Apache Flink (Apache Flink is an open-source framework and engine for processing data streams).
 
-Amazon Kinesis Data Analytics simplifies the process of building, managing, and integrating Apache Flink applications with other AWS services.
+**Easy**. It's very simple to tie Data Analytics into your Kinesis pipeline. It's directly supported by Data Firehose and Data Streams.
 
-It handles all the necessary requirements for running streaming applications continuously. The service automatically scales to handle the volume and throughput of incoming data.
+**No Servers**. This is a fully managed, real-time serverless service. It will automatically handle scaling and provisioning of needed resources.
 
-There are no servers to manage, no minimum fee or setup cost. Users only pay for the resources consumed by their streaming applications.
+**Cost**. You only pay for the amount of resources you consume as your data passes through.
 
 
 ## Amazon Kinesis Video Streams

@@ -8,6 +8,8 @@ Using Amazon SQS, you can send, store, and receive messages between software com
 
 One resource will write a message to an SQS queue, and then another resource will retrieve that message from SQS.
 
+SQS doesn't offer real-time.
+
 ![](images/amazon-sqs.png)
 
 
