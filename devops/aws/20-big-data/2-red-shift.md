@@ -32,12 +32,18 @@ leave Oracle databases and leverage this AWS service instead!
 
 ## Features
 
-**Redshift Spectrum** allows you to efficiently query and retrieve data from Amazon S3 
+### Redshift Spectrum
+
+Allows you to efficiently query and retrieve exabytes of unstructured data from Amazon S3 
 without having to load the data into Amazon Redshift tables. 
+
 It leverages massive parallelism, allows it to run very fast against large datasets. 
 It uses Redshift servers that are independent of your cluster!
 
-**Enhanced VPC Routing**: all COPY and UNLOAD traffic between your cluster and your data repositories is forced through your VPC.
+
+### Enhanced VPC Routing
+
+All COPY and UNLOAD traffic between your cluster and your data repositories is forced through your VPC.
 This enhances data security and controls.
 It also enables you to use VPC features like VPC Endpoints, VPC Flow Logs, etc.
 

@@ -26,12 +26,3 @@ ETL processes are important for gaining valuable insights and making critical bu
 ## AWS Lake Formation
 
 AWS Lake Formation is a service that you can use to set up a secure data lake in days.
-
-
-## Amazon OpenSearch Service
-
-Amazon OpenSearch Service is the successor to Amazon Elasticsearch Service.
-
-You can use Amazon OpenSearch Service to perform interactive log analytics, real-time application monitoring, website search, and more. 
-
-OpenSearch is an open source, distributed search and analytics suite that is derived from Elasticsearch.
