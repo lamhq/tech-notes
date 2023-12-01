@@ -41,14 +41,3 @@ Automated backups are always enabled on Amazon Aurora DB Instances. Backups do n
 You can also take snapshots with Aurora. This also does not impact on performance.
 
 You can share Aurora snapshots with other AWS accounts.
-
-
-## Aurora Serverless v2
-
-An on-demand, auto-scaling configuration for the MySQL-compatible and PostgreSQL-compatible editions of Amazon Aurora.
-
-An Aurora Serverless DB cluster automatically starts up, shuts down, and scales capacity up or down based on your application's needs.
-
-It can help you to stay within budget and reduce the need to pay for computer resources that you don't use.
-
-Use Aurora Serverless if you want a simple, cost-effective option for infrequent, intermittent, or unpredictable workloads.
