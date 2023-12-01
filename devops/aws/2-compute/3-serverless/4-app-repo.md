@@ -1,0 +1,29 @@
+# AWS Serverless Application Repository
+
+## Overview
+
+It's a service that make it easy for developers and organizations to find, deploy, publish serverless applications within their own AWS accounts.
+
+Ability to **privately** share applications within orgs or **publicly** for the world.
+
+You upload your application code and a manifest file (AWS SAM template).
+
+
+## Publish & deploy
+
+There're two options to choose:
+
+### Publish
+
+- Publishing apps makes them available for others to find and deploy.
+- Define apps with AWS SAM templates.
+- Set to private by default. Only owner can see it.
+- Must explicitly share if desired. Can share with specific accounts or publicly with everyone.
+
+### Deploy
+
+- You find and deploy published applications.
+- You can browse public apps without needing an AWS account.
+- If you have an account, you can browse within the AWS
+Lambda console.
+- Be careful of trusting applications. They can have issues or vulnerabilities.
