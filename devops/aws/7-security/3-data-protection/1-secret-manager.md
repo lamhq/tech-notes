@@ -1,4 +1,4 @@
-# Secrets Manager
+# AWS Secrets Manager
 
 [AWS Secrets Manager](https://aws.amazon.com/secrets-manager) helps you protect secrets needed to access your applications, services, and IT resources.
 
