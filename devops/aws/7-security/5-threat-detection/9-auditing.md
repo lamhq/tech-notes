@@ -1,14 +1,5 @@
 # Auditing
 
-## Amazon Inspector
-
-[Amazon Inspector](https://aws.amazon.com/inspector) helps to improve the security and compliance of applications by running automated security assessments.
-
-It checks applications for security vulnerabilities and deviations from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions. 
-
-After performing an assessment, Amazon Inspector produces a detailed list of security findings prioritized by level of severity and a recommendation for how to fix it.
-
-
 ## AWS Trusted Advisor
 
 [AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor) is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
