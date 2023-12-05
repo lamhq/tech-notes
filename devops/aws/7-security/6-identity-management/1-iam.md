@@ -59,13 +59,32 @@ An IAM group is a collection of users. All users in the group inherit the permis
 - Groups cannot belong to groups.
 
 
-## IAM Policy
+## Amazon Resource Names (ARNs)
 
-An IAM policy is a document that allows or denies permissions to AWS services and resources.
+Amazon Resource Names are uniquely identify a resource within Amazon.
 
-To manage access and provide permissions to AWS services and resources, you create IAM policies and attach them to IAM users, groups, and roles.
+![](images/arn-format.png)
 
-Whenever a user or role makes a request, AWS evaluates the policies associated with them to determine if the request should be allowed or denied.
+Example: `arn:aws:iam::123456789012:user/ryan`:
+- partition: `aws`
+- service: `iam`
+- region: omitted, since IAM is a global service
+- account number: `123456789012`
+- resource type: `user`
+- resource: `ryan`
+
+
+## IAM Policies
+
+An IAM Policy is a JSON document that defines permissions.
+
+Types:
+- When we apply a policy to users and groups, that's an **identity policy**.
+- When we apply a policy to resources, that's a **resource policy**.
+
+A policy no effect until attached.
+
+If you don't explicitly allow, it's implicitly denied. You cannot override an explicit deny.
 
 ```json
 {

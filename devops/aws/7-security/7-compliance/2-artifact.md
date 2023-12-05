@@ -1,8 +1,10 @@
 # AWS Artifact
 
-Depending on your company’s industry, you may need to uphold specific standards. An audit or inspection will ensure that the company has met those standards.
+## Overview
 
-AWS Artifact is a service that provides on-demand access to AWS security and compliance reports and select online agreements.
+Artifact is a single source you can visit to get the compliance-related information that matters to you, such as AWS security and compliance reports or select online agreements.
+
+There are a huge number of **compliance reports** available, such as AWS Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and GDPR reports, as well as other certifications (including ISO reports, HIPAA, and more).
 
 AWS Artifact consists of two main sections: AWS Artifact Agreements and AWS Artifact Reports.
 
