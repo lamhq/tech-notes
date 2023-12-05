@@ -1,6 +1,4 @@
-# Auditing
-
-## AWS Trusted Advisor
+# AWS Trusted Advisor
 
 [AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor) is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
 
@@ -10,7 +8,7 @@ Trusted Advisor offers a list of recommended actions and additional resources to
 
 > You can use AWS Trusted Advisor to assist you while you are creating new workflows and developing new applications. Or you can use it while you are making ongoing improvements to existing applications and resources.
 
-### AWS Trusted Advisor Dashboard
+## AWS Trusted Advisor Dashboard
 
 ![](images/trusted-advisor.png)
 
