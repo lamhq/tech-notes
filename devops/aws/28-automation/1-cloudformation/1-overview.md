@@ -38,3 +38,8 @@ as well as their configuration requirements.
 within other stacks
 - `Transform` (optional): specify one or more macros to modify the template
 before it's actually processed.
+
+
+## Immutable pattern for application code deployments
+
+The immutable pattern specifies a deployment of application code by starting an entirely new set of servers with a new configuration or version of application code. When we go immutable, we don't want to ever upgrade in place. Once the cloud resource exists, it can't be modified.

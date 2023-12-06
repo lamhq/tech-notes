@@ -7,7 +7,7 @@ AWS Systems Manager is a suite of tools designed to let you view, control, and a
 
 ## Features
 
-- **Automation**: Use predefined or custom playbooks (documents) to enable resource management
+- **Automation**: Use predefined or custom playbooks (documents) to enable resource management. Automation documents are the primary method used in scenarios asking you to configure the inside of an EC2 instance.
 - **Run Command**: Remotely execute commands on managed compute without SSH or RDP
 - **Patch Manager**: Automates patching managed instances (OS patches and applications)
 - **Parameter Store**: Securely store your secrets and application configuration information
@@ -17,7 +17,7 @@ AWS Systems Manager is a suite of tools designed to let you view, control, and a
 - **SSM Agent**: Supports both Linux and Windows without the need for SSH or RDP. Agent-based connection without opening ports!
 
 
-## AWS Systems Manager agent (SSM Agent)
+## AWS Systems Manager Agent (SSM Agent)
 
 SSM Agent is a software component that is installed and executed on managed instances within AWS as well as on-premise.
 

@@ -2,7 +2,7 @@
 
 Amazon CloudFront is a content delivery network. The purpose of CloudFront is to deliver data, videos, applications, and websites to your customers globally with low latency and high transfer speeds.
 
-CloudFront resides between your website and the people visiting your website, and it serves as a cache for your website. 
+CloudFront is an external caching solution, it resides between your website and the people visiting your website. 
 
 Amazon has edge locations worldwide, which are used to serve your website. The files are stored in the edge location's cache for a period of time specified by you, and if a visitor requests content that has been cached longer than the expiration time, CloudFront checks the origin server to see if a new version of the file is available. If it is, it copies the new version over to the edge location. 
 

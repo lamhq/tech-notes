@@ -89,12 +89,11 @@ You can switch between the different capacity modes twice per 24 hours per table
 ## DynamoDB Accelerator (DAX)
 
 - Fully managed, highly available, in-memory cache
-- 10× performance improvement than using just DynamoDB on its own.
-- Reduces request time from milliseconds to microseconds - even under load
-- No need for developers to manage caching logic. Application interact with DAX only.
-- Compatible with DynamoDB API calls.
+- 10× performance improvement than using just DynamoDB on its own (microseconds)
+- Compatible with DynamoDB API calls. No need for developers to manage caching logic. Application interact with DAX only
 - Is not designed for applications that are write-intensive.
-- Run within an Amazon VPC.
+- Run within an Amazon VPC
+- Full control. You determine the node size and count for the cluster, TTL for the data, and maintenance windows for changes and updates
 
 ![](images/dax.png)
 
