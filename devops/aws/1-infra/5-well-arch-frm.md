@@ -1,8 +1,16 @@
 # The AWS Well-Architected Framework
 
+## Overview
+
 The AWS Well-Architected Framework helps you understand how to design and operate **reliable, secure, efficient, and cost-effective systems** in the AWS Cloud.
 
-It provides a way for you to consistently measure your architecture against best practices and design principles and identify areas for improvement.
+The AWS Well-Architected Tool provides a way for you to consistently measure your architecture against best practices and design principles and identify areas for improvement.
+
+- Provides a consistent process for measuring cloud architectures
+- Enables assistance with documenting workloads and architecture decisions
+- Guides for making workloads reliable, secure, efficient, and cost effective
+- Measure workloads against years of AWS best practices
+- Intended for specific audiences, such as technical teams, CTOs, architecture, and operations teams
 
 The Well-Architected Framework is based on six pillars:
 
@@ -12,7 +20,6 @@ The Well-Architected Framework is based on six pillars:
 - Performance efficiency
 - Cost optimization
 - Sustainability
-
 
 ## Operational Excellence
 
