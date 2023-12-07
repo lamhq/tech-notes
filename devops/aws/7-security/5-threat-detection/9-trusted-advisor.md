@@ -1,12 +1,30 @@
 # AWS Trusted Advisor
 
-[AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor) is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
+## Overview
 
-Trusted Advisor compares its findings to AWS best practices in five categories: cost optimization, performance, security, fault tolerance, and service limits.
+AWS Trusted Advisor is a fully managed best-practice auditing tool.
 
-Trusted Advisor offers a list of recommended actions and additional resources to learn more about AWS best practices. 
+It inspects your AWS environments, and then makes recommendations when opportunities exist to save money, improve system availability and performance, or help close security gaps.
 
-> You can use AWS Trusted Advisor to assist you while you are creating new workflows and developing new applications. Or you can use it while you are making ongoing improvements to existing applications and resources.
+It uses industry and customer-established best practices to check our AWS accounts.
+
+It works at an account level and requires nothing else but the service.
+
+You can use AWS Trusted Advisor to assist you while you are creating new workflows and developing new applications. Or you can use it while you are making ongoing improvements to existing applications and resources.
+
+There are different support levels:
+- Basic or Developer support plans come with all checks in the Service Limits category, and only six checks in the Security category.
+- With Business, Enterprise On-Ramp, or Enterprise support, we get FULL access to AWS Trusted Advisory checks, full integration with Amazon Event Bridge.
+
+
+## Check Categories
+
+- **Cost Optimization**: Recommendations where AWS believes we can actually save money within our accounts.
+- **Performance**: Checks where and how we can improve speed, efficiency, and responsiveness of our applications resources.
+- **Security**: How can we alter our security settings to secure our AWS accounts better? Helps maintain stricter security postures.
+- **Fault Tolerance**: What can be done to help increase resiliency and availability of our resources?
+- **Service Limits**: Checks the usage of our accounts and whether or not we are approaching service limits for the used resources/services.
+
 
 ## AWS Trusted Advisor Dashboard
 

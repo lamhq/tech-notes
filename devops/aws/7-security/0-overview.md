@@ -28,5 +28,3 @@
 - **AWS Identity and Access Management** (IAM): A service to securely manage access to your AWS accounts, services and resources.
 - **AWS Single sign-on**: A service to implement cloud single sign-on.
 - **Amazon Cognito**: A service to manage identity inside applications you have made such as users logging in.
-- **AWS Directory Service**: And a service to implement and manage Microsoft Active Directory.
-- **AWS Organizations**: a service to centrally govern and manage multiple AWS accounts in one place.
