@@ -42,16 +42,3 @@ Amazon Kinesis Data Analytics allows real-time transformation and analysis of st
 **No Servers**. This is a fully managed, real-time serverless service. It will automatically handle scaling and provisioning of needed resources.
 
 **Cost**. You only pay for the amount of resources you consume as your data passes through.
-
-
-## Amazon Kinesis Video Streams
-
-Amazon Kinesis Video Streams allows secure streaming of video from connected devices to AWS for various purposes like analytics, machine learning, playback, etc.
-
-The service automatically provisions and scales the infrastructure required to ingest streaming video data from millions of devices.
-
-Kinesis Video Streams stores, encrypts, and indexes video data in streams, and provides access through APIs. It supports playback of both live and on-demand video viewing.
-
-You can also use it to quickly build applications that take advantage of computer vision and video analytics through integration with Amazon Rekognition Video and libraries for ML frameworks (such as Apache MXNet, TensorFlow, and OpenCV)
-
-Kinesis Video Streams also supports WebRTC, allowing real-time media streaming and interaction between web browsers, mobile apps, and connected devices. WebRTC is commonly used for activities like video chat and peer-to-peer media streaming.
