@@ -15,7 +15,7 @@ AWS Storage Gateway offers **three distinct storage gateways**, each catering to
 
 ![](https://d1.awsstatic.com/cloud-storage/Amazon%20S3%20File%20Gateway%20How%20It%20Works%20Diagram.96e9f7180c6ec8b6212b4d6fadc4a9ac4507b421.png)
 
-File Gateway is a network file share that can be mounted locally and backs up your data into S3.
+File Gateway is a network file share (NFS/SMB) that can be mounted locally and backs up your data into S3.
 
 You can either back up all of your data into the cloud or keep a cached copy of the most recently used files. This means you don't have to download the recently used content out of S3 if you don't want to.
 
