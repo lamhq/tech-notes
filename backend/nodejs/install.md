@@ -1,10 +1,10 @@
 ### Install nodejs with nvm
 
-Reference: [https://github.com/creationix/nvm#installation](https://github.com/creationix/nvm#installation)
+Reference: [nvm Github](https://github.com/nvm-sh/nvm#install--update-script)
 
 ```shell
 # install nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # close terminal and start a new one, then verify it
 nvm -v
@@ -16,9 +16,9 @@ nvm install 14.18.3
 ### Install new nodejs version with nvm
 
 ```shell
-nvm install 18.18.1
-nvm use 18.18.1
-nvm alias default 18.18.1
+nvm install 20.10.0
+nvm use 20.10.0
+nvm alias default 20.10.0
 ```
 
 ## Uninstall an old version

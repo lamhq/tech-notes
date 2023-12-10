@@ -9,12 +9,10 @@
 
 ## Installation
 
-pnpm already installed when installing node.js 16 with nvm.
-
-### Using Homebrew
+Install using `npm`:
 
 ```shell
-brew install pnpm
+npm install -g pnpm
 ```
 
 

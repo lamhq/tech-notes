@@ -7,7 +7,17 @@ This guide will help you create a software documentation website.
 ### Install
 
 ```shell
-yarn add next react react-dom nextra nextra-theme-docs
+pnpm add next react react-dom nextra nextra-theme-docs
+```
+
+Add the following scripts in `package.json`:
+
+```json
+"scripts": {
+  "dev": "next",
+  "build": "next build",
+  "start": "next start"
+},
 ```
 
 ### Add Next.js Config
