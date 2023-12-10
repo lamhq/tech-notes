@@ -1,0 +1,20 @@
+{
+  "0-cloud-computing": { "title": "Cloud Computing" },
+  "1-infra": { "title": "Infrastructure" },
+  "2-compute": { "title": "Compute" },
+  "3-networking": { "title": "Networking" },
+  "4-storage": { "title": "Storage" },
+  "5-database": { "title": "Database" },
+  "6-monitoring": { "title": "Monitoring" },
+  "7-security": { "title": "Security" },
+  "8-pricing": { "title": "Pricing" },
+  "9-migration": { "title": "Migration" },
+  "10-app-integration": { "title": "App Integration" },
+  "20-big-data": { "title": "Big Data" },
+  "25-frontend": { "title": "Frontend" },
+  "29-cache": { "title": "Cache" },
+  "30-governance": { "title": "Governance" },
+  "35-media": { "title": "Media" },
+  "39-machine-learning": { "title": "Machine Learning" },
+  "40-certifications": { "title": "Certifications" }
+}

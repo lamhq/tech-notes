@@ -1,0 +1,14 @@
+{
+  "*": {
+    "type": "page"
+  },
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "devops": {
+    "title": "DevOps"
+  }
+}
