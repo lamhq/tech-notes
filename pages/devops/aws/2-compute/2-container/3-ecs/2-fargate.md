@@ -15,7 +15,7 @@ and it's going to spin up an ENI in the different VPC subnet configurations that
 Integrate natively with IAM and VPC, allows you to launch Fargate containers inside your network and control connectivity to your applications.
 
 
-# Fargate Spot
+## Fargate Spot
 
 With Amazon ECS on AWS Fargate capacity providers, you can use both Fargate and Fargate Spot capacity with your Amazon ECS tasks.
 
