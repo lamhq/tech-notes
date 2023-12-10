@@ -1,4 +1,4 @@
-# The AWS Well-Architected Framework
+# 
 
 ## Overview
 

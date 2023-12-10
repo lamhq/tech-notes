@@ -1,4 +1,4 @@
-# Infrastructure
+# AWS Global Infrastructure
 
 ## Regions
 

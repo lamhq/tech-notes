@@ -1,6 +1,6 @@
 # Cloud computing
 
-## Intro
+## Overview
 
 Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
 

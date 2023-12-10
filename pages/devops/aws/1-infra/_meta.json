@@ -1,0 +1,7 @@
+{
+  "1-aws": { "title": "AWS" },
+  "2-infrastructure": { "title": "AWS Global Infrastructure" },
+  "3-outpost": { "title": "AWS Outpost" },
+  "5-well-arch-frm": { "title": "AWS Well-Architected Framework" },
+  "4-optimizing": { "title": "Optimizing Solutions on AWS" }
+}

@@ -1,4 +1,4 @@
-# AWS Global Infrastructure
+# AWS
 
 ## What is AWS?
 
