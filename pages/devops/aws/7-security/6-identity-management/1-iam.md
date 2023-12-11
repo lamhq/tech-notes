@@ -78,13 +78,13 @@ Example: `arn:aws:iam::123456789012:user/ryan`:
 
 An IAM Policy is a JSON document that defines permissions.
 
+A policy has no effect until attached.
+
+If you don't explicitly allow, it's implicitly denied. You cannot override an explicit deny.
+
 Types:
 - When we apply a policy to users and groups, that's an **identity policy**.
 - When we apply a policy to resources, that's a **resource policy**.
-
-A policy no effect until attached.
-
-If you don't explicitly allow, it's implicitly denied. You cannot override an explicit deny.
 
 ```json
 {

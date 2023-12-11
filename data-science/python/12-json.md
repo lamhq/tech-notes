@@ -11,7 +11,8 @@ json.dumps([1, 'simple', 'list'])
 ## Serialize object to a text file
 
 ```py
-json.dump(x, f)
+with open("data.json", "w") as outfile:
+  json.dump(data, outfile)
 ```
 
 ## Load from string

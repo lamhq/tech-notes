@@ -1,0 +1,5 @@
+{
+  "1-iam": { "title": "IAM" },
+  "3-cognitor": { "title": "Amazon Cognito" },
+  "10-tips": { "title": "Tips" }
+}

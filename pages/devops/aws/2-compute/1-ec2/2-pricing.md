@@ -4,7 +4,7 @@ Amazon EC2 offers a variety of pricing options for different use cases.
 
 ## On-Demand Instances
 
-Pay by the houror the second, depending on the type ò instance you run.
+Pay by the hour or the second, depending on the type of instance you run.
 
 Ideal for short-term, unpredictable workloads that cannot be interrupted.
 
