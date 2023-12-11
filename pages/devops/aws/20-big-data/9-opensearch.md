@@ -1,4 +1,4 @@
-# Amazon OpenSearch Service
+# Amazon OpenSearch
 
 ## Overview
 

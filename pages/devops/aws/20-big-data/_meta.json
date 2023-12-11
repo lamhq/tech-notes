@@ -1,0 +1,29 @@
+{
+  "1-overview": {
+    "title": "Data storage services"
+  },
+  "2-red-shift": {
+    "title": "Amazon Redshift"
+  },
+  "3-emr": {
+    "title": "Amazon EMR"
+  },
+  "4-kinesis": {
+    "title": "Amazon Kinesis Services"
+  },
+  "5-athena": {
+    "title": "Amazon Athena"
+  },
+  "6-quicksight": {
+    "title": "Amazon QuickSight"
+  },
+  "7-data-pipeline": {
+    "title": "AWS Data Pipeline"
+  },
+  "8-msk": {
+    "title": "Amazon MSK"
+  },
+  "9-opensearch": {
+    "title": "Amazon OpenSearch"
+  }
+}

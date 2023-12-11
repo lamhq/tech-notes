@@ -1,0 +1,26 @@
+{
+  "0-overview": {
+    "title": "AWS Networking Services"
+  },
+  "1-network-basic": {
+    "title": "Networking Basics"
+  },
+  "2-vpc": {
+    "title": "Amazon VPC"
+  },
+  "3-routing": {
+    "title": "VPC Routing"
+  },
+  "4-security": {
+    "title": "Security"
+  },
+  "7-api-gateway": {
+    "title": "Amazon Api Gateway"
+  },
+  "8-dns": {
+    "title": "DNS"
+  },
+  "9-guides": {
+    "title": "Guides"
+  }
+}

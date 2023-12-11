@@ -1,4 +1,4 @@
-# ElastiCache
+# Amazon ElastiCache
 
 ## Overview
 

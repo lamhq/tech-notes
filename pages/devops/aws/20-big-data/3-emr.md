@@ -1,4 +1,4 @@
-## Amazon EMR
+# Amazon EMR
 
 Amazon EMR is an AWS service to help with ETL processing.
 

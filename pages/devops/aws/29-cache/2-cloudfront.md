@@ -1,4 +1,4 @@
-### Amazon CloudFront
+# Amazon CloudFront
 
 Amazon CloudFront is a content delivery network. The purpose of CloudFront is to deliver data, videos, applications, and websites to your customers globally with low latency and high transfer speeds.
 
