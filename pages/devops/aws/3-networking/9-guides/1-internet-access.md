@@ -1,4 +1,6 @@
-# Guide: Enable internet access for a subnet with Internet Gateway
+# Internet Access Guide
+
+Enable internet access for a subnet with Internet Gateway:
 
 1. Enable the **Auto-assign public IPv4 address** feature for the subnet.
 1. Create a new internet gateway and attach it to the VPC.

@@ -1,0 +1,8 @@
+{
+  "1-dns-basic": {
+    "title": "Domain Name System (DNS)"
+  },
+  "2-route-53": {
+    "title": "Amazon Route 53"
+  }
+}
