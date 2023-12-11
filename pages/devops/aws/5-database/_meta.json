@@ -1,0 +1,26 @@
+{
+  "1-relational": {
+    "title": "1 Relational"
+  },
+  "2-key-value": {
+    "title": "2 Key Value"
+  },
+  "3-document": {
+    "title": "3 Document"
+  },
+  "4-cassandra": {
+    "title": "4 Cassandra"
+  },
+  "5-graph": {
+    "title": "5 Graph"
+  },
+  "6-ledger": {
+    "title": "6 Ledger"
+  },
+  "7-time-series": {
+    "title": "7 Time Series"
+  },
+  "8-data-migration": {
+    "title": "AWS Database Migration Service (AWS DMS)"
+  }
+}

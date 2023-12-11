@@ -1,0 +1,29 @@
+{
+  "1-comprehend": {
+    "title": "Amazon Comprehend"
+  },
+  "2-kendra": {
+    "title": "Amazon Kendra"
+  },
+  "3-textract": {
+    "title": "Amazon Textract"
+  },
+  "4-forecast": {
+    "title": "Amazon Forecast"
+  },
+  "5-fraud-detector": {
+    "title": "Amazon Fraud Detector"
+  },
+  "6-speech": {
+    "title": "Working with Text and Speech"
+  },
+  "7-rekognition": {
+    "title": "Amazon Rekognition"
+  },
+  "8-sage-maker": {
+    "title": "8 Sage Maker"
+  },
+  "9-translate": {
+    "title": "Amazon Translate"
+  }
+}

@@ -1,4 +1,6 @@
-# Temporarily Sharing S3 Objects Using Presigned URLs or Cookies
+# Sharing
+
+Temporarily Sharing S3 Objects Using Presigned URLs or Cookies
 
 ## All objects in S3 are private by default
 

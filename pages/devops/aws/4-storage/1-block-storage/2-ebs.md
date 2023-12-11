@@ -1,4 +1,4 @@
-# EBS
+# Amazon EBS
 
 ## Overview
 

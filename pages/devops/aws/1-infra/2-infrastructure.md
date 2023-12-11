@@ -19,14 +19,14 @@ Choose the Right AWS Region:
 
 An Availability Zone is one or more discrete data centers - each with redundant power, networking and connectivity, housed in separate facilities.
 
-AZs are located tens of miles apart from each other. This is close enough to have low latency. They are distant enough to reduce the chance that multiple Availability Zones are affected if a disaster occurs.
+AZs are located **10 miles** apart from each other. close enough to have low latency, far enough to reduce the chance that multiple AZs are affected if a disaster occurs.
+
 
 AZs also have a code name:
-
 - `us-east-1a`: an AZ in *us-east-1* (Northern Virginia Region)
 - `sa-east-1b`: an AZ in *sa-east-1* (São Paulo Region in South America)
 
-A best practice is to run applications across at least two Availability Zones in a Region.
+A best practice is to run applications across at least two AZs in a Region.
 
 
 ## Edge Locations

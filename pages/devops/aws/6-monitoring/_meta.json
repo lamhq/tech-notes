@@ -1,0 +1,17 @@
+{
+  "1-cloudwatch": {
+    "title": "Amazon CloudWatch"
+  },
+  "2-x-ray": {
+    "title": "AWS X-Ray for Application Insights"
+  },
+  "6-amazon-managed-grafana": {
+    "title": "Amazon Managed Grafana"
+  },
+  "7-amazon-managed-prometheus": {
+    "title": "Amazon Managed Service for Prometheus"
+  },
+  "8-health": {
+    "title": "AWS Health (AWS Personal Health Dashboard)"
+  }
+}

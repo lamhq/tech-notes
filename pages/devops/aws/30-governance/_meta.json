@@ -1,0 +1,32 @@
+{
+  "1-organizations": {
+    "title": "AWS Organizations"
+  },
+  "2-config": {
+    "title": "AWS Config"
+  },
+  "20-ram": {
+    "title": "AWS Resource Access Manager (RAM)"
+  },
+  "40-directory-service": {
+    "title": "Directory Service"
+  },
+  "50-control-tower": {
+    "title": "AWS Control Tower"
+  },
+  "60-license-manager": {
+    "title": "AWS License Manager"
+  },
+  "70-service-catalog": {
+    "title": "AWS Service Catalog"
+  },
+  "80-cloudformation": {
+    "title": "80 Cloudformation"
+  },
+  "90-proton": {
+    "title": "AWS Proton"
+  },
+  "99-system-manager": {
+    "title": "Systems Manager"
+  }
+}

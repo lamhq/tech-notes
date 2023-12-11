@@ -1,0 +1,8 @@
+{
+  "1-dynamodb": {
+    "title": "Amazon DynamoDB"
+  },
+  "snippets": {
+    "title": "Snippets"
+  }
+}

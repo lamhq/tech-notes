@@ -1,0 +1,23 @@
+{
+  "1-overview": {
+    "title": "Overview"
+  },
+  "2-storage-classes": {
+    "title": "Storage Classes"
+  },
+  "3-object-lock": {
+    "title": "S3 Object Lock"
+  },
+  "4-encryption": {
+    "title": "Encryption"
+  },
+  "5-optimizing-perf": {
+    "title": "Optimizing S3 Performance"
+  },
+  "6-replication": {
+    "title": "Backing up Data with S3 Replication"
+  },
+  "7-sharing": {
+    "title": "Sharing"
+  }
+}

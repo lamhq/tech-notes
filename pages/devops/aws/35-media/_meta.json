@@ -1,0 +1,8 @@
+{
+  "10-transcoder": {
+    "title": "Amazon Elastic Transcoder"
+  },
+  "20-kinesis-video-stream": {
+    "title": "Amazon Kinesis Video Streams"
+  }
+}

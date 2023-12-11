@@ -1,6 +1,6 @@
-# Object Storage
+# Overview
 
-## Overview of object storage
+## Object Storage
 
 In object storage, each object consists of data, metadata, and a key.
 
@@ -25,7 +25,9 @@ Amazon S3 is a service that provides object-level storage.
 
 Amazon S3 stores data as objects in **buckets**.
 
-Amazon S3 offers unlimited storage space. The maximum file size for an object in Amazon S3 is 5 TB.
+Amazon S3 offers unlimited storage space.
+
+The maximum file size for an object in Amazon S3 is **5 TB**.
 
 When you upload a file to Amazon S3, you can set permissions to control visibility and access to it. You can also use the Amazon S3 versioning feature to track changes to your objects over time.
 

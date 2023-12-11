@@ -1,0 +1,17 @@
+{
+  "11-aws-security-hub": {
+    "title": "AWS Security Hub"
+  },
+  "2-aws-shield": {
+    "title": "AWS Shield"
+  },
+  "7-aws-waf": {
+    "title": "AWS WAF"
+  },
+  "8-firewall-manager": {
+    "title": "AWS Firewall Manager"
+  },
+  "9-network-firewall": {
+    "title": "AWS Network Firewall"
+  }
+}

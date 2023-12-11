@@ -1,0 +1,8 @@
+{
+  "1-audit-manager": {
+    "title": "AWS Audit Manager"
+  },
+  "2-artifact": {
+    "title": "AWS Artifact"
+  }
+}
