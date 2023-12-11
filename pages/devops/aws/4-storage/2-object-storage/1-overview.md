@@ -23,26 +23,19 @@ Object storage is generally useful when storing large data sets, unstructured fi
 
 Amazon S3 is a service that provides object-level storage.
 
-Amazon S3 stores data as objects in **buckets**.
+It stores data as objects in **buckets**.
 
-Amazon S3 offers unlimited storage space.
+It offers unlimited storage space.
 
 The maximum file size for an object in Amazon S3 is **5 TB**.
 
-When you upload a file to Amazon S3, you can set permissions to control visibility and access to it. You can also use the Amazon S3 versioning feature to track changes to your objects over time.
+It can not be used to run an operating system or database.
 
-The consistency model for S3 is Strong Read-After-Write. That means as soon as you've written something to S3, it should be immediately available.
+When you upload a file to Amazon S3, you can set permissions to control visibility and access to it.
 
+You can use Amazon S3 versioning feature to track changes to your objects over time.
 
-## Bucket
-
-Amazon S3 store your objects in containers called buckets.
-
-When you create a bucket, you choose at least two things: the bucket name and the AWS Region you want the bucket to reside in.
-
-**Bucket name** is unique.
-
-![](./images/s3.png)
+The **consistency model** for S3 is Strong Read-After-Write. That means as soon as you've written something to S3, it should be immediately available.
 
 
 ## Use cases
@@ -60,14 +53,26 @@ When you create a bucket, you choose at least two things: the bucket name and th
 **Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
 
 
+## Bucket
+
+Amazon S3 store your objects in containers called buckets.
+
+When you create a bucket, you choose at least two things: the bucket name and the AWS Region you want the bucket to reside in.
+
+**Bucket name** is unique.
+
+![](./images/s3.png)
+
+
 ## Secure your data
 
-Bucket are private by default. You have to allow public access on bucket and its objects to make the bucket public.
+### Bucket are private by default
+
+You have to allow public access on bucket and its objects to make the bucket public.
 
 ### Server-side Encrypt
 
 You can set default encryption on a bucket to encrypt new objects when they are stored in the bucket and then decrypt them when you download the objects.
-
 
 ### S3 Bucket Policies
 
@@ -101,7 +106,6 @@ Use cases:
 - You need a simple way to do cross-account access to S3, without using IAM roles.
 - Your IAM policies bump up against the defined size limit. S3 bucket policies have a larger size limit.
 
-
 ### Access Control Lists (ACLs)
 
 Define which AWS accounts or groups are granted access and the type of access.
@@ -109,7 +113,6 @@ Define which AWS accounts or groups are granted access and the type of access.
 You can attach S3 ACLs to individual objects within a bucket.
 
 You can make individual objects public using object ACLs.
-
 
 ### IAM Policies
 
