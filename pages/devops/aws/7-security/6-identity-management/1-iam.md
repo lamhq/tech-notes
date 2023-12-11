@@ -1,5 +1,7 @@
 # AWS Identity and Access Management (IAM)
 
+## Overview
+
 IAM enables you to manage access to AWS services and resources securely.
 
 IAM features:
@@ -18,14 +20,6 @@ No additional charge.
 
 The root user is accessed by signing in with the email address and password that you used to create your AWS account.
 
-The AWS root user has two sets of credentials associated with it:
-- One set of credentials is the **email address and password** used to create the account. This allows you to access the AWS Management Console.
-- The second set of credentials is called **access keys**, which allow you to make programmatic requests from the AWS Command Line Interface (AWS CLI) or AWS API.
-
-**Access keys** consist of two parts:
-- An access key ID, for example, A2lAl5EXAMPLE
-- A secret access key, for example, wJalrFE/KbEKxE
-
 The root user has complete access to all AWS services and resources in your account, as well as your billing and personal information.
 
 **Best Practices**:
@@ -33,7 +27,18 @@ The root user has complete access to all AWS services and resources in your acco
 - [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
 - Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
 - Do not use the root user for everyday tasks.
-- Use the root user to create **IAM user** and assign it permissions to create other users.
+- Create an admin group for you administrators, and assign the appropriate permissions to this group. Create user accounts for administrators and add user to admin group.
+
+
+## Access keys
+
+The AWS root user has two sets of credentials associated with it:
+- One set of credentials is the **email address and password** used to create the account. This allows you to access the AWS Management Console.
+- The second set of credentials is called **access keys**, which allow you to make programmatic requests from the AWS Command Line Interface (AWS CLI) or AWS API.
+
+**Access keys** consist of two parts:
+- An access key ID, for example, A2lAl5EXAMPLE
+- A secret access key, for example, wJalrFE/KbEKxE
 
 
 ## IAM User
@@ -136,3 +141,12 @@ Using roles is preferred for security reasons as it allows you to avoid hard-cod
 You can attach and detach roles to running EC2 instances without stopping or terminating them.
 
 Roles are ideal for granting temporary access to services or resources rather than long-term access.
+
+
+## IAM Federation
+
+You can combine your existing user account with AWS.
+
+For example, when you log on to your PC (usually using Microsoft Active Directory), you can use the same credentials to log in to AWS if you set up federation.
+
+To do that, you use **Identity Federation**, which uses the SAML standard (essentially Active Directory)

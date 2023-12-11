@@ -9,24 +9,27 @@ When selecting an Amazon S3 storage class, consider these two factors:
 
 > For example, if you are now accessing your old photos infrequently, you may want to change the storage class those photos are stored in to save on costs.
 
-There are six S3 storage classes:
+There are six S3 storage classes.
+
 
 ## S3 Standard
 
-High availability and durability.
-- Data is stored across multiple devices in multiple facilities (>= 3 AZs).
-- 99.99% availability and 11 9's durability.
+High availability (99.99%) and durability (11 9's).
+
+Data is stored across multiple devices in multiple facilities (>= 3 AZs).
 
 Has a higher cost than other storage classes.
 
-Designed for frequently accessed data:
-- Default storage class.
-- Suitable for most workloads: websites, content distribution, mobile, gaming applictions, big data analytics.
+Designed for frequently accessed data.
+
+Default storage class.
+
+Suitable for most workloads: websites, content distribution, mobile, gaming applictions, big data analytics.
 
 
 ## S3 Standard-Infrequent Access (S3 Standard-IA)
 
-- Similar to S3 Standard. Ideal for infrequently accessed data but give you rapid access.
+- Ideal for infrequently accessed data but give you rapid access.
 - 99.9% availability and 11 9's durability.
 - You pay to access the data. Has a lower storage price and higher retrieval price.
 - Great for long-term storage, backups, data store for disaster recovery files.

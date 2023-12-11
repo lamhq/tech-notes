@@ -1,39 +1,32 @@
-# 
+# AWS Well-Architected Framework
 
 ## Overview
 
-The AWS Well-Architected Framework helps you understand how to design and operate **reliable, secure, efficient, and cost-effective systems** in the AWS Cloud.
+The AWS Well-Architected Framework helps you understand the pros and cons of decisions you make while building systems on AWS.
 
-The AWS Well-Architected Tool provides a way for you to consistently measure your architecture against best practices and design principles and identify areas for improvement.
+It provides a way for you to consistently measure your architectures against best practices and identify areas for improvement.
 
-- Provides a consistent process for measuring cloud architectures
-- Enables assistance with documenting workloads and architecture decisions
-- Guides for making workloads reliable, secure, efficient, and cost effective
-- Measure workloads against years of AWS best practices
-- Intended for specific audiences, such as technical teams, CTOs, architecture, and operations teams
+The framework documents a set of foundational questions that help you to understand if a specific architecture aligns well with cloud best practices.
+
+It is intended for those in technology roles, such as chief technology officers (CTOs), architects, developers, and operations team members.
+
+It describes AWS best practices and strategies to use when designing and operating a cloud workload, and provides links to further implementation details and architectural patterns.
+
+The **AWS Well-Architected Tool** (AWS WA Tool) is a cloud service that provides a consistent process for reviewing and measuring your architecture. It provides recommendations for making your workloads more reliable, secure, efficient, and cost-effective
+
 
 The Well-Architected Framework is based on six pillars:
 
-- Operational excellence
-- Security
-- Reliability
-- Performance efficiency
-- Cost optimization
-- Sustainability
-
 ## Operational Excellence
 
-Operational excellence is the ability to **run and monitor** systems to deliver business value and to continually improve supporting processes and procedures.
-
-**Design principles for operational excellence in the cloud** include performing operations as code, annotating documentation, anticipating failure, and frequently making small, reversible changes.
+Running and monitoring systems to deliver business value, and continually improving processes and procedures
 
 
 ## Security
 
-The Security pillar is the ability to **protect** information, systems, and assets while delivering business value through risk assessments and mitigation strategies.
+Protecting information and systems
 
-When considering the security of your architecture, apply these best practices:
-
+Best practices:
 - Automate security best practices when possible.
 - Apply security at all layers.
 - Protect data in transit and at rest.
@@ -41,35 +34,24 @@ When considering the security of your architecture, apply these best practices:
 
 ## Reliability
 
-Reliability is the ability of a system to do the following:
-
-- **Recover** from infrastructure or service disruptions
-- Dynamically **acquire computing resources** to meet demand
-- **Mitigate disruptions** such as misconfigurations or transient network issues
-
-Reliability includes testing recovery procedures, scaling horizontally to increase aggregate system availability, and automatically recovering from failure.
+Ensuring a workload performs its intended function correctly and consistently when it's expected to.
 
 
 ## Performance Efficiency
 
-Performance efficiency is the ability to **use computing resources efficiently** to meet system requirements and to maintain that efficiency as demand changes and technologies evolve.
-
-Evaluating the performance efficiency of your architecture includes experimenting more often, using serverless architectures, and designing systems to be able to go global in minutes.
+Using IT and computing resources efficiently.
 
 
 ## Cost Optimization
 
-Cost optimization is the ability to run systems to deliver business value at the **lowest price point**.
-
-Cost optimization includes adopting a consumption model, analyzing and attributing expenditure, and using managed services to reduce the cost of ownership.
+Avoiding unnecessary costs.
 
 
 ## Sustainability
 
-Sustainability is the ability to continually improve sustainability impacts by **reducing energy consumption and increasing efficiency** across all components of a workload by maximizing the benefits from the provisioned resources and minimizing the total resources required.
+Minimizing the environmental impacts of running cloud workloads.
 
 To facilitate good design for sustainability:
-
 - Understand your impact
 - Establish sustainability goals
 - Maximize utilization
