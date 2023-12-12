@@ -6,7 +6,8 @@ Amazon EBS is a service that provides block-level storage volumes you can attach
 
 EBS is highly available. Automatically replicated within a single AZ to protect against hardware failures.
 
-EBS is scalable. Dynamically **increase capacity** and **change the volume type** with no downtime or performance impact.
+EBS is scalable. You can **resize** and **change the volume type** on the fly with no downtime or performance impact.
+
 
 ## Use Cases
 
@@ -147,15 +148,20 @@ When you encrypt an EBS volume:
 
 To encrypt an volume:
 - create a snapshot of unencrypted volume
-- copy the snapshot with encryption enabled.
+- copy the snapshot with encryption enabled
 - create an AMI from the encrypted snapshot
 - use that AMI to launch new instances
+
 
 ## EBS and EC2
 
 If you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.
 
-Amazon EBS volumes can only be connected with one computer at a time. You can detach an EBS volume from one EC2 instance and attach it to another EC2 instance in the same Availability Zone, to access the data on it.
+Amazon EBS volumes can only be connected with one computer at a time.
+
+You can detach an EBS volume from one EC2 instance and attach it to another EC2 instance in the same Availability Zone, to access the data on it.
+
+With EBS volumes, you can tell AWS to keep the root device volume on instance termination.
 
 You can scale Amazon EBS volumes in two ways:
 - Increase the volume size, as long as it doesn't increase above the maximum size limit. For EBS volumes, the maximum amount of storage you can have is 16 TB.

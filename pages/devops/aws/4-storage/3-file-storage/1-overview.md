@@ -1,20 +1,16 @@
-# File Storage
+# Overview
 
-## Overview
+## File Storage
 
 In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders. 
-
-Clients access data through file paths.
-
-File storage is ideal for use cases in which a large number of services and resources need to access the same data at the same time.
-
 
 You place your files in a tree-like hierarchy that consists of folders and subfolders. 
 
 Each file has metadata such as file name, file size, and the date the file was created. The file also has a path, when you need to retrieve a file, your system can use the path to find it in the file hierarchy.
 
-Common use cases for file storage include:
+Ideal when a large number of services and resources need to access the same data at the same time.
 
+Common use cases for file storage include:
 - Large content repositories
 - Development environments
 - User home directories

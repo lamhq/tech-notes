@@ -1,11 +1,11 @@
 {
-  "1-intro": {
-    "title": "File Storage"
+  "1-overview": {
+    "title": "Overview"
   },
   "2-efs": {
-    "title": "2 Efs"
+    "title": "EFS"
   },
   "3-fsx": {
-    "title": "3 Fsx"
+    "title": "FSx"
   }
 }
