@@ -5,22 +5,25 @@
   "2-storage-classes": {
     "title": "Storage Classes"
   },
+  "9-lifecycle": {
+    "title": "Lifecycle"
+  },
   "3-object-lock": {
-    "title": "S3 Object Lock"
+    "title": "Object Lock"
   },
   "4-encryption": {
     "title": "Encryption"
   },
-  "5-optimizing-perf": {
-    "title": "Optimizing S3 Performance"
-  },
   "6-replication": {
-    "title": "Backing up Data with S3 Replication"
+    "title": "Replication"
   },
   "7-sharing": {
     "title": "Sharing"
   },
   "8-event": {
-    "title": "S3 Event Notifications"
+    "title": "Event Notifications"
+  },
+  "5-optimizing-perf": {
+    "title": "Optimizing Performance"
   }
 }

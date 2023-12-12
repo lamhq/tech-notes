@@ -4,16 +4,18 @@ You can use S3 Object Lock to store objects using a **write once, read many (WOR
 
 You can use S3 Object Lock to meet regulatory requirements that require WORM storage, or add an extra layer of protection against object changes and deletion.
 
+
+## Modes
+
 S3 Object Lock has two different modes: Governance Mode and Compliance mode.
 
-## Governance Mode
+### Governance Mode
 
 In governance mode, users can't overwrite or delete an object version or alter its lock settings unless they have special permissions.
 
 With governance mode, you protect objects against being deleted by most users, but **you can still grant some users permission to alter the retention settings** or delete the obiect if necessary.
 
-
-## Compliance Mode
+### Compliance Mode
 
 In compliance mode, **a protected object version can't be overwritten or deleted by any user**, including the root user in your AWS account.
 

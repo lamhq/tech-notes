@@ -1,14 +1,25 @@
-# Backing up Data with S3 Replication
+# Replication
 
 ## Overview
 
 - You can replicate objects from one bucket to another (same region or cross region).
-- Versioning must be enabled on both the source and destinationsuckers
+- Versioning must be enabled on both the source and destination bucket
 - Objects in an existing bucket are not replicated automatically.
 - Once replication is turned on, all subsequent updated objects will be replicated automatically.
 - Delete markers are not replicated by default.
+- You can set up replication at a bucket level, a shared prefix level, or an object level (by using Amazon S3 object tags).
 
-## Instructions
+
+## Use Cases
+
+**Compliance**: Amazon S3 stores your data across multiple geographically distant Availability Zones by default. However, compliance requirements might require you to store data at even greater distances. You can use CRR to replicate data between distant AWS Regions to satisfy these requirements.
+
+**Latency performance**: If your customers or end users are distributed across one or more geographic locations, you can minimize latency for data access by maintaining multiple object copies in AWS Regions that are geographically closer to your customers.
+
+**Regional efficiency**: If you have compute clusters in two or more AWS Regions that analyze the same set of objects, you might choose to maintain object copies in all of those AWS Regions.
+
+
+## How to do?
 
 To enable S3 replication in the AWS Management Console, follow these steps:
 
