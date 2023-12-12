@@ -12,11 +12,12 @@ and when it's valid to.
 
 With the request type as one-time, as soon as the spot price goes above our maximum price,  instances will all be stopped or terminated depending on what you configure. The spot request has been completed.
 
+
 ## Terminate spot instances
 
 If you've got a spot request that's open and persistent, you can't just go in and terminate your instances cause it'll then just keep re-provisioning those instances. You have to first cancel the spot request then terminate those instances yourself.
 
-You can block SPot instances from terminating by using a Spot block.
+You can block Spot instances from terminating by using a **Spot block**.
 
 
 ## Spot Fleets

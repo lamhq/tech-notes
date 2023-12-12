@@ -12,15 +12,15 @@ Network ACLs are the first line of defense. Internet packet enters into a VPC th
 
 A network access control list (ACL) is a virtual firewall that controls trafic in and out of subnet.
 
-The **default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
+Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
 
-You can block IP addresses using network ACLs, not security groups.
+**Default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
+
+You can block IP addresses using network ACLs (not security groups).
 
 You can associate a network ACL with multiple subnets; however, **a subnet can be associated with only 1 network ACL** at a time. When you associate a network ACL with a subnet, the previous association is removed.
 
-NACL rules are evaluated by rule number from lowest to highest and executed immediately when a matching rule is found.
-
-Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
+NACL rules are evaluated by rule number from **lowest to highest** and executed immediately when a matching rule is found.
 
 **Network ACLs are stateless**; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa). If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
 

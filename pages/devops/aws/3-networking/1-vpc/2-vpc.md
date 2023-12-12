@@ -12,7 +12,7 @@ When you create a VPC, you need to choose three main things.
 - A Region for your VPC to live in. A VPC can span multiple AZ within that Region.
 - A IP range for your VPC in CIDR notation.
 
-![](./images/vpc.png)
+![](https://d2908q01vomqb2.cloudfront.net/77de68daecd823babbb58edb1c8e14d7106e83bb/2021/06/15/VPC-Network-Engineers-Part-1-1.png)
 
 When we creat a VPC, it's going to create a route table, a network ACL, a router, a security group.
 
@@ -29,8 +29,6 @@ When you create a subnet, you need to choose three settings.
 - The  VPC you want your subnet to live in, in this case VPC (`10.0.0.0/16`).
 - The Availability  Zone you want your subnet to live in, in this case `AZ1`.
 - A CIDR  block for your subnet, which must be a subset of the VPC CIDR block, in  this case `10.0.0.0/24`.
-
-![](./images/subnet.png)
 
 
 ### Public and private subnet
@@ -49,13 +47,13 @@ For AWS to configure your VPC appropriately, AWS reserves five IP addresses in e
 
 *For example, consider a VPC with the IP range `10.0.0.0/22`. The VPC includes 1,024 total IP addresses. This is divided into four equal-sized subnets, each with a `/24` IP range with 256 IP addresses. Out of each of those IP ranges, there are only 251 IP addresses that can be used because AWS reserves five.*
 
-![](./images/reserved-ips.png)
+![](https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/aws-networking/discover-amazon-vpc/images/c6d157a9777667feb02751f85c900413_b-7-eac-832-5-d-64-4-f-24-bfe-3-41-c-320-b-7-e-6-fc.png)
 
 
 ### Best practices
 
 - **Maintain redundancy and fault tolerance**: When you create your subnets, create at least two subnets configured in two different Availability Zones. In this case, if one of these AZs fail, you still have your resources in another AZ available as backup.
-  ![](./images/subnet-az.png)
+  ![](https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/aws-networking/discover-amazon-vpc/images/b609055191d4d3b1230a3b3d9f9ee96b_608-f-724-d-c-63-d-4-d-6-a-880-d-407-fc-5-f-4-ae-20.png)
 - **Setting IP range**: A common practice is to create a VPC with a IP range of `/16` and create subnets with a IP range of `/24`. This provides a large amount of IP addresses to work with at both the VPC and subnet level.
 
 

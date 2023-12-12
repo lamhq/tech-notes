@@ -1,7 +1,5 @@
 # Amazon Elastic Compute Cloud
 
-The three main categories of compute are **virtual machines**, **containers**, and **serverless**.
-
 ## What Is Amazon EC2?
 
 Amazon EC2 is a service that lets you run virtual servers in the cloud. It allows you to provision **virtual servers** called EC2 instances.
@@ -10,6 +8,8 @@ In order to create an EC2 instance, you need to define:
 
 - Hardware specifications, like CPU, memory, network, and storage.
 - Logical configurations, like networking location, firewall rules, authentication, and the operating system of your choice.
+
+EC2 instances are a combination of virtual processors (vCPUs), memory, network, and in some cases, instance storage and graphics processing units (GPUs)
 
 
 ## How Amazon EC2 works?
@@ -40,6 +40,13 @@ After you have connected to the instance, you can run commands to install softwa
 AWS has different types of EC2 Instances that you can spun up and deploy into AWS environment. Each instance type is grouped under an **instance family** and are optimized for certain types of tasks.
 
 Instance types offer varying combinations of CPU, memory, storage, and networking capacity. They give you the flexibility to choose the appropriate mix of resources for your applications.
+
+Instance types consist of a prefix identifying the type of workloads they're optimized for, followed by a size.
+
+For example, the instance type `c5.large` can be broken down into the following elements.
+
+- `c5` determines the instance family and generation number. Here, the instance belongs to the fifth generation of instances in an instance family that's optimized for generic computation.
+- `large`, which determines the amount of instance capacity.
 
 
 ## Instance Families
@@ -113,29 +120,24 @@ Use cases:
 - data warehousing, Elasticsearch, and analytics.
 
 
-## What Makes Up an EC2 Instance?
-
-EC2 instances are a combination of virtual processors (vCPUs), memory, network, and in some cases, instance storage and graphics processing units (GPUs)
-
-Instance types consist of a prefix identifying the type of workloads they're optimized for, followed by a size.
-
-For example, the instance type `c5.large` can be broken down into the following elements.
-
-- `c5` determines the instance family and generation number. Here, the instance belongs to the fifth generation of instances in an instance family that's optimized for generic computation.
-- `large`, which determines the amount of instance capacity.
-
-
 ## EC2 Instance Lifecycle
 
-When the instance is **pending** (1), billing has not started.
+When the instance is **pending**, billing has not started.
 
-When your instance is **running** (2), it's ready to use. This is also the stage where billing begins.
+When your instance is **running**, it's ready to use. This is also the stage where billing begins.
 
-When you **stop and start** an instance (4), your instance may be placed on a new underlying physical server. Therefore, you lose any data on the instance store that were on the previous host computer. When you stop an instance, the instance gets a new public IP address but maintains the same private IP address.
+When you **stop and start** an instance:
+- You lose any data on the instance store from the previous run. 
+- The instance gets a new public IP address but maintains the same private IP address.
 
-When you stop your instance, it enters the **stopping** state, and then the **stopped** state. AWS does not charge usage or data transfer fees for your instance after you stop it, but storage for any Amazon EBS volumes is still charged. While your instance is in the stopped state, you can modify some attributes, like the instance type. When you stop your instance, the data stored in memory (RAM) is lost.
+When you stop your instance, it enters the **stopping** state, and then the **stopped** state. AWS does not charge usage or data transfer fees for your instance after you stop it, but storage for any Amazon EBS volumes is still charged.
 
-When you **terminate** an instance (5), the instance store are erased, and you lose both the public IP address and private IP address of the machine. Termination of an instance means you can no longer access the machine.
+While your instance is in the **stopped** state, you can modify some attributes, like the instance type.
+
+When you **terminate** an instance:
+- Instance store are erased
+- Public and private IP address are released
+- You can no longer access the machine.
 
 
 ## E2C Hibernation

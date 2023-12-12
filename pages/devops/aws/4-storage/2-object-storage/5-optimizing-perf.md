@@ -18,19 +18,6 @@ You can get better performance by spreadinf your reads across **different prefix
 > For example, if you're using 2 prefixes, you can achieve 11,000 request per second.
 
 
-## S3 Limitations when using KMS
-
-If you are using SSE-KMS to encrypt/decrypt your objects in S3, you must keep in mind the KMS limits.
-
-Uploading/downloading will count toward the **KMS quota**.
-
-You can't request a quota increase for KMS. You might want to consider using the native bult-in S3 encryption than KMS.
-
-> When you upload a file, you will call `GenerateDataKey` in the KMS API. When you download a file, you will call `Decrypt` in the KMS API.
-
-The KMS's limits is Region-specific. (5,500 or 10,000 or 30,000 requests per second). This makes your upload/download much slower when reaching the limits.
-
-
 ## Uploads
 
 Multipart Uploads:

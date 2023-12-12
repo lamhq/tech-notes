@@ -43,11 +43,10 @@ You can deploy vCenter on the AWS cloud using VMware to extend your private VMwa
 You order it through VMware themselves.
 
 Use cases for VMware:
-- Hybrid cloud: Connect your on-premises cloud to the AWS public cloud, and manage a hybrid workload.
-- Cloud Migration: Migrate your existing cloud environment to AWS using
-VMware's built-in tools.
-- Disaster Recovery: VMware is famous for its disaster recovery technology. Using hybrid cloud, you can have an inexpensive disaster recovery environment on AWS.
-- Leverage AWS: Use over 200 AWS services to update your applications or to create new ones.
+- **Hybrid cloud**: Connect your on-premises cloud to the AWS public cloud, and manage a hybrid workload.
+- **Cloud Migration**: Migrate your existing cloud environment to AWS using VMware's built-in tools.
+- **Disaster Recovery**: VMware is famous for its disaster recovery technology. Using hybrid cloud, you can have an inexpensive disaster recovery environment on AWS.
+- **Leverage AWS**: Use over 200 AWS services to update your applications or to create new ones.
 
 
 ## Retrieve instance user data from your instance
