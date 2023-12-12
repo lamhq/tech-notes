@@ -75,7 +75,7 @@ Great for read-heavy workloads and takes the load off your primary database for 
 
 Automatic backup is required to deploy a read replica.
 
-A read replica can be cross-AZ or cross-region.
+A read replica can be cross-AZ or **cross-region**.
 
 Support multiple read replicas. 5 for each DB Instance. MySQL, MariaDB, PostgreSQL, Oracle, SQL Server.
 

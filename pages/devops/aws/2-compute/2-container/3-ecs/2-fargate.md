@@ -1,6 +1,7 @@
 # AWS Fargate
 
 ## Overview
+
 AWS Fargate is a serverless compute engine for running Docker containers.
 
 AWS owns and manages the infrastructure.

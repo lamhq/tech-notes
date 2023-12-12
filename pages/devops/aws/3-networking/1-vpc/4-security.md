@@ -18,7 +18,7 @@ You can block IP addresses using network ACLs, not security groups.
 
 You can associate a network ACL with multiple subnets; however, **a subnet can be associated with only 1 network ACL** at a time. When you associate a network ACL with a subnet, the previous association is removed.
 
-Network ACLs contain a numbered list of rules that are **evaluated in order**, starting with the **lowest** numbered rule.
+NACL rules are evaluated by rule number from lowest to highest and executed immediately when a matching rule is found.
 
 Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
 

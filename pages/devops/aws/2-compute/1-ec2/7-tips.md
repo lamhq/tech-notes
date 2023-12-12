@@ -48,3 +48,12 @@ Use cases for VMware:
 VMware's built-in tools.
 - Disaster Recovery: VMware is famous for its disaster recovery technology. Using hybrid cloud, you can have an inexpensive disaster recovery environment on AWS.
 - Leverage AWS: Use over 200 AWS services to update your applications or to create new ones.
+
+
+## Retrieve instance user data from your instance
+
+To retrieve user data from an instance, use the following URI.
+
+```
+http://169.254.169.254/latest/user-data
+```

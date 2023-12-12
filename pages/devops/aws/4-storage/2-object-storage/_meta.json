@@ -19,5 +19,8 @@
   },
   "7-sharing": {
     "title": "Sharing"
+  },
+  "8-event": {
+    "title": "S3 Event Notifications"
   }
 }
