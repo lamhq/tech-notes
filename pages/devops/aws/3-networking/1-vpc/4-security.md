@@ -4,7 +4,8 @@
 
 **Internet Gateway** > **Router** > **Route Table** > **Network ACL** > **Subnet** > **Security Group** > **Instance**.
 
-![](./images/traffic-flow.png)
+![](https://jayendrapatil.com/wp-content/uploads/2016/03/security-diagram.png)
+
 
 ## Network ACLs (secure subnets)
 
@@ -14,16 +15,15 @@ A network access control list (ACL) is a virtual firewall that controls trafic i
 
 Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
 
-**Default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
-
-You can block IP addresses using network ACLs (not security groups).
-
-You can associate a network ACL with multiple subnets; however, **a subnet can be associated with only 1 network ACL** at a time. When you associate a network ACL with a subnet, the previous association is removed.
-
 NACL rules are evaluated by rule number from **lowest to highest** and executed immediately when a matching rule is found.
+
+**Default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
 
 **Network ACLs are stateless**; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa). If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
 
+You can block IP addresses using network ACLs (not security groups).
+
+You can associate a network ACL with multiple subnets. Each subnet can and must be associated with only 1 network ACL. When you associate a network ACL with a subnet, the previous association is removed.
 
 **Inbound**:
 
@@ -54,7 +54,7 @@ Security groups are the last line of defense.
 
 To allow everything, use `0.0.0.0/0`.
 
-![](./images/sg.png)
+![](https://sysdig.com/wp-content/uploads/AWS_Security_Groups_Rules_Details.png)
 
 Security groups are stateful: if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules.
 

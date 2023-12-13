@@ -8,10 +8,10 @@
   "3-file-storage": {
     "title": "File Storage"
   },
-  "4-choose-storage-service": {
-    "title": "Choose the Right Storage Service"
-  },
-  "6-backup": {
+  "4-backup": {
     "title": "AWS Backup"
+  },
+  "5-choose-storage-service": {
+    "title": "Choose the Right Storage Service"
   }
 }

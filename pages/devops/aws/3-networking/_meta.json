@@ -11,6 +11,9 @@
   "8-dns": {
     "title": "DNS"
   },
+  "4-wavelength": {
+    "title": "AWS Wavelength"
+  },
   "9-guides": {
     "title": "Guides"
   }

@@ -1,6 +1,6 @@
 # Amazon Virtual Private Cloud (VPC)
 
-## What is a VPC?
+## Overview
 
 A VPC is an isolated network you create in the AWS cloud, similar to a traditional network in a data center.
 
@@ -18,11 +18,12 @@ When we creat a VPC, it's going to create a route table, a network ACL, a router
 
 A VPC can only have one internet gateway attached.
 
+
 ## Subnet
 
 A subnet is a section of a VPC that can contain resources (such as Amazon EC2 instances)
 
-1 subnet is always in 1 AZ.
+A subnet is belong to an AZ.
 
 When you create a subnet, you need to choose three settings.
 
@@ -40,6 +41,7 @@ Subnets can be public or private.
 **Private subnets** contain resources that should be accessible only through your private network, such as a database.
 
 In a VPC, subnets can communicate with each other. For example, you might have an application run in an Amazon EC2 instance in a public subnet communicating with databases that are located in a private subnet.
+
 
 ### Reserved IPs
 
@@ -64,10 +66,3 @@ Every AWS account comes with a default VPC in every region.
 Default VPC is user friendly. All their subnets have a route out to the internet. You don't have to worry about networking components.
 
 Each EC2 instance in the default VPC has both a public and private IP address.
-
-
-## AWS Wavelength
-
-AWS Wavelength embeds AWS compute and storage services within 5G networks, providing mobile edge computing infrastructure for developing, deploying, and scaling ultra-low-latency applications.
-
-If the scenario is about 5G, mobile edge computing, think of AWS Wavelength.

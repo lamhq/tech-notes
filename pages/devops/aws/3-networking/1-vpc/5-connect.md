@@ -4,16 +4,18 @@
 
 To allow public traffic from the internet to access your VPC, you attach an internet gateway to the VPC.
 
-![](./images/ig.png)
+![](https://www.learnaws.org/assets/img/public-private-subnet/public-subnet.png)
 
 
 ## NAT Gateways
 
 You can use a network address translation (NAT) gateway to enable instances in a private subnet to connect to the internet or other AWS services while **preventing the internet** from initiating a connection with those instances.
 
-A NAT gateway is a VPC component that run inside a subnet, which is belong to an AZ. It's scalable, starts at 5 Gbps to 45 Gbps.
+A NAT gateway is a VPC component that run inside a subnet.
 
-Need to be assigned an public IP address to work.
+It's scalable, starts at 5 Gbps to 45 Gbps.
+
+It automatically is assigned an public IP address when created.
 
 NAT gateways are not associated with security groups.
 
@@ -22,34 +24,11 @@ To enable internet access for instances in private subnets:
 - In the route table of the private subnet, add a route to direct network traffic to the NAT gateway.
 
 
-## VPC Peering
+### High Availability with NAT Gateways
 
-Allows you to **connect 1 VPC with another via a direct network route** using private IP addresses.
+If you have resources in multiple AZs and they share a NAT gateway, when the NAT gateway's AZ is down, resources in the other AZs lose internet access.
 
-Instances behave as if they were on the same private network.
-
-You can peer VPCs with other AWS accounts as well as with other VPCs in the same account.
-
-You can peer between regions.
-
-Peering is one to one. No transitive peering.
-
-If VPCs have the same CIDR address range, it wouldn't work.
-
-
-## VPC Endpoints
-
-You use VPC Endpoints when you want to **connect your VPC to AWS services without leaving the Amazon internal network**.
-
-They are horizontally scaled, redundant, and highly available VPC components that allow communication between instances in your VPC and services **without imposing availability risks or bandwidth constraints on your network traffic**.
-
-Instances in your VPC do not require public IP addresses to communicate with resources in the service.
-
-![](./images/vpc-endpoint.png)
-
-There're two types of VPC Endpoints:
-- Interface endpoint: is an elastic network interface with a private IP address, serves as an entry point for traffic headed to another AWS services. Support a large number of AWS services.
-- Gateway endpoints: similar to NAT gateways, is a virtual device you provision. Support S3 and DynamoDB
+To create an Availability Zone-independent architecture, create a NAT gateway in each AZ and configure your routing to ensure resources use the NAT gateway in the same AZ.
 
 
 ## Virtual Private Gateway
@@ -75,7 +54,7 @@ AWS Transit Gateway connects VPCs and on-premises networks through a central hub
 - Works with Direct Connect as well as VPN connections.
 - Supports IP multicast: send a packet to thousand of hosts across a routed network.
 
-![](./images/transit-gateway.png)
+![](https://docs.aws.amazon.com/images/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/images/hub-and-spoke-design.png)
 
 
 ## AWS Virtual Private Network
@@ -116,11 +95,11 @@ AWS VPN CloudHub is low cost and easy to manage. Though it operates over the pub
 
 AWS Direct Connect is a service that enables you to establish a dedicated **connection from your premises to AWS**.
 
+Useful for high-thoughput workloads. Helpful when you need a stable and reliable secure connection.
+
 You can reduce your network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections.
 
-Helpful when you need a stable and reliable secure connection.
-
-![](./images/direct-connect.png)
+![](https://docs.aws.amazon.com/images/whitepapers/latest/aws-vpc-connectivity-options/images/image6.png)
 
 ### Types of Direct Connect Connection
 
@@ -135,6 +114,36 @@ VPNs allow private communication, but it still traverses the public internet to 
 Direct Connect is Fast, Secure, Reliable, Able to take massive throughout. For the last level of security, you can run a VPN over a Direct Connect connection.
 
 
+## VPC Peering
+
+Allows you to connect 1 VPC with another via a direct network route using private IP addresses.
+
+Instances behave as if they were on the same private network.
+
+You can peer VPCs with other AWS accounts as well as with other VPCs in the same account.
+
+You can peer between regions.
+
+Peering is one to one. No transitive peering.
+
+If VPCs have the same CIDR address range, it wouldn't work.
+
+
+## VPC Endpoints
+
+You use VPC Endpoints when you want to **connect your VPC to AWS services without leaving the Amazon internal network**.
+
+They are horizontally scaled, redundant, and highly available VPC components that **allow communication between instances in your VPC and services** without imposing availability risks or bandwidth constraints on your network traffic.
+
+Instances in your VPC do not require public IP addresses to communicate with resources in the service.
+
+![](./images/vpc-endpoint.png)
+
+There're two types of VPC Endpoints:
+- **Interface endpoint**: is an elastic network interface with a private IP address, serves as an entry point for traffic headed to another AWS services. Support a large number of AWS services.
+- **Gateway endpoints**: similar to NAT gateways, is a virtual device you provision. Support S3 and DynamoDB
+
+
 ## AWS PrivateLink
 
 PrivateLink is the best way to **expose a service in your VPC to tens, hundreds, or thousands of customer VPCs**.
@@ -142,5 +151,7 @@ PrivateLink is the best way to **expose a service in your VPC to tens, hundreds,
 Doesn't require VPC peering; no route tables, NAT gateways, internet gateways, etc.
 
 Requires a Network Load Balancer on the service VPC and an ENI on the customer VPC.
+
+If you see a question asking about peering VPCs to tens, hundreds, or thousands of customer VPCs, think of AWS PrivateLink.
 
 ![](./images/privatelink.png)
