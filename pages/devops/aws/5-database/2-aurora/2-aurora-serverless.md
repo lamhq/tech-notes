@@ -8,7 +8,7 @@ An Aurora Serverless DB cluster automatically starts up, shuts down, and scales 
 
 It can help you to stay within budget. Your're charged only for resources consumed by DB clusters, per-second billing.
 
-It's the same data resiliency as Aurora provisioned: six copies of data across three AZs.
+It's the same data resiliency as Aurora provisioned: 6 copies of data across three AZs.
 
 You can achieve high availability by Multi-AZ deployments.
 

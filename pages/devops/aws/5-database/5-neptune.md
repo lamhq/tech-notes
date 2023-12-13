@@ -1,4 +1,7 @@
-# Implementing Graph Databases using Amazon Neptune
+# Amazon Neptune
+
+Implementing Graph Databases Using Amazon Neptune
+
 
 ## What is a Graph Database?
 
@@ -7,9 +10,10 @@ A graph database stores nodes and relationsips instead of tables or documents.
 
 ## Amazon Neptune
 
-Neptune is Amazon's graph database service. 
+Neptune is Amazon's **graph database service**. 
 
 It's fast, reliable, fully managed graph database service.
+
 
 ## Use Cases
 

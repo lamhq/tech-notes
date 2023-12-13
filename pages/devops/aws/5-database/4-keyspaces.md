@@ -1,4 +1,7 @@
-# Apache Cassandra & Amazon Keyspaces
+# Amazon Keyspaces
+
+Running Apache Cassandra Workloads with Amazon Keyspaces.
+
 
 ## Apache Cassandra
 

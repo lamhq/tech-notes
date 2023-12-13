@@ -1,4 +1,6 @@
-# Analyzing Time-Series Data with Amazon Timestream
+# Amazon Timestream
+
+Analyzing Time-Series Data with Amazon Timestream
 
 ## What is Time-Series Data
 
@@ -17,5 +19,4 @@ Use cases:
 
 A serverless, fully managed database service for time-series data.
 
-You can analyze trillions of events per day up to 1,000 times faster and at as little as
-1/10th the cost of traditional relational databases.
+You can analyze trillions of events per day up to 1,000 times faster and at as little as 1/10th the cost of traditional relational databases.

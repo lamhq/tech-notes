@@ -1,6 +1,6 @@
 # Amazon Relational Database Service
 
-## Intro
+## Overview
 
 Amazon RDS is a service that enables you to run relational databases in the AWS Cloud.
 
@@ -9,7 +9,7 @@ Amazon RDS is a managed service that automates tasks such as hardware provisioni
 Amazon RDS provides a number of different security options. Many Amazon RDS database engines offer encryption at rest and in transit.
 
 
-## When to use a RDS database?
+## When to use?
 
 For online transaction processing (OLTP) workloads.
 
@@ -69,13 +69,13 @@ With multi-AZ, you have a unique DNS endpoint.
 
 A read replica is a read-only copy of your primary database.
 
-Used to increase or scale read performance.
+Used to scale read performance.
 
 Great for read-heavy workloads and takes the load off your primary database for read-only workloads.
 
 Automatic backup is required to deploy a read replica.
 
-A read replica can be cross-AZ or **cross-region**.
+A read replica can be **cross-AZ** or **cross-region**.
 
 Support multiple read replicas. 5 for each DB Instance. MySQL, MariaDB, PostgreSQL, Oracle, SQL Server.
 

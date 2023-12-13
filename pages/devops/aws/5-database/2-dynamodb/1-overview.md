@@ -1,33 +1,20 @@
 # Amazon DynamoDB
 
-## What Is Amazon DynamoDB?
+## Overview
 
 Amazon DynamoDB is a key-value database service.
 
-Stored on SSD storage.
+Data stored on SSD storage.
 
 Spread across 3 geographically distinct data centers.
 
-You get eventually consistent reads (default). You can opt in for strongly consistent reads.
+You get **eventually consistent reads** by default. You can opt in for **strongly consistent reads**.
 
 **Serverless**: you do not have to provision, patch, manage servers, install, maintain, or operate software.. 
 
 **Automatic Scaling**: As the size of your database shrinks or grows, DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
 
 You can scale up or scale down tables' throughput capacity with minimal downtime or performance degradation.
-
-
-## Read consistency
-
-### Eventually consistent reads
-
-Consistency across all copies of data is usually reached within a second.
-
-Repeating a read after a short time should return the updated data. Best read performance.
-
-### Strongly consistent reads
-
-A strongly consistent read returns a result that reflects all writes that received a successful response prior to the read (you don't need to wait).
 
 
 ## Pricing
@@ -49,13 +36,14 @@ A strongly consistent read returns a result that reflects all writes that receiv
 
 ## Backup & Restore
 
-On-demand backup:
+**On-demand backup**:
 - DynamoDB has on-demand backup and restore.
 - You can do full backups at any time. No impact on table performance or availability.
 - You get consistent within seconds and retained until deleted.
 - Operates within same region as the source table.
 
-Point-in-time Recovery (PITR):
+**Point-in-time Recovery** (PITR):
+- Protects against accidental writes or deletes
 - You can restore to any point in the last 35 days. Latest restorable: 5 minutes in the past.
 - It's done using incremental backups.
 - not enabled by default.
@@ -103,6 +91,12 @@ You can switch between the different capacity modes twice per 24 hours per table
 If you have any scenario that mentions ACID requirements, think of DynamoDB Transactions.
 
 DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across one or more tables within a single AWS account and region.
+
+3 options for reads: eventual consistency, strong consistency, and transactional
+
+2 options for writes: standard and transactional
+
+Up to 100 actions per transaction or 4 MB of data.
 
 
 ## DynamoDB Streams

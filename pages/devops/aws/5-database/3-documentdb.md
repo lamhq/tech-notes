@@ -1,6 +1,8 @@
 # Amazon DocumentDB
 
-## Document
+Operating MongoDB-Compatible Databases in Amazon DocumentDB.
+
+## Overview
 
 Amazon DocumentDB allow you to run MongoDB on the AWS cloud.
 It scales with your workloads. Safely & durably stores your database.

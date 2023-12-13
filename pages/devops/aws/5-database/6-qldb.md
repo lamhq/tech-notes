@@ -1,4 +1,6 @@
-# Amazon Quantum Ledger Database (Amazon QLDB) for Ledger Databases
+# Amazon Quantum Ledger Database (Amazon QLDB)
+
+Leveraging Amazon Quantum Ledger Database (Amazon QLDB) for Ledger Databases
 
 ## What Is a Ledger Database?
 

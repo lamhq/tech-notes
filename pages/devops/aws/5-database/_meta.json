@@ -1,26 +1,29 @@
 {
-  "1-relational": {
-    "title": "1 Relational"
+  "0-concepts": {
+    "title": "Concepts"
   },
-  "2-key-value": {
-    "title": "2 Key Value"
+  "1-rds": {
+    "title": "Amazon RDS"
   },
-  "3-document": {
-    "title": "3 Document"
+  "2-aurora": {
+    "title": "Amazon Aurora"
   },
-  "4-cassandra": {
-    "title": "4 Cassandra"
+  "2-dynamodb": {
+    "title": "Amazon DynamoDB"
   },
-  "5-graph": {
-    "title": "5 Graph"
+  "3-documentdb": {
+    "title": "Amazon DocumentDB"
   },
-  "6-ledger": {
-    "title": "6 Ledger"
+  "4-keyspaces": {
+    "title": "Amazon Keyspaces"
   },
-  "7-time-series": {
-    "title": "7 Time Series"
+  "5-neptune": {
+    "title": "Amazon Neptune"
   },
-  "8-data-migration": {
-    "title": "AWS Database Migration Service (AWS DMS)"
+  "6-qldb": {
+    "title": "Amazon QLDB"
+  },
+  "7-timestream": {
+    "title": "Amazon Timestream"
   }
 }
