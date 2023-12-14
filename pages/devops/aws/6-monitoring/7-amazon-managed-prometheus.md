@@ -4,9 +4,11 @@
 
 Amazon Managed Service for Prometheus is a serverless, Prometheus-compatible service used for securely **monitoring container metrics at scale**.
 
-Leverage this service for any Kubernetes-based metrics monitoring at scale. It can be an Amazon EKS cluster or your own self-managed cluster.
+Leverage this service for any Kubernetes-based metrics monitoring at scale (can be an Amazon EKS cluster or your own self-managed cluster).
 
 You can leverage VPC endpoints for secure VPC access.
+
+## Features
 
 **Open-source Prometheus**: leverage the open-source Prometheus data model with AWS-managed scaling and availability.
 

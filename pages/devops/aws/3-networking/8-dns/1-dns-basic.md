@@ -1,4 +1,4 @@
-# Domain Name System (DNS)
+# DNS Concepts
 
 ## DNS resolution
 

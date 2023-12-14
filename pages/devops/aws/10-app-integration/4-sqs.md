@@ -13,7 +13,7 @@ SQS doesn't offer real-time.
 ![](./images/amazon-sqs.png)
 
 
-## Settings
+## Available Settings
 
 - **Delivery delay**: The amount of time a message is deplayed before beingadded to the queue. Default is 0, can set up to 15 minutes.
 - **Message size**: The maximum message size for the queue. Can be up to 256KB of text.

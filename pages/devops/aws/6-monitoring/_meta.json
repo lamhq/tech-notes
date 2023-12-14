@@ -3,7 +3,7 @@
     "title": "Amazon CloudWatch"
   },
   "2-x-ray": {
-    "title": "AWS X-Ray for Application Insights"
+    "title": "AWS X-Ray"
   },
   "6-amazon-managed-grafana": {
     "title": "Amazon Managed Grafana"
@@ -12,6 +12,6 @@
     "title": "Amazon Managed Service for Prometheus"
   },
   "8-health": {
-    "title": "AWS Health (AWS Personal Health Dashboard)"
+    "title": "AWS Health"
   }
 }

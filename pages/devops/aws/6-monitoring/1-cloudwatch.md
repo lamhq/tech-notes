@@ -10,12 +10,12 @@ AWS services send metrics to CloudWatch. CloudWatch then uses these metrics to c
 
 You can use CloudWatch to:
 
-- Detect anomalous behavior in your environments.
-- Set alarms to alert you when something's not right.
 - Visualize logs and metrics with the AWS Management Console.
-- Take automated actions like scaling.
-- Troubleshoot issues.
 - Discover insights to keep your applications healthy.
+- Troubleshoot issues.
+- Set alarms to alert you when something's not right.
+- Detect anomalous behavior in your environments.
+- Take automated actions like scaling.
 
 
 ## Metrics

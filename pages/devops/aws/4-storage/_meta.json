@@ -10,8 +10,5 @@
   },
   "4-backup": {
     "title": "AWS Backup"
-  },
-  "5-choose-storage-service": {
-    "title": "Choose the Right Storage Service"
   }
 }

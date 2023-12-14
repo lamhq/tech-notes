@@ -55,30 +55,37 @@ connections to the instances that are de-registering or have become unhealthy.
 
 ## Types of Load Balancers
 
-### Application Load Balancer
+### Application Load Balancer (Layer 7)
 
-- Best suited for load balancing of HTTP and HTTPS traffic only.
-- Operate at Layer 7 and are application aware.
-- Intelligent Load Balancer
+- Operate at application layer (layer 7).
+
+Limitations:
+- Only support HTTP and HTTPS. You must deploy SSL/TLS server certificate on your load balancer so it can decrypt requests before sending them to targets
+
+Concepts:
+- **Listeners**: A listener checks for connection requests from clients, using the protocol and port you configure.
+- **Rules**: Determine how the load balancer routes requests to its registered targets.
+Each rule consists of a priority, one or more actions, and one or more conditions.
+- **Target Groups**: Each target group routes requests to one or more registered targets, such as EC2 instances, using the protocol and port number you specify.
 
 Features:
-
-- Routes traffic based on request data: HTTP protocol, the URL path, host, HTTP headers, method, source IP address.
-- Redirect: redirect to a specific website, redirect from HTTP to HTTPS
-- Supports TLS offloading: Use SSL certificate to decrypt requests before sending them to targets.
-- Authenticate users: ALB uses the OpenID Connect protocol and integrates with other AWS services to support more protocols like SAML, LDAP, Microsoft AD, and more.
-- You can configure a **security group** to control the access to the load balancer.
+- **Routes traffic based on request data**: HTTP protocol, the URL path, host, HTTP headers, method, source IP address.
+- **Redirect**: redirect to a specific website, HTTP to HTTPS
+- **Supports TLS offloading**: Use SSL certificate to decrypt requests before sending them to targets.
+- **Authenticate users**: ALB uses the OpenID Connect protocol and integrates with other AWS services to support more protocols like SAML, LDAP, Microsoft AD, and more.
+- **Integrate with security group** to control the access to the load balancer.
 - Support **round-robin** routing algorithm.
 - Support **least outstanding** request routing algorithm. If the requests to the backend vary in complexity where one request may need a lot more CPU time than another, then the least outstanding request algorithm is more appropriate.
-- Has **sticky sessions**. For stateful application, allow requests to be sent to the same backend server. Uses an HTTP cookie to remember across connections which server to send the traffic to.
+- Support **sticky sessions**. Allow requests to be sent to the same backend server (uses HTTP cookie to track)
 
 
-### Network Load Balancer
+### Network Load Balancer (Layer 4)
 
-- Operating at the connection level (Layer 4) on the OSI Model
-- Use when you need extreme performance. Capable of handling millions of requests per second, while maintaining ultra-low latencies.
+- Operating at the connection level (Layer 4)
+- Use when you need extreme performance, or protocols not supported by Application Load Balancers
 - Supports TCP, UDP, TLS protocols.
-- Not support routing rules based on protocol, authentication, and least outstanding request routing algorithm.
+- Can decrypt traffic with certificate installed
+- **Has sticky sessions**. Based on the source IP address of the client instead of a cookie.
 
 **Uses a flow hash routing algorithm**. Based on:
 - The protocol
@@ -87,30 +94,29 @@ Features:
 - The TCP sequence number
 If all of these parameters are the same, then the packets are sent to the exact same target. If any of them are different in the next packets, then the request may be sent to a different target.
 
-**Has sticky sessions**. Based on the source IP address of the client instead of a cookie.
-
-You can use a TLS listener to offload the work of encryption and decryption to your load balancer. You must deploy a SSL server certificate on the listener.
-
 **Supports static and elastic IP addresses**. There are some situations where the application client needs to send requests directly to the load balancer IP address instead of using DNS. For example, this is useful if your application can't use DNS or if the connecting clients require firewall rules based on IP addresses. In this case, NLB is the right type of load balancer to use.
 
 **Preserves source IP address**. NLB preserves the source IP address of the client when sending the traffic to the backend. With ALB, if you look at the source IP address of the requests, you will find the IP address of the load balancer. While with NLB, you would see the real IP address of the client, which is required by the backend application in some cases. 
 
+**Limitations**:
+- Not support routing rules based on protocol, authentication, and least outstanding request routing algorithm.
 
-### Gateway Load Balancer
+
+### Gateway Load Balancer (Layer 3)
 
 - Operating at the Network Level on the OSI Model (Layer 3)
 - Use when deploying inline virtual appliances where network traffic is not destined for the Gateway Load Balancer itself.
 - For Inline Virtual Appliance Load Balancing
 
-### Classic Load Balancer
+
+### Classic Load Balancer (Layer 4/7)
 
 - Legacy load balancers.
 - Can load balance HTTP/HTTPS applications and use Laver 7-specific features, such as X-Forwarded and sticky sessions.
 - Classic/Test/Dev Load Balancer (not for production).
 - You can use strict Layer 4 load balancing for applications that rely purely on the TCP protocol.
 
-**`X-Forwarded-For`**: When traffic is sent from a load balancer, the server access logs contain the IP address of the proxy or load balancer only.
-To see the original IP address of the client, the `X-Forwarded-For` request header is used.
+**`X-Forwarded-For`**: To see the original IP address of the client use the `X-Forwarded-For` request header .
 
 **Gateway Timeouts**: If your application stops responding, the Classic Load Balancer responds with a 504 error.
 This means the application is having issues. This could be either at the web server layer or database layer.
