@@ -40,6 +40,8 @@ within other stacks
 before it's actually processed.
 
 
-## Immutable pattern for application code deployments
+## Immutable pattern
 
-The immutable pattern specifies a deployment of application code by starting an entirely new set of servers with a new configuration or version of application code. When we go immutable, we don't want to ever upgrade in place. Once the cloud resource exists, it can't be modified.
+The immutable pattern specifies a deployment of application code by starting an entirely new set of servers with a new configuration or version of application code.
+
+When we go immutable, we don't want to ever upgrade in place. Once the cloud resource exists, it can't be modified.

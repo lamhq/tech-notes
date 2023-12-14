@@ -1,8 +1,6 @@
-# CloudFormation
+# Template basics
 
-## Template basics
-
-### Resource properties and using resources together
+## Resource properties and using resources together
 
 The name used for a resource within the template is a logical name. When AWS CloudFormation creates the resource, it generates a physical name that is based on the combination of the logical name, the stack name, and a unique ID.
 
@@ -61,7 +59,7 @@ Resources:
 The `Fn::GetAtt` function takes two parameters, the logical name of the resource and the name of the attribute to be retrieved.
 
 
-### Receiving user input using input parameters
+## Receiving user input using input parameters
 
 You declare parameters in a template's Parameters object. A parameter contains a list of attributes that define its value and constraints against its value. The only required attribute is Type, which can be String, Number, or an AWS-specific type.
 
@@ -86,7 +84,7 @@ Parameters:
     MaxValue: 65535
 ```
 
-### Specifying conditional values using mappings
+## Specifying conditional values using mappings
 
 There may be settings that are region dependent or are somewhat complex for users to figure out because of other conditions or dependencies.
 
@@ -136,7 +134,7 @@ In the example above, the ImageId property of the resource Ec2Instance uses the 
 You can use the `Fn::GetAZs` function to get the list of all availability zones in a region.
 
 
-### Constructed values
+## Constructed values
 
 For example, in the following fragment from the WordPress template, the `Fn::Join` function constructs the `Target` subproperty of the `HealthCheck` property for the ElasticLoadBalancer resource by concatenating the `WebServerPort` parameter with other literal strings to form the value needed.
 
@@ -167,7 +165,7 @@ Resources:
 
 The `Fn::Join` function takes two parameters, a delimiter that separates the values you want to concatenate and an array of values in the order that you want them to appear.
 
-### Output values
+## Output values
 
 Each output value has a name, a Value attribute that contains declaration of the value returned as the output value, and optionally a description of the value. For example, we declare the following Outputs object
 
@@ -191,9 +189,9 @@ Outputs:
           - DNSName
 ```
 
-## Best practices
+# Best practices
 
-### Organize your stacks by lifecycle and ownership
+## Organize your stacks by lifecycle and ownership
 
 For example, imagine a team of developers and engineers who own a website that is hosted on autoscaling instances behind a load balancer. Because the website has its own lifecycle and is maintained by the website team, you can create a stack for the website and its resources.
 
@@ -202,14 +200,14 @@ Now imagine that the website also uses back-end databases, where the databases a
 If all resources were in a single stack, coordinating and communicating updates can be difficult.
 
 
-### Use cross-stack references to export shared resources
+## Use cross-stack references to export shared resources
 
 When you organize your AWS resources based on lifecycle and ownership, you might want to build a stack that uses resources that are in another stack.
 
 Use cross-stack references to export resources from a stack so that other stacks can use them. Stacks can use the exported resources by calling them using the `Fn::ImportValue` function.
 
 
-### Reuse templates to replicate stacks in multiple environments
+## Reuse templates to replicate stacks in multiple environments
 
 For example, you can create environments for development, testing, and production so that you can test changes before implementing them into production.
 
@@ -218,12 +216,12 @@ To make templates reusable, use the parameters, mappings, and conditions section
 For example, for your development environments, you can specify a lower-cost instance type compared to your production environment, but all other configurations and settings remain the same.
 
 
-### Use nested stacks to reuse common template patterns
+## Use nested stacks to reuse common template patterns
 
 For example, assume that you have a load balancer configuration that you use for most of your stacks. Instead of copying and pasting the same configurations into your templates, you can create a dedicated template for the load balancer. Then, you just use the `AWS::CloudFormation::Stack` resource to reference that template from within other templates.
 
 
-### Do not embed credentials in your templates
+## Do not embed credentials in your templates
 
 Rather than embedding sensitive information in your AWS CloudFormation templates, we recommend you use dynamic references in your stack template.
 
@@ -234,40 +232,39 @@ Dynamic references provide a compact, powerful way for you to reference external
 The **AWS Systems Manager Parameter Store** provides secure, hierarchical storage for configuration data management.
 
 
-### Use AWS-specific parameter types
+## Use AWS-specific parameter types
 
 If your template requires inputs for existing AWS-specific values, such as existing Amazon Virtual Private Cloud IDs or an Amazon EC2 key pair name, use AWS-specific parameter types.
 
 
-### Use parameter constraints
+## Use parameter constraints
 
 With constraints, you can describe allowed input values so that AWS CloudFormation catches any invalid values before creating a stack. You can set constraints such as a minimum length, maximum length, and allowed patterns.
 
 
-### Use AWS::CloudFormation::Init to deploy software applications on Amazon EC2 instances
+## Use AWS::CloudFormation::Init to deploy software applications on Amazon EC2 instances
 
 
-### Validate templates before using them
+## Validate templates before using them
 
 For the AWS CLI or AWS CloudFormation API, use the [aws cloudformation validate-template](aws cloudformation validate-template) command or ValidateTemplate action.
 
 
-### Manage all stack resources through AWS CloudFormation
+## Manage all stack resources through AWS CloudFormation
 
 Do not make changes to stack resources outside of AWS CloudFormation.
 
 
-### Use stack policies
+## Use stack policies
 
 Stack policies help protect critical stack resources from unintentional updates that could cause resources to be interrupted or even replaced.
 
 A stack policy is a JSON document that describes what update actions can be performed on designated resources.
 
 
-### Use AWS CloudTrail to log AWS CloudFormation calls
+## Use AWS CloudTrail to log AWS CloudFormation calls
 
 AWS CloudTrail tracks anyone making AWS CloudFormation API calls in your AWS account.
 
 
-### Use code reviews and revision controls to manage your templates
-
+## Use code reviews and revision controls to manage your templates

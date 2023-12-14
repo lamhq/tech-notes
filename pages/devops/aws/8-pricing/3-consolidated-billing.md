@@ -1,5 +1,7 @@
 # Consolidated Billing
 
+## Overview
+
 AWS Organizations provides the option for consolidated billing.
 
 The consolidated billing feature of AWS Organizations enables you to receive a single bill for all AWS accounts in your organization. By consolidating, you can easily track the combined costs of all the linked accounts in your organization.

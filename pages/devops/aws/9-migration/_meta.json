@@ -2,26 +2,20 @@
   "1-aws-caf": {
     "title": "AWS Cloud Adoption Framework (AWS CAF)"
   },
-  "10-dms": {
-    "title": "Database Migration Service (AWS DMS)"
-  },
-  "11-sms": {
-    "title": "Server Migration Service"
-  },
   "2-strategies": {
     "title": "Migration Strategies"
   },
-  "3-transfering-data": {
+  "3-snow-family": {
     "title": "AWS Snow Family"
   },
   "4-data-sync": {
     "title": "AWS DataSync"
   },
   "5-storage-gateway": {
-    "title": "Overview of AWS Storage Gateway"
+    "title": "AWS Storage Gateway"
   },
   "6-transfer-family": {
-    "title": "AWS Transfer Family?"
+    "title": "AWS Transfer Family"
   },
   "7-migration-hub": {
     "title": "AWS Migration Hub"
@@ -31,5 +25,11 @@
   },
   "9-app-migration": {
     "title": "AWS Application Migration Service (AWS MGN)"
+  },
+  "10-dms": {
+    "title": "Database Migration Service (AWS DMS)"
+  },
+  "11-sms": {
+    "title": "Server Migration Service"
   }
 }

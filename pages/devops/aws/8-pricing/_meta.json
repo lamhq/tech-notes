@@ -14,16 +14,16 @@
   "5-cost-explorer": {
     "title": "AWS Cost Explorer"
   },
-  "6-support": {
-    "title": "AWS Support Plans"
-  },
   "7-cur": {
-    "title": "AWS Cost and Usage Reports (AWS CUR)"
+    "title": "AWS CUR"
   },
   "8-compute-optimizer": {
     "title": "AWS Compute Optimizer"
   },
   "9-savings-plans": {
     "title": "Savings Plans"
+  },
+  "6-support": {
+    "title": "AWS Support Plans"
   }
 }

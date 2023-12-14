@@ -1,8 +1,8 @@
 {
   "1-overview": {
-    "title": "AWS CloudFormation"
+    "title": "Overview"
   },
   "2-template": {
-    "title": "CloudFormation"
+    "title": "Template basics"
   }
 }

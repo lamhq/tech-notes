@@ -1,4 +1,4 @@
-# Overview of AWS Storage Gateway
+# AWS Storage Gateway
 
 ## Overview
 
