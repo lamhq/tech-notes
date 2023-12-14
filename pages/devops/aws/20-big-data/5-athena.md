@@ -1,17 +1,22 @@
 # Amazon Athena
 
-Athena is an interactive query service that makes it easy to analyze data in S3 using SQL. This allows you to directly query data in your S3 bucket without loading it into a database.
+## Overview
 
-Most results are delivered within seconds.
+Athena is an interactive query service that makes it easy to analyze data in S3 using SQL.
 
-Athena is serverless, you pay only for the queries that you run.
+This allows you to directly query data in your S3 bucket without loading it into a database. Most results are delivered within seconds.
+
+You pay only for the queries that you run.
 
 If you're ever faced with a scenario that's looking for a serverless SQL solution, Athena is your best choice. It's the only service that allows you to directly query your data that's stored in S3.
+
+
+## How it works?
 
 To use Athena, you point to your data in Amazon S3, define the schema, and start querying by using standard SQL. You don’t need complex ETL jobs to prepare your data for analysis.
 
 
-# Amazon Glue
+## Amazon Glue
 
 Glue is a serverless data integration service that makes it easy to discover, prepare, and combine data.
 

@@ -1,5 +1,7 @@
 # Placement Group
 
+## Overview
+
 Placement Group is a logical grouping of EC2 instances.
 
 You can't merge placement groups.

@@ -28,7 +28,10 @@ It automatically scales based on the data throughput and requires minimal ongoin
 
 It can batch, compress, transform, and encrypt data streams before loading, optimizing storage usage and increasing security.
 
-Compared to Amazon Kinesis Data Streams, Kinesis Data Firehose is easier to operate, but has higher latency from the moment that data is ingested (within 1 minute). Data Firehose has limited supported third party endpoints.
+Compared to Amazon Kinesis Data Streams, Kinesis Data Firehose:
+- easier to operate
+- has higher latency from the moment that data is ingested (near real-time, within 1 minute)
+- has limited supported third party endpoints.
 
 
 ## Amazon Kinesis Data Analytics

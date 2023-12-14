@@ -93,7 +93,15 @@ Analyze the SQS message contents for any errors.
 
 Troubleshoot consumer permissions.
 
-
 ### Tips
 
 Make sure you set up an alarm and alert on queue depth.
+
+
+## SQS and Kinesis
+
+Both services can be queues.
+
+SQS is easier and simpler.
+
+Kinesis is faster (real-time) and can store data for up to a year.

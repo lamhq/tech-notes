@@ -2,7 +2,9 @@
 
 ## What Is Availability?
 
-The availability of a system is typically expressed as a percentage of uptime in a given year or as a number of nines. Below, you can see a list of the percentages of availability based on the downtime per year, as well as its notation in nines.
+The availability of a system is typically expressed as a percentage of uptime in a given year or as a number of nines.
+
+Below, you can see a list of the percentages of availability based on the downtime per year, as well as its notation in nines.
 
 | Availability (%)                  | Downtime (per year) |
 |-----------------------------------|---------------------|
@@ -18,7 +20,7 @@ To increase availability, you need redundancy. This typically means more infrast
 
 ## Improve Application Availability
 
-- Use a Second Availability Zone: deploying a second app instance in a different Availability Zone.
+- Use a Second Availability Zone: deploying a second app instance in a different AZ.
 - Create a Process for Replication: replicate the configuration files, software patches, and application itself across instances
 - Address Customer Redirection: let the clients know about the different servers. An option is to use a load balancer which takes care of health checks and distributing the load across each server.
 

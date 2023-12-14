@@ -2,14 +2,15 @@
 
 ## Overview
 
-Amazon MSK is managed service for running data streaming applications that leverage Apache Kafka to process streaming data.
+Amazon MSK is managed service for running data streaming applications that leverage **Apache Kafka** to process streaming data.
 
-It provides you control-plane operations,
-so it will go ahead and create, update,
-and delete clusters as required. You can help it using the console, CLI,
-or any API within any SDK.
+The service handles control plane operations for you (creation, updating, and deletion of cluster).
 
-It allows you to just leverage Kafka data-plane operations for producing and consuming streaming data, not worry about the other underlying infrastructure.
+You manage data plane operations for producing and consuming streaming data.
+
+You can push broker logs to CloudWatch, S3, or Kinesis Data Firehose.
+
+The API calls for this services are logged to CloudTrail.
 
 It's very good for existing applications, tools, plugins
 that need to leverage the open-source versions

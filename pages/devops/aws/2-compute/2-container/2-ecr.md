@@ -4,8 +4,7 @@
 
 AWS-managed container image registry that offers secure, scalable, and reliable infrastructure.
 
-It supports private container image repositories with resource-based
-permissions via IAM.
+It supports private container image repositories with resource-based permissions via IAM.
 
 Allow to push images that are either Open Container
 Initiative (OCI) images, Docker images, and OCI artifacts.

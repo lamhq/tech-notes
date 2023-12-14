@@ -2,12 +2,9 @@
 
 ## Overview
 
-OpenSearch is a managed service allowing you to run search and analytics engines for
-various use cases.
+OpenSearch is a managed service allowing you to run search and analytics engines for various use cases.
 
-It is the successor to Amazon Elasticsearch Service.
-
-Allow quick analysis. You're able to Quickly ingest, search, and analyze data in your clusters.
+Primarily used for analyzing log files and various documents, especially within an ETL process.
 
 **Scalable**. You can easily scale cluster infrastructure running the open-source OpenSearch services.
 
@@ -17,7 +14,9 @@ Allow quick analysis. You're able to Quickly ingest, search, and analyze data in
 
 **Flexible**. Allows for SQL support for business intelligence (BI) apps.
 
-Easily integrate it with Amazon CloudWatch, AWS Cloud Trail, Amazon S3, and Amazon Kinesis.
+Easily integrate with Amazon CloudWatch, AWS Cloud Trail, Amazon S3, and Amazon Kinesis.
+
+Successor to Amazon Elasticsearch Service.
 
 
 ## Example Diagram

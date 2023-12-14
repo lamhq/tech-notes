@@ -2,29 +2,17 @@
 
 ## Overview
 
-AWS Data Pipeline is a managed ETL service for automating movement and transformation of your data.
+AWS Data Pipeline is a managed ETL service for implementing automated workflow for movement and transformation of your data.
 
-It's a web service that allows you to define **data-driven workflows** and then automate those.
+Perfect for data-driven and task-dependent ETL workloads.
 
-You create steps that are dependent on previous tasks completing successfully. Within it, you define parameters for data transformations.
-
-The service is **highly available**. AWS hosts the infrastructure on highly available and distributed infrastructure. Also **fault tolerant**.
-
-It automatically retries failed activities.
+The service is **highly available**, **fault tolerant**. It automatically retries failed activities.
 
 You can configure notifications via **Amazon SNS** for failures or even successful tasks.
 
-It works with many Amazon storage services: DynamoDB, RDS, Redshift, S3, ...
+Integrates with storage services (e.g., DynamoDB, RDS, Redshift, S3) and compute services (e.g., EC2 and EMR).
 
-Works closely with EC2 and EMR for compute needs.
-
-
-## Components
-
-- Pipeline Definition: Specify the business logic of your data management needs.
-- Managed Compute: The service will create EC2 instances to perform your activities - or leverage existing EC2. Activities are pipeline components that define the work to perform.
-- Task Runners: Task runners (EC2 instances) will poll for different tasks and perform them when found.
-- Data Nodes: Define the locations and types of data that will be input and output.
+You create steps that are dependent on previous tasks completing successfully. Within it, you define parameters for data transformations.
 
 
 ## Use cases
@@ -34,6 +22,14 @@ Works closely with EC2 and EMR for compute needs.
 - Copying CV files or data between S3 buckets
 - Exporting RDS data to S3
 - Copying data to Redshift
+
+
+## Components
+
+- Pipeline Definition: Specify the business logic of your data management needs.
+- Managed Compute: The service will create EC2 instances to perform your activities - or leverage existing EC2. Activities are pipeline components that define the work to perform.
+- Task Runners: Task runners (EC2 instances) will poll for different tasks and perform them when found.
+- Data Nodes: Define the locations and types of data that will be input and output.
 
 
 ## Example diagram

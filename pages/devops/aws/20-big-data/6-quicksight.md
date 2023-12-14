@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon QuickSight is a fully managed, serverless business intelligence (BI) data visualization service.
+Amazon QuickSight is a fully managed, serverless business intelligence (BI) **data visualization** service.
 
 It allows you to easily create dashboards and share them with specific users and groups.
 

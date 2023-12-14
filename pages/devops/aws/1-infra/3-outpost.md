@@ -8,9 +8,9 @@ You can have Outposts in sizes such as 1U and 2U servers all the way up to 42U r
 
 ## Benefits
 
-- Hybrid Cloud: Create a hybrid cloud where you can leverage AWS services inside your own data center.
-- Full Managed Infrastructure: AWS can manage the infrastructure for you. You do not need a dedicated team to look after vour Outposts infrastructure.
-- Consistency: Bring the AWS Management Console, APis, and SDKs into your data center, allowing uniform consistency in your hybrid environment.
+- **Hybrid Cloud**. Create a hybrid cloud where you can leverage AWS services inside your own data center.
+- **Full Managed Infrastructure**. AWS can manage the infrastructure for you. You do not need a dedicated team to look after vour Outposts infrastructure.
+- **Consistency**. Bring the AWS Management Console, APis, and SDKs into your data center, allowing uniform consistency in your hybrid environment.
 
 
 ## Outposts Family Members

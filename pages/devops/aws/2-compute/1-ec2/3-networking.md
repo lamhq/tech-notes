@@ -31,8 +31,8 @@ higher bandwidth, higher packet per second (PPS) performance,
 and consistently lower inter-instance latencies.
 
 Depending on your instance type, enhanced networking can be enabled using:
-- Elastic network adapter (ENA): supports network speeds of up to 100 Gbps (for supported instance types).
-- Intel 82599 virtual function (VF) interface: support speeds of up to 10 Gbps, typically used on older instances.
+- Elastic network adapter (ENA): supports network speeds of up to **100 Gbps** (for supported instance types).
+- Intel 82599 virtual function (VF) interface: support speeds of up to **10 Gbps**, typically used on older instances.
 
 
 ## Elastic fabric adapter (EFA)

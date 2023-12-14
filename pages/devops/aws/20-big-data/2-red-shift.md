@@ -4,11 +4,13 @@
 
 Amazon Redshift is a **managed data warehousing service** that you can use for big data analytics.
 
-It's a very large relational database traditionally used in big data applications. 
-You use SQL and BI tools to interact with it.
+It's a very large relational database traditionally used in big data applications. You use SQL and BI tools to interact with it.
+
+It offers the ability to collect data from many sources and 
+helps you to understand relationships and trends across your data.
 
 **Based on PostgreSQL** database engine type. But is NOT used for OLTP workloads 
-and not meant to be replacement for standard RDS databases.
+and not meant to be replacement for RDS databases.
 
 Support a lot of data, up to **16 PB**. No need to split up your large datasets.
 
@@ -18,16 +20,14 @@ Storage of data is **column-based** instead of row-based. Allows for efficient p
 Make it a powerful choise for data analysis and data retrieval.
 
 **High availability**. Supports Multi-AZ deployments. It only spans two AZs at this time.
-No conversions from Single-AZ to Multi-AZ (or vice versa)!
+
+No conversions from Single-AZ to Multi-AZ (or vice versa) but you can use snapshot to restore it to a new cluster.
 
 **Snapshots** are incremental and point-in-time. Can be restored to other regions. They can be automated or manual.
 Always contained in Amazon S3 (you cannot manage the bucket).
 
-It offers the ability to collect data from many sources and 
-helps you to understand relationships and trends across your data.
-
-Fun fact: Its has that name becasue AWS wanted to have people 
-leave Oracle databases and leverage this AWS service instead!
+Fun fact: Its name is due to AWS wanted to have people 
+leave Oracle databases and leverage this AWS service instead.
 
 
 ## Features

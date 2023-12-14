@@ -1,10 +1,14 @@
 # Amazon EMR
 
+## Overview
+
 Amazon EMR is an AWS service to help with ETL processing.
 
 EMR is a managed big data platform that allows you to process vast amounts of data using open-source tools, such as Spark, Hive, HBase, Flink, Hudi, and Presto.
 
 Amazon EMR requires a learning curve to operate the open-source frameworks that it uses.
+
+EMR is made up of EC2 instances. You can employ EC2 instance cost-saving measures.
 
 
 ## Use cases
