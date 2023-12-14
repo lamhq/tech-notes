@@ -4,7 +4,7 @@
 
 AWS Key Management Service (AWS KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data.
 
-AWS KMS is integrated with other AWS services - such as EBS, S3, and RDS - as well as other services to make it simple to encrypt your data with encryption keys you manage. It is integrated with AWS CloudTrail to provide you with logs of all key usage to help meet your regulatory and compliance needs.
+AWS KMS is integrated with many AWS services (e.g., EBS, S3, RDS) to make it simple to encrypt your data with encryption keys you manage. It is integrated with AWS CloudTrail to provide you with logs of all key usage to help meet your regulatory and compliance needs.
 
 AWS KMS provides you with centralized control over the lifecycle and permissions of your keys.
 You can create new keys whenever you wish, and you can control who can manage keys separately from who can use them.
@@ -49,7 +49,7 @@ In AWS KMS, you must attach resource-based policies to your customer master keys
 All KMS CMKs have a key policy.
 
 
-## 3 ways to control permission
+## 3 Ways to Control Permission
 
 - **Use the key policy**. Controlling access this way means the full scope of access to the CMK is defined in a single document (the key policy).
 - **Use IAM policies in combination with the key policy**. Controlling access this way enables you to manage all the permissions for your IAM identities in IAM.

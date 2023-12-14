@@ -4,9 +4,9 @@
 
 AWS Lambda is a serverless compute service that lets you run code without provisioning or managing the underlying servers.
 
-Using Lambda, you are responsible only for your code.
+You are responsible only for your code.
 
-Allow to run your code on demand with automated scaling.
+It allows to run your code on demand with automated scaling.
 
 Lambda functions run in their own secure and isolated runtime environments. You cannot log in to compute instances or customize the runtime's operating system.
 
@@ -36,7 +36,7 @@ It can be very cost effective to run functions whose execution time is very low,
 - **Permissions**: If your Lambda function needs to make an AWS API call, you'll need to attach a role.
 - **Networking**: Optionally define the VPC, subnet, and security groups your functions are a part of. If you don't specify networking configurations, your Lambda functions run in an AWS owned VPC with internet access in place.
 - **Resources**: Define the amount of available memory allocated to your function. CPU scales with memory.
-- **Trigger**: What's going to alert your Lambda function to start? Defining a trigger will kick Lambda off if that event occurs.
+- **Trigger**: Things can kick off Lambda functions. Common triggers: S3, Kinesis, and EventBridge
 
 
 ## Quotas (limitations)

@@ -4,14 +4,12 @@
 
 AWS Secrets Manager is a service that securely stores, encrypts, rotates your secrets needed for your applications, services, and IT resources.
 
-- Encryption in transit and at rest using KMS
-- Automatically rotates credentials
-- Apply fine-grained access control using IAM policies
-- Costs money but is highly scalable
-
 Users and applications retrieve secrets with a call to Secrets Manager APIs, eliminating the need to hardcode sensitive information in plain text.
 
-If you enable rotation, Secrets Manager immediately rotates the secret once to test the configuration.
+- Encryption in transit and at rest using KMS
+- Automatically rotates credentials. Immediately rotates after enabled
+- Apply fine-grained access control using IAM policies
+- Costs money but is highly scalable
 
 
 ## Secret Rotation

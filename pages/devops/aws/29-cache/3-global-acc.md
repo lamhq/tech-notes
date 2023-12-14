@@ -6,14 +6,11 @@ AWS Global Accelerator is a networking service that sends your users' traffic th
 
 It can increase performance and help deal with IP caching by leveraging Anycast IP addresses.
 
-Meant for TCP or UDP traffic! Major difference from CloudFront.
+It is meant for TCP or UDP traffic, different from CloudFront.
 
 GA uses edge locations to help speed everything up.
 
-When you encounter scenarios related to IP caching,
-consider the use of Global Accelerator
-as it plays a crucial role in optimizing traffic
-and reducing your latency.
+Keywords: IP caching, optimizing traffic, reduce latency.
 
 
 ## GA vs. CloudFront

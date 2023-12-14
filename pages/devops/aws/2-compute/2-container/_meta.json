@@ -2,5 +2,6 @@
   "1-overview": { "title": "Overview" },
   "2-ecr": { "title": "Amazon ECR" },
   "3-ecs": { "title": "Amazon ECS" },
-  "4-eks": { "title": "Amazon EKS" }
+  "4-eks": { "title": "Amazon EKS" },
+  "app-runner": { "title": "AWS App Runner" }
 }

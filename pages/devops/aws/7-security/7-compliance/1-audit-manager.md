@@ -6,7 +6,7 @@ It allow you to continually audit your AWS usage to make sure you stay compliant
 
 Audit Manager is an automated service that produces reports specific to auditors for PCI compliance, GDPR, and more.
 
-Keywords: continuous auditing or automating auditing reports
+Keywords: continuous auditing or automating auditing reports about  HIPAA, CDPR complicance
 
 
 ## Use cases

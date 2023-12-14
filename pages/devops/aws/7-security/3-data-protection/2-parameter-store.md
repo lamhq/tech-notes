@@ -11,3 +11,4 @@ Parameter Store is free.
 Limitations:
 - Limit to the number of parameters you can store (currently 10,000)
 - No key rotation
+- No password generation using CloudFormation

@@ -6,7 +6,7 @@
     "title": "Parameter Store"
   },
   "3-kms": {
-    "title": "AWS Key Management Service"
+    "title": "AWS KMS"
   },
   "4-cloud-hsm": {
     "title": "AWS CloudHSM"

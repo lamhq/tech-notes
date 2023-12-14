@@ -1,6 +1,6 @@
 {
-  "1-intro": {
-    "title": "Serverless"
+  "1-overview": {
+    "title": "Overview"
   },
   "2-aws-lambda": {
     "title": "Aws Lambda"

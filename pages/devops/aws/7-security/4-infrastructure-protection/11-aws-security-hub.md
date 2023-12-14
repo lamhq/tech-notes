@@ -2,9 +2,9 @@
 
 ## Overview
 
-Security Hub is a single place to view all your security alerts from services like Amazon GuardDuty, Amazon Inspector, Amazon Macie, AWS Firewall Manager, as well as from AWS Partner solutions.
+Security Hub is a single place to view all your security alerts accross multiple AWS security services and AWS accounts.
 
-It works across multiple accounts.
+Service like Amazon GuardDuty, Amazon Inspector, Amazon Macie, AWS Firewall Manager, as well as from AWS Partner solutions.
 
 Your findings are visually summarized on integrated dashboards with actionable graphs and tables. You can also continuously monitor your environment using automated compliance checks based on the AWS best practices and industry standards your organization follows.
 

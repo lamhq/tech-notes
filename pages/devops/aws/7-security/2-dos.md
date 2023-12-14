@@ -1,6 +1,6 @@
 # Denial-of-Service Attacks
 
-## Denial-of-Service Attacks
+## Denial-of-Service Attacks (DoS)
 
 A denial-of-service (DDoS) attack is a deliberate attempt to make a website or application unavailable to users.
 
@@ -11,7 +11,7 @@ If the website or application becomes unavailable, this denies service to users 
 ![](./images/dos.png)
 
 
-## Distributed Denial-of-Service Attacks
+## Distributed Denial-of-Service Attacks (DDoS)
 
 In a distributed denial-of-service (DDoS) attack, multiple sources are used to start an attack that aims to make a website or application unavailable.
 

@@ -5,7 +5,7 @@
 AWS WAF is a web application firewall that lets you monitor HTTP/HTTPS requests that are forwarded to Amazon CloudFront or an Application Load Balancer. 
 
 WAF can block:
-- layer 7 DDoS attacks
+- **layer 7** DDoS attacks
 - SQL injections
 - cross-site scripting.
 - access to specific countries or IP addresses
@@ -25,9 +25,9 @@ You can use AWS WAF to create custom rules that block common attack patterns (SQ
 
 At its most basic level, it allows 3 different behaviors:
 
-- Allow all requests except the ones you specify.
-- Block all requests except the ones you specify.
-- Count the requests that match the properties you specify.
+- **Allow all requests** except the ones you specify.
+- **Block all requests** except the ones you specify.
+- **Count the requests** that match the properties you specify.
 
 You can define conditions by using characteristics of web requests such as the following:
 - IP addresses that requests originate from

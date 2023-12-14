@@ -17,12 +17,12 @@ It is a physical device, entirely dedicated to you, that can be deployed in a hi
 ## KMS vs. CloudHSM
 
 KMS:
-- Shared tenancy of underlying hardware
-- Automatic key rotation
-- Automatic key generation
+- You're using a shared tenancy of underlying hardware
+- You have Automatic key rotation
+- You have Automatic key generation
 
 CloudHSM:
 - Dedicated HSM to you
-- Full control of underlying hardware
-- Full control of users, groups, keys, etc.
+- You get full control of underlying hardware
+- You get full control of users, groups, keys, etc.
 - No automatic key rotation

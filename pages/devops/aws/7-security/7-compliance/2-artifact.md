@@ -6,6 +6,8 @@ Artifact is a single source you can visit to get the compliance-related informat
 
 There are a huge number of **compliance reports** available, such as AWS Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and GDPR reports, as well as other certifications (including ISO reports, HIPAA, and more).
 
+Keywords: audits and the need for compliance reports
+
 AWS Artifact consists of two main sections: AWS Artifact Agreements and AWS Artifact Reports.
 
 

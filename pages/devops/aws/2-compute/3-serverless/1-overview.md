@@ -1,4 +1,4 @@
-# Serverless
+# Overview
 
 If you run your code on Amazon EC2, AWS is responsible for the physical hardware and you are responsible for the logical controls, such as guest operating system, security and patching, networking, security, and scaling.
 

@@ -2,31 +2,33 @@
 
 ## Overview
 
-AWS X-Ray is a service that collect data within your application for viewing, filtering, and gaining insights about requests & responses of your application.
+AWS X-Ray is a service that collect data within your application for viewing, filtering, and **gaining insights about requests & responses** of your application.
 
 Any calls that your application makes
-to downstream resources in AWS or other microservices,
-APIs, or databases is also viewable, filterable,
+to downstream resources in AWS (microservices,
+APIs, databases) is viewable, filterable,
 and you can use it to gain insights as well.
 
-The service receives traces from your applications for allow insights. A lot of AWS services can automatically
-or very easily provide traces to this service. For different integrated services,
-you can add tracing headers, trace data,
-or run the X-Ray Daemon on the server running your app.
+The service receives traces from your applications for allow insights:
+- A lot of AWS services can automatically provide traces to this service
+- For different integrated services,
+you can add tracing headers, trace data, or run the X-Ray Daemon on the server running your app.
 
-## When to use?
+Integrates with AWS Lambda and Amazon API Gateway, help you gain deeper insights and understanding of your workload requests and responses.
 
-Scenarios involving application insights, app request insights, viewing response times of downstream resources, and HTTP response analysis
+Keywords: application insights, app request insights, viewing response times of downstream resources, HTTP response analysis
+
 
 ## Concepts
 
-- Segments: Data containing resource names, request details, and other information
-- Subsegments: Segments providing more granular timing information and details
-- Service graph: Graphical representation of interacting services in requests
-- Traces: Trace ID tracks paths of requests and traces collect all segments in a request
-- Tracing header: Extra HTTP header containing sampling decisions and trace ID
+- **Segments**: Data containing resource names, request details, and other information
+- **Subsegments**: Segments providing more granular timing information and details
+- **Service graph**: Graphical representation of interacting services in requests
+- **Traces**: Trace ID tracks paths of requests and traces collect all segments in a request
+- **Tracing header**: Extra HTTP header containing sampling decisions and trace ID
 
 Tracing header containing added information is named `X-Amzn-Trace-Id`.
+
 
 ## AWS X-Ray daemon
 

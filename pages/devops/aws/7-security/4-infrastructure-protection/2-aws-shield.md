@@ -2,11 +2,9 @@
 
 ## Overview
 
-AWS Shield is a service that protects applications against DDoS attacks. 
+AWS Shield is a service that protects applications against DDoS, SYN/UDP floods, reflection attacks, and other **Layer 3** and **Layer 4** attacks. 
 
 Protects all AWS customers on Elastic Load Balancing (ELB), Amazon CloudFront, and Route 53.
-
-Protects against SYN/UDP floods, reflection attacks, and other Layer 3 and Layer 4 attacks.
 
 AWS Shield provides two levels of protection: **Standard** and **Advanced**.
 
@@ -29,4 +27,4 @@ Gives you 24/7 access to the DDoS Response Team (DRT) to help manage and mitigat
 
 Protects your AWS bill against higher fees due to Elastic Load Balancing (ELB), Amazon CloudFront, and Amazon Route 53 usage spikes during a DDoS attack.
 
-Paid service, cost $3000 per month.
+Paid service, cost **$3000** per month.
