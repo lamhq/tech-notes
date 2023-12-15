@@ -2,7 +2,7 @@
 
 ## Overview
 
-Textract uses machine learning to automatically extract text, handwriting, and data from scanned documents.
+Textract uses machine learning to automatically **extract text**, handwriting, and data from scanned documents.
 
 Using machine learning and OCR (optical character recognition), Textract can process text, handwriting, tables, and more with no manual intervention.
 

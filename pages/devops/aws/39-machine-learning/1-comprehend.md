@@ -2,7 +2,7 @@
 
 ## Overview
 
-Comprehend uses natural-language processing (NLP) to help you understand the meaning and sentiment in your text.
+Comprehend uses natural-language processing (NLP) to help you **understand the meaning and sentiment in your text**.
 
 For example, you can automate understanding whether people are saying positive or negative things about your service.
 

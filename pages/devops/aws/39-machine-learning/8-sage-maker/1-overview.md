@@ -2,7 +2,7 @@
 
 ## Overview
 
-SageMaker is a service to build, train, and deploy ML models with fully managed infrastructure, tools, and workflows.
+SageMaker is a service to **build, train, deploy ML models** with fully managed infrastructure, tools, and workflows.
 
 SageMaker can be used for any generic ML solution.
 
@@ -63,8 +63,8 @@ Customize your machine learning models for specific CPU hardware, such as ARM, I
 It includes a compiler to convert the machine learning model to an environment that is optimized to execute the model on the target architecture.
 
 
-## Elastic Inference (El)
+## Elastic Inference (EI)
 
-El speeds up throughput and decreases latency of realtime inferences deployed on SageMaker hosted services using only CPU-based instances. It is much more cost-effective than a full GPU instance.
+EI speeds up throughput and decreases latency of realtime inferences deployed on SageMaker hosted services using only CPU-based instances. It is much more cost-effective than a full GPU instance.
 
 It must be configured when you create a deployable model. El is not available for all algorithms yet.

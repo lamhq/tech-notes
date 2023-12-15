@@ -12,7 +12,7 @@ Examples:
 
 ## Overview
 
-Amazon Forecast is a time-series forecasting service that uses machine learning and is built to give you important business insights.
+Amazon Forecast is a **time-series forecasting service** that uses machine learning and is built to give you important business insights.
 
 You can send your data to Amazon Forecast and it will automatically learn your data, select the right machine learning algorithm, and then help you forecast your data.
 

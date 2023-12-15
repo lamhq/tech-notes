@@ -2,7 +2,7 @@
 
 ## Overview
 
-Rekognition is Amazon's computer vision product that automates the recognition of pictures and videos using deep learning and neural networks.
+Rekognition is Amazon's computer vision product that automates the **recognition of pictures and videos** using deep learning and neural networks.
 
 You can use these processes to understand and label what is in pictures and videos.
 

@@ -2,14 +2,14 @@
 
 ## Amazon Transcribe
 
-Transcribe is used to covert speech to text automatically. You can use this service to generate subtitles on the fly.
+Transcribe is used to covert **speech to text** automatically. You can use this service to generate subtitles on the fly.
 
-Ideal for converting Audio and Video Files to Text. Turn your audio and video files into text in a fast and automated process. One specific use case is to generate subtitles.
+Ideal for converting Audio and Video Files to Text. Turn audio and video files into text in a fast and automated process. One specific use case is to generate subtitles.
 
 
 ## Amazon Lex
 
-Lex allows you to build conversational interfaces in your applications using natural language models.
+Lex allows you to **build conversational interfaces** in applications using natural language models.
 
 Chances are that when you are talking to an automated bot online, you are interacting with the Lex service on the backend.
 
@@ -23,7 +23,7 @@ Use cases:
 
 ## Amazon Polly
 
-Polly turns your text into lifelike speech and allows you to create applications that talk to and interact with you using a variety of languages and accents.
+Polly **turns text into lifelike speech** and allows you to create applications that talk to and interact with you using a variety of languages and accents.
 
 Use cases:
 

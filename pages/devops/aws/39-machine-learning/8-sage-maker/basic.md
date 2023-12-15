@@ -1,16 +1,4 @@
-# Amazon SageMaker
-
-## The main capabilities of Amazon SageMaker
-
-At the core of Amazon SageMaker is the ability to build, train, optimize, and deploy models on fully managed infrastructure, and at any scale.
-
-A collection of 17 built-in algorithms for ML and deep learning, already implemented and optimized to run efficiently on AWS. No ML code
-to write!
-
-A collection of built-in open source frameworks (TensorFlow, PyTorch, Apache MXNet, scikit-learn, and more)
-
-**Amazon SageMaker** Autopilot uses AutoML to automatically build, train, and optimize models without the need to write a single line of ML code.
-
+# Basic Operations
 
 ## Setting up Amazon SageMaker on your local machine
 

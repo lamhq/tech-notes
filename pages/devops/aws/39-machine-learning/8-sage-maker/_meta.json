@@ -1,9 +1,9 @@
 {
   "1-overview": {
-    "title": "Amazon SageMaker"
+    "title": "Overview"
   },
   "basic": {
-    "title": "Amazon SageMaker"
+    "title": "Basic Operations"
   },
   "deploy": {
     "title": "Deploy"

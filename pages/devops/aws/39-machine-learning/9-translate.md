@@ -2,7 +2,7 @@
 
 ## Overview
 
-A machine learning service that allows you to automate language translation.
+A machine learning service that allows you to automate **language translation**.
 
 Using deep learning and neural networks, Amazon Translate allows you to translate from one language to another.
 

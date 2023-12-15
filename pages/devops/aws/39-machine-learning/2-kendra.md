@@ -2,7 +2,7 @@
 
 ## Overview
 
-Kendra allows you to create an intelligent search service powered by machine learning.
+Kendra allows you to create an **intelligent search service** powered by machine learning.
 
 Enterprise search applications can bridge between different silos of information (such as S3 buckets, file servers, and websites), allowing your enterprise to have all the data intelligently in one place.
 
