@@ -3,10 +3,7 @@
     "title": "Concepts"
   },
   "1-rds": {
-    "title": "Amazon RDS"
-  },
-  "2-aurora": {
-    "title": "Amazon Aurora"
+    "title": "RDS"
   },
   "2-dynamodb": {
     "title": "Amazon DynamoDB"

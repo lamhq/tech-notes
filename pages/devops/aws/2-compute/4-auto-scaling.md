@@ -26,7 +26,7 @@ It's a highly available solution for **a legacy codebase/resource that can't be 
 
 ## Scaling types
 
-- **Reactive scaling**: You're playing catchup. Once the load is there, you measure it and then determine if you need to create more resources.
+- **Reactive scaling**:  It monitors the scalable resources and adjusts the instances based on the incoming traffic.
 - **Scheduled scaling**: If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed.
 - **Predictive scaling**: AWS uses its machine learning algorithms to determine when you'll need to scale. They are reevaluated every 24 hours to create a forecast for the next 48.
 
@@ -39,8 +39,7 @@ The infomation required to create EC2 instances is stored in a launch template.
 
 It also supports **versioning**, which allows for quickly rolling back if there was an issue.
 
-You can create a launch template one of three ways.
-
+You can create a launch template one of three ways:
 - use an existing EC2 instance.
 - from an already existing template or a previous version of a launch template.
 - create a template from scratch. The following options will need to be defined: AMI ID, instance type, key pair, security group, storage, and resource tags.

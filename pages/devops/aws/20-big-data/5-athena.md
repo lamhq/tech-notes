@@ -26,6 +26,10 @@ Glue is a serverless ETL.
 
 Glue can design a schema for your data.
 
+You can discover and connect to over 70 different data sources.
+
+In AWS Glue, you can specify the number of DPUs (data processing units) you want to allocate to an ETL job.
+
 
 ## Architecture diagram
 

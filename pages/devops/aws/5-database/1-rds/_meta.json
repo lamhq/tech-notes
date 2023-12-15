@@ -1,8 +1,11 @@
 {
-  "1-aurora": {
+  "rds": {
+    "title": "Amazon RDS"
+  },
+  "aurora": {
     "title": "Amazon Aurora"
   },
-  "2-aurora-serverless": {
+  "aurora-serverless": {
     "title": "Amazon Aurora Serverless"
   }
 }
