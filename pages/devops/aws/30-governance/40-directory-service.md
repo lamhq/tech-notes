@@ -2,7 +2,7 @@
 
 ## Overview
 
-AWS Directory Service is a fully managed version of Active Directory. It allows you to offload the painful parts of keeping AD online to AWS while still giving you the full control and flexibility AD provides.
+AWS Directory Service is a fully managed version of **Active Directory**. It allows you to offload the painful parts of keeping AD online to AWS while still giving you the full control and flexibility AD provides.
 
 
 ## Available Types

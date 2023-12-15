@@ -2,7 +2,7 @@
   "1-organizations": {
     "title": "AWS Organizations"
   },
-  "50-control-tower": {
+  "5-control-tower": {
     "title": "AWS Control Tower"
   },
   "40-directory-service": {
@@ -17,7 +17,7 @@
   "99-system-manager": {
     "title": "AWS Systems Manager"
   },
-  "2-config": {
+  "10-config": {
     "title": "AWS Config"
   },
   "20-ram": {

@@ -19,6 +19,6 @@ You can leverage VPC endpoints for secure VPC access.
 **Choose Your Kubernetes**: Works with clusters running on Amazon
 EKS or self-managed Kubernetes clusters.
 
-**PromOL**: Leverage the open-source PromQL query language for exploring and extracting data.
+**PromQL**: Leverage the open-source PromQL query language for exploring and extracting data.
 
 **Data Retention**: Data is stored in workspaces for 150 days (automatically deleted afterward).

@@ -157,3 +157,5 @@ When you start your instance out of hibernation:
 - The RAM contents are reloaded.
 - The processes that were previously running on the instance are resumed.
 - Previously attached data volumes are reattached and the instance retains its instance ID.
+
+You can hibernate an instance only if it's enabled for hibernation and it meets the hibernation prerequisites (regions, AMIs, instance families, etc.,).

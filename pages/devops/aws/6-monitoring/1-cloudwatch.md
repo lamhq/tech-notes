@@ -18,6 +18,15 @@ You can use CloudWatch to:
 - Take automated actions like scaling.
 
 
+## Period
+
+A period is the length of time associated with a specific Amazon CloudWatch statistic. Each statistic represents an aggregation of the metrics data collected for a specified period of time.
+
+Periods are defined in numbers of seconds, and valid values for period are 1, 5, 10, 30, or any multiple of 60.
+
+The default value is 60 seconds.
+
+
 ## Metrics
 
 Each metric in CloudWatch has a timestamp and is organized into containers called namespaces.

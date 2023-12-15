@@ -99,6 +99,8 @@ Useful for high-thoughput workloads. Helpful when you need a stable and reliable
 
 You can reduce your network costs, increase bandwidth throughput, and provide a more consistent network experience than internet-based connections.
 
+Direct Connect is not encrypted by default.
+
 ![](https://docs.aws.amazon.com/images/whitepapers/latest/aws-vpc-connectivity-options/images/image6.png)
 
 ### Types of Direct Connect Connection

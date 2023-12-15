@@ -152,6 +152,8 @@ To encrypt an volume:
 - create an AMI from the encrypted snapshot
 - use that AMI to launch new instances
 
+You can **unencrypt a volume** by copying it to a new, unencrypted volume using a temporary EC2 instance. You can then attach the unencrypted volume to your original instance.
+
 
 ## EBS and EC2
 

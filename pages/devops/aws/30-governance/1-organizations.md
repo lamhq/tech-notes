@@ -1,6 +1,6 @@
 # AWS Organizations
 
-AWS Organizations is a free governance tool that allows you to create and manage multiple AWS accounts.
+AWS Organizations is a free governance tool that allows you to create and **manage multiple AWS accounts**.
 
 With it, you can control your accounts from a single location rather than jumping from account to account.
 
@@ -15,8 +15,8 @@ With it, you can control your accounts from a single location rather than jumpin
 ## Features
 
 - **Consolidated Billing**: Rolls all bills up to the payer account. Single payment method
-- **Usage Discounts**: Consolidated billing allows for aggregate usage discounts.
-- **Shared Savings**: Easily share Reserved Instances and Savings Plans across the org. For example, you can share your central AWS Directory Service running on Managed Active Directory with all accounts in your organization, for application to access your central identity store.
+- **Usage Discounts**: Consolidated billing allows for aggregate usage discounts
+- **Shared Savings**: Easily share Reserved Instances and Savings Plans across the org. *For example, you can share your central AWS Directory Service running on Managed Active Directory with all accounts in your organization, for application to access your central identity store*
 - Automate AWS account creation and management
 - Create groups of accounts to reflect business needs
 - Govern access to AWS services resources in Region by policy
@@ -24,26 +24,11 @@ With it, you can control your accounts from a single location rather than jumpin
 
 ## Concepts
 
-- **Multi-account**: Allows you to easily achieve a multi-account design while maintaining centralized management.
-- **Tag Enforcement**: Capability to require specific tags is leveraged for all AWS resources. This ensures consistent tagging practices and it enables better resource categorization and tracking.
-- **Organizational Unit (OU)**: Logical grouping of multiple accounts to allow for easy management and separation.
+- **Multi-account**: Allows you to easily achieve a multi-account design while maintaining centralized management
+- **Tag Enforcement**: Capability to require specific tags is leveraged for all AWS resources. This ensures consistent tagging practices and it enables better resource categorization and tracking
+- **Organizational Unit (OU)**: Logical grouping of multiple accounts to allow for easy management and separation
 - **Service Control Policies (SCPs)**: JSON policies that get applied to OUs or accounts to restrict actions that are or are not allowed for different resources. They are the only way to restrict what the root account can do
-- **Management Account**: SCPs do not affect the management account. The management account's' primary responsibility is for centralizing governance.
-
-
-## Examples
-
-We have an AWS organization with a management account and three team accounts in separate OUs. 
-
-We apply an organization-wide service control policy to prevent root user access.
-
-Then, we define specific service control policies for each OU, with different levels of control. These policies only apply to their respective group of accounts.
-
-The development accounts have the development service control policy and the organizational policy, while the security operations account has the security policy and the organizational policy.
-
-This allows for more granular control and simplifies the process.
-
-![](./images/aws-org.png)
+- **Management Account**: SCPs do not affect the management account. The management account's' primary responsibility is for centralizing governance
 
 
 ## Service Control Policies
@@ -78,3 +63,18 @@ This is an example SCP in the form of a valid JSON document that denies any atte
 - Assign policies to organizational units rather than to accounts
 - Test new and modified policies on a single account before scaling up to organizational units.
 - Use the APIs and AWS CloudFormation templates to ensure that every newly graded account is configured to your liking
+
+
+## Examples
+
+We have an AWS organization with a management account and three team accounts in separate OUs. 
+
+We apply an organization-wide service control policy to prevent root user access.
+
+Then, we define specific service control policies for each OU, with different levels of control. These policies only apply to their respective group of accounts.
+
+The development accounts have the development service control policy and the organizational policy, while the security operations account has the security policy and the organizational policy.
+
+This allows for more granular control and simplifies the process.
+
+![](./images/aws-org.png)

@@ -2,10 +2,9 @@
 
 ## Overview
 
-AWS Control Tower offers you an easy way to set up and govern an AWS multi-account environment. It does this by offering an automated account deployment method
-using preconfigured compliance rules.
+AWS Control Tower offers you an easy way to **set up and govern an AWS multi-account environment**. It does this by offering an automated account deployment method using preconfigured compliance rules.
 
-It's essentially an orchestration service that automates account creation and security controls via other AWS services (AWS Organizations, AWS IAM Identity Center, AWS Config).
+It's essentially an **orchestration service** that automates account creation and security controls via other AWS services (AWS Organizations, AWS IAM Identity Center, AWS Config).
 
 It's an extension or offers extensions to AWS Organizations to prevent governance drift, and leverages different guardrails.
 
@@ -16,11 +15,11 @@ Keywords and Scenarios: Automated multi-account governance, guardrails, account 
 
 ## Concepts
 
-- Landing zone: Well-architected, multi-account environment based on compliance and security best practices
-- Guardrails: High-level rules providing continuous governance for the AWS environment
-- Account Factory: Configurable account template for standardizing pre-approved configs of new accounts
-- CloudFormation StackSet: Automated deployments of templates deploying repeated resources for governance
-- Shared accounts: Three accounts used by Control Tower created during landing zone creation: management account, log archive account, audit account.
+- **Landing zone**: Well-architected, multi-account environment based on compliance and security best practices
+- **Guardrails**: High-level rules providing continuous governance for the AWS environment
+- **Account Factory**: Configurable account template for standardizing pre-approved configs of new accounts
+- **CloudFormation StackSet**: Automated deployments of templates deploying repeated resources for governance
+- **Shared accounts**: Three accounts used by Control Tower created during landing zone creation: management account, log archive account, audit account.
 
 ### Guardrails
 
