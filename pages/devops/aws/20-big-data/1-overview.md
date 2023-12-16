@@ -1,4 +1,4 @@
-# Data storage services
+# Overview
 
 ## Three "V" of Big data
 
@@ -21,8 +21,3 @@ You can use a data lake to break down data silos and combine different types of 
 ETL (Extract, Transform, Load) is a process of extracting data from different source systems, transforming it to meet specific business requirements, and loading it into a target database or data warehouse for further analysis and reporting.
 
 ETL processes are important for gaining valuable insights and making critical business decisions.
-
-
-## AWS Lake Formation
-
-AWS Lake Formation is a service that you can use to set up a secure data lake in days.

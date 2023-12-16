@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon EMR is an AWS service to help with ETL processing.
+Amazon EMR is an AWS service to help with **ETL processing**.
 
 EMR is a managed big data platform that allows you to process vast amounts of data using open-source tools, such as Spark, Hive, HBase, Flink, Hudi, and Presto.
 
@@ -39,9 +39,9 @@ Instance store volumes only remain during the lifecycle of the Amazon EC2 instan
 
 Clusters are groups of EC2 instances within Amazon EMR. Each instance is a node.
 
-- Primary Node: manages the cluster, coordinates distribution of data and tasks, tracks health statuses.
-- Core Node: runs tasks and stores data in Hadoop Distributed File System (HDFS). For long-running tasks.
-- Task Node: ONLY run one tasks, with no storage on the system. Optional. Typically get ran using Spot instances.
+- **Primary Node**: manages the cluster, coordinates distribution of data and tasks, tracks health statuses.
+- **Core Node**: runs tasks and stores data in Hadoop Distributed File System (HDFS). For long-running tasks.
+- **Task Node**: ONLY run one tasks, with no storage on the system. Optional. Typically get ran using Spot instances.
 
 Clusters can be either long-running, or they can be transient (a.k.a. temporary).
 
@@ -50,9 +50,9 @@ Clusters can be either long-running, or they can be transient (a.k.a. temporary)
 
 The same EC2 purchasing options apply that are available for normal instances.
 
-- On-Demand: Most reliable purchase option. Will not be terminated. Most expensive choice.
-- Reserved: Just like other reserved instances. Minimum of 1 year. Offers great cost savings. Typically used for primary nodes and core nodes.
-- Spot: Cheapest option available. Can be terminated with little warning. Typically used for task nodes.
+- **On-Demand**: Most reliable purchase option. Will not be terminated. Most expensive choice.
+- **Reserved**: Just like other reserved instances. Minimum of 1 year. Offers great cost savings. Typically used for primary nodes and core nodes.
+- **Spot**: Cheapest option available. Can be terminated with little warning. Typically used for task nodes.
 
 
 ## Sample architecture diagram

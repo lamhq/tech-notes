@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon MSK is managed service for running data streaming applications that leverage **Apache Kafka** to process streaming data.
+Amazon MSK is **managed service for running data streaming applications** that leverage **Apache Kafka** to process streaming data.
 
 The service handles control plane operations for you (creation, updating, and deletion of cluster).
 
@@ -29,12 +29,11 @@ of Apache Kafka.
 It allows for **automatic recovery**, automatic detection
 and recovery from common failure scenarios. Minimal impact.
 
-The service itself will **detect broker failures**. It'll work on mitigation or replacement
-of unhealthy nodes.
+It can **detect broker failures**. It'll work on mitigation or replacement of unhealthy nodes.
 
 It tries to reuse storage from older brokers during failures to **reduce data** needing replication.
 
-It has very **low impact time**. The impact time is really limited
+Has very **low impact time**. The impact time is really limited
 to however long it takes Amazon MSK
 to complete detection and recovery (automated).
 
@@ -43,9 +42,7 @@ After successful recovery, producers and consumer apps continue to communicate w
 
 ## Features
 
-**MSK Serverless** is a cluster type within Amazon MSK, offers serverless cluster management. Automatically provisioning and scaling.
-
-MSK Serverless is fully compatible with Apache Kafka. Use the same client apps for producing and consuming data.
+**MSK Serverless** is a cluster type within Amazon MSK, offers serverless cluster management. Automatically provisioning and scaling. MSK Serverless is fully compatible with Apache Kafka. Use the same client apps for producing and consuming data.
 
 **MSK Connect** allows developers to easily stream data to and from Apache Kafka clusters.
 

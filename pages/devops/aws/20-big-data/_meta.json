@@ -1,6 +1,6 @@
 {
   "1-overview": {
-    "title": "Data storage services"
+    "title": "Overview"
   },
   "2-red-shift": {
     "title": "Amazon Redshift"
@@ -25,5 +25,8 @@
   },
   "9-opensearch": {
     "title": "Amazon OpenSearch"
+  },
+  "lake-formation": {
+    "title": "AWS Lake Formation"
   }
 }

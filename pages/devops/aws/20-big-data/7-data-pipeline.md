@@ -2,7 +2,7 @@
 
 ## Overview
 
-AWS Data Pipeline is a managed ETL service for implementing automated workflow for movement and transformation of your data.
+AWS Data Pipeline is a **managed ETL service** for implementing automated workflow for movement and transformation of your data.
 
 Perfect for data-driven and task-dependent ETL workloads.
 
@@ -12,7 +12,7 @@ You can configure notifications via **Amazon SNS** for failures or even successf
 
 Integrates with storage services (e.g., DynamoDB, RDS, Redshift, S3) and compute services (e.g., EC2 and EMR).
 
-You create steps that are dependent on previous tasks completing successfully. Within it, you define parameters for data transformations.
+To use data pipeline, you create steps that are dependent on previous tasks completing successfully. Within it, you define parameters for data transformations.
 
 
 ## Use cases

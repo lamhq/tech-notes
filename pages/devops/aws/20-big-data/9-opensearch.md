@@ -4,7 +4,11 @@
 
 OpenSearch is a managed service allowing you to run search and analytics engines for various use cases.
 
-Primarily used for analyzing log files and various documents, especially within an ETL process.
+It is used as a managed analytics and visualization service. Primarily used for **analyzing log files** and various documents, especially within an ETL process.
+
+Easily integrate with Amazon CloudWatch, AWS Cloud Trail, Amazon S3, and Amazon Kinesis.
+
+Successor to Amazon Elasticsearch Service.
 
 **Scalable**. You can easily scale cluster infrastructure running the open-source OpenSearch services.
 
@@ -13,10 +17,6 @@ Primarily used for analyzing log files and various documents, especially within 
 **Stability**. It's multi-AZ-capable with several master nodes and automated snapshots.
 
 **Flexible**. Allows for SQL support for business intelligence (BI) apps.
-
-Easily integrate with Amazon CloudWatch, AWS Cloud Trail, Amazon S3, and Amazon Kinesis.
-
-Successor to Amazon Elasticsearch Service.
 
 
 ## Example Diagram
@@ -42,5 +42,3 @@ we can search and analyze files and logs. Output can be passed to seam applicati
 ## Tips
 
 **OpenSearch ♥️ Logs**. If you're given a scenario on the exam that talks about creating a logging solution involving visualization of log file analytics or BI reports, there's a good chance OpenSearch will be included.
-
-Know that it is used as a managed analytics and visualization service.
