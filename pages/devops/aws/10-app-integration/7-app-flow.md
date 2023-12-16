@@ -2,13 +2,13 @@
 
 ## Overview
 
-Amazon AppFlow is a fully managed integration service for exchanging data between SaaS apps and AWS services.
+Amazon AppFlow is a fully managed integration service for **exchanging data between SaaS apps and AWS services**.
 
 It allows you to pull data records from third-party SaaS vendors and store them in AWS services.
 
 It's a bi-directional service, data transfer can go both ways, with limited combinations.
 
-![](./images/appflow.png)
+![](https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2021/07/20/bdb-1449-image001.png)
 
 
 ## Concepts
@@ -24,4 +24,4 @@ It's a bi-directional service, data transfer can go both ways, with limited comb
 - Transferring Salesforce records to Amazon Redshift
 - Ingesting and analyzing Slack conversations in S3
 - Migrating Zendesk and other help desk support tickets to Snowflake
-- Transferring aggregate data on a scheduled basis to S3*
+- Transferring aggregate data on a scheduled basis to S3

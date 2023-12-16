@@ -4,24 +4,37 @@
 
 EventBridge is a serverless event bus service (formerly CloudWatch Events) that you can use to connect your applications with data from various sources. 
 
-It allows you to pass events from a source to an endpoint. It's a glue that holds your serverless application together.
+Allows you to pass events from a source to an endpoint.
 
-It's the fastest way to respond to things happening in your environment. At launch, EventBridge has limited throughput, which can be increased on request. It also has a typical latency of about half a second.
+Has limited throughput at launch, can be increased on request. 
 
-EventBridge is the only event-based service that integrates directly with third-party SaaS AWS Partners.
+Has a typical latency of about half a second.
 
-EventBridge also automatically ingests events **from** over 90 AWS services without the need for developers to create additional resources.
+It's the only event-based service that integrates directly with third-party SaaS AWS Partners.
 
-EventBridge currently supports over 15 AWS services as **targets**, including AWS Lambda, Amazon SQS, Amazon SNS, Amazon Kinesis Data Streams, Amazon Kinesis Data Firehose, ...
+It's the fastest way to respond to things happening in your environment.
+
+Automatically ingests events **from** over 90 AWS services.
+
+Supports over 15 AWS services as **targets**: AWS Lambda, Amazon SQS, Amazon SNS, Amazon Kinesis Data Streams, Amazon Kinesis Data Firehose, ...
+
+
+## Use cases
+
+EventBridge is recommended for applications that react to events from SaaS applications or AWS services.
+
+Common use case is triggering Lambda functions when an AWS API call happens.
 
 
 ## Concepts
 
-- **Events**: A recorded change in an AWS environment, SaaS partner, or one of your own configured applications/services. This also includes scheduled events.
-- **Rules**: Criteria used to match incoming events and send them to the appropriate targets. Based on either event patterns or schedules.
-- **Event Bus**: A router that receives events and delivers them to targets (destinations). Every account has a default bus, and you can create other custom buses for cross-account access.
+**Events**: A recorded change in an AWS environment, SaaS partner, or one of your own configured applications/services. This also includes scheduled events.
 
-![](./images/evb.png)
+**Rules**: Criteria used to match incoming events and send them to the appropriate targets. Based on either event patterns or schedules.
+
+**Event Bus**: A router that receives events and delivers them to targets (destinations). Every account has a default bus, and you can create other custom buses for cross-account access.
+
+![](https://d1.awsstatic.com/product-marketing/EventBridge/Product-Page-Diagram_Amazon-EventBridge%402xa.2ef6accf0d9ff4eb0856422599406e022b552073.png)
 
 
 ## Rule Triggers
@@ -33,7 +46,7 @@ or workflows based on two primary types of rule triggers.
 
 Define an event source and event pattern that will trigger your rule.
 
-Example: a trigger via an EC2 termination event. When the specified event pattern matches incoming events, the rule gets triggered. And then with that, any associated actions get executed.
+*Example: a trigger via an EC2 termination event. When the specified event pattern matches incoming events, the rule gets triggered. And then with that, any associated actions get executed.*
 
 ### Scheduled
 
@@ -69,10 +82,3 @@ that contains the details necessary for them
 to go ahead and investigate.
 
 ![](./images/event-bridge-arch.png)
-
-
-## Use cases
-
-EventBridge is recommended for applications that react to events from SaaS applications or AWS services.
-
-Common use case is triggering Lambda functions when an AWS API call happens.

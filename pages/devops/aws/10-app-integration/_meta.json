@@ -1,18 +1,15 @@
 {
-  "1-intro": {
-    "title": "Event-Driven Architectures on AWS"
-  },
   "2-event-bridge": {
     "title": "Amazon EventBridge"
   },
   "3-sns": {
     "title": "Amazon SNS"
   },
-  "4-sqs": {
-    "title": "Amazon SQS"
-  },
   "5-mq": {
     "title": "Amazon MQ"
+  },
+  "4-sqs": {
+    "title": "Amazon SQS"
   },
   "6-step-function": {
     "title": "AWS Step Functions"

@@ -2,25 +2,23 @@
 
 ## Overview
 
-Amazon SQS is a fully managed, message queuing service that you can use to decouple and scale microservices, distributed systems, and serverless applications.
+Amazon SQS is a fully managed, **message queuing service** that you can use to decouple and scale microservices, distributed systems, and serverless applications.
 
-Using Amazon SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
+You can send, store, and receive messages between software components, without losing messages or requiring other services to be available.
 
 One resource will write a message to an SQS queue, and then another resource will retrieve that message from SQS.
 
 SQS doesn't offer real-time.
 
-![](./images/amazon-sqs.png)
-
 
 ## Available Settings
 
-- **Delivery delay**: The amount of time a message is deplayed before beingadded to the queue. Default is 0, can set up to 15 minutes.
-- **Message size**: The maximum message size for the queue. Can be up to 256KB of text.
+- **Delivery delay**: The amount of time a message is deplayed before being added to the queue. Up to 15 minutes, default is 0.
+- **Message size**: The maximum message size for the queue. Up to **256KB** of text.
 - **Encryption**: Messages are encrypted in transit by default. Can enable "at-rest" too.
-- **Message retention**: The amount of time that Amazon SQS retains messages that remain in the queue. Default is 4 days, value from 1 minute to 14 days.
+- **Message retention**: The amount of time messages remain in the queue. From 1 minute to 14 days, default is **4 days**.
 - **Visibility timeout**: The length of time that a message received from a queue (by one consumer) won’t be visible to the other message consumers. If the consumer fails to process the message within the visibility timeout period, the message will reappear in the queue and become available for other consumers to receive and process.
-- **Receive message wait time**: The maximum amount of time that Amazon SQS waits for messages to become available after the queue gets a receive request.
+- **Receive message wait time**: The maximum wait time for messages to become available after the queue gets a receive request.
 - **Enable content-based deduplication**: Amazon SQS can automatically create deduplication IDs based on the body of the message.
 - **Enable high throughput FIFO**: This feature enables high throughput for messages in the queue. Choosing this option changes the related options (deduplication scope and FIFO throughput limit) to the required settings for enabling high throughput for FIFO queues.
 - **Redrive allow policy**: This policy defines which source queues can use this queue as the dead-letter queue.
@@ -57,7 +55,7 @@ Long polling offers the following benefits:
 ### Standard queues
 
 - Messages could be received out of order in your application
-- You can receive duplicate messages (visibility timeout is too low or delete API is not called).
+- You can receive duplicate messages (due to visibility timeout is too low or delete API is not called).
 - Nearly unlimited transactions per second.
 
 ### FIFO queues
@@ -65,9 +63,9 @@ Long polling offers the following benefits:
 - Guaranteed ordering. Message group ID helps ensures process order is one by one in a strict order, based on the group.
 - No message duplication. Messages matching deduplication IDs are not delivered during a deduplication interval.
 - 300 transactions per second (batching can achieve up to 3000).
-- You can enable **FIFO high throughput**, allow to process up to 9000 transactions per second, per API without batching, 90000 per second with batching.
 - Do not have the same level of performance as standard queues 
 - More expensive.
+- You can enable **FIFO high throughput**, allow to process up to 9000 transactions per second, per API without batching, 90000 per second with batching.
 
 ## Dead-Letter Queues
 
