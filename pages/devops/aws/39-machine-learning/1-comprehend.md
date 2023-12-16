@@ -4,11 +4,11 @@
 
 Comprehend uses natural-language processing (NLP) to help you **understand the meaning and sentiment in your text**.
 
-For example, you can automate understanding whether people are saying positive or negative things about your service.
-
 You can also pick up on key phrases.
 
 Comprehend is a way of automating comprehension at scale.
+
+*For example, you can automate understanding whether people are saying positive or negative things about your service.*
 
 
 ## Use cases

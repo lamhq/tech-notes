@@ -4,7 +4,7 @@
 
 SageMaker is a service to **build, train, deploy ML models** with fully managed infrastructure, tools, and workflows.
 
-SageMaker can be used for any generic ML solution.
+Can be used for any generic ML solution.
 
 
 ## Control panel sections
@@ -53,7 +53,7 @@ Dynamically add and remove instances to a production variant based on changes in
 
 You define and apply a scaling policy that uses a CloudWatch metric and target value, such as InvocationsPerInstance.
 
-To ensure high availability of SageMaker, Amazon recommends deploying it across multiple availability zones. If you deploy SageMaker into a single availability zone and that zone goes down, then SageMaker will go down as well. You can deploy SageMaker across two availability zones and set up some CloudWatch metrics. If one zone goes down, SageMaker will automatically provision your model in a separate availability zone.
+To ensure high availability of SageMaker, Amazon recommends deploying it across multiple AZs. You can deploy SageMaker across two AZs and set up some CloudWatch metrics. If one zone goes down, SageMaker will automatically provision your model in a separate availability zone.
 
 
 ## SageMaker Neo

@@ -2,9 +2,10 @@
 
 ## Time-Series Data
 
-Data points that are logged over a series of time, allowing you to track your data. Examples could be temperature readings from weather stations around the world, on the hour, every hour for years.
+Time-series data are data points that are logged over a series of time, allowing you to track your data. 
 
 Examples:
+- Temperature readings from weather stations around the world, on the hour, every hour for years.
 - IOT. IoT sensors relay thousands, millions, and billions of points of information depending on the setup. One use case is for agriculture.
 - Analytics. Large websites such as Netflix serve millions of users per second. Need to analyze incoming and outgoing web traffic.
 - DevOps Applications. Applications that change in response to users needs may need to be monitored continuously so they can scale correctly.

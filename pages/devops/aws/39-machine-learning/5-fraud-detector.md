@@ -5,7 +5,7 @@
 An AWS AI service that is built to **detect fraud in your data**.
 Create a fraud detection machine learning model that is based on your data. You can also quickly automate this process.
 
-Look for scenarios where you are asked to build a fraud detection machine learning model that is highly customized based on your data.
+Useful when you are asked to build a fraud detection machine learning model that is highly customized based on your data.
 
 
 ## Use cases
