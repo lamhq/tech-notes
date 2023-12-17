@@ -2,7 +2,7 @@
 
 AWS is responsible for some parts of your environment and you (the customer) are responsible for other parts. This concept is known as the shared responsibility model.
 
-![](./images/shared-resp-model.png)
+![](https://docs.aws.amazon.com/images/whitepapers/latest/security-overview-aws-lambda/images/shared-responsibility.png)
 
 
 ## Customers: Security in the Cloud

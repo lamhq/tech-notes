@@ -9,11 +9,11 @@ CloudFront is an external caching solution, it resides between your website and 
 
 The files is cached for a period of time specified by you, if a visitor requests an expired content, CloudFront checks the origin server for new version and copies it to edge location. 
 
-CloudFront also provides additional features, including security against multiple types of network and denial of service attacks, protection against sudden traffic spikes, and Lambda at Edge, which improves performance by running your Lambda code at edge locations.
+Provides features including security against multiple types of network and denial of service attacks, protection against sudden traffic spikes, and Lambda at Edge, which improves performance by running your Lambda code at edge locations.
 
-CloudFront provides real-time metrics and logging so that you can monitor what's being requested, where from, and how quickly. 
+Provides real-time metrics and logging so that you can monitor what's being requested, where from, and how quickly. 
 
-CloudFront's pricing is cost-effective, and it uses pay-as-you-go pricing with no minimum fees.
+Uses pay-as-you-go pricing with no minimum fees.
 
 CloudFront is the only option to add HTTPS to a static website being hosted in an S3 bucket.
 

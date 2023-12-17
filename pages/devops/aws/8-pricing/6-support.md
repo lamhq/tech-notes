@@ -1,4 +1,4 @@
-# AWS Support Plans
+# Support Plans
 
 ## Overview
 

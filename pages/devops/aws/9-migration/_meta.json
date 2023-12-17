@@ -1,6 +1,6 @@
 {
   "1-aws-caf": {
-    "title": "AWS Cloud Adoption Framework (AWS CAF)"
+    "title": "AWS Cloud Adoption Framework"
   },
   "2-strategies": {
     "title": "Migration Strategies"
@@ -17,19 +17,19 @@
   "6-transfer-family": {
     "title": "AWS Transfer Family"
   },
+  "9-app-migration": {
+    "title": "AWS Application Migration Service"
+  },
+  "10-dms": {
+    "title": "AWS Database Migration Service"
+  },
+  "11-sms": {
+    "title": "AWS Server Migration Services"
+  },
   "7-migration-hub": {
     "title": "AWS Migration Hub"
   },
   "8-app-discovery": {
     "title": "AWS Application Discovery Service"
-  },
-  "9-app-migration": {
-    "title": "AWS Application Migration Service (AWS MGN)"
-  },
-  "10-dms": {
-    "title": "Database Migration Service (AWS DMS)"
-  },
-  "11-sms": {
-    "title": "Server Migration Service"
   }
 }

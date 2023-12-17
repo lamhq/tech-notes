@@ -1,15 +1,5 @@
 # Migration Strategies
 
-6 Strategies for Migration:
-
-- Rehosting
-- Replatforming
-- Refactoring/re-architecting
-- Repurchasing
-- Retaining
-- Retiring
-
-
 ## Rehosting
 
 Rehosting also known as “lift-and-shift” involves moving applications without changes. 

@@ -4,14 +4,14 @@ The AWS Snow Family is a collection of physical devices that help to physically 
 
 AWS Snow Family is composed of **AWS Snowcone**, **AWS Snowball**, and **AWS Snowmobile**.
 
-![](./images/snow-family.png)
+![](https://www.whizlabs.com/blog/wp-content/uploads/2020/11/aws-snow-family.png)
 
 
 ## AWS Snowcone
 
 AWS Snowcone is a small, rugged, and secure edge computing and data transfer device.
 
-It features 2 vCPUs, 4 GB of memory, and 8 TB of usable storage.
+It features 2 vCPUs, 4 GB of memory, and **8 TB** of usable storage.
 
 Has direct IoT sensor integration.
 

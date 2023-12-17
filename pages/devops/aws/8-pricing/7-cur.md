@@ -6,7 +6,7 @@ It is the most comprehensive set
 of cost and usage data that is available to you
 for AWS spending.
 
-It allows you to publish your billing reports
+It allows you to **publish your billing reports**
 to an Amazon S3 bucket for centralized collection. Useful
 if you need to use those reports
 with a third party spending application.
@@ -14,7 +14,7 @@ with a third party spending application.
 Those reports break down the costs
 by certain time span (hour, day, month), service, resource, tags (similar to Cost Explorer).
 
-AWS CUR updates reports in Amazon S3 buckets once a day using CSV formats.
+AWS CUR updates reports in Amazon S3 buckets **once a day** using CSV formats.
 
 Built-in support for configuring reports to be queried with Athena, ingested to Redshift, or visualized with QuickSight
 

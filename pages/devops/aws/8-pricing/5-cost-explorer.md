@@ -2,7 +2,7 @@
 
 ## Overview
 
-AWS Cost Explorer is an easy-to-use tool that allows you to visualize and analyze your cloud costs.
+AWS Cost Explorer is an easy-to-use tool that allows you to **visualize and analyze your cloud costs**.
 
 You can generate custom reports based on a variety of factors, including resource tags.
 

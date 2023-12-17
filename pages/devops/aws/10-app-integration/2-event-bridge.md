@@ -4,7 +4,7 @@
 
 EventBridge is a serverless event bus service (formerly CloudWatch Events) that you can use to connect your applications with data from various sources. 
 
-Allows you to pass events from a source to an endpoint.
+Allows you to **pass events from a source to an endpoint**.
 
 Has limited throughput at launch, can be increased on request. 
 

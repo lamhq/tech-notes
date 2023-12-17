@@ -8,7 +8,7 @@ It's essentially an **orchestration service** that automates account creation an
 
 It's an extension or offers extensions to AWS Organizations to prevent governance drift, and leverages different guardrails.
 
-It's the quickest way to create and manage a secure, compliant, multi-account environment.
+The quickest way to create and manage a secure, compliant, multi-account environment.
 
 Keywords and Scenarios: Automated multi-account governance, guardrails, account orchestration, and governed user account provisioning.
 
@@ -24,16 +24,18 @@ Keywords and Scenarios: Automated multi-account governance, guardrails, account 
 ### Guardrails
 
 Guardrails have two different types:
-- **Preventive**:
-  - ensures accounts maintain governance by disallowing violating actions.
-  - It does by leveraging service control policies.
-  - Statuses include: **enforced**, **not enabled**.
-  - Supported in all Regions.
-- **Detective**:
-  - Detects and alerts on noncompliant resources within all accounts
-  - Leverages AWS Config rules
-  - Statuses of **clear**, **in violation**, or **not enabled**
-  - Only apply to certain Regions
+
+**Preventive**:
+- ensures accounts maintain governance by disallowing violating actions.
+- It does by leveraging service control policies.
+- Statuses include: **enforced**, **not enabled**.
+- Supported in all Regions.
+
+**Detective**:
+- Detects and alerts on noncompliant resources within all accounts
+- Leverages AWS Config rules
+- Statuses of **clear**, **in violation**, or **not enabled**
+- Only apply to certain Regions
 
 
 ## Example diagram

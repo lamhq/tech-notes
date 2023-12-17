@@ -2,15 +2,11 @@
 
 ## Overview
 
-It's a service that analyzes configuration
-and utilization metrics of your resources
-and it helps you **optimize** them.
+It's a service that **analyzes configuration and utilization metrics of your resources** and it helps you optimize them.
 
-It'll report your current usage optimizations
-and give you potential recommendations.
+It'll report your current usage optimizations and give you potential recommendations.
 
-It provides graphical history data
-and projected utilization metrics.
+It provides graphical history data and projected utilization metrics.
 
 You can use these recommendations
 to make informed decisions.

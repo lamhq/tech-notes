@@ -6,7 +6,10 @@ Amplify offers tools for front-end web and mobile developers to quickly build fu
 
 Amplify offers two services for developers: Amplify Hosting, Amplify Studio.
 
-Amplify could be the answer for scenarios like: Managed server-side rendering in AWS, easy mobile development, and developers running full-stack applications.
+Keywords: 
+- managed server-side rendering in AWS
+- easy mobile development
+- develop full-stack applications
 
 
 ## Amplify Hosting

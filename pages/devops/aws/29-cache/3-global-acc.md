@@ -2,9 +2,9 @@
 
 ## Overview
 
-AWS Global Accelerator is a networking service that sends your users' traffic through AWS's global network infrastructure via accelerators.
+AWS Global Accelerator is a networking service that **sends your users' traffic through AWS's global network infrastructure** via accelerators.
 
-It can increase performance and help deal with IP caching by leveraging Anycast IP addresses.
+It can increase performance and help **deal with IP caching** by leveraging Anycast IP addresses.
 
 It is meant for TCP or UDP traffic, different from CloudFront.
 

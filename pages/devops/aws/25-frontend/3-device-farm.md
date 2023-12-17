@@ -6,7 +6,7 @@ Device Farm is an application testing service for testing and interacting with A
 
 It's usable on actual phones and tablets hosted by AWS.
 
-When a scenario that requires application testing on mobile devices in AWS (in particular, needing actual phones or tablets for automated testing), think AWS Device Farm.
+Keywords: application testing on mobile devices in AWS (needing actual phones or tablets for automated testing).
 
 
 ## How to use

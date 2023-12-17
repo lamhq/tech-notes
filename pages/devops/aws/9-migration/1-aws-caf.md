@@ -1,6 +1,6 @@
 # AWS Cloud Adoption Framework (AWS CAF)
 
-## Six core perspectives of the Cloud Adoption Framework
+## Six core perspectives of CAF
 
 AWS CAF organizes guidance into six areas of focus, called Perspectives.
 

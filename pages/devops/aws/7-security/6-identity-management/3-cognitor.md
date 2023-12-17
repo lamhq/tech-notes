@@ -52,4 +52,4 @@ to an identity pool** for AWS credentials.
 You use AWS credentials
 to access your AWS services.
 
-![](./images/cognito-workflow.png)
+![](https://docs.aws.amazon.com/images/cognito/latest/developerguide/images/scenario-cup-cib.png)

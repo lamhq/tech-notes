@@ -4,7 +4,7 @@
 
 AWS Config is a service that serves as an inventory management and control tool for your infrastructure.
 
-It allow you to show the configuration history of your infrastructure over time.
+Allows to show the configuration history of your infrastructure over time.
 
 Offers the ability to create rules to make sure resources conform to your requirements.
 
