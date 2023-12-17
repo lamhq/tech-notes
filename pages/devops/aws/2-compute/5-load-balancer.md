@@ -15,7 +15,7 @@ Elastic Load Balancing is the AWS service that automatically distributes incomin
 
 **Elastic Load Balancing** and **Amazon EC2 Auto Scaling** are separate services, they work together to help ensure that applications running in Amazon EC2 can provide high performance and availability.
 
-![](./images/elb.jpg)
+![](https://media.amazonwebservices.com/blog/2014/elb_instances_1.png)
 
 
 ## Health Checks

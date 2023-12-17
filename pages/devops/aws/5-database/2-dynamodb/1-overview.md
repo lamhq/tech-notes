@@ -83,7 +83,7 @@ You can switch between the different capacity modes twice per 24 hours per table
 - Run within an Amazon VPC
 - Full control. You determine the node size and count for the cluster, TTL for the data, and maintenance windows for changes and updates
 
-![](./images/dax.png)
+![](https://d1.awsstatic.com/product-marketing/DynamoDB/dax_high_level.e4af7cc27485497eff5699cdf22a9502496cba38.png)
 
 
 ## DynamoDB Transactions

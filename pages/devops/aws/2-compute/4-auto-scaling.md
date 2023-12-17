@@ -10,7 +10,7 @@ When creating an **Auto Scaling group**, you can set the following capacity attr
 - **Minimum capacity**: The minimum number of instances that should be running in the group at any given time. This value is used to ensure that the group always has a minimum number of instances running, even if demand is low.
 - **Maximum capacity**: The maximum number of instances that should be running in the group at any given time. This value is used to ensure that the group does not exceed a certain size, even if demand is high.
 
-![](./images/auto-scaling.jpg)
+![](https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/as-basic-diagram.png)
 
 Auto-scaling groups will contain the location of where your instances will live (VPC, subnet).
 

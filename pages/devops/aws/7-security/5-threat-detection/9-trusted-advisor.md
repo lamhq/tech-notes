@@ -28,7 +28,7 @@ There are different support levels:
 
 ## AWS Trusted Advisor Dashboard
 
-![](./images/trusted-advisor.png)
+![](https://d1.awsstatic.com/support/jp/Trusted%20Advisor%20best%20practice%20checks%20categories.76a13b0b2bf982c874d0d03e6138b7b73e45680c.png)
 
 When you access the Trusted Advisor dashboard on the AWS Management Console, you can review completed checks for cost optimization, performance, security, fault tolerance, and service limits.
 
