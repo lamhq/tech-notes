@@ -9,6 +9,8 @@ a large number of physical, virtual, or cloud servers to avoid cutover windows o
 
 MGN replicates source servers into AWS, and automatically converts and launches on AWS to migrate quickly.
 
+![](https://d1.awsstatic.com/pdp-headers/2022/application-migration/MGN-How-It-Works-Diagram_biggerfonts1.1cb6cd71af1796ed95842d71c7b7a588a81c442d.jpg)
+
 
 ## Features
 

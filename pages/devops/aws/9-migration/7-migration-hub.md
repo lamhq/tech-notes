@@ -16,9 +16,9 @@ It integrates with Server Migration Service (SMS) and Database Migration Service
 
 ## Migration phases
 
-- Discover: Find servers and databases to plan your migrations.
-- Migrate: Connect tools to Migration Hub, and begin migrating.
-- Track: Follow migration statuses and progress.
+- **Discover**: Find servers and databases to plan your migrations.
+- **Migrate**: Connect tools to Migration Hub, and begin migrating.
+- **Track**: Follow migration statuses and progress.
 
 
 ## Tips

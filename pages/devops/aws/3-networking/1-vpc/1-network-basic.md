@@ -19,7 +19,7 @@ CIDR notation looks like this:
 
 ![](./images/cidr.png)
 
-It begins with a starting IP address and is separated by a forward slash (the "/” character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
+It begins with a starting IP address and is separated by a forward slash (the "/" character) followed by a number. The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. The rest are flexible.
 
 In AWS, the smallest IP range you can have is `/28`, which provides you **16** IP addresses. 
 

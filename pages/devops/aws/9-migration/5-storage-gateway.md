@@ -17,7 +17,7 @@ AWS Storage Gateway offers **three distinct storage gateways**, each catering to
 
 File Gateway is a network file share (NFS/SMB) that can be mounted locally and backs up your data into S3.
 
-You can either back up all of your data into the cloud or keep a cached copy of the most recently used files. This means you don't have to download the recently used content out of S3 if you don't want to.
+You can either back up all of your data into the cloud or keep a cached copy of the most recently used files.
 
 This allows those users to **extend on-prem into the cloud**. You get all the benefits of having the data physically on-prem and all of the benefits of having it backed up in S3.
 
@@ -32,7 +32,7 @@ The scenario is where users don't have enough on-prem storage space and your sol
 
 Volume Gateway is an iSCSI mount that backs up the disks that VMs are currently reading and writing to.
 
-You can choose between cached or stored mode. In cached mode, frequently accessed data is stored locally for low-latency access, while in stored mode, all data is stored locally and asynchronously backed up to S3.
+You can choose between cached or stored mode. In **cached mode**, frequently accessed data is stored locally for low-latency access, while in **stored mode**, all data is stored locally and asynchronously backed up to S3.
 
 The important part is that it's all backed up inside of S3. From here, you can easily create EBS snapshots and restore volumes inside of AWS.
 
