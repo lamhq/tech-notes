@@ -48,17 +48,18 @@ You can associate a network ACL with multiple subnets. Each subnet can and must 
 
 Security group are virtual firewalls for a particular entity, such as an EC2 instance.
 
-By default, all inbound traffic are blocked, all outbound traffic are allowed.
+By default, all inbound traffic are blocked, all outbound traffic are allowed. To allow everything, use `0.0.0.0/0`.
 
 Security groups are the last line of defense.
 
-To allow everything, use `0.0.0.0/0`.
-
 ![](https://sysdig.com/wp-content/uploads/AWS_Security_Groups_Rules_Details.png)
 
-Security groups are stateful: if you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules.
+Security groups are stateful: Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
 
-Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+Your VPC includes a default security group. You can't delete this group, however, you can change the group's rules.
+
+An Amazon EC2 instance can be associated with up to 5 security groups.
+
 
 ### Security group pattern
 

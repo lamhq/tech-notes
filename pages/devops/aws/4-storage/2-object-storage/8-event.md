@@ -25,7 +25,7 @@ For example, S3 notification can be set up to notify you when objects are restor
 
 Amazon S3 can send event notification messages to the following destinations:
 
-- Amazon Simple Notification Service (Amazon SNS) topics
-- Amazon Simple Queue Service (Amazon SQS) queues
+- Amazon SNS topics
+- Amazon SQS queues
 - AWS Lambda function
 - Amazon EventBridge

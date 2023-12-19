@@ -2,11 +2,11 @@
 
 ## Overview
 
-Using Detective, you can **analyze, investigate, and quickly identify** the root cause of potential security issues or suspicious activities.
+Using Detective, you can analyze, investigate, and quickly **identify the root cause** of potential security issues or suspicious activities.
 
 Detective operates across multiple AWS services and analyzes the root cause of an event (using machine learning, statistical analysis, and graph theory).
 
-Detective uses a number of sources within your AWS account (VPC Flow Logs, CloudTrail logs, Amazon Elastic Kubernetes Service audit logs, and Amazon GuardDuty findings) to automatically create an overview of your users, resources, and the interactions between them over time.
+Detective uses a number of sources within your AWS account to automatically create an overview of your users, resources, and the interactions between them over time (VPC Flow Logs, CloudTrail logs, Amazon Elastic Kubernetes Service audit logs, and Amazon GuardDuty findings).
 
 Do not confuse this with **Inspector**, which is an automated vulnerability management service that continually scans EC2 and container workloads for software vulnerabilities and unintended network exposure.
 

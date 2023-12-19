@@ -64,7 +64,7 @@ and configure your function to reference that for its code
 
 ## How Lambda Works
 
-![](./images/aws-lambda.png)
+![](https://blog.vsoftconsulting.com/hubfs/AWS%20Lambda%20working.png)
 
 1. You upload your code to Lambda. 
 1. You set your code to trigger from an event source, such as AWS services, mobile applications, or HTTP endpoints.
@@ -91,13 +91,13 @@ AWS Lambda Power Turning also supports cross-Region invocations, and you can ena
 
 AWS Lambda Powertools helps you optimize your Lambda functions and use best practices. 
 
-AWS Lambda Powertools is a suite of utilities for AWS Lambda functions that is designed to make it easier to adopt best practices such as tracing, structured logging, custom metrics, idempotency, batching, and more. 
+It's a suite of utilities for AWS Lambda functions that is designed to make it easier to adopt best practices such as tracing, structured logging, custom metrics, idempotency, batching, and more. 
 
 
 ## Reuse execution environment 
 
 An optimization technique is to move certain initialization tasks in your code so they are outside the handler. These tasks can then be reused across invocations (which is also known as execution environment reuse).
 
-> To do this, initialize SDK clients and database connections outside of the function handler, and cache static assets locally in the /tmp directory. Subsequent invocations that are processed by the same instance of your function can reuse these resources. This reuse saves cost by reducing function run time. 
+> To do this, initialize SDK clients and database connections outside of the function handler, and cache static assets locally in the `/tmp` directory. Subsequent invocations that are processed by the same instance of your function can reuse these resources. This reuse saves cost by reducing function run time. 
 
 To avoid potential data leaks across invocations, don’t use the execution environment to store user data, events, or other information with security implications.

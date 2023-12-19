@@ -11,9 +11,6 @@
   "4-forecast": {
     "title": "Amazon Forecast"
   },
-  "5-fraud-detector": {
-    "title": "Amazon Fraud Detector"
-  },
   "6-speech": {
     "title": "Working with Text and Speech"
   },

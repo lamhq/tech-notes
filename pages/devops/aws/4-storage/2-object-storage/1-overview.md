@@ -79,30 +79,38 @@ for a particular bucket.
 
 Bucket policies are attached to buckets and they will apply across the bucket as a whole.
 
+Use cases:
+- Make entire buckets public using bucket policies.
+- Enable cross-account access to S3, without using IAM roles.
+- When your IAM policies exceed the size limit, S3 bucket policies have a larger size limit.
+
+Here's an example of a policy that enforces encryption for all objects in your bucket:
+
 ```json
 {
-  "Version":"2012-10-17",
-  "Statement":[
+  "Version": "2012-10-17",
+  "Statement": [
     {
-      "Sid":"PublicRead",
-      "Effect":"Allow",
-      "Principal":"*",
-      "Action":[
-        "s3:GetObject"
-      ],
-      "Resource":[
-        "arn:aws:s3:::employeebucket/*"
-      ]
+      "Sid": "RequireEncryption",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*",
+      "Condition": {
+        "StringNotEquals": {
+          "s3:x-amz-server-side-encryption": "AES256"
+        }
+      }
     }
   ]
 }
 ```
 
-Use cases:
+The `Principal` element specifies the entity (user, group, or service) that is granted or denied permissions to perform actions on the bucket or its objects. Value can be:
+- `*`: the policy applies to anyone
+- ARN of AWS user, IAM role, IAM group
+- AWS services (like Lambda, CloudFront, etc.). For example: `"Principal": "lambda.amazonaws.com"`
 
-- You can make entire buckets public using bucket policies.
-- You need a simple way to do cross-account access to S3, without using IAM roles.
-- Your IAM policies bump up against the defined size limit. S3 bucket policies have a larger size limit.
 
 ### Access Control Lists (ACLs)
 

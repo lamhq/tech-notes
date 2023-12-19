@@ -25,5 +25,8 @@
   },
   "5-optimizing-perf": {
     "title": "Optimizing Performance"
+  },
+  "transfer-accel": {
+    "title": "Transfer Acceleration"
   }
 }

@@ -14,7 +14,7 @@ and not meant to be replacement for RDS databases.
 
 Support a lot of data, up to **16 PB**. No need to split up your large datasets.
 
-**High performance**. Offer up to 10x the performance of other datawarehouses offered in the cloud.
+**High performance**. Can perform near real-time complex querying on massive data sets.
 
 Storage of data is **column-based** instead of row-based. Allows for efficient parallel queries.
 Make it a powerful choise for data analysis and data retrieval.

@@ -56,7 +56,7 @@ The DB instance uses Amazon Elastic Block Store (EBS) volumes as its storage lay
 
 ## Multi-AZ
 
-An exact copy of your production database in another Availability Zone.
+Amazon RDS automatically creates a primary DB instance and synchronously replicates the data to an instance in a different AZ.
 
 Used for disaster recovery, not for performance.
 

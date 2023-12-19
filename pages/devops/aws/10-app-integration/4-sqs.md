@@ -45,24 +45,28 @@ Long polling helps reduce the cost of using Amazon SQS by reducing the number of
 
 Long polling offers the following benefits:
 
-- Reduces empty responses by letting Amazon SQS wait until a message is available in a queue before it sends a response (In rare cases, you might receive empty responses even when a queue still contains messages, especially if you specify a low value for the `ReceiveMessageWaitTimeSeconds` parameter).
+- Reduces empty responses by letting Amazon SQS wait until a message is available in a queue before it sends a response.
 - Reduces false empty responses by querying all—instead of a subset of—Amazon SQS servers.
 - Returns messages as soon as they become available.
+
+In rare cases, you might receive empty responses even when a queue still contains messages, especially if you specify a low value for the `ReceiveMessageWaitTimeSeconds` parameter.
 
 
 ## Standard vs FIFO queue
 
 ### Standard queues
 
-- Messages could be received out of order in your application
+- Messages could be received out of order
 - You can receive duplicate messages (due to visibility timeout is too low or delete API is not called).
 - Nearly unlimited transactions per second.
 
+Tips: to prevent duplication, you can include a unique ordering ID in each message, and have the backend application use this to deduplicate messages.
+
 ### FIFO queues
 
-- Guaranteed ordering. Message group ID helps ensures process order is one by one in a strict order, based on the group.
+- Guaranteed ordering (using message group ID).
 - No message duplication. Messages matching deduplication IDs are not delivered during a deduplication interval.
-- 300 transactions per second (batching can achieve up to 3000).
+- **300** transactions per second (batching up to **3000**).
 - Do not have the same level of performance as standard queues 
 - More expensive.
 - You can enable **FIFO high throughput**, allow to process up to 9000 transactions per second, per API without batching, 90000 per second with batching.

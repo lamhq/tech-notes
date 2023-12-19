@@ -8,12 +8,11 @@ You can view how the health events affect you and your services, resources, and 
 
 AWS attempts to maintain timeliness and relevant information with the events.
 
-It helps you be better prepared and allows you to implement automation regarding these different event types. You can view upcoming maintenance tasks that may affect your accounts and resources.
+It helps you be better prepared and allows you to **implement automation regarding different event types**. You can view upcoming maintenance tasks that may affect your accounts and resources.
 
 It has near-instant delivery of notifications and alerts to speed up troubleshooting or prevention.
 
-You can automate actions based on incoming events using Amazon Event Bridge. You can look for an event coming into this service, kick off some type of automation via Event Bridge,
-which may be connected to an SNS topic or maybe a Lambda function.
+You can automate actions based on incoming events using **Amazon Event Bridge**. You can look for an event coming into this service, kick off some type of automation via Event Bridge, which may be connected to an SNS topic or maybe a Lambda function.
 
 Keywords: checking alerts for service health and automating the reboot of EC2 instances for AWS maintenance.
 

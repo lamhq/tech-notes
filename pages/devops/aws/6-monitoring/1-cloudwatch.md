@@ -42,8 +42,8 @@ Types of metrics are supported in CloudWatch:
 These metrics are provided out of the box and do not require any additional work on your part to configure.
 
 Examples:
-- CPU utilization: how much of your virtual CPU resources are being utilized over a specified amount of time.
-- Network throughput: how much data is going in/out of your particular resource.
+- **CPU utilization**: how much of your virtual CPU resources are being utilized over a specified amount of time.
+- **Network throughput**: how much data is going in/out of your particular resource.
 
 
 ### Custom
@@ -53,9 +53,9 @@ These metrics will need to be provided by using the CloudWatch agent installed o
 Your instances need connectivity and permission for the CloudWatch API.
 
 Examples:
-- Memory utilization: how much of your available memory
+- **Memory utilization**: how much of your available memory
 is actually being utilized on your instances.
-- Storage capacity: for your elastic block store device
+- **Storage capacity**: for your elastic block store device
 
 > Let's say for your application you wanted to record the number of page views your website gets. It's an application-level metric, meaning that it's not something the EC2 instance would post to CloudWatch by default. This is where custom metrics come in. 
 

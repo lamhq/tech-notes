@@ -11,7 +11,7 @@
   "4-security": {
     "title": "Security"
   },
-  "5-connect": {
+  "connect": {
     "title": "Connect your VPC to other networks"
   }
 }

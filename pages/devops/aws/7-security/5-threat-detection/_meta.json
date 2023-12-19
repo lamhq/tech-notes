@@ -14,6 +14,9 @@
   "5-detective": {
     "title": "Amazon Detective"
   },
+  "5-fraud-detector": {
+    "title": "Amazon Fraud Detector"
+  },
   "9-trusted-advisor": {
     "title": "AWS Trusted Advisor"
   }
