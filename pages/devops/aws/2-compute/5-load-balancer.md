@@ -24,10 +24,7 @@ All AWS load balancers can be configured with health checks.
 
 Health checks periodically send requests to load balancers' registered instances to test their status.
 
-The load balancer performs health checks on all registered instances, whether the instance is in a healthy state or an unhealthy state.
-
-- The status of the instances that are healthy at the time of the health check is `InService`.
-- The status of any instances that are unhealthy at the time of the health check is `OutOfService`.
+The load balancer performs health checks on all registered instances, whether the instance is in a healthy state (status = `InService`) or an unhealthy state (status = `OutOfService`).
 
 The load balancer routes requests only to the healthy instances. When the load balancer determines an instance is unhealthy, it stops routing requests to that instance. The load balancer resumes routing requests to the instance when it has been restored to a healthy state.
 
@@ -36,21 +33,11 @@ The load balancer routes requests only to the healthy instances. When the load b
 
 The ELB service is made up of three main components:
 
-- Listeners: To define a listener, a port must be provided as well as the protocol, depending on the load balancer type. There can be many listeners for a single load balancer.
-- Target groups: The backend servers, or server-side, is defined in one or more target groups. This is where you define the type of backend you want to direct traffic to, such as EC2 Instances, AWS Lambda functions, or IP addresses. Also, a health check needs to be defined for each target group.
-- Rules: To associate a target group to a listener, a rule must be used. Rules are made up of a condition that can be the source IP address of the client and a condition to decide which target group to send the traffic to.
+- **Listeners**: To define a listener, a port must be provided as well as the protocol, depending on the load balancer type. There can be many listeners for a single load balancer.
+- **Target groups**: The backend servers, or server-side, is defined in one or more target groups. This is where you define the type of backend you want to direct traffic to, such as EC2 Instances, AWS Lambda functions, or IP addresses. Also, a health check needs to be defined for each target group.
+- **Rules**: To associate a target group to a listener, a rule must be used. Rules are made up of a condition that can be the source IP address of the client and a condition to decide which target group to send the traffic to.
 
 After the load balancer receives a request, it evaluates the listener rules in priority order to determine which rule to apply, and then selects a target from the target group for the rule action.
-
-
-## Deregistration Delay
-
-Deregistration Delay allows Load Balancers to keep existing connections open if the EC2 instances are de-registered or become unhealthy.
-
-This enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy.
-
-You can disable deregistration delay if you want your load balancer to immediately close
-connections to the instances that are de-registering or have become unhealthy.
 
 
 ## Types of Load Balancers
@@ -58,15 +45,6 @@ connections to the instances that are de-registering or have become unhealthy.
 ### Application Load Balancer (Layer 7)
 
 - Operate at application layer (layer 7).
-
-Limitations:
-- Only support HTTP and HTTPS. You must deploy SSL/TLS server certificate on your load balancer so it can decrypt requests before sending them to targets
-
-Concepts:
-- **Listeners**: A listener checks for connection requests from clients, using the protocol and port you configure.
-- **Rules**: Determine how the load balancer routes requests to its registered targets.
-Each rule consists of a priority, one or more actions, and one or more conditions.
-- **Target Groups**: Each target group routes requests to one or more registered targets, such as EC2 instances, using the protocol and port number you specify.
 
 Features:
 - **Routes traffic based on request data**: HTTP protocol, the URL path, host, HTTP headers, method, source IP address.
@@ -77,6 +55,9 @@ Features:
 - Support **round-robin** routing algorithm.
 - Support **least outstanding** request routing algorithm. If the requests to the backend vary in complexity where one request may need a lot more CPU time than another, then the least outstanding request algorithm is more appropriate.
 - Support **sticky sessions**. Allow requests to be sent to the same backend server (uses HTTP cookie to track)
+
+Limitations:
+- Only support HTTP/HTTPS. SSL/TLS server certificate must be deployed to decrypt requests before sending to targets
 
 
 ### Network Load Balancer (Layer 4)
@@ -135,3 +116,13 @@ This means the application is having issues. This could be either at the web ser
 | Redirects | ✔ |  |
 | Fixed response | ✔ |  |
 | User authentication | ✔ |  |
+
+
+## Deregistration Delay
+
+Deregistration Delay allows Load Balancers to keep existing connections open if the EC2 instances are de-registered or become unhealthy.
+
+This enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy.
+
+You can disable deregistration delay if you want your load balancer to immediately close
+connections to the instances that are de-registering or have become unhealthy.

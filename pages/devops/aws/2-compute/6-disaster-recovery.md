@@ -1,19 +1,23 @@
 # Disaster Recovery Strategies
 
-## Recovery Point Objective (RPO)
+## Recovery Point Objective
 
-In the event of a disaster/failure, **At what point in time do you want your data recovered to?**
+Recovery Point Objective (RPO) represents the **maximum allowable data loss** after recovering from a disaster, failure, or similar event. It’s measured in terms of time.
 
-Put simply, how much data can you afford to lose? Twenty-four hours? Twelve hours? Minutes? Seconds?
+*For instance, if an organization has an RPO of 60 minutes, it means they need to back up their system every 60 minutes.*
 
-Typically speaking, the lower the time, the greater the cost.
+The lower the time, the greater the cost to achieve that.
+
+RPO focuses on data loss tolerance.
 
 
-## Recovery Time Objective (RTO)
+## Recovery Time Objective
 
-In the event of a failure, **how fast do you need your environment recovered?** (i.e., the downtime the business can handle).
+Recovery Time Objective (RTO) refers to the **maximum allowable time to recover** and resume normal operations after a disaster or disruption.
 
-> How long can your website be down?
+RTO deals with how quickly an organization can resume business processes after a disaster.
+
+*How long can your website be down?*
 
 
 ## Backup and Restore

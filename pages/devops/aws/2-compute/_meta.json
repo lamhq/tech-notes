@@ -4,6 +4,6 @@
   "3-serverless": { "title": "Serverless" },
   "4-auto-scaling": { "title": "Auto Scaling" },
   "5-load-balancer": { "title": "Elastic Load Balancing" },
-  "6-disaster-recovery": { "title": "Disaster Recovery Strategies" },
-  "7-beanstalk": { "title": "Elastic Beanstalk" }
+  "7-beanstalk": { "title": "Elastic Beanstalk" },
+  "6-disaster-recovery": { "title": "Disaster Recovery Strategies" }
 }

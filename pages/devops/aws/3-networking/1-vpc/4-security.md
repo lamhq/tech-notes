@@ -9,7 +9,7 @@
 
 ## Network ACLs (secure subnets)
 
-Network ACLs are the first line of defense. Internet packet enters into a VPC through an internet gateway. Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
+Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
 
 A network access control list (ACL) is a virtual firewall that controls trafic in and out of subnet.
 
@@ -19,7 +19,7 @@ NACL rules are evaluated by rule number from **lowest to highest** and executed 
 
 **Default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
 
-**Network ACLs are stateless**; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa). If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
+**Network ACLs are stateless**. Responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa). If you don't include the outbound range, your server would respond but the traffic would never leave the subnet.
 
 You can block IP addresses using network ACLs (not security groups).
 

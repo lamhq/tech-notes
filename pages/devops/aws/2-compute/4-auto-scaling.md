@@ -83,9 +83,9 @@ Capability to wait for up to 2 hours. You could have an instance waiting to comp
 
 Instance Warm-up and Cooldown give instances the amount of time to respond to load and respond to health checks.
 
-**Instance Warm-up** stops instances from being placed behind the load balancer. It helps your instances to avoid fail the health check, and being terminated prematurely.
+**Instance Warm-up** ensures that newly launched instances have sufficient time to start handling application traffic before being considered part of the Auto Scaling group. It helps your instances to avoid fail the health check, and being terminated prematurely (until the warm-up time expires, a newly launched instance is not counted toward the aggregated metrics of the Auto Scaling group).
 
-**Instance cooldown** pauses auto scaling for a set amount of time. Helps ASG to scale successfully without overdoing it.
+**Instance cooldown** helps ASG to scale successfully without overdoing it. After an instance is launched or terminated, the Auto Scaling group suspends scaling activities for the specified cooldown period (default is 300 seconds).
 
 
 ## Steady state groups
@@ -99,9 +99,9 @@ It's a highly available solution for **a legacy codebase/resource that can't be 
 
 **ELBs are essential.**
 
-Make sure you enable health checks from load balancers. Otherwise, instances won't be terminated and replaced when they fail health checks.
-
 For a ELB can send traffic to a new EC2 instance, it needs to validate that the application running on that EC2 instance is available. This validation is done via the health checks feature of ELB.
+
+Make sure you enable health checks from load balancers. Otherwise, instances won't be terminated and replaced when they fail health checks.
 
 
 ## Tips

@@ -27,16 +27,16 @@ A subnet is belong to an AZ.
 
 When you create a subnet, you need to choose three settings.
 
-- The  VPC you want your subnet to live in, in this case VPC (`10.0.0.0/16`).
-- The Availability  Zone you want your subnet to live in, in this case `AZ1`.
-- A CIDR  block for your subnet, which must be a subset of the VPC CIDR block, in  this case `10.0.0.0/24`.
+- The  VPC you want your subnet to live in.
+- The Availability  Zone you want your subnet to live in.
+- A CIDR  block for your subnet, which must be a subset of the VPC CIDR block.
 
 
 ### Public and private subnet
 
 Subnets can be public or private.
 
-**Public subnets** contain resources that need to be accessible by the public. Subnet's traffic is routed to an internet gateway. You need to enable "auto-assign public IPv4 address" in subnet setting.
+**Public subnets** directly connected to an internet gateway, allowing resources within it to access the public internet. You need to enable "auto-assign public IPv4 address" in subnet setting.
 
 **Private subnets** contain resources that should be accessible only through your private network, such as a database.
 
@@ -45,17 +45,16 @@ In a VPC, subnets can communicate with each other.
 
 ### Reserved IPs
 
-For AWS to configure your VPC appropriately, AWS reserves five IP addresses in each subnet. These IP addresses are used for routing, Domain Name System (DNS), and network management.
+**AWS reserves five IP addresses in each subnet**. These IP addresses are used for routing, Domain Name System (DNS), and network management.
 
 *For example, consider a VPC with the IP range `10.0.0.0/22`. The VPC includes 1,024 total IP addresses. This is divided into four equal-sized subnets, each with a `/24` IP range with 256 IP addresses. Out of each of those IP ranges, there are only 251 IP addresses that can be used because AWS reserves five.*
 
-![](https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/aws-networking/discover-amazon-vpc/images/c6d157a9777667feb02751f85c900413_b-7-eac-832-5-d-64-4-f-24-bfe-3-41-c-320-b-7-e-6-fc.png)
+![](https://media.licdn.com/dms/image/D4E12AQEu7jlm0CpbhA/article-cover_image-shrink_600_2000/0/1678029438590?e=2147483647&v=beta&t=790i4NTQzpGOn7sTBbrgFn83rvpwmk78WjzDaLtY-GU)
 
 
 ### Best practices
 
 - **Maintain redundancy and fault tolerance**: When you create your subnets, create at least two subnets configured in two different Availability Zones. In this case, if one of these AZs fail, you still have your resources in another AZ available as backup.
-  ![](https://res.cloudinary.com/hy4kyit2a/f_auto,fl_lossy,q_70/learn/modules/aws-networking/discover-amazon-vpc/images/b609055191d4d3b1230a3b3d9f9ee96b_608-f-724-d-c-63-d-4-d-6-a-880-d-407-fc-5-f-4-ae-20.png)
 - **Setting IP range**: A common practice is to create a VPC with a IP range of `/16` and create subnets with a IP range of `/24`. This provides a large amount of IP addresses to work with at both the VPC and subnet level.
 
 
