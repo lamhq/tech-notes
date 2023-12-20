@@ -9,11 +9,9 @@ If the Spot price goes above your maximum, you have **2 minutes** to choose whet
 When we create our spot instances, we're creating a spot request including:
 - maximum price
 - launch specifications (AMI)
-- request type: can either be one-time or persistent
-
-If request type is **persistent**, you have to say when the request is valid from and when it's valid to.
-
-With the request type as **one-time**, as soon as the spot price goes above our maximum price, instances will all be stopped or terminated depending on what you configure.
+- request type:
+  - **persistent**: you have to say when the request is valid from and when it's valid to
+  - **one-time**: instances will be stopped or terminated depending on what you configure as soon as the spot price goes above our maximum price
 
 
 ## Terminate spot instances

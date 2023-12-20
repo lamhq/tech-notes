@@ -2,33 +2,19 @@
 
 ## Overview
 
-**Amazon EC2 Auto Scaling** enables you to automatically add or remove Amazon EC2 instances in response to changing application demand.
-
-When creating an **Auto Scaling group**, you can set the following capacity attributes:
-
-- **Desired capacity**: The number of instances that should be running in the group after creation. This value can be adjusted manually or automatically based on scaling policies.
-- **Minimum capacity**: The minimum number of instances that should be running in the group at any given time. This value is used to ensure that the group always has a minimum number of instances running, even if demand is low.
-- **Maximum capacity**: The maximum number of instances that should be running in the group at any given time. This value is used to ensure that the group does not exceed a certain size, even if demand is high.
-
-![](https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/as-basic-diagram.png)
+Amazon EC2 Auto Scaling enables you to automatically add or remove Amazon EC2 instances in response to changing application demand.
 
 Auto-scaling groups will contain the location of where your instances will live (VPC, subnet).
 
-You can leverage SNS for notifications of different event types.
-
-
-## Steady state groups
-
-They're auto scaling group that have min, max, desired capacity of 1.
-
-It's a highly available solution for **a legacy codebase/resource that can't be scaled** can automatically recover from failure.
+You can leverage **Amazon SNS** for notifications of different event types.
 
 
 ## Scaling types
 
-- **Reactive scaling**:  It monitors the scalable resources and adjusts the instances based on the incoming traffic.
-- **Scheduled scaling**: If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed.
-- **Predictive scaling**: AWS uses its machine learning algorithms to determine when you'll need to scale. They are reevaluated every 24 hours to create a forecast for the next 48.
+- **Reactive scaling**: monitors resources and adjusts the instances based on the incoming traffic. There might be a **cooldown period** where resources are maintained at maximum capacity even when traffic decreases. This prepares for any further incremental surges
+- **Scheduled scaling**: If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed
+- **Predictive scaling**: uses machine learning algorithms to determine when you'll need to scale. They are re-evaluated every 24 hours to create a forecast for the next 48 hours
+- **Dynamic Scaling**: the number of EC2 instances changes automatically based on received signals. Supported policies: Target tracking scaling, Step scaling, Simple scaling
 
 
 ## Components
@@ -49,11 +35,13 @@ You can create a launch template one of three ways:
 
 An ASG enables you to define where EC2 Auto Scaling deploys your resources: **VPC and subnets** the EC2 instance should be launched in.
 
-There are three capacity settings to configure how many instances EC2 Auto Scaling should launch:
+When creating an **Auto Scaling group**, you can set the following capacity attributes:
 
-- **Minimum**: The minimum number of instances running in your ASG even if **the threshold for lowering the amount of instances** is reached.
-- **Maximum**: The maximum number of instances running in your ASG even if **the threshold for adding new instances** is reached.
-- **Desired capacity**: The amount of instances that should be in your ASG. This number can only be within or equal to the minimum or maximum. EC2 Auto Scaling automatically adds or removes instances to match the desired capacity number.
+- **Desired capacity**: The number of instances that should be running in the group after creation. This value can be adjusted manually or automatically based on scaling policies.
+- **Minimum capacity**: The minimum number of instances that should be running in the group at any given time. This value is used to ensure that the group always has a minimum number of instances running, even if demand is low.
+- **Maximum capacity**: The maximum number of instances that should be running in the group at any given time. This value is used to ensure that the group does not exceed a certain size, even if demand is high.
+
+![](https://docs.aws.amazon.com/images/autoscaling/ec2/userguide/images/as-basic-diagram.png)
 
 
 ### Scaling Policies
@@ -62,7 +50,7 @@ There are three capacity settings to configure how many instances EC2 Auto Scali
 
 You use a CloudWatch alarm and specify what to do when it is triggered.
 
-Example: add 1 instance if CPU utilization metric > 80%.
+*Example: add 1 instance if CPU utilization metric > 80%.*
 
 Once this scaling policy is triggered, it waits a **cooldown period** before taking any other action. This is important as it takes time for the EC2 instances to start and the CloudWatch alarm may still be triggered while the EC2 instance is booting.
 
@@ -77,7 +65,7 @@ Step scaling policies respond to additional alarms even while a scaling activity
 
 Target Tracking use a scaling metric and value that your Auto Scaling Group should maintain at all times.
 
-Example: maintain ASGAverageCPUUtilization = 50%
+*Example: maintain `ASGAverageCPUUtilization` = 50%*
 
 To create a target tracking scaling policy, you specify an Amazon CloudWatch metric and a target value that represents the ideal average utilization or throughput level for your application. Amazon EC2 Auto Scaling can then scale out your group to handle peak traffic, and scale in your group to reduce costs during periods of low utilization or throughput.
 
@@ -98,6 +86,13 @@ Instance Warm-up and Cooldown give instances the amount of time to respond to lo
 **Instance Warm-up** stops instances from being placed behind the load balancer. It helps your instances to avoid fail the health check, and being terminated prematurely.
 
 **Instance cooldown** pauses auto scaling for a set amount of time. Helps ASG to scale successfully without overdoing it.
+
+
+## Steady state groups
+
+They're auto scaling group that have min, max, desired capacity of 1.
+
+It's a highly available solution for **a legacy codebase/resource that can't be scaled** can automatically recover from failure.
 
 
 ## Elastic Load balancer and EC2 Auto Scaling

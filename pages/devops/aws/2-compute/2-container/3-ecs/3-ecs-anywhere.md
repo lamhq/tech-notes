@@ -2,16 +2,15 @@
 
 ## Overview
 
-It's a feature of ECS, enable you to run
+It's a feature of ECS that enable you to run
 and manage your container applications on-premises,
-including your own VMs and even bare-metal servers.
+including your own VMs and bare-metal servers.
 
 No need to install and operate local container orchestration software, meaning more operational efficiency.
 
-It offers completely managed solution enabling standardization of container management across environments. You're leveraging ECS standards and practices
-and protocols **on-premises**.
+You can utilize the same ECS APIs, cluster management, workload scheduling, and monitoring for all your container-based applications, ensuring a consistent operator experience. You can manage ECS cluster within the console, but all the hardware is running on-premises.
 
-Keep in mind, no ELB support for inbound traffic, that has to be handled separately.
+No ELB support for inbound traffic, that has to be handled separately.
 
 It's known as the **EXTERNAL** launch type for creating your services or running tasks on your external instances.
 
@@ -19,9 +18,9 @@ It's known as the **EXTERNAL** launch type for creating your services or running
 ## Requirements
 
 - You must have the SSM Agent, ECS agent, and Docker installed
-- You must first register external instances as SSM Managed Instances. You can do this easily by creating an installation script within the ECS console
-- You run these scripts on your external instances and servers. The scripts contain SSM activation keys and commands for installing required software above.
-- After all, you deploy containers using the EXTERNAL launch type. You can manage ECS cluster within the console, but all the hardware is running on-premises.'
+- You must first register external instances as SSM Managed Instances, by creating an installation script within the ECS console
+- You run these scripts on your external instances and servers. The scripts contain SSM activation keys and commands for installing required software above
+- After all, you deploy containers using the **EXTERNAL** launch type.
 
 
 ## Example architecture

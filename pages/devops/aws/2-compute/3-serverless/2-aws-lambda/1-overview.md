@@ -96,8 +96,9 @@ It's a suite of utilities for AWS Lambda functions that is designed to make it e
 
 ## Reuse execution environment 
 
-An optimization technique is to move certain initialization tasks in your code so they are outside the handler. These tasks can then be reused across invocations (which is also known as execution environment reuse).
+An optimization technique is to move certain initialization tasks in your code so they are outside the handler. These tasks can then be reused across invocations (which is also known as execution environment reuse). This reuse saves cost by reducing function run time.
 
-> To do this, initialize SDK clients and database connections outside of the function handler, and cache static assets locally in the `/tmp` directory. Subsequent invocations that are processed by the same instance of your function can reuse these resources. This reuse saves cost by reducing function run time. 
+- initialize SDK clients and database connections outside of the function handler
+- cache static assets locally in the `/tmp` directory.
 
 To avoid potential data leaks across invocations, don’t use the execution environment to store user data, events, or other information with security implications.

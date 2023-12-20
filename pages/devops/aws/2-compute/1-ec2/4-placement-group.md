@@ -2,7 +2,7 @@
 
 ## Overview
 
-Placement Group is a logical grouping of EC2 instances.
+Placement Group is a **logical grouping of EC2 instances**.
 
 You can't merge placement groups.
 
@@ -15,25 +15,26 @@ Only certain instance types can be launched into a placement group (compute opti
 
 ## Cluster Placement Groups
 
-For low network latency, high network throughput.
-
 Grouping of instances within a single Availability Zone.
+
+For low network latency, high network throughput.
 
 
 ## Spread Placement Groups
 
-For critical instances that should be kept separate from each other.
+Group of instances where each instance is placed on distinct hardware.
 
-Grouping of instances that are each placed on distinct underlying hardware.
+For critical instances that should be kept separate from each other (primary database and secondary database).
 
-Example: primary database and secondary database
+High Availability.
 
 
 ## Partition Placement Groups
 
-For Multiple EC2 instances, HDFS, HBase, Cassandra.
+Suitable for large distributed and replicated workloads. Applications like Hadoop, HDFS, HBase, Cassandra, Kafka.
 
-EC2 devides each group into logical segments called partitions.
-Each partition placement group has its own set of racks. Each rack has its own network and power source. 
+A group contains a number of partitions. Each partition is assigned to a set of racks, each with its own power supply and networking. Instances are scattered across these partitions.
 
 No two partitions within a placement group share the same racks, allowing you to isolate the impact of hardware failure within your application.
+
+Strikes a balance between high performance and high availability.

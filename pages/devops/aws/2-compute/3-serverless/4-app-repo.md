@@ -2,9 +2,9 @@
 
 ## Overview
 
-It's a service that make it easy for developers and organizations to find, deploy, publish serverless applications within their own AWS accounts.
+It's a service that make it easy for developers and organizations to **find, deploy, publish serverless applications** within their own AWS accounts.
 
-Ability to **privately** share applications within orgs or **publicly** for the world.
+Ability to share applications privatel (within orgs) or publicly.
 
 You upload your application code and a manifest file (AWS SAM template).
 
