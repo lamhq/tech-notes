@@ -19,16 +19,11 @@ It automatically is assigned an public IP address when created.
 
 NAT gateways are not associated with security groups.
 
+To achieve high availability, create a NAT Gateway in each AZ and configure your routing to ensure resources use the NAT gateway in the same AZ.
+
 To enable internet access for instances in private subnets:
 - Create a NAT Gateway in the public subnet.
 - In the route table of the private subnet, add a route to direct network traffic to the NAT gateway.
-
-
-### High Availability with NAT Gateways
-
-If you have resources in multiple AZs and they share a NAT gateway, when the NAT gateway's AZ is down, resources in the other AZs lose internet access.
-
-To create an Availability Zone-independent architecture, create a NAT gateway in each AZ and configure your routing to ensure resources use the NAT gateway in the same AZ.
 
 
 ## VPC Endpoints
@@ -57,56 +52,35 @@ If you want to connect to instances in private subnets, we could attach a virtua
 > A customer gateway device is a physical device or software application on your side of the connection. Once you have both gateways, you can then establish an encrypted VPN connection between the two sides.
 
 
-## Transit Gateway
-
-AWS Transit Gateway connects VPCs and on-premises networks through **a central hub**.
-
-This simplifies your network and puts an end to complex peering relationships. It acts as a cloud router - each new connection is only made once.
-
-- Allows you to have transitive peering between thousands of VPCs and on-premises data centers.
-- Works on a hub-and-spoke model.
-- Works on a regional basis, but you can have it across multiple regions.
-- You can use it across multiple AWS accounts using RAM (Resource Access Manager).
-- You can use route tables to limit how VPCs talk to one another.
-- Works with Direct Connect as well as VPN connections.
-- Supports IP multicast: send a packet to thousand of hosts across a routed network.
-
-![](https://docs.aws.amazon.com/images/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/images/hub-and-spoke-design.png)
-
-
-## VPC and VPC
+## VPC to VPC
 
 ### VPC Peering
 
-Allows you to connect 1 VPC with another via a direct network route using private IP addresses.
+Allows you to connect 2 VPCs via a direct network route using private IP addresses.
 
 Instances behave as if they were on the same private network.
 
-You can peer VPCs with other AWS accounts as well as with other VPCs in the same account.
-
-You can peer between regions.
+You can peer between regions and accounts.
 
 Peering is one to one. No transitive peering.
 
-If VPCs have the same CIDR address range, it wouldn't work.
+Peered VPCs must not have overlapping CIDR blocks.
 
 
 ### AWS PrivateLink
 
-PrivateLink is the best way to **expose a service in your VPC to tens, hundreds, or thousands of customer VPCs**.
+PrivateLink is the best way to **peer (expose services in) your VPC to tens, hundreds, or thousands of customer VPCs**.
 
 Doesn't require VPC peering; no route tables, NAT gateways, internet gateways, etc.
 
 Requires a Network Load Balancer on the service VPC and an ENI on the customer VPC.
 
-If you see a question asking about peering VPCs to tens, hundreds, or thousands of customer VPCs, think of AWS PrivateLink.
-
 ![](./images/privatelink.png)
 
 
-## VPC and on-premises networks
+## VPC to on-premises networks
 
-### AWS Site-to-Site VPN (AWS Managed VPN)
+### AWS Site-to-Site VPN
 
 AWS Managed VPN provides the option of creating an IPsec VPN connection between your remote networks and Amazon VPC over the internet.
 
@@ -121,6 +95,23 @@ It supports static routes or dynamic Border Gateway Protocol (BGP) peering and r
 On the AWS side of the Site-to-Site VPN connection, a **Virtual Private Gateway** or **Transit Gateway** provides two VPN endpoints (tunnels) for automatic failover. 
 
 You configure your customer gateway device on the remote side of the Site-to-Site VPN connection.
+
+
+### Transit Gateway
+
+AWS Transit Gateway connects VPCs and on-premises networks through **a central hub**.
+
+This simplifies your network and puts an end to complex peering relationships.
+
+- Allows you to have transitive peering between thousands of VPCs and on-premises data centers.
+- Works on a hub-and-spoke model.
+- Works on a regional basis, but you can have it across multiple regions.
+- You can use it across multiple AWS accounts using RAM (Resource Access Manager).
+- You can use route tables to limit how VPCs talk to one another.
+- Works with Direct Connect as well as VPN connections.
+- Supports IP multicast: send a packet to thousand of hosts across a routed network.
+
+![](https://docs.aws.amazon.com/images/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/images/hub-and-spoke-design.png)
 
 
 ### VPN CloudHub

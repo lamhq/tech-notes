@@ -5,6 +5,9 @@
   "1-vpc": {
     "title": "Amazon VPC"
   },
+  "global-acc": {
+    "title": "AWS Global Accelerator"
+  },
   "7-api-gateway": {
     "title": "Amazon Api Gateway"
   },
