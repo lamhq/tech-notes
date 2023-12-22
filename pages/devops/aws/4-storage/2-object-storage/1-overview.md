@@ -25,15 +25,13 @@ Amazon S3 is a service that provides object-level storage.
 
 It offers unlimited storage space.
 
-The maximum file size for an object in Amazon S3 is **5 TB**.
+The maximum file size for an object is **5 TB**.
 
 It can not be used to run an operating system or database.
 
-When you upload a file to Amazon S3, you can set permissions to control visibility and access to it.
+When you upload a file to S3, you can set permissions to control visibility and access to it.
 
-You can use Amazon S3 versioning feature to track changes to your objects over time.
-
-The **consistency model** for S3 is Strong Read-After-Write. That means as soon as you've written something to S3, it should be immediately available.
+The **consistency model** for S3 is **Strong Read-After-Write** (as soon as you've written something to S3, it should be immediately available).
 
 
 ## Use cases
@@ -132,6 +130,8 @@ You should use IAM policies for private buckets when:
 
 ## Versioning
 
+You can use Amazon S3 versioning feature to track changes to your objects over time.
+
 If you enable versioning for a bucket, Amazon S3 automatically generates a unique version ID for the object being stored.
 
 In one bucket, you can have two objects with the same key, but different version IDs, such as `employeephoto.gif` (version `111111`) and `employeephoto.gif` (version `121212`).
@@ -151,7 +151,7 @@ Buckets can be in one of three states:
 
 The versioning state applies to all of the objects in that bucket.
 
-Keep in mind that storage costs are incurred for all objects in your bucket and all versions of those objects. To reduce your S3 bill, you may want to delete previous versions of your objects that are no longer in use.
+Storage costs are incurred for all objects in your bucket and all versions of those objects. To reduce your S3 bill, you may want to delete previous versions of your objects that are no longer in use.
 
 
 ## S3 Outposts

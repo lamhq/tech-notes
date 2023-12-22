@@ -4,8 +4,7 @@
 
 - You can replicate objects from one bucket to another (same region or cross region).
 - Versioning must be enabled on both the source and destination bucket
-- Objects in an existing bucket are not replicated automatically.
-- Once replication is turned on, all subsequent updated objects will be replicated automatically.
+- Once replication is turned on, existing objects are not replicated, all subsequent updated objects will be replicated automatically.
 - Delete markers are not replicated by default.
 - You can set up replication at a bucket level, a shared prefix level, or an object level (by using Amazon S3 object tags).
 

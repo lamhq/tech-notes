@@ -61,7 +61,7 @@ There are six S3 storage classes.
 
 - Cheap storage.
 - Use only for archiving data for long terms.
-- You pay each time you access your data.
+- You **pay each time you access your data**.
 - For data that is very infrequently access.
 
 ### S3 Glacier Instant Retrieval
@@ -72,7 +72,7 @@ There are six S3 storage classes.
 
 ### S3 Glacier Flexible Retrieval
 
-- For archived data that does not require immediate access but needs the flexibility to retrieve large sets of data at no cost (backup or disaster recovery).
+- For archived data that does not require immediate access but needs the flexibility to **retrieve large sets of data at no cost** (backup or disaster recovery).
 - Low-cost storage designed for data archiving
 - Standard retrieval time of 3-5 hours, but also supports expedited retrievals in as little as 1-5 minutes.
 - Example: store archived customer records or older photos and video files.
@@ -80,9 +80,8 @@ There are six S3 storage classes.
 
 ### S3 Glacier Deep Archive
 
-- Long-term data archiving with retrieval times within 12 hours.
+- Long-term data archiving with retrieval times within 12 hours, bulk retrieval time is 48 hours.
 - Cheapest storage class
-- Bulk retrieval time is 48 hours.
 - 99.99% availability and 11 9's durability.
 - Data is stored across multiple devices in multiple facilities (>= 3 AZs).
 - Designed for customers that retain data sets for 7-10 years

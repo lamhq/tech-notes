@@ -2,7 +2,7 @@
 
 ## Types of encryption
 
-**Encryption in Transit**: This is when you're sending objects to and from your bucket. We do this using SSL certificates/TLS, HTTPS.
+**Encryption in Transit**: This is when you're sending objects to and from your bucket. It is done using SSL certificates/TLS, HTTPS.
 
 **Encryption at Rest (Server-Side)**: This is when the object is actually inside S3
 or sitting on your computer. There's three different types:
