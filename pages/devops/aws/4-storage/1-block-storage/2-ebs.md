@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon EBS is a service that provides block-level storage volumes you can attach to your EC2 instances.
+Amazon EBS is a service that provides **block-level storage** volumes you can attach to your EC2 instances.
 
 EBS is highly available. Automatically replicated within a single AZ to protect against hardware failures.
 
@@ -11,7 +11,7 @@ EBS is scalable. You can **resize** and **change the volume type** on the fly wi
 
 ## Use Cases
 
-Designed for production workloads, mission-critical workloads.
+Designed for **production, mission-critical workloads**.
 
 Useful when you need to retrieve data quickly and have data persist long-term.
 
@@ -62,19 +62,16 @@ You can share snapshots, but only in the region in which they were created. To s
 ### Throughput
 
 - Measures the number of bits read or written per second (MB/s)
-- Important metric for large datasets, large I/O sizes, complex queries
+- Important metric for big data, data warehousing, ETL, large I/O sizes, complex queries
 - The ability to deal with large datasets
-- Volume type to choose: Throughput Optimized HDD (st1)
-
-When you hear things like big data, data warehousing, ETL, think of **throughput**.
+- Volume type to choose: **Throughput Optimized HDD** (st1)
 
 
 ## Volume Types
 
-There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs**) and hard-disk drives (**HDDs**). 
-
-- SSDs provide strong performance for random input/output (I/O).
-- HDDs provide strong performance for sequential I/O.
+There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs**) and hard-disk drives (**HDDs**):
+- SSDs for **random input/output** (I/O).
+- HDDs for **sequential** I/O.
 
 ### General Purpose SSD (gp2)
 
@@ -96,7 +93,7 @@ Choose gp3, don't use gp2.
 
 ### Provisioned IOPS SSD (io1)
 
-- Suitable for OLTP (online transaction processing, high performance databases) and latency-sensitive applications.
+- Suitable for OLTP and latency-sensitive applications.
 - Use if you need more than **16,000 IOPS**.
 - High performance & most expensive.
 - 50 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
@@ -106,25 +103,25 @@ Choose gp3, don't use gp2.
 
 - Suitable for OLTP and latency-sensitive applications.
 - Latest generation.
-- Same price as io1.
+- Same price as **io1**.
 - 500 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
 - 99.999% durability.
 
 ### Throughput Optimized HDD (st1)
 
 - Suitable for big data, data warehouses, ETL, log processing
-- Low-cost HDD volume.
+- Low-cost HDD volume
 - Cost-effective way to store mountains of data.
-- Cannot be a boot volume.
-- Up to 99.9% durability.
-- 500 MB/s throughput/volume.
+- **Cannot be a boot volume**
+- Up to 99.9% durability
+- 500 MB/s throughput/volume
 - Designed for frequently accessed, throughput intensive workloads
 
 ### Cold HDD (sc1)
 
 - Good for applications that need the lowest cost and performance is not a factor.
 - Lowest cost.
-- Cannot be a boot volume.
+- **Cannot be a boot volume**
 - Max 250 MB/s throughput/volume. Baseline throughput of 12 MB/s per TB. Ability to burst up to 80 MB/s per TB
 - For less frequently accessed data.
 
@@ -152,7 +149,7 @@ To encrypt an volume:
 - create an AMI from the encrypted snapshot
 - use that AMI to launch new instances
 
-You can **unencrypt a volume** by copying it to a new, unencrypted volume using a temporary EC2 instance. You can then attach the unencrypted volume to your original instance.
+You can **unencrypt a volume** by copying it to a unencrypted volume using a temporary EC2 instance. You can then attach the unencrypted volume to your original instance.
 
 
 ## EBS and EC2

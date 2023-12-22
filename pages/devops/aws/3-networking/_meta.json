@@ -5,14 +5,14 @@
   "1-vpc": {
     "title": "Amazon VPC"
   },
+  "8-dns": {
+    "title": "DNS"
+  },
   "global-acc": {
     "title": "AWS Global Accelerator"
   },
-  "7-api-gateway": {
+  "api-gateway": {
     "title": "Amazon Api Gateway"
-  },
-  "8-dns": {
-    "title": "DNS"
   },
   "4-wavelength": {
     "title": "AWS Wavelength"

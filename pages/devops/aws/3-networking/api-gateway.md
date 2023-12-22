@@ -2,11 +2,11 @@
 
 Amazon API Gateway is a fully managed service that allows you to easily publish, create, maintain, monitor, and secure your API.
 
-It allows you to put a safe "front door" on your application. Any scenarios involving accessing backend services privately, think of API Gateway.
+It allows you to access backend services privately.
 
 Integrates with Lambda functions, HTTP endpoints, and other AWS services.
 
-Support versioning of your API.
+Support API versioning.
 
 There're 3 types of options for us when creating an API using API Gateway.
 
@@ -35,7 +35,7 @@ Ability to also leverage with CloudFront if required.
 ## Securing your API
 
 - API Gateway allows you to enforce user authentication at the API level.
-- Authentication methods include IAM roles, STS credentials, long-term access keys to generate crednetials, Amazon Cognito pools, and custom authorizers using Lambda functions.
+- Authentication methods include IAM roles, STS credentials, long-term access keys to generate credentials, Amazon Cognito pools, and custom authorizers using Lambda functions.
 - AWS ACM can be used to implement custom TLS, and the certificate must be deployed to `us-east-1` for edge-optimized endpoints. Regional endpoints require ACM certs in the same region.
 - **WAF** can be used to protect against DDoS and layer seven attacks when placed in front of your API.
 

@@ -66,7 +66,7 @@ Limitations:
 - Use when you need extreme performance, or protocols not supported by Application Load Balancers
 - Supports TCP, UDP, TLS protocols.
 - Can decrypt traffic with certificate installed
-- **Has sticky sessions**. Based on the source IP address of the client instead of a cookie.
+- **Support sticky sessions**. Based on the source IP address of the client instead of a cookie.
 
 **Uses a flow hash routing algorithm**. Based on:
 - The protocol
