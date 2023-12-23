@@ -4,9 +4,9 @@
 
 File storage for Windows instances. Centralized storage solution across multiple AZs.
 
-Amazon FSx for Windows File Server provides a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require file storage to AWS.
+Amazon FSx for Windows File Server provides a fully managed **native Microsoft Windows file system** so you can easily move your Windows-based applications that require file storage to AWS.
 
-For scenarios about SharePoint migrations, shared storage, think of FSx for Windows.
+Use cases: SharePoint migrations, shared storage.
 
 
 ### How is FSx for Windows different from EFS?
@@ -20,21 +20,10 @@ For scenarios about SharePoint migrations, shared storage, think of FSx for Wind
 
 ## FSx for Lustre
 
-File storage for high performance computing Linux file systems.
+A fully managed file system that is optimized for **compute-intensive workloads** of Linux-based applications.
 
-A fully managed file system that is optimized for compute-intensive workloads
-
-- High Performance Computing
+Use cases:
+- High-performance workloads, processing massive datasets (hundreds of gigabytes per second, millions of IOPS), low latencies (sub-millisecond)
 - Machine Learning
 - Media Data Processing Workflows
 - Electronic Design Automation
-
-With Amazon FSx, you can launch and run a Lustre file system that 
-can process massive datasets at up to hundreds of gigabytes per second of throughput, 
-millions of IOPS, and sub-millisecond latencies.
-
-When it's about processing massive datasets,
-hundreds of gigabytes per second of throughput,
-millions of IOPS and sub-millisecond latencies,
-think of Amazon FSx for Lustre.
-It gives you amazing performance capabilities.

@@ -84,10 +84,9 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
 ### General Purpose SSD (gp3)
 
 - Suitable for high performance applications (MySQL, Cassandra, virtual desktops, Hadoop analytics...)
+- New generation of gp. Cheaper, 4 times faster than **gp2**.
+- 3000 IOPS baseline performance and 125 MB/s regardless of volumne size. Can scale up to 16,000 IOPS and 1,000 MiB/s for an additional fee
 - Up to 99.9% durability.
-- 3000 IOPS baseline performance and 125 MB/s regardless of volumne size.
-- Can scale up to 16,000 IOPS and 1,000 MiB/s for an additional fee.
-- New generation of gp. 4 times faster than gp2.
 
 Choose gp3, don't use gp2.
 
@@ -110,8 +109,7 @@ Choose gp3, don't use gp2.
 ### Throughput Optimized HDD (st1)
 
 - Suitable for big data, data warehouses, ETL, log processing
-- Low-cost HDD volume
-- Cost-effective way to store mountains of data.
+- Low-cost HDD volume. Cost-effective way to store mountains of data.
 - **Cannot be a boot volume**
 - Up to 99.9% durability
 - 500 MB/s throughput/volume

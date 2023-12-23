@@ -2,7 +2,7 @@
 
 ## File Storage
 
-In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders. 
+In file storage, multiple clients can access data that is stored in shared file folders. 
 
 You place your files in a tree-like hierarchy that consists of folders and subfolders. 
 
@@ -20,6 +20,6 @@ Common use cases for file storage include:
 
 You'll be given different scenarios and asked to choose whether you should use EFS, FSx for Windows, or FSx for Lustre.
 
-- **EFS**: When you need distributed, highly resilient storage for Linux instances and Linux-based applications.
-- **Amazon FSx for Windows**: When you need centralized storage for Windows-based applications, such as SharePoint, Microsoft SQL Server, Workspaces, IS Web Server, or any other native Microsoft application.
-- **Amazon FSx for Lustre**: When you need high-speed, high-capacity distributed storage. This will be for applications that do high performance computing (HPC), financial modeling, etc. Remember that FS for Lustre can store data directly on S3.
+- **EFS**: When you need distributed, highly resilient storage for **Linux-based applications**.
+- **Amazon FSx for Windows**: When you need centralized storage for **Windows-based applications**, such as SharePoint, Microsoft SQL Server, Workspaces, IS Web Server, or any other native Microsoft application.
+- **Amazon FSx for Lustre**: When you need high-speed, high-capacity distributed storage. This will be for applications that do **high performance computing** (HPC), financial modeling, etc. FSx for Lustre can store data directly on S3.

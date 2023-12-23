@@ -14,14 +14,14 @@ EFS is a managed network file system (NFS) that can be mounted on many EC2 insta
 - Works with EC2 instances in multiple AZs.
 - Expensive.
 - Encryption at rest using KMS.
-- Compatible with Linux-based AMI (not Windows).
+- Compatible with **Linux-based** AMI (not Windows).
 
 
 ## Use cases
 
-- If you need highly scalable shared storage using NFS, think of EFS.
-- Content management systems, share content between EC2 instances.
-- Web servers. Have just a single folder structure for your website.
+- Scalable shared storage using NFS
+- Share content between EC2 instances.
+- Content management systems, Web servers
 
 
 ## Using
@@ -40,15 +40,16 @@ EFS comes with storage tiers and lifecycle management, allowing you to move your
 - **Infrequently Accessed**: For files not frequently accessed
 
 
-## Comparison with EBS
+## EFS vs. EBS
 
 ### EBS
 
-- Volumes attach to EC2 instances
-- An Amazon EBS volume stores data in a single Availability Zone. 
-- To attach an Amazon EC2 instance to an EBS volume, both the Amazon EC2 instance and the EBS volume must reside within the same Availability Zone.
+- EBS are volumes attach to EC2 instances
+- An Amazon EBS volume stores data in a single AZ. 
+- EC2 instance and the EBS volume must reside within the same AZ.
 
 ### EFS
 
-- Amazon EFS is a regional service. It stores data in and across **multiple** Availability Zones. 
-- The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access Amazon EFS using AWS Direct Connect.
+- EFS stores data in and across **multiple** AZs. 
+- The duplicate storage enables you to access data concurrently from all the AZs in the Region where a file system is located. 
+- On-premises servers can access Amazon EFS using **AWS Direct Connect**.
