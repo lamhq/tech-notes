@@ -2,11 +2,11 @@
 
 ## Overview
 
-Backup allows you to consolidate your backups across multiple AWS services, such as EC2, EBS, EFS, Amazon FSx for Lustre, Amazon FSx for Windows File Server, and AWS Storage Gateway.
+Backup allows you to **consolidate backups** across multiple AWS services (EC2, EBS, EFS, Amazon FSx for Lustre, Amazon FSx for Windows File Server, AWS Storage Gateway).
 
 It can include other services, such as database technologies like RDS and DynamoDB.
 
-You can use AWS Backup with Organizations to back up your different AWS services across multiple AWS accounts.
+You can use AWS Backup with **Organizations** to back up your different AWS services across multiple AWS accounts.
 
 
 ## Benefits

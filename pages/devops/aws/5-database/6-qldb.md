@@ -17,11 +17,9 @@ Use cases:
 
 ## Amazon Quantum Ledger Database (QLDB)
 
-A fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log.
+A fully managed ledger database that provides a transparent, **immutable**, and cryptographically verifiable transaction log.
 
-It's Amazon's way of doing ledger databases.
-
-If the scenario is not talking about immutable databases, do not choose Amazon QLDB.
+It's Amazon's way of doing **ledger databases**.
 
 
 ## QLDB Use cases

@@ -2,7 +2,9 @@
 
 ## HSM
 
-A hardware security module (HSM) is a physical computing device that safeguards and manages digital keys and performs encryption and decryption functions.
+A hardware security module (HSM) is a physical computing device that:
+- safeguards and manages digital keys
+- performs encryption and decryption functions.
 
 An HSM contains one or more secure cryptoprocessor chips.
 
@@ -16,13 +18,13 @@ It is a physical device, entirely dedicated to you, that can be deployed in a hi
 
 ## KMS vs. CloudHSM
 
-KMS:
+### KMS
 - You're using a shared tenancy of underlying hardware
-- You have Automatic key rotation
-- You have Automatic key generation
+- Support automatic key rotation
+- Support automatic key generation
 
-CloudHSM:
+### CloudHSM
 - Dedicated HSM to you
-- You get full control of underlying hardware
-- You get full control of users, groups, keys, etc.
+- Have full control of underlying hardware
+- Have full control of users, groups, keys, etc.
 - No automatic key rotation

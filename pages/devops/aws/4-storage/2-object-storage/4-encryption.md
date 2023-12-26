@@ -37,9 +37,9 @@ that doesn't include the `x-amz-server-side-encryption`
 parameter in the request header.
 
 
-## S3 Limitations when using KMS
+## KMS Limitations
 
-If you are using SSE-KMS to encrypt/decrypt your objects in S3, you must keep in mind the KMS limits.
+If you are using **SSE-KMS** to encrypt/decrypt your objects in S3, you must keep in mind the KMS limits.
 
 Uploading/downloading will count toward the **KMS quota**.
 

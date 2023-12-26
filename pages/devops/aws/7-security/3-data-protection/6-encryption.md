@@ -20,9 +20,9 @@ Encryption and decryption is handled automatically and transparently, so you don
 
 ### Encryption at rest and in transit
 
-Amazon RDS allows you to encrypt your databases using keys you manage through AWS Key Management Service (KMS). On a database instance running with Amazon RDS encryption, data stored at rest in the underlying storage is encrypted, as are its automated backups, read replicas, and snapshots.
+Amazon RDS allows you to **encrypt your databases** using keys you manage through AWS KMS. On a database instance running with Amazon RDS encryption, data stored at rest in the underlying storage is encrypted, as are its automated backups, read replicas, and snapshots.
 
-Amazon RDS supports Transparent Data Encryption in SQL Server and Oracle. Transparent Data Encryption in Oracle is integrated with AWS CloudHSM, which allows you to securely generate, store, and manage your cryptographic keys in single-tenant Hardware Security Module (HSM) appliances within the AWS cloud.
+Amazon RDS supports **Transparent Data Encryption** in SQL Server and Oracle. Transparent Data Encryption in Oracle is integrated with AWS CloudHSM, which allows you to securely generate, store, and manage your cryptographic keys in single-tenant Hardware Security Module (HSM) appliances within the AWS cloud.
 
 Amazon RDS supports the use of SSL to secure data in transit.
 
@@ -36,7 +36,7 @@ You can configure firewall settings and control network access to your database 
 
 ### Resource-level permissions
 
-Amazon RDS is integrated with AWS Identity and Access Management (IAM) and provides you the ability to control the actions that your AWS IAM users and groups can take on specific Amazon RDS resources: database instances, snapshots, parameter groups, and option groups.
+Amazon RDS is integrated with AWS IAM and provides you the ability to control the actions that your AWS IAM users and groups can take on specific Amazon RDS resources: database instances, snapshots, parameter groups, and option groups.
 
 You can also tag your Amazon RDS resources and control the actions that your IAM users and groups can take on groups of resources that have the same tag and associated value. 
 

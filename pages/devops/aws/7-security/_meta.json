@@ -2,9 +2,10 @@
   "0-overview": { "title": "Security & Identity services" },
   "1-shared-responsibility-model": { "title": "Shared Responsibility Model" },
   "2-dos": { "title": "Denial-of-Service Attacks" },
+  "6-identity-management": { "title": "Identity Management" },
   "3-data-protection": { "title": "Data Protection" },
   "4-infrastructure-protection": { "title": "Infrastructure Protection" },
   "5-threat-detection": { "title": "Threat Detection" },
-  "6-identity-management": { "title": "Identity Management" },
-  "7-compliance": { "title": "Compliance" }
+  "7-compliance": { "title": "Compliance" },
+  "10-guides": { "title": "Guides" }
 }

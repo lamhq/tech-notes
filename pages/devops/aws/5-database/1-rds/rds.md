@@ -4,7 +4,7 @@
 
 Amazon RDS is a service that enables you to run relational databases in the AWS Cloud.
 
-Amazon RDS is a managed service that automates tasks such as hardware provisioning, database setup, patching, and backups.
+It's a managed service that automates tasks such as hardware provisioning, database setup, patching, and backups.
 
 Amazon RDS provides a number of different security options. Many Amazon RDS database engines offer encryption at rest and in transit.
 
@@ -13,7 +13,7 @@ Amazon RDS provides a number of different security options. Many Amazon RDS data
 
 For online transaction processing (OLTP) workloads.
 
-RDS is not suitable for analyzing large amounts of data. Use a data warehouse like Redshift, which is optimized for OLAP.
+RDS is **not suitable** for analyzing large amounts of data. Use a data warehouse like Redshift, which is optimized for OLAP.
 
 
 ## Database engines
@@ -56,7 +56,7 @@ The DB instance uses Amazon Elastic Block Store (EBS) volumes as its storage lay
 
 ## Multi-AZ
 
-Amazon RDS automatically creates a primary DB instance and synchronously replicates the data to an instance in a different AZ.
+Amazon RDS automatically creates a primary DB instance and synchronously replicates the data to a standby instance in a different AZ.
 
 Used for disaster recovery, not for performance.
 
@@ -67,11 +67,9 @@ With multi-AZ, you have a unique DNS endpoint.
 
 ## Read replicas
 
-A read replica is a read-only copy of your primary database.
+A read replica is a read-only copy of your primary database. It's used to scale read performance.
 
-Used to scale read performance.
-
-Great for read-heavy workloads and takes the load off your primary database for read-only workloads.
+Great for read-heavy workloads.
 
 Automatic backup is required to deploy a read replica.
 
@@ -87,18 +85,16 @@ Read replicas can be promited to be their own databases. But this breaks the rep
 ## Scaling
 
 You can scale relational database by:
-- Vertical scaling: increase database size for greater performance.
-- Scaling storage: resize storage size, but it's only able to go up, not down.
-- Create read replicas: creating read-only copies of your data.
-- Using Aurora serverless: offload scaling to AWS. Good for unpredictable workloads.
+- **Vertical scaling**: increase database size for greater performance.
+- **Scaling storage**: resize storage size, but it's only able to go up, not down.
+- **Create read replicas**: creating read-only copies of your data.
+- **Using Aurora serverless**: offload scaling to AWS. Good for unpredictable workloads.
 
 
 ## Amazon RDS Proxy
 
-By using Amazon RDS Proxy, your applications can pool and share database connections to improve their ability to scale.
-
-By using RDS Proxy, you can also enforce AWS Identity and Access Management (IAM) authentication for databases, and securely store credentials in AWS Secrets Manager.
-
 RDS Proxy establishes a database connection pool and reuses connections in this pool without the memory and CPU overhead of opening a new database connection each time.
+
+You can also enforce AWS IAM authentication for databases, and securely store credentials in AWS Secrets Manager.
 
 To protect the database against oversubscription, you can control the number of database connections that are created.

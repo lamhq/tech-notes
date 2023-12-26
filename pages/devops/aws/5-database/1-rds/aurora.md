@@ -12,13 +12,13 @@ Compute resources can scale up to 96 vCPUs and 768 GB memory.
 
 Data is continuously backs up to S3.
 
-Consider Amazon Aurora if your workloads require high availability (2 copies of data in each AZ, minimum 3 AZs, total 6 copies).
+High availability. 2 copies of data in each AZ, minimum 3 AZs, total 6 copies.
 
 
 ## Scaling Aurora
 
 Transparently handle data loss:
-- up to **2 copies** without affecting database write availability
+- up to **2 copies** without affecting write availability
 - up to **3 copies** without affecting read availability
 
 Self-healing. Data blocks and disks are continuously scanned for errors and repaired automatically.

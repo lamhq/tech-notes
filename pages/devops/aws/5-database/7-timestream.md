@@ -17,6 +17,6 @@ Use cases:
 
 ## Amazon Timestream
 
-A serverless, fully managed database service for time-series data.
+A serverless, fully managed database service for **time-series data**.
 
 You can analyze trillions of events per day up to 1,000 times faster and at as little as 1/10th the cost of traditional relational databases.

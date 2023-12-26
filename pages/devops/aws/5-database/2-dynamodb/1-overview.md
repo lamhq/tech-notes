@@ -4,9 +4,7 @@
 
 Amazon DynamoDB is a key-value database service.
 
-Data stored on SSD storage.
-
-Spread across 3 geographically distinct data centers.
+Data spreads across 3 geographically distinct data centers, stored on SSD storage.
 
 You get **eventually consistent reads** by default. You can opt in for **strongly consistent reads**.
 
@@ -17,20 +15,36 @@ You get **eventually consistent reads** by default. You can opt in for **strongl
 You can scale up or scale down tables' throughput capacity with minimal downtime or performance degradation.
 
 
+## Scaling
+
+You have to know the access patterns of your database is predictable or unpredictable.
+
+There're two capacity mode: provisioned and on-demand:
+- **provisioned**: for **predictable workloads**.
+- **on-demand**: for **sporadic workloads**.
+
+You can switch between the different capacity modes twice per 24 hours per table.
+
+
 ## Pricing
 
-- Pay per request
-- Balance cost & performance
-- Pay more per request than with provisioned capacity
-- Use for new products launches
+### Provisioned Capacity Mode
+- You specify the expected number of reads and writes per second for your application
+- Ideal for: predictable traffic
+
+### On-Demand Capacity Mode
+
+- Pay per reads and writes on your tables
+- Less cost effective than provisioned
+- Ideal for: unknown workloads, unpredictable traffic
 
 
 ## Security
 
 - Encryption at rest using KMS.
-- Can connect to DynamoDB using a Site-to-site VPN.
 - Support Direct Connect (DX)
 - Work with IAM policies & roles
+- You can connect to DynamoDB using a Site-to-site VPN.
 - Integrate with CloudWatch, CloudTrail, VPC endpoints
 
 
@@ -47,31 +61,6 @@ You can scale up or scale down tables' throughput capacity with minimal downtime
 - You can restore to any point in the last 35 days. Latest restorable: 5 minutes in the past.
 - It's done using incremental backups.
 - not enabled by default.
-
-
-## Core Components
-
-A table is a collection of items.
-
-Each table contains zero or more items.
-
-An item is a group of attributes that is uniquely identifiable among all of the other items.
-
-An attribute is a fundamental data element, something that does not need to be broken down any further. 
-
-*For example, a table called People that you could use to store personal contact information about friends, family, or anyone else of interest. In a People table, each item represents a person. An item in a People table contains attributes called PersonID, LastName, FirstName, and so on.*
-
-
-## Scaling
-
-You have to know the access patterns of your database is predictable or unpredictable.
-
-There're two capacity mode: provisioned and on-demand:
-- provisioned is for **predictable workloads**.
-- on-demand is for **sporadic workloads**. On-demand
-is less cost effective than provisioned.
-
-You can switch between the different capacity modes twice per 24 hours per table.
 
 
 ## DynamoDB Accelerator (DAX)
