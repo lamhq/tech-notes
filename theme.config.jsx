@@ -3,7 +3,7 @@ export default {
   project: {
     link: 'https://github.com/lamhq/tech-notes'
   },
-  docsRepositoryBase: 'https://github.com/lamhq/tech-notes/tree/master',
+  docsRepositoryBase: `vscode://file//Users/admin/Desktop/repos/tech-notes/`,
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Tech Notes'
@@ -12,6 +12,9 @@ export default {
   navigation: {
     prev: true,
     next: true
+  },
+  editLink: {
+    text: 'Edit in VS Code'
   }
   // ...
 }
