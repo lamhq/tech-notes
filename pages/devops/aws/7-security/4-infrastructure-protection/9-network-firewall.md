@@ -2,13 +2,11 @@
 
 ## Overview
 
-Network Firewall is a managed service that makes it easy to deploy physical firewall protection across your VPCs.
+Network Firewall is a managed service that makes it easy to deploy **physical firewall** protection **across your VPCs**.
 
-It has a managed infrastructure (i.e., a physical firewall that is managed by AWS).
+It includes a firewall rules engine that allow you to block outbound Server Message Block (SMB) requests to stop the spread of malicious activity.
 
-It includes a firewall rules engine that gives you complete control over your network traffic, allowing you to do things such as block outbound Server Message Block (SMB) requests to stop the spread of malicious activity.
-
-It gives you control and visibility of VPC-to-VPC traffic to logically separate networks hosting sensitive applications or line-of-business resources.
+It gives you control and visibility of **VPC-to-VPC traffic** to logically separate networks hosting sensitive applications or line-of-business resources.
 
 Keywords:
 - filtering your network traffic before it reaches your internet gateway

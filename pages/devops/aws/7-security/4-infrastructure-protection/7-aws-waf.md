@@ -1,16 +1,14 @@
-# AWS WAF
+# AWS Web Application Firewall
 
 ## Overview
 
-AWS WAF is a web application firewall that lets you monitor HTTP/HTTPS requests that are forwarded to Amazon CloudFront or an Application Load Balancer. 
+AWS Web Application Firewall (WAF) is a web application firewall that lets you **monitor HTTP/HTTPS requests** that are forwarded to **Amazon CloudFront or Application Load Balancer**. 
 
 WAF can block:
 - **layer 7** DDoS attacks
 - SQL injections
 - cross-site scripting.
 - access to specific countries or IP addresses
-
-WAF also lets you control access to your content.
 
 You can use AWS WAF to create custom rules that block common attack patterns (SQL injection, cross-site scripting) and application specific. It does this by using a [web access control list (ACL)](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html) to protect your AWS resources. 
 

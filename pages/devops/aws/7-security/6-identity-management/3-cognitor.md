@@ -38,8 +38,7 @@ You can use identity pools and user pools either separately or together.
 
 ## Workflow
 
-You've got an application on your phone
-and you're trying to log in and access the resources that
+You've got an application and you're trying to log in and access the resources
 that application is designed to use.
 
 You're logging into your app

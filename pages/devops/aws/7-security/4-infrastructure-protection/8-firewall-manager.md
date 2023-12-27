@@ -2,7 +2,7 @@
 
 ## Overview
 
-Firewall Manager is a security management service in a single pane of glass. This allows you to centrally set up and manage firewall rules across multiple AWS accounts and applications in **AWS Organizations**.
+Firewall Manager allows you to centrally set up and manage firewall rules across multiple AWS accounts and applications in **AWS Organizations**.
 
 Using Firewall Manager, you can create new AWS WAF rules for your Application Load Balancers, API gateways, and Amazon CloudFront distributions.
 

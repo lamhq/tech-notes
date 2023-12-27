@@ -4,7 +4,9 @@
 
 Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS.
 
-It automatically assesses applications (VPCs, EC2 instances) for vulnerabilities or deviations from best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions. 
+It automatically **assesses applications (VPCs, EC2 instances)** for vulnerabilities or deviations from best practices, such as:
+- open access to Amazon EC2 instances
+- installations of vulnerable software versions
 
 After performing an assessment, Amazon Inspector produces a detailed list of security findings prioritized by level of severity and a recommendation for how to fix it. These findings can be reviewed directly or as part of detailed assessment reports that are available via the Amazon Inspector console or API.
 

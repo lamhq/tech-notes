@@ -22,15 +22,7 @@ The root user is accessed by signing in with the email address and password that
 
 The root user has complete access to all AWS services and resources in your account, as well as your billing and personal information.
 
-**Best Practices**:
-- Choose a strong password for the root user.
-- [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
-- Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
-- Do not use the root user for everyday tasks.
-- Create an admin group for you administrators, and assign the appropriate permissions to this group. Create user accounts for administrators and add user to admin group.
-
-
-## Access keys
+### Access keys
 
 The AWS root user has two sets of credentials associated with it:
 - One set of credentials is the **email address and password** used to create the account. This allows you to access the AWS Management Console.
@@ -39,6 +31,15 @@ The AWS root user has two sets of credentials associated with it:
 **Access keys** consist of two parts:
 - An access key ID, for example, A2lAl5EXAMPLE
 - A secret access key, for example, wJalrFE/KbEKxE
+
+
+### Best Practices
+
+- Choose a strong password for the root user.
+- [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
+- Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
+- Do not use the root user for everyday tasks.
+- Create an admin group for you administrators, and assign the appropriate permissions to this group. Create user accounts for administrators and add user to admin group.
 
 
 ## IAM User
@@ -149,4 +150,4 @@ You can combine your existing user account with AWS.
 
 For example, when you log on to your PC (usually using Microsoft Active Directory), you can use the same credentials to log in to AWS if you set up federation.
 
-To do that, you use **Identity Federation**, which uses the SAML standard (essentially Active Directory)
+To do that, you use **Identity Federation**, which uses the SAML standard, Open ID Connect (OIDC), and OAuth 2.0
