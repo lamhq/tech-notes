@@ -4,7 +4,7 @@
 
 CloudWatch is a monitoring and observability platform that was designed to give us insight into our AWS architecture.
 
-It enables you to monitor and manage various metrics and configure alarm actions based on data from those metrics.
+It enables you to **monitor and manage various metrics** and **configure alarm actions** based on data from those metrics.
 
 AWS services send metrics to CloudWatch. CloudWatch then uses these metrics to create graphs automatically that show how performance has changed over time.
 
@@ -29,7 +29,7 @@ The default value is 60 seconds.
 
 ## Metrics
 
-Each metric in CloudWatch has a timestamp and is organized into containers called namespaces.
+Each metric in CloudWatch has a timestamp and is organized into namespaces.
 
 AWS services that send data to CloudWatch attach dimensions to each metric. A dimension is a name/value pair that is part of the metric's identity. You can use dimensions to filter the results that CloudWatch returns.
 
@@ -83,12 +83,12 @@ For **custom logs**, you use the **Amazon CloudWatch Agent**. The agent enables 
 
 **Log stream**: A collection of log events from the same source creates a log stream. Think of one continuous set of logs from a single instance. *For example, logs for an EC2 instance are grouped together into a log stream that you can then filter or query for insights.*
 
-**Log groups**: This is a collection of log streams. For example, you would group all your Apache web server logs across hosts together.
+**Log groups**: This is a collection of log streams. *For example, you would group all your Apache web server logs across hosts together.*
 
 ### Features
 
 - **Filter Patterns**: You can look for specific terms in your logs. Think 400 errors in your web server logs.
-- **CloudWatch Logs Insights**: This allows vou to auerv all your logs using a SQL-like interactive solution.
+- **CloudWatch Logs Insights**: This allows vou to query all your logs using a SQL-like interactive solution.
 - **Alarms**: Once you've identified your trends or patterns, it's time to set up alerts for them.
 
 

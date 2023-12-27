@@ -2,7 +2,9 @@
 
 ## Overview
 
-Amazon Managed Service for Prometheus is a serverless, Prometheus-compatible service used for securely **monitoring container metrics at scale**.
+**Prometheus** is an open-source systems monitoring and alerting toolkit originally built at SoundCloud
+
+**Amazon Managed Service for Prometheus** is a serverless, Prometheus-compatible service used for securely **monitoring container metrics at scale**.
 
 Leverage this service for any Kubernetes-based metrics monitoring at scale (can be an Amazon EKS cluster or your own self-managed cluster).
 

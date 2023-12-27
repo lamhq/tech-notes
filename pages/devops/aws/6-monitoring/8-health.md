@@ -2,11 +2,9 @@
 
 ## Overview
 
-This service provides you visibility of resource performance and availability of AWS services or accounts.
+AWS Health provides **ongoing visibility into your resource performance** and the **availability of your AWS services and accounts**.
 
 You can view how the health events affect you and your services, resources, and accounts.
-
-AWS attempts to maintain timeliness and relevant information with the events.
 
 It helps you be better prepared and allows you to **implement automation regarding different event types**. You can view upcoming maintenance tasks that may affect your accounts and resources.
 
@@ -14,7 +12,7 @@ It has near-instant delivery of notifications and alerts to speed up troubleshoo
 
 You can automate actions based on incoming events using **Amazon Event Bridge**. You can look for an event coming into this service, kick off some type of automation via Event Bridge, which may be connected to an SNS topic or maybe a Lambda function.
 
-Keywords: checking alerts for service health and automating the reboot of EC2 instances for AWS maintenance.
+Keywords: **checking alerts for service health**, automating the reboot of EC2 instances for AWS maintenance.
 
 
 ## Concepts

@@ -4,7 +4,7 @@
 
 **Grafana** is a widely deployed data visualization tool that has extensive data plugin support.
 
-Amazon Managed Grafana make it easy to deploy, operate, and scale Grafana within your AWS accounts.
+**Amazon Managed Grafana** make it easy to deploy, operate, and scale Grafana within your AWS accounts.
 
 It's a fully managed service for data visualization. Allow instant querying, correlating, visualizing of metrics, logs and traces.
 
