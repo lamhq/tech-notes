@@ -6,6 +6,5 @@
   "3-data-protection": { "title": "Data Protection" },
   "4-infrastructure-protection": { "title": "Infrastructure Protection" },
   "5-threat-detection": { "title": "Threat Detection" },
-  "7-compliance": { "title": "Compliance" },
   "10-guides": { "title": "Guides" }
 }

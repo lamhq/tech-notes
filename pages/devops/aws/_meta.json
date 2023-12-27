@@ -10,6 +10,7 @@
   "10-app-integration": { "title": "App Integration" },
   "9-migration": { "title": "Migration" },
   "30-governance": { "title": "Governance" },
+  "compliance": { "title": "Compliance" },
   "20-big-data": { "title": "Big Data" },
   "39-machine-learning": { "title": "Machine Learning" },
   "8-cost": { "title": "Cost" },
