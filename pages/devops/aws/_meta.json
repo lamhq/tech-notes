@@ -12,7 +12,7 @@
   "30-governance": { "title": "Governance" },
   "20-big-data": { "title": "Big Data" },
   "39-machine-learning": { "title": "Machine Learning" },
-  "8-pricing": { "title": "Pricing" },
+  "8-cost": { "title": "Cost" },
   "25-frontend": { "title": "Frontend" },
   "29-cache": { "title": "Cache" },
   "35-media": { "title": "Media" },
