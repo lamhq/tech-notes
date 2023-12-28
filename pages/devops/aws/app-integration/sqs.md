@@ -100,10 +100,12 @@ Troubleshoot consumer permissions.
 Make sure you set up an alarm and alert on queue depth.
 
 
-## SQS and Kinesis
+## SQS vs. Kinesis Data Streams
 
 Both services can be queues.
 
 SQS is easier and simpler.
 
-Kinesis is faster (real-time) and can store data for up to a year.
+Kinesis Data Streams is faster (real-time).
+
+SQS is designed to **temporarily hold** a **small message** until a single consumer processes it. Kinesis Data Streams is designed to provide **durable storage** and playback of **large data streams** to multiple consumers.

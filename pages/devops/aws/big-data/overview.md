@@ -11,9 +11,18 @@ from a wide range of sources and formats.
 
 ## Data lake
 
-A data lake is a centralized, curated, and secured repository that stores all your data, both in its original form and prepared for analysis.
+A data lake collects data from multiple sources into one combined repository.
 
-You can use a data lake to break down data silos and combine different types of analytics to gain insights and guide better business decisions.
+It holds raw, unprocessed data of various types, including structured, semi-structured, and unstructured data.
+
+It is designed to capture and store large amounts of data. They serve as a foundation for machine learning, AI, other analytics. After processing, data from a lake can be transferred to a data warehouse.
+
+
+## Data Warehouse
+
+A data warehouse is designed to store processed and refined data.
+
+It serves as a repository for structured data that can be queried and analyzed for specific purposes.
 
 
 ## ETL

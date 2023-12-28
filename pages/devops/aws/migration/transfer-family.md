@@ -2,6 +2,9 @@
 
 ## Overview
 
-The AWS Transfer Family allows you to easily move files in and out of S3 or EFS using Secure File Transfer Protocol (**SFTP**), File Transfer Protocol over SSL (**FTPS**), or the File Transfer Protocol (**FTP**).
+AWS Transfer Family lets you transfer data into and out of **S3 and EFS** using 3 protocols:
+- File Transfer Protocol (FTP)
+- Secure Shell (SSH) File Transfer Protocol (SFTP)
+- File Transfer Protocol over SSL (FTPS)
 
-The AWS Transfer Family excels when you have a collection of older applications using protocols that cannot be changed. You can easily "trick" these applications into using S3 storage.
+This makes it easy to migrate on-premises data to your AWS infrastructure using common tools such as FileZilla, OpenSSH, and WinSCP.
