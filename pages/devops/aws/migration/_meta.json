@@ -1,13 +1,13 @@
 {
-  "1-aws-caf": { "title": "AWS Cloud Adoption Framework" },
-  "2-strategies": { "title": "Migration Strategies" },
-  "3-snow-family": { "title": "AWS Snow Family" },
-  "4-data-sync": { "title": "AWS DataSync" },
-  "5-storage-gateway": { "title": "AWS Storage Gateway" },
-  "6-transfer-family": { "title": "AWS Transfer Family" },
-  "9-app-migration": { "title": "AWS Application Migration Service" },
-  "10-dms": { "title": "AWS Database Migration Service" },
-  "11-sms": { "title": "AWS Server Migration Services" },
-  "7-migration-hub": { "title": "AWS Migration Hub" },
-  "8-app-discovery": { "title": "AWS Application Discovery Service" }
+  "aws-caf": { "title": "AWS Cloud Adoption Framework" },
+  "strategies": { "title": "Migration Strategies" },
+  "snow-family": { "title": "AWS Snow Family" },
+  "data-sync": { "title": "AWS DataSync" },
+  "storage-gateway": { "title": "AWS Storage Gateway" },
+  "transfer-family": { "title": "AWS Transfer Family" },
+  "app-migration": { "title": "AWS Application Migration Service" },
+  "dms": { "title": "AWS Database Migration Service" },
+  "sms": { "title": "AWS Server Migration Services" },
+  "migration-hub": { "title": "AWS Migration Hub" },
+  "app-discovery": { "title": "AWS Application Discovery Service" }
 }

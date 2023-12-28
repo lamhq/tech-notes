@@ -1,9 +1,9 @@
 {
-  "0-overview": { "title": "AWS Networking Services" },
-  "1-vpc": { "title": "Amazon VPC" },
-  "8-dns": { "title": "DNS" },
+  "overview": { "title": "AWS Networking Services" },
+  "vpc": { "title": "Amazon VPC" },
+  "dns": { "title": "DNS" },
   "global-acc": { "title": "AWS Global Accelerator" },
-  "5-load-balancer": { "title": "Elastic Load Balancing" },
-  "api-gateway": { "title": "Amazon Api Gateway" },
-  "9-guides": { "title": "Guides" }
+  "cloudfront": { "title": "Amazon CloudFront" },
+  "load-balancer": { "title": "Elastic Load Balancing" },
+  "guides": { "title": "Guides" }
 }

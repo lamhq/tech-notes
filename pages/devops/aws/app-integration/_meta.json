@@ -1,6 +1,6 @@
 {
   "app-flow": { "title": "Amazon AppFlow" },
-  "appsync": { "title": "AWS AppSync" },
+  "app-sync": { "title": "AWS AppSync" },
   "event-bridge": { "title": "Amazon EventBridge" },
   "sns": { "title": "Amazon SNS" },
   "mq": { "title": "Amazon MQ" },

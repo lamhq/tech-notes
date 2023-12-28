@@ -1,4 +1,4 @@
-# Aurora Serverless v2
+# Aurora Serverless
 
 ## Overview
 

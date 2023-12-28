@@ -1,0 +1,6 @@
+{
+  "amplify": { "title": "AWS Amplify" },
+  "api-gateway": { "title": "Amazon Api Gateway" },
+  "device-farm": { "title": "AWS Device Farm" },
+  "pinpoint": { "title": "Amazon Pinpoint" }
+}

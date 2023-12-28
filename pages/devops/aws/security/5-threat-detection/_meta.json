@@ -4,6 +4,5 @@
   "3-inspector": { "title": "Amazon Inspector" },
   "4-guardduty": { "title": "Amazon GuardDuty" },
   "5-detective": { "title": "Amazon Detective" },
-  "5-fraud-detector": { "title": "Amazon Fraud Detector" },
   "9-trusted-advisor": { "title": "AWS Trusted Advisor" }
 }
