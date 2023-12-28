@@ -17,7 +17,6 @@
   "machine-learning": { "title": "Machine Learning" },
   "cost": { "title": "Cost Management" },
   "dev": { "title": "Development" },
-  "cache": { "title": "Cache" },
   "media": { "title": "Media" },
   "certifications": { "title": "Certifications" }
 }
