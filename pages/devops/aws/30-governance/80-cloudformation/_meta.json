@@ -1,8 +1,4 @@
 {
-  "1-overview": {
-    "title": "Overview"
-  },
-  "2-template": {
-    "title": "Template basics"
-  }
+  "1-overview": { "title": "Overview" },
+  "2-template": { "title": "Template basics" }
 }

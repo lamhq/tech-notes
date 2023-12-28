@@ -1,14 +1,6 @@
 {
-  "crud": {
-    "title": "CRUD"
-  },
-  "install": {
-    "title": "Installing"
-  },
-  "query": {
-    "title": "Query"
-  },
-  "table": {
-    "title": "Table"
-  }
+  "crud": { "title": "CRUD" },
+  "install": { "title": "Installing" },
+  "query": { "title": "Query" },
+  "table": { "title": "Table" }
 }

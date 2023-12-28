@@ -1,14 +1,6 @@
 {
-  "1-overview": {
-    "title": "Overview"
-  },
-  "basic": {
-    "title": "Basic Operations"
-  },
-  "deploy": {
-    "title": "Deploy"
-  },
-  "text-classification": {
-    "title": "Text Classification"
-  }
+  "1-overview": { "title": "Overview" },
+  "basic": { "title": "Basic Operations" },
+  "deploy": { "title": "Deploy" },
+  "text-classification": { "title": "Text Classification" }
 }

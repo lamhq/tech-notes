@@ -1,20 +1,9 @@
 {
-  "2-event-bridge": {
-    "title": "Amazon EventBridge"
-  },
-  "3-sns": {
-    "title": "Amazon SNS"
-  },
-  "5-mq": {
-    "title": "Amazon MQ"
-  },
-  "4-sqs": {
-    "title": "Amazon SQS"
-  },
-  "6-step-function": {
-    "title": "AWS Step Functions"
-  },
-  "7-app-flow": {
-    "title": "Amazon AppFlow"
-  }
+  "app-flow": { "title": "Amazon AppFlow" },
+  "appsync": { "title": "AWS AppSync" },
+  "event-bridge": { "title": "Amazon EventBridge" },
+  "sns": { "title": "Amazon SNS" },
+  "mq": { "title": "Amazon MQ" },
+  "sqs": { "title": "Amazon SQS" },
+  "step-function": { "title": "AWS Step Functions" }
 }

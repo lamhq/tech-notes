@@ -1,26 +1,10 @@
 {
-  "0-concepts": {
-    "title": "Concepts"
-  },
-  "1-rds": {
-    "title": "RDS"
-  },
-  "2-dynamodb": {
-    "title": "Amazon DynamoDB"
-  },
-  "3-documentdb": {
-    "title": "Amazon DocumentDB"
-  },
-  "4-keyspaces": {
-    "title": "Amazon Keyspaces"
-  },
-  "5-neptune": {
-    "title": "Amazon Neptune"
-  },
-  "6-qldb": {
-    "title": "Amazon QLDB"
-  },
-  "7-timestream": {
-    "title": "Amazon Timestream"
-  }
+  "0-concepts": { "title": "Concepts" },
+  "1-rds": { "title": "RDS" },
+  "2-dynamodb": { "title": "Amazon DynamoDB" },
+  "3-documentdb": { "title": "Amazon DocumentDB" },
+  "4-keyspaces": { "title": "Amazon Keyspaces" },
+  "5-neptune": { "title": "Amazon Neptune" },
+  "6-qldb": { "title": "Amazon QLDB" },
+  "7-timestream": { "title": "Amazon Timestream" }
 }

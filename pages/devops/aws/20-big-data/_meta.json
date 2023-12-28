@@ -1,32 +1,13 @@
 {
-  "1-overview": {
-    "title": "Overview"
-  },
-  "2-red-shift": {
-    "title": "Amazon Redshift"
-  },
-  "3-emr": {
-    "title": "Amazon EMR"
-  },
-  "4-kinesis": {
-    "title": "Amazon Kinesis Services"
-  },
-  "5-athena": {
-    "title": "Amazon Athena"
-  },
-  "6-quicksight": {
-    "title": "Amazon QuickSight"
-  },
-  "7-data-pipeline": {
-    "title": "AWS Data Pipeline"
-  },
-  "8-msk": {
-    "title": "Amazon MSK"
-  },
-  "9-opensearch": {
-    "title": "Amazon OpenSearch"
-  },
-  "lake-formation": {
-    "title": "AWS Lake Formation"
-  }
+  "overview": { "title": "Overview" },
+  "redshift": { "title": "Amazon Redshift" },
+  "emr": { "title": "Amazon EMR" },
+  "kinesis": { "title": "Amazon Kinesis Services" },
+  "athena": { "title": "Amazon Athena" },
+  "glue": { "title": "Amazon Glue" },
+  "quicksight": { "title": "Amazon QuickSight" },
+  "data-pipeline": { "title": "AWS Data Pipeline" },
+  "msk": { "title": "Amazon MSK" },
+  "opensearch": { "title": "Amazon OpenSearch" },
+  "lake-formation": { "title": "AWS Lake Formation" }
 }

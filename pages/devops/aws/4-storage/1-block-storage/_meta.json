@@ -1,8 +1,4 @@
 {
-  "1-overview": {
-    "title": "Overview"
-  },
-  "2-ebs": {
-    "title": "Amazon EBS"
-  }
+  "1-overview": { "title": "Overview" },
+  "2-ebs": { "title": "Amazon EBS" }
 }

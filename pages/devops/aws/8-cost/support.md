@@ -12,6 +12,7 @@ You can choose from the following Support plans to meet your company’s needs:
 - Enterprise On-Ramp
 - Enterprise
 
+
 ## Basic Support
 
 Basic Support is free for all AWS customers. It includes access to whitepapers, documentation, and support communities.

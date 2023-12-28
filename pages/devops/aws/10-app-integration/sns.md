@@ -19,7 +19,7 @@ Recommended for applications that need to react to high throughput or low-latenc
 
 Offers nearly unlimited throughput, ideal for scenarios with high message volumes.
 
-Can be used for applications requiring high fan-out (sending messages to thousands or millions of endpoints0.
+Can be used for applications requiring high fan-out (sending messages to thousands or millions of endpoints).
 
 
 ## Features
@@ -42,10 +42,10 @@ Can be used for applications requiring high fan-out (sending messages to thousan
 
 The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.
 
-For example, you can develop an application that publishes a message to an SNS topic whenever an order is placed for a product.
+*For example, you can develop an application that publishes a message to an SNS topic whenever an order is placed for a product.*
 
-Then, SQS queues that are subscribed to the SNS topic receive identical notifications for the new order.
+*Then, SQS queues that are subscribed to the SNS topic receive identical notifications for the new order.*
 
-An EC2 instance attached to one of the SQS queues can handle the processing or fulfillment of the order. And you can attach another EC2 instance to a data warehouse for analysis of all orders received.
+*An EC2 instance attached to one of the SQS queues can handle the processing or fulfillment of the order. And you can attach another EC2 instance to a data warehouse for analysis of all orders received.*
 
 ![](https://docs.aws.amazon.com/images/sns/latest/dg/images/sns-fanout.png)

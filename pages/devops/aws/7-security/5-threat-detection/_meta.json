@@ -1,23 +1,9 @@
 {
-  "1-cloudtrail": {
-    "title": "AWS CloudTrail"
-  },
-  "2-macie": {
-    "title": "Amazon Macie "
-  },
-  "3-inspector": {
-    "title": "Amazon Inspector"
-  },
-  "4-guardduty": {
-    "title": "Amazon GuardDuty"
-  },
-  "5-detective": {
-    "title": "Amazon Detective"
-  },
-  "5-fraud-detector": {
-    "title": "Amazon Fraud Detector"
-  },
-  "9-trusted-advisor": {
-    "title": "AWS Trusted Advisor"
-  }
+  "1-cloudtrail": { "title": "AWS CloudTrail" },
+  "2-macie": { "title": "Amazon Macie " },
+  "3-inspector": { "title": "Amazon Inspector" },
+  "4-guardduty": { "title": "Amazon GuardDuty" },
+  "5-detective": { "title": "Amazon Detective" },
+  "5-fraud-detector": { "title": "Amazon Fraud Detector" },
+  "9-trusted-advisor": { "title": "AWS Trusted Advisor" }
 }

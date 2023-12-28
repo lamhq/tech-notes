@@ -1,32 +1,12 @@
 {
-  "1-organizations": {
-    "title": "AWS Organizations"
-  },
-  "5-control-tower": {
-    "title": "AWS Control Tower"
-  },
-  "40-directory-service": {
-    "title": "AWS Directory Service"
-  },
-  "80-cloudformation": {
-    "title": "AWS Cloudformation"
-  },
-  "90-proton": {
-    "title": "AWS Proton"
-  },
-  "99-system-manager": {
-    "title": "AWS Systems Manager"
-  },
-  "10-config": {
-    "title": "AWS Config"
-  },
-  "20-ram": {
-    "title": "AWS RAM"
-  },
-  "60-license-manager": {
-    "title": "AWS License Manager"
-  },
-  "70-service-catalog": {
-    "title": "AWS Service Catalog"
-  }
+  "1-organizations": { "title": "AWS Organizations" },
+  "5-control-tower": { "title": "AWS Control Tower" },
+  "40-directory-service": { "title": "AWS Directory Service" },
+  "80-cloudformation": { "title": "AWS Cloudformation" },
+  "90-proton": { "title": "AWS Proton" },
+  "99-system-manager": { "title": "AWS Systems Manager" },
+  "10-config": { "title": "AWS Config" },
+  "20-ram": { "title": "AWS RAM" },
+  "60-license-manager": { "title": "AWS License Manager" },
+  "70-service-catalog": { "title": "AWS Service Catalog" }
 }

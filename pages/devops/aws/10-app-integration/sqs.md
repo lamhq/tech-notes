@@ -39,7 +39,7 @@ If you keep consuming from your queues, Amazon SQS samples all of its servers, a
 
 ### Long polling
 
-When the wait time for the `ReceiveMessage` API action is greater than 0, long polling is in effect (maximum 20 seconds).
+When the wait time for the `ReceiveMessage` API action is greater than **0**, long polling is in effect (maximum 20 seconds).
 
 Long polling helps reduce the cost of using Amazon SQS by reducing the number of empty responses and false empty responses.
 
