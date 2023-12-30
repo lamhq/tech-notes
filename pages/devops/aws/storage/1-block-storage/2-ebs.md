@@ -8,6 +8,8 @@ EBS is highly available. Automatically replicated within a single AZ to protect 
 
 EBS is scalable. You can **resize** and **change the volume type** on the fly with no downtime or performance impact.
 
+You cannot have EBS in separate regions.
+
 
 ## Use Cases
 

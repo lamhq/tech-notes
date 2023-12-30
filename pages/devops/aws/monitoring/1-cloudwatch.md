@@ -2,14 +2,23 @@
 
 ## Overview
 
-CloudWatch is a monitoring and observability platform that was designed to give us insight into our AWS architecture.
+CloudWatch lets you collect, retrieve, and graph numeric performance metrics from AWS and non-AWS resources.
 
-It enables you to **monitor and manage various metrics** and **configure alarm actions** based on data from those metrics.
+AWS services send metrics to CloudWatch, including:
+- EC2 instance CPU utilization
+- EBS volume read and write IOPS
+- S3 bucket sizes
+- DynamoDB consumed read and write capacity units
+- Custom metrics from your applications
+- ...
 
-AWS services send metrics to CloudWatch. CloudWatch then uses these metrics to create graphs automatically that show how performance has changed over time.
+CloudWatch uses metrics to create graphs automatically that show how performance has changed over time.
 
-You can use CloudWatch to:
+CloudWatch Alarms can send you a notification or take an action based on the value of those metrics.
 
+CloudWatch Logs lets you collect, store, view, and search logs from AWS and non- AWS sources
+
+Use cases:
 - Visualize logs and metrics with the AWS Management Console.
 - Discover insights to keep your applications healthy.
 - Troubleshoot issues.
@@ -48,7 +57,7 @@ Examples:
 
 ### Custom
 
-These metrics will need to be provided by using the CloudWatch agent installed on the host.
+These metrics will need to be provided by using the **CloudWatch agent** installed on the host.
 
 Your instances need connectivity and permission for the CloudWatch API.
 

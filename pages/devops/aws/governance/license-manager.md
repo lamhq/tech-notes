@@ -6,7 +6,7 @@ It's a service that simplifies managing software licenses with different vendors
 
 It helps centrally manage licenses across AWS accounts and on-premises environments.
 
-It allows you to have Control and visibility into usage of licenses and enabling license usage limits.
+It allows you to have Control and visibility into usage of licenses and enabling **license usage limits**.
 
 It helps you reduce overages and penalties via inventory tracking and rule-based controls for consumption.
 

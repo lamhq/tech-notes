@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amplify offers tools for front-end web and mobile developers to quickly build full-stack applications on AWS.
+Amplify offers tools for front-end web and mobile developers to quickly **build full-stack applications** on AWS.
 
 Amplify offers two services for developers: Amplify Hosting, Amplify Studio.
 
@@ -21,7 +21,7 @@ Also supports Gatsby and Hugo static site generators
 
 Allows for separate production and staging environments for the front-end and backend
 
-Support for server-side rendering apps, like Next.js. You can't do server-side rendering with a static application in S3.
+Support for **server-side rendering** apps, like Next.js. You can't do server-side rendering with a static application in S3.
 
 
 ## Amplify Studio

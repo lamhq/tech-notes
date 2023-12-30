@@ -2,9 +2,9 @@
 
 ## Overview
 
-AWS CloudTrail records AWS Management Console actions and API calls for your account.
+AWS CloudTrail records every read or write action (in the console or API calls) against your AWS resources.
 
-You can identify which users and accounts called AWS, the source IP address from which the calls were made, and when the calls occurred.
+You can identify what happened, who did it, when, and even their IP address.
 
 
 ## What is logged?
@@ -16,10 +16,11 @@ You can identify which users and accounts called AWS, the source IP address from
 - The request parameters
 - The response elements returned by the service
 
+
 ## Use cases
 
-- After-the-fact incident investigation. CloudTrail logs can be used to investigate unexpected events in your AWS environment
-- Near real-time intrusion detection. By integrating CloudTrail with Lambda functions, you can create a customizable intrusion detection system
+- Incident investigation. CloudTrail logs can be used to investigate unexpected events in your AWS environment
+- Intrusion detection (near real-time). By integrating CloudTrail with Lambda functions, you can create a customizable intrusion detection system
 - Industry and regulatory compliance
 
 
@@ -37,6 +38,6 @@ On January 1, 2020 at 9:00 AM, IAM user John created a new IAM user (Mary) throu
 ## CloudTrail Insights
 
 Within CloudTrail, you can also enable 
-**CloudTrail Insights**. This optional feature allows CloudTrail to automatically detect unusual API activities in your AWS account. 
+**CloudTrail Insights**. This optional feature allows CloudTrail to automatically **detect unusual API activities** in your AWS account. 
 
 > For example, CloudTrail Insights might detect that a higher number of Amazon EC2 instances than usual have recently launched in your account. You can then review the full event details to determine which actions you need to take next.

@@ -15,7 +15,8 @@ You're responsible for creating the consumer and scaling the stream (it's a bit 
 
 ## Limitations
 
-Kinesis Data Streams **does not transform data**.
+- Kinesis Data Streams **does not transform data**
+- Maximum retention period is 7 days
 
 
 ## Ingest data

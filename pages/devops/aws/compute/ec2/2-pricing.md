@@ -73,3 +73,21 @@ Use case:
 - **Licensing**: great for licensing that does not support multi-tenancy or cloud deployments.
 - **On-demand**: can be purchased on-demand (hourly)
 - **Reserved**: can be purchased as a reservation for up to 70% off the on-demand price.
+
+
+## Capacity Reservation
+
+**Capacity Reservation** allows you to reserve compute capacity for your Amazon EC2 instances in a specific Availability Zone for any duration.
+
+It's ideal if you have strict capacity requirements, and are running business-critical workloads that require a certain level of long or short-term capacity assurance. 
+
+You can create Capacity Reservations at any time, without entering into a one-year or three-year term commitment. The capacity becomes available and billing starts as soon as the Capacity Reservation is provisioned in your account.
+
+To create a Capacity Reservation, you specify the Availability Zone in which to reserve the capacity, the number of instances for which to reserve capacity, and the instance attributes (instance type, tenancy, and platform/OS).
+
+Capacity Reservations can only be used by instances that match their attributes. By default, they are automatically used by running instances that match the attributes. If you don't have any running instances that match the attributes of the Capacity Reservation, it remains unused until you launch an instance with matching attributes.
+
+
+## An Important Note About Billing
+
+Besides the normal charges for running an EC2 instance, your AWS account might also be billed hourly amounts or license fees for the use of the AMI software itself.

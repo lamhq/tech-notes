@@ -108,4 +108,4 @@ SQS is easier and simpler.
 
 Kinesis Data Streams is faster (real-time).
 
-SQS is designed to **temporarily hold** a **small message** until a single consumer processes it. Kinesis Data Streams is designed to provide **durable storage** and playback of **large data streams** to multiple consumers.
+SQS is designed to **temporarily hold** a **small message** until a **single consumer** processes it. Kinesis Data Streams is designed to provide **durable storage** and playback of **large data streams** to **multiple consumers**.

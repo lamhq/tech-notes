@@ -2,14 +2,11 @@
 
 ## Overview
 
-AWS Config is a service that serves as an inventory management and control tool for your infrastructure.
+AWS Config tracks how your AWS resources are configured and how they change over time.
 
-Allows to show the configuration history of your infrastructure over time.
+You can view how your resources are related to one another and how they were configured at any time in the past.
 
-Offers the ability to create rules to make sure resources conform to your requirements.
-
-Capable of receiving alerts via SNS when specific resource configurations change
-or do not comply with your defined rules.
+You can also compare your resource configurations against a baseline that you define and have AWS Config **alert** you when a resource falls out of compliance.
 
 This service is configured on per region. you must enable it independently
 in each region where you have resources that you need to record.
