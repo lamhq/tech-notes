@@ -20,3 +20,24 @@ Block-level storage volumes behave like physical hard drives.
 An instance store provides temporary block-level storage for an Amazon EC2 instance. When the instance is terminated, you lose any data in the instance store.
 
 It's ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
+
+
+## IOPS and Throughput
+
+### IOPS
+
+- Measures the number of read and write operations per second.
+- Important metric for quick transactions, low-latency apps, transactional workloads.
+- The ability to action reads and writes very quickly.
+
+The speed of your database storage is limited by the number of IOPS allocated to it.
+
+To understand how many IOPS you need, you first need to know the amount of data you can transfer in a single I/O operation (disk throughput). For example:
+- MySQL and MariaDB have a page size of 16 KB. Hence, writing 16 KB of data to disk would constitute one I/O operation
+- Oracle, PostgreSQL, and Microsoft SQL Server use a page size of 8 KB. Writing 16 KB of data using one of those database engines would consume two I/O operations.
+
+### Throughput
+
+- Measures the number of bits read or written per second (MB/s)
+- Important metric for big data, data warehousing, ETL, large I/O sizes, complex queries
+- The ability to deal with large datasets

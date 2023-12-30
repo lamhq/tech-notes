@@ -33,6 +33,28 @@ Self-healing. Data blocks and disks are continuously scanned for errors and repa
 - **PostgreSQL**. 5 read replicas with Aurora PostgreSQL
 
 
+## Multi-AZ
+
+Amazon Aurora gives you two options for multi-AZ: **single-master** and **multi-master**.
+
+### Single-Master
+
+An Amazon Aurora single-master cluster consists of a primary instance, and may include Aurora replicas.
+
+A cluster is synchronously replicated across three AZs.
+
+In the event the primary instance fails:
+- If no Aurora rep- licas exist, Aurora will create a new primary instance to replace the failed one
+- If an Aurora replica does exist, Aurora will promote the replica to the primary. The entire process typically takes less than two minutes.
+
+
+### Multi-Master
+
+In a multi-master cluster, all instances can write to the database in a shared cluster volume.
+
+When one instance fails, no failover occurs, as long as at least one database instance is running, you can read from and write to the database.
+
+
 ## Backups
 
 Automated backups are always enabled. Backups do not impact database performance.

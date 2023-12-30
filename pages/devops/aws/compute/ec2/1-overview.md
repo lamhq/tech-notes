@@ -109,9 +109,7 @@ Designed for workloads that require high, sequential read and write access to la
 
 Examples of workloads suitable for storage optimized instances include distributed file systems, data warehousing applications, and high-frequency online transaction processing (OLTP) systems.
 
-> In computing, the term input/output operations per second (IOPS) is a metric that measures the performance of a storage device. It indicates how many different input or output operations a device can perform in one second.
->
-> Storage optimized instances are designed to deliver tens of thousands of low-latency, random IOPS to applications.
+Storage optimized instances are designed to deliver tens of thousands of low-latency, random IOPS to applications.
 
 Use cases:
 - NoSQL databases, such as Cassandra, MongoDB, and Redis

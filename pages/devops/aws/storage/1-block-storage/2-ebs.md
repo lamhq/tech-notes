@@ -52,23 +52,6 @@ If you take a snapshot of an encrypted EBS volume, the snapshot will be encrypte
 You can share snapshots, but only in the region in which they were created. To share to other regions, you will need to copy them to the destination region first.
 
 
-## IOPS and Throughput
-
-### IOPS
-
-- Measures the number of read and write operations per second.
-- Important metric for quick transactions, low-latency apps, transactional workloads.
-- The ability to action reads and writes very quickly.
-- Volume type to choose: **Provisioned IOPS SSD** (io1 or io2).
-
-### Throughput
-
-- Measures the number of bits read or written per second (MB/s)
-- Important metric for big data, data warehousing, ETL, large I/O sizes, complex queries
-- The ability to deal with large datasets
-- Volume type to choose: **Throughput Optimized HDD** (st1)
-
-
 ## Volume Types
 
 There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs**) and hard-disk drives (**HDDs**):
@@ -108,6 +91,9 @@ Choose gp3, don't use gp2.
 - 500 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
 - 99.999% durability.
 
+For **IOPS**, choose **Provisioned IOPS SSD**.
+
+
 ### Throughput Optimized HDD (st1)
 
 - Suitable for big data, data warehouses, ETL, log processing
@@ -116,6 +102,8 @@ Choose gp3, don't use gp2.
 - Up to 99.9% durability
 - 500 MB/s throughput/volume
 - Designed for frequently accessed, throughput intensive workloads
+
+For **throughput**, choose **Throughput Optimized HDD**.
 
 ### Cold HDD (sc1)
 
