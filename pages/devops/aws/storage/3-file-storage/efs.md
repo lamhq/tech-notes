@@ -2,19 +2,24 @@
 
 ## Overview
 
-EFS is a managed network file system (NFS) that can be mounted on many EC2 instances (as a shared storage).
+EFS is a managed network file system (NFS) that provides **scalable** and **shareable** file storage to be accessed from **Linux** instances.
 
-- Support Network File System version 4 (NFSv4) protocol.
-- Pay for the storage you use (no pre-provisioning).
-- Can support thousands of concurrent connections.
-- Can scale up to petabytes.
-- Can handle up to 10 Gbps in throughput.
-- Data is stored across multiple AZs within a region.
-- Read-after-write consistency. Data is immediately available for reading after written.
-- Works with EC2 instances in multiple AZs.
-- Expensive.
+EFS-based files are accessed from within a VPC via **NFS mounts** on EC2 Linux instances or from your on-premises servers (through Direct Connect connections).
+
+Expensive.
+
+
+## Features
+
+- Support NFS version 4 (NFSv4) protocol
+- Pay for the storage you use (no pre-provisioning)
+- Scale up to **petabytes**
+- Support thousands of concurrent connections
+- Can handle up to 10 Gbps in throughput
+- Data is stored across multiple AZs within a region
+- Can be mounted to EC2 Linux instances as a shared storage
+- Data is immediately available for reading after written (read-after-write consistency)
 - Encryption at rest using KMS.
-- Compatible with **Linux-based** AMI (not Windows).
 
 
 ## Use cases

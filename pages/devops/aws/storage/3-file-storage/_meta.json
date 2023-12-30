@@ -1,5 +1,5 @@
 {
-  "1-overview": { "title": "Overview" },
-  "2-efs": { "title": "EFS" },
-  "3-fsx": { "title": "FSx" }
+  "overview": { "title": "Overview" },
+  "efs": { "title": "EFS" },
+  "fsx": { "title": "FSx" }
 }
