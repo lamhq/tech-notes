@@ -1,4 +1,4 @@
-# AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide
+# AWS Certified Solutions Architect - Associate (SAA-C03)
 
 ## Introduction
 
@@ -10,7 +10,7 @@ The exam also validates a candidate’s ability to complete the following tasks:
 - Review existing solutions and determine improvements
 
 
-## Target candidate description
+## Prerequisites
 
 The candidate should have at least 1 year of hands-on experience designing cloud solutions that use AWS services.
 
@@ -30,11 +30,11 @@ There are two types of questions on the exam:
 
 The exam has a pass or fail designation.
 
-Maximum score is 1,000. The minimum passing score is **720**. 
+Maximum score is **1,000**. The minimum passing score is **720**. 
 
-The exam includes **50 questions** that affect your score, **15** unscored questions (unidentified).
+The exam includes **65** questions, 50 that affect your score, 15 unscored questions (unidentified).
 
-You have **130 minutes** to complete the exam.
+You have **2 hours and 10 minutes** to complete the exam (130 minutes).
 
 
 ### Content outline
@@ -44,3 +44,19 @@ The exam has the following content domains and weightings:
 - Domain 2: Design Resilient Architectures (26%)
 - Domain 3: Design High-Performing Architectures (24%)
 - Domain 4: Design Cost-Optimized Architectures (20%)
+
+
+## Study resources
+
+### Guide
+
+- [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick learning, but just overview, not enough information
+- [Cheat Sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): for taking note
+- [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626): more details
+- [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): official document from AWS, just for reference
+
+### Test
+
+- [SAA-C03 Sample questions](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf): contains 10 sample questions
+- 12 Practice Test documents (in my goole drive): good to use
+- A Cloud Guru Practice Exams (included in the video course): too easy, not much scenario questions

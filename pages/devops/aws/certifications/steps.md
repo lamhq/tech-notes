@@ -13,6 +13,7 @@
 
 
 ## How to know when you're ready?
+
 - Repeating Cloud Guru Final Practice Exam with score >85% with full understanding.
 - Take AWS official practice exam and pass.
 - Read exam blueprint and understand every single item/term/topic

@@ -1,6 +1,5 @@
 {
-  "1-overview": { "title": "Available AWS Certifications" },
-  "2-resources": { "title": "Resources" },
-  "4-steps": { "title": "Steps for getting the certificate" },
-  "5-solution-architect": { "title": "AWS Certified Solutions Architect - Associate (SAA-C03) Exam Guide" }
+  "overview": { "title": "Available AWS Certifications" },
+  "steps": { "title": "Steps for getting the certificate" },
+  "saa-c03": { "title": "AWS Certified Solutions Architect Associate" }
 }
