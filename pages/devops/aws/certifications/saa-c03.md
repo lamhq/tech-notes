@@ -50,10 +50,11 @@ The exam has the following content domains and weightings:
 
 ### Guide
 
-- [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick learning, but just overview, not enough information
-- [Cheat Sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): for taking note
+- [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick overview
+- [Cheat Sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): comprehensive summary
+- [Study notes](https://docs.lamhq.com): my study notes
 - [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626): more details
-- [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): official document from AWS, just for reference
+- [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): exam content, for reference
 
 ### Test
 

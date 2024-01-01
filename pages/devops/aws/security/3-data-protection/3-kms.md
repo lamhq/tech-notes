@@ -47,8 +47,6 @@ Automatic key rotation is not supported for imported keys, asymmetric keys, or k
 
 The primary way to manage access to your AWS KMS CMKs is with policies. Policies are documents that describe who has access to what.
 
-Policies attached to an IAM identity are called **identity-based policies** (or IAM policies), and policies attached to other kinds of resources are called **resource-based policies**.
-
 In AWS KMS, you must attach resource-based policies to your customer master keys (CMKs). These are called **key policies**.
 
 All KMS CMKs have a key policy.

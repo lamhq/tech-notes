@@ -4,11 +4,11 @@
 
 ![](https://d1.awsstatic.com/reInvent/reinvent-2022/data-migration-services/product-page-diagram_AWS-DMS_Heterogenous-Brief.e64d5fda98f36a79ab5ffcefa82b2735f94540ea.png)
 
-The **Database Migration Service** is a managed service offered by AWS that helps you securely migrate and replicate your database and analytics workloads to AWS with minimal downtime and zero data loss.
+The **Database Migration Service** helps you migrate databases to (and from) AWS quickly and securely.
 
-It allows for easy migration of relational databases, data warehouses, NoSQL databases, and other data stores.
+The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.
 
-You can migrate data between AWS and on-premises - either into or out of AWS. You must have ONE endpoint live within an AWS service.
+It can migrate your data to and from most widely used commercial and open-source databases.
 
 You have the option to perform a one-time migration or continuously replicate ongoing changes.
 
@@ -34,9 +34,9 @@ Source and target data stores are referred to as endpoints.
 
 ## Schema Conversion Tool (SCT)
 
-You leverage the SCT to convert existing database schemas from one engine to another.
+Schema Conversion Tool can copy database schemas for homogenous migrations (same database) and convert schemas for heterogeneous migrations (different database).
 
-It supports many types of relational databases, including both OLAP and OLTP. It even supports data warehouses.
+It supports many types of relational databases, including both OLAP and OLTP, also data warehouses.
 
 Support different targets. Converted schemas can be used for any supported Amazon RDS engine type, Amazon Aurora, or Amazon Redshift.
 
