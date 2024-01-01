@@ -13,15 +13,6 @@ When data is requested, these addresses are used by the storage system to organi
 Since block storage is optimized for low-latency operations, it is a typical storage choice for high-performance enterprise workloads, such as databases or enterprise resource planning (ERP) systems, that require low-latency storage.
 
 
-## Amazon EC2 Instance Store
-
-Block-level storage volumes behave like physical hard drives.
-
-An instance store provides temporary block-level storage for an Amazon EC2 instance. When the instance is terminated, you lose any data in the instance store.
-
-It's ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
-
-
 ## IOPS and Throughput
 
 ### IOPS

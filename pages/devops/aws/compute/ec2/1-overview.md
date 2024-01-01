@@ -118,6 +118,15 @@ Use cases:
 - data warehousing, Elasticsearch, and analytics.
 
 
+## EC2 Instance Store
+
+Block-level storage volumes behave like physical hard drives.
+
+An instance store provides temporary block-level storage for an Amazon EC2 instance. When the instance is **terminated**, you lose any data in the instance store.
+
+It's ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
+
+
 ## EC2 Instance Lifecycle
 
 When the instance is **pending**, billing has not started.
