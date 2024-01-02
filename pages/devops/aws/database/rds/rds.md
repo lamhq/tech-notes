@@ -73,15 +73,13 @@ With multi-AZ, you have a unique DNS endpoint.
 
 ## Read replicas
 
-Read replica are read-only copies of your primary database.
+Read replica are read-only copies of your primary database. Replication is asynchronous.
 
 Useful for read-heavy applications.
 
 A read replica serves only queries against the database.
 
 Each read replica has its own DNS endpoint.
-
-Replication is asynchronous.
 
 Read replicas require automated backups enabled on the primary (retention period > 0).
 
@@ -163,10 +161,11 @@ When using encryption at rest, the following elements are also encrypted:
 - DB instance storage.
 - Read Replicas.
 
-To encrypt an existing DB, you need to create a snapshot, copy it, encrypt the copy, then build an encrypted DB from the snapshot.
+To **encrypt an existing DB**, you need to create a snapshot, copy it, encrypt the copy, restore the snapshot to a new RDS DB instance.
 
 RDS supports SSL encryption in-transit between applications and RDS DB instances. RDS generates a certificate for the instance.
 
+Read replicas and Multi-AZ standby instance must have the same encryption status with RDS DB.
 
 ## Billing
 

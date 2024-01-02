@@ -55,63 +55,55 @@ You can share snapshots, but only in the region in which they were created. To s
 ## Volume Types
 
 There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs**) and hard-disk drives (**HDDs**):
-- SSDs for **random input/output** (I/O).
+- SSDs for **random input/output**, **IOPS**.
 - HDDs for **sequential** I/O.
 
-### General Purpose SSD (gp2)
 
-- Suitable for boot disks and general applications (development, test, not latency sensitive).
-- A balance of price and performance.
-- Up to 16,000 IOPS/Volume. 250 MB/s throughput/volume.
-- Up to 99.9% durability.
+### SSD, General Purpose (gp2, gp3)
 
-
-### General Purpose SSD (gp3)
-
-- Suitable for high performance applications (MySQL, Cassandra, virtual desktops, Hadoop analytics...)
-- New generation of gp. Cheaper, 4 times faster than **gp2**.
-- 3000 IOPS baseline performance and 125 MB/s regardless of volumne size. Can scale up to 16,000 IOPS and 1,000 MiB/s for an additional fee
-- Up to 99.9% durability.
-
-Choose gp3, don't use gp2.
-
-### Provisioned IOPS SSD (io1)
-
-- Suitable for OLTP and latency-sensitive applications.
-- Use if you need more than **16,000 IOPS**.
-- High performance & most expensive.
-- 50 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
-- Up to 99.9% durability.
-
-### Provisioned IOPS SSD (io2)
-
-- Suitable for OLTP and latency-sensitive applications.
-- Latest generation.
-- Same price as **io1**.
-- 500 IOPS/GiB. Up to 64,000 IOPS/volume. 1,000 MB/s throughput/volume.
-- 99.999% durability.
-
-For **IOPS**, choose **Provisioned IOPS SSD**.
+- Volume size from 1 GiB to 16 TiB.
+- Up to 16,000 IOPS per volume.
+- Performance:
+  - 3 IOPS/GiB for gp2.
+  - Up to 500 IOPS/GiB for gp3.
+- Can be a boot volume.
+- EBS multi-attach not supported.
+- Use cases:
+  - Low-latency interactive apps.
+  - Development and test environments (not latency sensitive).
 
 
-### Throughput Optimized HDD (st1)
+### SSD, Provisioned IOPS (io1/io2)
 
-- Suitable for big data, data warehouses, ETL, log processing
-- Low-cost HDD volume. Cost-effective way to store mountains of data.
-- **Cannot be a boot volume**
-- Up to 99.9% durability
-- 500 MB/s throughput/volume
-- Designed for frequently accessed, throughput intensive workloads
+- More than 16,000 IOPS.
+- Up to 64,000 IOPS per volume (Nitro instances).
+- Up to 32,000 IOPS per volume for other instance types.
+- Performance:
+  - Up to 50 IOPS/GiB for io1.
+  - Up to 500 IOPS/Gib for io2.
+- Can be a boot volume.
+- EBS multi-attach is supported.
+- Use cases:
+  - Workloads that require sustained IOPS performance or more than 16,000 IOPS.
+  - I/O-intensive database workloads.
 
-For **throughput**, choose **Throughput Optimized HDD**.
 
-### Cold HDD (sc1)
+### HDD, Throughput Optimized (st1):
 
-- Good for applications that need the lowest cost and performance is not a factor.
-- Lowest cost.
-- **Cannot be a boot volume**
-- Max 250 MB/s throughput/volume. Baseline throughput of 12 MB/s per TB. Ability to burst up to 80 MB/s per TB
-- For less frequently accessed data.
+- Frequently accessed, **throughput intensive** workloads with large datasets and large I/O sizes, such as MapReduce, Kafka, log processing, data warehouse, and ETL workloads.
+- Throughput measured in MiB/s and includes the ability to burst up to 250 MiB/s per TB, with a baseline throughput of 40 MB/s per TB and a maximum throughput of 500 MiB/s per volume.
+- Cannot be a boot volume.
+- EBS multi-attach not supported.
+
+
+### HDD, Cold – (sc1):
+
+- Lowest cost storage – cannot be a boot volume.
+- Less frequently accessed workloads with large, cold datasets.
+- Can burst up to 80 MiB/s per TiB, with a baseline throughput of 12 MiB/s.
+- Cannot be a boot volume.
+- EBS multi-attach not supported.
+
 
 
 ## Encryption
