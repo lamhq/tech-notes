@@ -1,0 +1,12 @@
+{
+  "overview": { "title": "Overview" },
+  "storage-classes": { "title": "Storage Classes" },
+  "lifecycle": { "title": "Lifecycle" },
+  "object-lock": { "title": "Object Lock" },
+  "encryption": { "title": "Encryption" },
+  "replication": { "title": "Replication" },
+  "sharing": { "title": "Sharing" },
+  "event": { "title": "Event Notifications" },
+  "optimizing-perf": { "title": "Optimizing Performance" },
+  "transfer-accel": { "title": "Transfer Acceleration" }
+}

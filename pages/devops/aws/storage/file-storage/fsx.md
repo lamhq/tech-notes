@@ -11,7 +11,7 @@ You can easily move your Windows-based applications that require file storage to
 Use cases: SharePoint migrations, shared storage.
 
 
-### FSx for Windows vs. EFS?
+### FSx for Windows vs. EFS
 
 | FSx for Windows | EFS                     |
 |-----------------------------------------|-----------------------------------------------|
@@ -31,3 +31,12 @@ Use cases:
 - Machine Learning
 - Media Data Processing Workflows
 - Electronic Design Automation
+
+
+## When to use EFS, FSx for Windows, FSx for Lustre?
+
+You'll be given different scenarios and asked to choose whether you should use EFS, FSx for Windows, or FSx for Lustre.
+
+- **EFS**: When you need distributed, highly resilient storage for **Linux-based applications**.
+- **Amazon FSx for Windows**: When you need centralized storage for **Windows-based applications**, such as SharePoint, Microsoft SQL Server, Workspaces, IS Web Server, or any other native Microsoft application.
+- **Amazon FSx for Lustre**: When you need high-speed, high-capacity distributed storage. This will be for applications that do **high performance computing** (HPC), financial modeling, etc. FSx for Lustre can store data directly on S3.

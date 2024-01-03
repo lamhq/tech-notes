@@ -1,6 +1,7 @@
 {
-  "1-block-storage": { "title": "Block Storage" },
-  "2-object-storage": { "title": "Object Storage" },
-  "3-file-storage": { "title": "File Storage" },
-  "4-backup": { "title": "AWS Backup" }
+  "overview": { "title": "Overview" },
+  "ebs": { "title": "Amazon EBS" },
+  "s3": { "title": "Amazon S3" },
+  "file-storage": { "title": "File Storage" },
+  "backup": { "title": "AWS Backup" }
 }

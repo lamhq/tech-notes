@@ -1,4 +1,4 @@
-# Amazon EBS
+# Amazon Elastic Block Store (Amazon EBS)
 
 ## Overview
 

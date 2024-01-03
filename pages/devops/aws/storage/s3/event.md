@@ -7,6 +7,15 @@ You can use the Amazon S3 Event Notifications feature to receive notifications w
 For example, S3 notification can be set up to notify you when objects are restored from Glacier to S3.
 
 
+## Destinations
+
+Notification can be sent to:
+- Amazon SNS topics
+- Amazon SQS queues
+- AWS Lambda function
+- Amazon EventBridge
+
+
 ## Supported event types
 
 - New object created events
@@ -19,13 +28,3 @@ For example, S3 notification can be set up to notify you when objects are restor
 - S3 Intelligent-Tiering automatic archival events
 - Object tagging events
 - Object ACL PUT events
-
-
-## Destinations
-
-Amazon S3 can send event notification messages to the following destinations:
-
-- Amazon SNS topics
-- Amazon SQS queues
-- AWS Lambda function
-- Amazon EventBridge

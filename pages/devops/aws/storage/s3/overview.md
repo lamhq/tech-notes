@@ -1,63 +1,73 @@
 # Overview
 
-## Object Storage
-
-In object storage, each object consists of data, metadata, and a key.
-
-The **data** might be an image, video, text document, or any other type of file. Unlike file storage, these objects are stored in a flat structure instead of a hierarchy.
-
-**Metadata** contains information about what the data is, how it is used, the object size, and so on.
-
-An object’s **key** is its unique identifier.
-
-![](./images/obj-str.png)
-
-When a file in object storage is modified, the entire object is updated.
-
-![](./images/object-storage.png)
-
-Object storage is generally useful when storing large data sets, unstructured files like media assets, and static assets, such as photos.
-
-
 ## What Is Amazon S3?
 
 Amazon S3 is a service that provides object-level storage.
 
-It offers unlimited storage space.
+Objects are redundantly stored across AZs in a region.
 
-The maximum file size for an object is **5 TB**.
+It offers unlimited storage space.
 
 It can not be used to run an operating system or database.
 
-When you upload a file to S3, you can set permissions to control visibility and access to it.
-
-The **consistency model** for S3 is **Strong Read-After-Write** (as soon as you've written something to S3, it should be immediately available).
+Files can be from 0 bytes to **5 TB**.
 
 
 ## Use cases
 
-**Backup and storage**: S3 is a natural place to back up files because it is highly redundant. AWS stores EBS snapshots in S3 to take advantage of its high availability.
+- **Backup and storage**
+- **Application Hosting**: Provide services that deploy, install, and manage web applications.
+- **Media hosting**: Build a redundant, scalable, and highly available infrastructure that hosts video, photo, or music uploads and downloads.
+- **Software delivery**: host your software applications that customers can download.
+- **Static websites hosting**
 
-**Media hosting**: Because you can store unlimited objects, and each individual object can be up to 5 TBs, S3 is an ideal location to host video, photo, or music uploads.
 
-**Software delivery**: host your software applications that customers can download.
+## Object
 
-**Data lakes**: S3 is an optimal foundation for a data lake because of its virtually unlimited scalability. You can increase storage from gigabytes to petabytes of content, paying only for what you use.
+S3 object is made up of:
 
-**Static websites**: You can configure your bucket to host a static website of HTML, CSS, and client-side scripts.
+- Key (name).
+- Value (data).
+- Version ID.
+- Metadata.
+- Access Control Lists.
 
-**Static content**: Because of the limitless scaling, the support for large files, and the fact that you access any object over the web at any time, S3 is the perfect place to store static content.
+You can define permissions on objects.
 
 
 ## Bucket
 
 Amazon S3 store your objects in containers called buckets.
 
-When you create a bucket, you choose at least two things: the bucket **name** and the **region** you want the bucket to reside in.
+A bucket is a flat container of objects. It does not provide a hierarchy of objects but you can use an object key name (prefix) to mimic folders.
 
-**Bucket name** is unique.
+**Bucket name** must be unique globally.
+
+An S3 bucket is region specific.
+
+100 buckets per account by default.
+
+Bucket names cannot be changed after they have been created.
+
+If a bucket is deleted its name becomes available again.
 
 ![](./images/s3.png)
+
+
+## Consistency model
+
+Provides **strong read-after-write** consistency for PUTS of new objects: object is immediately available for reading after written.
+
+Provides eventual consistency for overwrite PUTS and DELETES (takes time to propagate).
+
+
+## Uploading
+
+The largest object that can be uploaded in a single PUT is 5 gigabytes.
+
+For objects larger than 100 megabytes use the Multipart Upload capability.
+
+HTTP 200 code indicates a successful write to S3.
 
 
 ## Secure your data

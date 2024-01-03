@@ -1,4 +1,4 @@
-# Overview
+# Storage overview
 
 ## Block Storage
 
@@ -11,6 +11,41 @@ When data is requested, these addresses are used by the storage system to organi
 ![](./images/block-storage.png)
 
 Since block storage is optimized for low-latency operations, it is a typical storage choice for high-performance enterprise workloads, such as databases or enterprise resource planning (ERP) systems, that require low-latency storage.
+
+
+## Object Storage
+
+In object storage, each object consists of data, metadata, and a key.
+
+The **data** might be an image, video, text document, or any other type of file. Unlike file storage, these objects are stored in a flat structure instead of a hierarchy.
+
+**Metadata** contains information about what the data is, how it is used, the object size, and so on.
+
+An object’s **key** is its unique identifier.
+
+![](./images/obj-str.png)
+
+When a file in object storage is modified, the entire object is updated.
+
+![](./images/object-storage.png)
+
+Object storage is generally useful when storing large data sets, unstructured files like media assets, and static assets, such as photos.
+
+
+## File Storage
+
+In file storage, multiple clients can access data that is stored in shared file folders. 
+
+You place your files in a tree-like hierarchy that consists of folders and subfolders. 
+
+Each file has metadata such as file name, file size, and the date the file was created. The file also has a path, when you need to retrieve a file, your system can use the path to find it in the file hierarchy.
+
+Ideal when a large number of services and resources need to access the same data at the same time.
+
+Common use cases for file storage include:
+- Large content repositories
+- Development environments
+- User home directories
 
 
 ## IOPS and Throughput
@@ -32,3 +67,10 @@ To understand how many IOPS you need, you first need to know the amount of data 
 - Measures the number of bits read or written per second (MB/s)
 - Important metric for big data, data warehousing, ETL, large I/O sizes, complex queries
 - The ability to deal with large datasets
+
+
+## Storage Types
+
+- **Persistent data store**: Data is durable and sticks around after reboots, restarts, or power cycles	(S3, Glacier, EBS, EFS)
+- **Transient Data Store**: Data is just temporarily stored and passed along to another process or persistent store	(SQS, SNS)
+- **Ephemeral Data Store**: Data is lost when the system is stopped	EC2 Instance Store, Memcached (Elasticache)

@@ -1,5 +1,4 @@
 {
-  "overview": { "title": "Overview" },
   "efs": { "title": "EFS" },
   "fsx": { "title": "FSx" }
 }
