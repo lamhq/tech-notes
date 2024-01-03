@@ -35,4 +35,4 @@ For example, a business might choose to implement the repurchasing strategy by m
 
 **Refactoring** (also known as re-architecting) involves **reimagining** how an application is architected and developed by using cloud-native features.
 
-Refactoring is driven by a strong business need to add features, scale, or performance that would otherwise be difficult to achieve in the application’s existing environment.
+Refactoring is driven by a strong business need to add features, scale, or performance that would otherwise be difficult to achieve in the application's existing environment.

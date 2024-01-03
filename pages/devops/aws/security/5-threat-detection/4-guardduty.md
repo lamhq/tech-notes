@@ -31,7 +31,7 @@ After you have enabled GuardDuty for your AWS account, GuardDuty begins monitori
 
 Once active, you will see findings on the GuardDuty console and in CloudWatch Events only if GuardDuty detects behavior it considers a threat. Findings include recommended steps for remediation.
 
-> You can also configure AWS Lambda functions to take remediation steps automatically in response to GuardDuty’s security findings.
+> You can also configure AWS Lambda functions to take remediation steps automatically in response to GuardDuty's security findings.
 
 ![](./images/guardduty.png)
 

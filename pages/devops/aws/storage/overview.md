@@ -21,7 +21,7 @@ The **data** might be an image, video, text document, or any other type of file.
 
 **Metadata** contains information about what the data is, how it is used, the object size, and so on.
 
-An object’s **key** is its unique identifier.
+An object's **key** is its unique identifier.
 
 ![](./images/obj-str.png)
 

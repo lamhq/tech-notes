@@ -25,6 +25,6 @@ Useful when you want to leave AD in a physical data center in the physical offic
 
 ### Simple AD
 
-It’s effectively just an authentication service that’s up and running inside of AWS and it’s actually powered by Linux Samba Active Directory compatible server.
+It's effectively just an authentication service that's up and running inside of AWS and it's actually powered by Linux Samba Active Directory compatible server.
 
 Doesn’t have all of the standard AD architecture that you love, but got the basics.

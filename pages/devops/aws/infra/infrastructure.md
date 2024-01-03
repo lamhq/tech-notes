@@ -37,7 +37,7 @@ Typically, this consists of Cloudfront, Amazon's content delivery network (CDN).
 
 There are many more edge location than Regions (> 215).
 
-> Suppose that your company’s data is stored in Brazil, and you have customers who live in China. To provide content to these customers, you don’t need to move all the content to one of the Chinese Regions.
+> Suppose that your company's data is stored in Brazil, and you have customers who live in China. To provide content to these customers, you don’t need to move all the content to one of the Chinese Regions.
 >
 > Instead of requiring your customers to get their data from Brazil, you can cache a copy locally at an edge location that is close to your customers in China.
 > 

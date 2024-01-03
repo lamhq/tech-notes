@@ -88,10 +88,6 @@ A policy has no effect until attached.
 
 If you don't explicitly allow, it's implicitly denied. You cannot override an explicit deny.
 
-Types:
-- When we apply a policy to users and groups, that's an **identity policy**.
-- When we apply a policy to resources, that's a **resource policy**.
-
 ```json
 {
   "Version": "2012-10-17",
@@ -123,6 +119,12 @@ Types:
 - The **Resource** element specifies the object or objects that the policy statement covers.
 
 You can test IAM policies with the [IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html).
+
+
+### Policy Types
+
+- **Identity policies**: policies applied to users and groups (identity-based policy).
+- **Resource policy**: policies applied to resource (resource-based policy)
 
 
 ## IAM Role

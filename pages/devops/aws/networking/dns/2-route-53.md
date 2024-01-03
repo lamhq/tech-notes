@@ -107,9 +107,9 @@ This is similar to simple routing; however, it allows you to put health checks o
 
 ![](./images/route-53-cloudfront.png)
 
-Suppose that AnyCompany’s application is running on several Amazon EC2 instances. These instances are in an Auto Scaling group that attaches to an Application Load Balancer. 
+Suppose that AnyCompany's application is running on several Amazon EC2 instances. These instances are in an Auto Scaling group that attaches to an Application Load Balancer. 
 
-1. A customer requests data from the application by going to AnyCompany’s website. 
-1. Amazon Route 53 uses DNS resolution to identify AnyCompany.com’s corresponding IP address, 192.0.2.0. This information is sent back to the customer. 
-1. The customer’s request is sent to the nearest edge location through Amazon CloudFront. 
+1. A customer requests data from the application by going to AnyCompany's website. 
+1. Amazon Route 53 uses DNS resolution to identify AnyCompany.com's corresponding IP address, 192.0.2.0. This information is sent back to the customer. 
+1. The customer's request is sent to the nearest edge location through Amazon CloudFront. 
 1. Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet to an Amazon EC2 instance.

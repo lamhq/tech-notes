@@ -17,7 +17,7 @@ Another benefit of consolidated billing is the ability to share bulk discount pr
 
 ![](./images/cons-billing.png)
 
-Suppose that your company has three AWS accounts used for separate departments. Instead of paying each location’s monthly bill separately, you decide to create an organization and add the three accounts. 
+Suppose that your company has three AWS accounts used for separate departments. Instead of paying each location's monthly bill separately, you decide to create an organization and add the three accounts. 
 
 You manage the organization through the primary account.
 

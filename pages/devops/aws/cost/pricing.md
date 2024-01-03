@@ -43,16 +43,6 @@ AWS Lambda allows 1 million free requests and up to 3.2 million seconds of compu
 You can save on AWS Lambda costs by signing up for a Compute Savings Plan. A Compute Savings Plan offers lower compute costs in exchange for committing to a consistent amount of usage over a 1-year or 3-year term.
 
 
-## Amazon S3 Pricing
-
-For Amazon S3 pricing, consider the following cost components:
-
-- **Storage** - You pay for only the storage that you use. You are charged the rate to store objects in your Amazon S3 buckets based on your objects’ sizes, storage classes, and how long you have stored each object during the month.
-- **Requests and data retrievals** - You pay for requests made to your Amazon S3 objects and buckets. 
-- **Data transfer** - There is no cost to transfer data between different Amazon S3 buckets or from Amazon S3 to other services within the same AWS Region. However, you pay for data that you transfer into and out of Amazon S3, with a few exceptions. There is no cost for data transferred into Amazon S3 from the internet or out to Amazon CloudFront. There is also no cost for data transferred out to an Amazon EC2 instance in the same AWS Region as the Amazon S3 bucket.
-- **Management and replication** - You pay for the storage management features that you have enabled on your account’s Amazon S3 buckets. These features include Amazon S3 inventory, analytics, and object tagging.
-
-
 ## Amazon EC2 Pricing
 
 With Amazon EC2, you pay for only the compute time that you use while your instances are running.

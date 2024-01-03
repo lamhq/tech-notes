@@ -66,7 +66,7 @@ Common roles in the Platform Perspective include:
 
 The Security Perspective ensures that the organization meets security objectives for visibility, auditability, control, and agility. 
 
-Use the AWS CAF to structure the selection and implementation of security controls that meet the organization’s needs.
+Use the AWS CAF to structure the selection and implementation of security controls that meet the organization's needs.
 
 - Common roles in the Security Perspective include: 
 - Chief Information Security Officer (CISO)

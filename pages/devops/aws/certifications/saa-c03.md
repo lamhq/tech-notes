@@ -2,9 +2,9 @@
 
 ## Introduction
 
-The exam validates a candidate’s ability to design solutions based on the AWS Well-Architected Framework.
+The exam validates a candidate's ability to design solutions based on the AWS Well-Architected Framework.
 
-The exam also validates a candidate’s ability to complete the following tasks:
+The exam also validates a candidate's ability to complete the following tasks:
 - Design solutions that incorporate AWS services to meet current business requirements and future projected needs
 - Design architectures that are secure, resilient, high-performing, and cost- optimized
 - Review existing solutions and determine improvements
