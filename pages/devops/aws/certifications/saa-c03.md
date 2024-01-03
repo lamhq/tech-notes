@@ -50,14 +50,14 @@ The exam has the following content domains and weightings:
 
 ### Guide
 
-- [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick overview
-- [Cheat Sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): comprehensive summary
-- [Study notes](https://docs.lamhq.com): my study notes
-- [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626): more details
-- [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): exam content, for reference
+1. [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick overview
+1. [Cheat sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): comprehensive summary
+1. [Study notes](https://docs.lamhq.com): my study notes
+1. [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626): more details
+1. [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): exam content, for reference
 
 ### Test
 
-- [SAA-C03 Sample questions](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf): contains 10 sample questions
-- 12 Practice Test documents (in my goole drive): good to use
-- A Cloud Guru Practice Exams (included in the video course): too easy, not much scenario questions
+1. [SAA-C03 Sample questions](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf): contains 10 sample questions
+1. A Cloud Guru Practice Exams (included in the video course): reinforcement learning
+1. 12 Practice Test documents (in my goole drive): be sure to take 100 questions before starting the exam

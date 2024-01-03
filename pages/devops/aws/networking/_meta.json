@@ -4,6 +4,6 @@
   "dns": { "title": "DNS" },
   "global-acc": { "title": "AWS Global Accelerator" },
   "cloudfront": { "title": "Amazon CloudFront" },
-  "load-balancer": { "title": "Elastic Load Balancing" },
+  "elb": { "title": "Elastic Load Balancing" },
   "guides": { "title": "Guides" }
 }

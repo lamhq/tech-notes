@@ -1,41 +1,56 @@
-# Directing Traffic with Elastic Load Balancing
+# Elastic Load Balancing
 
-## What's a Load Balancer?
-
-Load balancing refers to the process of distributing tasks across a set of resources.
-
-To distribute the requests across all the servers hosting the application, you first need to enable the load balancer to take all of the traffic and redirect it to the backend servers based on an algorithm. The most popular algorithm is round-robin, which sends the traffic to each server one after the other.
-
-A typical request for the application would start from the browser of the client. It's sent to a load balancer. Then, it's sent to one of the instances that hosts the application. The return traffic would go back through the load balancer and back to the client browser.
-
-
-## Elastic Load Balancing
-
-Elastic Load Balancing is the AWS service that automatically distributes incoming application traffic across multiple resources, such as Amazon EC2 instances. 
-
-**Elastic Load Balancing** and **Amazon EC2 Auto Scaling** are separate services, they work together to help ensure that applications running in Amazon EC2 can provide high performance and availability.
+## Overview
 
 ![](https://media.amazonwebservices.com/blog/2014/elb_instances_1.png)
+
+Elastic Load Balancing automatically distributes incoming application traffic across multiple (healthy) targets.
+
+Targets can be Amazon EC2 instances, containers, IP addresses, and Lambda functions.
+
+Network traffic can be distributed across a single (or multiple) AZs within an AWS Region.
+
+Only 1 subnet per AZ for each ELB.
 
 
 ## Health Checks
 
 All AWS load balancers can be configured with health checks.
 
-Health checks periodically send requests to load balancers' registered instances to test their status.
-
 The load balancer performs health checks on all registered instances, whether the instance is in a healthy state (status = `InService`) or an unhealthy state (status = `OutOfService`).
 
-The load balancer routes requests only to the healthy instances. When the load balancer determines an instance is unhealthy, it stops routing requests to that instance. The load balancer resumes routing requests to the instance when it has been restored to a healthy state.
+When an instance is unhealthy, load balancer stops routing requests to that instance and resumes routing until it has been restored to a healthy state.
+
+
+## Internal vs. public facing ELB
+
+Internet facing ELB:
+- ELB nodes have public IPs
+- Routes traffic to the private IP addresses of the EC2 instances
+- Each defined AZ quire one public subnet
+- ELB DNS name format: `<name>-<id-number>.<region>.elb.amazonaws.com`
+
+Internal only ELB:
+- ELB nodes have private IPs
+- Routes traffic to the private IP addresses of the EC2 instances
+- ELB DNS name format: `internal-<name>-<id-number>.<region>.elb.amazonaws.com`
 
 
 ## ELB Components
 
 The ELB service is made up of three main components:
 
-- **Listeners**: To define a listener, a port must be provided as well as the protocol, depending on the load balancer type. There can be many listeners for a single load balancer.
-- **Target groups**: The backend servers, or server-side, is defined in one or more target groups. This is where you define the type of backend you want to direct traffic to, such as EC2 Instances, AWS Lambda functions, or IP addresses. Also, a health check needs to be defined for each target group.
-- **Rules**: To associate a target group to a listener, a rule must be used. Rules are made up of a condition that can be the source IP address of the client and a condition to decide which target group to send the traffic to.
+### Listeners
+
+To define a listener, a port must be provided as well as the protocol, depending on the load balancer type. There can be many listeners for a single load balancer.
+
+### Target groups
+
+The backend servers, or server-side, is defined in one or more target groups. This is where you define the type of backend you want to direct traffic to, such as EC2 Instances, AWS Lambda functions, or IP addresses. Also, a health check needs to be defined for each target group.
+
+### Rules
+
+To associate a target group to a listener, a rule must be used. Rules are made up of a condition that can be the source IP address of the client and a condition to decide which target group to send the traffic to.
 
 After the load balancer receives a request, it evaluates the listener rules in priority order to determine which rule to apply, and then selects a target from the target group for the rule action.
 
@@ -88,6 +103,7 @@ If all of these parameters are the same, then the packets are sent to the exact 
 - Operating at the Network Level on the OSI Model (Layer 3)
 - Use when deploying inline virtual appliances where network traffic is not destined for the Gateway Load Balancer itself.
 - For Inline Virtual Appliance Load Balancing
+- Support IP protocol
 
 
 ### Classic Load Balancer (Layer 4/7)

@@ -20,12 +20,13 @@ You can have Outposts in sizes such as 1U and 2U servers all the way up to 42U r
 - **Hardware**: Available starting with a single 42U rack and scale up to 96 racks.
 - **Services**: Provides AWS compute, storage, database, and other services locally.
 - **Results**: Gives the same AWS infrastructure, services, and APIs in your own data center.
+- **Use cases**: for large deployments, within a data centers or places that has a lot of storage.
 
-For large deployments, within a data centers or places that has a lot of storage.
 
 ### Outposts Servers
+
 - **Hardware**: Individual servers in 1U or 2U form factor.
-- **Use Cases**: Useful for small space requirements, such as retail stores, branch offices, healthcare provider locations, or factory floors.
+- **Use Cases**: Useful for **small space** requirements, such as **retail stores**, branch offices, healthcare provider locations, or factory floors.
 - **Results**: Provides local compute and networking services only.
 
 

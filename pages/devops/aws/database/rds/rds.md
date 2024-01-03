@@ -70,6 +70,10 @@ Automated backups are taken from standby. Database engine version upgrades happe
 
 With multi-AZ, you have a unique DNS endpoint.
 
+Depending on the instance class it can take 1 to a few minutes to failover to a standby DB instance.
+
+It is recommended to implement DB connection retries in your application.
+
 
 ## Read replicas
 

@@ -11,10 +11,21 @@ You can leverage **Amazon SNS** for notifications of different event types.
 
 ## Scaling types
 
-- **Reactive scaling**: monitors resources and adjusts the instances based on the incoming traffic. There might be a **cooldown period** where resources are maintained at maximum capacity even when traffic decreases. This prepares for any further incremental surges
-- **Scheduled scaling**: If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed
-- **Predictive scaling**: uses machine learning algorithms to determine when you'll need to scale. They are re-evaluated every 24 hours to create a forecast for the next 48 hours
-- **Dynamic Scaling**: the number of EC2 instances changes automatically based on received signals. Supported policies: Target tracking scaling, Step scaling, Simple scaling
+### Reactive scaling
+
+Monitors resources and adjusts the instances based on the incoming traffic. There might be a **cooldown period** where resources are maintained at maximum capacity even when traffic decreases. This prepares for any further incremental surges
+
+### Scheduled scaling
+
+If you have a predictable workload, create a scaling event to get your resources ready to go before they're actually needed
+
+### Predictive scaling
+
+Ues machine learning algorithms to determine when you'll need to scale. They are re-evaluated every 24 hours to create a forecast for the next 48 hours
+
+### Dynamic Scaling
+
+the number of EC2 instances changes automatically based on received signals. Supported policies: Target tracking scaling, Step scaling, Simple scaling
 
 
 ## Components

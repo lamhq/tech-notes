@@ -7,7 +7,7 @@ DNS resolution is the process of translating a domain name to an IP address.
 ![](./images/dns.png)
 
 
-## Top-level domain
+## Top-level domains
 
 The last word in a domain name represents the top-level domain.
 
@@ -16,6 +16,13 @@ The second word in a domain name is known as a second-level domain name (this is
 Example: `.co.uk`, `.co` is the second level, the top level is `.uk`.
 
 Top-level domain names are controlled by the Internet Assigned Numbers Authority (IANA) in a root [zone database](http://www.iana.org/domains/root/db), a database of all available top-level domains.
+
+
+## Naked domains
+
+A naked domain is a domain name that does not include a subdomain such as `www`. For example, if your website is hosted at `example.com`, then `example.com` is the naked domain.
+
+Naked domains are often used for the root domain of a website, while subdomains are used for specific pages or sections of the website
 
 
 ## Domain Registrars
@@ -50,9 +57,16 @@ In other words, the NS records **indicate which DNS server is authoritative for 
 
 ### A records
 
-The A record is used by a computer to translate the name of the domain to an IP address.
+You use an A record to route traffic to a resource, such as a web server, using an IPv4 address in dotted decimal notation.
 
 For example, http://www.acloud.guru might point to http://123.10.10.80.
+
+
+### AAAA record type
+
+You use an AAAA record to route traffic to a resource, such as a web server, using an **IPv6 address** in colon-separated hexadecimal format.
+
+Example value: `2001:0db8:85a3:0:0:8a2e:0370:7334`
 
 
 ### CNAME records
@@ -61,7 +75,7 @@ A CNAME (canonical name) can be used to resolve one domain name to another.
 
 Cannot be used for naked domain names (zone apex record). You can't have a CNAME for http://acloudguru.com
 
-A naked domain is a domain name that does not include a subdomain such as `www`. For example, if your website is hosted at `example.com`, then `example.com` is the naked domain. Naked domains are often used for the root domain of a website, while subdomains are used for specific pages or sections of the website
+You can't create a CNAME record at the zone apex
 
 
 ### Alias records 

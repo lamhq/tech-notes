@@ -77,7 +77,7 @@ Other examples of custom metrics are:
 - Number of processes or threads on your instance
 - Amount of work performed by your application
 
-You can use high-resolution custom metrics to collect custom metrics  per second.
+You can use high-resolution custom metrics to collect custom metrics per second.
 
 
 ## CloudWatch Logs
@@ -116,6 +116,8 @@ An alarm has three possible states.
 - **INSUFFICIENT_DATA**: The alarm has just started, the metric is not available, or not enough data is available for the metric to determine the alarm state.
 
 An alarm can be triggered when it transitions from one state to another. Once an alarm is triggered, it can initiate an **action**. Actions can be an Amazon EC2 action, an Auto Scaling action, or a notification sent to Amazon Simple Notification Service (SNS).
+
+You can create a billing alarm in CloudWatch.
 
 
 ## CloudWatch Dashboards

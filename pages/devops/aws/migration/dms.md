@@ -47,7 +47,7 @@ You can even use the converted schemas with databases running on EC2 or data sto
 
 - **Full Load**. All existing data is moved from sources to targets in parallel. While this is in progress,
 any changes made to your tables that are being loaded are cached on your replication server.
-- **Full Load and Change Data Capture (CDC)**. Full load plus CDC captures changes to source tables during migration.
+- **Full Load and Change Data Capture (CDC)**. Migrate existing data and replicate ongoing changes.
 - **CDC Only**. Only replicate the data changes from the source database. CDC is the only one that guarantees transactional integrity of your target database.
 
 

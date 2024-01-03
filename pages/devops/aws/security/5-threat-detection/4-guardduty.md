@@ -17,8 +17,7 @@ Attempts to disable CloudTrail logging
 
 ## Features
 
-- Alerts appear in the GuardDuty console and
-CloudWatch Events
+- Alerts appear in the GuardDuty console and CloudWatch Events
 - Receives feeds from third parties like Proofpoint and CrowdStrike, as well as AWS Security, about known malicious domains and IP addresses, etc.
 - Monitors CloudTrail logs, VPC Flow Logs, and DNS logs
 - Centralize threat detection across multiple AWS accounts
