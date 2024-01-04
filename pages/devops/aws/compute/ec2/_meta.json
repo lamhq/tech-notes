@@ -1,9 +1,9 @@
 {
-  "1-overview": { "title": "Overview" },
-  "2-pricing": { "title": "Pricing" },
-  "3-networking": { "title": "Networking" },
-  "4-placement-group": { "title": "Placement Group" },
-  "5-spot-instances": { "title": "Spot Instances" },
-  "6-ami": { "title": "Amazon Machine Image" },
-  "7-tips": { "title": "Tips" }
+  "overview": { "title": "Overview" },
+  "instance-types": { "title": "Instance Types" },
+  "pricing": { "title": "Pricing" },
+  "networking": { "title": "Networking" },
+  "placement-group": { "title": "Placement Group" },
+  "spot-instances": { "title": "Spot Instances" },
+  "tips": { "title": "Tips" }
 }
