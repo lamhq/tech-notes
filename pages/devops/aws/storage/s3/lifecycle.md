@@ -4,21 +4,36 @@
 
 Amazon S3 Lifecycle is a feature that enables you to define rules to automatically transition objects to a cheaper storage tier or delete objects that are no longer required after a set period of time.
 
+Lifecycle configuration is an XML file applied at the bucket level as a subresource.
+
+Can be applied to specific objects within a bucket: objects with a specific tag or objects with a specific prefix.
+
 
 ## Types of actions
 
-- **Transition actions** are used to define when you should transition your objects to another storage class.
-- **Expiration actions** define when objects expire and should be permanently deleted.
+**Transition actions** are used to define when you should transition your objects to another storage class.
 
+**Expiration actions** define when objects expire and should be permanently deleted.
 
 *For example, you might choose to transition objects to S3 Standard-IA storage class 30 days after you created them, or archive objects to the S3 Glacier storage class one year after creating them.*
 
-## Use cases
 
-**Periodic logs**: If you upload periodic logs to a bucket, your application might need them for a week or a month. After that, you might want to delete them.
+## Transitions
 
-**Data that changes in access frequency**: Some documents are frequently accessed for a limited period of time. After that, they are infrequently accessed. At some point, you might not need real-time access to them, but your organization or regulations might require you to archive them for a specific period. After that, you can delete them.
+Supported transitions:
+- STANDARD → any.
+- any → GLACIER, DEEP_ARCHIVE.
+- STANDARD_IA → INTELLIGENT_TIERING, ONEZONE_IA.
+- INTELLIGENT_TIERING → ONEZONE_IA.
+- GLACIER → DEEP_ARCHIVE.
 
+Not supported:
+- any → STANDARD.
+- any → REDUCED_REDUNDANCY.
+- DEEP_ARCHIVE → any.
+- INTELLIGENT_TIERING → STANDARD_IA.
+- ONEZONE_IA → STANDARD_IA, INTELLIGENT_TIERING.
+- GLACIER → DEEP_ARCHIVE.
 
 ## Manage lifecycle rule in AWS Management Console
 

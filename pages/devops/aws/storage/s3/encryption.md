@@ -1,29 +1,43 @@
 # Encryption
 
-## Types of encryption
+## In Transit
 
-**Encryption in Transit**: This is when you're sending objects to and from your bucket. It is done using SSL certificates/TLS, HTTPS.
-
-**Encryption at Rest (Server-Side)**: This is when the object is actually inside S3
-or sitting on your computer. There's three different types:
-- **SSE-S3**: S3 manages the keys. AWS manage all the encryption and decryption for you. It uses AES 256-bit encryption.
-- **SSE-KMS**: use key provided by AWS Key Management Service (KMS).
-- **SSE-C**: Customer-provided keys.
-
-**Encryption at Rest (Client-Side)**: You encrypt the files yourself before you upload them to S3.
+You can securely upload/download your data to Amazon S3 via SSL endpoints using the HTTPS protocol (In Transit – SSL/TLS).
 
 
-## Server-Side Encryption
+## At rest (Server-Side Encryption)
 
 Service-side encryption is now enabled by default.
 
-All objects are automatically encrypted
-by using server-side encryption with Amazon S3 managed keys.
+All objects are automatically encrypted by using server-side encryption with Amazon S3 managed keys.
+
+If you need server-side encryption for all the objects that are stored in a bucket, use a bucket policy.
 
 
-## Enforcing Server-Side Encryption for S3 Uploads (legacy use cases)
+### Server-Side Encryption options
 
-If we were to upload a file to S3, we're essentially sending a PUT request.
+**SSE-S3**:
+- S3 manages the keys.
+- AWS manage encryption and decryption for you
+- Each object is encrypted with a unique key.
+- Encryption key is encrypted with a master key.
+- AWS regularly rotate the master key.
+- Uses AES 256.
+
+**SSE-KMS**:
+- use Customer Master Keys (CMKs) provided by AWS KMS or your own key.
+- provides added protection against unauthorized access of objects with separate permissions for the use of a CMK
+- provides you with an audit trail that shows when your CMK was used and by whom.
+
+**SSE-C**:
+- Client-provided keys.
+- S3 manages the encryption/decryption
+- If keys are lost data cannot be decrypted.
+
+
+### Enforcing Server-Side Encryption for S3 Uploads (legacy use cases)
+
+When uploading a file to S3, we're essentially sending a PUT request.
 
 To enforce service side encryption we've got two different options:
 1. Add header `x-amz-server-side-encryption: AES256` (use S3-managed keys) to the PUT request
@@ -31,10 +45,16 @@ To enforce service side encryption we've got two different options:
 
 ![](./images/enc-param.png)
 
-Now what you can do is you can create a bucket policy
-that denies any S3 PUT request
-that doesn't include the `x-amz-server-side-encryption`
-parameter in the request header.
+Now you can create a bucket policy that denies any S3 PUT request that doesn't include the `x-amz-server-side-encryption` parameter in the request header.
+
+
+## Client-side encryption
+
+Encrypt objects using your own local encryption process before uploading to S3.
+
+To enable client-side encryption, you have the following options:
+- Use a customer master key (CMK) stored in AWS Key Management Service (AWS KMS).
+- Use a master key you store within your application.
 
 
 ## KMS Limitations

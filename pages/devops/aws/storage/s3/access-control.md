@@ -29,6 +29,7 @@ A bucket owner can grant permissions to another AWS account (or users in an acco
   - The bucket owner can deny access to any objects regardless of ownership.
   - The bucket owner can archive any objects or restore archived objects regardless of ownership.
 
+
 ## Bucket Policies
 
 S3 Bucket Policies specify what actions are allowed or denied

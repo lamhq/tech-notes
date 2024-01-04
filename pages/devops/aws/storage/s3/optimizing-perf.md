@@ -64,6 +64,6 @@ Use cases:
 
 ## Download
 
-S3 Byte-Range Fetches
-- Parallelize download by specifying byte ranges (split file into chunks and download them at the same time)
-- If there's a failure, it's only for a specific byte range.
+Use Byte-Range Fetches:
+- Parallelize download by specifying byte ranges using the `Range` HTTP header in GET requests
+- Allows your application to improve retry times when requests are interrupted.

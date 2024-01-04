@@ -1,41 +1,68 @@
 # Replication
 
-## Overview
+## Cross Region Replication (CRR)
 
-You can replicate objects from one bucket to another (same region or cross region).
+### Overview
 
-Cross Region Replication requires versioning to be enabled on the source and destination buckets.
+You can replicate objects to other buckets in different regions (and different AWS accounts).
 
-Once replication is turned on, existing objects are not replicated, all subsequent updated objects will be replicated automatically.
+Versioning must be enabled on both source and destination buckets.
 
-Delete markers are not replicated by default.
+CRR is configured at the S3 bucket level.
+
+You can configure separate S3 Lifecycle rules on the source and destination buckets.
+
+You can specify a different storage class (by default the source storage class will be used).
 
 You can set up replication at a bucket level, a shared prefix level, or an object level (by using Amazon S3 object tags).
 
+To activate CRR you need to configure the replication on the source bucket:
+- Define the bucket in the other region to replicate to.
+- Specify to replicate all objects or a subset of objects with specific key name prefixes.
 
-## Use Cases
+Replication behavior:
+- Existing objects are not replicated, all subsequent updated objects will be replicated automatically.
+- Delete markers are not replicated by default.
 
-**Compliance**: Amazon S3 stores your data across multiple geographically distant Availability Zones by default. However, compliance requirements might require you to store data at even greater distances. You can use CRR to replicate data between distant AWS Regions to satisfy these requirements.
+What isn’t replicated:
+- Objects that existed before enabling replication (can use the copy API).
+- Objects created with SSE-C and SSE-KMS.
+- Objects to which the bucket owner does not have permissions.
+- Updates to bucket-level subresources.
+- Actions from lifecycle rules are not replicated.
+- Objects in the source bucket that are replicated from another region are not replicated.
 
-**Latency performance**: If your customers or end users are distributed across one or more geographic locations, you can minimize latency for data access by maintaining multiple object copies in AWS Regions that are geographically closer to your customers.
+Deletion behavior:
+- If a DELETE request is made without specifying an object version ID a delete marker will be added and replicated.
+- If a DELETE request is made specifying an object version ID the object is deleted but the delete marker is not replicated.
 
-**Regional efficiency**: If you have compute clusters in two or more AWS Regions that analyze the same set of objects, you might choose to maintain object copies in all of those AWS Regions.
+
+### Permissions
+- AWS S3 must have permission to replicate objects.
+- Bucket owners must have permission to read the object and object ACL.
+- source bucket owner must have permission to replicate objects into the destination bucket.
 
 
-## How to do?
+### Use Cases
+- Compliance.
+- Minimize Latency.
+- Regional efficiency.
 
-To enable S3 replication in the AWS Management Console, follow these steps:
 
-1. Open the Amazon S3 console.
-2. Choose the source bucket that you want to replicate.
-3. Choose the **Management** tab and then choose **Replication**.
-4. Choose **Add rule**.
-5. In the **Add replication rule** dialog box, specify the following:
-    - **Name**: A name for the replication rule.
-    - **Source**: The source bucket that you want to replicate.
-    - **Destination**: The destination bucket where you want to replicate objects.
-    - **Storage class**: The storage class of the replicated objects.
-    - **Replication time control**: The frequency with which you want Amazon S3 to replicate objects.
-    - **IAM role**: The IAM role that Amazon S3 can assume to replicate objects on your behalf.
+### Charges
+- Requests for upload.
+- Inter-region transfer.
+- S3 storage in both regions.
 
-In the confirmation dialog, you can choose to replicate existing objects.
+
+## Same Region replication (SRR)
+
+You can use SRR to replication objects to a destination bucket within the same region as the source bucket.
+
+This feature was released in September 2018.
+
+Replication is automatic and asynchronous.
+
+New objects uploaded to an bucket are configured for replication at the bucket, prefix, or object tag levels.
+
+Replicated objects can be owned by the same AWS account as the original copy or by different accounts, to protect from accidental deletion.
