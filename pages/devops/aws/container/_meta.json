@@ -1,5 +1,4 @@
 {
-  "overview": { "title": "Overview" },
   "ecs": { "title": "Amazon ECS" },
   "eks": { "title": "Amazon EKS" },
   "ecr": { "title": "Amazon ECR" },
