@@ -1,8 +1,14 @@
 # Amazon Elastic Compute Cloud
 
-## What Is Amazon EC2?
+## Overview
 
 Amazon EC2 is a service that lets you run virtual servers in the cloud. It allows you to provision **virtual servers** called EC2 instances.
+
+You can modify the following attributes of an instance only when it is stopped:
+- Instance type.
+- User data.
+- Kernel.
+- RAM disk.
 
 
 ## Supported operating systems

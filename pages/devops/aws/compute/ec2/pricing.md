@@ -121,8 +121,8 @@ Use cases:
 
 ## Limitations
 
-- Running up to a total of 20 On-Demand instances across the instance family
-- Purchasing 20 Reserved Instances
+- On-Demand instances across the instance family: 20
+- Reserved Instances Purchasing: 20 
 - Requesting Spot Instances per your dynamic spot limit per region (by default).
 
 
