@@ -24,9 +24,9 @@ Default interfaces are terminated with instance termination. Manually added inte
 You can change the termination behavior.
 
 Attaching ENIs:
-- ENIs can be “hot attached” to running instances.
-- ENIs can be “warm-attached” when the instance is stopped.
-- ENIs can be “cold-attached” when the instance is launched.
+- ENIs can be "hot attached" to running instances.
+- ENIs can be "warm-attached" when the instance is stopped.
+- ENIs can be "cold-attached" when the instance is launched.
 
 Eth0 network interface:
 - eth0 is the primary network interface and cannot be moved or detached.

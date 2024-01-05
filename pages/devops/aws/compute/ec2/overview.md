@@ -49,7 +49,7 @@ The IP address `169.254.169.254` is a link-local address and is valid only from 
 ## Metadata
 
 - Instance metadata is data about your instance that you can use to configure or manage the running instance.
-- Instance metadata is available at http://169.254.169.254/latest/meta-data/ (the trailing “/” is required).
+- Instance metadata is available at http://169.254.169.254/latest/meta-data/ (the trailing "/" is required).
 
 The Instance Metadata Query tool allows you to query the instance metadata without having to type out the full URI or category names.
 
@@ -122,3 +122,14 @@ When you start your instance out of hibernation:
 - Previously attached data volumes are reattached and the instance retains its instance ID.
 
 You can hibernate an instance only if it's enabled for hibernation and it meets the hibernation prerequisites (regions, AMIs, instance families, etc.,).
+
+
+## High Availability Approaches For Compute
+
+Horizontally scalable architectures are preferred because risk can be spread across multiple smaller machines versus one large machine.
+
+Reserved instances are the only way to guarantee that resources will be available when needed.
+
+Auto Scaling and Elastic Load Balancing work together to provide automated recovery by maintaining minimum instances.
+
+Amazon Route 53 health checks also provide "self-healing" redirection of traffic.

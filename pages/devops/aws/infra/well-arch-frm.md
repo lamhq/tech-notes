@@ -52,8 +52,8 @@ Core values:
 Best practices:
 - Design and architect your workload such that it can tolerate frequent updates.
 - Changes must be reversible in a quick time without impacting customer experience
-- Keep improving your processes. Convene regular meetings like scrum retrospective meetings or “lessons learned” meetings to achieve continued excellence.
-- Perform “Pre-mortem” exercises and maintain a “Risk register” to identify potential sources of failure so you can plan the mitigation in advance.
+- Keep improving your processes. Convene regular meetings like scrum retrospective meetings or "lessons learned" meetings to achieve continued excellence.
+- Perform "Pre-mortem" exercises and maintain a "Risk register" to identify potential sources of failure so you can plan the mitigation in advance.
 - Define all your applications, infrastructure, and services through code and update them with code only. This will limit human error and enforce consistent responses to all incidents.
 
 

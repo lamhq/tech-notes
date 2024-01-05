@@ -6,11 +6,13 @@
 
 **SMS** is a service that helps you to automate migrating on-premises servers to the AWS Cloud.
 
-It supports many VM types: Sphere, Hyper-V, SCVMM, and
-Azure VMs.
+It supports many VM types: Sphere, Hyper-V, SCVMM, and Azure VMs.
 
-It works by using incremental replications of server VMs over to AWS AMIs that can be deploved on Amazon EC2. It replicates your VMs over to AWS AMIs that you can use to be deployed
-on your Amazon EC2 instances.
+Minimizes cutover downtime by syncing VMs incrementally.
+
+Replicates VMs to AWS, syncing volumes and creating periodic AMIs.
+
+Supports Windows and Linux VMs only.
 
 
 ## Use cases
