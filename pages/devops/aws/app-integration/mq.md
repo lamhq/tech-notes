@@ -2,22 +2,34 @@
 
 ## Overview
 
-Amazon MQ is a **message broker service** allowing easier migration of existing brokering applications to the AWS Cloud.
+Amazon MQ is a managed **message broker service** for ActiveMQ.
 
-It leverages multiple programming languages, operating systems, and messaging protocols.
+MQ supports industry-standard APIs and protocols so you can migrate messaging and applications without rewriting code.
 
-Currently supports both Apache ActiveMQ or RabbitMQ engine types.
+Supports Apache ActiveMQ, RabbitMQ engine types, JMS, NMS, MQTT, and WebSockets.
 
-Allows easily leverage existing apps without managing and maintaining your own system
+You pay for broker instance and storage usage as you go.
+
+MQ stores your messages redundantly across multiple AZs.
+
+In the event of a failure of broker or AZ, MQ automatically fails over to the standby broker.
+
+MQ provides encryption of your messages at rest and in transit. 
+
+Access can be restricted to a private endpoint within your VPC, allows you to isolate your broker in your own virtual network.
 
 
 ## Amazon MQ vs SNS, SQS
 
 All services offer topics and queues. Allow one-to-one or one-to-many messaging designs.
 
-**MQ is for migrating existing applications** with messaging systems in place. **SNS and SQS are for new applications**.
+Application:
+- MQ is for migrating existing applications
+- SNS and SQS are for new applications.
 
-MQ restrict access to private networking. Must have VPC connectivity (e.g., Direct Connect, or Site-to-site VPN). SNS and SQS are publicly accessible by default.
+Networking:
+- MQ restrict access to private networking. Must have VPC connectivity (e.g., Direct Connect, or Site-to-site VPN).
+- SNS and SQS are publicly accessible by default.
 
 
 ## Amazon MQ Brokers

@@ -2,9 +2,33 @@
 
 ## Overview
 
-AWS Step Functions is a serverless orchestration service combining different AWS services to build business applications.
+AWS Step Functions is a serverless workload orchestration service which can be used to coordinate the components of distributed applications as a series of steps in a visual workflow.
 
-It provides a graphical console for viewing application workflow views and flows.
+It provides a graphical console for viewing application workflow views and flows, a detailed event log for every execution.
+
+It scales automatically.
+
+It is highly available, maintains service capacity across multiple AZs. No maintenance windows or scheduled downtimes.
+ 
+You can automatically retry failed or timed-out tasks, catch errors.
+
+IAM policies can be used to control access to the Step Functions APIs.
+
+Services and data can be orchestrated that run on Amazon EC2 instances, containers, or on-premises servers.
+
+
+## How it works
+
+You define your app as a state machine.
+
+You define the steps of your workflow in the JSON-based Amazon States Language. The visual console automatically graphs each step in the order of execution.
+
+Start an execution to visualize and verify the steps of your application are operating as intended. The console highlights the real-time status of each step and provides a detailed history of every execution.
+
+AWS Step Functions operates and scales the steps of your application and underlying compute for you to help ensure your application executes reliably under increasing demand.
+
+You can add branching logic based on the output of a task to determine the next state.
+
 
 ## Components
 
@@ -39,6 +63,17 @@ Available states:
 A task is a state in a workflow represent a single unit of work.
 
 
+## Pricing
+
+Each time you perform a step in your workflow, Step Functions counts a state transition.
+
+You pay for the number state transitions (including retries) you use per month. 
+
+Free Tier: 4000 State Transitions per month.
+
+State Transitions cost a flat rate of $0.000025 per state transition thereafter.
+
+
 ## Types of workflow
 
 Each workflow has executions. Executions are instances where you run your workflows in order to perform your tasks.
@@ -57,3 +92,14 @@ Each workflow has executions. Executions are instances where you run your workfl
 - Can run for up to five minutes.
 - Useful for high-event-rate workloads. Things that comes in and goes out very quickly. E.g., IoT data streaming and ingestion.
 - Pricing based on number of executions, durations, memory consumed
+
+
+## Use Cases
+
+Build workflows across multiple Amazon services
+
+Buidl data pipeline, long-running ETL jobs
+
+Automate recurring tasks, such as updating patches, selecting infrastructure, and synchronizing data
+
+Create responsive serverless applications and microservices with multiple AWS Lambda functions without writing code for workflow logic, parallel processes, error handling, or timeouts.

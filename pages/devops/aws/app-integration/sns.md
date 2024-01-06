@@ -6,6 +6,8 @@ SNS is a fully managed **messaging service** for both application-to-application
 
 SNS is used for sending notifications between distributed systems, microservices, and event-driven serverless applications.
 
+SNS is **push-based**: messages sent by a producer and arrives at a SNS Topic will immediately be sent to all consumers.
+
 It can send notifications via SMS text message, email, SQS queues or to any HTTP endpoint.
 
 It can also trigger Lambda functions.
