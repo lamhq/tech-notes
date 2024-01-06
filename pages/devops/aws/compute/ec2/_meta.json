@@ -1,9 +1,11 @@
 {
-  "overview": { "title": "Overview" },
   "instance-types": { "title": "Instance Types" },
   "pricing": { "title": "Pricing" },
   "networking": { "title": "Networking" },
   "placement-group": { "title": "Placement Group" },
   "spot-instances": { "title": "Spot Instances" },
+  "ip": { "title": "IP Addresses" },
+  "logging": "Logging and Auditing",
+  "monitoring": "Monitoring",
   "tips": { "title": "Tips" }
 }
