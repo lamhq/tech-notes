@@ -4,6 +4,17 @@
 
 AWS STS enables you to request temporary, limited privilege credentials for IAM Users or Federated Users.
 
+Temporary security credentials are not stored with the user but are generated dynamically and provided to the user when requested.
+
+STS supports AWS CloudTrail, which records AWS calls for your AWS account and delivers log files to an S3 bucket.
+
+The AWS STS API action returns temporary security credentials that consist of:
+
+- An access key which consists of an access key ID and a secret ID.
+- A session token.
+- Expiration or duration of validity.
+- Users (or application) can use these credentials to access your resources.
+
 
 ## Benefits
 

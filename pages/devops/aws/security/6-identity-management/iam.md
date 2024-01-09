@@ -4,16 +4,25 @@
 
 IAM enables you to manage access to AWS services and resources securely.
 
-IAM features:
-- IAM users, groups, and roles
-- IAM policies
-- Multi-factor authentication
+IAM can be used to manage:
+- Users.
+- Groups.
+- Access policies.
+- Roles.
+- User credentials.
+- User password policies.
+- Multi-factor authentication (MFA).
+- API keys for programmatic access (CLI).
 
 IAM is global and not specific to any one Region.
 
-IAM is integrated with many AWS services  by default.
+IAM is integrated with many AWS services by default.
 
 No additional charge.
+
+Identity Federation (including AD, Facebook etc). can be configured allowing secure access to AWS resources without creating an IAM user account.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-1.jpg)
 
 
 ## Root User
@@ -22,52 +31,19 @@ The root user is accessed by signing in with the email address and password that
 
 The root user has complete access to all AWS services and resources in your account, as well as your billing and personal information.
 
-### Access keys
+Multi-factor authentication (MFA) can be enabled/enforced for the AWS root account and for individual users under the account.
 
-The AWS root user has two sets of credentials associated with it:
-- One set of credentials is the **email address and password** used to create the account. This allows you to access the AWS Management Console.
-- The second set of credentials is called **access keys**, which allow you to make programmatic requests from the AWS Command Line Interface (AWS CLI) or AWS API.
-
-**Access keys** consist of two parts:
-- An access key ID, for example, A2lAl5EXAMPLE
-- A secret access key, for example, wJalrFE/KbEKxE
-
-
-### Best Practices
-
+Best Practices:
 - Choose a strong password for the root user.
 - [Enable MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html) on your root user
 - Delete your root user's access keys in [My Security Credentials page](https://console.aws.amazon.com/iam/home?#security_credential)
-- Do not use the root user for everyday tasks.
+- Do not use the root account for anything other than billing.
 - Create an admin group for you administrators, and assign the appropriate permissions to this group. Create user accounts for administrators and add user to admin group.
 
 
-## IAM User
+## Amazon Resource Names
 
-An IAM user is an identity that you create in AWS. It represents the person or application that interacts with AWS services and resources.
-
-It consists of a name and credentials. When creating a user, you can choose to provide the user:
-
-- Access to the AWS Management Console
-- Programmatic access to the AWS Command Line Interface (AWS CLI) and AWS Application Programming Interface (AWS API)
-
-To allow the IAM user to perform specific actions in AWS, you must grant the IAM user the necessary permissions.
-
-**Best practice**: Create individual IAM users for each person who needs to access AWS. This provides additional security by allowing each IAM user to have a unique set of security credentials.
-
-
-## IAM Group
-
-An IAM group is a collection of users. All users in the group inherit the permissions assigned to the group.
-
-- Groups can have many users.
-- Users can belong to many groups.
-- Groups cannot belong to groups.
-
-
-## Amazon Resource Names (ARNs)
-
-Amazon Resource Names are uniquely identify a resource within Amazon.
+Amazon Resource Names (ARNs) are uniquely identify a resource within Amazon.
 
 ![](./images/arn-format.png)
 
@@ -80,70 +56,71 @@ Example: `arn:aws:iam::123456789012:user/ryan`:
 - resource: `ryan`
 
 
-## IAM Policies
+## IAM User
 
-An IAM Policy is a JSON document that defines permissions.
+An IAM user is an entity that represents a person or service.
 
-A policy has no effect until attached.
+Can be assigned:
+- An access key ID and secret access key for programmatic access to the AWS API, CLI, SDK, and other development tools.
+- A password for access to the management console.
 
-If you don't explicitly allow, it's implicitly denied. You cannot override an explicit deny.
+By default users cannot access anything in your account. To allow the IAM user to perform specific actions in AWS, you must grant the IAM user the necessary permissions.
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [{
-    "Effect": "Allow",
-    "Action": "*",
-    "Resource": "*"
-  }]
-}
+IAM users can be created to represent applications, and these are known as “service accounts”.
 
-{
-  "Version":"2012-10-17",
-  "Statement":[
-    {
-      "Effect":"Allow",
-      "Action":[
-        "iam: ChangePassword",
-        "iam: GetUser"
-      ],
-      "Resource":"arn:aws:iam::123456789012:user/${aws:username}"
-    }
-  ]
-}
-```
+Best practice: Create individual IAM users for each person who needs to access AWS. This provides additional security by allowing each IAM user to have a unique set of security credentials.
 
-- The **Version** element defines the version of the policy language.
-- The **Effect** element specifies whether the statement will allow or deny access.
-- The **Action** element describes the type of action that should be allowed or denied.
-- The **Resource** element specifies the object or objects that the policy statement covers.
+You can have up to 5000 users per AWS account.
 
-You can test IAM policies with the [IAM policy simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html).
+![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-3.jpg)
 
 
-### Policy Types
+## IAM Group
 
-- **Identity policies**: policies applied to users and groups (identity-based policy).
-- **Resource policy**: policies applied to resource (resource-based policy)
+An IAM group is a collection of users.
+
+All users in the group inherit the permissions assigned to the group.
+
+A group is not an identity and cannot be identified as a principal in an IAM policy.
+
+You cannot nest groups (groups within groups).
 
 
 ## IAM Role
 
 An IAM role is a **temporary identity** that can be assumed by users or services to **delegate access**.
 
-Roles are not tied to a specific person and can be assumed by anyone who needs it.
+IAM users or AWS services can assume a role to obtain temporary security credentials that can be used to make AWS API calls. They must be granted permissions to switch to that role.
 
-Before an IAM user, application, or service can use/assume a role, they must be granted permissions to switch to that role.
-
-When someone assumes a role, they abandon their previous permissions and instead assume the permissions of the new role.
+A role can be assigned to a federated user who signs in using an external identity provider.
 
 Roles can enable cross-account access, allowing one AWS account to interact with resources in other AWS accounts.
 
 Using roles is preferred for security reasons as it allows you to avoid hard-coding credentials.
 
-You can attach and detach roles to running EC2 instances without stopping or terminating them.
+IAM roles with EC2 instances:
+- IAM roles can be used for granting applications running on EC2 instances permissions to AWS API requests using instance profiles.
+- Only one role can be assigned to an EC2 instance at a time.
+- When using the AWS CLI or API instance profiles must be created manually (it’s automatic and transparent through the console).
+- Applications retrieve temporary security credentials from the instance metadata.
 
-Roles are ideal for granting temporary access to services or resources rather than long-term access.
+Role Delegation:
+- Create an IAM role with two policies:
+  - Permissions policy – grants the user of the role the required permissions on a resource.
+  - Trust policy – specifies the trusted accounts that are allowed to assume the role.
+- Wildcards (*) cannot be specified as a principal.
+- A permissions policy must also be attached to the user in the trusted account.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-5.jpg)
+
+
+## Instance Profiles
+
+An instance profile is a container for an IAM role that you can use to pass role information to an EC2 instance when the instance starts.
+
+An instance profile can contain only one IAM role, although a role can be included in multiple instance profiles.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/iam-instance-profiles.jpeg)
 
 
 ## IAM Federation
