@@ -27,11 +27,29 @@ Your users can sign in directly with a username and password they create or thro
 **Access AWS AppSync Resources**. Users can be given access to AppSync resources with tokens received from a user or identity pool in Cognito.
 
 
-## Concepts
+## User Pools
 
-**User pools** are directories of users that provide sign-up and sign-in options for vour application users.
+User pools are directories of users that provide sign-up and sign-in options for your application users.
 
-**Identity pools** allow you to give your users access to other AWS services.
+With a user pool, users can sign in to a web or mobile app through Amazon Cognito.
+
+Users can also sign in through social identity providers like Google, Facebook, Amazon, or Apple, and through SAML identity providers.
+
+Whether your users sign in directly or through a third party, all members of the user pool have a directory profile that you can access through a Software Development Kit (SDK)
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-api-gateway-cognito-user-pool.jpeg)
+
+User pools provide:
+- Sign-up and sign-in services.
+- A built-in, customizable web UI to sign in users.
+- Social sign-in with Facebook, Google, Login with Amazon, and Sign in with Apple, as well as sign-in with SAML identity providers from your user pool.
+- User directory management and user profiles.
+- Security features such as multi-factor authentication (MFA).
+
+
+## Identity pools
+
+Identity pools allow you to give your users access to other AWS services.
 
 You can use identity pools and user pools either separately or together.
 
