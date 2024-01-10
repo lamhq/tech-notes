@@ -105,7 +105,6 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
 - EBS multi-attach not supported.
 
 
-
 ## Encryption
 
 You can encrypt your EBS Volumes with a data key (AES-256 standard) and you can either manage the key yourself (CMK)

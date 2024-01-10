@@ -1,3 +1,7 @@
 {
-  "snippets": { "title": "Snippets" }
+  "monitor": "Operations and Monitoring",
+  "limits": "Limitations",
+  "concurrent-exec": "Concurrent executions",
+  "elb": "Elastic Load Balancing",
+  "vpc": "Amazon VPC"
 }
