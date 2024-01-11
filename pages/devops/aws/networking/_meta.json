@@ -1,10 +1,8 @@
 {
-  "overview": { "title": "AWS Networking Services" },
   "vpc": { "title": "Amazon VPC" },
-  "dns": { "title": "DNS" },
-  "global-acc": { "title": "AWS Global Accelerator" },
-  "cloudfront": { "title": "Amazon CloudFront" },
   "elb": { "title": "Elastic Load Balancing" },
   "api-gateway": { "title": "Amazon Api Gateway" },
-  "guides": { "title": "Guides" }
+  "cloudfront": { "title": "Amazon CloudFront" },
+  "route53": { "title": "Amazon Route 53" },
+  "global-acc": { "title": "AWS Global Accelerator" }
 }
