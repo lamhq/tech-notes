@@ -1,7 +1,7 @@
 {
-  "1-network-basic": { "title": "Networking Basics" },
-  "2-vpc": { "title": "Amazon VPC" },
-  "3-routing": { "title": "Routing" },
-  "4-security": { "title": "Security" },
-  "connect": { "title": "Connect your VPC to other networks" }
+  "network-basic": { "title": "Networking Basics" },
+  "routing": { "title": "Routing" },
+  "security": { "title": "Security" },
+  "connect": { "title": "Connect your VPC to other networks" },
+  "guides": "Guides"
 }
