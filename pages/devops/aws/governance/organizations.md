@@ -7,7 +7,10 @@ With it, you can control your accounts from a single location rather than jumpin
 
 ## Account types
 
-**Management Account**: Also called the Payer account, this is the primary account that hosts and manages the organization
+**Management Account**:
+- Also called the Payer account
+- Primary for centralizing governance.
+- SCPs do not affect the management account.
 
 **Member Account**: All other AWS accounts that belong to the organization. Can include development accounts, testing accounts, production accounts.
 
@@ -22,18 +25,29 @@ With it, you can control your accounts from a single location rather than jumpin
 - Govern access to AWS services resources in Region by policy
 
 
-## Concepts
+## Multi-account
 
-- **Multi-account**: Allows you to easily achieve a multi-account design while maintaining centralized management
-- **Tag Enforcement**: Capability to require specific tags is leveraged for all AWS resources. This ensures consistent tagging practices and it enables better resource categorization and tracking
-- **Organizational Unit (OU)**: Logical grouping of multiple accounts to allow for easy management and separation
-- **Service Control Policies (SCPs)**: JSON policies that get applied to OUs or accounts to restrict actions that are or are not allowed for different resources. They are the only way to restrict what the root account can do
-- **Management Account**: SCPs do not affect the management account. The management account's' primary responsibility is for centralizing governance
+Allows you to easily achieve a multi-account design while maintaining centralized management
+
+## Tag Enforcement
+
+Capability to require specific tags is leveraged for all AWS resources.
+
+This ensures consistent tagging practices and it enables better resource categorization and tracking
 
 
-## Service Control Policies
+## Organizational Unit (OU)
 
-This is an example SCP in the form of a valid JSON document that denies any attempt to stop or terminate all EC2 instances within the account. It is similar to IAM policies.
+Logical grouping of multiple accounts to allow for easy management and separation.
+
+
+## Service Control Policies (SCPs)
+
+JSON policies that get applied to OUs or accounts to restrict actions that are (or are not) allowed for different resources.
+
+They are the only way to restrict what the root account can do.
+
+Example policy that denies any attempt to stop or terminate all EC2 instances within the account:
 
 ```json
 {
