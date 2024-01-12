@@ -16,18 +16,19 @@ How should the Solutions Architect deploy this solution cost-effectively?
   <A correct>Configure a static website using Amazon S3 and create a Route 53 failover routing policy.</A>
   <A>Configure a static website using Amazon S3 and create a Route 53 weighted routing policy.</A>
   <A>Create the backup website on EC2 and ALB in another Region and create an AWS Global Accelerator endpoint.</A>
+  <R/>
   <E>
   The most cost-effective solution is to create a static website using an Amazon S3 bucket and then use a failover routing policy in Amazon Route 53. With a failover routing policy users will be directed to the main website as long as it is responding to health checks successfully.
 
 If the main website fails to respond to health checks (its down), Route 53 will begin to direct users to the backup website running on the Amazon S3 bucket. It’s important to set the TTL on the Route 53 records appropriately to ensure that users resolve the failover address within a short time.
 
-CORRECT: "Configure a static website using Amazon S3 and create a Route 53 failover routing policy" is the correct answer.
+CORRECT: **"Configure a static website using Amazon S3 and create a Route 53 failover routing policy"** is the correct answer.
 
-INCORRECT: "Configure a static website using Amazon S3 and create a Route 53 weighted routing policy" is incorrect. Weighted routing is used when you want to send a percentage of traffic between multiple endpoints. In this case all traffic should go to the primary until if fails, then all should go to the backup.
+INCORRECT: **"Configure a static website using Amazon S3 and create a Route 53 weighted routing policy"** is incorrect. Weighted routing is used when you want to send a percentage of traffic between multiple endpoints. In this case all traffic should go to the primary until if fails, then all should go to the backup.
 
-INCORRECT: "Deploy the backup website on EC2 and ALB in another Region and use Route 53 health checks for failover routing" is incorrect. This is not a cost-effective solution for the backup website. It can be implemented using Route 53 failover routing which uses health checks but would be an expensive option.
+INCORRECT: **"Deploy the backup website on EC2 and ALB in another Region and use Route 53 health checks for failover routing"** is incorrect. This is not a cost-effective solution for the backup website. It can be implemented using Route 53 failover routing which uses health checks but would be an expensive option.
 
-INCORRECT: "Create the backup website on EC2 and ALB in another Region and create an AWS Global Accelerator endpoint" is incorrect. Global Accelerator is used for performance as it directs traffic to the nearest healthy endpoint. It is not useful for failover in this scenario and is also a very expensive solution.
+INCORRECT: **"Create the backup website on EC2 and ALB in another Region and create an AWS Global Accelerator endpoint"** is incorrect. Global Accelerator is used for performance as it directs traffic to the nearest healthy endpoint. It is not useful for failover in this scenario and is also a very expensive solution.
 
 References:
 
@@ -41,7 +42,6 @@ https://digitalcloud.training/amazon-s3-and-glacier/
 
 https://digitalcloud.training/amazon-route-53/
   </E>
-  <R />
 </Q>
 
 
@@ -56,16 +56,17 @@ Which pricing model should the company choose?
   <A>Spot Instances</A>
   <A>Reserved Instances</A>
   <A>Dedicated Instances</A>
+  <R/>
   <E>
   Each EC2 instance runs for 5 hours a day for 5 days per quarter or 20 days per year. This is time duration is insufficient to warrant reserved instances as these require a commitment of a minimum of 1 year and the discounts would not outweigh the costs of having the reservations unused for a large percentage of time. In this case, there are no options presented that can reduce the cost and therefore on-demand instances should be used.
 
-CORRECT: "On-Demand Instances" is the correct answer.
+CORRECT: **"On-Demand Instances"** is the correct answer.
 
-INCORRECT: "Reserved Instances" is incorrect. Reserved instances are good for continuously running workloads that run for a period of 1 or 3 years.
+INCORRECT: **"Reserved Instances"** is incorrect. Reserved instances are good for continuously running workloads that run for a period of 1 or 3 years.
 
-INCORRECT: "Spot Instances" is incorrect. Spot instances may be interrupted and this is not acceptable. Note that Spot Block is deprecated and unavailable to new customers.
+INCORRECT: **"Spot Instances"** is incorrect. Spot instances may be interrupted and this is not acceptable. Note that Spot Block is deprecated and unavailable to new customers.
 
-INCORRECT: "Dedicated Instances" is incorrect. These do not provide any cost advantages and will be more expensive.
+INCORRECT: **"Dedicated Instances"** is incorrect. These do not provide any cost advantages and will be more expensive.
 
 References:
 
@@ -75,7 +76,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -90,18 +90,19 @@ Which solution meets these requirements?
   <A>Create an Amazon S3 bucket and create an S3 gateway endpoint to allow access to the file system using the NFS protocol.</A>
   <A>Create an Amazon RDS database and store the data in a BLOB format. Point the application instances to the RDS endpoint.</A>
   <A>Create an Amazon EBS volume and use EBS Multi-Attach to mount the volume to all EC2 instances across each Availability Zone.</A>
+  <R/>
   <E>
   Amazon EFS provides scalable file storage for use with Amazon EC2. You can use an EFS file system as a common data source for workloads and applications running on multiple instances. The EC2 instances can run in multiple AZs within a Region and the NFS protocol is used to mount the file system.
 
 With EFS you can create mount targets in each AZ for lower latency. The application instances in each AZ will mount the file system using the local mount target.
 
-CORRECT: "Create an Amazon EFS file system with mount targets in each Availability Zone. Configure the application instances to mount the file system" is the correct answer.
+CORRECT: **"Create an Amazon EFS file system with mount targets in each Availability Zone. Configure the application instances to mount the file system"** is the correct answer.
 
-INCORRECT: "Create an Amazon S3 bucket and create an S3 gateway endpoint to allow access to the file system using the NFS protocol" is incorrect. You cannot use NFS with S3 or with gateway endpoints.
+INCORRECT: **"Create an Amazon S3 bucket and create an S3 gateway endpoint to allow access to the file system using the NFS protocol"** is incorrect. You cannot use NFS with S3 or with gateway endpoints.
 
-INCORRECT: "Create an Amazon EBS volume and use EBS Multi-Attach to mount the volume to all EC2 instances across each Availability Zone" is incorrect. You cannot use Amazon EBS Multi-Attach across multiple AZs.
+INCORRECT: **"Create an Amazon EBS volume and use EBS Multi-Attach to mount the volume to all EC2 instances across each Availability Zone"** is incorrect. You cannot use Amazon EBS Multi-Attach across multiple AZs.
 
-INCORRECT: "Create an Amazon RDS database and store the data in a BLOB format. Point the application instances to the RDS endpoint" is incorrect. This is not a suitable storage solution for a file system that is mounted over NFS.
+INCORRECT: **"Create an Amazon RDS database and store the data in a BLOB format. Point the application instances to the RDS endpoint"** is incorrect. This is not a suitable storage solution for a file system that is mounted over NFS.
 
 References:
 
@@ -111,7 +112,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-efs/
   </E>
-  <R />
 </Q>
 
 
@@ -124,18 +124,19 @@ A company wishes to restrict access to their Amazon DynamoDB table to specific, 
   <A>Create an interface VPC endpoint in the VPC with an Elastic Network Interface (ENI)</A>
   <A>Create the Amazon DynamoDB table in the VPC</A>
   <A>Create an AWS VPN connection to the Amazon DynamoDB endpoint</A>
+  <R/>
   <E>
   There are two different types of VPC endpoint: interface endpoint, and gateway endpoint. With an interface endpoint you use an ENI in the VPC. With a gateway endpoint you configure your route table to point to the endpoint. Amazon S3 and DynamoDB use gateway endpoints. This solution means that all traffic will go through the VPC endpoint straight to DynamoDB using private IP addresses.
 
 
 
-CORRECT: "Create a gateway VPC endpoint and add an entry to the route table" is the correct answer.
+CORRECT: **"Create a gateway VPC endpoint and add an entry to the route table"** is the correct answer.
 
-INCORRECT: "Create an interface VPC endpoint in the VPC with an Elastic Network Interface (ENI)" is incorrect. As mentioned above, an interface endpoint is not used for DynamoDB, you must use a gateway endpoint.
+INCORRECT: **"Create an interface VPC endpoint in the VPC with an Elastic Network Interface (ENI)"** is incorrect. As mentioned above, an interface endpoint is not used for DynamoDB, you must use a gateway endpoint.
 
-INCORRECT: "Create the Amazon DynamoDB table in the VPC" is incorrect. You cannot create a DynamoDB table in a VPC, to connect securely using private addresses you should use a gateway endpoint instead.
+INCORRECT: **"Create the Amazon DynamoDB table in the VPC"** is incorrect. You cannot create a DynamoDB table in a VPC, to connect securely using private addresses you should use a gateway endpoint instead.
 
-INCORRECT: "Create an AWS VPN connection to the Amazon DynamoDB endpoint" is incorrect. You cannot create an AWS VPN connection to the Amazon DynamoDB endpoint.
+INCORRECT: **"Create an AWS VPN connection to the Amazon DynamoDB endpoint"** is incorrect. You cannot create an AWS VPN connection to the Amazon DynamoDB endpoint.
 
 References:
 
@@ -149,7 +150,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-vpc/
   </E>
-  <R />
 </Q>
 
 
@@ -164,18 +164,19 @@ Which solution offers the MOST reliable and time-efficient data transfer?
   <A>Amazon S3 Transfer Acceleration over the Internet.</A>
   <A>AWS Database Migration Service over the Internet.</A>
   <A correct>AWS DataSync over AWS Direct Connect.</A>
+  <R/>
   <E>
   The most reliable and time-efficient solution that keeps the data secure is to use AWS DataSync and synchronize the data from the NAS device directly to Amazon S3. This should take place over an AWS Direct Connect connection to ensure reliability, speed, and security.
 
 AWS DataSync can copy data between Network File System (NFS) shares, Server Message Block (SMB) shares, self-managed object storage, AWS Snowcone, Amazon Simple Storage Service (Amazon S3) buckets, Amazon Elastic File System (Amazon EFS) file systems, and Amazon FSx for Windows File Server file systems.
 
-CORRECT: "AWS DataSync over AWS Direct Connect" is the correct answer.
+CORRECT: **"AWS DataSync over AWS Direct Connect"** is the correct answer.
 
-INCORRECT: "AWS Database Migration Service over the Internet" is incorrect. DMS is for migrating databases, not files.
+INCORRECT: **"AWS Database Migration Service over the Internet"** is incorrect. DMS is for migrating databases, not files.
 
-INCORRECT: "Amazon S3 Transfer Acceleration over the Internet" is incorrect. The Internet does not offer the reliability, speed or performance that this company requires.
+INCORRECT: **"Amazon S3 Transfer Acceleration over the Internet"** is incorrect. The Internet does not offer the reliability, speed or performance that this company requires.
 
-INCORRECT: "Multiple AWS Snowcone devices" is incorrect. This is not a time-efficient approach as it can take time to ship these devices in both directions.
+INCORRECT: **"Multiple AWS Snowcone devices"** is incorrect. This is not a time-efficient approach as it can take time to ship these devices in both directions.
 
 References:
 
@@ -185,7 +186,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-migration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -200,6 +200,7 @@ Which solution should a Solutions Architect recommend?
   <A>Create a VPC gateway endpoint for each EC2 instance and update route tables.</A>
   <A>Attach a virtual private gateway to VPC-TEST1 and VPC-TEST2 and enable routing.</A>
   <A correct>Create a VPC peering connection between VPC-TEST1 and VPC-TEST2.</A>
+  <R/>
   <E>
   A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses. Instances in either VPC can communicate with each other as if they are within the same network.
 
@@ -207,13 +208,13 @@ You can create a VPC peering connection between your own VPCs, or with a VPC in 
 
 
 
-CORRECT: "Create a VPC peering connection between VPC-TEST1 and VPC-TEST2" is the correct answer.
+CORRECT: **"Create a VPC peering connection between VPC-TEST1 and VPC-TEST2"** is the correct answer.
 
-INCORRECT: "Create a VPC gateway endpoint for each EC2 instance and update route tables" is incorrect. You cannot create VPC gateway endpoints for Amazon EC2 instances. These are used with DynamoDB and S3 only.
+INCORRECT: **"Create a VPC gateway endpoint for each EC2 instance and update route tables"** is incorrect. You cannot create VPC gateway endpoints for Amazon EC2 instances. These are used with DynamoDB and S3 only.
 
-INCORRECT: "Attach a virtual private gateway to VPC-TEST1 and VPC-TEST2 and enable routing" is incorrect. You cannot create an AWS Managed VPN connection between two VPCs.
+INCORRECT: **"Attach a virtual private gateway to VPC-TEST1 and VPC-TEST2 and enable routing"** is incorrect. You cannot create an AWS Managed VPN connection between two VPCs.
 
-INCORRECT: "Attach a Direct Connect gateway to VPC-TEST1 and VPC-TEST2 and enable routing" is incorrect. Direct Connect gateway is used to connect a Direct Connect connection to multiple VPCs, it is not useful in this scenario as there is no Direct Connect connection.
+INCORRECT: **"Attach a Direct Connect gateway to VPC-TEST1 and VPC-TEST2 and enable routing"** is incorrect. Direct Connect gateway is used to connect a Direct Connect connection to multiple VPCs, it is not useful in this scenario as there is no Direct Connect connection.
 
 References:
 
@@ -223,7 +224,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-vpc/
   </E>
-  <R />
 </Q>
 
 
@@ -239,20 +239,21 @@ Which combination of steps should a solutions architect take to provide high ava
   <A>Create new public and private subnets in a new AZ. Create a database using Amazon EC2 in one AZ</A>
   <A>Add the existing web application instances to an Auto Scaling group behind an Application Load Balancer (ALB)</A>
   <A correct>Create an Amazon EC2 Auto Scaling group and Application Load Balancer (ALB) spanning multiple AZs</A>
+  <R/>
   <E>
   To add high availability to this architecture both the web tier and database tier require changes. For the web tier an Auto Scaling group across multiple AZs with an ALB will ensure there are always instances running and traffic is being distributed to them.
 
 The database tier should be migrated from the EC2 instances to Amazon RDS to take advantage of a managed database with Multi-AZ functionality. This will ensure that if there is an issue preventing access to the primary database a secondary database can take over.
 
-CORRECT: "Create an Amazon EC2 Auto Scaling group and Application Load Balancer (ALB) spanning multiple AZs" is the correct answer.
+CORRECT: **"Create an Amazon EC2 Auto Scaling group and Application Load Balancer (ALB) spanning multiple AZs"** is the correct answer.
 
-CORRECT: "Create new public and private subnets in the same VPC, each in a new AZ. Migrate the database to an Amazon RDS multi-AZ deployment" is the correct answer.
+CORRECT: **"Create new public and private subnets in the same VPC, each in a new AZ. Migrate the database to an Amazon RDS multi-AZ deployment"** is the correct answer.
 
-INCORRECT: "Create new public and private subnets in the same AZ for high availability" is incorrect as this would not add high availability.
+INCORRECT: **"Create new public and private subnets in the same AZ for high availability"** is incorrect as this would not add high availability.
 
-INCORRECT: "Add the existing web application instances to an Auto Scaling group behind an Application Load Balancer (ALB)" is incorrect because the existing servers are in a single subnet. For HA we need to instances in multiple subnets.
+INCORRECT: **"Add the existing web application instances to an Auto Scaling group behind an Application Load Balancer (ALB)"** is incorrect because the existing servers are in a single subnet. For HA we need to instances in multiple subnets.
 
-INCORRECT: "Create new public and private subnets in a new AZ. Create a database using Amazon EC2 in one AZ" is incorrect because we also need HA for the database layer.
+INCORRECT: **"Create new public and private subnets in a new AZ. Create a database using Amazon EC2 in one AZ"** is incorrect because we also need HA for the database layer.
 
 References:
 
@@ -268,7 +269,6 @@ https://digitalcloud.training/amazon-ec2-auto-scaling/
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -284,6 +284,7 @@ Which combination of actions should the solutions architect take to accomplish t
   <A correct>Launch a new EC2 instance from an Amazon Machine Image (AMI) in the second Region</A>
   <A>Detach a volume on an EC2 instance and copy it to an Amazon S3 bucket in the second Region</A>
   <A>Copy an Amazon Elastic Block Store (Amazon EBS) volume from Amazon S3 and launch an EC2 instance in the second Region using that EBS volume</A>
+  <R/>
   <E>
   You can copy an Amazon Machine Image (AMI) within or across AWS Regions using the AWS Management Console, the AWS Command Line Interface or SDKs, or the Amazon EC2 API, all of which support the CopyImage action.
 
@@ -291,15 +292,15 @@ Using the copied AMI the solutions architect would then be able to launch an ins
 
 Note: the AMIs are stored on Amazon S3, however you cannot view them in the S3 management console or work with them programmatically using the S3 API.
 
-CORRECT: "Copy an Amazon Machine Image (AMI) of an EC2 instance and specify the second Region for the destination" is a correct answer.
+CORRECT: **"Copy an Amazon Machine Image (AMI) of an EC2 instance and specify the second Region for the destination"** is a correct answer.
 
-CORRECT: "Launch a new EC2 instance from an Amazon Machine Image (AMI) in the second Region" is also a correct answer.
+CORRECT: **"Launch a new EC2 instance from an Amazon Machine Image (AMI) in the second Region"** is also a correct answer.
 
-INCORRECT: "Detach a volume on an EC2 instance and copy it to an Amazon S3 bucket in the second Region" is incorrect. You cannot copy EBS volumes directly from EBS to Amazon S3.
+INCORRECT: **"Detach a volume on an EC2 instance and copy it to an Amazon S3 bucket in the second Region"** is incorrect. You cannot copy EBS volumes directly from EBS to Amazon S3.
 
-INCORRECT: "Launch a new EC2 instance in the second Region and copy a volume from Amazon S3 to the new instance" is incorrect. You cannot create an EBS volume directly from Amazon S3.
+INCORRECT: **"Launch a new EC2 instance in the second Region and copy a volume from Amazon S3 to the new instance"** is incorrect. You cannot create an EBS volume directly from Amazon S3.
 
-INCORRECT: "Copy an Amazon Elastic Block Store (Amazon EBS) volume from Amazon S3 and launch an EC2 instance in the second Region using that EBS volume" is incorrect. You cannot create an EBS volume directly from Amazon S3.
+INCORRECT: **"Copy an Amazon Elastic Block Store (Amazon EBS) volume from Amazon S3 and launch an EC2 instance in the second Region using that EBS volume"** is incorrect. You cannot create an EBS volume directly from Amazon S3.
 
 References:
 
@@ -309,7 +310,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ebs/
   </E>
-  <R />
 </Q>
 
 
@@ -325,20 +325,21 @@ How can the solutions architect best meet these requirements? (Select TWO.)
   <A correct>Configure a Network Load Balancer in front of the EC2 instances</A>
   <A>Increase the number of instances and use smaller EC2 instance types</A>
   <A correct>Configure an Auto Scaling group to add or remove instances in multiple Availability Zones automatically</A>
+  <R/>
   <E>
   The solutions architect must enable high availability for the architecture and ensure it is cost-effective. To enable high availability an Amazon EC2 Auto Scaling group should be created to add and remove instances across multiple availability zones.
 
 In order to distribute the traffic to the instances the architecture should use a Network Load Balancer which operates at Layer 4. This architecture will also be cost-effective as the Auto Scaling group will ensure the right number of instances are running based on demand.
 
-CORRECT: "Configure a Network Load Balancer in front of the EC2 instances" is a correct answer.
+CORRECT: **"Configure a Network Load Balancer in front of the EC2 instances"** is a correct answer.
 
-CORRECT: "Configure an Auto Scaling group to add or remove instances in multiple Availability Zones automatically" is also a correct answer.
+CORRECT: **"Configure an Auto Scaling group to add or remove instances in multiple Availability Zones automatically"** is also a correct answer.
 
-INCORRECT: "Increase the number of instances and use smaller EC2 instance types" is incorrect as this is not the most cost-effective option. Auto Scaling should be used to maintain the right number of active instances.
+INCORRECT: **"Increase the number of instances and use smaller EC2 instance types"** is incorrect as this is not the most cost-effective option. Auto Scaling should be used to maintain the right number of active instances.
 
-INCORRECT: "Configure an Auto Scaling group to add or remove instances in the Availability Zone automatically" is incorrect as this is not highly available as it’s a single AZ.
+INCORRECT: **"Configure an Auto Scaling group to add or remove instances in the Availability Zone automatically"** is incorrect as this is not highly available as it’s a single AZ.
 
-INCORRECT: "Configure an Application Load Balancer in front of the EC2 instances" is incorrect as an ALB operates at Layer 7 rather than Layer 4.
+INCORRECT: **"Configure an Application Load Balancer in front of the EC2 instances"** is incorrect as an ALB operates at Layer 7 rather than Layer 4.
 
 References:
 
@@ -350,7 +351,6 @@ https://digitalcloud.training/amazon-ec2/
 
 https://digitalcloud.training/aws-elastic-load-balancing-aws-elb/
   </E>
-  <R />
 </Q>
 
 
@@ -365,18 +365,19 @@ What should a solutions architect do to meet these requirements?
   <A correct>Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data on Amazon EFS and mount a target on each instance</A>
   <A>Launch the application on EC2 instances in each Availability Zone. Attach EBS volumes to each EC2 instance</A>
   <A>Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data using Amazon S3 One Zone-Infrequent Access (S3 One Zone-A)</A>
+  <R/>
   <E>
   To increase the resiliency of the application the solutions architect can use Auto Scaling groups to launch and terminate instances across multiple availability zones based on demand. An application load balancer (ALB) can be used to direct traffic to the web application running on the EC2 instances.
 
 Lastly, the Amazon Elastic File System (EFS) can assist with increasing the resilience of the application by providing a shared file system that can be mounted by multiple EC2 instances from multiple availability zones.
 
-CORRECT: "Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data on Amazon EFS and mount a target on each instance" is the correct answer.
+CORRECT: **"Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data on Amazon EFS and mount a target on each instance"** is the correct answer.
 
-INCORRECT: "Launch the application on EC2 instances in each Availability Zone. Attach EBS volumes to each EC2 instance" is incorrect as the EBS volumes are single points of failure which are not shared with other instances.
+INCORRECT: **"Launch the application on EC2 instances in each Availability Zone. Attach EBS volumes to each EC2 instance"** is incorrect as the EBS volumes are single points of failure which are not shared with other instances.
 
-INCORRECT: "Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Mount an instance store on each EC2 instance" is incorrect as instance stores are ephemeral data stores which means data is lost when powered down. Also, instance stores cannot be shared between instances.
+INCORRECT: **"Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Mount an instance store on each EC2 instance"** is incorrect as instance stores are ephemeral data stores which means data is lost when powered down. Also, instance stores cannot be shared between instances.
 
-INCORRECT: "Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data using Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)" is incorrect as there are data retrieval charges associated with this S3 tier. It is not a suitable storage tier for application files.
+INCORRECT: **"Create an Application Load Balancer with Auto Scaling groups across multiple Availability Zones. Store data using Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)"** is incorrect as there are data retrieval charges associated with this S3 tier. It is not a suitable storage tier for application files.
 
 References:
 
@@ -386,7 +387,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-efs/
   </E>
-  <R />
 </Q>
 
 
@@ -402,20 +402,21 @@ How can this be accomplished? (Select TWO.)
   <A>Create a VPC peering connection between the VPC and DynamoDB</A>
   <A>Create a new DynamoDB table that uses the endpoint</A>
   <A correct>Create a gateway endpoint for DynamoDB</A>
+  <R/>
   <E>
   Amazon DynamoDB and Amazon S3 support gateway endpoints, not interface endpoints. With a gateway endpoint you create the endpoint in the VPC, attach a policy allowing access to the service, and then specify the route table to create a route table entry in.
 
 
 
-CORRECT: "Create a route table entry for the endpoint" is a correct answer.
+CORRECT: **"Create a route table entry for the endpoint"** is a correct answer.
 
-CORRECT: "Create a gateway endpoint for DynamoDB" is also a correct answer.
+CORRECT: **"Create a gateway endpoint for DynamoDB"** is also a correct answer.
 
-INCORRECT: "Create a new DynamoDB table that uses the endpoint" is incorrect as it is not necessary to create a new DynamoDB table.
+INCORRECT: **"Create a new DynamoDB table that uses the endpoint"** is incorrect as it is not necessary to create a new DynamoDB table.
 
-INCORRECT: "Create an ENI for the endpoint in each of the subnets of the VPC" is incorrect as an ENI is used by an interface endpoint, not a gateway endpoint.
+INCORRECT: **"Create an ENI for the endpoint in each of the subnets of the VPC"** is incorrect as an ENI is used by an interface endpoint, not a gateway endpoint.
 
-INCORRECT: "Create a VPC peering connection between the VPC and DynamoDB" is incorrect as you cannot create a VPC peering connection between a VPC and a public AWS service as public services are outside of VPCs.
+INCORRECT: **"Create a VPC peering connection between the VPC and DynamoDB"** is incorrect as you cannot create a VPC peering connection between a VPC and a public AWS service as public services are outside of VPCs.
 
 References:
 
@@ -425,7 +426,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-vpc/
   </E>
-  <R />
 </Q>
 
 
@@ -440,6 +440,7 @@ Which actions would meet these needs?
   <A correct>Store the data in an Amazon EFS filesystem. Mount the file system on the application instances</A>
   <A>Store the data in AWS Storage Gateway. Setup AWS Direct Connect between the Gateway appliance and the EC2 instances</A>
   <A>Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances</A>
+  <R/>
   <E>
   Amazon Elastic File System (Amazon EFS) provides a simple, scalable, fully managed elastic NFS file system for use with AWS Cloud services and on-premises resources. It is built to scale on-demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files, eliminating the need to provision and manage capacity to accommodate growth.
 
@@ -449,13 +450,13 @@ Amazon EFS supports the Network File System version 4 (NFSv4.1 and NFSv4.0) prot
 
 For this scenario, EFS is a great choice as it will provide a scalable file system that can be mounted by multiple EC2 instances and accessed simultaneously.
 
-CORRECT: "Store the data in an Amazon EFS filesystem. Mount the file system on the application instances" is the correct answer.
+CORRECT: **"Store the data in an Amazon EFS filesystem. Mount the file system on the application instances"** is the correct answer.
 
-INCORRECT: "Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances" is incorrect. Though there is a new feature that allows (EBS multi-attach) that allows attaching multiple Nitro instances to a volume, this is not on the exam yet, and has some specific constraints.
+INCORRECT: **"Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances"** is incorrect. Though there is a new feature that allows (EBS multi-attach) that allows attaching multiple Nitro instances to a volume, this is not on the exam yet, and has some specific constraints.
 
-INCORRECT: "Store the data in Amazon S3 Glacier. Update the vault policy to allow access to the application instances" is incorrect as S3 Glacier is not a suitable storage location for live access to data, it is used for archival.
+INCORRECT: **"Store the data in Amazon S3 Glacier. Update the vault policy to allow access to the application instances"** is incorrect as S3 Glacier is not a suitable storage location for live access to data, it is used for archival.
 
-INCORRECT: "Store the data in AWS Storage Gateway. Setup AWS Direct Connect between the Gateway appliance and the EC2 instances" is incorrect. There is no reason to store the data on-premises in a Storage Gateway, using EFS is a much better solution.
+INCORRECT: **"Store the data in AWS Storage Gateway. Setup AWS Direct Connect between the Gateway appliance and the EC2 instances"** is incorrect. There is no reason to store the data on-premises in a Storage Gateway, using EFS is a much better solution.
 
 References:
 
@@ -465,7 +466,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-efs/
   </E>
-  <R />
 </Q>
 
 
@@ -480,6 +480,7 @@ What should the solutions architect configure to ensure the EC2 instances are av
   <A>On-Demand Instances</A>
   <A>Savings Plans</A>
   <A>On-Demand Capacity Reservations</A>
+  <R/>
   <E>
   On-Demand Capacity Reservations enable you to reserve compute capacity for your Amazon EC2 instances in a specific Availability Zone for any duration. This gives you the ability to create and manage Capacity Reservations independently from the billing discounts offered by Savings Plans or Regional Reserved Instances.
 
@@ -489,13 +490,13 @@ The table below shows the difference between capacity reservations and other opt
 
 
 
-CORRECT: "On-Demand Capacity Reservations" is the correct answer.
+CORRECT: **"On-Demand Capacity Reservations"** is the correct answer.
 
-INCORRECT: "Regional Reserved Instances" is incorrect. This type of reservation does not reserve capacity.
+INCORRECT: **"Regional Reserved Instances"** is incorrect. This type of reservation does not reserve capacity.
 
-INCORRECT: "On-Demand Instances" is incorrect. This does not provide any kind of capacity reservation.
+INCORRECT: **"On-Demand Instances"** is incorrect. This does not provide any kind of capacity reservation.
 
-INCORRECT: "Savings Plans" is incorrect. This pricing option does not provide a capacity reservation.
+INCORRECT: **"Savings Plans"** is incorrect. This pricing option does not provide a capacity reservation.
 
 References:
 
@@ -505,7 +506,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -520,6 +520,7 @@ How can the Solutions Architect make the application available on the internet?
   <A>Create an Application Load Balancer and associate three private subnets from the same Availability Zones as the private instances. Add the private instances to the ALB.</A>
   <A>Create a NAT gateway in a public subnet. Add a route to the NAT gateway to the route tables of the three private subnets.</A>
   <A>Create an Amazon Machine Image (AMI) of the instances in the private subnet and launch new instances from the AMI in public subnets. Create an Application Load Balancer and add the public instances to the ALB.</A>
+  <R/>
   <E>
   To make the application instances accessible on the internet the Solutions Architect needs to place them behind an internet-facing Elastic Load Balancer. The way you add instances in private subnets to a public facing ELB is to add public subnets in the same AZs as the private subnets to the ELB. You can then add the instances and to the ELB and they will become targets for load balancing.
 
@@ -527,13 +528,13 @@ An example of this architecture is shown below:
 
 
 
-CORRECT: "Create an Application Load Balancer and associate three public subnets from the same Availability Zones as the private instances. Add the private instances to the ALB" is the correct answer.
+CORRECT: **"Create an Application Load Balancer and associate three public subnets from the same Availability Zones as the private instances. Add the private instances to the ALB"** is the correct answer.
 
-INCORRECT: "Create an Application Load Balancer and associate three private subnets from the same Availability Zones as the private instances. Add the private instances to the ALB" is incorrect. Public subnets in the same AZs as the private subnets must be added to make this configuration work.
+INCORRECT: **"Create an Application Load Balancer and associate three private subnets from the same Availability Zones as the private instances. Add the private instances to the ALB"** is incorrect. Public subnets in the same AZs as the private subnets must be added to make this configuration work.
 
-INCORRECT: "Create an Amazon Machine Image (AMI) of the instances in the private subnet and launch new instances from the AMI in public subnets. Create an Application Load Balancer and add the public instances to the ALB" is incorrect. There is no need to use an AMI to create new instances in a public subnet. You can add instances in private subnets to a public-facing ELB.
+INCORRECT: **"Create an Amazon Machine Image (AMI) of the instances in the private subnet and launch new instances from the AMI in public subnets. Create an Application Load Balancer and add the public instances to the ALB"** is incorrect. There is no need to use an AMI to create new instances in a public subnet. You can add instances in private subnets to a public-facing ELB.
 
-INCORRECT: "Create a NAT gateway in a public subnet. Add a route to the NAT gateway to the route tables of the three private subnets" is incorrect. A NAT gateway is used for outbound traffic not inbound traffic and cannot make the application available to internet-based clients.
+INCORRECT: **"Create a NAT gateway in a public subnet. Add a route to the NAT gateway to the route tables of the three private subnets"** is incorrect. A NAT gateway is used for outbound traffic not inbound traffic and cannot make the application available to internet-based clients.
 
 References:
 
@@ -543,7 +544,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-elastic-load-balancing-aws-elb/
   </E>
-  <R />
 </Q>
 
 
@@ -558,18 +558,19 @@ Which service should the solutions architect use to replace the file server farm
   <A>Amazon EBS</A>
   <A>AWS Storage Gateway</A>
   <A>Amazon FSx</A>
+  <R/>
   <E>
   Amazon FSx for Windows file server supports DFS namespaces and DFS replication. This is the best solution for replacing the on-premises infrastructure. Note the limitations for deployment:
 
 
 
-CORRECT: "Amazon FSx" is the correct answer.
+CORRECT: **"Amazon FSx"** is the correct answer.
 
-INCORRECT: "Amazon EFS" is incorrect. You cannot replace a Windows file server farm with EFS as it uses a completely different protocol.
+INCORRECT: **"Amazon EFS"** is incorrect. You cannot replace a Windows file server farm with EFS as it uses a completely different protocol.
 
-INCORRECT: "Amazon EBS" is incorrect. Amazon EBS provides block-based volumes that are attached to EC2 instances. It cannot be used for replacing a shared Windows file server farm using DFSR.
+INCORRECT: **"Amazon EBS"** is incorrect. Amazon EBS provides block-based volumes that are attached to EC2 instances. It cannot be used for replacing a shared Windows file server farm using DFSR.
 
-INCORRECT: "AWS Storage Gateway" is incorrect. This service is used for providing cloud storage solutions for on-premises servers. In this case the infrastructure is being migrated into the AWS Cloud.
+INCORRECT: **"AWS Storage Gateway"** is incorrect. This service is used for providing cloud storage solutions for on-premises servers. In this case the infrastructure is being migrated into the AWS Cloud.
 
 References:
 
@@ -579,7 +580,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-fsx/
   </E>
-  <R />
 </Q>
 
 
@@ -594,16 +594,17 @@ How should a Solutions Architect configure the Amazon SQS deployment to meet the
   <A>Use one SQS FIFO queue. Assign a higher priority to the paid photos so they are processed first.</A>
   <A>Use a separate SQS FIFO queue for each tier. Set the free queue to use short polling and the paid queue to use long polling.</A>
   <A correct>Use a separate SQS Standard queue for each tier. Configure Amazon EC2 instances to prioritize polling for the paid queue over the free queue.</A>
+  <R/>
   <E>
   AWS recommend using separate queues when you need to provide prioritization of work. The logic can then be implemented at the application layer to prioritize the queue for the paid photos over the queue for the free photos.
 
-CORRECT: "Use a separate SQS Standard queue for each tier. Configure Amazon EC2 instances to prioritize polling for the paid queue over the free queue" is the correct answer.
+CORRECT: **"Use a separate SQS Standard queue for each tier. Configure Amazon EC2 instances to prioritize polling for the paid queue over the free queue"** is the correct answer.
 
-INCORRECT: "Use one SQS FIFO queue. Assign a higher priority to the paid photos so they are processed first" is incorrect. FIFO queues preserve the order of messages but they do not prioritize messages within the queue. The orders would need to be placed into the queue in a priority order and there’s no way of doing this as the messages are sent automatically through event notifications as they are received by Amazon S3.
+INCORRECT: **"Use one SQS FIFO queue. Assign a higher priority to the paid photos so they are processed first"** is incorrect. FIFO queues preserve the order of messages but they do not prioritize messages within the queue. The orders would need to be placed into the queue in a priority order and there’s no way of doing this as the messages are sent automatically through event notifications as they are received by Amazon S3.
 
-INCORRECT: "Use one SQS standard queue. Use batching for the paid photos and short polling for the free photos" is incorrect. Batching adds efficiency but it has nothing to do with ordering or priority.
+INCORRECT: **"Use one SQS standard queue. Use batching for the paid photos and short polling for the free photos"** is incorrect. Batching adds efficiency but it has nothing to do with ordering or priority.
 
-INCORRECT: "Use a separate SQS FIFO queue for each tier. Set the free queue to use short polling and the paid queue to use long polling" is incorrect. Short polling and long polling are used to control the amount of time the consumer process waits before closing the API call and trying again. Polling should be configured for efficiency of API calls and processing of messages but does not help with message prioritization.
+INCORRECT: **"Use a separate SQS FIFO queue for each tier. Set the free queue to use short polling and the paid queue to use long polling"** is incorrect. Short polling and long polling are used to control the amount of time the consumer process waits before closing the API call and trying again. Polling should be configured for efficiency of API calls and processing of messages but does not help with message prioritization.
 
 References:
 
@@ -613,7 +614,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-application-integration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -629,20 +629,21 @@ Which combination of changes can the company make to meet these requirements? (S
   <A correct>Use an AWS Storage Gateway volume gateway to replace the block storage.</A>
   <A correct>Use an AWS Storage Gateway file gateway to replace the NFS storage.</A>
   <A>Use AWS Direct Connect and mount an Amazon FSx for Windows File Server using iSCSI.</A>
+  <R/>
   <E>
   In this scenario the company should use cloud storage to replace the existing storage solutions that are running out of capacity. The on-premises servers mount the existing storage using block protocols (iSCSI) and file protocols (NFS). As there is a requirement to avoid re-architecting existing applications these protocols must be used in the revised solution.
 
 The AWS Storage Gateway volume gateway should be used to replace the block-based storage systems as it is mounted over iSCSI and the file gateway should be used to replace the NFS file systems as it uses NFS.
 
-CORRECT: "Use an AWS Storage Gateway file gateway to replace the NFS storage" is a correct answer.
+CORRECT: **"Use an AWS Storage Gateway file gateway to replace the NFS storage"** is a correct answer.
 
-CORRECT: "Use an AWS Storage Gateway volume gateway to replace the block storage" is a correct answer.
+CORRECT: **"Use an AWS Storage Gateway volume gateway to replace the block storage"** is a correct answer.
 
-INCORRECT: "Use the mount command on servers to mount Amazon S3 buckets using NFS" is incorrect. You cannot mount S3 buckets using NFS as it is an object-based storage system (not file-based) and uses an HTTP REST API.
+INCORRECT: **"Use the mount command on servers to mount Amazon S3 buckets using NFS"** is incorrect. You cannot mount S3 buckets using NFS as it is an object-based storage system (not file-based) and uses an HTTP REST API.
 
-INCORRECT: "Use AWS Direct Connect and mount an Amazon FSx for Windows File Server using iSCSI" is incorrect. You cannot mount FSx for Windows File Server file systems using iSCSI, you must use SMB.
+INCORRECT: **"Use AWS Direct Connect and mount an Amazon FSx for Windows File Server using iSCSI"** is incorrect. You cannot mount FSx for Windows File Server file systems using iSCSI, you must use SMB.
 
-INCORRECT: "Use Amazon Elastic File System (EFS) volumes to replace the block storage" is incorrect. You cannot use EFS to replace block storage as it uses NFS rather than iSCSI.
+INCORRECT: **"Use Amazon Elastic File System (EFS) volumes to replace the block storage"** is incorrect. You cannot use EFS to replace block storage as it uses NFS rather than iSCSI.
 
 References:
 
@@ -652,7 +653,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-storage-gateway/
   </E>
-  <R />
 </Q>
 
 
@@ -669,18 +669,19 @@ Which design should a Solutions Architect implement to improve scalability?
   <A>Use Amazon SQS to ingest the data. Configure the EC2 instances to process messages from the SQS queue.</A>
   <A>Use Amazon SNS to ingest the data and trigger AWS Lambda functions to process the data in near-real time.</A>
   <A correct>Use Amazon Kinesis Data Streams to ingest the data. Process the data using AWS Lambda functions.</A>
+  <R/>
   <E>
   Amazon Kinesis enables you to ingest, buffer, and process streaming data in real-time. Kinesis can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies. This is an ideal solution for data ingestion.
 
 To ensure the compute layer can scale to process increasing workloads, the EC2 instances should be replaced by AWS Lambda functions. Lambda can scale seamlessly by running multiple executions in parallel.
 
-CORRECT: "Use Amazon Kinesis Data Streams to ingest the data. Process the data using AWS Lambda functions" is the correct answer.
+CORRECT: **"Use Amazon Kinesis Data Streams to ingest the data. Process the data using AWS Lambda functions"** is the correct answer.
 
-INCORRECT: "Use Amazon API Gateway in front of the existing application. Create a usage plan with a quota limit for the partner company" is incorrect. A usage plan will limit the amount of data that is received and cause more errors to be received by the partner company.
+INCORRECT: **"Use Amazon API Gateway in front of the existing application. Create a usage plan with a quota limit for the partner company"** is incorrect. A usage plan will limit the amount of data that is received and cause more errors to be received by the partner company.
 
-INCORRECT: "Use Amazon SQS to ingest the data. Configure the EC2 instances to process messages from the SQS queue" is incorrect. Amazon Kinesis Data Streams should be used for near-real time or real-time use cases instead of Amazon SQS.
+INCORRECT: **"Use Amazon SQS to ingest the data. Configure the EC2 instances to process messages from the SQS queue"** is incorrect. Amazon Kinesis Data Streams should be used for near-real time or real-time use cases instead of Amazon SQS.
 
-INCORRECT: "Use Amazon SNS to ingest the data and trigger AWS Lambda functions to process the data in near-real time" is incorrect. SNS is not a near-real time solution for data ingestion. SNS is used for sending notifications.
+INCORRECT: **"Use Amazon SNS to ingest the data and trigger AWS Lambda functions to process the data in near-real time"** is incorrect. SNS is not a near-real time solution for data ingestion. SNS is used for sending notifications.
 
 References:
 
@@ -694,7 +695,6 @@ https://digitalcloud.training/aws-lambda/
 
 https://digitalcloud.training/amazon-kinesis/
   </E>
-  <R />
 </Q>
 
 
@@ -709,16 +709,17 @@ Which solution meets these requirements and is the MOST operationally efficient?
   <A correct>Provide an Amazon Simple Queue Service (Amazon SQS) queue for the sender and processor applications. Set up a dead-letter queue to collect failed messages.</A>
   <A>Receive the messages from the sender application using an Amazon Kinesis data stream. Utilize the Kinesis Client Library (KCL) to integrate the processing application.</A>
   <A>Set up a Redis database on Amazon EC2. Configure the instance to be used by both applications. The messages should be stored, processed, and deleted, respectively.</A>
+  <R/>
   <E>
   Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS eliminates the complexity and overhead associated with managing and operating message-oriented middleware and empowers developers to focus on differentiating work.
 
-CORRECT: "Provide an Amazon Simple Queue Service (Amazon SQS) queue for the sender and processor applications. Set up a dead-letter queue to collect failed messages” is the correct answer (as explained above.)
+CORRECT: **"Provide an Amazon Simple Queue Service (Amazon SQS) queue for the sender and processor applications. Set up a dead-letter queue to collect failed messages” is the correct answer (as explained above.)
 
-INCORRECT: "Set up a Redis database on Amazon EC2. Configure the instance to be used by both applications. The messages should be stored, processed, and deleted, respectively” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS.
+INCORRECT: **"Set up a Redis database on Amazon EC2. Configure the instance to be used by both applications. The messages should be stored, processed, and deleted, respectively” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS.
 
-INCORRECT: "Receive the messages from the sender application using an Amazon Kinesis data stream. Utilize the Kinesis Client Library (KCL) to integrate the processing application” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS
+INCORRECT: **"Receive the messages from the sender application using an Amazon Kinesis data stream. Utilize the Kinesis Client Library (KCL) to integrate the processing application” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS
 
-INCORRECT: "Subscribe the processing application to an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications. Write to the SNS topic using the sender application” is incorrect as Amazon SNS is not a queuing service, but a pub-sub one to many notification service and cannot be used as a queue.
+INCORRECT: **"Subscribe the processing application to an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications. Write to the SNS topic using the sender application” is incorrect as Amazon SNS is not a queuing service, but a pub-sub one to many notification service and cannot be used as a queue.
 
 References:
 
@@ -728,7 +729,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-application-integration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -743,6 +743,7 @@ Which solution should a Solutions Architect recommend?
   <A>Create an Amazon EC2 instance with two Amazon EBS Provisioned IOPS SSD (i01) volumes attached. Provision 32,000 IOPS per volume and create a logical volume using the OS that aggregates the capacity.</A>
   <A>Create an Amazon EC2 instance with four Amazon EBS General Purpose SSD (gp2) volumes attached. Max out the IOPS on each volume and use a RAID 0 stripe set.</A>
   <A correct>Create a Nitro-based Amazon EC2 instance with an Amazon EBS Provisioned IOPS SSD (i01) volume attached. Provision 64,000 IOPS for the volume.</A>
+  <R/>
   <E>
   Amazon EC2 Nitro-based systems are not required for this solution but do offer advantages in performance that will help to maximize the usage of the EBS volume. For the data storage volume an i01 volume can support up to 64,000 IOPS so a single volume with sufficient capacity (50 IOPS per GiB) can be deliver the requirements.
 
@@ -750,13 +751,13 @@ The current list of EBS volume types is in the table below:
 
 
 
-CORRECT: "Create a Nitro-based Amazon EC2 instance with an Amazon EBS Provisioned IOPS SSD (i01) volume attached. Provision 64,000 IOPS for the volume" is the correct answer.
+CORRECT: **"Create a Nitro-based Amazon EC2 instance with an Amazon EBS Provisioned IOPS SSD (i01) volume attached. Provision 64,000 IOPS for the volume"** is the correct answer.
 
-INCORRECT: "Use an instance from the I3 I/O optimized family and leverage instance store storage to achieve the IOPS requirement" is incorrect.
+INCORRECT: **"Use an instance from the I3 I/O optimized family and leverage instance store storage to achieve the IOPS requirement"** is incorrect.
 
-INCORRECT: "Create an Amazon EC2 instance with four Amazon EBS General Purpose SSD (gp2) volumes attached. Max out the IOPS on each volume and use a RAID 0 stripe set" is incorrect. This is not a good use case for gp2 volumes. It is much better to use io1 which also meets the requirement of having a single volume with 64,000 IOPS.
+INCORRECT: **"Create an Amazon EC2 instance with four Amazon EBS General Purpose SSD (gp2) volumes attached. Max out the IOPS on each volume and use a RAID 0 stripe set"** is incorrect. This is not a good use case for gp2 volumes. It is much better to use io1 which also meets the requirement of having a single volume with 64,000 IOPS.
 
-INCORRECT: "Create an Amazon EC2 instance with two Amazon EBS Provisioned IOPS SSD (i01) volumes attached. Provision 32,000 IOPS per volume and create a logical volume using the OS that aggregates the capacity" is incorrect. There is no need to create two volumes and aggregate capacity through the OS, the Solutions Architect can simply create a single volume with 64,000 IOPS.
+INCORRECT: **"Create an Amazon EC2 instance with two Amazon EBS Provisioned IOPS SSD (i01) volumes attached. Provision 32,000 IOPS per volume and create a logical volume using the OS that aggregates the capacity"** is incorrect. There is no need to create two volumes and aggregate capacity through the OS, the Solutions Architect can simply create a single volume with 64,000 IOPS.
 
 References:
 
@@ -766,7 +767,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -781,6 +781,7 @@ How can the Solutions Architect enable encryption for the database without incur
   <A>Create an RDS read replica and specify an encryption key. Promote the encrypted read replica to primary. Update the application to point to the new RDS DB endpoint.</A>
   <A>Update the RDS DB to Multi-AZ mode and enable encryption for the standby replica. Perform a failover to the standby instance and then delete the unencrypted RDS DB instance.</A>
   <A correct>Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot and update the application. Use AWS DMS to synchronize data between the source and destination RDS DBs.</A>
+  <R/>
   <E>
   You cannot change the encryption status of an existing RDS DB instance. Encryption must be specified when creating the RDS DB instance. The best way to encrypt an existing database is to take a snapshot, encrypt a copy of the snapshot and restore the snapshot to a new RDS DB instance. This results in an encrypted database that is a new instance. Applications must be updated to use the new RDS DB endpoint.
 
@@ -790,13 +791,13 @@ The slide below depicts the process for encrypting an unencrypted RDS DB instanc
 
 
 
-CORRECT: "Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot and update the application. Use AWS DMS to synchronize data between the source and destination RDS DBs" is the correct answer.
+CORRECT: **"Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot and update the application. Use AWS DMS to synchronize data between the source and destination RDS DBs"** is the correct answer.
 
-INCORRECT: "Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot. Configure the application to use the new DB endpoint" is incorrect. This answer creates an encrypted DB instance but does not synchronize the data.
+INCORRECT: **"Create a snapshot of the existing RDS DB instance. Create an encrypted copy of the snapshot. Create a new RDS DB instance from the encrypted snapshot. Configure the application to use the new DB endpoint"** is incorrect. This answer creates an encrypted DB instance but does not synchronize the data.
 
-INCORRECT: "Create an RDS read replica and specify an encryption key. Promote the encrypted read replica to primary. Update the application to point to the new RDS DB endpoint" is incorrect. You cannot create an encrypted read replica of an unencrypted RDS DB. The read replica will always have the same encryption status as the RDS DB it is created from.
+INCORRECT: **"Create an RDS read replica and specify an encryption key. Promote the encrypted read replica to primary. Update the application to point to the new RDS DB endpoint"** is incorrect. You cannot create an encrypted read replica of an unencrypted RDS DB. The read replica will always have the same encryption status as the RDS DB it is created from.
 
-INCORRECT: "Update the RDS DB to Multi-AZ mode and enable encryption for the standby replica. Perform a failover to the standby instance and then delete the unencrypted RDS DB instance" is incorrect. You also cannot have an encrypted Multi-AZ standby instance of an unencrypted RDS DB.
+INCORRECT: **"Update the RDS DB to Multi-AZ mode and enable encryption for the standby replica. Perform a failover to the standby instance and then delete the unencrypted RDS DB instance"** is incorrect. You also cannot have an encrypted Multi-AZ standby instance of an unencrypted RDS DB.
 
 References:
 
@@ -806,7 +807,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -821,18 +821,19 @@ Which architecture offers the highest availability and low operational complexit
   <A correct>Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Create an Auto Scaling group for the consumer EC2 instances across two Availability Zones. Use an Amazon RDS MySQL database with Multi-AZ enabled.</A>
   <A>Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use Amazon RDS for MySQL with Multi-AZ enabled.</A>
   <A>Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use MySQL database replication to another Availability Zone.</A>
+  <R/>
   <E>
   The correct answer offers the highest availability as it includes Amazon MQ active/standby brokers across two AZs, an Auto Scaling group across two AZ,s and a Multi-AZ Amazon RDS MySQL database deployment.
 
 This architecture not only offers the highest availability it is also operationally simple as it maximizes the usage of managed services.
 
-CORRECT: "Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Create an Auto Scaling group for the consumer EC2 instances across two Availability Zones. Use an Amazon RDS MySQL database with Multi-AZ enabled" is the correct answer.
+CORRECT: **"Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Create an Auto Scaling group for the consumer EC2 instances across two Availability Zones. Use an Amazon RDS MySQL database with Multi-AZ enabled"** is the correct answer.
 
-INCORRECT: "Deploy a second Active MQ server to another Availability Zone. Launch an additional consumer EC2 instance in another Availability Zone. Use MySQL database replication to another Availability Zone" is incorrect. This architecture does not offer the highest availability as it does not use Auto Scaling. It is also not the most operationally efficient architecture as it does not use AWS managed services.
+INCORRECT: **"Deploy a second Active MQ server to another Availability Zone. Launch an additional consumer EC2 instance in another Availability Zone. Use MySQL database replication to another Availability Zone"** is incorrect. This architecture does not offer the highest availability as it does not use Auto Scaling. It is also not the most operationally efficient architecture as it does not use AWS managed services.
 
-INCORRECT: "Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use MySQL database replication to another Availability Zone" is incorrect. This architecture does not use Auto Scaling for best HA or the RDS managed service.
+INCORRECT: **"Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use MySQL database replication to another Availability Zone"** is incorrect. This architecture does not use Auto Scaling for best HA or the RDS managed service.
 
-INCORRECT: "Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use Amazon RDS for MySQL with Multi-AZ enabled" is incorrect. This solution does not use Auto Scaling.
+INCORRECT: **"Deploy Amazon MQ with active/standby brokers configured across two Availability Zones. Launch an additional consumer EC2 instance in another Availability Zone. Use Amazon RDS for MySQL with Multi-AZ enabled"** is incorrect. This solution does not use Auto Scaling.
 
 References:
 
@@ -846,7 +847,6 @@ https://digitalcloud.training/amazon-ec2-auto-scaling/
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -861,16 +861,17 @@ Which architecture should the Solutions Architect choose to enable high availabi
   <A>Create an Amazon CloudFront distribution with a custom origin across multiple Regions.</A>
   <A correct>Modify the Auto Scaling group to use two instances across each of three Availability Zones.</A>
   <A>Create an Auto Scaling group to launch three instances across each of two Regions.</A>
+  <R/>
   <E>
   The only thing that needs to be changed in this scenario to enable HA is to split the instances across multiple Availability Zones. The architecture already uses Auto Scaling and Elastic Load Balancing so there is plenty of resilience to failure. Once the instances are running across multiple AZs there will be AZ-level fault tolerance as well.
 
-CORRECT: "Modify the Auto Scaling group to use two instances across each of three Availability Zones" is the correct answer.
+CORRECT: **"Modify the Auto Scaling group to use two instances across each of three Availability Zones"** is the correct answer.
 
-INCORRECT: "Create an Amazon CloudFront distribution with a custom origin across multiple Regions" is incorrect. CloudFront is not used to create HA for your application, it is used to accelerate access to media content.
+INCORRECT: **"Create an Amazon CloudFront distribution with a custom origin across multiple Regions"** is incorrect. CloudFront is not used to create HA for your application, it is used to accelerate access to media content.
 
-INCORRECT: "Create a launch template that can be used to quickly create more instances in another Region" is incorrect. Multi-AZ should be enabled rather than multi-Region.
+INCORRECT: **"Create a launch template that can be used to quickly create more instances in another Region"** is incorrect. Multi-AZ should be enabled rather than multi-Region.
 
-INCORRECT: "Create an Auto Scaling group to launch three instances across each of two Regions" is incorrect. HA can be achieved within a Region by simply enabling more AZs in the ASG. An ASG cannot launch instances in multiple Regions.
+INCORRECT: **"Create an Auto Scaling group to launch three instances across each of two Regions"** is incorrect. HA can be achieved within a Region by simply enabling more AZs in the ASG. An ASG cannot launch instances in multiple Regions.
 
 References:
 
@@ -880,7 +881,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2-auto-scaling/
   </E>
-  <R />
 </Q>
 
 
@@ -895,16 +895,17 @@ How should a Solutions Architect accomplish this?
   <A>Use an AWS Config rule to enforce the requirements when creating user accounts.</A>
   <A correct>Set a password policy for the entire AWS account.</A>
   <A>Create an IAM policy that enforces the requirements and apply it to all users.</A>
+  <R/>
   <E>
   The easiest way to enforce this requirement is to update the password policy that applies to the entire AWS account. When you create or change a password policy, most of the password policy settings are enforced the next time your users change their passwords. However, some of the settings are enforced immediately such as the password expiration period.
 
-CORRECT: "Set a password policy for the entire AWS account" is the correct answer.
+CORRECT: **"Set a password policy for the entire AWS account"** is the correct answer.
 
-INCORRECT: "Set a password policy for each IAM user in the AWS account" is incorrect. There’s no need to set an individual password policy for each user, it will be easier to set the policy for everyone.
+INCORRECT: **"Set a password policy for each IAM user in the AWS account"** is incorrect. There’s no need to set an individual password policy for each user, it will be easier to set the policy for everyone.
 
-INCORRECT: "Create an IAM policy that enforces the requirements and apply it to all users" is incorrect. As there is no specific targeting required it is easier to update the account password policy.
+INCORRECT: **"Create an IAM policy that enforces the requirements and apply it to all users"** is incorrect. As there is no specific targeting required it is easier to update the account password policy.
 
-INCORRECT: "Use an AWS Config rule to enforce the requirements when creating user accounts" is incorrect. You cannot use AWS Config to enforce the password requirements at the time of creating a user account.
+INCORRECT: **"Use an AWS Config rule to enforce the requirements when creating user accounts"** is incorrect. You cannot use AWS Config to enforce the password requirements at the time of creating a user account.
 
 References:
 
@@ -914,7 +915,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-iam/
   </E>
-  <R />
 </Q>
 
 
@@ -929,6 +929,7 @@ How can this be achieved?
   <A>Launch EC2 instances into multiple regions behind an ALB and use a Route 53 failover routing policy</A>
   <A>Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses</A>
   <A>Launch EC2 instances into multiple regions behind an NLB with a static IP address</A>
+  <R/>
   <E>
   AWS Global Accelerator uses the vast, congestion-free AWS global network to route TCP and UDP traffic to a healthy application endpoint in the closest AWS Region to the user.
 
@@ -938,13 +939,13 @@ This means it will intelligently route traffic to the closest point of presence 
 
 This is the only solution that provides deterministic failover.
 
-CORRECT: "Launch EC2 instances into multiple regions behind an NLB and use AWS Global Accelerator" is the correct answer.
+CORRECT: **"Launch EC2 instances into multiple regions behind an NLB and use AWS Global Accelerator"** is the correct answer.
 
-INCORRECT: "Launch EC2 instances into multiple regions behind an NLB with a static IP address" is incorrect. An NLB with a static IP is a workable solution as you could configure a primary and secondary address in applications. However, this solution does not intelligently route traffic for lowest latency.
+INCORRECT: **"Launch EC2 instances into multiple regions behind an NLB with a static IP address"** is incorrect. An NLB with a static IP is a workable solution as you could configure a primary and secondary address in applications. However, this solution does not intelligently route traffic for lowest latency.
 
-INCORRECT: "Launch EC2 instances into multiple regions behind an ALB and use a Route 53 failover routing policy" is incorrect. A Route 53 failover routing policy uses a primary and standby configuration. Therefore, it sends all traffic to the primary until it fails a health check at which time it sends traffic to the secondary. This solution does not intelligently route traffic for lowest latency.
+INCORRECT: **"Launch EC2 instances into multiple regions behind an ALB and use a Route 53 failover routing policy"** is incorrect. A Route 53 failover routing policy uses a primary and standby configuration. Therefore, it sends all traffic to the primary until it fails a health check at which time it sends traffic to the secondary. This solution does not intelligently route traffic for lowest latency.
 
-INCORRECT: "Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses" is incorrect. Amazon CloudFront cannot be configured with “a pair of static IP addresses”.
+INCORRECT: **"Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses"** is incorrect. Amazon CloudFront cannot be configured with “a pair of static IP addresses”.
 
 References:
 
@@ -958,7 +959,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-global-accelerator/
   </E>
-  <R />
 </Q>
 
 
@@ -974,20 +974,21 @@ Which combination of steps should a solutions architect take to provide high ava
   <A correct>Create an EC2 Auto Scaling group and Application Load Balancer that spans across multiple AZs.</A>
   <A correct>Create new public and private subnets in a different AZ. Migrate the database to an Amazon RDS multi-AZ deployment.</A>
   <A>Create new public and private subnets in a different AZ. Create a database using Amazon EC2 in one AZ.</A>
+  <R/>
   <E>
   High availability can be achieved by using multiple Availability Zones within the same VPC. An EC2 Auto Scaling group can then be used to launch web application instances in multiple public subnets across multiple AZs and an ALB can be used to distribute incoming load.
 
 The database solution can be made highly available by migrating from EC2 to Amazon RDS and using a Multi-AZ deployment model. This will provide the ability to failover to another AZ in the event of a failure of the primary database or the AZ in which it runs.
 
-CORRECT: "Create an EC2 Auto Scaling group and Application Load Balancer that spans across multiple AZs" is a correct answer.
+CORRECT: **"Create an EC2 Auto Scaling group and Application Load Balancer that spans across multiple AZs"** is a correct answer.
 
-CORRECT: "Create new public and private subnets in a different AZ. Migrate the database to an Amazon RDS multi-AZ deployment" is also a correct answer.
+CORRECT: **"Create new public and private subnets in a different AZ. Migrate the database to an Amazon RDS multi-AZ deployment"** is also a correct answer.
 
-INCORRECT: "Create new public and private subnets in the same AZ but in a different Amazon VPC" is incorrect. You cannot use multiple VPCs for this solution as it would be difficult to manage and direct traffic (you can’t load balance across VPCs).
+INCORRECT: **"Create new public and private subnets in the same AZ but in a different Amazon VPC"** is incorrect. You cannot use multiple VPCs for this solution as it would be difficult to manage and direct traffic (you can’t load balance across VPCs).
 
-INCORRECT: "Create an EC2 Auto Scaling group in the public subnet and use an Application Load Balancer" is incorrect. This does not achieve HA as you need multiple public subnets across multiple AZs.
+INCORRECT: **"Create an EC2 Auto Scaling group in the public subnet and use an Application Load Balancer"** is incorrect. This does not achieve HA as you need multiple public subnets across multiple AZs.
 
-INCORRECT: "Create new public and private subnets in a different AZ. Create a database using Amazon EC2 in one AZ" is incorrect. The database solution is not HA in this answer option.
+INCORRECT: **"Create new public and private subnets in a different AZ. Create a database using Amazon EC2 in one AZ"** is incorrect. The database solution is not HA in this answer option.
 
 References:
 
@@ -999,7 +1000,6 @@ https://digitalcloud.training/amazon-ec2-auto-scaling/
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -1012,16 +1012,17 @@ An Amazon RDS Read Replica is being deployed in a separate region. The master da
   <A>Enable encryption on the master DB instance, then create an encrypted cross-region Read Replica</A>
   <A>Enable encryption using Key Management Service (KMS) when creating the cross-region Read Replica</A>
   <A>Encrypt a snapshot from the master DB instance, create an encrypted cross-region Read Replica from the snapshot</A>
+  <R/>
   <E>
   You cannot create an encrypted Read Replica from an unencrypted master DB instance. You also cannot enable encryption after launch time for the master DB instance. Therefore, you must create a new master DB by taking a snapshot of the existing DB, encrypting it, and then creating the new DB from the snapshot. You can then create the encrypted cross-region Read Replica of the master DB.
 
-CORRECT: "Encrypt a snapshot from the master DB instance, create a new encrypted master DB instance, and then create an encrypted cross-region Read Replica" is the correct answer.
+CORRECT: **"Encrypt a snapshot from the master DB instance, create a new encrypted master DB instance, and then create an encrypted cross-region Read Replica"** is the correct answer.
 
-INCORRECT: "Enable encryption using Key Management Service (KMS) when creating the cross-region Read Replica" is incorrect. All other options will not work due to the limitations explained above.
+INCORRECT: **"Enable encryption using Key Management Service (KMS) when creating the cross-region Read Replica"** is incorrect. All other options will not work due to the limitations explained above.
 
-INCORRECT: "Encrypt a snapshot from the master DB instance, create an encrypted cross-region Read Replica from the snapshot" is incorrect. All other options will not work due to the limitations explained above.
+INCORRECT: **"Encrypt a snapshot from the master DB instance, create an encrypted cross-region Read Replica from the snapshot"** is incorrect. All other options will not work due to the limitations explained above.
 
-INCORRECT: "Enabled encryption on the master DB instance, then create an encrypted cross-region Read Replica" is incorrect. All other options will not work due to the limitations explained above.
+INCORRECT: **"Enabled encryption on the master DB instance, then create an encrypted cross-region Read Replica"** is incorrect. All other options will not work due to the limitations explained above.
 
 References:
 
@@ -1033,7 +1034,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -1049,18 +1049,19 @@ Which combination of AWS services would meet these requirements? (Select TWO.)
   <A>AWS Lambda</A>
   <A>Amazon RDS</A>
   <A>AWS Fargate</A>
+  <R/>
   <E>
   In this case AWS Lambda can perform the computation and store the data in an Amazon DynamoDB table. Lambda can scale concurrent executions to meet demand easily and DynamoDB is built for key-value data storage requirements and is also serverless and easily scalable. This is therefore a cost effective solution for unpredictable workloads.
 
-CORRECT: "AWS Lambda" is a correct answer.
+CORRECT: **"AWS Lambda"** is a correct answer.
 
-CORRECT: "Amazon DynamoDB" is also a correct answer.
+CORRECT: **"Amazon DynamoDB"** is also a correct answer.
 
-INCORRECT: "AWS Fargate" is incorrect as containers run constantly and therefore incur costs even when no requests are being made.
+INCORRECT: **"AWS Fargate"** is incorrect as containers run constantly and therefore incur costs even when no requests are being made.
 
-INCORRECT: "Amazon EC2 Auto Scaling" is incorrect as this uses EC2 instances which will incur costs even when no requests are being made.
+INCORRECT: **"Amazon EC2 Auto Scaling"** is incorrect as this uses EC2 instances which will incur costs even when no requests are being made.
 
-INCORRECT: "Amazon RDS" is incorrect as this is a relational database not a No-SQL database. It is therefore not suitable for key-value data storage requirements.
+INCORRECT: **"Amazon RDS"** is incorrect as this is a relational database not a No-SQL database. It is therefore not suitable for key-value data storage requirements.
 
 References:
 
@@ -1074,7 +1075,6 @@ https://digitalcloud.training/aws-lambda/
 
 https://digitalcloud.training/amazon-dynamodb/
   </E>
-  <R />
 </Q>
 
 
@@ -1089,18 +1089,19 @@ What should the Solutions Architect recommend?
   <A>Create an Amazon EFS file system and connect the backup applications using the iSCSI protocol.</A>
   <A>Create an Amazon EFS file system and connect the backup applications using the NFS protocol.</A>
   <A correct>Connect the backup applications to an AWS Storage Gateway using an iSCSI-virtual tape library (VTL).</A>
+  <R/>
   <E>
   The AWS Storage Gateway Tape Gateway enables you to replace using physical tapes on premises with virtual tapes in AWS without changing existing backup workflows. Tape Gateway emulates physical tape libraries, removes the cost and complexity of managing physical tape infrastructure, and provides more durability than physical tapes.
 
 
 
-CORRECT: "Connect the backup applications to an AWS Storage Gateway using an iSCSI-virtual tape library (VTL)" is the correct answer.
+CORRECT: **"Connect the backup applications to an AWS Storage Gateway using an iSCSI-virtual tape library (VTL)"** is the correct answer.
 
-INCORRECT: "Create an Amazon EFS file system and connect the backup applications using the NFS protocol" is incorrect. The NFS protocol is used by AWS Storage Gateway File Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
+INCORRECT: **"Create an Amazon EFS file system and connect the backup applications using the NFS protocol"** is incorrect. The NFS protocol is used by AWS Storage Gateway File Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
 
-INCORRECT: "Create an Amazon EFS file system and connect the backup applications using the iSCSI protocol" is incorrect. The NFS protocol is used by AWS Storage Gateway File Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
+INCORRECT: **"Create an Amazon EFS file system and connect the backup applications using the iSCSI protocol"** is incorrect. The NFS protocol is used by AWS Storage Gateway File Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
 
-INCORRECT: "Connect the backup applications to an AWS Storage Gateway using the NFS protocol" is incorrect. The iSCSI protocol is used by AWS Storage Gateway Volume Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
+INCORRECT: **"Connect the backup applications to an AWS Storage Gateway using the NFS protocol"** is incorrect. The iSCSI protocol is used by AWS Storage Gateway Volume Gateways but these do not provide virtual tape functionality that is suitable for replacing the existing backup infrastructure.
 
 References:
 
@@ -1110,7 +1111,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-storage-gateway/
   </E>
-  <R />
 </Q>
 
 
@@ -1125,18 +1125,19 @@ What should the solutions architect do to meet these requirements?
   <A>Configure an Amazon CloudFront distribution in front of an Auto Scaling group to deploy instances to multiple Regions</A>
   <A correct>Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Availability Zones</A>
   <A>Configure an Amazon API Gateway API in front of an Auto Scaling group to deploy instances to multiple Availability Zones</A>
+  <R/>
   <E>
   The Amazon EC2-based application must be highly available and elastically scalable. Auto Scaling can provide the elasticity by dynamically launching and terminating instances based on demand. This can take place across availability zones for high availability.
 
 Incoming connections can be distributed to the instances by using an Application Load Balancer (ALB).
 
-CORRECT: "Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Availability Zones" is the correct answer.
+CORRECT: **"Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Availability Zones"** is the correct answer.
 
-INCORRECT: "Configure an Amazon API Gateway API in front of an Auto Scaling group to deploy instances to multiple Availability Zones" is incorrect as API gateway is not used for load balancing connections to Amazon EC2 instances.
+INCORRECT: **"Configure an Amazon API Gateway API in front of an Auto Scaling group to deploy instances to multiple Availability Zones"** is incorrect as API gateway is not used for load balancing connections to Amazon EC2 instances.
 
-INCORRECT: "Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Regions" is incorrect as you cannot launch instances in multiple Regions from a single Auto Scaling group.
+INCORRECT: **"Configure an Application Load Balancer in front of an Auto Scaling group to deploy instances to multiple Regions"** is incorrect as you cannot launch instances in multiple Regions from a single Auto Scaling group.
 
-INCORRECT: "Configure an Amazon CloudFront distribution in front of an Auto Scaling group to deploy instances to multiple Regions" is incorrect as you cannot launch instances in multiple Regions from a single Auto Scaling group.
+INCORRECT: **"Configure an Amazon CloudFront distribution in front of an Auto Scaling group to deploy instances to multiple Regions"** is incorrect as you cannot launch instances in multiple Regions from a single Auto Scaling group.
 
 References:
 
@@ -1150,7 +1151,6 @@ https://digitalcloud.training/amazon-ec2-auto-scaling/
 
 https://digitalcloud.training/aws-elastic-load-balancing-aws-elb/
   </E>
-  <R />
 </Q>
 
 
@@ -1165,18 +1165,19 @@ Which combinations of services should a Solutions Architect use to meet these re
   <A>Amazon EBS for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage.</A>
   <A correct>Amazon EC2 instance store for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage.</A>
   <A>Amazon EC2 instance store for maximum performance, Amazon EFS for durable data storage, and Amazon S3 for archival storage.</A>
+  <R/>
   <E>
   The best I/O performance can be achieved by using instance store volumes for the video processing. This is safe to use for use cases where the data can be recreated from the source files so this is a good use case.
 
 For storing data durably Amazon S3 is a good fit as it provides 99.999999999% of durability. For archival the video files can then be moved to Amazon S3 Glacier which is a low cost storage option that is ideal for long-term archival.
 
-CORRECT: "Amazon EC2 instance store for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage" is the correct answer.
+CORRECT: **"Amazon EC2 instance store for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage"** is the correct answer.
 
-INCORRECT: "Amazon EBS for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage" is incorrect. EBS is not going to provide as much I/O performance as an instance store volume so is not the best choice for this use case.
+INCORRECT: **"Amazon EBS for maximum performance, Amazon S3 for durable data storage, and Amazon S3 Glacier for archival storage"** is incorrect. EBS is not going to provide as much I/O performance as an instance store volume so is not the best choice for this use case.
 
-INCORRECT: "Amazon EC2 instance store for maximum performance, Amazon EFS for durable data storage, and Amazon S3 for archival storage" is incorrect. EFS does not provide as much durability as Amazon S3 and will not be as cost-effective.
+INCORRECT: **"Amazon EC2 instance store for maximum performance, Amazon EFS for durable data storage, and Amazon S3 for archival storage"** is incorrect. EFS does not provide as much durability as Amazon S3 and will not be as cost-effective.
 
-INCORRECT: "Amazon EBS for maximum performance, Amazon EFS for durable data storage, and Amazon S3 Glacier for archival storage" is incorrect. EBS and EFS are not the best choices here as described above.
+INCORRECT: **"Amazon EBS for maximum performance, Amazon EFS for durable data storage, and Amazon S3 Glacier for archival storage"** is incorrect. EBS and EFS are not the best choices here as described above.
 
 References:
 
@@ -1188,7 +1189,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-s3-and-glacier/
   </E>
-  <R />
 </Q>
 
 
@@ -1204,18 +1204,19 @@ Which combination of actions should a solutions architect take to increase avail
   <A>Create an origin for CloudFront for both buckets.</A>
   <A correct>Using us-east-1 bucket as the primary bucket and ap-southeast-1 bucket as the secondary bucket, create a CloudFront origin group.</A>
   <A correct>Add an origin for ap-southeast-1 to CloudFront.</A>
+  <R/>
   <E>
   You can set up CloudFront with origin failover for scenarios that require high availability. To get started, you create an origin group with two origins: a primary and a secondary. If the primary origin is unavailable or returns specific HTTP response status codes that indicate a failure, CloudFront automatically switches to the secondary origin.
 
-CORRECT: "Add an origin for ap-southeast-1 to CloudFront” is the correct answer (as explained above.)
+CORRECT: **"Add an origin for ap-southeast-1 to CloudFront” is the correct answer (as explained above.)
 
-CORRECT: "Using us-east-1 bucket as the primary bucket and ap-southeast-1 bucket as the secondary bucket, create a CloudFront origin group” is also a correct answer (as explained above.)
+CORRECT: **"Using us-east-1 bucket as the primary bucket and ap-southeast-1 bucket as the secondary bucket, create a CloudFront origin group” is also a correct answer (as explained above.)
 
-INCORRECT: "Create an origin for CloudFront for both buckets” is incorrect. This would not increase the availability of the solution on its own.
+INCORRECT: **"Create an origin for CloudFront for both buckets” is incorrect. This would not increase the availability of the solution on its own.
 
-INCORRECT: "Set up failover routing in Amazon Route 53” is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
+INCORRECT: **"Set up failover routing in Amazon Route 53” is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
 
-INCORRECT: "Create a record in Amazon Route 53 pointing to the replica bucket" is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
+INCORRECT: **"Create a record in Amazon Route 53 pointing to the replica bucket"** is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
 
 References:
 
@@ -1225,7 +1226,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -1240,16 +1240,17 @@ What is the most cost-effective solution to these requirements?
   <A>Create an Amazon CloudFront distribution and use Lambda@Edge to run the website's data processing closer to the users.</A>
   <A>Create an Amazon CloudFront distribution and set the price class to use all Edge Locations for best performance.</A>
   <A correct>Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe.</A>
+  <R/>
   <E>
   With Amazon CloudFront you can set the price class to determine where in the world the content will be cached. One of the price classes is “U.S, Canada and Europe” and this is where the company’s users are located. Choosing this price class will result in lower costs and better performance for the company’s users.
 
-CORRECT: "Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe." is the correct answer.
+CORRECT: **"Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe."** is the correct answer.
 
-INCORRECT: "Create an Amazon CloudFront distribution and set the price class to use all Edge Locations for best performance" is incorrect. This will be more expensive as it will cache content in Edge Locations all over the world.
+INCORRECT: **"Create an Amazon CloudFront distribution and set the price class to use all Edge Locations for best performance"** is incorrect. This will be more expensive as it will cache content in Edge Locations all over the world.
 
-INCORRECT: "Create an Amazon CloudFront distribution that uses origins in U.S, Canada and Europe" is incorrect. The origin can be in one place, there’s no need to add origins in different Regions. The price class should be used to limit the caching of the content to reduce cost.
+INCORRECT: **"Create an Amazon CloudFront distribution that uses origins in U.S, Canada and Europe"** is incorrect. The origin can be in one place, there’s no need to add origins in different Regions. The price class should be used to limit the caching of the content to reduce cost.
 
-INCORRECT: "Create an Amazon CloudFront distribution and use Lambda@Edge to run the website's data processing closer to the users" is incorrect. Lambda@Edge will not assist in this situation as there is no data processing required, the content from the static website must simply be cached at an edge location.
+INCORRECT: **"Create an Amazon CloudFront distribution and use Lambda@Edge to run the website's data processing closer to the users"** is incorrect. Lambda@Edge will not assist in this situation as there is no data processing required, the content from the static website must simply be cached at an edge location.
 
 References:
 
@@ -1259,7 +1260,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -1274,16 +1274,17 @@ What should a solutions architect recommend?
   <A>Configure Amazon Kinesis Data Firehose to create multiple delivery streams aimed separately at the S3 buckets for storage and the EC2 instances for processing the images.</A>
   <A>During intermittent connectivity to EC2 instances, upload images to Amazon SQS.</A>
   <A>Cache the images locally on a hardware appliance pre-installed with AWS Storage Gateway to process the images when connectivity is restored.</A>
+  <R/>
   <E>
   AWS physical Snowball Edge device will provide much more inbuilt compute and storage compared to the current team’s laptops. This negates the need to rely on a stable connection to process any images and solves the team's problems easily and efficiently.
 
-CORRECT: "Process and store the images using AWS Snowball Edge devices” is the correct answer (as explained above.)
+CORRECT: **"Process and store the images using AWS Snowball Edge devices” is the correct answer (as explained above.)
 
-INCORRECT: "During intermittent connectivity to EC2 instances, upload images to Amazon SQS” is incorrect as you would still need a reliable internet connection to upload any images to Amazon SQS.
+INCORRECT: **"During intermittent connectivity to EC2 instances, upload images to Amazon SQS” is incorrect as you would still need a reliable internet connection to upload any images to Amazon SQS.
 
-INCORRECT: "Configure Amazon Kinesis Data Firehose to create multiple delivery streams aimed separately at the S3 buckets for storage and the EC2 instances for processing the images" is incorrect as you would still need a reliable internet connection to upload any images to the Amazon Kinesis Service.
+INCORRECT: **"Configure Amazon Kinesis Data Firehose to create multiple delivery streams aimed separately at the S3 buckets for storage and the EC2 instances for processing the images"** is incorrect as you would still need a reliable internet connection to upload any images to the Amazon Kinesis Service.
 
-INCORRECT: "Cache the images locally on a hardware appliance pre-installed with AWS Storage Gateway to process the images when connectivity is restored” is incorrect as you would still need reliable internet connection to upload any images to the Amazon Storage Gateway service.
+INCORRECT: **"Cache the images locally on a hardware appliance pre-installed with AWS Storage Gateway to process the images when connectivity is restored” is incorrect as you would still need reliable internet connection to upload any images to the Amazon Storage Gateway service.
 
 References:
 
@@ -1293,7 +1294,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-migration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -1308,6 +1308,7 @@ Which action should the solutions architect take to accomplish this?
   <A>Use the geoproximity feature of Amazon Route 53</A>
   <A correct>Use Amazon CloudFront with the S3 bucket as its origin</A>
   <A>Generate presigned URLs for the files</A>
+  <R/>
   <E>
   Amazon CloudFront can be used to cache the files in edge locations around the world and this will improve the performance of the webpages.
 
@@ -1319,13 +1320,13 @@ Using a website endpoint as the origin with anonymous (public) access allowed
 
 Using a website endpoint as the origin with access restricted by a Referer header
 
-CORRECT: "Use Amazon CloudFront with the S3 bucket as its origin" is the correct answer.
+CORRECT: **"Use Amazon CloudFront with the S3 bucket as its origin"** is the correct answer.
 
-INCORRECT: "Generate presigned URLs for the files" is incorrect as this is used to restrict access which is not a requirement.
+INCORRECT: **"Generate presigned URLs for the files"** is incorrect as this is used to restrict access which is not a requirement.
 
-INCORRECT: "Use cross-Region replication to all Regions" is incorrect as this does not provide a mechanism for directing users to the closest copy of the static webpages.
+INCORRECT: **"Use cross-Region replication to all Regions"** is incorrect as this does not provide a mechanism for directing users to the closest copy of the static webpages.
 
-INCORRECT: "Use the geoproximity feature of Amazon Route 53" is incorrect as this does not include a solution for having multiple copies of the data in different geographic lcoations.
+INCORRECT: **"Use the geoproximity feature of Amazon Route 53"** is incorrect as this does not include a solution for having multiple copies of the data in different geographic lcoations.
 
 References:
 
@@ -1335,7 +1336,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -1350,16 +1350,17 @@ How can you assign these permissions only to the specific ECS task that is runni
   <A correct>Create an IAM policy with permissions to DynamoDB and assign It to a task using the taskRoleArn parameter</A>
   <A>Modify the AmazonECSTaskExecutionRolePolicy policy to add permissions for DynamoDB</A>
   <A>Use a security group to allow outbound connections to DynamoDB and assign it to the container instance</A>
+  <R/>
   <E>
   To specify permissions for a specific task on Amazon ECS you should use IAM Roles for Tasks. The permissions policy can be applied to tasks when creating the task definition, or by using an IAM task role override using the AWS CLI or SDKs. The taskRoleArn parameter is used to specify the policy.
 
-CORRECT: "Create an IAM policy with permissions to DynamoDB and assign It to a task using the taskRoleArn parameter" is the correct answer.
+CORRECT: **"Create an IAM policy with permissions to DynamoDB and assign It to a task using the taskRoleArn parameter"** is the correct answer.
 
-INCORRECT: "Create an IAM policy with permissions to DynamoDB and attach it to the container instance" is incorrect. You should not apply the permissions to the container instance as they will then apply to all tasks running on the instance as well as the instance itself.
+INCORRECT: **"Create an IAM policy with permissions to DynamoDB and attach it to the container instance"** is incorrect. You should not apply the permissions to the container instance as they will then apply to all tasks running on the instance as well as the instance itself.
 
-INCORRECT: "Use a security group to allow outbound connections to DynamoDB and assign it to the container instance" is incorrect. Though you will need a security group to allow outbound connections to DynamoDB, the question is asking how to assign permissions to write data to DynamoDB and a security group cannot provide those permissions.
+INCORRECT: **"Use a security group to allow outbound connections to DynamoDB and assign it to the container instance"** is incorrect. Though you will need a security group to allow outbound connections to DynamoDB, the question is asking how to assign permissions to write data to DynamoDB and a security group cannot provide those permissions.
 
-INCORRECT: "Modify the AmazonECSTaskExecutionRolePolicy policy to add permissions for DynamoDB" is incorrect. The AmazonECSTaskExecutionRolePolicy policy is the Task Execution IAM Role. This is used by the container agent to be able to pull container images, write log file etc.
+INCORRECT: **"Modify the AmazonECSTaskExecutionRolePolicy policy to add permissions for DynamoDB"** is incorrect. The AmazonECSTaskExecutionRolePolicy policy is the Task Execution IAM Role. This is used by the container agent to be able to pull container images, write log file etc.
 
 References:
 
@@ -1369,7 +1370,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ecs-and-eks/
   </E>
-  <R />
 </Q>
 
 
@@ -1382,16 +1382,17 @@ A legacy tightly-coupled High Performance Computing (HPC) application will be mi
   <A>Elastic IP Address</A>
   <A>Elastic Network Adapter (ENA)</A>
   <A correct>Elastic Fabric Adapter (EFA)</A>
+  <R/>
   <E>
   An Elastic Fabric Adapter is an AWS Elastic Network Adapter (ENA) with added capabilities. The EFA lets you apply the scale, flexibility, and elasticity of the AWS Cloud to tightly-coupled HPC apps. It is ideal for tightly coupled app as it uses the Message Passing Interface (MPI).
 
-CORRECT: "Elastic Fabric Adapter (EFA)" is the correct answer.
+CORRECT: **"Elastic Fabric Adapter (EFA)"** is the correct answer.
 
-INCORRECT: "Elastic Network Interface (ENI)" is incorrect. The ENI is a basic type of adapter and is not the best choice for this use case.
+INCORRECT: **"Elastic Network Interface (ENI)"** is incorrect. The ENI is a basic type of adapter and is not the best choice for this use case.
 
-INCORRECT: "Elastic Network Adapter (ENA)" is incorrect. The ENA, which provides Enhanced Networking, does provide high bandwidth and low inter-instance latency but it does not support the features for a tightly-coupled app that the EFA does.
+INCORRECT: **"Elastic Network Adapter (ENA)"** is incorrect. The ENA, which provides Enhanced Networking, does provide high bandwidth and low inter-instance latency but it does not support the features for a tightly-coupled app that the EFA does.
 
-INCORRECT: "Elastic IP Address" is incorrect. An Elastic IP address is just a static public IP address, it is not a type of network adapter.
+INCORRECT: **"Elastic IP Address"** is incorrect. An Elastic IP address is just a static public IP address, it is not a type of network adapter.
 
 References:
 
@@ -1401,7 +1402,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -1416,16 +1416,17 @@ What is the MOST cost-effective solution?
   <A>Amazon S3 Intelligent-Tiering</A>
   <A>Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)</A>
   <A>Amazon S3 Glacier Deep Archive</A>
+  <R/>
   <E>
   S3 standard is the best choice in this scenario for a short term storage solution. In this case the size and number of logs is unknown and it would be difficult to fully assess the access patterns at this stage. Therefore, using S3 standard is best as it is cost-effective, provides immediate access, and there are no retrieval fees or minimum capacity charge per object.
 
-CORRECT: "Amazon S3 Standard" is the correct answer.
+CORRECT: **"Amazon S3 Standard"** is the correct answer.
 
-INCORRECT: "Amazon S3 Intelligent-Tiering" is incorrect as there is an additional fee for using this service and for a short-term requirement it may not be beneficial.
+INCORRECT: **"Amazon S3 Intelligent-Tiering"** is incorrect as there is an additional fee for using this service and for a short-term requirement it may not be beneficial.
 
-INCORRECT: "Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)" is incorrect as this storage class has a minimum capacity charge per object (128 KB) and a per GB retrieval fee.
+INCORRECT: **"Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)"** is incorrect as this storage class has a minimum capacity charge per object (128 KB) and a per GB retrieval fee.
 
-INCORRECT: "Amazon S3 Glacier Deep Archive" is incorrect as this storage class is used for archiving data. There are retrieval fees and it take hours to retrieve data from an archive.
+INCORRECT: **"Amazon S3 Glacier Deep Archive"** is incorrect as this storage class is used for archiving data. There are retrieval fees and it take hours to retrieve data from an archive.
 
 References:
 
@@ -1435,7 +1436,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-s3-and-glacier/
   </E>
-  <R />
 </Q>
 
 
@@ -1450,6 +1450,7 @@ Which service should the solutions architect use?
   <A>Amazon S3</A>
   <A>Amazon EFS</A>
   <A>Amazon FSx</A>
+  <R/>
   <E>
   Amazon FSx for Windows File Server provides fully managed, highly reliable file storage that is accessible over the industry-standard Server Message Block (SMB) protocol.
 
@@ -1459,13 +1460,13 @@ Additionally, Amazon FSX for Windows File Server supports Distributed File Syste
 
 
 
-CORRECT: "Amazon FSx" is the correct answer.
+CORRECT: **"Amazon FSx"** is the correct answer.
 
-INCORRECT: "Amazon EFS" is incorrect as EFS only supports Linux systems.
+INCORRECT: **"Amazon EFS"** is incorrect as EFS only supports Linux systems.
 
-INCORRECT: "Amazon S3" is incorrect as this is not a suitable replacement for a Microsoft filesystem.
+INCORRECT: **"Amazon S3"** is incorrect as this is not a suitable replacement for a Microsoft filesystem.
 
-INCORRECT: "AWS Storage Gateway" is incorrect as this service is primarily used for connecting on-premises storage to cloud storage. It consists of a software device installed on-premises and can be used with SMB shares but it actually stores the data on S3. It is also used for migration. However, in this case the company need to replace the file server farm and Amazon FSx is the best choice for this job.
+INCORRECT: **"AWS Storage Gateway"** is incorrect as this service is primarily used for connecting on-premises storage to cloud storage. It consists of a software device installed on-premises and can be used with SMB shares but it actually stores the data on S3. It is also used for migration. However, in this case the company need to replace the file server farm and Amazon FSx is the best choice for this job.
 
 References:
 
@@ -1475,7 +1476,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-fsx/
   </E>
-  <R />
 </Q>
 
 
@@ -1490,6 +1490,7 @@ How can a Solutions Architect design a managed solution that will align with ope
   <A>Launch the containers on a fleet of Amazon EC2 instances in a cluster placement group.</A>
   <A correct>Launch the containers on Amazon Elastic Kubernetes Service (EKS) and EKS worker nodes.</A>
   <A>Launch the containers on Amazon Elastic Container Service (ECS) with AWS Fargate instances.</A>
+  <R/>
   <E>
   Amazon EKS is a managed service that can be used to run Kubernetes on AWS. Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications. Applications running on Amazon EKS are fully compatible with applications running on any standard Kubernetes environment, whether running in on-premises data centers or public clouds. This means that you can easily migrate any standard Kubernetes application to Amazon EKS without any code modification.
 
@@ -1497,13 +1498,13 @@ This solution ensures that the same open-source software is used for automating 
 
 
 
-CORRECT: "Launch the containers on Amazon Elastic Kubernetes Service (EKS) and EKS worker nodes" is the correct answer.
+CORRECT: **"Launch the containers on Amazon Elastic Kubernetes Service (EKS) and EKS worker nodes"** is the correct answer.
 
-INCORRECT: "Launch the containers on a fleet of Amazon EC2 instances in a cluster placement group" is incorrect
+INCORRECT: **"Launch the containers on a fleet of Amazon EC2 instances in a cluster placement group"** is incorrect
 
-INCORRECT: "Launch the containers on Amazon Elastic Container Service (ECS) with AWS Fargate instances" is incorrect
+INCORRECT: **"Launch the containers on Amazon Elastic Container Service (ECS) with AWS Fargate instances"** is incorrect
 
-INCORRECT: "Launch the containers on Amazon Elastic Container Service (ECS) with Amazon EC2 instance worker nodes" is incorrect
+INCORRECT: **"Launch the containers on Amazon Elastic Container Service (ECS) with Amazon EC2 instance worker nodes"** is incorrect
 
 References:
 
@@ -1513,7 +1514,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ecs-and-eks/
   </E>
-  <R />
 </Q>
 
 
@@ -1528,6 +1528,7 @@ What is the EASIEST method to meet this requirement?
   <A correct>Use Amazon CloudFront to serve the application and deny access to blocked countries</A>
   <A>Modify the ALB security group to deny incoming traffic from blocked countries</A>
   <A>Use a network ACL to block the IP address ranges associated with the specific countries</A>
+  <R/>
   <E>
   When a user requests your content, CloudFront typically serves the requested content regardless of where the user is located. If you need to prevent users in specific countries from accessing your content, you can use the CloudFront geo restriction feature to do one of the following:
 
@@ -1539,13 +1540,13 @@ For example, if a request comes from a country where, for copyright reasons, you
 
 This is the easiest and most effective way to implement a geographic restriction for the delivery of content.
 
-CORRECT: "Use Amazon CloudFront to serve the application and deny access to blocked countries" is the correct answer.
+CORRECT: **"Use Amazon CloudFront to serve the application and deny access to blocked countries"** is the correct answer.
 
-INCORRECT: "Use a Network ACL to block the IP address ranges associated with the specific countries" is incorrect as this would be extremely difficult to manage.
+INCORRECT: **"Use a Network ACL to block the IP address ranges associated with the specific countries"** is incorrect as this would be extremely difficult to manage.
 
-INCORRECT: "Modify the ALB security group to deny incoming traffic from blocked countries" is incorrect as security groups cannot block traffic by country.
+INCORRECT: **"Modify the ALB security group to deny incoming traffic from blocked countries"** is incorrect as security groups cannot block traffic by country.
 
-INCORRECT: "Modify the security group for EC2 instances to deny incoming traffic from blocked countries" is incorrect as security groups cannot block traffic by country.
+INCORRECT: **"Modify the security group for EC2 instances to deny incoming traffic from blocked countries"** is incorrect as security groups cannot block traffic by country.
 
 References:
 
@@ -1555,7 +1556,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -1572,6 +1572,7 @@ Which solution should the solutions architect recommend?
   <A>Amazon EBS Provisioned IOPS SSD (i01)</A>
   <A>Amazon EBS Throughput Optimized HDD (st1)</A>
   <A correct>Amazon EBS General Purpose SSD (gp2)</A>
+  <R/>
   <E>
   General Purpose SSD (gp2) volumes offer cost-effective storage that is ideal for a broad range of workloads. These volumes deliver single-digit millisecond latencies and the ability to burst to 3,000 IOPS for extended periods of time.
 
@@ -1579,13 +1580,13 @@ Between a minimum of 100 IOPS (at 33.33 GiB and below) and a maximum of 16,000 I
 
 In this configuration the volume will provide a baseline performance of 750 IOPS but will always be able to burst to the required 3,000 IOPS during periods of increased traffic.
 
-CORRECT: "Amazon EBS General Purpose SSD (gp2)" is the correct answer.
+CORRECT: **"Amazon EBS General Purpose SSD (gp2)"** is the correct answer.
 
-INCORRECT: "Amazon EBS Provisioned IOPS SSD (i01)" is incorrect. The i01 volume type will be more expensive and is not necessary for the performance levels required.
+INCORRECT: **"Amazon EBS Provisioned IOPS SSD (i01)"** is incorrect. The i01 volume type will be more expensive and is not necessary for the performance levels required.
 
-INCORRECT: "Amazon EBS Cold HDD (sc1)" is incorrect. The sc1 volume type is not going to deliver the performance requirements as it cannot burst to 3,000 IOPS.
+INCORRECT: **"Amazon EBS Cold HDD (sc1)"** is incorrect. The sc1 volume type is not going to deliver the performance requirements as it cannot burst to 3,000 IOPS.
 
-INCORRECT: "Amazon EBS Throughput Optimized HDD (st1)" is incorrect. The st1 volume type is not going to deliver the performance requirements as it cannot burst to 3,000 IOPS.
+INCORRECT: **"Amazon EBS Throughput Optimized HDD (st1)"** is incorrect. The st1 volume type is not going to deliver the performance requirements as it cannot burst to 3,000 IOPS.
 
 References:
 
@@ -1595,7 +1596,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ebs/
   </E>
-  <R />
 </Q>
 
 
@@ -1610,18 +1610,19 @@ Which S3 storage class should be implemented to meet these requirements?
   <A>S3 Intelligent-Tiering</A>
   <A>S3 Glacier</A>
   <A>S3 One Zone-Infrequent Access (S3 One Zone-IA)</A>
+  <R/>
   <E>
   The S3 Intelligent-Tiering storage class is designed to optimize costs by automatically moving data to the most cost-effective access tier, without performance impact or operational overhead.
 
 It works by storing objects in two access tiers: one tier that is optimized for frequent access and another lower-cost tier that is optimized for infrequent access. This is an ideal use case for intelligent-tiering as the access patterns for the log files are not known.
 
-CORRECT: "S3 Intelligent-Tiering" is the correct answer.
+CORRECT: **"S3 Intelligent-Tiering"** is the correct answer.
 
-INCORRECT: "S3 Standard-Infrequent Access (S3 Standard-IA)" is incorrect as if the data is accessed often retrieval fees could become expensive.
+INCORRECT: **"S3 Standard-Infrequent Access (S3 Standard-IA)"** is incorrect as if the data is accessed often retrieval fees could become expensive.
 
-INCORRECT: "S3 One Zone-Infrequent Access (S3 One Zone-IA)" is incorrect as if the data is accessed often retrieval fees could become expensive.
+INCORRECT: **"S3 One Zone-Infrequent Access (S3 One Zone-IA)"** is incorrect as if the data is accessed often retrieval fees could become expensive.
 
-INCORRECT: "S3 Glacier" is incorrect as if the data is accessed often retrieval fees could become expensive. Glacier also requires more work in retrieving the data from the archive and quick access requirements can add further costs.
+INCORRECT: **"S3 Glacier"** is incorrect as if the data is accessed often retrieval fees could become expensive. Glacier also requires more work in retrieving the data from the archive and quick access requirements can add further costs.
 
 References:
 
@@ -1631,7 +1632,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-s3-and-glacier/
   </E>
-  <R />
 </Q>
 
 
@@ -1646,18 +1646,19 @@ How can a Solutions Architect enable encryption in transit?
   <A>Take a snapshot of the RDS instance. Restore the snapshot to a new instance with encryption in transit enabled.</A>
   <A correct>Download the AWS-provided root certificates. Use the certificates when connecting to the RDS DB instance.</A>
   <A>Enable encryption in transit using the RDS Management console and obtain a key using AWS KMS.</A>
+  <R/>
   <E>
   Amazon RDS creates an SSL certificate and installs the certificate on the DB instance when Amazon RDS provisions the instance. These certificates are signed by a certificate authority. The SSL certificate includes the DB instance endpoint as the Common Name (CN) for the SSL certificate to guard against spoofing attacks.
 
 You can download a root certificate from AWS that works for all Regions or you can download Region-specific intermediate certificates.
 
-CORRECT: "Download the AWS-provided root certificates. Use the certificates when connecting to the RDS DB instance" is the correct answer.
+CORRECT: **"Download the AWS-provided root certificates. Use the certificates when connecting to the RDS DB instance"** is the correct answer.
 
-INCORRECT: "Take a snapshot of the RDS instance. Restore the snapshot to a new instance with encryption in transit enabled" is incorrect. There is no need to do this as a certificate is created when the DB instances is launched.
+INCORRECT: **"Take a snapshot of the RDS instance. Restore the snapshot to a new instance with encryption in transit enabled"** is incorrect. There is no need to do this as a certificate is created when the DB instances is launched.
 
-INCORRECT: "Enable encryption in transit using the RDS Management console and obtain a key using AWS KMS" is incorrect. You cannot enable/disable encryption in transit using the RDS management console or use a KMS key.
+INCORRECT: **"Enable encryption in transit using the RDS Management console and obtain a key using AWS KMS"** is incorrect. You cannot enable/disable encryption in transit using the RDS management console or use a KMS key.
 
-INCORRECT: "Add a self-signed certificate to the RDS DB instance. Use the certificates in all connections to the RDS DB instance" is incorrect. You cannot use self-signed certificates with RDS.
+INCORRECT: **"Add a self-signed certificate to the RDS DB instance. Use the certificates in all connections to the RDS DB instance"** is incorrect. You cannot use self-signed certificates with RDS.
 
 References:
 
@@ -1667,7 +1668,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-rds/
   </E>
-  <R />
 </Q>
 
 
@@ -1682,16 +1682,17 @@ Which service can be used to decouple the compute services?
   <A>Amazon MQ</A>
   <A>Amazon SNS</A>
   <A>AWS Config</A>
+  <R/>
   <E>
   You can use a Lambda function to process Amazon Simple Notification Service notifications. Amazon SNS supports Lambda functions as a target for messages sent to a topic. This solution decouples the Amazon EC2 application from Lambda and ensures the Lambda function is invoked.
 
-CORRECT: "Amazon SNS" is the correct answer.
+CORRECT: **"Amazon SNS"** is the correct answer.
 
-INCORRECT: "AWS Config" is incorrect. AWS Config is a service that is used for continuous compliance, not application decoupling.
+INCORRECT: **"AWS Config"** is incorrect. AWS Config is a service that is used for continuous compliance, not application decoupling.
 
-INCORRECT: "Amazon MQ" is incorrect. Amazon MQ is similar to SQS but is used for existing applications that are being migrated into AWS. SQS should be used for new applications being created in the cloud.
+INCORRECT: **"Amazon MQ"** is incorrect. Amazon MQ is similar to SQS but is used for existing applications that are being migrated into AWS. SQS should be used for new applications being created in the cloud.
 
-INCORRECT: "AWS Step Functions" is incorrect. AWS Step Functions is a workflow service. It is not the best solution for this scenario.
+INCORRECT: **"AWS Step Functions"** is incorrect. AWS Step Functions is a workflow service. It is not the best solution for this scenario.
 
 References:
 
@@ -1705,7 +1706,6 @@ https://digitalcloud.training/aws-lambda/
 
 https://digitalcloud.training/aws-application-integration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -1719,20 +1719,21 @@ Amazon EC2 instances in a development environment run between 9am and 5pm Monday
   <A correct>On-demand capacity reservations for the development environment</A>
   <A correct>Use Reserved instances for the production environment</A>
   <A>Use On-Demand instances for the production environment</A>
+  <R/>
   <E>
   Capacity reservations have no commitment and can be created and canceled as needed. This is ideal for the development environment as it will ensure the capacity is available. There is no price advantage but none of the other options provide a price advantage whilst also ensuring capacity is available
 
 Reserved instances are a good choice for workloads that run continuously. This is a good option for the production environment.
 
-CORRECT: "On-demand capacity reservations for the development environment" is a correct answer.
+CORRECT: **"On-demand capacity reservations for the development environment"** is a correct answer.
 
-CORRECT: "Use Reserved instances for the production environment" is also a correct answer.
+CORRECT: **"Use Reserved instances for the production environment"** is also a correct answer.
 
-INCORRECT: "Use Spot instances for the development environment" is incorrect. Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted. Spot instances are not suitable for the development environment as important work may be interrupted.
+INCORRECT: **"Use Spot instances for the development environment"** is incorrect. Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted. Spot instances are not suitable for the development environment as important work may be interrupted.
 
-INCORRECT: "Use Reserved instances for the development environment" is incorrect as they require a long-term commitment which is not ideal for a development environment.
+INCORRECT: **"Use Reserved instances for the development environment"** is incorrect as they require a long-term commitment which is not ideal for a development environment.
 
-INCORRECT: "Use On-Demand instances for the production environment" is incorrect. There is no long-term commitment required when you purchase On-Demand Instances. However, you do not get any discount and therefore this is the most expensive option.
+INCORRECT: **"Use On-Demand instances for the production environment"** is incorrect. There is no long-term commitment required when you purchase On-Demand Instances. However, you do not get any discount and therefore this is the most expensive option.
 
 References:
 
@@ -1744,7 +1745,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -1759,6 +1759,7 @@ Which changes should be made to the database tier to improve performance?
   <A correct>Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure read replicas in ap-southeast-2</A>
   <A>Migrate the database to Amazon DynamoDB. Use DynamoDB global tables to enable replication to additional Regions</A>
   <A>Deploy MySQL instances in each Region. Deploy an Application Load Balancer in front of MySQL to reduce the load on the primary instance</A>
+  <R/>
   <E>
   The issue here is latency with read queries being directed from Australia to UK which is great physical distance. A solution is required for improving read performance in Australia.
 
@@ -1768,13 +1769,13 @@ An Aurora global database consists of one primary AWS Region where your data is 
 
 This solution will provide better performance for users in the Australia Region for queries. Writes must still take place in the UK Region but read performance will be greatly improved.
 
-CORRECT: "Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure read replicas in ap-southeast-2" is the correct answer.
+CORRECT: **"Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure read replicas in ap-southeast-2"** is the correct answer.
 
-INCORRECT: "Migrate the database to Amazon RDS for MySQL. Configure Multi-AZ in the Australian Region" is incorrect. The database is located in UK. If the database is migrated to Australia then the reverse problem will occur. Multi-AZ does not assist with improving query performance across Regions.
+INCORRECT: **"Migrate the database to Amazon RDS for MySQL. Configure Multi-AZ in the Australian Region"** is incorrect. The database is located in UK. If the database is migrated to Australia then the reverse problem will occur. Multi-AZ does not assist with improving query performance across Regions.
 
-INCORRECT: "Migrate the database to Amazon DynamoDB. Use DynamoDB global tables to enable replication to additional Regions" is incorrect as a relational database running on MySQL is unlikely to be compatible with DynamoDB.
+INCORRECT: **"Migrate the database to Amazon DynamoDB. Use DynamoDB global tables to enable replication to additional Regions"** is incorrect as a relational database running on MySQL is unlikely to be compatible with DynamoDB.
 
-INCORRECT: "Deploy MySQL instances in each Region. Deploy an Application Load Balancer in front of MySQL to reduce the load on the primary instance" is incorrect as you can only put ALBs in front of the web tier, not the DB tier.
+INCORRECT: **"Deploy MySQL instances in each Region. Deploy an Application Load Balancer in front of MySQL to reduce the load on the primary instance"** is incorrect as you can only put ALBs in front of the web tier, not the DB tier.
 
 References:
 
@@ -1784,7 +1785,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-aurora/
   </E>
-  <R />
 </Q>
 
 
@@ -1799,18 +1799,19 @@ Which solution can a Solutions Architect recommend to meet this requirement?
   <A>Use an AWS Storage Gateway volume gateway with stored volumes on premises to replicate the data to Amazon S3.</A>
   <A>Use an AWS Storage Gateway volume gateway with cached volumes on premises to replicate the data to Amazon S3.</A>
   <A>Create an IPSec VPN to AWS and configure the application to mount the Amazon EFS file system. Run a copy job to backup the data to EFS.</A>
+  <R/>
   <E>
   The AWS Storage Gateway Hardware Appliance is a physical, standalone, validated server configuration for on-premises deployments. It comes pre-loaded with Storage Gateway software, and provides all the required CPU, memory, network, and SSD cache resources for creating and configuring File Gateway, Volume Gateway, or Tape Gateway.
 
 A file gateway is the correct type of appliance to use for this use case as it is suitable for mounting via the NFS and SMB protocols.
 
-CORRECT: "Use an AWS Storage Gateway file gateway hardware appliance on premises to replicate the data to Amazon S3" is the correct answer.
+CORRECT: **"Use an AWS Storage Gateway file gateway hardware appliance on premises to replicate the data to Amazon S3"** is the correct answer.
 
-INCORRECT: "Use an AWS Storage Gateway volume gateway with stored volumes on premises to replicate the data to Amazon S3" is incorrect. Volume gateways are used for block-based storage and this solution requires NFS (file-based storage).
+INCORRECT: **"Use an AWS Storage Gateway volume gateway with stored volumes on premises to replicate the data to Amazon S3"** is incorrect. Volume gateways are used for block-based storage and this solution requires NFS (file-based storage).
 
-INCORRECT: "Use an AWS Storage Gateway volume gateway with cached volumes on premises to replicate the data to Amazon S3" is incorrect. Volume gateways are used for block-based storage and this solution requires NFS (file-based storage).
+INCORRECT: **"Use an AWS Storage Gateway volume gateway with cached volumes on premises to replicate the data to Amazon S3"** is incorrect. Volume gateways are used for block-based storage and this solution requires NFS (file-based storage).
 
-INCORRECT: "Create an IPSec VPN to AWS and configure the application to mount the Amazon EFS file system. Run a copy job to backup the data to EFS" is incorrect. It would be better to use a Storage Gateway which will automatically take care of synchronizing a copy of the data to AWS.
+INCORRECT: **"Create an IPSec VPN to AWS and configure the application to mount the Amazon EFS file system. Run a copy job to backup the data to EFS"** is incorrect. It would be better to use a Storage Gateway which will automatically take care of synchronizing a copy of the data to AWS.
 
 References:
 
@@ -1820,7 +1821,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-storage-gateway/
   </E>
-  <R />
 </Q>
 
 
@@ -1835,6 +1835,7 @@ How can the migration be executed with minimal administrative effort and downtim
   <A>Use AWS DataSync to migrate the data from the database to Amazon S3. Use AWS Database Migration Service (DMS) to migrate the database to RDS</A>
   <A correct>Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS</A>
   <A>Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS. Use the Schema Conversion Tool (SCT) to enable conversion from Microsoft SQL Server to Amazon RDS</A>
+  <R/>
   <E>
   You can directly migrate Microsoft SQL Server from an on-premises server into Amazon RDS using the Microsoft SQL Server database engine. This can be achieved using the native Microsoft SQL Server tools, or using AWS DMS as depicted below:
 
@@ -1842,13 +1843,13 @@ How can the migration be executed with minimal administrative effort and downtim
 
 
 
-CORRECT: "Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS" is the correct answer.
+CORRECT: **"Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS"** is the correct answer.
 
-INCORRECT: "Use the AWS Server Migration Service (SMS) to migrate the server to Amazon EC2. Use AWS Database Migration Service (DMS) to migrate the database to RDS" is incorrect. You do not need to use the AWS SMS service to migrate the server into EC2 first. You can directly migrate the database online with minimal downtime.
+INCORRECT: **"Use the AWS Server Migration Service (SMS) to migrate the server to Amazon EC2. Use AWS Database Migration Service (DMS) to migrate the database to RDS"** is incorrect. You do not need to use the AWS SMS service to migrate the server into EC2 first. You can directly migrate the database online with minimal downtime.
 
-INCORRECT: "Use AWS DataSync to migrate the data from the database to Amazon S3. Use AWS Database Migration Service (DMS) to migrate the database to RDS" is incorrect. AWS DataSync is used for migrating data, not databases.
+INCORRECT: **"Use AWS DataSync to migrate the data from the database to Amazon S3. Use AWS Database Migration Service (DMS) to migrate the database to RDS"** is incorrect. AWS DataSync is used for migrating data, not databases.
 
-INCORRECT: "Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS. Use the Schema Conversion Tool (SCT) to enable conversion from Microsoft SQL Server to Amazon RDS" is incorrect. You do not need to use the SCT as you are migrating into the same destination database engine (RDS is just the platform).
+INCORRECT: **"Use the AWS Database Migration Service (DMS) to directly migrate the database to RDS. Use the Schema Conversion Tool (SCT) to enable conversion from Microsoft SQL Server to Amazon RDS"** is incorrect. You do not need to use the SCT as you are migrating into the same destination database engine (RDS is just the platform).
 
 References:
 
@@ -1864,7 +1865,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-migration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -1879,6 +1879,7 @@ What should a solutions architect do to protect the application?
   <A>Modify the security groups for the EC2 instances in the target groups behind the ALB to deny the malicious IP address.</A>
   <A>Modify the network ACL for the EC2 instances in the target groups behind the ALB to deny the malicious IP address</A>
   <A>Modify the network ACL on the CloudFront distribution to add a deny rule for the malicious IP address</A>
+  <R/>
   <E>
   A new version of the AWS Web Application Firewall was released in November 2019. With AWS WAF classic you create “IP match conditions”, whereas with AWS WAF (new version) you create “IP set match statements”. Look out for wording on the exam.
 
@@ -1886,13 +1887,13 @@ The IP match condition / IP set match statement inspects the IP address of a web
 
 AWS WAF supports all IPv4 and IPv6 address ranges. An IP set can hold up to 10,000 IP addresses or IP address ranges to check.
 
-CORRECT: "Modify the configuration of AWS WAF to add an IP match condition to block the malicious IP address" is the correct answer.
+CORRECT: **"Modify the configuration of AWS WAF to add an IP match condition to block the malicious IP address"** is the correct answer.
 
-INCORRECT: "Modify the network ACL on the CloudFront distribution to add a deny rule for the malicious IP address" is incorrect as CloudFront does not sit within a subnet so network ACLs do not apply to it.
+INCORRECT: **"Modify the network ACL on the CloudFront distribution to add a deny rule for the malicious IP address"** is incorrect as CloudFront does not sit within a subnet so network ACLs do not apply to it.
 
-INCORRECT: "Modify the network ACL for the EC2 instances in the target groups behind the ALB to deny the malicious IP address" is incorrect as the source IP addresses of the data in the EC2 instances’ subnets will be the ELB IP addresses.
+INCORRECT: **"Modify the network ACL for the EC2 instances in the target groups behind the ALB to deny the malicious IP address"** is incorrect as the source IP addresses of the data in the EC2 instances’ subnets will be the ELB IP addresses.
 
-INCORRECT: "Modify the security groups for the EC2 instances in the target groups behind the ALB to deny the malicious IP address." is incorrect as you cannot create deny rules with security groups.
+INCORRECT: **"Modify the security groups for the EC2 instances in the target groups behind the ALB to deny the malicious IP address."** is incorrect as you cannot create deny rules with security groups.
 
 References:
 
@@ -1902,7 +1903,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-waf-shield/
   </E>
-  <R />
 </Q>
 
 
@@ -1917,6 +1917,7 @@ How can a Solutions Architect provide least privilege access to the partner?
   <A>Update the permission policy on the SQS queue to grant all permissions to the partner’s AWS account.</A>
   <A correct>Update the permission policy on the SQS queue to grant the sqs:SendMessage permission to the partner’s AWS account.</A>
   <A>Create a cross-account role with access to all SQS queues and use the partner's AWS account in the trust document for the role.</A>
+  <R/>
   <E>
   Amazon SQS supports resource-based policies. The best way to grant the permissions using the principle of least privilege is to use a resource-based policy attached to the SQS queue that grants the partner company’s AWS account the sqs:SendMessage privilege.
 
@@ -1924,13 +1925,13 @@ The following policy is an example of how this could be configured:
 
 
 
-CORRECT: "Update the permission policy on the SQS queue to grant the sqs:SendMessage permission to the partner’s AWS account" is the correct answer.
+CORRECT: **"Update the permission policy on the SQS queue to grant the sqs:SendMessage permission to the partner’s AWS account"** is the correct answer.
 
-INCORRECT: "Create a user account that and grant the sqs:SendMessage permission for Amazon SQS. Share the credentials with the partner company" is incorrect. This would provide the permissions for all SQS queues, not just the queue the partner company should be able to access.
+INCORRECT: **"Create a user account that and grant the sqs:SendMessage permission for Amazon SQS. Share the credentials with the partner company"** is incorrect. This would provide the permissions for all SQS queues, not just the queue the partner company should be able to access.
 
-INCORRECT: "Create a cross-account role with access to all SQS queues and use the partner's AWS account in the trust document for the role" is incorrect. This would provide access to all SQS queues and the partner company should only be able to access one SQS queue.
+INCORRECT: **"Create a cross-account role with access to all SQS queues and use the partner's AWS account in the trust document for the role"** is incorrect. This would provide access to all SQS queues and the partner company should only be able to access one SQS queue.
 
-INCORRECT: "Update the permission policy on the SQS queue to grant all permissions to the partner’s AWS account" is incorrect. This provides too many permissions; the partner company only needs to send messages to the queue.
+INCORRECT: **"Update the permission policy on the SQS queue to grant all permissions to the partner’s AWS account"** is incorrect. This provides too many permissions; the partner company only needs to send messages to the queue.
 
 References:
 
@@ -1940,7 +1941,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-application-integration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -1953,6 +1953,7 @@ An AWS Organization has an OU with multiple member accounts in it. The company n
   <A correct>Create an SCP with a deny rule that denies all but the specific instance types</A>
   <A>Use AWS Resource Access Manager to control which launch types can be used</A>
   <A>Create an IAM policy to deny launching all but the specific instance types</A>
+  <R/>
   <E>
   To apply the restrictions across multiple member accounts you must use a Service Control Policy (SCP) in the AWS Organization. The way you would do this is to create a deny rule that applies to anything that does not equal the specific instance type you want to allow.
 
@@ -1960,13 +1961,13 @@ The following architecture could be used to achieve this goal:
 
 
 
-CORRECT: "Create an SCP with a deny rule that denies all but the specific instance types" is the correct answer.
+CORRECT: **"Create an SCP with a deny rule that denies all but the specific instance types"** is the correct answer.
 
-INCORRECT: "Create an SCP with an allow rule that allows launching the specific instance types" is incorrect as a deny rule is required.
+INCORRECT: **"Create an SCP with an allow rule that allows launching the specific instance types"** is incorrect as a deny rule is required.
 
-INCORRECT: "Create an IAM policy to deny launching all but the specific instance types" is incorrect. With IAM you need to apply the policy within each account rather than centrally so this would require much more effort.
+INCORRECT: **"Create an IAM policy to deny launching all but the specific instance types"** is incorrect. With IAM you need to apply the policy within each account rather than centrally so this would require much more effort.
 
-INCORRECT: "Use AWS Resource Access Manager to control which launch types can be used" is incorrect. AWS Resource Access Manager (RAM) is a service that enables you to easily and securely share AWS resources with any AWS account or within your AWS Organization. It is not used for restricting access or permissions.
+INCORRECT: **"Use AWS Resource Access Manager to control which launch types can be used"** is incorrect. AWS Resource Access Manager (RAM) is a service that enables you to easily and securely share AWS resources with any AWS account or within your AWS Organization. It is not used for restricting access or permissions.
 
 References:
 
@@ -1976,7 +1977,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-organizations/
   </E>
-  <R />
 </Q>
 
 
@@ -1991,18 +1991,19 @@ What should a Solutions Architect recommend?
   <A correct>Use Amazon CloudFront with a custom origin pointing to the on-premises servers.</A>
   <A>Use Amazon CloudFront with Lambda@Edge to direct traffic to an on-premises origin.</A>
   <A>Migrate the website to Amazon S3. Use cross-Region replication between Regions and a latency-based Route 53 policy.</A>
+  <R/>
   <E>
   A custom origin can point to an on-premises server and CloudFront is able to cache content for dynamic websites. CloudFront can provide performance optimizations for custom origins even if they are running on on-premises servers. These include persistent TCP connections to the origin, SSL enhancements such as Session tickets and OCSP stapling.
 
 Additionally, connections are routed from the nearest Edge Location to the user across the AWS global network. If the on-premises server is connected via a Direct Connect (DX) link this can further improve performance.
 
-CORRECT: "Use Amazon CloudFront with a custom origin pointing to the on-premises servers" is the correct answer.
+CORRECT: **"Use Amazon CloudFront with a custom origin pointing to the on-premises servers"** is the correct answer.
 
-INCORRECT: "Use Amazon CloudFront with Lambda@Edge to direct traffic to an on-premises origin" is incorrect. Lambda@Edge is not used to direct traffic to on-premises origins.
+INCORRECT: **"Use Amazon CloudFront with Lambda@Edge to direct traffic to an on-premises origin"** is incorrect. Lambda@Edge is not used to direct traffic to on-premises origins.
 
-INCORRECT: "Launch an Amazon EC2 instance in an AWS Region in the United States and migrate the website to it" is incorrect. This would not necessarily improve performance for European users.
+INCORRECT: **"Launch an Amazon EC2 instance in an AWS Region in the United States and migrate the website to it"** is incorrect. This would not necessarily improve performance for European users.
 
-INCORRECT: "Migrate the website to Amazon S3. Use cross-Region replication between Regions and a latency-based Route 53 policy" is incorrect. You cannot host dynamic websites on Amazon S3 (static only).
+INCORRECT: **"Migrate the website to Amazon S3. Use cross-Region replication between Regions and a latency-based Route 53 policy"** is incorrect. You cannot host dynamic websites on Amazon S3 (static only).
 
 References:
 
@@ -2012,7 +2013,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -2027,16 +2027,17 @@ Which solution should the Architect use?
   <A correct>Create an Amazon SQS queue and configure the front-end to add messages to the queue and the back-end to poll the queue for messages</A>
   <A>Create an Amazon Kinesis Firehose delivery stream and configure the front-end to add data to the stream and the back-end to read data from the stream</A>
   <A>Create an Amazon Kinesis Firehose delivery stream that delivers data to an Amazon S3 bucket, configure the front-end to write data to the stream and the back-end to read data from Amazon S3</A>
+  <R/>
   <E>
   This is a good use case for Amazon SQS. SQS is a service that is used for decoupling applications, thus reducing interdependencies, through a message bus. The front-end application can place messages on the queue and the back-end can then poll the queue for new messages. Please remember that Amazon SQS is pull-based (polling) not push-based (use SNS for push-based).
 
-CORRECT: "Create an Amazon SQS queue and configure the front-end to add messages to the queue and the back-end to poll the queue for messages" is the correct answer.
+CORRECT: **"Create an Amazon SQS queue and configure the front-end to add messages to the queue and the back-end to poll the queue for messages"** is the correct answer.
 
-INCORRECT: "Create an Amazon Kinesis Firehose delivery stream and configure the front-end to add data to the stream and the back-end to read data from the stream" is incorrect. Amazon Kinesis Firehose is used for streaming data. With Firehose the data is immediately loaded into a destination that can be Amazon S3, RedShift, Elasticsearch, or Splunk. This is not an ideal use case for Firehose as this is not streaming data and there is no need to load data into an additional AWS service.
+INCORRECT: **"Create an Amazon Kinesis Firehose delivery stream and configure the front-end to add data to the stream and the back-end to read data from the stream"** is incorrect. Amazon Kinesis Firehose is used for streaming data. With Firehose the data is immediately loaded into a destination that can be Amazon S3, RedShift, Elasticsearch, or Splunk. This is not an ideal use case for Firehose as this is not streaming data and there is no need to load data into an additional AWS service.
 
-INCORRECT: "Create an Amazon Kinesis Firehose delivery stream that delivers data to an Amazon S3 bucket, configure the front-end to write data to the stream and the back-end to read data from Amazon S3" is incorrect as per the previous explanation.
+INCORRECT: **"Create an Amazon Kinesis Firehose delivery stream that delivers data to an Amazon S3 bucket, configure the front-end to write data to the stream and the back-end to read data from Amazon S3"** is incorrect as per the previous explanation.
 
-INCORRECT: "Create an Amazon SQS queue that pushes messages to the back-end. Configure the front-end to add messages to the queue " is incorrect as SQS is pull-based, not push-based. EC2 instances must poll the queue to find jobs to process.
+INCORRECT: **"Create an Amazon SQS queue that pushes messages to the back-end. Configure the front-end to add messages to the queue **"** is incorrect as SQS is pull-based, not push-based. EC2 instances must poll the queue to find jobs to process.
 
 References:
 
@@ -2048,7 +2049,6 @@ https://digitalcloud.training/amazon-kinesis/
 
 https://digitalcloud.training/aws-application-integration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -2063,6 +2063,7 @@ How can a solutions architect meet these requirements?
   <A>Stop the instance outside business hours. Start the instance again when required.</A>
   <A>Terminate the instance outside business hours. Recover the instance again when required.</A>
   <A>Use Auto Scaling to scale down the instance outside of business hours. Scale up the instance when required.</A>
+  <R/>
   <E>
   When you hibernate an instance, Amazon EC2 signals the operating system to perform hibernation (suspend-to-disk). Hibernation saves the contents from the instance memory (RAM) to your Amazon Elastic Block Store (Amazon EBS) root volume. Amazon EC2 persists the instance's EBS root volume and any attached EBS data volumes. When you start your instance:
 
@@ -2074,13 +2075,13 @@ How can a solutions architect meet these requirements?
 
 - Previously attached data volumes are reattached and the instance retains its instance ID
 
-CORRECT: "Hibernate the instance outside business hours. Start the instance again when required" is the correct answer.
+CORRECT: **"Hibernate the instance outside business hours. Start the instance again when required"** is the correct answer.
 
-INCORRECT: "Stop the instance outside business hours. Start the instance again when required" is incorrect. When an instance is stopped the operating system is shut down and the contents of memory will be lost.
+INCORRECT: **"Stop the instance outside business hours. Start the instance again when required"** is incorrect. When an instance is stopped the operating system is shut down and the contents of memory will be lost.
 
-INCORRECT: "Use Auto Scaling to scale down the instance outside of business hours. Scale out the instance when required" is incorrect. Auto Scaling scales does not scale up and down, it scales in by terminating instances and out by launching instances. When scaling out new instances are launched and no state will be available from terminated instances.
+INCORRECT: **"Use Auto Scaling to scale down the instance outside of business hours. Scale out the instance when required"** is incorrect. Auto Scaling scales does not scale up and down, it scales in by terminating instances and out by launching instances. When scaling out new instances are launched and no state will be available from terminated instances.
 
-INCORRECT: "Terminate the instance outside business hours. Recover the instance again when required" is incorrect. You cannot recover terminated instances, you can recover instances that have become impaired in some circumstances.
+INCORRECT: **"Terminate the instance outside business hours. Recover the instance again when required"** is incorrect. You cannot recover terminated instances, you can recover instances that have become impaired in some circumstances.
 
 References:
 
@@ -2090,7 +2091,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -2105,16 +2105,17 @@ Which AWS service can assist them?
   <A>AWS CloudFormation</A>
   <A>AWS DataSync</A>
   <A>AWS Snowball</A>
+  <R/>
   <E>
   AWS DataSync can be used to move large amounts of data online between on-premises storage and Amazon S3 or Amazon Elastic File System (Amazon EFS). DataSync eliminates or automatically handles many of these tasks, including scripting copy jobs, scheduling and monitoring transfers, validating data, and optimizing network utilization. The source datastore can be Server Message Block (SMB) file servers.
 
-CORRECT: "AWS DataSync" is the correct answer.
+CORRECT: **"AWS DataSync"** is the correct answer.
 
-INCORRECT: "AWS Database Migration Service (DMS)" is incorrect. AWS Database Migration Service (DMS) is used for migrating databases, not data on file shares.
+INCORRECT: **"AWS Database Migration Service (DMS)"** is incorrect. AWS Database Migration Service (DMS) is used for migrating databases, not data on file shares.
 
-INCORRECT: "AWS CloudFormation" is incorrect. AWS CloudFormation can be used for automating infrastructure provisioning. This is not the best use case for CloudFormation as DataSync is designed specifically for this scenario.
+INCORRECT: **"AWS CloudFormation"** is incorrect. AWS CloudFormation can be used for automating infrastructure provisioning. This is not the best use case for CloudFormation as DataSync is designed specifically for this scenario.
 
-INCORRECT: "AWS Snowball" is incorrect. AWS Snowball is a hardware device that is used for migrating data into AWS. The organization plan to use their Direct Connect link for migrating data rather than sending it in via a physical device. Also, Snowball will not automate the migration.
+INCORRECT: **"AWS Snowball"** is incorrect. AWS Snowball is a hardware device that is used for migrating data into AWS. The organization plan to use their Direct Connect link for migrating data rather than sending it in via a physical device. Also, Snowball will not automate the migration.
 
 References:
 
@@ -2124,7 +2125,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-migration-services/
   </E>
-  <R />
 </Q>
 
 
@@ -2139,6 +2139,7 @@ Which changes should a Solutions Architect make to the database tier to improve 
   <A correct>Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure the application tier in Europe to use the local reader endpoint.</A>
   <A>Migrate the database to Amazon RDS for MySQL. Configure Multi-AZ in one of the European Regions.</A>
   <A>Create an Amazon RDS Read Replica in one of the European regions. Configure the application tier in Europe to use the read replica for queries.</A>
+  <R/>
   <E>
   Amazon Aurora Global Database is designed for globally distributed applications, allowing a single Amazon Aurora database to span multiple AWS regions. It replicates your data with no impact on database performance, enables fast local reads with low latency in each region, and provides disaster recovery from region-wide outages.
 
@@ -2146,13 +2147,13 @@ A global database can be configured in the European region and then the applicat
 
 
 
-CORRECT: "Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure the application tier in Europe to use the local reader endpoint" is the correct answer.
+CORRECT: **"Migrate the database to an Amazon Aurora global database in MySQL compatibility mode. Configure the application tier in Europe to use the local reader endpoint"** is the correct answer.
 
-INCORRECT: "Migrate the database to Amazon RDS for MySQL. Configure Multi-AZ in one of the European Regions" is incorrect. You cannot configure a multi-AZ DB instance to run in another Region, it must be in the same Region but in a different Availability Zone.
+INCORRECT: **"Migrate the database to Amazon RDS for MySQL. Configure Multi-AZ in one of the European Regions"** is incorrect. You cannot configure a multi-AZ DB instance to run in another Region, it must be in the same Region but in a different Availability Zone.
 
-INCORRECT: "Migrate the database to Amazon RedShift. Use AWS DMS to synchronize data. Configure applications to use the RedShift data warehouse for queries" is incorrect. RedShift is a data warehouse and used for running analytics queries on data that is exported from transactional database systems. It should not be used to reduce latency for users of a database, and is not a live copy of the data.
+INCORRECT: **"Migrate the database to Amazon RedShift. Use AWS DMS to synchronize data. Configure applications to use the RedShift data warehouse for queries"** is incorrect. RedShift is a data warehouse and used for running analytics queries on data that is exported from transactional database systems. It should not be used to reduce latency for users of a database, and is not a live copy of the data.
 
-INCORRECT: "Create an Amazon RDS Read Replica in one of the European regions. Configure the application tier in Europe to use the read replica for queries" is incorrect. You cannot create an RDS Read Replica of a database that is running on Amazon EC2. You can only create read replicas of databases running on Amazon RDS.
+INCORRECT: **"Create an Amazon RDS Read Replica in one of the European regions. Configure the application tier in Europe to use the read replica for queries"** is incorrect. You cannot create an RDS Read Replica of a database that is running on Amazon EC2. You can only create read replicas of databases running on Amazon RDS.
 
 References:
 
@@ -2162,7 +2163,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2/
   </E>
-  <R />
 </Q>
 
 
@@ -2177,6 +2177,7 @@ Which solution would be MOST efficient?
   <A>Use an Amazon SQS standard queue for real-time events with one queue for each device. Trigger an AWS Lambda function from the SQS queue to save data to Amazon S3</A>
   <A>Use Amazon Kinesis Data Streams for real-time events with a shard for each device. Use Amazon Kinesis Data Firehose to save data to Amazon EBS</A>
   <A correct>Use Amazon Kinesis Data Streams for real-time events with a partition key for each device. Use Amazon Kinesis Data Firehose to save data to Amazon S3</A>
+  <R/>
   <E>
   Amazon Kinesis Data Streams collect and process data in real time. A Kinesis data stream is a set of shards. Each shard has a sequence of data records. Each data record has a sequence number that is assigned by Kinesis Data Streams. A shard is a uniquely identified sequence of data records in a stream.
 
@@ -2186,13 +2187,13 @@ A partition key is used to group data by shard within a stream. Kinesis Data Str
 
 For this scenario, the solutions architect can use a partition key for each device. This will ensure the records for that device are grouped by shard and the shard will ensure ordering. Amazon S3 is a valid destination for saving the data records.
 
-CORRECT: "Use Amazon Kinesis Data Streams for real-time events with a partition key for each device. Use Amazon Kinesis Data Firehose to save data to Amazon S3" is the correct answer.
+CORRECT: **"Use Amazon Kinesis Data Streams for real-time events with a partition key for each device. Use Amazon Kinesis Data Firehose to save data to Amazon S3"** is the correct answer.
 
-INCORRECT: "Use Amazon Kinesis Data Streams for real-time events with a shard for each device. Use Amazon Kinesis Data Firehose to save data to Amazon EBS" is incorrect as you cannot save data to EBS from Kinesis.
+INCORRECT: **"Use Amazon Kinesis Data Streams for real-time events with a shard for each device. Use Amazon Kinesis Data Firehose to save data to Amazon EBS"** is incorrect as you cannot save data to EBS from Kinesis.
 
-INCORRECT: "Use an Amazon SQS FIFO queue for real-time events with one queue for each device. Trigger an AWS Lambda function for the SQS queue to save data to Amazon EFS" is incorrect as SQS is not the most efficient service for streaming, real time data.
+INCORRECT: **"Use an Amazon SQS FIFO queue for real-time events with one queue for each device. Trigger an AWS Lambda function for the SQS queue to save data to Amazon EFS"** is incorrect as SQS is not the most efficient service for streaming, real time data.
 
-INCORRECT: "Use an Amazon SQS standard queue for real-time events with one queue for each device. Trigger an AWS Lambda function from the SQS queue to save data to Amazon S3" is incorrect as SQS is not the most efficient service for streaming, real time data.
+INCORRECT: **"Use an Amazon SQS standard queue for real-time events with one queue for each device. Trigger an AWS Lambda function from the SQS queue to save data to Amazon S3"** is incorrect as SQS is not the most efficient service for streaming, real time data.
 
 References:
 
@@ -2202,7 +2203,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-kinesis/
   </E>
-  <R />
 </Q>
 
 
@@ -2217,18 +2217,19 @@ What should the Solutions Architect do to achieve this requirement?
   <A correct>Create an IAM role with permission to access the database. Attach this IAM role to the EC2 instance.</A>
   <A>Move the configuration file to an Amazon S3 bucket. Create an IAM role with permission to the bucket and attach it to the EC2 instance.</A>
   <A>Attach an additional volume to the EC2 instance with encryption enabled. Move the configuration file to the encrypted volume.</A>
+  <R/>
   <E>
   The key problem here is having plain text credentials stored in a file. Even if you encrypt the volume there is still as security risk as the credentials are loaded by the application and passed to RDS.
 
 The best way to secure this solution is to get rid of the credentials completely by using an IAM role instead. The IAM role can be assigned permissions to the database instance and can be attached to the EC2 instance. The instance will then obtain temporary security credentials from AWS STS which is much more secure.
 
-CORRECT: "Create an IAM role with permission to access the database. Attach this IAM role to the EC2 instance" is the correct answer.
+CORRECT: **"Create an IAM role with permission to access the database. Attach this IAM role to the EC2 instance"** is the correct answer.
 
-INCORRECT: "Move the configuration file to an Amazon S3 bucket. Create an IAM role with permission to the bucket and attach it to the EC2 instance" is incorrect. This just relocates the file; the contents are still unsecured and must be loaded by the application and passed to RDS. This is an insecure process.
+INCORRECT: **"Move the configuration file to an Amazon S3 bucket. Create an IAM role with permission to the bucket and attach it to the EC2 instance"** is incorrect. This just relocates the file; the contents are still unsecured and must be loaded by the application and passed to RDS. This is an insecure process.
 
-INCORRECT: "Attach an additional volume to the EC2 instance with encryption enabled. Move the configuration file to the encrypted volume" is incorrect. This will only encrypt the file at rest, it still must be read, and the contents passed to RDS which is insecure.
+INCORRECT: **"Attach an additional volume to the EC2 instance with encryption enabled. Move the configuration file to the encrypted volume"** is incorrect. This will only encrypt the file at rest, it still must be read, and the contents passed to RDS which is insecure.
 
-INCORRECT: "Install an Amazon-trusted root certificate on the application instance and use SSL/TLS encrypted connections to the database" is incorrect. The file is still unsecured on the EBS volume so encrypting the credentials in an encrypted channel between the EC2 instance and RDS does not solve all security issues.
+INCORRECT: **"Install an Amazon-trusted root certificate on the application instance and use SSL/TLS encrypted connections to the database"** is incorrect. The file is still unsecured on the EBS volume so encrypting the credentials in an encrypted channel between the EC2 instance and RDS does not solve all security issues.
 
 References:
 
@@ -2238,7 +2239,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/aws-iam/
   </E>
-  <R />
 </Q>
 
 
@@ -2253,18 +2253,19 @@ What should a solutions architect recommend for maximum performance?
   <A>Get an AWS Snowball Edge Storage Optimized device. Data must be copied to the device after several days and shipped to AWS for expedited transfer to Kinesis Data Firehose. Repeat as necessary.</A>
   <A>Establish a peering connection between the on-premises network and the VPC. Configure routing for the on-premises network to use the VPC peering connection.</A>
   <A correct>Kinesis Data Firehose can be connected to the VPC using AWS PrivateLink. Install a 1 Gbps AWS Direct Connect connection between the on-premises network and AWS. To send data from on-premises to Kinesis Data Firehose, use the PrivateLink endpoint.</A>
+  <R/>
   <E>
   Explanation:
 
 Using AWS PrivateLink to create an interface endpoint will allow your traffic to traverse the AWS Global Backbone to allow maximum performance and security. Also by using an AWS Direct Connect cable you can ensure you have a dedicated cable to provide maximum performance and low latency to and from AWS.
 
-CORRECT: "Kinesis Data Firehose can be connected to the VPC using AWS PrivateLink. Install a 1 Gbps AWS Direct Connect connection between the on-premises network and AWS. To send data from on-premises to Kinesis Data Firehose, use the PrivateLink endpoint” is the correct answer (as explained above.)
+CORRECT: **"Kinesis Data Firehose can be connected to the VPC using AWS PrivateLink. Install a 1 Gbps AWS Direct Connect connection between the on-premises network and AWS. To send data from on-premises to Kinesis Data Firehose, use the PrivateLink endpoint” is the correct answer (as explained above.)
 
-INCORRECT: "Establish a peering connection between the on-premises network and the VPC. Configure routing for the on-premises network to use the VPC peering connection” is incorrect also because VPC peering connections can only exist between two VPCs within the AWS Cloud.
+INCORRECT: **"Establish a peering connection between the on-premises network and the VPC. Configure routing for the on-premises network to use the VPC peering connection” is incorrect also because VPC peering connections can only exist between two VPCs within the AWS Cloud.
 
-INCORRECT: "Get an AWS Snowball Edge Storage Optimized device. Data must be copied to the device after several days and shipped to AWS for expedited transfer to Kinesis Data Firehose. Repeat as necessary” is incorrect. AWS Snowball Edge is designed to be more of a one-time migration service which you physically receive from AWS, and then ship it into an AWS Region of your choice.
+INCORRECT: **"Get an AWS Snowball Edge Storage Optimized device. Data must be copied to the device after several days and shipped to AWS for expedited transfer to Kinesis Data Firehose. Repeat as necessary” is incorrect. AWS Snowball Edge is designed to be more of a one-time migration service which you physically receive from AWS, and then ship it into an AWS Region of your choice.
 
-INCORRECT: "Establish an AWS Site-to-Site VPN connection between the on-premises network and the VPC. Set up BGP routing between the customer gateway and the virtual private gateway. Send data to Kinesis Data Firehose using a VPN connection” is incorrect. This is a functional solution; however a physical connection would provide a much more reliable and performant solution.
+INCORRECT: **"Establish an AWS Site-to-Site VPN connection between the on-premises network and the VPC. Set up BGP routing between the customer gateway and the virtual private gateway. Send data to Kinesis Data Firehose using a VPN connection” is incorrect. This is a functional solution; however a physical connection would provide a much more reliable and performant solution.
 
 References:
 
@@ -2274,7 +2275,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-vpc/
   </E>
-  <R />
 </Q>
 
 
@@ -2290,18 +2290,19 @@ Which architecture should the solutions architect implement? (Select TWO.)
   <A>Add an AWS Transit Gateway to the Availability Zones</A>
   <A>Add an AWS Global Accelerator endpoint</A>
   <A correct>Add Amazon Aurora Replicas</A>
+  <R/>
   <E>
   The architecture is already highly resilient but the may be subject to performance degradation if there are sudden increases in request rates. To resolve this situation Amazon Aurora Read Replicas can be used to serve read traffic which offloads requests from the main database. On the frontend an Amazon CloudFront distribution can be placed in front of the ALB and this will cache content for better performance and also offloads requests from the backend.
 
-CORRECT: "Add Amazon Aurora Replicas" is the correct answer.
+CORRECT: **"Add Amazon Aurora Replicas"** is the correct answer.
 
-CORRECT: "Add an Amazon CloudFront distribution in front of the ALB" is the correct answer.
+CORRECT: **"Add an Amazon CloudFront distribution in front of the ALB"** is the correct answer.
 
-INCORRECT: "Add and AWS WAF in front of the ALB" is incorrect. A web application firewall protects applications from malicious attacks. It does not improve performance.
+INCORRECT: **"Add and AWS WAF in front of the ALB"** is incorrect. A web application firewall protects applications from malicious attacks. It does not improve performance.
 
-INCORRECT: "Add an AWS Transit Gateway to the Availability Zones" is incorrect as this is used to connect on-premises networks to VPCs.
+INCORRECT: **"Add an AWS Transit Gateway to the Availability Zones"** is incorrect as this is used to connect on-premises networks to VPCs.
 
-INCORRECT: "Add an AWS Global Accelerator endpoint" is incorrect as this service is used for directing users to different instances of the application in different regions based on latency.
+INCORRECT: **"Add an AWS Global Accelerator endpoint"** is incorrect as this service is used for directing users to different instances of the application in different regions based on latency.
 
 References:
 
@@ -2315,7 +2316,6 @@ https://digitalcloud.training/amazon-aurora/
 
 https://digitalcloud.training/amazon-cloudfront/
   </E>
-  <R />
 </Q>
 
 
@@ -2331,20 +2331,21 @@ Which combination of steps should a solutions architect take to accomplish this?
   <A>Create a bucket policy on the S3 bucket.</A>
   <A>Create a lifecycle policy for the objects in the S3 bucket.</A>
   <A correct>Enable MFA Delete on the S3 bucket.</A>
+  <R/>
   <E>
   Multi-factor authentication (MFA) delete adds an additional step before an object can be deleted from a versioning-enabled bucket.
 
 With MFA delete the bucket owner must include the x-amz-mfa request header in requests to permanently delete an object version or change the versioning state of the bucket.
 
-CORRECT: "Enable versioning on the S3 bucket" is a correct answer.
+CORRECT: **"Enable versioning on the S3 bucket"** is a correct answer.
 
-CORRECT: "Enable MFA Delete on the S3 bucket" is also a correct answer.
+CORRECT: **"Enable MFA Delete on the S3 bucket"** is also a correct answer.
 
-INCORRECT: "Create a bucket policy on the S3 bucket" is incorrect. A bucket policy is not required to enable MFA delete.
+INCORRECT: **"Create a bucket policy on the S3 bucket"** is incorrect. A bucket policy is not required to enable MFA delete.
 
-INCORRECT: "Enable default encryption on the S3 bucket" is incorrect. Encryption does not protect against deletion.
+INCORRECT: **"Enable default encryption on the S3 bucket"** is incorrect. Encryption does not protect against deletion.
 
-INCORRECT: "Create a lifecycle policy for the objects in the S3 bucket" is incorrect. A lifecycle policy will move data to another storage class but does not protect against deletion.
+INCORRECT: **"Create a lifecycle policy for the objects in the S3 bucket"** is incorrect. A lifecycle policy will move data to another storage class but does not protect against deletion.
 
 References:
 
@@ -2354,7 +2355,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-s3-and-glacier/
   </E>
-  <R />
 </Q>
 
 
@@ -2369,6 +2369,7 @@ Which configuration meets these requirements?
   <A correct>Create Amazon Route 53 records with a geolocation routing policy.</A>
   <A>Configure Amazon CloudFront with multiple origins and AWS WAF.</A>
   <A>Configure Application Load Balancers with multi-Region routing.</A>
+  <R/>
   <E>
   To protect the distribution rights of the content and ensure that users are directed to the appropriate AWS Region based on the location of the user, the geolocation routing policy can be used with Amazon Route 53.
 
@@ -2376,13 +2377,13 @@ Geolocation routing lets you choose the resources that serve your traffic based 
 
 When you use geolocation routing, you can localize your content and present some or all of your website in the language of your users. You can also use geolocation routing to restrict distribution of content to only the locations in which you have distribution rights.
 
-CORRECT: "Create Amazon Route 53 records with a geolocation routing policy" is the correct answer.
+CORRECT: **"Create Amazon Route 53 records with a geolocation routing policy"** is the correct answer.
 
-INCORRECT: "Create Amazon Route 53 records with a geoproximity routing policy" is incorrect. Use this routing policy when you want to route traffic based on the location of your resources and, optionally, shift traffic from resources in one location to resources in another.
+INCORRECT: **"Create Amazon Route 53 records with a geoproximity routing policy"** is incorrect. Use this routing policy when you want to route traffic based on the location of your resources and, optionally, shift traffic from resources in one location to resources in another.
 
-INCORRECT: "Configure Amazon CloudFront with multiple origins and AWS WAF" is incorrect. AWS WAF protects against web exploits but will not assist with directing users to different content (from different origins).
+INCORRECT: **"Configure Amazon CloudFront with multiple origins and AWS WAF"** is incorrect. AWS WAF protects against web exploits but will not assist with directing users to different content (from different origins).
 
-INCORRECT: "Configure Application Load Balancers with multi-Region routing" is incorrect. There is no such thing as multi-Region routing for ALBs.
+INCORRECT: **"Configure Application Load Balancers with multi-Region routing"** is incorrect. There is no such thing as multi-Region routing for ALBs.
 
 References:
 
@@ -2392,7 +2393,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-route-53/
   </E>
-  <R />
 </Q>
 
 
@@ -2407,16 +2407,17 @@ Which action will be MOST effective in accomplishing this requirement?
   <A correct>Use Amazon EC2 Auto Scaling to scale out the middle tier instances based on the SQS queue depth.</A>
   <A>Replace the Amazon SQS queue with Amazon Kinesis Data Firehose.</A>
   <A>Add an Amazon CloudFront distribution with a custom origin to cache the responses for the web tier.</A>
+  <R/>
   <E>
   The most likely cause of the processing delays is insufficient instances in the middle tier where the order processing takes place. The most effective solution to reduce processing times in this case is to scale based on the backlog per instance (number of messages in the SQS queue) as this reflects the amount of work that needs to be done.
 
-CORRECT: "Use Amazon EC2 Auto Scaling to scale out the middle tier instances based on the SQS queue depth" is the correct answer.
+CORRECT: **"Use Amazon EC2 Auto Scaling to scale out the middle tier instances based on the SQS queue depth"** is the correct answer.
 
-INCORRECT: "Replace the Amazon SQS queue with Amazon Kinesis Data Firehose" is incorrect. The issue is not the efficiency of queuing messages but the processing of the messages. In this case scaling the EC2 instances to reflect the workload is a better solution.
+INCORRECT: **"Replace the Amazon SQS queue with Amazon Kinesis Data Firehose"** is incorrect. The issue is not the efficiency of queuing messages but the processing of the messages. In this case scaling the EC2 instances to reflect the workload is a better solution.
 
-INCORRECT: "Use Amazon DynamoDB Accelerator (DAX) in front of the DynamoDB backend tier" is incorrect. The DynamoDB table is configured with Auto Scaling so this is not likely to be the bottleneck in order processing.
+INCORRECT: **"Use Amazon DynamoDB Accelerator (DAX) in front of the DynamoDB backend tier"** is incorrect. The DynamoDB table is configured with Auto Scaling so this is not likely to be the bottleneck in order processing.
 
-INCORRECT: "Add an Amazon CloudFront distribution with a custom origin to cache the responses for the web tier" is incorrect. This will cache media files to speed up web response times but not order processing times as they take place in the middle tier.
+INCORRECT: **"Add an Amazon CloudFront distribution with a custom origin to cache the responses for the web tier"** is incorrect. This will cache media files to speed up web response times but not order processing times as they take place in the middle tier.
 
 References:
 
@@ -2426,7 +2427,6 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-ec2-auto-scaling/
   </E>
-  <R />
 </Q>
 
 
@@ -2442,20 +2442,21 @@ Which combination of actions should be taken to meet these requirements? (Select
   <A>Set read-only permissions on the bucket</A>
   <A correct>Enable MFA Delete on the bucket</A>
   <A>Encrypt the bucket using AWS SSE-S3</A>
+  <R/>
   <E>
   None of the options present a good solution for specifying permissions required to write and modify objects so that requirement needs to be taken care of separately. The other requirements are to prevent accidental deletion and the ensure that all versions of the document are available.
 
 The two solutions for these requirements are versioning and MFA delete. Versioning will retain a copy of each version of the document and multi-factor authentication delete (MFA delete) will prevent any accidental deletion as you need to supply a second factor when attempting a delete.
 
-CORRECT: "Enable versioning on the bucket" is a correct answer.
+CORRECT: **"Enable versioning on the bucket"** is a correct answer.
 
-CORRECT: "Enable MFA Delete on the bucket" is also a correct answer.
+CORRECT: **"Enable MFA Delete on the bucket"** is also a correct answer.
 
-INCORRECT: "Set read-only permissions on the bucket" is incorrect as this will also prevent any writing to the bucket which is not desired.
+INCORRECT: **"Set read-only permissions on the bucket"** is incorrect as this will also prevent any writing to the bucket which is not desired.
 
-INCORRECT: "Attach an IAM policy to the bucket" is incorrect as users need to modify documents which will also allow delete. Therefore, a method must be implemented to just control deletes.
+INCORRECT: **"Attach an IAM policy to the bucket"** is incorrect as users need to modify documents which will also allow delete. Therefore, a method must be implemented to just control deletes.
 
-INCORRECT: "Encrypt the bucket using AWS SSE-S3" is incorrect as encryption doesn’t stop you from deleting an object.References:
+INCORRECT: **"Encrypt the bucket using AWS SSE-S3"** is incorrect as encryption doesn’t stop you from deleting an object.References:
 
 https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
 
@@ -2465,5 +2466,4 @@ Save time with our AWS cheat sheets:
 
 https://digitalcloud.training/amazon-s3-and-glacier/
   </E>
-  <R />
 </Q>
