@@ -1,5 +1,6 @@
 {
   "overview": { "title": "Available AWS Certifications" },
   "steps": { "title": "Steps for getting the certificate" },
-  "saa-c03": { "title": "AWS Certified Solutions Architect Associate" }
+  "study-strategy": "Study strategy",
+  "saa-c03": "Solutions Architect Associate"
 }

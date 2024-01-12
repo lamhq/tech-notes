@@ -18,6 +18,5 @@
   "cost": { "title": "Cost Management" },
   "dev": { "title": "Development" },
   "media": { "title": "Media" },
-  "certifications": { "title": "Certifications" },
-  "test": "Practice Exams"
+  "certifications": { "title": "Certifications" }
 }
