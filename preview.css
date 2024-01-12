@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap');
 
 p, ul, li, h1, h2, h3, h4, h5, h6 {
@@ -12,5 +15,4 @@ article ul {
   article p, article li {
     text-align: justify;
   }
-
 }
