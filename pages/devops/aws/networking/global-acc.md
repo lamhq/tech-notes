@@ -15,12 +15,11 @@ Keywords: IP caching, optimizing traffic, reduce latency.
 
 ## Concepts
 
-- **Accelerator**: Directs user traffic to the optimal AWS endpoints. It acts as the entry point for incoming traffic
-and helps improve the performance
-and availability of the applications
-- **Listener**: Processes inbound connections based on ports and protocols.
-- **Endpoint**: Resources that Global Accelerator directs traffic to (e.g., application load balancers,
-network load balancers, E2 instances,).
+**Accelerator**: Directs user traffic to the optimal AWS endpoints. It acts as the entry point for incoming traffic and helps improve the performance and availability of the applications
+
+**Listener**: Processes inbound connections based on ports and protocols.
+
+**Endpoint**: Resources that Global Accelerator directs traffic to (e.g., application load balancers, network load balancers, E2 instances,).
 
 
 ## How it work?

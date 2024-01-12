@@ -20,7 +20,7 @@ There are six S3 storage classes.
 - Suitable for most workloads: websites, content distribution, mobile, gaming applictions, big data analytics.
 
 
-## S3 Standard - Infrequent Access (S3 Standard-IA)
+## S3 Standard-Infrequent Access (S3 Standard-IA)
 
 - Long-term, infrequently accessed critical data but require rapid access.
 - 99.9% availability and 11 9's durability.
@@ -28,7 +28,7 @@ There are six S3 storage classes.
 - Backups, data store for disaster recovery files, etc.
 
 
-## S3 One Zone - Infrequent Access (S3 One Zone-IA)
+## S3 One Zone-Infrequent Access (S3 One Zone-IA)
 
 - Same as Standard-IA, data is stored redundantly within a single AZ.
 - Cost 20% less than S3 Standard-IA
