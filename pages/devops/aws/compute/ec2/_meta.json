@@ -1,5 +1,6 @@
 {
   "instance-types": { "title": "Instance Types" },
+  "ami": "AMI",
   "pricing": { "title": "Pricing" },
   "networking": { "title": "Networking" },
   "placement-group": { "title": "Placement Group" },
@@ -7,5 +8,6 @@
   "ip": { "title": "IP Addresses" },
   "logging": "Logging and Auditing",
   "monitoring": "Monitoring",
-  "tips": { "title": "Tips" }
+  "migration": "Migration",
+  "guides": "Guides"
 }

@@ -52,6 +52,21 @@ Use cases:
 - other enterprise applications.
 
 
+## Storage optimized
+
+Provides Non-Volatile Memory Express (NVMe) SSD-Backed instance storage
+
+Optimized for low latency, very high random I/O performance, high sequential read throughput and high IOPS at a low cost.
+
+Families: I3, I3en, D2, D4, D3en, H1
+
+Use cases:
+- NoSQL databases, such as Cassandra, MongoDB, and Redis
+- in-memory databases
+- scale-out transactional databases
+- data warehousing, Elasticsearch, and analytics.
+
+
 ## Accelerated computing
 
 Use hardware accelerators or co-processors to perform some functions more efficiently than is possible in software running on CPUs.
@@ -66,18 +81,3 @@ Use cases:
 - graphics processing, video encoding
 - 3D visualizations, 3D rendering
 - graphics-intensive remote workstations
-
-
-## Storage optimized
-
-Provides Non-Volatile Memory Express (NVMe) SSD-Backed instance storage
-
-Optimized for low latency, very high random I/O performance, high sequential read throughput and high IOPS at a low cost.
-
-Families: I3, I3en, D2, D4, D3en, H1
-
-Use cases:
-- NoSQL databases, such as Cassandra, MongoDB, and Redis
-- in-memory databases
-- scale-out transactional databases
-- data warehousing, Elasticsearch, and analytics.

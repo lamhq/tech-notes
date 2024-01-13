@@ -4,6 +4,11 @@
 Besides the normal charges for running an EC2 instance, your AWS account might also be billed hourly amounts or license fees for the use of the AMI software itself.
 
 Pricing options:
+- On-Demand
+- Reserved Instances
+- Spot Instances
+- Dedicated Hosts
+- Dedicated Instances
 
 ## On-Demand
 
@@ -108,7 +113,7 @@ Use cases:
 - Good for regulatory compliance or licensing requirements.
 
 
-## Dedicated instances
+## Dedicated Instances
 
 - Virtualized instances on hardware just for you.
 - Also uses physically dedicated EC2 servers.

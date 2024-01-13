@@ -11,7 +11,7 @@ You can modify the following attributes of an instance only when it is stopped:
 - RAM disk.
 
 
-## Supported operating systems
+## Supported OS
 
 - Amazon Linux.
 - Ubuntu.
@@ -38,43 +38,27 @@ Key pairs are used to securely connect to EC2 instances:
 
 ## User Data
 
-- User data is data that is supplied by the user at instance launch in the form of a script.
-User data is limited to 16KB.
-User data and metadata are not encrypted.
-- Instance user data is available at: http://169.254.169.254/latest/user-data.
+User data is data that is supplied by the user at instance launch in the form of a script.
 
-The IP address `169.254.169.254` is a link-local address and is valid only from the instance.
+User data is limited to 16KB.
+
+User data and metadata are not encrypted.
+
+Instance user data is available at: http://169.254.169.254/latest/user-data.
+
+> The IP address `169.254.169.254` is a link-local address and is valid only from the instance.
 
 
 ## Metadata
 
-- Instance metadata is data about your instance that you can use to configure or manage the running instance.
-- Instance metadata is available at http://169.254.169.254/latest/meta-data/ (the trailing "/" is required).
+Instance metadata is data about your instance that you can use to configure or manage the running instance.
 
-The Instance Metadata Query tool allows you to query the instance metadata without having to type out the full URI or category names.
+Instance metadata is available at http://169.254.169.254/latest/meta-data/ (the trailing `/` is required).
 
-
-## Amazon Machine Image (AMI)
-
-An Amazon Machine Image (AMI) provides the information required to launch an instance.
-
-You must specify an AMI when you launch an instance.
-
-AMIs are regional. You can copy an AMI across AWS Region and launch an instance in another region.
-
-You can base your AMI on:
-- Region
-- Operating system
-- Architecture (32-bit or 64-bit)
-- Launch permissions that control which AWS accounts can use the AMI to launch instances
-- Storage for the root device (root device volume)
-
-You can store images created from your own instance deployments as private AMIs.
-
-You can create an AMI from your running instance and use this AMI to start a new instance with the same configurations as your current instance.
+The **Instance Metadata Query** tool allows you to query the instance metadata without having to type out the full URI or category names.
 
 
-## EC2 Instance Store
+## Instance Store
 
 An instance store provides temporary block-level storage for an Amazon EC2 instance.
 
@@ -124,7 +108,7 @@ When you start your instance out of hibernation:
 You can hibernate an instance only if it's enabled for hibernation and it meets the hibernation prerequisites (regions, AMIs, instance families, etc.,).
 
 
-## High Availability Approaches For Compute
+## High Availability Solutions
 
 Horizontally scalable architectures are preferred because risk can be spread across multiple smaller machines versus one large machine.
 

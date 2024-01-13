@@ -1,4 +1,4 @@
-# EC2 Tips
+# Guides
 
 ## Attach IAM Role to an EC2 Instance
 
@@ -34,25 +34,3 @@ To copy a snapshot to another region:
 7. Choose **Copy**.
 
 Please note that you can only copy snapshots that have a **completed** status.
-
-
-## Deploying vCenter in AWS
-
-You can deploy vCenter on the AWS cloud using VMware to extend your private VMware cloud into the AWS public cloud.
-
-You order it through VMware themselves.
-
-Use cases for VMware:
-- **Hybrid cloud**: Connect your on-premises cloud to the AWS public cloud, and manage a hybrid workload.
-- **Cloud Migration**: Migrate your existing cloud environment to AWS using VMware's built-in tools.
-- **Disaster Recovery**: VMware is famous for its disaster recovery technology. Using hybrid cloud, you can have an inexpensive disaster recovery environment on AWS.
-- **Leverage AWS**: Use over 200 AWS services to update your applications or to create new ones.
-
-
-## Retrieve instance user data from your instance
-
-To retrieve user data from an instance, use the following URI.
-
-```
-http://169.254.169.254/latest/user-data
-```
