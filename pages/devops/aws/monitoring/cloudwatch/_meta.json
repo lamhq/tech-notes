@@ -1,0 +1,9 @@
+{
+  "metrics": "Metrics",
+  "statistics": "Statistics",
+  "namespace": "Namespace",
+  "dimensions": "Dimensions",
+  "cloudwatch-log": "CloudWatch Logs",
+  "cloudwatch-event": "CloudWatch Events",
+  "cloudwatch-alarm": "CloudWatch Alarm"
+}

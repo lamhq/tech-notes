@@ -2,23 +2,25 @@
 
 ## Overview
 
-AWS Batch is a managed service, allow you to create/run batch computing workload within AWS (run on EC2 or Fargate).
+AWS Batch is a managed service that allows you to run batch computing workload (on EC2 or Fargate).
 
-Removes any heavy lifting for configuration and management of infrastructure required for computing.
+AWS Batch dynamically provisions the optimal quantity and type of compute resources (e.g., CPU or memory optimized instances) based on the volume and specific resource requirements of the batch jobs submitted.
 
-Automatically scale to an accurately-sized infrastructure
-based on the number of submitted jobs and optimizes the distribution of workloads.
+With AWS Batch, you simply package the code for your batch jobs, specify their dependencies, and submit your batch job.
 
-No Install Required. Skip installation and maintenance of batch computing software, so you can focus on obtaining and analyzing the results.
+Integrate with a broad range of popular batch computing workflow engines and languages (e.g., Pegasus WMS, Luigi, and AWS Step Functions).
 
 
 ## Components
 
-- **Jobs**: Units of work that are submitted to
+**Jobs**: Units of work that are submitted to
 AWS Batch (e.g., shell scripts, executables, and Docker images).
-- **Job Definitions**: Specify how your jobs are to be run (essentially, the blueprint for the resources in the job)
-- **Job Queues**: Jobs get submitted to specific queues and reside there until scheduled to run in a compute environment
-- **Compute Environment**: Set of managed or unmanaged compute
+
+**Job Definitions**: Specify how your jobs are to be run (essentially, the blueprint for the resources in the job)
+
+**Job Queues**: Jobs get submitted to specific queues and reside there until scheduled to run in a compute environment
+
+**Compute Environment**: Set of managed or unmanaged compute
 resources used to run your jobs
 
 
