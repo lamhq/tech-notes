@@ -4,7 +4,6 @@
   "snow-family": { "title": "AWS Snow Family" },
   "data-sync": { "title": "AWS DataSync" },
   "transfer-family": { "title": "AWS Transfer Family" },
-  "storage-gateway": { "title": "AWS Storage Gateway" },
   "app-migration": { "title": "AWS Application Migration Service" },
   "dms": { "title": "AWS Database Migration Service" },
   "sms": { "title": "AWS Server Migration Services" },

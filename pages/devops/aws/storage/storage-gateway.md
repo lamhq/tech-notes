@@ -2,7 +2,7 @@
 
 ## Overview
 
-Storage Gateway is a hybrid cloud storage service that helps you **merge on-premises resources with the cloud**.
+Storage Gateway is a **hybrid cloud storage** service that helps you **merge on-premises resources with the cloud**.
 
 It can help with a one-time migration or a long-term pairing of your architecture with AWS.
 
@@ -30,7 +30,7 @@ The scenario is where users don't have enough on-prem storage space and your sol
 
 ![](https://d1.awsstatic.com/cloud-storage/volume-gateway-diagram.eedd58ab3fb8a5dcae088622b5c1595dac21a04b.png)
 
-Volume Gateway is an **iSCSI mount** that backs up the disks that VMs are currently reading and writing to.
+Volume Gateway is an **iSCSI** (block storage protocol) mount that backs up the disks that VMs are currently reading and writing to.
 
 You can choose between cached or stored mode:
 - In **cached mode**, frequently accessed data is stored locally for low-latency access

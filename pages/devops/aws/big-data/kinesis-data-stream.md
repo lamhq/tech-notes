@@ -2,11 +2,15 @@
 
 ## Overview
 
-Amazon Kinesis Data Streams is a **data pipeline** that can aggregate, buffer, and reliably store data from producers until a consumer is ready to process it.
+Amazon Kinesis Data Streams is a data pipeline  enables you to ingest, buffer, and process streaming data in **real-time**.
 
-It's a **real-time data streaming** service. The collected data is available (for consumer to read) in milliseconds.
+It reliably stores data from producers until a consumer is ready to process it.
 
-Kinesis Data Streams can capture gigabytes of data per second from thousands of sources: website clickstreams, database event streams, financial transactions, social media feeds, IT logs, location-tracking events...
+The collected data is available (to consumers) in milliseconds.
+
+Kinesis can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies.
+
+Example sources: website clickstreams, database event streams, financial transactions, social media feeds, IT logs, location-tracking events...
 
 Multiple consumers can read from a stream concurrently (fan-out).
 

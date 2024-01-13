@@ -1,6 +1,6 @@
 {
   "concepts": { "title": "Concepts" },
-  "rds": { "title": "RDS" },
+  "rds": { "title": "Amazon RDS" },
   "dynamodb": { "title": "Amazon DynamoDB" },
   "documentdb": { "title": "Amazon DocumentDB" },
   "elasticache": { "title": "Amazon ElastiCache" },

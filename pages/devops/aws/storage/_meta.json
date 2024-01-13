@@ -3,5 +3,6 @@
   "ebs": { "title": "Amazon EBS" },
   "s3": { "title": "Amazon S3" },
   "file-storage": { "title": "File Storage" },
+  "storage-gateway": { "title": "AWS Storage Gateway" },
   "backup": { "title": "AWS Backup" }
 }

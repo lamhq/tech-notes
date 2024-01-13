@@ -713,13 +713,13 @@ Which solution meets these requirements and is the MOST operationally efficient?
   <E>
   Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS eliminates the complexity and overhead associated with managing and operating message-oriented middleware and empowers developers to focus on differentiating work.
 
-CORRECT: **"Provide an Amazon Simple Queue Service (Amazon SQS) queue for the sender and processor applications. Set up a dead-letter queue to collect failed messages” is the correct answer (as explained above.)
+CORRECT: **"Provide an Amazon Simple Queue Service (Amazon SQS) queue for the sender and processor applications. Set up a dead-letter queue to collect failed messages"** is the correct answer (as explained above.)
 
-INCORRECT: **"Set up a Redis database on Amazon EC2. Configure the instance to be used by both applications. The messages should be stored, processed, and deleted, respectively” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS.
+INCORRECT: **"Set up a Redis database on Amazon EC2. Configure the instance to be used by both applications. The messages should be stored, processed, and deleted, respectively"** is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS.
 
-INCORRECT: **"Receive the messages from the sender application using an Amazon Kinesis data stream. Utilize the Kinesis Client Library (KCL) to integrate the processing application” is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS
+INCORRECT: **"Receive the messages from the sender application using an Amazon Kinesis data stream. Utilize the Kinesis Client Library (KCL) to integrate the processing application"** is incorrect, as the most operationally efficient way is to use the managed service Amazon SQS
 
-INCORRECT: **"Subscribe the processing application to an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications. Write to the SNS topic using the sender application” is incorrect as Amazon SNS is not a queuing service, but a pub-sub one to many notification service and cannot be used as a queue.
+INCORRECT: **"Subscribe the processing application to an Amazon Simple Notification Service (Amazon SNS) topic to receive notifications. Write to the SNS topic using the sender application"** is incorrect as Amazon SNS is not a queuing service, but a pub-sub one to many notification service and cannot be used as a queue.
 
 References:
 
@@ -945,7 +945,7 @@ INCORRECT: **"Launch EC2 instances into multiple regions behind an NLB with a st
 
 INCORRECT: **"Launch EC2 instances into multiple regions behind an ALB and use a Route 53 failover routing policy"** is incorrect. A Route 53 failover routing policy uses a primary and standby configuration. Therefore, it sends all traffic to the primary until it fails a health check at which time it sends traffic to the secondary. This solution does not intelligently route traffic for lowest latency.
 
-INCORRECT: **"Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses"** is incorrect. Amazon CloudFront cannot be configured with “a pair of static IP addresses”.
+INCORRECT: **"Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses"** is incorrect. Amazon CloudFront cannot be configured with “a pair of static IP addresses".
 
 References:
 
@@ -1208,13 +1208,13 @@ Which combination of actions should a solutions architect take to increase avail
   <E>
   You can set up CloudFront with origin failover for scenarios that require high availability. To get started, you create an origin group with two origins: a primary and a secondary. If the primary origin is unavailable or returns specific HTTP response status codes that indicate a failure, CloudFront automatically switches to the secondary origin.
 
-CORRECT: **"Add an origin for ap-southeast-1 to CloudFront” is the correct answer (as explained above.)
+CORRECT: **"Add an origin for ap-southeast-1 to CloudFront" is the correct answer (as explained above.)
 
-CORRECT: **"Using us-east-1 bucket as the primary bucket and ap-southeast-1 bucket as the secondary bucket, create a CloudFront origin group” is also a correct answer (as explained above.)
+CORRECT: **"Using us-east-1 bucket as the primary bucket and ap-southeast-1 bucket as the secondary bucket, create a CloudFront origin group" is also a correct answer (as explained above.)
 
-INCORRECT: **"Create an origin for CloudFront for both buckets” is incorrect. This would not increase the availability of the solution on its own.
+INCORRECT: **"Create an origin for CloudFront for both buckets" is incorrect. This would not increase the availability of the solution on its own.
 
-INCORRECT: **"Set up failover routing in Amazon Route 53” is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
+INCORRECT: **"Set up failover routing in Amazon Route 53" is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
 
 INCORRECT: **"Create a record in Amazon Route 53 pointing to the replica bucket"** is incorrect as we are trying to enable failover in CloudFront and using Route 53 is for routing domain names.
 
@@ -1242,7 +1242,7 @@ What is the most cost-effective solution to these requirements?
   <A correct>Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe.</A>
   <R/>
   <E>
-  With Amazon CloudFront you can set the price class to determine where in the world the content will be cached. One of the price classes is “U.S, Canada and Europe” and this is where the company’s users are located. Choosing this price class will result in lower costs and better performance for the company’s users.
+  With Amazon CloudFront you can set the price class to determine where in the world the content will be cached. One of the price classes is “U.S, Canada and Europe" and this is where the company’s users are located. Choosing this price class will result in lower costs and better performance for the company’s users.
 
 CORRECT: **"Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe."** is the correct answer.
 
@@ -1278,13 +1278,13 @@ What should a solutions architect recommend?
   <E>
   AWS physical Snowball Edge device will provide much more inbuilt compute and storage compared to the current team’s laptops. This negates the need to rely on a stable connection to process any images and solves the team's problems easily and efficiently.
 
-CORRECT: **"Process and store the images using AWS Snowball Edge devices” is the correct answer (as explained above.)
+CORRECT: **"Process and store the images using AWS Snowball Edge devices" is the correct answer (as explained above.)
 
-INCORRECT: **"During intermittent connectivity to EC2 instances, upload images to Amazon SQS” is incorrect as you would still need a reliable internet connection to upload any images to Amazon SQS.
+INCORRECT: **"During intermittent connectivity to EC2 instances, upload images to Amazon SQS" is incorrect as you would still need a reliable internet connection to upload any images to Amazon SQS.
 
 INCORRECT: **"Configure Amazon Kinesis Data Firehose to create multiple delivery streams aimed separately at the S3 buckets for storage and the EC2 instances for processing the images"** is incorrect as you would still need a reliable internet connection to upload any images to the Amazon Kinesis Service.
 
-INCORRECT: **"Cache the images locally on a hardware appliance pre-installed with AWS Storage Gateway to process the images when connectivity is restored” is incorrect as you would still need reliable internet connection to upload any images to the Amazon Storage Gateway service.
+INCORRECT: **"Cache the images locally on a hardware appliance pre-installed with AWS Storage Gateway to process the images when connectivity is restored" is incorrect as you would still need reliable internet connection to upload any images to the Amazon Storage Gateway service.
 
 References:
 
@@ -1881,7 +1881,7 @@ What should a solutions architect do to protect the application?
   <A>Modify the network ACL on the CloudFront distribution to add a deny rule for the malicious IP address</A>
   <R/>
   <E>
-  A new version of the AWS Web Application Firewall was released in November 2019. With AWS WAF classic you create “IP match conditions”, whereas with AWS WAF (new version) you create “IP set match statements”. Look out for wording on the exam.
+  A new version of the AWS Web Application Firewall was released in November 2019. With AWS WAF classic you create “IP match conditions", whereas with AWS WAF (new version) you create “IP set match statements". Look out for wording on the exam.
 
 The IP match condition / IP set match statement inspects the IP address of a web request's origin against a set of IP addresses and address ranges. Use this to allow or block web requests based on the IP addresses that the requests originate from.
 
@@ -2259,13 +2259,13 @@ What should a solutions architect recommend for maximum performance?
 
 Using AWS PrivateLink to create an interface endpoint will allow your traffic to traverse the AWS Global Backbone to allow maximum performance and security. Also by using an AWS Direct Connect cable you can ensure you have a dedicated cable to provide maximum performance and low latency to and from AWS.
 
-CORRECT: **"Kinesis Data Firehose can be connected to the VPC using AWS PrivateLink. Install a 1 Gbps AWS Direct Connect connection between the on-premises network and AWS. To send data from on-premises to Kinesis Data Firehose, use the PrivateLink endpoint” is the correct answer (as explained above.)
+CORRECT: **"Kinesis Data Firehose can be connected to the VPC using AWS PrivateLink. Install a 1 Gbps AWS Direct Connect connection between the on-premises network and AWS. To send data from on-premises to Kinesis Data Firehose, use the PrivateLink endpoint" is the correct answer (as explained above.)
 
-INCORRECT: **"Establish a peering connection between the on-premises network and the VPC. Configure routing for the on-premises network to use the VPC peering connection” is incorrect also because VPC peering connections can only exist between two VPCs within the AWS Cloud.
+INCORRECT: **"Establish a peering connection between the on-premises network and the VPC. Configure routing for the on-premises network to use the VPC peering connection" is incorrect also because VPC peering connections can only exist between two VPCs within the AWS Cloud.
 
-INCORRECT: **"Get an AWS Snowball Edge Storage Optimized device. Data must be copied to the device after several days and shipped to AWS for expedited transfer to Kinesis Data Firehose. Repeat as necessary” is incorrect. AWS Snowball Edge is designed to be more of a one-time migration service which you physically receive from AWS, and then ship it into an AWS Region of your choice.
+INCORRECT: **"Get an AWS Snowball Edge Storage Optimized device. Data must be copied to the device after several days and shipped to AWS for expedited transfer to Kinesis Data Firehose. Repeat as necessary" is incorrect. AWS Snowball Edge is designed to be more of a one-time migration service which you physically receive from AWS, and then ship it into an AWS Region of your choice.
 
-INCORRECT: **"Establish an AWS Site-to-Site VPN connection between the on-premises network and the VPC. Set up BGP routing between the customer gateway and the virtual private gateway. Send data to Kinesis Data Firehose using a VPN connection” is incorrect. This is a functional solution; however a physical connection would provide a much more reliable and performant solution.
+INCORRECT: **"Establish an AWS Site-to-Site VPN connection between the on-premises network and the VPC. Set up BGP routing between the customer gateway and the virtual private gateway. Send data to Kinesis Data Firehose using a VPN connection" is incorrect. This is a functional solution; however a physical connection would provide a much more reliable and performant solution.
 
 References:
 
