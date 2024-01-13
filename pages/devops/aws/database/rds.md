@@ -2,56 +2,28 @@
 
 ## Overview
 
-Amazon Relational Database Service (RDS) is a managed database service that lets you run relational database systems in the cloud.
+Amazon Relational Database Service (Amazon RDS) is a managed service that you can use to launch and manage relational databases on AWS
 
-RDS takes care of:
-- setting up the database system
-- performing backups
-- ensuring high availability
-- patching the database software and the underlying OS
+It is best suited to structured, relational data store requirements, OLTP workloads.
 
+RDS is a managed service and you do not have access to the underlying EC2 instance (no root access).
 
-## Advantages
+*The exception to the above rule is Amazon RDS Custom which allows access to the underlying operating system. This is new, available for limited DB engines, and does not appear on the exam yet.*
 
-- **Up & running in minutes**: you can provision an RDS instance and have it up and running in minutes.
-- **Failover capability**: In the event of a failure, RDS will automatically fail over to a standby instance in another AZ.
-- **Automated backup**: you can have your database backup every day/week
+The Amazon RDS managed service includes the following:
 
-
-## Database Instance
-
-To deploy a database using RDS, you start by configuring a database instance that sit in a VPC.
-
-AWS fully manages database instances. You can't connect to them using SSH, and they don’t show up under your EC2 instances.
-
-Database instances are accessed via endpoints retrieved via the DB instance description.
-
-By default, customers are allowed to have up to a total of **40**  instances (only 10 of these can be Oracle or MS SQL unless you have your own licenses).
-
-
-## Database Instance Classes
-
-When you create your DB instance, you choose the instance class (processing power, memory, network bandwidth, disk throughput).
-
-Amazon RDS supports three **instance classes**:
-- **Standard**: meet the needs of most databases
-- **Memory Optimized**: optimized for memory-intensive applications (3,904 GB of memory)
-- **Burstable Performance**: for development, test, nonproduction databases
-
-You can switch your instance to a different class
-
-
-## Storage
-
-The DB instance uses EBS volumes as its storage layer. You can choose between three types of EBS **volume storage**:
-- **General purpose SSD** (gp2): the larger your volume, the better performance you’ll get, minimum 20 GB
-- **Provisioned IOPS SSD** (io1): lets you allocate the number of IOPS you need.
-- **Magnetic storage** (not recommended): for older instances
+- Security and patching of the DB instances.
+- Automated backup for the DB instances.
+- Software updates for the DB engine.
+- Easy scaling for storage and compute.
+- Multi-AZ option with synchronous replication.
+- Automatic failover for Multi-AZ option.
+- Read replicas option for read heavy workloads.
 
 
 ## Database engines
 
-Amazon RDS is available on six database engines:
+Amazon RDS supports the following database engines:
 
 - Commercial: Oracle, Microsoft SQL Server
 - Open Source: MySQL, PostgreSQL, MariaDB
@@ -96,30 +68,6 @@ Database engine version upgrade is independent from source instance.
 Read replicas can be promited to be their own databases. But this breaks the replication.
 
 
-## Backup and Recovery (snapshot)
-
-You can take EBS volume **snapshots** of your database instances. Snapshots include all databases on the instance and are stored in S3.
-
-Snapshots are kept in multiple zones in the same region for redundancy.
-
-Taking a snapshot suspends all I/O operations for a few seconds. Be sure to do it during off-peak times.
-
-Snapshot is **restored** to a new instance. The time to restore a snapshot can take several minutes, depending on its size. The more provisioned IOPS you allocate to your new instance, the faster the recovery time.
-
-Snapshots can be shared with other AWS accounts.
-
-
-## Automated Snapshots
-
-RDS can automatically create snapshots of your instances daily during a 30-minute backup window (customizable).
-
-Enabling automatic backups enables **point-in-time recovery**, which archives database change logs to S3 every 5 minutes. Restoring to a point-in-time can take hours, depending on how much data is in the transaction logs.
-
-RDS keeps automated snapshots for a limited period of time and then deletes them. The retention period is between 1 day and 35 days, default is 7 days, 0 to disable.
-
-You can also manually take a snapshot of your database instance.
-
-
 ## Scaling
 
 You can scale relational database by:
@@ -137,13 +85,6 @@ You can choose to have changes take effect immediately, however the default is w
 All RDS DB types support a maximum DB size of **64 TiB** except for Microsoft SQL Server (**16 TiB**).
 
 
-## Maintenance windows
-
-Maintenance windows are configured to allow DB instances modifications to take place such as scaling and software patching (some operations require the DB instance to be taken offline briefly).
-
-You can define the maintenance window or AWS will schedule a 30-minute window.
-
-
 ## Events and Notifications
 
 Amazon RDS uses AWS SNS to send RDS events via SNS notifications.
@@ -154,22 +95,6 @@ You can view events from the last 14 days using the CLI.
 
 Using the AWS Console you can only view RDS events for the last 1 day.
 
-
-## Encryption
-
-Encryption at rest is supported for all DB types and uses AWS KMS.
-
-When using encryption at rest, the following elements are also encrypted:
-- All DB snapshots.
-- Backups.
-- DB instance storage.
-- Read Replicas.
-
-To **encrypt an existing DB**, you need to create a snapshot, copy it, encrypt the copy, restore the snapshot to a new RDS DB instance.
-
-RDS supports SSL encryption in-transit between applications and RDS DB instances. RDS generates a certificate for the instance.
-
-Read replicas and Multi-AZ standby instance must have the same encryption status with RDS DB.
 
 ## Billing
 
@@ -202,31 +127,6 @@ Reserved instances:
 - Are available for multi-AZ deployments.
 - Can be applied to Read Replicas if DB instance class and region are the same.
 - Scaling is achieved through changing the instance class for compute and modifying storage capacity for additional storage allocation.
-
-
-## Monitoring, Logging and Reporting
-
-You can subscribe to **Amazon RDS Events** to be **notified when changes occur** with a DB instance, DB snapshot, DB parameter group, or DB security group.
-
-Amazon RDS Performance Insights allows to **assess the load on your database** and determine when and where to act.
-
-You can look at automated recommendations from **Amazon RDS Recommendations** for database resources, such as DB instances, read replicas, and DB parameter groups.
-
-You can view metrics sent from Amazon RDS in Amazon CloudWatch Metrics and perform actions based on the metric and a threshold you set.
-
-You can monitor, store, and access your **database log files** in CloudWatch Logs.
-
-
-## Authorization and Access Control
-
-Amazon RDS supports identity-based policies using IAM.
-
-IAM database authentication works with MySQL and PostgreSQL. With this authentication method, you don’t need to use a password when you connect to a DB instance. Instead, you use an authentication token.
-
-Benefits of IAM database authentication:
-- Network traffic to and from the database is encrypted using Secure Sockets Layer (SSL).
-- You can use IAM to centrally manage access to your database resources, instead of managing access individually on each DB instance.
-- For applications running on Amazon EC2, you can use profile credentials specific to your EC2 instance to access your database instead of a password, for greater security.
 
 
 ## Amazon RDS Proxy

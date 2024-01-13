@@ -1,5 +1,4 @@
 {
-  "concepts": { "title": "Concepts" },
   "rds": { "title": "Amazon RDS" },
   "dynamodb": { "title": "Amazon DynamoDB" },
   "documentdb": { "title": "Amazon DocumentDB" },

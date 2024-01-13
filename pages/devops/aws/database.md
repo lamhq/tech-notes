@@ -1,8 +1,52 @@
-# Concepts
+# Databases on AWS
+
+## Use cases
+
+### Database on EC2
+
+- Ultimate control over database
+- Preferred DB not available under RDS
+
+### Amazon RDS
+
+- Need traditional relational database for OLTP
+- Your data is well formed and structured
+- Existing apps requiring RDBMS
+
+
+### Amazon DynamoDB
+
+- Name/value pair data or unpredictable data structure
+- In-memory performance with persistence
+- High I/O needs
+- Scale dynamically
+
+
+### Amazon RedShift
+
+- Massive amounts of data
+- Primarily OLAP workloads
+
+
+### Amazon Neptune
+
+- Relationships between objects a major portion of data value
+
+
+### Amazon Elasticache
+
+Fast temporary storage for small amounts of dataHighly volatile data
+
+
+### Amazon S3
+
+- Lots of large binary objects (BLOBs)
+- Static Websites
+
 
 ## Relational databases
 
-In a relational database, data is stored in a way that relates it to other pieces of data. 
+In a relational database, data is stored in a way that relates it to other pieces of data.
 
 Relational databases use structured query language (SQL) to store and query data.
 
