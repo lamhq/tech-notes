@@ -1,5 +1,5 @@
 {
-  "rds": { "title": "Amazon RDS" },
+  "relational": "Relational databases",
   "dynamodb": { "title": "Amazon DynamoDB" },
   "documentdb": { "title": "Amazon DocumentDB" },
   "elasticache": { "title": "Amazon ElastiCache" },

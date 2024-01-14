@@ -1,9 +1,0 @@
-{
-  "db-instance": "Database Instance",
-  "encryption": "Encryption",
-  "monitoring": "Monitoring, Logging and Reporting",
-  "access-control": "Authorization and Access Control",
-  "backup-recovery": "Backup and Recovery",
-  "aurora": "Amazon Aurora",
-  "aurora-serverless": "Amazon Aurora Serverless"
-}

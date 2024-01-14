@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon Aurora is a fully managed relational database engine that's compatible with **MySQL** and **PostgreSQL**.
+Amazon Aurora is a fully managed relational database engine of Amazon RDS that's compatible with **MySQL** and **PostgreSQL**.
 
 Up to **5x** better performance than MySQL, **3x** better than PostgreSQL databases.
 
@@ -12,16 +12,18 @@ Compute resources can scale up to 96 vCPUs and 768 GB memory.
 
 Data is continuously backs up to S3.
 
+
+## Fault Tolerance and Replicas 
+
 High availability. 2 copies of data in each AZ, minimum 3 AZs, total 6 copies.
 
-
-## Scaling Aurora
-
-Transparently handle data loss:
+Can transparently handle data loss:
 - up to **2 copies** without affecting write availability
 - up to **3 copies** without affecting read availability
 
 Self-healing. Data blocks and disks are continuously scanned for errors and repaired automatically.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-aurora-fault-tolerance.jpeg)
 
 
 ## Replicas

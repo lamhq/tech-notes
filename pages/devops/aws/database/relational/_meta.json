@@ -1,0 +1,5 @@
+{
+  "rds": { "title": "Amazon RDS" },
+  "aurora": "Amazon Aurora",
+  "aurora-serverless": "Amazon Aurora Serverless"
+}
