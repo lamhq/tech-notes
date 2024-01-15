@@ -3,6 +3,5 @@
   "network-basic": { "title": "Networking Basics" },
   "routing": { "title": "Routing" },
   "security": { "title": "Security" },
-  "connect": { "title": "Connect your VPC to other networks" },
-  "guides": "Guides"
+  "connectivity": "Connectivity"
 }

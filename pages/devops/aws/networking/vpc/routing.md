@@ -24,7 +24,7 @@ When you create a VPC, AWS creates a route table called the main route table.
 
 The default configuration of the main route table is to allow traffic between all subnets in the local network.
 
-If no route table is specified, a subnet will be assigned to the main route table at creation time.
+New subnets are always associated with the default route table (if not specified).
 
 Cannot delete the main route table.
 

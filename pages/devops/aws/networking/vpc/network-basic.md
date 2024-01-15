@@ -1,6 +1,6 @@
 # Networking Basics
 
-## IP Addresses?
+## IP Addresses
 
 In order to properly route your messages to a location, you need an address. Just like each home has a mail address, each computer has an IP address.
 
@@ -29,3 +29,16 @@ The largest IP range you can have is a `/16`, which provides you with **65,536**
 - `10.0.0.0/28` -> 16 possible addresses (`10.0.0.0` - `10.0.0.15`)
 
 You can use [CIDR.xyz](cidr.xyz) to calculate IP address ranges.
+
+
+## Private IP address ranges
+
+Private IP addresses are used within a private network and are not routable on the public internet.
+
+The RFC 1918 document specifies the IP address ranges that can be used for private networks. 
+
+The IP addresses within this range are reserved for private networks and should not be used on the public internet:
+
+- `10.0.0.0` – `10.255.255.255` (10/8 prefix, the first 8 bits of the IP address are fixed and the remaining 24 bits can be used for addressing hosts within the private network)
+- `172.16.0.0` – `172.31.255.255` (172.16/12 prefix)
+- `192.168.0.0` – `192.168.255.255` (192.168/16 prefix)

@@ -1,10 +1,8 @@
 # Subnet
 
+## Overview
+
 A subnet is a section of a VPC that can contain resources (such as Amazon EC2 instances)
-
-A subnet is belong to an AZ.
-
-AZs names are mapped to different zones for different users (i.e. the AZ `ap-southeast-2a` may map to a different physical zone for a different user).
 
 When you create a subnet, you need to choose three settings.
 
@@ -15,9 +13,27 @@ When you create a subnet, you need to choose three settings.
 In a VPC, subnets can communicate with each other.
 
 
-## Public and private subnet
+## Address Ranges
 
-Subnets can be public or private.
+Subnet address ranges are created within VPC address range.
+
+The CIDR blocks of the subnets within a VPC cannot overlap.
+
+IPv6 addresses are all public and the range is allocated by AWS.
+
+
+## Availability Zones
+
+Each subnet must reside entirely within one Availability Zone and cannot span zones.
+
+AZs names are mapped to different zones for different users (i.e. the AZ `ap-southeast-2a` may map to a different physical zone for a different user).
+
+Availability Zones are connected with low latency, high throughput, and highly redundant networking.
+
+
+## Subnet types
+
+Subnets can be public, private, or VPN-only.
 
 **Public subnets**:
 - `Auto-assign public IPv4 address` is set to `Yes`.
@@ -25,10 +41,15 @@ Subnets can be public or private.
 
 **Private subnets**: contain resources that should be accessible only through your private network, such as a database.
 
+**VPN-only subnet**:
+- has traffic routed to a virtual private gateway for a VPN connection
+- doesn’t have a route to the internet gateway
 
 ## Reserved IPs
 
-**AWS reserves five IP addresses in each subnet**. These IP addresses are used for routing, Domain Name System (DNS), and network management.
+The first 4 and last 1 IP addresses in a subnet are reserved.
+
+They are used for routing, Domain Name System (DNS), and network management.
 
 *For example, consider a VPC with the IP range `10.0.0.0/22`. The VPC includes 1,024 total IP addresses. This is divided into four equal-sized subnets, each with a `/24` IP range with 256 IP addresses. Out of each of those IP ranges, there are only 251 IP addresses that can be used because AWS reserves five.*
 

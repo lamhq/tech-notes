@@ -1,0 +1,5 @@
+{
+  "internet": { "title": "Internet" },
+  "vpc-to-vpc": { "title": "VPC to VPC" },
+  "vpc-to-on-premises": { "title": "VPC to on-premises networks" }
+}

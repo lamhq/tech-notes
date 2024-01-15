@@ -9,13 +9,13 @@
 
 ## Network ACLs (secure subnets)
 
-Before a packet can enter into a subnet or exit from a subnet, it is checked for permissions by network access control list (ACL).
-
 A network access control list (ACL) is a virtual firewall that controls trafic in and out of subnet.
+
+NACL is the first line of defense.
 
 Network ACLs have separate **inbound and outbound rules**, and each rule can either allow or deny traffic.
 
-NACL rules are evaluated by rule number from **lowest to highest** and executed immediately when a matching rule is found.
+Network ACLs contain a numbered list of rules that are evaluated in order **from the lowest number** until the explicit deny.
 
 **Default Network ACLs** allows all outbound and inbound traffic. **Custom network ACLs** deny all inbound and outbound traffic.
 
@@ -23,7 +23,15 @@ NACL rules are evaluated by rule number from **lowest to highest** and executed 
 
 You can block IP addresses using network ACLs (not security groups).
 
-You can associate a network ACL with multiple subnets. Each subnet can and must be associated with only 1 network ACL. When you associate a network ACL with a subnet, the previous association is removed.
+All subnets must (and can only) be associated with a network ACL. If you don’t do this manually it will be associated with the default network ACL.
+
+You can associate a network ACL with multiple subnets.
+
+Network ACLs do not filter traffic between instances in the same subnet.
+
+Changes to NACLs take effect immediately.
+
+Example:
 
 **Inbound**:
 
@@ -46,23 +54,28 @@ You can associate a network ACL with multiple subnets. Each subnet can and must 
 
 ## Security Groups (secure instances)
 
-Security group are virtual firewalls for a particular entity, such as an EC2 instance.
-
-By default, all inbound traffic are blocked, all outbound traffic are allowed. To allow everything, use `0.0.0.0/0`.
+Security groups act like a firewall at the instance level.
 
 Security groups are the last line of defense.
 
+By default, custom security groups do not have inbound allow rules (all inbound traffic is denied by default).
+
 ![](https://sysdig.com/wp-content/uploads/AWS_Security_Groups_Rules_Details.png)
+
+You can only assign permit rules in a security group, cannot assign deny rules (use NACLs instead).
+
+To allow everything, use `0.0.0.0/0`.
+
+All rules are evaluated until a permit is encountered or continues until the implicit deny.
+
+There is an implicit deny rule at the end of the security group.
 
 Security groups are stateful: Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
 
 Your VPC includes a default security group. You can't delete this group, however, you can change the group's rules.
 
-An Amazon EC2 instance can be associated with up to 5 security groups.
+You can use security group names as the source or destination in other security groups.
 
+You can use the security group name as a source in its own inbound rules.
 
-### Security group pattern
-
-A common design pattern is organizing your resources into different groups and creating security groups for each to control network communication between them.
-
-![](./images/layer-sg.png)
+Security group can be changed while instances are running. Changes take effect immediately.
