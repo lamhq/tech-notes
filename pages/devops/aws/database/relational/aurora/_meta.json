@@ -1,0 +1,6 @@
+{
+  "multi-az": "Multi-AZ",
+  "replicas": "Replication",
+  "backup": "Backup and Restore",
+  "aurora-serverless": "Aurora Serverless"
+}

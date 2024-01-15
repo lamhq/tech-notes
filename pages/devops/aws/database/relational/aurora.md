@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon Aurora is a fully managed relational database engine of Amazon RDS that's compatible with **MySQL** and **PostgreSQL**.
+Amazon Aurora is a database engine of Amazon RDS that's compatible with **MySQL** and **PostgreSQL**.
 
 Up to **5x** better performance than MySQL, **3x** better than PostgreSQL databases.
 
@@ -13,9 +13,9 @@ Compute resources can scale up to 96 vCPUs and 768 GB memory.
 Data is continuously backs up to S3.
 
 
-## Fault Tolerance and Replicas 
+## Fault Tolerance
 
-High availability. 2 copies of data in each AZ, minimum 3 AZs, total 6 copies.
+High availability. Each 10GB chunk of database volume is replicated to 6 copies, accross 3 AZs.
 
 Can transparently handle data loss:
 - up to **2 copies** without affecting write availability
@@ -26,41 +26,42 @@ Self-healing. Data blocks and disks are continuously scanned for errors and repa
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-aurora-fault-tolerance.jpeg)
 
 
-## Replicas
+## Scalability
 
-3 types of Aurora Repicas available:
+Aurora Auto Scaling dynamically adjusts the number of Aurora Replicas provisioned for an Aurora DB cluster using single-master replication.
 
-- **Aurora Replicas**. 15 read replicas with Aurora. Include automatic failover feature
-- **MySQL Replicas**. 5 read replicas with Aurora MySQL
-- **PostgreSQL**. 5 read replicas with Aurora PostgreSQL
+Aurora Auto Scaling is available for both Aurora MySQL and Aurora PostgreSQL.
 
+Aurora Auto Scaling enables your Aurora DB cluster to handle sudden increases in connectivity or workload.
 
-## Multi-AZ
-
-Amazon Aurora gives you two options for multi-AZ: **single-master** and **multi-master**.
-
-### Single-Master
-
-An Amazon Aurora single-master cluster consists of a primary instance, and may include Aurora replicas.
-
-A cluster is synchronously replicated across three AZs.
-
-In the event the primary instance fails:
-- If no Aurora rep- licas exist, Aurora will create a new primary instance to replace the failed one
-- If an Aurora replica does exist, Aurora will promote the replica to the primary. The entire process typically takes less than two minutes.
+When the connectivity or workload decreases, Aurora Auto Scaling removes unnecessary Aurora Replicas so that you don’t pay for unused provisioned DB instances.
 
 
-### Multi-Master
+## Architecture
 
-In a multi-master cluster, all instances can write to the database in a shared cluster volume.
+An Aurora cluster consists of a set of compute (database) nodes and a shared storage volume.
 
-When one instance fails, no failover occurs, as long as at least one database instance is running, you can read from and write to the database.
+The storage volume consists of six storage nodes placed in three AZs for high availability and durability of user data.
+
+Every database node in the cluster is a writer node that can run read and write statements.
+
+There is no single point of failure in the cluster.
+
+Applications can use any writer node for their read/write and DDL needs.
+
+A database change made by a writer node is written to six storage nodes in three Availability Zones, providing data durability and resiliency against storage node and Availability Zone failures.
+
+The writer nodes are all functionally equal, and a failure of one writer node does not affect the availability of the other writer nodes in the cluster.
 
 
-## Backups
+## Global Database
 
-Automated backups are always enabled. Backups do not impact database performance.
+A single Aurora database can span multiple AWS regions to enable fast local reads and quick disaster recovery.
 
-Snapshots taking does not impact on performance.
+Global Database uses **storage-based replication** to replicate a database across multiple AWS Regions, with typical latency of less than 1 second.
 
-You can share Aurora snapshots with other AWS accounts.
+You can use a secondary region as a backup option in case you need to recover quickly from a regional degradation or outage.
+
+A database in a secondary region can be promoted to full read/write capabilities in less than 1 minute.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/aurora-global-database.jpeg)

@@ -44,13 +44,6 @@ Fast temporary storage for small amounts of dataHighly volatile data
 - Static Websites
 
 
-## Relational databases
-
-In a relational database, data is stored in a way that relates it to other pieces of data.
-
-Relational databases use structured query language (SQL) to store and query data.
-
-
 ## OLTP (Online Transaction Processing)
 
 OLTP is all about data processing and completing large numbers of small transactions in real time.
