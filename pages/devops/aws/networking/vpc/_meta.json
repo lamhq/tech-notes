@@ -1,4 +1,5 @@
 {
+  "subnet": "Subnet",
   "network-basic": { "title": "Networking Basics" },
   "routing": { "title": "Routing" },
   "security": { "title": "Security" },

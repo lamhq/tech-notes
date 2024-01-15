@@ -2,6 +2,8 @@
 
 ## Overview
 
+Amazon VPC lets you provision a logically isolated section of the AWS cloud where you can launch AWS resources in a virtual network that you define.
+
 A VPC is an isolated network you create in the AWS cloud, similar to a traditional network in a data center.
 
 You have complete control of virtual network, including your own IP address range, subnets, route tables, and network gateways.
@@ -19,49 +21,55 @@ When we creat a VPC, it's going to create a route table, a network ACL, a router
 A VPC can only have one internet gateway attached.
 
 
-## Subnet
+## The Default VPC
 
-A subnet is a section of a VPC that can contain resources (such as Amazon EC2 instances)
+A default VPC is created in each region with a subnet in each AZ.
 
-A subnet is belong to an AZ.
+The default VPC has all-public subnets. All subnets have a route out to the internet.
 
-When you create a subnet, you need to choose three settings.
-
-- The  VPC you want your subnet to live in.
-- The Availability  Zone you want your subnet to live in.
-- A CIDR  block for your subnet, which must be a subset of the VPC CIDR block.
+Instances in the default VPC has both a public and private IP address.
 
 
-### Public and private subnet
+## VPC components
 
-Subnets can be public or private.
-
-**Public subnets** directly connected to an internet gateway, allowing resources within it to access the public internet. You need to enable "auto-assign public IPv4 address" in subnet setting.
-
-**Private subnets** contain resources that should be accessible only through your private network, such as a database.
-
-In a VPC, subnets can communicate with each other.
-
-
-### Reserved IPs
-
-**AWS reserves five IP addresses in each subnet**. These IP addresses are used for routing, Domain Name System (DNS), and network management.
-
-*For example, consider a VPC with the IP range `10.0.0.0/22`. The VPC includes 1,024 total IP addresses. This is divided into four equal-sized subnets, each with a `/24` IP range with 256 IP addresses. Out of each of those IP ranges, there are only 251 IP addresses that can be used because AWS reserves five.*
-
-![](https://media.licdn.com/dms/image/D4E12AQEu7jlm0CpbhA/article-cover_image-shrink_600_2000/0/1678029438590?e=2147483647&v=beta&t=790i4NTQzpGOn7sTBbrgFn83rvpwmk78WjzDaLtY-GU)
+- **VPC**: A logically isolated virtual network in the AWS cloud. You define a VPC’s IP address space from ranges you select.
+- **Subnet**: A segment of a VPC’s IP address range where you can place groups of isolated resources (maps to an AZ, 1:1).
+- **Internet Gateway**: The Amazon VPC side of a connection to the public Internet.
+- **NAT Gateway**: A highly available, managed Network Address Translation (NAT) service for your resources in a private subnet to access the Internet.
+- **Hardware VPN Connection**: A hardware-based VPN connection between your Amazon VPC and your datacenter, home network, or co-location facility.
+- **Virtual Private Gateway**: The Amazon VPC side of a VPN connection.
+- **Customer Gateway**: Your side of a VPN connection.
+- **Router**: Routers interconnect subnets and direct traffic between Internet gateways, virtual private gateways, NAT gateways, and subnets.
+- **Peering Connection**: A peering connection enables you to route traffic via private IP addresses between two peered VPCs.
+- **VPC Endpoints**: Enables private connectivity to services hosted in AWS, from within your VPC without using an Internet Gateway, VPN, Network Address Translation (NAT) devices, or firewall proxies.
+- **Egress-only Internet Gateway**: A stateful gateway to provide egress only access for IPv6 traffic from the VPC to the Internet.
 
 
-### Best practices
+## VPC connect options
 
-- **Maintain redundancy and fault tolerance**: When you create your subnets, create at least two subnets configured in two different Availability Zones. In this case, if one of these AZs fail, you still have your resources in another AZ available as backup.
-- **Setting IP range**: A common practice is to create a VPC with a IP range of `/16` and create subnets with a IP range of `/24`. This provides a large amount of IP addresses to work with at both the VPC and subnet level.
+Options for connecting to a VPC are:
+- Hardware based VPN.
+- Direct Connect.
+- VPN CloudHub.
+- Software VPN.
 
 
-## Default VPC
+## Networking Limits
 
-Every AWS account comes with a default VPC in every region.
-
-Default VPC is user friendly. All their subnets have a route out to the internet. You don't have to worry about networking components.
-
-Each EC2 instance in the default VPC has both a public and private IP address.
+| Name | Default Limit |
+|---|---|
+| VPCs | 5 |
+| Subnets per VPC | 200 |
+| Security groups per VPC | 500 |
+| Rules per VPC security group | 50 |
+| Network interfaces | 350 |
+| Network ACLs per VPC | 200 |
+| Rules per network ACL | 20 |
+| Route tables per VPC | 200 |
+| Entries per route table | 50 |
+| EC2-Classic Elastic IPs | 5 |
+| EC2-VPC Elastic IPs | 5 |
+| VPC security groups per elastic network interface | 5 |
+| Active VPC peering connections | 50 |
+| Outstanding VPC peering connection requests | 25 |
+| Expiry time for an unaccepted VPC peering connection | 168 |
