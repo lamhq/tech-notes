@@ -1,8 +1,8 @@
-# Tech Notes
+# Learning Cheat sheet
 
 ## Overview
 
-This repository contains code snippets and knowledge notes (mostly about programming) from my learning journey.
+This repository contains code snippets and learning notes from my learning journey.
 
 I use it as a reference to quickly review my knowledge, which saves me a lot of time compared to searching on the internet.
 

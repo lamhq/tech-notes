@@ -1,4 +1,9 @@
 {
-  "dns": { "title": "DNS Concepts" },
-  "routing-policices": { "title": "Routing Policices" }
+  "dns": "DNS Concepts",
+  "records": "DNS Records",
+  "hosted-zones": "Hosted Zones",
+  "health-checks": "Health Checks",
+  "routing-policices": "Routing Policices",
+  "pricing": "Pricing",
+  "resolver": "Route 53 Resolver"
 }
