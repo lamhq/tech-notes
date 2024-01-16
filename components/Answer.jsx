@@ -26,6 +26,10 @@ export default function Answer({ children, correct }) {
     setSelected(e.target.checked);
   }, [setSelected]);
 
+  const handleBlur = (e) => {
+    setSelected(false);
+  };
+
   return (
     <div className={twMerge([...classes])}>
       <label>
@@ -41,6 +45,7 @@ export default function Answer({ children, correct }) {
             name="answer"
             defaultChecked={selected}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         )}
         &nbsp;
