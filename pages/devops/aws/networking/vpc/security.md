@@ -2,7 +2,13 @@
 
 ## Trafic flow in a VPC
 
-**Internet Gateway** > **Router** > **Route Table** > **Network ACL** > **Subnet** > **Security Group** > **Instance**.
+1. Internet Gateway
+2. Router
+3. Route Table
+4. Network ACL
+5. Subnet
+6. Security Group
+7. Instance.
 
 ![](https://jayendrapatil.com/wp-content/uploads/2016/03/security-diagram.png)
 

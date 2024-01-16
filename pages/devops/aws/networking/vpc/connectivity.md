@@ -1,5 +1,14 @@
 # VPC Connectivity
 
+## VPC connect options
+
+Options for connecting to a VPC are:
+- Hardware based VPN.
+- Direct Connect.
+- VPN CloudHub.
+- Software VPN.
+
+
 ## Gateway terminology
 
 ### Virtual Private Gateway
@@ -13,7 +22,6 @@ Allow communications to instances in private subnets from a VPN connection.
 Not support IPv6.
 
 ![](https://docs.aws.amazon.com/images/vpn/latest/s2svpn/images/vpn-how-it-works-vgw.png)
-
 
 
 ### Transit Gateway
@@ -42,7 +50,6 @@ You configure the device to work with the Site-to-Site VPN connection.
 ### Customer gateway
 
 An AWS resource which provides information to AWS about your customer gateway device.
-
 
 
 ## Methods

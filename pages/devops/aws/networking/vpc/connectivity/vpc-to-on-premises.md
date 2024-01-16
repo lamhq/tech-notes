@@ -2,11 +2,9 @@
 
 ## AWS Site-to-Site VPN
 
-AWS Virtual Private Network allows to connect a VPC to an on-premises network via a secure connection that goes over the public Internet.
-
-You create a VPN connection by configuring a **Virtual Private Gateway** or **Transit Gateway** on the AWS side. Then configuring your on-premises router called **Customer gateway** to build an encrypted VPN tunnel.
-
 ![](https://docs.aws.amazon.com/images/whitepapers/latest/aws-vpc-connectivity-options/images/aws-managed-vpn.png)
+
+AWS Virtual Private Network allows to connect a VPC to an on-premises network via a secure connection that goes over the public Internet.
 
 It lets you reuse existing VPN equipment and processes and also use existing internet connections.
 
@@ -15,6 +13,12 @@ It is an AWS-managed high availability VPN service.
 Supports Internet Protocol security (IPsec) VPN connections.
 
 Supports static routes or dynamic Border Gateway Protocol (BGP) peering and routing policies.
+
+You create a encrypted VPN connection by:
+- configuring a **Virtual Private Gateway** or **Transit Gateway** on the AWS side.
+- configuring a **Customer gateway** router on the remote side.
+
+Transit Gateway lets you connect multiple VPCs to on-premises networks.
 
 
 ## AWS Direct Connect
@@ -48,12 +52,14 @@ Direct Connect is fast, secure, reliable, able to take massive throughout. For t
 
 This solution combines the AWS managed benefits of the VPN solution with low latency, increased bandwidth, more consistent benefits of the AWS Direct Connect solution, and an end-to-end, secure IPsec connection.
 
+![](https://digitalcloud.training/wp-content/uploads/2022/01/VPC-3.jpg)
+
 
 ## AWS VPN CloudHub
 
-The AWS VPN CloudHub operates on a simple hub-and-spoke model that you can use with or without a VPC.
+The AWS VPN CloudHub Connect locations in a hub and spoke manner using AWSs Virtual Private Gateway.
 
-In this model, the hub is the central point of communication, while the spokes are the remote sites that connect to the hub.
+> In this model, the hub is the central point of communication, while the spokes are the remote sites that connect to the hub.
 
 Use this design if you have multiple branch offices and existing internet connections and would like to implement a convenient, potentially low-cost hub-and-spoke model for primary or backup connectivity between these remote offices.
 
@@ -67,10 +73,12 @@ Hourly rates plus data egress charges.
 
 AWS VPN CloudHub operates over the public internet.
 
-All traffic between the customer gateway and the AWS VPN CloudHub is encrypted.
+Traffic is encrypted.
 
 Uses eBGP.
 
 Branches can talk to each other (and provides redundancy).
 
-![](https://docs.aws.amazon.com/images/vpn/latest/s2svpn/images/AWS_VPN_CloudHub-diagram.png)
+![](https://digitalcloud.training/wp-content/uploads/2022/01/VPC-4-600x321.jpg)
+
+<!-- ![](https://docs.aws.amazon.com/images/vpn/latest/s2svpn/images/AWS_VPN_CloudHub-diagram.png) -->
