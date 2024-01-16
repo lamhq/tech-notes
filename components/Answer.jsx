@@ -1,8 +1,10 @@
 import { useCallback, useContext, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import RC from './ResultContext';
+import MC from './MultiContext';
 
 export default function Answer({ children, correct }) {
+  const isMulti = useContext(MC);
   const [showResult] = useContext(RC);
   const [selected, setSelected] = useState(false);
   const classes = ['nx-my-2 p-4 rounded border border-gray-300'];
@@ -26,7 +28,24 @@ export default function Answer({ children, correct }) {
 
   return (
     <div className={twMerge([...classes])}>
-      <label><input type="checkbox" defaultChecked={selected} onChange={handleChange}/> {children}</label>
+      <label>
+        {isMulti ? (
+          <input
+            type="checkbox"
+            defaultChecked={selected}
+            onChange={handleChange}
+          />
+        ) : (
+          <input
+            type="radio"
+            name="answer"
+            defaultChecked={selected}
+            onChange={handleChange}
+          />
+        )}
+        &nbsp;
+        {children}
+      </label>
     </div>
   )
 }

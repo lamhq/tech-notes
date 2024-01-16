@@ -1,11 +1,14 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import RC from './ResultContext';
+import MC from './MultiContext';
 
-export default function Question({ children }) {
+export default function Question({ children, multi }) {
   const ctxValue = useState();
   return (
     <RC.Provider value={ctxValue}>
-      {children}
+      <MC.Provider value={multi}>
+        {children}
+      </MC.Provider>
     </RC.Provider>
   )
 }
