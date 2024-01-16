@@ -95,11 +95,11 @@ The job-specific AWS managed policies include:
 Identity-based policies are attached to an IAM identity (user, group of users, or role) and grant permissions to IAM entities (users and roles).
 
 
-## IAM permissions boundaries
-
-Permissions boundaries sets the maximum permissions that an identity-based policy can grant to an IAM entity (user or role).
-
-
 ## Resource-based policies
 
 Resource-based policies grant permissions to the principal (account, user, role, or federated user) specified as the principal.
+
+
+## IAM permissions boundaries
+
+Permissions boundaries sets the maximum permissions that an identity-based policy can grant to an IAM entity (user or role).

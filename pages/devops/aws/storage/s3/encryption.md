@@ -53,7 +53,7 @@ Now you can create a bucket policy that denies any S3 PUT request that doesn't i
 Encrypt objects using your own local encryption process before uploading to S3.
 
 To enable client-side encryption, you have the following options:
-- Use a customer master key (CMK) stored in AWS Key Management Service (AWS KMS).
+- Use a customer master key (CMK) stored in AWS KMS.
 - Use a master key you store within your application.
 
 
