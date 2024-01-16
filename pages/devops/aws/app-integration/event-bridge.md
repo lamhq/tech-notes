@@ -2,7 +2,7 @@
 
 ## Overview
 
-EventBridge is a serverless event bus service (formerly CloudWatch Events) that you can use to connect your applications with data from various sources. 
+EventBridge is a **event bus** service (an extension of **CloudWatch Events**) that you can use to connect your applications with data from various sources. 
 
 Allows you to **pass events from a source to an endpoint**.
 
@@ -16,7 +16,30 @@ It's the fastest way to respond to things happening in your environment.
 
 Automatically ingests events **from** over 90 AWS services.
 
-Supports over 15 AWS services as **targets**: AWS Lambda, Amazon SQS, Amazon SNS, Amazon Kinesis Data Streams, Amazon Kinesis Data Firehose, ...
+Can be used to schedule automated actions that self-trigger at certain times using cron or rate expressions.
+
+Can match events and route them to one or more target functions or streams.
+
+
+## Targets
+
+Supports over 15 AWS services as targets:
+
+- AWS Lambda functions.
+- Streams in Amazon Kinesis Data Streams.
+- Delivery streams in Amazon Kinesis Data Firehose.
+- Amazon EC2 instances.
+- AWS Batch jobs.
+- Step Functions state machines.
+- Log groups in Amazon CloudWatch Logs.
+- Amazon ECS tasks.
+- Systems Manager Run Command.
+- Systems Manager Automation.
+- Pipelines in CodePipeline.
+- CodeBuild projects.
+- Amazon Inspector assessment templates.
+- Amazon SNS topics.
+- Amazon SQS queues.
 
 
 ## Use cases
@@ -58,27 +81,22 @@ There're two types of scheduled rules:
 and intervals for your rule triggers using cron expression. `cron(0 12 * * ? *)`
 
 
+## Example
+
+In the following example, an EC2 instance changes state (terminated) and the event is sent to EventBridge which forwards the event to the target (SQS queue).
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-cloudwatch-events-example.jpeg)
+
+
 ## Example architecture
 
-We have a simple EC2 hosting some type
-of application or service.
+In this example we've configured an EventBridge rule that looks for EC2 termination event (the JSON event pattern look like below).
 
-We've configured an EventBridge rule that looks for events
-matching this termination event (the JSON event pattern look like below).
+We set up this rule to trigger a Lambda function as well as send a message to an SNS topic containing specific information from this event.
 
-We can set up this rule
-to trigger a Lambda function as well as send a message
-to an SNS topic containing specific information
-from this event.
+The Lambda function may either restart the instance (or create a brand new one using the same AMI).
 
-We can leverage that function
-to go ahead and get invoked by our rule
-and maybe either restart the instance
-or create a brand new one using this same AMI.
-
-For SNS, we can go ahead
-and send our operations team an alert via an email
-that contains the details necessary for them
+Our operations team receive an alert via an email that contains the details necessary for them
 to go ahead and investigate.
 
 ![](./images/event-bridge-arch.png)
