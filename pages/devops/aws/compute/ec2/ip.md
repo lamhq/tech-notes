@@ -6,6 +6,7 @@ There are three types of IP address that can be assigned to an Amazon EC2 instan
 - **Elastic IP**: public address that is static.
 - **Private**: private address assigned automatically to all instances.
 
+
 ## Public IP
 
 Public IPv4 addresses are retained if you restart the instance.

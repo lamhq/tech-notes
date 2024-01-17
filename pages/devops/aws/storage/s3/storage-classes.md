@@ -1,19 +1,11 @@
 # Storage Classes
 
-S3 storage classes let you change your storage tier as your data characteristics change.
-
-When selecting an Amazon S3 storage class, consider these two factors:
-
-- How often you plan to retrieve your data
-- How available you need your data to be
-
-There are six S3 storage classes.
-
+There are six S3 storage classes:
 
 ## S3 Standard
 
 - Frequently accessed data.
-- High availability (99.99%) and durability (11 9's).
+- 99.99% availability and 11 9's durability.
 - Data is stored across multiple devices in multiple facilities (>= 3 AZs).
 - Higher cost than other storage classes.
 - Default storage class.
@@ -63,27 +55,27 @@ Glacier is an archiving storage solution for infrequently accessed data.
 - Cheap storage.
 - For data that is very infrequently access.
 - Use only for archiving data for long terms.
+- Pay each time you access your data.
+- Charges if you delete data within 90 days.
 - Archived objects are not available for real time access and you need to submit a retrieval request.
-- Requested archival data is copied to S3 One Zone-IA.
+- Archives can be 1 byte up to **40TB**.
+- Requested archival data is copied to **S3 One Zone-IA**.
 - Retrieved data is available for 24 hours by default (can be changed).
+- You can retrieve parts of an archive.
 - Cannot specify Glacier as the storage class at the time object is created.
 - May not be available in all AWS regions.
-- Archives can be 1 byte up to 40TB.
-- You can retrieve parts of an archive.
 - Glacier archive IDs are added upon upload and are unique for each upload.
 - Glacier does not archive object metadata; you need to maintain a client-side database to maintain this information.
 - AWS SNS can send notifications when retrieval jobs are complete.
-- Pay each time you access your data.
-- Charges if you delete data within 90 days.
 
 Archive retrieval:
-- Expedited is 1-5 minutes retrieval (most expensive).
-- Standard is 3.5 hours retrieval (cheaper, 10GB data retrieval free per month).
-- Bulk retrieval is 5-12 hours (cheapest, use for large quantities of data).
+- **Expedited** is 1-5 minutes retrieval (most expensive).
+- **Standard** is 3.5 hours retrieval (cheaper, 10GB data retrieval free per month).
+- **Bulk retrieval** is 5-12 hours (cheapest, use for large quantities of data).
 
 When you restore you pay for:
 - The Glacier archive.
-- The requests.
+- The retrieval requests.
 - The restored data on S3.
 
 

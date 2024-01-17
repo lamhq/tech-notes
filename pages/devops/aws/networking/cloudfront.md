@@ -15,17 +15,6 @@ CloudFront is the only option to add HTTPS to a static website being hosted in a
 Files can also be uploaded to CloudFront.
 
 
-## Features
-
-**Security**. Defaults to HTTPS connections with the ability to add custom SSL certificate and domain
-
-**Endpoint Support**. Can be used to front AWS endpoints along with non-AWS applications
-
-**Global Distribution**. You can't pick specific countries - just general areas of the globe
-
-**Expiring Content**. You can force an expiration of content from the cache if you can't wait for the TTL
-
-
 ## Edge Locations
 
 An edge location is the location where content is cached (separate to AWS regions/AZs).

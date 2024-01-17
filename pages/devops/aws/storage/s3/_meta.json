@@ -4,9 +4,11 @@
   "versioning": { "title": "Versioning" },
   "lifecycle": { "title": "Lifecycle" },
   "object-lock": { "title": "Object Lock" },
+  "event": { "title": "Event Notifications" },
   "encryption": { "title": "Encryption" },
   "access-control": { "title": "Access Control" },
+  "monitoring": "Monitoring and Reporting",
+  "logging": "Logging and Auditing",
   "pricing": { "title": "Pricing" },
-  "event": { "title": "Event Notifications" },
   "optimizing-perf": { "title": "Optimizing Performance" }
 }

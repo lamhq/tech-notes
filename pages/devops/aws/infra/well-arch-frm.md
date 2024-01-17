@@ -2,20 +2,17 @@
 
 ## Overview
 
-Developing a cloud-native business application, most often comes with different challenges related to scaling, costing, efficiency, infrastructure, etc.
+Amazon provided guidelines for all the essential areas of cloud-native development, called the **well-architected framework**, to help people overcome challenges when developing cloud-native business applications, such as scaling, costing, efficiency, infrastructure, etc.
 
-To successfully overcome these challenges, Amazon has provided guidelines for all the essential areas of cloud-native development. These guidelines are called the **well-architected framework**.
-
-Well-architected framework is a collection of design principles and best practices to ensure that the product one develops contains all the traits required for a successful application.
+It is a collection of design principles and best practices to ensure that the product one develops contains all the traits required for a successful application.
 
 
-## Why use the Well-Architected AWS Framework?
+## Why use it?
 
 - **Learn the best practices for building highly efficient software**: efficient, reliable, cost-effective, secure, and dependable.
 - **You can focus on functional requirements**. The framework provides recipes to build an efficient system, allowing you to focus on developing business requirements instead of spending time on technical challenges.
 - **Continued excellence**. You can track the various aspects of your system and fix any issues proactively base on design values and best practices from the framework
 - **Get AWS Certified**. Becoming AWS certified is the best way to understand the well-architected framework.
-
 
 
 The Well-Architected Framework is based on six pillars:
@@ -27,14 +24,13 @@ Protecting data and infrastructure.
 Core values of the security pillar:
 - Manager user and role permissions to access data, services, and servers
 - Keep the data confidential and maintain the integrity of the data
-- Implement processes to detect any anomaly related to security
+- Implement processes to detect any security-related anomalies
 
 Best practices:
 - Implement a centralized mechanism for user authentication and authorization (e.g. IAM)
 - Static credentials must be avoided at all costs.
 - Implement the principle of least privilege for every user and every cloud service.
 - Have a strong system of tracking, logging, and alerting user access. Put security audit controls in place.
-- Protect data in transit and at rest.
 - Protect both the data in transit (e.g. SSL, tokenization, etc.) and data in rest (e.g. encryption)
 - Apply security at all layers (load balancer, VPC, instances, service, os access, code access, database access, etc.)
 
@@ -69,7 +65,7 @@ Core values:
 
 Best practices:
 - Automate the changes in infrastructure, applications, and the automation itself.
-- Set up triggers and alarms based on the health of the server/service and implement horizontal scaling to add more resources when a health check is triggered. E.g. *Launch another EC2 server into the cluster if the existing EC2 server’s CPU exceeds 80%*.
+- Set up triggers and alarms based on the health of the server/service and implement horizontal scaling to add more resources when a health check is triggered. *E.g. Launch another EC2 server into the cluster if the existing EC2 server’s CPU exceeds 80%*.
 - Perform stress and load testing on your system to identify and rectify any scaling issues
 - Implement an automatic failover strategy. *One example is blue-green deployments if you are handling deployments yourself, or you can use serverless components to achieve automatic failover*.
 - Maintain proper backup of data, including database automatic backups and server disk storage. You need to ensure optimal recovery time objective (RTO) and recovery point objective (RPO) KPI’s.

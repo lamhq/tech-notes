@@ -14,5 +14,6 @@ article ul {
 @media only screen and (min-width: 768px) {
   article p, article li {
     text-align: justify;
+    letter-spacing: 0.03125em;
   }
 }
