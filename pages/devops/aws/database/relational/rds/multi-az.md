@@ -16,6 +16,7 @@ You cannot choose which AZ in the region will be chosen to create the standby DB
 
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-rds-multi-az.jpeg)
 
+
 ## Automatic failover
 
 - Automatic failover to standby when a problem is detected.
@@ -27,11 +28,13 @@ You cannot choose which AZ in the region will be chosen to create the standby DB
 
 Amazon RDS Read Replicas for MySQL, MariaDB, PostgreSQL, and Oracle support Multi-AZ deployments.
 
+This allows you to scale reads whilst also having multi-AZ for DR.
+
 Combining Read Replicas with Multi-AZ enables you to build a resilient disaster recovery strategy and simplify your database engine upgrade process.
 
 A Read Replica in a different region than the source database can be used as a standby database and promoted to become the new production database in case of a regional disruption.
 
-This allows you to scale reads whilst also having multi-AZ for DR.
+For database engine upgrade process, you can create a Read Replica and upgrade it. When the upgrade is complete, you can stop applications, promote the Read Replica to a standalone database instance, and switch over your applications, no additional steps are needed.
 
 
 ## Maintenance

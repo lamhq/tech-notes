@@ -34,7 +34,7 @@ Each database instance runs only one database engine.
 
 ## Amazon RDS Proxy
 
-RDS Proxy establishes a database connection **pool** and reuses connections in this pool without the memory and CPU overhead of opening a new database connection each time.
+RDS Proxy establishes a database **connection pool** and reuses connections in this pool without the memory and CPU overhead of opening a new database connection each time.
 
 RDS Proxy can handle database **failover**, allowing applications to remain connected to the proxy endpoint for the duration of the failover.
 

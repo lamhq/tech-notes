@@ -16,9 +16,9 @@ You can scale relational database by:
 - All RDS DB types support a maximum DB size of **64 TiB** except for MS SQL (**16 TiB**).
 
 
-## Create read replicas
+## Horizontal scaling
 
-- creating read-only copies of your data.
+- Create [read replicas](./read-replicas.md) for scaling read performance.
 
 ## Using Aurora serverless
 
