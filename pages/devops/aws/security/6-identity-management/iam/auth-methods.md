@@ -4,7 +4,7 @@
 
 A password that the user can enter to sign into interactive sessions such as the AWS Management Console.
 
-A password policy can be defined for enforcing password length, complexity etc. (applies to all users).
+A **password policy** can be defined for enforcing password length, complexity, etc. (applies to all users).
 
 You can allow or disallow the ability to change passwords using an IAM policy.
 

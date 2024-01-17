@@ -58,15 +58,6 @@ Instance metadata is available at http://169.254.169.254/latest/meta-data/ (the 
 The **Instance Metadata Query** tool allows you to query the instance metadata without having to type out the full URI or category names.
 
 
-## Instance Store
-
-An instance store provides temporary block-level storage for an Amazon EC2 instance.
-
-When the instance is shutdown (terminated), you lose any data in the instance store.
-
-It's ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content.
-
-
 ## EC2 Instance Lifecycle
 
 When the instance is **pending**, billing has not started.

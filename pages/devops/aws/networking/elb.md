@@ -8,7 +8,7 @@ Elastic Load Balancing automatically distributes incoming application traffic ac
 
 Targets can be Amazon EC2 instances, containers, IP addresses, and Lambda functions.
 
-Network traffic can be distributed across a single (or multiple) AZs within an AWS Region.
+Network traffic can be distributed across AZs within a Region.
 
 Only 1 subnet per AZ for each ELB.
 

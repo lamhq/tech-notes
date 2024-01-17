@@ -1,0 +1,4 @@
+{
+  "instance-store": "EC2 Instance Store",
+  "ebs": "Amazon EBS"
+}

@@ -26,6 +26,6 @@ Provides additional detection and mitigation against large and sophisticated DDo
 
 Gives you **24/7 access to the DDoS Response Team** (DRT).
 
-AWS Shield Advanced includes **DDoS cost protection**, a safeguard from scaling charges because of a DDoS attack that causes usage spikes on protected Amazon EC2, Elastic Load Balancing (ELB), Amazon CloudFront, AWS Global Accelerator, or Amazon Route 53.
+Includes **DDoS cost protection**, a safeguard from scaling charges because of a DDoS attack that causes usage spikes on protected Amazon EC2, Elastic Load Balancing (ELB), Amazon CloudFront, AWS Global Accelerator, or Amazon Route 53.
 
 Cost **$3000** per month.
