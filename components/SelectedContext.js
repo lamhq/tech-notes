@@ -1,4 +1,4 @@
 import { createContext } from 'react';
 
-// contain value to know whether this is a multi answer question
+// contain selected inputs in a form
 export default createContext();
