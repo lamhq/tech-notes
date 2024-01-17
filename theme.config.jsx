@@ -1,12 +1,12 @@
 export default {
-  logo: <span>Tech Notes</span>,
+  logo: <span>Cheat Sheet</span>,
   project: {
-    link: 'https://github.com/lamhq/tech-notes'
+    link: 'https://github.com/lamhq/cheat-sheet'
   },
-  docsRepositoryBase: `vscode://file//Users/admin/Desktop/repos/tech-notes/`,
+  docsRepositoryBase: 'vscode://file//Users/admin/Desktop/repos/cheat-sheet/',
   useNextSeoProps() {
     return {
-      titleTemplate: '%s – Tech Notes'
+      titleTemplate: '%s – Albert\'s Cheat Sheet'
     }
   },
   navigation: {
