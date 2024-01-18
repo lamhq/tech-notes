@@ -2,13 +2,13 @@
 
 ## Overview
 
-CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally. It helps reduce latency and provide higher transfer speeds using AWS edge locations.
+CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally.
+
+It helps reduce latency and provide higher transfer speeds using AWS edge locations.
 
 Used for dynamic, static, streaming, and interactive content.
 
 Protection against against multiple types of network and denial of service attacks, sudden traffic spikes.
-
-Uses pay-as-you-go pricing with no minimum fees.
 
 CloudFront is the only option to add HTTPS to a static website being hosted in an S3 bucket.
 
@@ -56,20 +56,23 @@ For each cache behavior you can configure the following functionality:
 
 The default cache behavior only allows a path pattern of `/*`.
 
-Objects are cached for the TTL (always recorded in seconds, default is 24 hours, default max is 1 year).
+Objects are cached for the TTL, recorded in seconds, default is 24 hours, default max is 1 year.
 
 Only caches for GET requests (not PUT, POST, PATCH, DELETE).
 
 Dynamic content is cached.
 
-Object invalidation:
-- Invalidation can be used to immediately revoke cached objects (chargeable).
-- You can remove an object from the cache by invalidating the object.
-- You cannot cancel an invalidation after submission.
-- You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior.
+
+## Object invalidation
+
+Invalidation can be created to immediately revoke cached objects (chargeable).
+
+You cannot cancel an invalidation after submission.
+
+You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior.
 
 
-### Improving Cache Hit Ratio
+## Improving Cache Hit Ratio
 
 Methods of improving the cache hit ratio include:
 
@@ -82,9 +85,9 @@ Methods of improving the cache hit ratio include:
 
 ## Domain Names
 
-CloudFront typically creates a domain name such as a232323.cloudfront.net.
+CloudFront typically creates a domain name such as `a232323.cloudfront.net`.
 
-Alternate domain names can be added using an alias record (Route 53).
+Alternate domain names can be added using a Route 53 alias record.
 
 For other service providers use a CNAME (cannot use the zone apex with CNAME).
 

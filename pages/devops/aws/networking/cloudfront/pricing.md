@@ -1,7 +1,5 @@
 # Pricing
 
-There is an option for reserved capacity over 12 months or longer (starts at 10TB of data transfer in a single region).
-
 You pay for:
 
 - Data Transfer Out to Internet.
@@ -17,3 +15,5 @@ You do not pay for:
 - Regional edge cache.
 - AWS ACM SSL/TLS certificates.
 - Shared CloudFront certificates.
+
+There is an option for reserved capacity over 12 months or longer (starts at 10TB of data transfer in a single region).

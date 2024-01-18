@@ -14,7 +14,7 @@ Use signed URLs in the following cases:
 
 ## Cloudfront signed cookies
 
-Application must authenticate user and then send three Set-Cookie headers to the viewer. The viewer stores the name-value pair and adds them to the request in a Cookie header when requesting access to content.
+Application must authenticate user and then send three Set-Cookie headers to the viewer. Users thena use those cookies to request access to content.
 
 Use signed cookies in the following cases:
 - You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of website.
@@ -36,7 +36,7 @@ If users request files directly by using Amazon S3 URLs, they’re denied access
 
 ## Restrictions
 
-Blacklists and whitelists can be used for geography – you can only use one at a time.
+Blacklists and whitelists can be used for geography, you can only use one at a time.
 
 There are two options available for geo-restriction (geo-blocking):
 

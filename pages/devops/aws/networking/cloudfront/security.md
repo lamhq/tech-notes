@@ -13,8 +13,7 @@ The sensitive information is encrypted at the edge closer to the user and remain
 
 AWS WAF is a web application firewall that lets you monitor HTTP and HTTPS requests that are forwarded to CloudFront and lets you control access to your content.
 
-With AWS WAF you can shield access to content based on conditions in a web access control list (web ACL) such as:
-
+With AWS WAF you can shield access to content based on conditions in a Web access control list (web ACL), such as:
 - Origin IP address.
 - Values in query strings.
 
