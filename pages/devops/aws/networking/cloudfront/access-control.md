@@ -34,7 +34,7 @@ Permissions must then be changed on the Amazon S3 bucket to restrict access to t
 If users request files directly by using Amazon S3 URLs, they’re denied access.
 
 
-## Restrictions
+## Geo Restrictions
 
 Blacklists and whitelists can be used for geography, you can only use one at a time.
 

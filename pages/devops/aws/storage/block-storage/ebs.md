@@ -88,7 +88,7 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
   - I/O-intensive database workloads.
 
 
-### HDD, Throughput Optimized (st1):
+### HDD, Throughput Optimized (st1)
 
 - Frequently accessed, **throughput intensive** workloads with large datasets and large I/O sizes, such as MapReduce, Kafka, log processing, data warehouse, and ETL workloads.
 - Throughput measured in MiB/s and includes the ability to burst up to 250 MiB/s per TB, with a baseline throughput of 40 MB/s per TB and a maximum throughput of 500 MiB/s per volume.
@@ -96,11 +96,11 @@ There are two main categories of Amazon EBS volumes: solid-state drives (**SSDs*
 - EBS multi-attach not supported.
 
 
-### HDD, Cold – (sc1):
+### HDD, Cold – (sc1)
 
 - Lowest cost storage – cannot be a boot volume.
 - Less frequently accessed workloads with large, cold datasets.
-- Can burst up to 80 MiB/s per TiB, with a baseline throughput of 12 MiB/s.
+- Can burst up to 80 MiB/s per TiB, with a baseline throughput of 12 MiB/s (less than 3000 IOPS).
 - Cannot be a boot volume.
 - EBS multi-attach not supported.
 

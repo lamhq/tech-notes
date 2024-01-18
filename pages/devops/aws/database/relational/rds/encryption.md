@@ -27,6 +27,8 @@ To **encrypt an existing DB**, you need to create a snapshot, copy it, encrypt t
 
 ## In-transit
 
-RDS supports SSL encryption in-transit between applications and RDS DB instances.
+RDS creates an SSL certificate and installs the certificate on the DB instance when Amazon RDS provisions the instance.
 
-RDS generates a certificate for the instance.
+The SSL certificate includes the DB instance endpoint as the Common Name (CN) for the SSL certificate to guard against spoofing attacks.
+
+You can download a root certificate from AWS that works for all Regions or you can download Region-specific intermediate certificates.

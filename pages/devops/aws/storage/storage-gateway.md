@@ -2,15 +2,13 @@
 
 ## Overview
 
-Storage Gateway is a enables hybrid storage between on-premises environments and the AWS Cloud.
+Storage Gateway is a enables **hybrid storage** between on-premises environments and the AWS Cloud.
 
-It can help with a one-time migration or a long-term pairing of your architecture with AWS.
+It can help with a one-time **migration** or a long-term pairing of your architecture with AWS.
 
-It provides low-latency performance by caching frequently accessed data on premises, while storing data securely and durably in Amazon cloud storage services.
+It provides low-latency performance by caching frequently accessed data on premises, while storing data securely and durably in Amazon cloud storage services (Amazon S3 and Glacier).
 
 They are VMs provided by AWS that you run inside of your on-prem environment (VMware or Hyper-V virtual appliance).
-
-Provides local storage resources backed by Amazon S3 and Glacier.
 
 Support three storage interfaces: file, volume, and tape.
 

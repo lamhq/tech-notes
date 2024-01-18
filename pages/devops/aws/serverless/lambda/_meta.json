@@ -1,7 +1,10 @@
 {
+  "development": "Development",
+  "run": "Running functions",
   "monitor": "Operations and Monitoring",
   "limits": "Limitations",
   "concurrent-exec": "Concurrent executions",
   "elb": "Elastic Load Balancing",
-  "vpc": "Amazon VPC"
+  "vpc": "Amazon VPC",
+  "pricing": "Pricing"
 }

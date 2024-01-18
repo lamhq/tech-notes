@@ -12,7 +12,9 @@ The distribution includes the configuration of the CDN including:
 - Geo-restrictions.
 - Access logs (record viewer activity).
 
-When you configure your distribution, you'll have the option of adding a free AWS Certificate Manager (ACM) SSL/TLS encryption certificate to your distribution.
+When you configure your distribution, you can add a free AWS Certificate Manager (ACM) SSL/TLS encryption certificate to your distribution.
+
+You can choose a price class when you create or update a CloudFront distribution to determine where in the world the content will be cached.
 
 To delete a distribution it must first be disabled (can take up to 15 minutes).
 

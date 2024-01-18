@@ -4,15 +4,33 @@
 
 Amazon DynamoDB is a key-value database service.
 
-Data spreads across 3 geographically distinct data centers, stored on SSD storage.
+Data is synchronously replicated across 3 facilities (AZs) in a region, stored on SSD.
 
-You get **eventually consistent reads** by default. You can opt in for **strongly consistent reads**.
+DynamoDB is a serverless service – there are no instances to provision or manage.
 
-**Serverless**: you do not have to provision, patch, manage servers, install, maintain, or operate software.. 
+Can be used for storing session state data.
 
-**Automatic Scaling**: As the size of your database shrinks or grows, DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
+DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. 
 
 You can scale up or scale down tables' throughput capacity with minimal downtime or performance degradation.
+
+Offer Multi-AZ redundancy and Cross-Region Replication.
+
+Strongly consistent or eventually consistent reads, support for ACID transactions.
+
+The aggregate size of an item cannot exceed 400KB including keys and all attributes.
+
+Can store pointers to objects in S3, including items over 400KB.
+
+
+## Anti-Patterns
+
+Amazon DynamoDB is not ideal for the following situations:
+
+- Traditional RDS apps.
+- Joins and/or complex transactions.
+- BLOB data.
+- Large data with low I/O rate.
 
 
 ## Scaling
