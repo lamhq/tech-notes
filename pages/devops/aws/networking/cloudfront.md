@@ -63,6 +63,30 @@ Only caches for GET requests (not PUT, POST, PATCH, DELETE).
 Dynamic content is cached.
 
 
+## Lambda@Edge
+
+Lambda@Edge allows you to run code at Edge Locations. Executes the functions in AWS locations closer to the viewer.
+
+Lambda@Edge lets you run Node.js and Python Lambda functions to customize content that CloudFront delivers:
+- After CloudFront receives a request from a viewer (viewer request).
+- Before CloudFront forwards the request to the origin (origin request).
+- After CloudFront receives the response from the origin (origin response).
+- Before CloudFront forwards the response to the viewer (viewer response).
+
+Lambda@Edge can do the following:
+
+- Inspect cookies and rewrite URLs to perform A/B testing.
+- Send specific objects to your users based on the User-Agent header.
+- Implement access control by looking for specific headers before passing requests to the origin.
+- Add, drop, or modify headers to direct users to different cached objects.
+- Generate new HTTP responses.
+- Cleanly support legacy URLs.
+- Modify or condense headers or URLs to improve cache utilization.
+- Make HTTP requests to other Internet resources and use the results to customize responses.
+
+*Exam tip: Lambda@Edge can be used to load different resources based on the User-Agent HTTP header.*
+
+
 ## Object invalidation
 
 Invalidation can be created to immediately revoke cached objects (chargeable).

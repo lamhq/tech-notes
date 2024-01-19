@@ -17,7 +17,7 @@ Support three storage interfaces: file, volume, and tape.
 
 ![](https://d1.awsstatic.com/cloud-storage/Amazon%20S3%20File%20Gateway%20How%20It%20Works%20Diagram.96e9f7180c6ec8b6212b4d6fadc4a9ac4507b421.png)
 
-File Gateway is a network file share (**NFS/SMB**) that can be mounted locally and **backs up your data into S3**.
+File Gateway is a network file share (NFS/SMB) that can be mounted locally and **backs up your data into S3**.
 
 Supports Amazon S3 Standard, S3 Standard – Infrequent Access (S3 Standard – IA) and S3 One Zone – IA.
 

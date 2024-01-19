@@ -26,6 +26,8 @@ Lustre is an open source distributed filesystem built to give **Linux** clusters
 
 A fully managed file system that is optimized for **compute-intensive workloads** of Linux-based applications.
 
+FSx for Lustre can store data directly on S3.
+
 Use cases:
 - High-performance workloads, processing massive datasets (hundreds of gigabytes per second, millions of IOPS), low latencies (sub-millisecond)
 - Machine Learning
@@ -39,4 +41,4 @@ You'll be given different scenarios and asked to choose whether you should use E
 
 - **EFS**: When you need distributed, highly resilient storage for **Linux-based applications**.
 - **Amazon FSx for Windows**: When you need centralized storage for **Windows-based applications**, such as SharePoint, Microsoft SQL Server, Workspaces, IS Web Server, or any other native Microsoft application.
-- **Amazon FSx for Lustre**: When you need high-speed, high-capacity distributed storage. This will be for applications that do **high performance computing** (HPC), financial modeling, etc. FSx for Lustre can store data directly on S3.
+- **Amazon FSx for Lustre**: When you need high-speed, high-capacity distributed storage. This will be for applications that do **high performance computing** (HPC), financial modeling, etc.

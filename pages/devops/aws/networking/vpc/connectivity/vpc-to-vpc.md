@@ -30,6 +30,8 @@ Must update the inbound and outbound rules for VPC security group to reference s
 
 The VPC peering connection can be added to route tables – shows as a target starting with "pcx-".
 
+![](https://img-c.udemycdn.com/redactor/raw/test_question_description/2021-02-25_09-50-39-d2cdb66079d7dfcc2c83b098f21eafa2.jpg)
+
 
 ## VPC Endpoints
 
@@ -39,12 +41,13 @@ They are horizontally scaled, redundant, and highly available VPC components tha
 
 Do not require public IP addresses for instances in VPC.
 
-![](./images/vpc-endpoint.png)
+![](https://img-c.udemycdn.com/redactor/raw/2020-05-21_01-00-45-ac665c89acb1641afb831f1eb795210e.jpg)
 
 There're two types of VPC Endpoints:
 - **Interface endpoint**: is an elastic network interface with a private IP address, serves as an entry point for traffic headed to another AWS services. Support a large number of AWS services.
 - **Gateway endpoints**: similar to NAT gateways, is a virtual device you provision. Support S3 and DynamoDB.
 
+![](https://img-c.udemycdn.com/redactor/raw/2020-05-21_00-48-44-654011ba439713ad1e049b259d7d5611.jpg)
 
 ## AWS PrivateLink
 

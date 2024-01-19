@@ -23,7 +23,7 @@
 
 To register for the AWS Solutions Architect Associate exam, you can follow these steps:
 
-1. Visit the official A[WS Certified Solutions Architect - Associate Certification page](https://aws.amazon.com/certification/certified-solutions-architect-associate/).
+1. Visit the official [AWS Certified Solutions Architect - Associate Certification page](https://aws.amazon.com/certification/certified-solutions-architect-associate/).
 2. Click on the **Schedule an Exam** button.
 3. You will be redirected to the AWS Certification Account page. If you don't have an account, you will need to create one.
 4. Once you have logged in, you will be able to schedule your exam by selecting a date and time that works for you.

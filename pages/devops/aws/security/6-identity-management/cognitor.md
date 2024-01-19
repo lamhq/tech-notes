@@ -56,17 +56,9 @@ You can use identity pools and user pools either separately or together.
 
 ## Workflow
 
-You've got an application and you're trying to log in and access the resources
-that application is designed to use.
-
-You're logging into your app
-and it **connects to a user pool** in Cognito
-for **authenticating and getting tokens**.
-
-Your device **exchange that token
-to an identity pool** for AWS credentials.
-
-You use AWS credentials
-to access your AWS services.
+1. You're logging into your app
+2. The app connects to a **user pool** in Cognito for authenticating and getting **tokens**.
+3. Your device exchange that token to an **identity pool** for **AWS credentials**.
+4. You use AWS credentials to access your AWS services.
 
 ![](https://docs.aws.amazon.com/images/cognito/latest/developerguide/images/scenario-cup-cib.png)

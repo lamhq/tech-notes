@@ -47,6 +47,18 @@ Common use cases for file storage include:
 - Development environments
 - User home directories
 
+### NFS
+
+Network File System. A distributed file system protocol that allows a user on a client computer to access files over a computer network much like local storage is accessed
+
+### NAS
+
+Network attached storage. A centralized file server that allows multiple users to store and share files over a TCP/IP network via Wi-Fi or an Ethernet cable.
+
+### SMB
+
+Server Message Block. A client/server protocol that governs access to files and whole directories, as well as other network resources like printers, routers or interfaces open to the network. 
+
 
 ## IOPS and Throughput
 
