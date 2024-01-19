@@ -22,14 +22,22 @@ The minimum expiration time is 0.
 
 ## Custom Origins
 
+CloudFront can provide performance optimizations for custom origins even if they are running on on-premises servers. These include:
+- persistent TCP connections to the origin
+- SSL enhancements such as Session tickets and OCSP stapling.
+
 When using an on-premises or non-AWS based web server you must specify the DNS name, ports, and protocols that you want CloudFront to use when fetching objects from your origin.
 
-Most CloudFront features are supported for custom origins except RTMP distributions (must be an S3 bucket).
+Does not support RTMP distributions (must be an S3 bucket).
+
+### EC2 as custom origin
 
 When using EC2 for custom origins:
 - Use an AMI that automatically installs the software for a web server.
 - Use ELB to handle traffic across multiple EC2 instances.
 - Specify the URL of your load balancer as the domain name of the origin server.
+
+### S3 static website
 
 For S3 static website, enter the S3 static website hosting endpoint for your bucket in the configuration.
 

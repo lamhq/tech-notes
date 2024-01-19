@@ -1,0 +1,9 @@
+{
+  "kinesis-data-stream": "Kinesis Data Streams",
+  "kinesis-data-firehorse": "Kinesis Data Firehose",
+  "kinesis-data-analytics": "Kinesis Data Analytics",
+  "kinesis-video-stream": {
+    "title": "Kinesis Video Streams",
+    "href": "/devops/aws/media/kinesis-video-stream"
+  }
+}

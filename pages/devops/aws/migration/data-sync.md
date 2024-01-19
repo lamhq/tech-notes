@@ -2,9 +2,11 @@
 
 ## Overview
 
-AWS DataSync is an **agent-based solution** for migrating **on-premises storage to AWS**. It allows you to easily move data between NFS and SMB shares and AWS storage solutions.
+AWS DataSync is an **agent-based solution** for migrating **on-premises storage to AWS**.
 
-It is ideal for a **one-time migration** when you have a large chunk of data on-premises that you want to move to AWS.
+It allows you to easily move large amounts of data online  between on-premises storage (NFS/SMB shares, HDFS) and AWS storage solutions (S3, Amazon EFS, Amazon FSx for Windows/Lustre/OpenZFS/NetApp ONTAP).
+
+Ideal for a **one-time migration**.
 
 
 ## Using DataSync

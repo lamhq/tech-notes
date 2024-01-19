@@ -46,12 +46,12 @@ Flexible message delivery is provided over multiple transport protocols.
 When subscribing to an SNS topic the following endpoint types are supported:
 
 - HTTP/HTTPS.
-- Email/Email-JSON.
-- Amazon Kinesis Data Firehose.
-- Amazon SQS.
 - AWS Lambda.
-- Platform application endpoint (mobile push).
+- Amazon SQS.
+- Email/Email-JSON.
 - SMS.
+- Amazon Kinesis Data Firehose.
+- Platform application endpoint (mobile push).
 
 
 ## SNS Fanout
@@ -90,3 +90,8 @@ The Fanout scenario is when a message published to an SNS topic is replicated an
 *An EC2 instance attached to one of the SQS queues can handle the processing or fulfillment of the order. And you can attach another EC2 instance to a data warehouse for analysis of all orders received.*
 
 ![](https://docs.aws.amazon.com/images/sns/latest/dg/images/sns-fanout.png)
+
+
+## SQS vs. SNS vs. Kinesis
+
+Check this [document](/devops/aws/app-integration/sqs#sqs-vs-sns-vs-kinesis).

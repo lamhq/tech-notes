@@ -1,11 +1,10 @@
 # Authorization and Access Control
 
-
-## IAM authentication
+## Authentication with IAM
 
 Amazon RDS supports identity-based policies using IAM.
 
-IAM database authentication works with MySQL and PostgreSQL. With this authentication method, you don’t need to use a password when you connect to a DB instance. Instead, you use an authentication token.
+IAM database authentication works with MySQL and PostgreSQL. With this authentication method, you use an authentication token to connect to a DB instance.
 
 **Benefits:**
 - Network traffic to and from the database is encrypted using Secure Sockets Layer (SSL).

@@ -36,7 +36,9 @@ If users request files directly by using Amazon S3 URLs, they’re denied access
 
 ## Geo Restrictions
 
-Blacklists and whitelists can be used for geography, you can only use one at a time.
+Blacklists and whitelists can be used for geography (you can only use one at a time):
+- Allow your users to access your content only if they're in one of the countries on a whitelist of approved countries.
+- Prevent your users from accessing your content if they're in one of the countries on a blacklist of banned countries.
 
 There are two options available for geo-restriction (geo-blocking):
 

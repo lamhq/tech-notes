@@ -24,3 +24,5 @@ When one instance fails, no failover occurs, as long as at least one database in
 The failure of a writer node merely requires the application (using the writer) to open connections to another writer.
 
 Provides ACID transactions across a cluster of database nodes with configurable **read after write consistency**.
+
+Available on Aurora MySQL 5.6-compatible edition.

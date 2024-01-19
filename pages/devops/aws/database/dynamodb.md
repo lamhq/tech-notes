@@ -16,7 +16,7 @@ You can scale up or scale down tables' throughput capacity with minimal downtime
 
 Offer Multi-AZ redundancy and Cross-Region Replication.
 
-Strongly consistent or eventually consistent reads, support for ACID transactions.
+Strongly consistent or eventually consistent reads, support ACID transactions.
 
 The aggregate size of an item cannot exceed 400KB including keys and all attributes.
 
@@ -31,6 +31,66 @@ Amazon DynamoDB is not ideal for the following situations:
 - Joins and/or complex transactions.
 - BLOB data.
 - Large data with low I/O rate.
+
+
+## Partitions
+
+Amazon DynamoDB stores data in partitions.
+
+A partition contain table's data, it is replicated across multiple AZs within a Region.
+
+DynamoDB allocates additional partitions to a table in the following situations:
+
+- If you increase the table’s provisioned throughput settings beyond what the existing partitions can support.
+- If an existing partition fills to capacity and more storage space is required.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-dynamodb-partitions-and-primary-keys.jpeg)
+
+DynamoDB evenly distributes provisioned throughput (RCUs and WCUs) among partitions
+
+If your access pattern exceeds 3000 RCU or 1000 WCU for a single partition key value, your requests might be throttled.
+
+
+## Primary Keys
+
+DynamoDB stores and retrieves data based on a Primary key.
+
+There are two types of Primary key: Partition key and Composite key.
+
+**Partition key** (unique attribute)
+- Partition key determines the partition or physical location on which the data is stored (through an internal hash function)
+- If you are using the Partition key as your Primary key, then no two items can have the same partition key.
+
+**Composite key** (Partition key + Sort key in combination)
+- 2 items may have the same Partition key, but they must have a different Sort key.
+- All items with the same Partition key are stored together, then sorted according to the Sort key value.
+- Allows you to store multiple items with the same partition key.
+
+Best practices for partition keys:
+- Use high-cardinality attributes. e.g. e-mailid, employee_no, customerid, sessionid, orderid, and so on.
+- Use composite attributes. e.g. customerid+productid+countrycode as the partition key and order_date as the sort key.
+- Add random numbers or digits from a predetermined range for write-heavy use cases. e.g. add a random suffix to an invoice number such as INV00023-04593
+
+
+## Consistency Models
+
+DynamoDB supports eventually consistent and strongly consistent reads.
+
+Eventually consistent reads:
+- When you read data from a DynamoDB table, the response might not reflect the results of a recently completed write operation.
+- The response might include some stale data.
+- If you repeat your read request after a short time, the response should return the latest data.
+
+Strongly consistent reads:
+- When you request a strongly consistent read, DynamoDB returns a response with the most up-to-date data, reflecting the updates from all prior write operations that were successful.
+- A strongly consistent read might not be available if there is a network delay or outage. In this case, DynamoDB may return a server error (HTTP 500).
+- Strongly consistent reads may have higher latency than eventually consistent reads.
+- Strongly consistent reads are not supported on global secondary indexes.
+- Strongly consistent reads use more throughput capacity than eventually consistent reads.
+
+DynamoDB uses eventually consistent reads by default.
+
+You can configure strongly consistent reads with the `GetItem`, `Query` and `Scan` APIs by setting the `–consistent-read` (or `ConsistentRead`) parameter to `true`.
 
 
 ## Scaling
@@ -95,15 +155,21 @@ You can switch between the different capacity modes twice per 24 hours per table
 
 ## DynamoDB Transactions
 
-If you have any scenario that mentions ACID requirements, think of DynamoDB Transactions.
+DynamoDB Transactions provide ACID transactions across one or more tables within a single AWS account and region.
 
-DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across one or more tables within a single AWS account and region.
+It checks for a pre-requisite condition before writing to a table.
+
+With the transaction write API, you can group multiple Put, Update, Delete, and ConditionCheck actions and submit the actions as a single `TransactWriteItems` operation that either succeeds or fails as a unit.
+
+Performs two underlying reads or writes of every item in the transaction: one to prepare the transaction and one to commit the transaction.
 
 3 options for reads: eventual consistency, strong consistency, and transactional
 
 2 options for writes: standard and transactional
 
 Up to 100 actions per transaction or 4 MB of data.
+
+No additional cost.
 
 
 ## DynamoDB Streams

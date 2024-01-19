@@ -1,70 +1,68 @@
 # AWS Organizations
 
-AWS Organizations is a free governance tool that allows you to create and **manage multiple AWS accounts**.
+## Overview
 
-With it, you can control your accounts from a single location rather than jumping from account to account.
+AWS Organizations is a free governance tool that hepls you **centrally manage multiple AWS accounts and govern your environment**.
 
+Using a multi-account environment is a recommended best-practice when scaling your cloud environment.
+
+Available to all AWS customers at no additional charge.
 
 ## Account types
 
-**Management Account**:
+### Management Account
 - Also called the Payer account
 - Primary for centralizing governance.
 - SCPs do not affect the management account.
 
-**Member Account**: All other AWS accounts that belong to the organization. Can include development accounts, testing accounts, production accounts.
+### Member Account
+
+- All other AWS accounts that belong to the organization. 
+- Can include development accounts, testing accounts, production accounts.
 
 
-## Features
+## Consolidated billing
 
-- **Consolidated Billing**: Rolls all bills up to the payer account. Single payment method
-- **Usage Discounts**: Consolidated billing allows for aggregate usage discounts
-- **Shared Savings**: Easily share Reserved Instances and Savings Plans across the org. *For example, you can share your central AWS Directory Service running on Managed Active Directory with all accounts in your organization, for application to access your central identity store*
-- Automate AWS account creation and management
-- Create groups of accounts to reflect business needs
-- Govern access to AWS services resources in Region by policy
+You can use AWS Organizations to set up a single payment method for all the AWS accounts in your organization through consolidated billing.
 
+With consolidated billing, you can see a combined view of charges incurred by all your accounts.
 
-## Multi-account
+Can also take advantage of pricing benefits from aggregated usage, such as volume discounts for Amazon EC2 and Amazon S3.
 
-Allows you to easily achieve a multi-account design while maintaining centralized management
+Consolidated billing separates paying accounts and linked accounts.
 
-## Tag Enforcement
+Limit of 20 linked accounts for consolidated billing (default).
 
-Capability to require specific tags is leveraged for all AWS resources.
-
-This ensures consistent tagging practices and it enables better resource categorization and tracking
+Billing alerts can be setup at the paying account which shows billing for all linked accounts.
 
 
 ## Organizational Unit (OU)
 
-Logical grouping of multiple accounts to allow for easy management and separation.
+A group of AWS accounts within an organization. An OU can also contain other OUs enabling you to create a hierarchy.
 
 
-## Service Control Policies (SCPs)
+## Tag Enforcement
 
-JSON policies that get applied to OUs or accounts to restrict actions that are (or are not) allowed for different resources.
+Provides capability to require specific tags is leveraged for all AWS resources.
 
-They are the only way to restrict what the root account can do.
+This ensures consistent tagging practices and it enables better resource categorization and tracking
 
-Example policy that denies any attempt to stop or terminate all EC2 instances within the account:
 
-```json
-{
-  "Version":"2012-10-17",
-  "Statement":[
-    {
-      "Sid":"DenyStopAndTerminate",
-      "Effect":"Deny",
-      "Action":[
-        "ec2:StopInstances",
-        "ec2:TerminateInstances"
-      ],
-      "Resource":"*"
-    }
-  ]
-}
-```
+## Migrating accounts between organizations
+
+Accounts can be migrated between organizations.
+
+You must have root or IAM access to both the member and management accounts.
+
+For migrating a few accounts, use AWS Organizations console. Otherwise, use API or AWS CLI.
+
+Billing history and billing reports for all accounts stay with the management account in an organization.
+
+Before migration download any billing or report history for any member accounts that you want to keep.
+
+When a member account leaves an organization, all charges incurred by the account are charged directly to the standalone account.
+
+Even if the account move only takes a minute to process, it is likely that some charges will be incurred by the member account.
 
 
 ## Best practices

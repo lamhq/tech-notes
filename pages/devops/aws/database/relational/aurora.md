@@ -56,11 +56,11 @@ The writer nodes are all functionally equal, and a failure of one writer node do
 
 ## Global Database
 
-A single Aurora database can span multiple AWS regions to enable fast local reads and quick disaster recovery.
+Aurora Global Database allows you to use a single Aurora database that span multiple AWS regions, enabling low latency global reads and providing fast recovery from the rare outage that might affect an entire AWS Region. 
 
-Global Database uses **storage-based replication** to replicate a database across multiple AWS Regions, with typical latency of less than 1 second.
+An Aurora global database has a primary DB cluster in one Region, and up to five read-only secondary DB clusters in different Regions.
 
-You can use a secondary region as a backup option in case you need to recover quickly from a regional degradation or outage.
+The primary DB cluster perform write operations, Aurora replicates data to secondary regions with latency typically under a second.
 
 A database in a secondary region can be promoted to full read/write capabilities in less than 1 minute.
 

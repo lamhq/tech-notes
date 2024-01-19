@@ -4,15 +4,21 @@
 
 Kinesis Video Streams allows users to **stream media content** from a large number of devices (webcam, security cameras, smartphones) to AWS for analytics, machine learning, playback...
 
-It elastically scales to ingest streaming media to millions of devices.
-
 It stores, encrypts, and indexes media in your streams, allows you to access your media through APIs.
 
-By default, Kinesis Video Streams will store a video stream for 24 hours, can be extended up to 7 days.
+It elastically scales to ingest streaming media to millions of devices.
+
+Stores data for 24 hours by default, up to 7 days.
+
+Stores data in shards – 5 transaction per second for reads, up to a max read rate of 2MB per second and 1000 records per second for writes up to a max of 1MB per second.
+
+Can have multiple shards in a stream.
 
 Supports HTTPS Live Streams (HLS) and Dynamic Adaptive Streaming Over HTTPS (DASH) for **video playback**.
 
 Supports Web Real-Time Communication (WebRTC) for peer-to-peer **video conferencing**.
+
+Supports encryption at rest with server-side encryption (KMS) with a customer master key.
 
 
 ## Use cases

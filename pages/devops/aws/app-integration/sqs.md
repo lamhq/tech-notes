@@ -198,17 +198,6 @@ You can also specify permissions in an **SQS queue access policy**:
 - Control over the requests that come in.
 
 
-## SQS vs. Kinesis Data Streams
-
-Both services can be queues.
-
-SQS is easier and simpler.
-
-Kinesis Data Streams is faster (real-time).
-
-SQS is designed to **temporarily hold** a **small message** until a **single consumer** processes it. Kinesis Data Streams is designed to provide **durable storage** and playback of **large data streams** to **multiple consumers**.
-
-
 ## SQS with Lambda
 
 You can use a Lambda function to process messages in a SQS queue.
@@ -220,3 +209,36 @@ Lambda polls the queue and invokes your Lambda function synchronously with an ev
 Lambda reads messages in batches and invokes your function once for each batch.
 
 When your function successfully processes a batch, Lambda deletes its messages from the queue.
+
+
+## SQS vs. SNS vs. Kinesis
+
+Kinesis Data Stream:
+
+- Consumers pull data
+- Can be used as queues.
+- As many consumers as you need.
+- Possible to replay data.
+- Meant for **real-time** big data, analytics, and ETL.
+- Ordering at the shard level.
+- Data expires after X days.
+- Must provision throughput.
+ 
+SQS:
+
+- Consumers pull data.
+- Data is deleted after being consumed.
+- Can have as many workers (consumers) as you need.
+- No need to provision throughput.
+- No ordering guarantee (except with FIFO queues).
+- Individual message delay.
+
+SNS:
+
+- Push data to many subscribers.
+- Up to 10,000,000 subscribers.
+- Data is not persisted (lost if not deleted).
+- Pub/sub.
+- Up to 10,000,000 topics.
+- No need to provision throughput.
+- Integrates with SQS for fan-out architecture pattern.
