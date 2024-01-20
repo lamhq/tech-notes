@@ -945,7 +945,7 @@ INCORRECT: "**Launch EC2 instances into multiple regions behind an NLB with a st
 
 INCORRECT: "**Launch EC2 instances into multiple regions behind an ALB and use a Route 53 failover routing policy**" is incorrect. A Route 53 failover routing policy uses a primary and standby configuration. Therefore, it sends all traffic to the primary until it fails a health check at which time it sends traffic to the secondary. This solution does not intelligently route traffic for lowest latency.
 
-INCORRECT: "**Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses**" is incorrect. Amazon CloudFront cannot be configured with “a pair of static IP addresses".
+INCORRECT: "**Launch EC2 instances into multiple regions behind an ALB and use Amazon CloudFront with a pair of static IP addresses**" is incorrect. Amazon CloudFront cannot be configured with "a pair of static IP addresses".
 
 References:
 
@@ -1242,7 +1242,7 @@ What is the most cost-effective solution to these requirements?
   <A correct>Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe.</A>
   <R/>
   <E>
-  With Amazon CloudFront you can set the price class to determine where in the world the content will be cached. One of the price classes is “U.S, Canada and Europe" and this is where the company’s users are located. Choosing this price class will result in lower costs and better performance for the company’s users.
+  With Amazon CloudFront you can set the price class to determine where in the world the content will be cached. One of the price classes is "U.S, Canada and Europe" and this is where the company’s users are located. Choosing this price class will result in lower costs and better performance for the company’s users.
 
 CORRECT: "**Create an Amazon CloudFront distribution and set the price class to use only U.S, Canada and Europe.**" is the correct answer.
 
@@ -1881,7 +1881,7 @@ What should a solutions architect do to protect the application?
   <A>Modify the network ACL on the CloudFront distribution to add a deny rule for the malicious IP address</A>
   <R/>
   <E>
-  A new version of the AWS Web Application Firewall was released in November 2019. With AWS WAF classic you create “IP match conditions", whereas with AWS WAF (new version) you create “IP set match statements". Look out for wording on the exam.
+  A new version of the AWS Web Application Firewall was released in November 2019. With AWS WAF classic you create "IP match conditions", whereas with AWS WAF (new version) you create "IP set match statements". Look out for wording on the exam.
 
 The IP match condition / IP set match statement inspects the IP address of a web request's origin against a set of IP addresses and address ranges. Use this to allow or block web requests based on the IP addresses that the requests originate from.
 

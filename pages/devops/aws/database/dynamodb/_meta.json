@@ -1,3 +1,12 @@
 {
+  "concepts": "Concepts",
+  "indexes": "Indexes",
+  "scalability": "Scalability",
+  "security": "Security",
+  "access-control": "Access control",
+  "backup": "Backup & Restore",
+  "performance": "Performance and Optimization",
+  "global-table": "Global Tables",
+  "pricing": "Pricing",
   "snippets": "Snippets"
 }

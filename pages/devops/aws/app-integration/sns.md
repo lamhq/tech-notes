@@ -30,7 +30,7 @@ Can be used for applications requiring high fan-out (sending messages to thousan
 
 ## SNS Topics
 
-A topic is an “access point” for allowing recipients to dynamically subscribe for identical copies of the same notification.
+A topic is an "access point" for allowing recipients to dynamically subscribe for identical copies of the same notification.
 
 One topic can support deliveries to multiple endpoint types.
 

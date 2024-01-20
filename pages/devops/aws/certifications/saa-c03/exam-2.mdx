@@ -95,11 +95,11 @@ Which solution will meet these requirements with the LEAST operational overhead?
 
 CORRECT: "**Order an AWS Snowball Edge Storage Optimized device. Copy the data to the device. and create a custom transformation job by using AWS Glue**" is the correct answer (as explained above.)
 
-INCORRECT: "**The data can be moved using AWS DataSync. Using AWS Glue, create a custom transformation job” is incorrect. As the network is saturated, AWS DataSync will not work as it is primarily an online data transfer service to transfer data between a data center and AWS.
+INCORRECT: "**The data can be moved using AWS DataSync. Using AWS Glue, create a custom transformation job" is incorrect. As the network is saturated, AWS DataSync will not work as it is primarily an online data transfer service to transfer data between a data center and AWS.
 
-INCORRECT: "**The data will be moved using an AWS Snowcone device. The transformation application should be deployed to the device” is incorrect. You would not be able to deploy a transformation service locally to the Snowcone device as it is not optimized for compute operations.
+INCORRECT: "**The data will be moved using an AWS Snowcone device. The transformation application should be deployed to the device" is incorrect. You would not be able to deploy a transformation service locally to the Snowcone device as it is not optimized for compute operations.
 
-INCORRECT: "**Order an AWS Snowball Edge Storage Optimized device that includes Amazon EC2 compute. Transfer the data to the device. Launch a new EC2 instance to run the transformation application” is incorrect. Using an EC2 instance instead of a managed service like AWS Glue will include more operational overhead for the organization.
+INCORRECT: "**Order an AWS Snowball Edge Storage Optimized device that includes Amazon EC2 compute. Transfer the data to the device. Launch a new EC2 instance to run the transformation application" is incorrect. Using an EC2 instance instead of a managed service like AWS Glue will include more operational overhead for the organization.
 
 References:
 
@@ -201,9 +201,9 @@ Which solution will meet these requirements?
 
 CORRECT: "**Use AWS Storage Gateway to move the existing data to Amazon S3. Use AWS CloudTrail to log management events**" is the correct answer (as explained above.)
 
-INCORRECT: "**Move existing data to Amazon S3 using AWS DataSync. Log data events using AWS CloudTrail” is incorrect. AWS DataSync is a secure, online service that automates and accelerates moving data between on-premises and AWS storage service and is not designed as a hybrid storage service.
+INCORRECT: "**Move existing data to Amazon S3 using AWS DataSync. Log data events using AWS CloudTrail" is incorrect. AWS DataSync is a secure, online service that automates and accelerates moving data between on-premises and AWS storage service and is not designed as a hybrid storage service.
 
-INCORRECT: "**The existing data can be transferred to Amazon S3 with the help of Amazon S3 Transfer Acceleration. Log data events using AWS CloudTrail” is incorrect. Amazon S3 Transfer Acceleration is a bucket-level feature that enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration is designed to optimize transfer speeds from across the world into S3 buckets and is not a migration service.
+INCORRECT: "**The existing data can be transferred to Amazon S3 with the help of Amazon S3 Transfer Acceleration. Log data events using AWS CloudTrail" is incorrect. Amazon S3 Transfer Acceleration is a bucket-level feature that enables fast, easy, and secure transfers of files over long distances between your client and an S3 bucket. Transfer Acceleration is designed to optimize transfer speeds from across the world into S3 buckets and is not a migration service.
 
 INCORRECT: "**Move the existing data to Amazon S3 with AWS Snowcone. Using AWS CloudTrail, you can log management events**" is incorrect. AWS Snowcone is not suitable as a hybrid cloud service.
 
@@ -277,13 +277,13 @@ What should a solutions architect do to meet these requirements with the LEAST a
   <E>
   DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table and stores this information in a log for up to 24 hours. Applications can access this log and view the data items as they appeared before and after they were modified, in near-real time. This is the native way to handle this within DynamoDB, therefore will incur the least amount of operational overhead.
 
-CORRECT: "**On the table, enable Amazon DynamoDB Streams. Subscriptions can be made to a single Amazon Simple Notification Service (Amazon SNS) topic using triggers” is the correct answer (as explained above.)
+CORRECT: "**On the table, enable Amazon DynamoDB Streams. Subscriptions can be made to a single Amazon Simple Notification Service (Amazon SNS) topic using triggers" is the correct answer (as explained above.)
 
-INCORRECT: "**Write new event data to the table using DynamoDB transactions. The transactions should be configured to notify internal teams” is incorrect. With Amazon DynamoDB transactions, you can group multiple actions together and submit them as a single all-or-nothing TransactWriteItems or TransactGetItems operation. The following sections describe API operations, capacity management, best practices, and other details about using transactional operations in DynamoDB. This is not suitable for this use case.
+INCORRECT: "**Write new event data to the table using DynamoDB transactions. The transactions should be configured to notify internal teams" is incorrect. With Amazon DynamoDB transactions, you can group multiple actions together and submit them as a single all-or-nothing TransactWriteItems or TransactGetItems operation. The following sections describe API operations, capacity management, best practices, and other details about using transactional operations in DynamoDB. This is not suitable for this use case.
 
-INCORRECT: "**Use the current application to publish a message to four Amazon Simple Notification Service (Amazon SNS) topics. Each team should subscribe to one topic” is incorrect. Using four separate SNS topics will take a significant amount of overhead, and this functionality can be managed natively within DynamoDB using DynamoDB streams.
+INCORRECT: "**Use the current application to publish a message to four Amazon Simple Notification Service (Amazon SNS) topics. Each team should subscribe to one topic" is incorrect. Using four separate SNS topics will take a significant amount of overhead, and this functionality can be managed natively within DynamoDB using DynamoDB streams.
 
-INCORRECT: "**Create a custom attribute for each record to flag new items. A cron job can be written to scan the table every minute for new items and notify an Amazon Simple Queue Service (Amazon SQS) queue” is incorrect. Writing a CRON job also takes significant overhead compared to using DynamoDB streams.
+INCORRECT: "**Create a custom attribute for each record to flag new items. A cron job can be written to scan the table every minute for new items and notify an Amazon Simple Queue Service (Amazon SQS) queue" is incorrect. Writing a CRON job also takes significant overhead compared to using DynamoDB streams.
 
 References:
 
@@ -822,7 +822,7 @@ The process for using AWS Snowball is as follows:
 
 The solutions architect will need 10 Snowball devices to fulfill the capacity required in this instance as each Snowball contains up to 80TB of usable storage.
 
-CORRECT: "**Order 10 AWS Snowball appliances and select an Amazon S3 bucket as the destination. Create a lifecycle policy to transition the S3 objects to Amazon S3 Glacier” is the correct answer (as explained above.)
+CORRECT: "**Order 10 AWS Snowball appliances and select an Amazon S3 bucket as the destination. Create a lifecycle policy to transition the S3 objects to Amazon S3 Glacier" is the correct answer (as explained above.)
 
 INCORRECT: "**Create a site-to-site VPN connection directly to an Amazon S3 bucket, Enforce the connection with an VPC Endpoint**" is incorrect, as although this would achieve the solution, it would be using the branch’s internet connection and would saturate it - preventing normal business activities from taking place.
 
@@ -930,7 +930,7 @@ Which solution will meet these requirements?
 
 CORRECT: "**Put the JSON documents in an Amazon S3 bucket. As documents arrive in the S3 bucket, create an AWS Lambda function that runs Python code to process them. Use Amazon Aurora DB clusters to store the results**" is the correct answer (as explained above.)
 
-INCORRECT: "**Build an S3 bucket to place the JSON documents in. Run the Python code on multiple Amazon EC2 instances to process the documents. Store the results in a database using the Amazon Aurora Database engine” is incorrect.
+INCORRECT: "**Build an S3 bucket to place the JSON documents in. Run the Python code on multiple Amazon EC2 instances to process the documents. Store the results in a database using the Amazon Aurora Database engine" is incorrect.
 
 Multiple EC2 instances could work, however if you wanted to use EC2 to process the JSON documents you would need to either leave the EC2 instances running all the time (not cost effective) or have them spin up and spin down thousands of times per day (this would be slow and not ideal).
 
@@ -938,7 +938,7 @@ INCORRECT: "**Create an Amazon Elastic Block Store (Amazon EBS) volume for the J
 
 EBS is not optimized for write once read many use-cases, and if you wanted to use EC2 to process the JSON documents you would need to either leave the EC2 instances running all the time (not cost effective) or have them spin up and spin down thousands of times per day (this would be slow and not ideal).
 
-INCORRECT: "**The JSON documents should be queued as messages in the Amazon Simple Queue Service (Amazon SQS). Using the Amazon Elastic Container Service (Amazon ECS) with the Amazon EC2 launch type, deploy the Python code as a container. The container can be used to process SQS messages. Using Amazon RDS, store the results” is incorrect.
+INCORRECT: "**The JSON documents should be queued as messages in the Amazon Simple Queue Service (Amazon SQS). Using the Amazon Elastic Container Service (Amazon ECS) with the Amazon EC2 launch type, deploy the Python code as a container. The container can be used to process SQS messages. Using Amazon RDS, store the results" is incorrect.
 
 A queue within Amazon SQS is not designed to be used for write once read many solutions, and it is designed to be used to decouple separate layers of your architecture. Secondly, ECS for EC2 is not ideal as you would need to either leave the EC2 instances running all the time (not cost effective) or have them spin up and spin down thousands of times per day (this would be slow and not ideal) if you wanted to use ECS for EC2.
 
@@ -1077,13 +1077,13 @@ Which solution meets these requirements?
   <E>
   Amazon FSx for Lustre provides fully managed shared storage with the scalability and performance of the popular Lustre file system. It is fully managed and will allow the company to attach the file system to the origin server and connect the application server to the file system.
 
-CORRECT: "**Create an Amazon FSx for Lustre file system. Connect the file system to the origin server. Ensure that the file system is connected to the application server” is the correct answer (as explained above.)
+CORRECT: "**Create an Amazon FSx for Lustre file system. Connect the file system to the origin server. Ensure that the file system is connected to the application server" is the correct answer (as explained above.)
 
-INCORRECT: "**Assign the AWS DataSync task to share the data as a mountable file system. Sync the file system with the application server” is incorrect. The solution requires a managed Lustre file system, so this would not work.
+INCORRECT: "**Assign the AWS DataSync task to share the data as a mountable file system. Sync the file system with the application server" is incorrect. The solution requires a managed Lustre file system, so this would not work.
 
-INCORRECT: "**Create a file gateway with AWS Storage Gateway. Create a client-side file share using the required protocol. Share the file with the application server” is incorrect. The solution requires a managed Lustre file system, so this would not work.
+INCORRECT: "**Create a file gateway with AWS Storage Gateway. Create a client-side file share using the required protocol. Share the file with the application server" is incorrect. The solution requires a managed Lustre file system, so this would not work.
 
-INCORRECT: "**Create an Amazon Elastic File System (Amazon EFS) file system and configure it to support Lustre. Attach the file system to the origin server. Connect the application server to the file system” is incorrect. The solution requires a managed Lustre file system, so this would not work.
+INCORRECT: "**Create an Amazon Elastic File System (Amazon EFS) file system and configure it to support Lustre. Attach the file system to the origin server. Connect the application server to the file system" is incorrect. The solution requires a managed Lustre file system, so this would not work.
 
 References:
 
@@ -1223,13 +1223,13 @@ Which solution meets these requirements?
   <E>
   Amazon Aurora provides automatic scaling for MySQL databases. Amazon Aurora provides built-in security, continuous backups, serverless compute, up to 15 read replicas, automated multi-Region replication, and integrations with other AWS services. Aurora Serverless reduces any effort from operations also to provision any servers to manage the database cluster.
 
-CORRECT: "**Migrate the databases to Amazon Aurora Serverless (Aurora MySQL)” is the correct answer (as explained above.)
+CORRECT: "**Migrate the databases to Amazon Aurora Serverless (Aurora MySQL)" is the correct answer (as explained above.)
 
-INCORRECT: "**Migrate the databases to Amazon Aurora Serverless (Aurora PostgreSQL)” is incorrect. Although PostgreSQL is an option for Aurora, the database schema would have to be changed to allow PostgreSQL compatibility.
+INCORRECT: "**Migrate the databases to Amazon Aurora Serverless (Aurora PostgreSQL)" is incorrect. Although PostgreSQL is an option for Aurora, the database schema would have to be changed to allow PostgreSQL compatibility.
 
-INCORRECT: "**Consolidate the databases into a single MySQL database. Use larger EC2 instances for the larger database” is incorrect. Databases run on a larger EC2 instance would not provide improved performance, scaling, and durability.
+INCORRECT: "**Consolidate the databases into a single MySQL database. Use larger EC2 instances for the larger database" is incorrect. Databases run on a larger EC2 instance would not provide improved performance, scaling, and durability.
 
-INCORRECT: "**For the database tier, create an EC2 Auto Scaling group. Create a new database environment and migrate the existing databases” is incorrect. This would improve the scalability of the solution but would still have to be heavily managed by the organization, something that would not be needed with Aurora Serverless.
+INCORRECT: "**For the database tier, create an EC2 Auto Scaling group. Create a new database environment and migrate the existing databases" is incorrect. This would improve the scalability of the solution but would still have to be heavily managed by the organization, something that would not be needed with Aurora Serverless.
 
 References:
 
@@ -1329,13 +1329,13 @@ Which solution will meet these requirements MOST cost-effectively?
   <E>
   Amazon Simple Storage Service (Amazon S3) is an object storage service offering industry-leading scalability, data availability, security, and performance. The key in this question is the reference to binary large objects (blobs) which are stored in the database. Amazon S3 is an easy to use and very cost-effective solution for Write Once Read Many (WORM) applications and use cases.
 
-CORRECT: "**Set up an Amazon S3 bucket. The application should be updated to use S3 buckets to store documents. Store the object metadata in the existing database” is the correct answer (as explained above.)
+CORRECT: "**Set up an Amazon S3 bucket. The application should be updated to use S3 buckets to store documents. Store the object metadata in the existing database" is the correct answer (as explained above.)
 
-INCORRECT: "**Increase the RDS DB instance size. Increase the storage capacity to 24 TiB. Change the storage type to Provisioned IOPS” is incorrect. Doing this will increase the performance of your application, however the cost will go up and not go down.
+INCORRECT: "**Increase the RDS DB instance size. Increase the storage capacity to 24 TiB. Change the storage type to Provisioned IOPS" is incorrect. Doing this will increase the performance of your application, however the cost will go up and not go down.
 
-INCORRECT: "**Reduce the size of the RDS DB instance. Increase the storage capacity to 24 TiB. Magnetic storage should be selected” is incorrect. Reducing the instance size will only decrease the performance of your application, alongside changing your EBS volume to a Magnetic volume.
+INCORRECT: "**Reduce the size of the RDS DB instance. Increase the storage capacity to 24 TiB. Magnetic storage should be selected" is incorrect. Reducing the instance size will only decrease the performance of your application, alongside changing your EBS volume to a Magnetic volume.
 
-INCORRECT: "**Create a table in Amazon DynamoDB and update the application to use DynamoDB. Migrate Oracle data to DynamoDB using AWS Database Migration Service (AWS DMS)” is incorrect. DynamoDB is more expensive than Amazon S3.
+INCORRECT: "**Create a table in Amazon DynamoDB and update the application to use DynamoDB. Migrate Oracle data to DynamoDB using AWS Database Migration Service (AWS DMS)" is incorrect. DynamoDB is more expensive than Amazon S3.
 
 References:
 
@@ -1715,7 +1715,7 @@ How should a solutions architect address this issue?
 
 CORRECT: "**Set a permissions boundary on the developer IAM role that denies attaching administrator access**" is the correct answer (as explained above.)
 
-INCORRECT: "**Send an alert every time a developer creates a new policy using an Amazon SNS topic” is incorrect. This does not explicitly prevent any developers from attaching the policy, only sending a notification.
+INCORRECT: "**Send an alert every time a developer creates a new policy using an Amazon SNS topic" is incorrect. This does not explicitly prevent any developers from attaching the policy, only sending a notification.
 
 INCORRECT: "**Disable IAM activity across all organizational accounts using service control policies**" is incorrect. If all IAM activity was disabled across all accounts within the Organizational unit, each IAM user would not be able to do anything within the account.
 
@@ -1793,7 +1793,7 @@ CORRECT: "**Copy the data from all EBS volumes to Amazon EFS. Modify the applica
 
 INCORRECT: "**Run a script to synchronize the data between Amazon EBS volumes**" is incorrect. This is a complex and messy approach. A better solution is to use a shared storage layer.
 
-INCORRECT: "**Use Sticky Sessions with the ALB to ensure users are directed to the same EC2 instance in a session**" is incorrect as this will just “stick” a user to the same instance. They won’t see documents uploaded to other instances / EBS volumes.
+INCORRECT: "**Use Sticky Sessions with the ALB to ensure users are directed to the same EC2 instance in a session**" is incorrect as this will just "stick" a user to the same instance. They won’t see documents uploaded to other instances / EBS volumes.
 
 INCORRECT: "**Configure the Application Load Balancer to send the request to all servers. Return each document from the correct server**" is incorrect as there is no mechanism here for selecting a specific document. The requirement also requests that all documents are visible.
 
@@ -2050,7 +2050,7 @@ What is the MOST cost-effective storage solution that meets the requirements?
   <A>Configure a lifecycle policy to transition the objects to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) after 7 days.</A>
   <A>Configure a lifecycle policy to transition the objects to Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) after 30 days.</A>
   <E>
-  The transition should be to Standard-IA rather than One Zone-IA. Though One Zone-IA would be cheaper, it also offers lower availability and the question states the objects “must remain immediately available”. Therefore the availability is a consideration.
+  The transition should be to Standard-IA rather than One Zone-IA. Though One Zone-IA would be cheaper, it also offers lower availability and the question states the objects "must remain immediately available". Therefore the availability is a consideration.
 
 Though there is no minimum duration when storing data in S3 Standard, you cannot transition to Standard IA within 30 days. This can be seen when trying to create a lifecycle rule:
 
@@ -2168,13 +2168,13 @@ Which solution will meet these requirements with the LEAST effort?
   <E>
   CloudTrail logs are stored natively within an S3 bucket , which can then be easily integrated with Amazon QuickSight. Amazon QuickSight is a data visualization tool which will show any IAM permissions-related Access Denied errors and Unauthorized errors.
 
-CORRECT: "**Search CloudTrail logs with Amazon QuickSight. Create a dashboard to identify the errors” is the correct answer (as explained above.)
+CORRECT: "**Search CloudTrail logs with Amazon QuickSight. Create a dashboard to identify the errors" is the correct answer (as explained above.)
 
-INCORRECT: "**Create a custom script and execute it against CloudTrail logs to find errors using AWS Batch” is incorrect. Writing custom scripts is inevitably more effort than using the native connection between AWS CloudTrail and Amazon QuickSight.
+INCORRECT: "**Create a custom script and execute it against CloudTrail logs to find errors using AWS Batch" is incorrect. Writing custom scripts is inevitably more effort than using the native connection between AWS CloudTrail and Amazon QuickSight.
 
-INCORRECT: "**Search CloudTrail logs with Amazon RedShift. Create a dashboard to identify the errors” is incorrect. Amazon RedShift would not be a simple way of achieving this outcome.
+INCORRECT: "**Search CloudTrail logs with Amazon RedShift. Create a dashboard to identify the errors" is incorrect. Amazon RedShift would not be a simple way of achieving this outcome.
 
-INCORRECT: “Write custom scripts to query CloudTrail logs using AWS Glue” is incorrect. AWS Batch requires configuring several EC2 instances to run jobs for you. This, and writing custom scripts will significantly increase the effort involved.
+INCORRECT: "Write custom scripts to query CloudTrail logs using AWS Glue" is incorrect. AWS Batch requires configuring several EC2 instances to run jobs for you. This, and writing custom scripts will significantly increase the effort involved.
 
 References:
 
@@ -2272,9 +2272,9 @@ What should a solutions architect do to meet these requirements?
   <E>
   Amazon ElastiCache is a fully managed, in-memory caching service supporting flexible, real-time use cases. You can use ElastiCache for caching, which accelerates application and database performance, or as a primary data store for use cases that don't require durability like session stores, gaming leaderboards, streaming, and analytics. ElastiCache is compatible with Redis and Memcached.
 
-As the issues in this instance are caused by poor read performance, a caching solution would offload reads from the primary database instance and allow the application to perform better.CORRECT: "**Use Amazon ElastiCache to cache the database layer” is the correct answer (as explained above.)
+As the issues in this instance are caused by poor read performance, a caching solution would offload reads from the primary database instance and allow the application to perform better.CORRECT: "**Use Amazon ElastiCache to cache the database layer" is the correct answer (as explained above.)
 
-INCORRECT: "**Connect the database and the application layer using RDS Proxy” is incorrect. RDS proxy allows applications to pool and share connections established with the database, improving database efficiency and application scalability. It does not however specifically improve read performance like a caching layer would.
+INCORRECT: "**Connect the database and the application layer using RDS Proxy" is incorrect. RDS proxy allows applications to pool and share connections established with the database, improving database efficiency and application scalability. It does not however specifically improve read performance like a caching layer would.
 
 INCORRECT: "**Use AWS Lambda instead of Amazon EC2 for the compute layer**" is incorrect. AWS Lambda would not be a suitable use case for hosting leaderboards, as the maximum timeout is 15 minutes, and the issue lies with the database layer, not the compute later.
 
@@ -2386,7 +2386,7 @@ CORRECT: "**Set up an HTTPS endpoint in Amazon API Gateway. To process the messa
 
 INCORRECT: "**Create an Amazon EC2 instance to serve as the HTTPS endpoint and to process messages. An Amazon S3 bucket should be configured for the EC2 instance to save the results**" is incorrect. As the action of a badge being read to initiate access to a warehouse should only take a few seconds, spinning up an EC2 instance to serve as a HTTPS endpoint would take minutes, and is not suitable for this use case.
 
-INCORRECT: "**Direct incoming messages from the sensor to an AWS Lambda function using Amazon Route 53. Create a Lambda function that processes messages and saves results to Amazon DynamoDB” is incorrect. Amazon Route 53 is a managed DNS service, and DNS is not required in this instance as the badge reader does not have a DNS name.
+INCORRECT: "**Direct incoming messages from the sensor to an AWS Lambda function using Amazon Route 53. Create a Lambda function that processes messages and saves results to Amazon DynamoDB" is incorrect. Amazon Route 53 is a managed DNS service, and DNS is not required in this instance as the badge reader does not have a DNS name.
 
 INCORRECT: "**Set up an Amazon S3 gateway endpoint in your VPC. Connect the facility network to the VPC via a Site-to-Site VPN connection so that sensor data can be written directly to an S3 bucket**" is incorrect. VPC endpoints are designed to facilitate traffic across the AWS backbone network between AWS services and are not used to create connections between external endpoints outside of the AWS network and an Amazon S3 bucket.
 

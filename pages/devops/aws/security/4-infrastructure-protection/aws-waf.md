@@ -18,13 +18,17 @@ WAF can block:
 
 ## Features
 
-AWS WAF can be deployed and provisioned with **AWS CloudFormation**, allow to describe all security rules for your application
+Filter web traffic based on strings that appear in the requests using string match conditions.
 
-AWS WAF is integrated with **Amazon CloudFront**, which supports custom origins outside of AWS, allow protection of web sites not hosted in AWS.
+Centralizing of rule management. Allow creating a single set of rules and reuse across applications.
 
-AWS WAF is fully integrated with **Amazon CloudWatch**, making it easy to setup custom alarms when thresholds are exceeded, or attacks occur.
+Provides real-time metrics and captures raw requests.
 
-When you use AWS WAF on **Amazon CloudFront**, rules run in all AWS Edge Locations, avoud performance overheat.
+Integrated with **Amazon CloudWatch**, easy to setup custom alarms when thresholds are exceeded, or attacks occur.
+
+Integrated with **Amazon CloudFront**, supports custom origins outside of AWS, allow protection of web sites not hosted in AWS. Rules run in all AWS Edge Locations, avoid performance overheat.
+
+AWS WAF can be deployed and provisioned with **AWS CloudFormation**, allow to describe all security rules for your application.
 
 When you use AWS WAF on an **Application Load Balancer**, your rules run in region and can be used to protect internet-facing (and internal) load balancers.
 
@@ -36,25 +40,31 @@ When AWS services receive requests for web sites, the requests are forwarded to 
 Once a request meets a condition defined in the rules, AWS WAF instructs the underlying service to either block or allow the request based on the action you define.
 
 
-## Pricing
+## Configurations
 
-Pricing is based on how many rules you deploy and how many web requests your web application receives
+It allows 3 different behaviors:
+- **Allow** all requests except the ones you specify.
+- **Block** all requests except the ones you specify.
+- **Count** the requests that match the properties you specify.
 
-No upfront commitments.
-
-
-## Behaviors
-
-At its most basic level, it allows 3 different behaviors:
-
-- **Allow all requests** except the ones you specify.
-- **Block all requests** except the ones you specify.
-- **Count the requests** that match the properties you specify.
-
-You can define conditions by using characteristics of web requests such as the following:
+You can define conditions by matching values in the following request parts:
+- HTTP Header
+- HTTP methods
+- Query string
+- Body
+- Single query parameter (value only)
+- All query parameters (values only)
 - IP addresses that requests originate from
 - Country that requests originate from
-- Values in request headers
 - Presence of SQL code that is likely to be malicious (SQL injection)
 - Presence of a script that is likely to be malicious (cross-site scripting)
 - Strings that appear in requests - either specific strings or strings that match regular expression (regex) patterns
+
+
+## Pricing
+
+Pricing is based on:
+- number of rules you deploy
+- number of requests your web application receives
+
+No upfront commitments.

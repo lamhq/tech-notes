@@ -41,6 +41,23 @@ You can pull data from different Regions into a single dashboard in order to cre
 > You can even customize separate dashboards for different business purposes, applications, or resources.
 
 
+## Container Insights
+
+**Container Insights** allows you to collect, aggregate, and summarize metrics and logs from your containerized applications.
+
+Can be used for containers running on Amazon ECS, Amazon EKS, and K8s platforms on Amazon EC2. 
+
+Also provides diagnostic information: container restart failures, to help you isolate issues and resolve them quickly.
+
+It collects data as performance log events (JSON) using embedded metric format. From this data, CloudWatch creates aggregated metrics at the cluster, node, pod, task, and service level as CloudWatch metrics.
+
+Metrics are available in CloudWatch automatic dashboards, viewable in the Metrics section of the CloudWatch console.
+
+Metrics includes: CPU, memory, disk, network. 
+
+Can set CloudWatch alarms on collected metrics. 
+
+
 ## CloudWatch vs CloudTrail
 
 | CloudWatch | CloudTrail |

@@ -2,13 +2,9 @@
 
 ## Cross Region Replication (CRR)
 
-### Overview
-
 You can replicate objects to other buckets in different regions (and different AWS accounts).
 
 Versioning must be enabled on both source and destination buckets.
-
-CRR is configured at the S3 bucket level.
 
 You can configure separate S3 Lifecycle rules on the source and destination buckets.
 

@@ -66,7 +66,7 @@ Can be assigned:
 
 By default users cannot access anything in your account. To allow the IAM user to perform specific actions in AWS, you must grant the IAM user the necessary permissions.
 
-IAM users can be created to represent applications, and these are known as “service accounts”.
+IAM users can be created to represent applications, and these are known as "service accounts".
 
 Best practice: Create individual IAM users for each person who needs to access AWS. This provides additional security by allowing each IAM user to have a unique set of security credentials.
 

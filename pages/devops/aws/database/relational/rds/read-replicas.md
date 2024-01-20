@@ -50,13 +50,17 @@ See [Read Replicas Support in Multi-AZ](./multi-az.md#read-replicas-support).
 
 ## Limitations
 
-The read replicas storage type and instance class can be different from the source but the compute should be at least the performance of the source.
+Storage type and instance class of read replicas can be different from the source
 
-You can have 5 read replicas of a production DB. You cannot have more than four instances involved in a replication chain.
+The compute of read replicas should be at least the performance of the source.
 
-You cannot change the DB engine.
+You can have 5 read replicas of a production DB. 
 
-You can take snapshots of PostgreSQL read replicas but cannot enable automated backups.
+Cannot have more than 4 instances involved in a replication chain.
+
+Cannot change the DB engine.
+
+Can take snapshots of PostgreSQL read replicas but cannot enable automated backups.
 
 You can enable automatic backups on MySQL and MariaDB read replicas.
 
