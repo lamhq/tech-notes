@@ -2,24 +2,19 @@
 
 ## Overview
 
-EFS is a managed network file system (NFS) that provides **scalable** and **shareable** file storage to be accessed from **Linux** instances.
+Amazon EFS is a fully managed service for hosting Network File System (NFS) filesystems in the cloud.
 
-EFS-based files are accessed from within a VPC via **NFS mounts** on EC2 Linux instances or from your on-premises servers (through Direct Connect connections).
+It is an implementation of a NFS file share and is accessed using the NFS protocol.
 
-Expensive.
+Can scale up to petabytes. Elasticly and grows and shrinks as you add and remove data.
 
+Support thousands of concurrent connections of Amazon EC2 instances, from multiple AZs. A file system can be accessed concurrently from all AZs in the region where it is located.
 
-## Features
+Only available for **Linux** instances.
 
-- Support NFS version 4 (NFSv4) protocol
-- Pay for the storage you use (no pre-provisioning)
-- Scale up to **petabytes**
-- Support thousands of concurrent connections
-- Can handle up to 10 Gbps in throughput
-- Data is stored across multiple AZs within a region
-- Can be mounted to EC2 Linux instances as a shared storage
-- Data is immediately available for reading after written (read-after-write consistency)
-- Encryption at rest using KMS.
+Data is stored across multiple AZs within a region.
+
+Read-after-write consistency.
 
 
 ## Use cases
@@ -29,12 +24,36 @@ Expensive.
 - Content management systems, Web servers
 
 
-## Using
+## How to use?
 
-When creating an EFS file system, you can set what performance characteristics you want.
+EFS-based files are accessed from within a VPC via **NFS mounts** on EC2 Linux instances or from your on-premises servers (through VPN or Direct Connect connections).
 
-- **General Purpose**: Used for things like web servers, CMS, etc.
-- **Max I/O**: Used for big data, media processing, etc.
+You mount an AWS EFS file system on your on-premises Linux server using the standard Linux mount command for mounting a file system via the NFS protocol.
+
+When you create a file system, you create endpoints in your VPC called “mount targets”.
+
+When mounting from an EC2 instance, your file system’s DNS name, which you provide in your mount command, resolves to a mount target’s IP address.
+
+The Amazon VPC of the connecting instance must have DNS hostnames enabled.
+
+You can configure mount-points in one, or many, AZs. Need to create mount targets and choose AZs to include (recommended to include all AZ’s).
+
+The following diagram depicts the various options for mounting an EFS filesystem:
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-efs-file-system.jpeg)
+
+
+## Performance
+
+There are two performance modes:
+- **General Purpose**: appropriate for most file systems.
+- **Max I/O**: Used for big data, media processing, etc. Support tens, hundreds, or thousands of EC2 instances accessing the file system.
+
+Amazon EFS is designed to burst to allow high throughput levels for periods of time.
+
+There are two throughput modes:
+- "Bursting": throughput scales with file system size.
+- "Provisioned": Throughput is fixed at the specified amount.
 
 
 ## Storage Tiers
@@ -45,7 +64,21 @@ EFS comes with storage tiers and lifecycle management, allowing you to move your
 - **Infrequently Accessed**: For files not frequently accessed
 
 
+## Pricing
+
+Pay for the storage you use (no pre-provisioning)
+
+Expensive. $0.30/GB-month
+
+
 ## EFS vs. EBS
+
+| &nbsp; | Amazon EFS | Amazon EBS Provisioned IOPS |
+|---|---|---|
+| What? | File system accessed via NFS mounts | Volumes attach to EC2 instances |
+| Availability and durability | Data is stored redundantly across multiple AZs | Data is stored redundantly in a single AZ |
+| Access | Up to thousands of Amazon EC2 instances, from multiple AZs, can connect concurrently to a file system | A single Amazon EC2 instance in the same AZ with the attached volume |
+| Use cases | Big data and analytics, media processing and workflows, content management, web serving and home directories | Boot volumes, transactional and NoSQL databases, data warehousing and ETL |
 
 ### EBS
 

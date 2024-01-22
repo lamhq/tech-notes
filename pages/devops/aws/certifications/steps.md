@@ -15,7 +15,8 @@
 ## How to know when you're ready?
 
 - Repeating Cloud Guru Final Practice Exam with score >85% with full understanding.
-- Take AWS official practice exam and pass.
+- Finish the test in Sample Questions with score at least 8/10.
+- Consistently pass 3 Udemy Practice Exams in a row.
 - Read exam blueprint and understand every single item/term/topic
 
 
@@ -23,11 +24,12 @@
 
 To register for the AWS Solutions Architect Associate exam, you can follow these steps:
 
-1. Visit the official [AWS Certified Solutions Architect - Associate Certification page](https://aws.amazon.com/certification/certified-solutions-architect-associate/).
-2. Click on the **Schedule an Exam** button.
-3. You will be redirected to the AWS Certification Account page. If you don't have an account, you will need to create one.
-4. Once you have logged in, you will be able to schedule your exam by selecting a date and time that works for you.
-5. You will be asked to provide payment information to complete the registration process.
+1. Visit the AWS Training page: [https://www.aws.training/](https://www.aws.training/).
+2. Sign in, Choose EXAM REGISTRATION section in the left navigation bar.
+1. Click on the **Schedule an Exam** item.
+2. Select the appropriate exam, click **SCHEDULE**.
+3. Once you have logged in, you will be able to schedule your exam by selecting a date and time that works for you.
+4. You will be asked to provide payment information to complete the registration process.
 
 
 ## Review before exam
