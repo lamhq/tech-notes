@@ -1,8 +1,8 @@
 {
-  "1-cloudtrail": { "title": "AWS CloudTrail" },
-  "2-macie": { "title": "Amazon Macie " },
-  "3-inspector": { "title": "Amazon Inspector" },
-  "4-guardduty": { "title": "Amazon GuardDuty" },
-  "5-detective": { "title": "Amazon Detective" },
-  "9-trusted-advisor": { "title": "AWS Trusted Advisor" }
+  "cloudtrail": "AWS CloudTrail",
+  "macie": "Amazon Macie ",
+  "inspector": "Amazon Inspector",
+  "guardduty": "Amazon GuardDuty",
+  "detective": "Amazon Detective",
+  "trusted-advisor": "AWS Trusted Advisor"
 }
