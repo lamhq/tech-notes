@@ -1,38 +1,17 @@
 # Amazon FSx
 
-## FSx for Windows
+## Overview
 
-File storage for Windows instances. Centralized storage solution across multiple AZs.
+Amazon FSx provides fully managed third-party file systems.
 
-FSx for Windows File Server integrates operations with Server Message Block (SMB), NTFS, and Microsoft Active Directory.
+Amazon FSx provides you with the native compatibility of third-party file systems with feature sets for workloads, such as Windows-based storage, high-performance computing (HPC), machine learning, and electronic design automation (EDA).
 
-You can easily move your Windows-based applications that require file storage to AWS.
+Amazon FSx provides you with four file systems to choose from:
 
-Use cases: SharePoint migrations, shared storage.
-
-
-### FSx for Windows vs. EFS
-
-| FSx for Windows | EFS                     |
-|-----------------------------------------|-----------------------------------------------|
-| A managed Windows Server that **runs Windows Server Message Block** (SMB)-based file services.   | A managed NAS filer for EC2 instances based on Network File System (NFS) version 4. |
-| Designed for Windows and Windows applications. | One of the first network file sharing protocols native to Unix and Linux.           |
-| Supports Active Directory users, access control lists, groups, and security policies, along with Distributed File System (DFS) namespaces and replication. |  |
-
-
-## FSx for Lustre
-
-Lustre is an open source distributed filesystem built to give **Linux** clusters access to **high-performance filesystems** for use in compute-intensive operations.
-
-A fully managed file system that is optimized for **compute-intensive workloads** of Linux-based applications.
-
-FSx for Lustre can store data directly on S3.
-
-Use cases:
-- High-performance workloads, processing massive datasets (hundreds of gigabytes per second, millions of IOPS), low latencies (sub-millisecond)
-- Machine Learning
-- Media Data Processing Workflows
-- Electronic Design Automation
+- Amazon FSx for Windows File Server for Windows-based applications
+- Amazon FSx for Lustre for compute-intensive workloads.
+- Amazon FSx for NetApp ONTAP.
+- Amazon FSX for OpenZFS.
 
 
 ## When to use EFS, FSx for Windows, FSx for Lustre?
