@@ -11,7 +11,20 @@ Scalable. Volume sizes and types can be upgraded while in-use without downtime (
 You cannot have EBS in separate regions.
 
 
-## Instance termination behavior
+## Use Cases
+
+Designed for **production, mission-critical workloads**.
+
+Useful when you need to retrieve data quickly and have data persist long-term.
+
+Volumes are commonly used in the following scenarios:
+- Operating systems: Boot/root volumes to store an operating system.
+- Databases: A storage layer for databases running on Amazon EC2 that rely on transactional reads and writes.
+- Enterprise applications: provides reliable block storage to run business-critical applications.
+- Throughput-intensive applications: Applications that perform long, continuous reads and writes.
+
+
+## Deployment and Provisioning
 
 Termination protection is turned off by default and must be manually enabled (keeps the volume/data when the instance is terminated).
 
@@ -21,19 +34,38 @@ Extra non-boot volumes are not deleted on termination by default.
 
 The behavior can be changed by altering the `DeleteOnTermination` attribute.
 
+Elastic Volumes allow you to increase volume size, adjust performance, or change the volume type while the volume is in use.
 
-## Use Cases
+To migrate volumes between AZ’s create a snapshot then create a volume in another AZ from the snapshot (possible to change size and type).
 
-Designed for **production, mission-critical workloads**.
 
-Useful when you need to retrieve data quickly and have data persist long-term.
+## Copying, Sharing and Encryption Methods
 
-Volumes are commonly used in the following scenarios:
+The following diagram aims to articulate the various possible options for copying EBS volumes, sharing AMIs and snapshots and applying encryption:
 
-- Operating systems: Boot/root volumes to store an operating system.
-- Databases: A storage layer for databases running on Amazon EC2 that rely on transactional reads and writes.
-- Enterprise applications: provides reliable block storage to run business-critical applications.
-- Throughput-intensive applications: Applications that perform long, continuous reads and writes.
+![](https://digitalcloud.training/wp-content/uploads/2022/01/ebs-copying-sharing-and-encryption.jpeg)
+
+
+## Amazon Data Lifecycle Manager (DLM)
+
+Automates the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs.
+- Protect valuable data by enforcing a regular backup schedule.
+- Create standardized AMIs that can be refreshed at regular intervals.
+- Retain backups as required by auditors or internal compliance.
+- Reduce storage costs by deleting outdated backups.
+- Create disaster recovery backup policies that back up data to isolated accounts.
+
+
+## EBS Limits (per region)
+
+| Name | Default Limit |
+|---|---|
+| Provisioned IOPS | 300,000 |
+| Provisioned IOPS (SSD) volume storage (TiB) | 300 |
+| General Purpose (SSD) volume storage (TiB) | 300 |
+| Magnetic volume storage (TiB) | 300 |
+| Max Cold HDD (sc1) Storage in (TiB) | 300 |
+| Max Throughput Optimized HDD (st1) Storage (TiB) | 300 |
 
 
 ## EBS and EC2
