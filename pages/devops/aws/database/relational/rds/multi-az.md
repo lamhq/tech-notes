@@ -19,9 +19,11 @@ You cannot choose which AZ in the region will be chosen to create the standby DB
 
 ## Automatic failover
 
-- Automatic failover to standby when a problem is detected.
-- Depending on the instance class it can take 1 to a few minutes to failover to a standby DB instance.
-- It is recommended to implement DB connection retries in your application.
+Automatic failover to standby when a problem is detected.
+
+Depending on the instance class it can take 1 to a few minutes to failover to a standby DB instance.
+
+It is recommended to implement DB connection retries in your application.
 
 
 ## Read Replicas Support

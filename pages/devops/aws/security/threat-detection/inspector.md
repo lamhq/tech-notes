@@ -15,9 +15,9 @@ Keywords: vulnerability scans for EC2 instances and VPC.
 
 ## Types of Assessment
 
-- **Network Assessments**: Network configuration analysis to checks for ports reachable from outside the VPC
+- **Network Assessments**: Network configuration analysis to checks for ports reachable from outside the VPC.
 Inspector agent is not required.
-- **Host Assessments**: Vulnerable software (VE), host hardening (CIS Benchmarks), and security best practices
+- **Host Assessments**: Vulnerable software (VE), host hardening (CIS Benchmarks), and security best practices.
 Inspector agent is required.
 
 

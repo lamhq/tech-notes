@@ -1,10 +1,18 @@
 # AWS Outpost
 
-Outposts brings the AWS data center directly to you, on-premises.
+Outposts brings the AWS data center directly to on-premises systems.
 
-Outposts allows you to have the large variety of AWS services (S3, EC2, ...) in your data center.
+Outposts allows you to have the large variety of AWS services (S3, EC2, ...) in your data center, include:
+- Amazon EC2.
+- Amazon EBS.
+- Amazon S3.
+- Amazon VPC.
+- Amazon ECS/EKS.
+- Amazon RDS.
+- Amazon EMR.
 
-You can have Outposts in sizes such as 1U and 2U servers all the way up to 42U racks and multiple-rack deployments.
+Outposts is available as a 42U rack that can scale from 1 rack to 96 racks to create pools of compute and storage capacity.
+
 
 ## Benefits
 
@@ -26,8 +34,8 @@ You can have Outposts in sizes such as 1U and 2U servers all the way up to 42U r
 ### Outposts Servers
 
 - **Hardware**: Individual servers in 1U or 2U form factor.
-- **Use Cases**: Useful for **small space** requirements, such as **retail stores**, branch offices, healthcare provider locations, or factory floors.
 - **Results**: Provides local compute and networking services only.
+- **Use Cases**: Useful for **small space** requirements, such as **retail stores**, branch offices, healthcare provider locations, or factory floors.
 
 
 ## Process
