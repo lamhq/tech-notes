@@ -2,14 +2,27 @@
 
 ## Learning
 
-- **Combine learning styles** that are effective for you:
-  - Visual: reading written text, seeing graphs, charts, maps, diagrams
-  - Auditory: listening, reading aloud, repeating back, storytelling
-  - Kinesthetic/tacticle/hands-on: moving, touching, doing, practicing
-- **Study frequently but in small chunks** to give brain time to absorb information (spreading, not compressing)
+### Guidelines
+
+- **Combine learning styles/resources** that are effective for you:
+  - Watching videos
+  - Reading books
+  - Doing practice exams
+  - Doing labs
+- **Study frequently but in small chunks** to give brain time to absorb information
 - **Frequently change tasks and topics** so that you are forced to think about the material in different ways
-- **Review information** before you forget it completely
-- **Always ask questions**
+- **Review information** by reading cheat sheets, study notes, doing practice exams
+- **Ask questions**
+
+### Learning Steps
+
+1. Complete a topic from **watching video course** to get the overview
+1. Read a chapter in a **book** to get more details about the topic
+1. Make **cheat sheets** for what you've learned
+2. Back to step 1 until finish all topics
+3. Review cheat sheets
+4. Do practice exams (in A Cloud Guru) with score >85% with full understanding.
+5. Do practice exams (in Udemy) until consistently pass 3 exams in a row
 
 
 ## How to know when you're ready?

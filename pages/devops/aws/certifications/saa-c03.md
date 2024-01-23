@@ -50,14 +50,16 @@ The exam has the following content domains and weightings:
 
 ### Guide
 
-1. [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard): quick overview
-1. [Cheat sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/): take notes
-1. [Study notes](https://docs.lamhq.com): reviewing
-1. [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626): know more details
-1. [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf): exam content, for reference
+1. [A Cloud Guru video course](https://learn.acloud.guru/course/certified-solutions-architect-associate/dashboard) gives you a quick overview of the topics
+1. [Cheat sheets](https://digitalcloud.training/category/aws-cheat-sheets/aws-solutions-architect-associate/) gives your the main points of each AWS services
+1. [Study notes](https://docs.lamhq.com) helps you to quickly review the knowledge. It's a shorter version of Cheat sheets, contains only information that you find important.
+1. [Study guide](https://www.amazon.com/Certified-Solutions-Architect-Study-Guide-dp-1119982626/dp/1119982626) provides detailed explanations, illustrations to helps you deeply understand the topic.
+1. [Exam guide (optional)](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf) let your know about the structure of the exam
+
 
 ### Test
 
-1. [SAA-C03 Sample questions](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf): know the difficulty
-1. 12 Practice Test documents (in my goole drive)
-1. [Practice exams (Udemy)](https://www.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate): consistenly pass 3 exams  before the real exam
+1. [SAA-C03 Sample questions](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions.pdf) let you know the difficulty of the exam
+1. [Practice exams (A Cloud Guru)](https://learn.acloud.guru/course/certified-solutions-architect-associate) contains tests that cover a wide range of topics that helps you review knowledge before the exam.
+2. [Practice exams (Udemy)](https://www.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate) are harder than your studies, be sure to consistenly pass 3 exams before the real exam.
+3. [Another Practice exams (Udemy)](https://www.udemy.com/course/aws-certified-solutions-architect-associate-practice-tests-k/): like above.
