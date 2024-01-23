@@ -1,8 +1,8 @@
 {
-  "1-shared-responsibility-model": { "title": "Shared Responsibility Model" },
-  "2-dos": { "title": "Denial-of-Service Attacks" },
-  "6-identity-management": { "title": "Identity Management" },
-  "3-data-protection": { "title": "Data Protection" },
-  "4-infrastructure-protection": { "title": "Infrastructure Protection" },
-  "5-threat-detection": { "title": "Threat Detection" }
+  "shared-responsibility-model": { "title": "Shared Responsibility Model" },
+  "dos": { "title": "Denial-of-Service Attacks" },
+  "identity-management": { "title": "Identity Management" },
+  "data-protection": { "title": "Data Protection" },
+  "infrastructure-protection": { "title": "Infrastructure Protection" },
+  "threat-detection": { "title": "Threat Detection" }
 }

@@ -1,0 +1,8 @@
+{
+  "secret-manager": { "title": "AWS Secrets Manager" },
+  "parameter-store": { "title": "Parameter Store" },
+  "kms": { "title": "AWS KMS" },
+  "cloud-hsm": { "title": "AWS CloudHSM" },
+  "cer-manager": { "title": "AWS Certificate Manager" },
+  "encryption": { "title": "Encryption" }
+}
