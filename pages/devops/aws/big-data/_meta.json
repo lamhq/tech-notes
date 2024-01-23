@@ -1,5 +1,4 @@
 {
-  "overview": { "title": "Overview" },
   "redshift": { "title": "Amazon Redshift" },
   "emr": { "title": "Amazon EMR" },
   "athena": { "title": "Amazon Athena" },
