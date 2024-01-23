@@ -17,10 +17,13 @@ It's known as the **EXTERNAL** launch type for creating your services or running
 
 ## Requirements
 
-- You must have the SSM Agent, ECS agent, and Docker installed
-- You must first register external instances as SSM Managed Instances, by creating an installation script within the ECS console
-- You run these scripts on your external instances and servers. The scripts contain SSM activation keys and commands for installing required software above
-- After all, you deploy containers using the **EXTERNAL** launch type.
+You must have the SSM Agent, ECS agent, and Docker installed
+
+You must first register external instances as SSM Managed Instances, by creating an installation script within the ECS console
+
+You run these scripts on your external instances and servers. The scripts contain SSM activation keys and commands for installing required software above
+
+After all, you deploy containers using the **EXTERNAL** launch type.
 
 
 ## Example architecture

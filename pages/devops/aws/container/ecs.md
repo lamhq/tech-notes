@@ -11,8 +11,6 @@ Amazon ECS can be used to schedule the placement of containers across clusters b
 
 ## Integrations
 
-You can associate a service on Amazon ECS to an ALB for the **ELB service**. ALB supports a target group that contains a set of instance ports. You can specify a dynamic port in the ECS task definition which gives the container an unused port when it is scheduled on the EC2 instance.
-
 You can use any **AMI** that meets the Amazon ECS AMI specification.
 
 Containers can have individual roles (**IAM** role) attached to them, making security a breeze

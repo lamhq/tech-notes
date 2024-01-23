@@ -4,15 +4,17 @@
 
 AWS X-Ray is a service that collect data within your application for viewing, filtering, and **gaining insights about requests & responses** of your application.
 
-Any calls that your application makes
-to downstream resources in AWS (microservices,
-APIs, databases) is viewable, filterable,
-and you can use it to gain insights as well.
+X-Ray provides an end-to-end view of requests as they travel through your application and shows a map of your application’s underlying components.
+
+AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture.
+
+With X-Ray, you can understand how your application and its underlying services are performing to identify and troubleshoot the root cause of performance issues and errors.
+
+You can use X-Ray to analyze both applications in development and in production, from simple three-tier applications to complex microservices applications consisting of thousands of service.
 
 The service receives traces from your applications for allow insights:
 - A lot of AWS services can automatically provide traces to this service
-- For different integrated services,
-you can add tracing headers, trace data, or run the X-Ray Daemon on the server running your app.
+- For different integrated services, you can add tracing headers, trace data, or run the X-Ray Daemon on the server running your app.
 
 Integrates with AWS Lambda and Amazon API Gateway, help you gain deeper insights and understanding of your workload requests and responses.
 

@@ -12,15 +12,6 @@ Initiative (OCI) images, Docker images, and OCI artifacts.
 ECR Public is a similar service for public image repositories.
 
 
-## Components
-
-- **Registry**: A private registry provided to each AWS account; create one or more for image storage. Each registry í regional fỏ each account.
-- **Authorization Token**: Authentication token required for pushing and pulling images to and from registries
-- **Repository**: Contains all of your Docker images, OCI images, and OCI artifacts
-- **Repository Policy**: Control all access to repos and images
-- **Image**: Container images that get pushed to and pulled from your repository
-
-
 ## Features
 
 ### Lifecycle policies
@@ -57,3 +48,12 @@ ECR Public is a similar service for public image repositories.
 - Amazon ECS: Use container images in ECS container definitions.
 - Amazon EKS: Pull images for your EKS clusters.
 - Amazon Linux: Amazon Linux containers can be used locally for your software development.
+
+
+## Components
+
+- **Registry**: A private registry provided to each AWS account; create one or more for image storage. Each registry í regional fỏ each account.
+- **Authorization Token**: Authentication token required for pushing and pulling images to and from registries
+- **Repository**: Contains all of your Docker images, OCI images, and OCI artifacts
+- **Repository Policy**: Control all access to repos and images
+- **Image**: Container images that get pushed to and pulled from your repository
