@@ -1,5 +1,4 @@
 {
-  "1-overview": { "title": "Overview" },
-  "2-fargate": { "title": "AWS Fargate" },
-  "3-ecs-anywhere": { "title": "Amazon ECS Anywhere" }
+  "fargate": "AWS Fargate",
+  "ecs-anywhere": "Amazon ECS Anywhere"
 }

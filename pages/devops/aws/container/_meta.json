@@ -1,6 +1,6 @@
 {
-  "ecs": { "title": "Amazon ECS" },
-  "eks": { "title": "Amazon EKS" },
-  "ecr": { "title": "Amazon ECR" },
-  "app-runner": { "title": "AWS App Runner" }
+  "ecs": "Amazon ECS",
+  "eks": "Amazon EKS",
+  "ecr": "Amazon ECR",
+  "app-runner": "AWS App Runner"
 }

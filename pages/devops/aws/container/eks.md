@@ -33,14 +33,13 @@ Amazon EKS offers the following features:
   - Amazon Virtual Private Cloud (VPC) for isolation.
 
 
-## ECS or EKS?
+## ECS vs. EKS
 
-ECS:
-- A proprietary AWS container management solution (not opensource)
-- Best used when you're all in on AWS
-- Use if you are looking for something simple to orchestrate containers
-
-EKS:
-- AWS-managed version of open-source Kubernetes container management solution
-- Best used when you're not all in on AWS. Perfect for significantly larger workloads.
-- Significantly more work to configure and integrate with AWS
+| Amazon ECS | Amazon EKS |
+|---|---|
+| AWS-specific platform that supports Docker Containers | Compatible with upstream Kubernetes so it’s easy to lift and shift from other Kubernetes deployments |
+| Simpler and easier to use | Feature-rich, complex with a steep learning curve |
+| Best used when you're all in on AWS | Perfect for significantly larger workloads. |
+| Leverages AWS services like Route 53, ALB, and CloudWatch | A hosted Kubernetes platform that handles many things internally |
+| "Tasks" are instances of containers that are run on underlying compute but more of less isolated | "Pods" are containers collocated with one another and can have shared access to each other |
+| Limited extensibility | Extensible via a wide variety of third-party and community add-ons. |
