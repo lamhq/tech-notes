@@ -2,7 +2,7 @@
 
 ## Overview
 
-Artifact is a single source you can visit to **get the compliance-related information** that matters to you, such as AWS security and compliance reports or select online agreements.
+Artifact is a single source you can visit to **get the compliance-related information**, such as AWS security and compliance reports or select online agreements.
 
 There are a huge number of **compliance reports** available, such as AWS Service Organization Control (SOC) reports, Payment Card Industry (PCI) reports, and GDPR reports, as well as other certifications (including ISO reports, HIPAA, and more).
 

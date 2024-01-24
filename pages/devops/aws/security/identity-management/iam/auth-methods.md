@@ -23,7 +23,9 @@ The Access Key ID and Secret Access Key can only be generated once and must be r
 ## Server certificates
 
 SSL/TLS certificates that you can use to authenticate with some AWS services.
+
 AWS recommends that you use the AWS Certificate Manager (ACM) to provision, manage and deploy your server certificates.
+
 Use IAM only when you must support HTTPS connections in a region that is not supported by ACM.
 
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-2.jpg)

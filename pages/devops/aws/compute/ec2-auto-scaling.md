@@ -30,6 +30,7 @@ You can create a launch template one of three ways:
 
 Launch templates are similar to launch configurations and offer more features such as supporting multiple versions of a template.
 
+
 ## Auto Scaling Groups
 
 An Auto Scaling Group (ASG) is a logical grouping of EC2 instances managed by an Auto Scaling Policy.

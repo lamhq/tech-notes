@@ -12,7 +12,7 @@ It can migrate your data to and from most widely used commercial and open-source
 
 You have the option to perform a one-time migration or continuously replicate ongoing changes.
 
-You can use the Schema Conversion Tool (SCT) to translate database schemas into new platforms (different database engines).
+You can use the Schema Conversion Tool to translate database schemas into new platforms.
 
 You can easily migrate between source and target endpoints with the same or different engine types.
 
@@ -32,9 +32,9 @@ You leverage the SCT for creating some or all of your tables, indexes, and more.
 Source and target data stores are referred to as endpoints.
 
 
-## Schema Conversion Tool (SCT)
+## Schema Conversion Tool
 
-Schema Conversion Tool can copy database schemas for homogenous migrations (same database) and convert schemas for heterogeneous migrations (different database).
+Schema Conversion Tool (SCT) can copy database schemas for homogenous migrations (same database) and convert schemas for heterogeneous migrations (different database).
 
 It supports many types of relational databases, including both OLAP and OLTP, also data warehouses.
 
@@ -45,24 +45,24 @@ You can even use the converted schemas with databases running on EC2 or data sto
 
 ## Migration types
 
-- **Full Load**. All existing data is moved from sources to targets in parallel. While this is in progress,
+**Full Load**. All existing data is moved from sources to targets in parallel. While this is in progress,
 any changes made to your tables that are being loaded are cached on your replication server.
-- **Full Load and Change Data Capture (CDC)**. Migrate existing data and replicate ongoing changes.
-- **CDC Only**. Only replicate the data changes from the source database. CDC is the only one that guarantees transactional integrity of your target database.
+**Full Load and Change Data Capture (CDC)**. Migrate existing data and replicate ongoing changes.
+**CDC Only**. Only replicate the data changes from the source database. CDC is the only one that guarantees transactional integrity of your target database.
 
 
 ## Migrating Large Data Stores via AWS Snowball
 
 You can migrate massive databases to AWS more efficiently by using Snowball devices with DMS.
 
+Snowball devices are ideal for scenarios dealing with terabytes or petabytes of information with network throttling. 
+
 You can leverage certain Edge devices and Amazon S3 with AWS DMS to quickly migrate large data sets.
 
-The AWS Schema Conversion Tool can be used to extract your data into Snowball devices and then into Amazon S3.
+The AWS SCT can be used to extract your data into Snowball devices and then into Amazon S3.
 
 Once that's done, you can still use DMS to load your extracted data from Amazon S3 and migrate that data to your chosen destination like RDS.
 
-Snowball devices are ideal for scenarios dealing with terabytes or petabytes of information with network throttling. 
+You can still leverage CDC for capturing your changes when you're extracting data to store it in Amazon S3.
 
-Consider using Snowball devices and AWS DMS for any database migration portion of it.
-
-It is also CDC compatible, so you can still leverage change data capture for capturing your changes when you're extracting data to store it in Amazon S3.
+![](https://d2908q01vomqb2.cloudfront.net/e1822db470e60d090affd0956d743cb0e7cdf113/2020/03/04/Architecture-diagram-of-the-migration-workflow.png)

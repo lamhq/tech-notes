@@ -27,7 +27,7 @@ Nearly unlimited transactions per second.
 
 Messages could be received out of order.
 
-Messages can be duplicated (due to visibility timeout is too low or delete API is not called).
+Messages can be duplicated (due to visibility timeout is too low or applications do not delete messages after processing).
 
 Tips: to prevent duplication, you can include a unique ordering ID in each message, and have the backend application use this to deduplicate messages.
 
@@ -42,9 +42,9 @@ Message is delivered once and remains available until a consumer processes and d
 
 Support message groups that allow multiple ordered message groups within a single queue.
 
-Support up tp to **300** messages per second. When you batch 10 messages per operation (maximum), FIFO queues can support up to 3,000 messages per second.
+Support up to **300** messages per second. When you batch 10 messages per operation (maximum), FIFO queues can support up to 3,000 messages per second.
 
-You can enable **FIFO high throughput**, allow to process up to 9000 transactions per second, per API without batching, 90000 per second with batching.
+You can enable **FIFO high throughput**, allow to process up to 9,000 transactions second/API (without batching), 90,000 per second with batching.
 
 Do not have the same level of performance as standard queues.
 
@@ -101,8 +101,8 @@ Make sure you set up an alarm and alert on queue depth.
 
 The amount of time a message is invisible in the queue after a reader picks it up.
 
-- If the job is processed before the visibility timeout expires, the message will then be deleted from the queue.
-- If the job is not processed within the visibility timeout, the message will become visible again and another reader will process it.
+- If the job **is processed** before the visibility timeout expires, the message will then be deleted from the queue.
+- If the job **is not processed** within the visibility timeout, the message will become visible again and another reader will process it.
 
 This could result in the same message being delivered twice.
 
