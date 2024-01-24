@@ -2,7 +2,7 @@
 
 ## Overview
 
-It's a service that make it easy for developers and organizations to **find, deploy, publish serverless applications** within their own AWS accounts.
+It's a service that make it easy for developers and organizations to **find, deploy, publish pre-made serverless applications** within their own AWS accounts.
 
 Ability to share applications privatel (within orgs) or publicly.
 
@@ -15,9 +15,9 @@ There're two options to choose:
 
 ### Publish
 
-- Publishing apps makes them available for others to find and deploy.
-- Define apps with AWS SAM templates.
-- Set to private by default. Only owner can see it.
+- You publish apps, makes them available for others to find and deploy.
+- You define apps with AWS SAM templates.
+- App is set to private by default. Only owner can see it.
 - Must explicitly share if desired. Can share with specific accounts or publicly with everyone.
 
 ### Deploy

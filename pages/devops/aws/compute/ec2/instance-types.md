@@ -81,3 +81,10 @@ Use cases:
 - graphics processing, video encoding
 - 3D visualizations, 3D rendering
 - graphics-intensive remote workstations
+
+
+## Resizing instance sizes
+
+You can resize your instance by changing its instance type
+
+The instance must be stopped before you can change its type. EC2 doesn't support changing the size of a running instance.

@@ -2,8 +2,6 @@
 
 ## Overview
 
-![](https://media.amazonwebservices.com/blog/2014/elb_instances_1.png)
-
 Elastic Load Balancing automatically distributes incoming application traffic across multiple healthy targets
 
 Targets can be Amazon EC2 instances, containers, IP addresses, and Lambda functions.
@@ -20,17 +18,20 @@ Deleting an ELB does not affect the instances registered against it.
 
 By default the ELB has an idle connection timeout of 60 seconds.
 
+![](https://media.amazonwebservices.com/blog/2014/elb_instances_1.png)
+
 
 ## Internal vs. public facing ELB
 
 Internet facing ELB:
 - ELB nodes have public IPs
-- Routes traffic to the private IP addresses of the EC2 instances
 - Each defined AZ quire one public subnet
+- Routes traffic to the private IP addresses of the EC2 instances
 - ELB DNS name format: `<name>-<id-number>.<region>.elb.amazonaws.com`
 
 Internal only ELB:
 - ELB nodes have private IPs
+- Do not need an Internet gateway.
 - Routes traffic to the private IP addresses of the EC2 instances
 - ELB DNS name format: `internal-<name>-<id-number>.<region>.elb.amazonaws.com`
 
@@ -51,26 +52,6 @@ ELB only supports valid TCP requests so DDoS attacks such as UDP and SYN floods 
 ELB also offers a single point of management and can serve as a line of defense between the internet and your backend.
 
 You can also attach AWS Web Application Firewall (WAF) Web ACLs to Application Load Balancers to protect against web exploits.
-
-
-## Monitoring
-
-Monitoring takes place using:
-
-**CloudWatch**: every 1 minute.
-- ELB service only sends information when requests are active.
-- Can be used to trigger SNS notifications.
-
-**Access Logs**:
-- Disabled by default.
-- Includes information about the clients (not included in CloudWatch metrics).
-- Can identify requester, IP, request type etc.
-- Can be optionally stored and retained in S3.
-- ALB also logs requests that never reached targets.
-
-**CloudTrail**:
-- Can be used to capture API calls to the ELB.
-- Can be stored in an S3 bucket.
 
 
 ## Deregistration Delay

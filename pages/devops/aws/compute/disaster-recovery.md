@@ -2,7 +2,7 @@
 
 ## Recovery Point Objective
 
-The recovery point objective (RPO) is the maximum period of acceptable data loss (data loss tolerance).
+The recovery point objective (RPO) is the **maximum period of acceptable data loss** (data loss tolerance).
 
 *For instance, if an organization has an RPO of 60 minutes, it means they need to back up their system every 60 minutes.*
 
@@ -11,7 +11,7 @@ The lower the time, the greater the cost to achieve that.
 
 ## Recovery Time Objective
 
-The recovery time objective (RTO) is the** maximum acceptable time to recover** data and resume processing after a failure.
+The recovery time objective (RTO) is the **maximum acceptable time to recover** data and resume processing after a failure.
 
 RTO deals with how quickly an organization can resume business processes after a disaster.
 

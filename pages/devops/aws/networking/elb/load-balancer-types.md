@@ -24,7 +24,7 @@ Support **sticky sessions**. Allow requests to be sent to the same backend serve
 
 IP addresses can be configured as targets which allows load balancing to applications hosted in AWS or on-premises using the IP addresses of the back-end instances/servers as targets.
 
-Detailed access log information is provided and saved to an S3 bucket every 5 or 6 minutes.
+Detailed **access log** information is provided and saved to an S3 bucket every 5 or 6 minutes.
 
 Federated authentication:
 - Supports authentication from OIDC compliant identity providers such as Google, Facebook, and Amazon.
