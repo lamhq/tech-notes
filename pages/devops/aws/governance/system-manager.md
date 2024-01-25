@@ -2,7 +2,7 @@
 
 ## Overview
 
-AWS Systems Manager is a suite of tools designed to let you view, control, and automate both your managed instances in AWS and on-premises.
+AWS Systems Manager is a **suite of tools** designed to let you **view, control, and automate both your managed instances** in AWS and on-premises.
 
 
 ## Features

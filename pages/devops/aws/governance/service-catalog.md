@@ -2,7 +2,7 @@
 
 ## Overview
 
-It's a service that allows organizations to create and manage catalogs of approved IT services.
+It's a service that allows organizations to create and manage **catalogs of approved IT services**.
 
 They're multipurpose catalogs. Can include things like AMIs, servers, software, databases, and other preconfigured components.
 

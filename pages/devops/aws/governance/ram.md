@@ -2,7 +2,7 @@
 
 ## Overview
 
-A free service that allows you to share AWS resources with other accounts inside or outside your organization.
+A free service that allows you to **share AWS resources** with other accounts inside or outside your organization.
 
 AWS RAM allows you to easily share resources rather than having to create duplicate copies in your different accounts.
 
