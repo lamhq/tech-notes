@@ -1,0 +1,1412 @@
+import A from '@/Answer'
+import R from '@/Reveal'
+import E from '@/Explanation'
+
+# Practice Test 4
+
+## Question 1
+
+<Q>
+You have started as the chief security officer at a major internet security company. They are migrating to AWS and you are tasked with creating the required IAM users, IAM roles, IAM groups, and IAM policies for the entire company. What is the best practice when creating IAM policies?
+
+  <A>Grant all users power user access.</A>
+  <E>You should always use the concept of least privilege when granting permissions. Power user access does not do this.</E>
+
+  <A>Use the concept of maximum privilege where you grant every permission possible.</A>
+  <E>You should always use the concept of least privilege when granting permissions. You should never grant more privileges than are necessary.</E>
+
+  <A>Conduct extensive background research on your staff and if they pass grant them full admin access.</A>
+  <E>You should always use the concept of least privilege when granting permissions.</E>
+
+  <A correct>Use the concept of least privilege where you grant the permissions only required to complete a task.</A>
+  <E>You should always use the concept of least privilege when granting permissions.</E>
+  <R />
+</Q>
+
+
+## Question 2
+
+<Q>
+You are a solutions architect working for a popular online store. The store exists on a single EC2 instance with an RDS instance on the backend. The RDS instance experiences an outage and your website goes down. Your boss asks you how you can make the site more resilient. What should you recommend?
+
+  <A>Create another RDS instance in another Availability Zone. Update your connection string on your website to connect to both RDS instances simultaneously.</A>
+  <E>This would be technically feasible but is not the most efficient way of doing it.</E>
+
+  <A>Migrate your RDS instance to DynamoDB and turn on Multi-AZ.</A>
+  <E>This would be technically feasible but is not the most efficient way of doing it.</E>
+
+  <A correct>Enable Multi-AZ deployment on RDS. Failover will occur automatically.</A>
+  <E>This is the best solution in the scenario.</E>
+
+  <A>Add a read replica to the RDS instance and design a script to failover to this instance if the primary instance goes down.</A>
+  <E>This would be technically feasible but is not the most efficient way of doing it.</E>
+  <R />
+</Q>
+
+
+## Question 3
+
+<Q>
+You work for a company that uses EC2 with instance store for storage. If you terminate the EC2 instance, what happens to the data on the root device volume?
+
+  <A>Data is automatically saved to S3.</A>
+  <E>Data is not automatically saved to S3.</E>
+
+  <A>Data is archived to Glacier.</A>
+  <E>This would not happen, and it is not technically accurate.</E>
+
+  <A>Data is backed to RDS.</A>
+  <E>This is not technically accurate.</E>
+
+  <A correct>Data is automatically deleted.</A>
+  <E>Your data is automatically deleted by default if you terminate the EC2 instance.</E>
+  <R />
+</Q>
+
+
+## Question 4
+
+<Q>
+You have been assigned to migrate an application and the servers it runs on to the company AWS cloud environment. You have created a checklist of steps necessary to perform this migration. A subsection in the checklist is security considerations. One of the things that you need to consider is the shared responsibility model. Which option does the customer handle under the shared responsibility model?
+
+
+  <A>Network infrastructure</A>
+  <E>Incorrect. This is not a customer responsibility.</E>
+
+  <A>Hardware infrastructure</A>
+  <E>Incorrect. This is not a customer responsibility.</E>
+
+  <A correct>Identity and Access Management</A>
+  <E>
+Identity and Access Management is the responsibility of the customer.
+AWS is responsible for protecting the infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure is composed of the hardware, software, networking, and facilities that run AWS Cloud services.
+Customer responsibility will be determined by the AWS Cloud services that a customer selects. This determines the amount of configuration work the customer must perform as part of their security responsibilities. For example, a service such as Amazon Elastic Compute Cloud (Amazon EC2) is categorized as Infrastructure as a Service (IaaS) and, as such, requires the customer to perform all of the necessary security configuration and management tasks. Customers that deploy an Amazon EC2 instance are responsible for management of the guest operating system (including updates and security patches), any application software or utilities installed by the customer on the instances, and the configuration of the AWS-provided firewall (called a security group) on each instance. For abstracted services, such as Amazon S3 and Amazon DynamoDB, AWS operates the infrastructure layer, the operating system, and platforms, and customers access the endpoints to store and retrieve data. Customers are responsible for managing their data (including encryption options), classifying their assets, and using IAM tools to apply the appropriate permissions.
+https://aws.amazon.com/compliance/shared-responsibility-model/
+
+</E>
+
+  <A>Availability Zones</A>
+  <E>Incorrect. This is not a customer responsibility.</E>
+  <R />
+</Q>
+
+
+## Question 5
+
+<Q>
+You work for an online store that has a large number of EC2 instances. The company had a list of public keys and public IP addresses of the individual EC2 instances stored in an S3 bucket. However, this was accidentally deleted by an intern. You need to rebuild this list using an automated script. You create a script running a `curl` command to get the data on each EC2 instance and to write this to an S3 bucket. Which of the following should you query?
+
+  <A>Amazon Machine Image</A>
+  <E>An Amazon Machine Image is an image of an EC2 instance and does not describe the metadata.</E>
+
+  <A>Instance Userdata</A>
+  <E>Instance Userdata describes what bootstrap script was run when creating the instance.</E>
+
+  <A correct>Instance Metadata</A>
+  <E>Instance Metadata describes all the data about the EC2 instance.</E>
+
+  <A>Amazon EBS</A>
+  <E>EBS is a virtual hard disk.</E>
+  <R />
+</Q>
+
+
+## Question 6
+
+<Q multi>
+You recently had a security breach in your AWS environment, and hackers provisioned EC2 instances to mine cryptocurrency. You need to record all API calls made within your AWS environment moving forward and store these records securely. Which services should you use?
+
+  <A>DynamoDB.</A>
+  <E>This does not integrate with the appropriate service.</E>
+
+  <A correct>S3</A>
+  <E>S3 can be used to store all the records.</E>
+
+  <A correct>CloudTrail</A>
+  <E>CloudTrail is used to record all API calls within an AWS account.</E>
+
+  <A>CloudWatch</A>
+  <E>CloudWatch is a performance monitoring tool and would not be suitable.</E>
+  <R />
+</Q>
+
+
+## Question 7
+
+<Q>
+You have started at a new company that has recently had a major security breach in their AWS account. Somehow, someone was able to gain access to the entire account, and they were able to create EC2 instances to mine Bitcoin and share pirated material using S3. Your boss instructs you to find an automated threat detection service that can protect your entire AWS account. What AWS service should you recommend?
+
+  <A correct>Amazon Guard Duty</A>
+  <E>Amazon GuardDuty is a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity and delivers detailed security findings for visibility and remediation. Reference: [Amazon Guard Duty](https://aws.amazon.com/guardduty/)</E>
+
+  <A>AWS Shield Advanced</A>
+  <E>AWS Shield Advanced is used for DDoS mitigation. It is not an automated threat detection service.</E>
+
+  <A>Amazon Trusted Advisor</A>
+  <E>Amazon Trusted Advisor only gives you automated advice on things like billing and configuration. It is not an automated threat detection service.</E>
+
+  <A>Amazon Inspector.</A>
+  <E>Amazon Inspector is a vulnerability management service that continuously scans your AWS workloads for vulnerabilities.</E>
+  <R />
+</Q>
+
+
+## Question 8
+
+<Q>
+You have a new intern starting at a security company who works on the developer team. She has access to the developer account but needs temporary write access to S3 in your production account. What is the most secure way to provide the intern with access?
+
+  <A correct>Use AWS STS.</A>
+  <E>This gives you temporary credentials to access an account.</E>
+
+  <A>Use AWS KMS to provide access.</A>
+  <E>KMS does not allow cross account access.</E>
+
+  <A>Create an IAM username and password with S3 write access to the production account and share this user name and password with your intern.</A>
+  <E>This does not comply to the principle of least privilege.</E>
+
+  <A>Create an IAM username and password with Admin Access to the production account and share this user name and password with your intern.</A>
+  <E>This does not comply to the principle of least privilege. You should not grant Admin Access to your intern.</E>
+  <R />
+</Q>
+
+
+## Question 9
+
+<Q>
+You currently host a website on-premises that uses RabbitMQ, but you are now migrating to AWS. You need something that is resilient, can act as an alternative asynchronous service, and also supports the MQTT (MQ Telemetry Transport) messaging protocol. What service should you use?
+
+  <A>Amazon SWF</A>
+  <E>This would not be the best AWS service to use.</E>
+
+  <A correct>Amazon MQ</A>
+  <E>Amazon MQ is a managed message broker service for Apache ActiveMQ and RabbitMQ that makes it easy to set up and operate message brokers on AWS. Reference: [Amazon MQ](https://aws.amazon.com/amazon-mq)</E>
+
+  <A>Amazon SNS</A>
+  <E>This would not be the best AWS service to use.</E>
+
+  <A>Amazon Message Rabbit</A>
+  <E>There is no such AWS service.</E>
+  <R />
+</Q>
+
+
+## Question 10
+
+<Q>
+You are launching a simple static website that uses HTML, CSS, and some JavaScript that promotes a very popular Hollywood blockbuster. You are expecting a crazy amount of traffic around the premiere of the movie, with traffic dying down to low levels six months after launch. You need to choose a solution that will scale automatically to a global audience yet minimize costs. What should you choose?
+
+  <A correct>Create an S3 bucket and turn on static website hosting. Use CloudFront as a CDN and set the origin as the S3 bucket.</A>
+  <E>This is both technically feasible and is the least expensive option.</E>
+
+  <A>Create an S3 bucket and turn on static website hosting. Use CloudFormation as a CDN and set the origin as the S3 bucket.</A>
+  <E>CloudFormation is not a CDN provider, so this is technically not feasible.</E>
+
+  <A>Use API Gateway/Lambda & EC2 with EBS with provisioned IOPS with a MongoDB server installed.</A>
+  <E>Although technically feasible, this is not the most cost-efficient answer.</E>
+
+  <A>Install the website on a fleet of EC2 instances behind an Application Load Balancer with WAF enabled and an Autoscaling Group.</A>
+  <E>Although technically feasible, this is not the most cost-efficient answer.</E>
+  <R />
+</Q>
+
+
+## Question 11
+
+<Q>
+You currently host a file server on EC2 with the files being stored on EBS. After an outage lasting several hours, you need to design a fault-tolerant architecture so that if the EC2 instance goes down, your customers will still be able to access their files. What is the most fault-tolerant architecture below?
+
+  <A>Lambda Function behind API Gateway with three EBS volumes mounted to the function.</A>
+  <E>This is not technically possible. You cannot mount EBS to a function.</E>
+
+  <A>Two EC2 instances behind an application load balancer and autoscaling group connected to two EBS volumes in separate regions.</A>
+  <E>This is not technically possible. You cannot have EBS in separate regions.</E>
+
+  <A correct>Three EC2 instances behind an Application Load Balancer and Autoscaling group, connected to an EFS mount.</A>
+  <E>This is the most fault-tolerant solution in the scenario.</E>
+
+  <A>An EC2 instance behind a classic load balancer connected to an EBS volume in another region.</A>
+  <E>This is not technically possible. You cannot have EBS in separate regions.</E>
+  <R />
+</Q>
+
+
+## Question 12
+
+<Q>
+You have a website hosted internally on an on-premises solution. You recently suffered a major DDoS attack that takes the website offline for several days. Your boss wants you to immediately migrate the website to AWS and to implement the most comprehensive AWS DDoS solution possible. What AWS service should you recommend?
+
+  <A>AWS Shield</A>
+  <E>Although Shield is a DDoS mitigation tool, there is more advanced protection available, and your boss asked you to get the best protection available.</E>
+
+  <A>AWS Defender - Advanced</A>
+  <E>There is no such service as AWS Defender - Advanced.</E>
+
+  <A correct>AWS Shield - Advanced</A>
+  <E>
+This is the more comprehensive DDoS protection available from AWS.
+Reference: [AWS Shield](https://aws.amazon.com/shield/)
+</E>
+
+  <A>AWS Defender</A>
+  <E>There is no such service as AWS Defender.</E>
+  <R />
+</Q>
+
+
+## Question 13
+
+<Q>
+You have a large fleet of EC2 instances on AWS. Recently, one of your EC2 instances is compromised using a well known vulnerability in Apache. You need an automated vulnerability management service that continually scans your EC2 fleet for software vulnerabilities and unintended network exposure. What AWS service should you recommend?
+
+  <A>CloudWatch</A>
+  <E>CloudWatch is a performance monitoring tool, not a vulnerability management service that continuously scans your AWS workloads for vulnerabilities.</E>
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor is used to automate advice on AWS on things like billing and security. It is not a vulnerability management service that continuously scans your AWS workloads for vulnerabilities.</E>
+
+  <A>CloudTrail</A>
+  <E>CloudTrail is used to record API calls and is not a vulnerability management service that continuously scans your AWS workloads for vulnerabilities.</E>
+
+  <A correct>AWS Inspector</A>
+  <E>AWS Inspector satisfies the requirements for this scenario. Reference: [AWS Inspector](https://aws.amazon.com/inspector/)</E>
+  <R />
+</Q>
+
+
+## Question 14
+
+<Q>
+Which of the following services is NOT included in AWS Free Tier?
+
+  <A>RDS</A>
+  <E>RDS is a free tier service.</E>
+
+  <A correct>Snowball</A>
+  <E>Snowball is not a free tier service.</E>
+
+  <A>Lambda</A>
+  <E>Lambda is a free tier service.</E>
+
+  <A>EC2</A>
+  <E>EC2 is a free tier service.</E>
+  <R />
+</Q>
+
+
+## Question 15
+
+<Q>
+You work in the security team for a major insurance company that has hundreds of production AWS accounts. Recently, there was a major security breach across multiple AWS production accounts. The breaches were detected using GuardDuty, Inspector, Macie, and Amazon Firewall Manager; however, because people rarely log in to these individual AWS accounts, the breaches weren’t noticed for a long a time. You need to implement a solution that will allow you to view all your security alerts in a single place. Which AWS service should you use?
+
+  <A correct>AWS Security Hub</A>
+  <E>AWS Security Hub is a single place to view all your security alerts from services like Amazon GuardDuty, Amazon Inspector, Amazon Macie, and AWS Firewall Manager.</E>
+
+  <A>Amazon Inspector</A>
+  <E>Amazon Inspector is an automated vulnerability management service that continually scans AWS workloads for software vulnerabilities and unintended network exposure. It is not a single place to view all your security alerts from multiple AWS accounts.</E>
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor provides recommendations that help you follow AWS best practices. It is not a single place to view all your security alerts from multiple AWS accounts.</E>
+
+  <A>Amazon Cloudwatch</A>
+  <E>Amazon CloudWatch is a monitoring service. It is not a single place to view all your security alerts from multiple AWS accounts.</E>
+  <R />
+</Q>
+
+
+## Question 16
+
+<Q>
+Your marketing team within your organization has decided they want to begin a large-scale marketing campaign for customers. They have requested your help in designing a solution to help them best achieve their goals.
+Some requirements include the ability to group customers based on specific criteria for targeted messaging, ease of use, and the ability to utilize machine learning to better understand future engagements based on the current campaign activities.
+Which AWS service best fits this scenario?
+
+  <A>AWS Lambda with AWS SNS</A>
+  <E>This is a possible architecture; however, it is not the simplest option and does not natively offer machine learning integrations. It also does not easily offer targeting of specific customer groups.</E>
+
+  <A>Amazon SES with managed user groups</A>
+  <E>This is not a real option within Amazon SES.</E>
+
+  <A correct>Amazon Pinpoint</A>
+  <E>
+Amazon Pinpoint allows users to easily engage millions of customers via different communication channels. It is geared towards less technical teams, like marketing teams, and simplifies engagement campaigns. The service also offers the ability to leverage machine learning models to better understand customer interactions for future engagements.
+Reference: [What is Amazon Pinpoint?](https://docs.aws.amazon.com/pinpoint/latest/userguide/welcome.html) [Machine learning models in Amazon Pinpoint](https://docs.aws.amazon.com/pinpoint/latest/userguide/ml-models.html)
+</E>
+
+  <A>AWS Lambda with DynamoDB tables hosting the customer groups</A>
+  <E>This is a possible architecture. However, it is not the simplest option and does not natively offer machine learning integrations. It also does not easily offer targeting of specific customer groups.</E>
+  <R />
+</Q>
+
+
+## Question 17
+
+<Q>
+You work for an advertising agency that has an on-premises file server with large images. You are running low on storage and need to extend your storage to the AWS Cloud. What would be the best approach?
+
+  <A correct>Use Amazon Storage Gateway to extend the storage to the cloud.</A>
+  <E>This is the best answer given this scenario.</E>
+
+  <A>Create a DynamoDB instance and store the files in that.</A>
+  <E>DynamoDB is unsuitable for storing files.</E>
+
+  <A>Create a SWF queue.</A>
+  <E>A SWF queue would not help you get additional storage.</E>
+
+  <A>Create an EC2 instance in AWS.</A>
+  <E>This won't solve the issue of you running out of storage.</E>
+  <R />
+</Q>
+
+
+## Question 18
+
+<Q>
+You lead a small development team for an LLC (Limited Liability Company). The team is beginning to plan development of a full stack web application leveraging Next.js with Server Side Rendering (SSR) on the frontend, and they are wanting to leverage the AWS cloud for it. Unfortunately, nobody on the team is well-versed in AWS services and best practices, so they want to avoid complex infrastructure designs. Which AWS service could the development team use to simplify development and deployment of their full stack application?
+
+  <A>Amazon EKS with DynamoDB</A>
+  <E>This is a complex architecture, especially with their limited experience. There is a simpler, managed solution.</E>
+
+  <A>AWS AppSync</A>
+  <E>AWS AppSync is a service that offers a managed GraphQL interface for real-time data calls.</E>
+
+  <A>AWS Lambda with Amazon RDS</A>
+  <E>This is a complex architecture, especially with their limited experience. Furthermore, it does not provide any frontend capabilities. There is a simpler, managed solution.</E>
+
+  <A correct>AWS Amplify</A>
+  <E>
+AWS Amplify offers developers a set of tools for easily deploying full stack applications to AWS. It offers Git-based workflows with automated deployments for web applications, and it is especially suited for developers not as familiar with AWS who need to also leverage server-side rendering.
+Reference: [Welcome to AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html) [Deploy server-side rendered apps with Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html)
+</E>
+  <R />
+</Q>
+
+
+## Question 19
+
+<Q>
+You have a fleet of EC2 instances behind an Auto Scaling Group. Your website is becoming sluggish, so you SSH into your instances and notice that your RAM utilization is at 99% for each instance. This should be triggering an Auto Scaling event, but it is not. What should you do to fix the situation?
+
+  <A>Install and configure Amazon Inspector on your EC2 instance. This will trigger an Auto Scaling event when RAM utilization reaches 87%.</A>
+  <E>Inspector is used for vulnerability scanning on EC2 instances. It is not used to trigger events based on EC2 RAM usage.</E>
+
+  <A>Migrate the website to S3 and configure CloudFormation to detect any over utilization within your S3 buckets.</A>
+  <E>CloudFormation is used to deploy infrastructure in your AWS environment, it is not used to trigger events based on EC2 RAM utilization.</E>
+
+  <A correct>Install a CloudWatch agent on your EC2 instances that will trigger an Auto Scaling event.</A>
+  <E>Installing the CloudWatch agent on the EC2 instances will enable you to capture RAM utilization and trigger an Auto Scaling event.</E>
+
+  <A>Install a CloudTrail agent on each EC2 instance and configure the agent for RAM monitoring. This will trigger an Auto Scaling event.</A>
+  <E>There is no CloudTrail agent.</E>
+  <R />
+</Q>
+
+
+## Question 20
+
+<Q>
+You work for a digital design agency that hosts the majority of their digital assets on-premises using a local data center and a third-party CDN provider. Due to inflation, the costs of hosting are going up, and they are considering moving to the AWS cloud. They need a reliable place to store videos and pictures and be able to deliver this content globally using a CDN. What solution below is the most cost-effective?
+
+  <A>Dedicated EC2 instance with NeptuneDB</A>
+  <E>This is not the most cost-effective option.</E>
+
+  <A>A fleet of EC2 instances behind an Application Load Balancer and EBS as storage</A>
+  <E>This is not the most cost-effective option.</E>
+
+  <A correct>S3 and CloudFront</A>
+  <E>This would be the most cost-effective solution, given the scenario.</E>
+
+  <A>API Gateway and Lambda as the frontend with an EFS mount on the back end</A>
+  <E>This is not the most cost-effective option. It is also not possible to mount EFS directly to Lambda.</E>
+  <R />
+</Q>
+
+
+## Question 21
+
+<Q>
+You have an internally facing dynamic application that thousands of users access every morning when they come in to work. The EC2 instance takes two minutes to boot up before it can respond to users' requests. The users typically arrive around 9 a.m. each morning. What would be the ideal architecture to deal with this scenario?
+
+  <A correct>Create an Auto Scaling group with a step scaling policy. Configure an instance warmup time condition.</A>
+  <E>This would be the best solution in this scenario.</E>
+
+  <A>Configure a CloudFront distribution and host the website on S3. Use the S3 bucket as the origin.</A>
+  <E>The application is dynamic and would not be suitable to be hosted on S3.</E>
+
+  <A>Provision an extra large EC2 instance and just keep it running 24/7 so you don't need to worry about boot time.</A>
+  <E>This would work, but there are other architectural designs that are much more efficient.</E>
+
+  <A>Use multiple t2 micro instances and then NeptuneDB with Auto Scaling on the backend.</A>
+  <E>This is not technically viable. NeptuneDB does not have Auto Scaling.</E>
+  <R />
+</Q>
+
+
+## Question 22
+
+<Q>
+Your company needs to move 75 TB of data to AWS. Their internet connection peaks at 10 Mbps and already reaches this level at multiple times of the day. What is quickest and most cost-effective solution to migrate this data to AWS?
+
+  <A>Create a Direct Connect dedicated connection between the company and AWS. Upload the data directly.</A>
+  <E>Although creating a Direct Connect dedicated connection would allow for faster connectivity to AWS, the time for provisioning the connectivity would mean this becomes a longer option than one of the other answers, when the time to transfer the data is included in the calculation.</E>
+
+  <A>Use a VPN concentrator to speed up the internet connection and upload the data to AWS.</A>
+  <E>This is not technically feasible.</E>
+
+  <A>Order an AWS Snowmobile, copy the data to the device, and send the device back. Then the data will exist on S3.</A>
+  <E>Using a Snowmobile would be better when you are talking petabytes of data instead of terabytes, so this wouldn't be the best solution to choose.</E>
+
+  <A correct>Order an AWS Snowball, copy the data to the device, and send the device back. Then the data will exist on S3.</A>
+  <E>This is the most cost-effective option. With AWS Snowball, you need to create a S3 bucket for the copy destination and then order the Snowball device from AWS. Once it arrives, configure the Snowball device within your environment before copying the data to the devic and, ship the device back to AWS, who will then copy the data into the S3 bucket.</E>
+  <R />
+</Q>
+
+
+## Question 23
+
+<Q>
+You have been evaluating the NACLs in your company. Most of the NACLs are configured the same:
+
+```
+100 All Traffic Allow
+200 All Traffic Deny
+* All Traffic Deny
+```
+
+What function does the `* All Traffic Deny` rule perform?
+
+  <A correct>This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied.</A>
+  <E>The default network ACL is configured to allow all traffic to flow in and out of the subnets with which it is associated. Each network ACL also includes a rule whose rule number is an asterisk. This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied. You can't modify or remove this rule. Reference: [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html).</E>
+
+  <A>The `*` specifies that it is an example rule.</A>
+  <E>This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied.</E>
+
+  <A>It is there in case no other rules are defined.</A>
+  <E>This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied.</E>
+
+  <A>Traffic will be denied from specified IP addresses.</A>
+  <E>This rule ensures that if a packet doesn't match any of the other numbered rules, it's denied.</E>
+  <R />
+</Q>
+
+
+## Question 24
+
+<Q multi>
+Which of the following statements regarding AWS Free Tier are true?
+
+  <A correct>12-month AWS Free Tier offers are only available to new AWS customers.</A>
+  <E>AWS Free Tier offers are only available to new AWS customers, and are available for 12 months from the sign-up date.</E>
+
+  <A correct>AWS Free Tier includes free trials, specific amounts of specified services for 12 months, and many always free services.</A>
+  <E>With AWS Free Tier, various services are provided that include free trials, 12 months free of selected services (with limits), and many always free services. </E>
+
+  <A>5 GB of standard Amazon S3 storage is provided with the AWS Free Tier's always free offer.</A>
+  <E>5 GB of free standard Amazon S3 storage is provided for 12 months with AWS Free Tier. Amazon Simple Storage Service (Amazon S3) is a Amazon's object storage service and integrates with many AWS services.</E>
+
+  <A correct>Among the always free services provided by AWS Free Tier is 1 million free AWS Lambda requests per month.</A>
+  <E>AWS Free Tier includes 1 million free AWS Lambda requests per month. AWS Lambda is a serverless, event-driven compute service managed by AWS.</E>
+  <R />
+</Q>
+
+
+## Question 25
+
+<Q>
+You have an internal data warehouse running custom database software on an on-premises server at your work. You need to migrate this application to AWS. Unfortunately, your application is not compatible with Redshift, so you need to run this on a custom EC2 instance with the appropriate EBS volumes. You need to use an EBS volume that can handle large, sequential I/O operations for this infrequently accessed data. What is the most cost-effective EBS volume to meet this requirement?
+
+  <A>Provisioned IOPS SSD (io1)</A>
+  <E>This is a more expensive option.</E>
+
+  <A>EBS General Purpose SSD (gp2)</A>
+  <E>Using this option is more expensive.</E>
+
+  <A correct>Cold HDD (sc1)</A>
+  <E>Cold HDD (sc1) is the best low-cost choice for infrequently accessed data that has sequential I/O operations.</E>
+
+  <A>Throughput Optimized HDD (st1)</A>
+  <E>This is a more expensive option.</E>
+  <R />
+</Q>
+
+
+## Question 26
+
+<Q>
+Your organization is working on a blue/green deployment strategy for the most recent frontend application. They need to design a solution that allows them to control how much traffic is sent to the new version of the application and how much goes to the old one. If there's a problem with the deployment, it needs to be able to switch back to the previous version at a moment's notice. What service would you use to make sure these goals are met?
+
+  <A>Using EC2 instances, create two instances behind an ELB. Split the traffic evenly between the instances.</A>
+  <E>
+EC2 instances behind an ELB would receive equal amounts of traffic. You wouldn't be able to easily control the percentage of traffic or roll it back in case of an issue.
+The recommended approach is to use weighted records with Route 53.
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values-weighted.html
+</E>
+
+  <A>Using Route 53, create a latency-based record set and allow it to
+control the traffic distribution.</A>
+  <E>
+With latency-based routing, traffic is automatically sent to the fastest endpoint. This would not allow you to define a specific weight for your traffic. This would work if you were keeping both applications online permanently, but in this particular situation it's not the best option.
+
+The recommended approach is to use weighted records with Route 53.
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values-weighted.html
+</E>
+
+  <A>Using Systems Manager Automation documents, define the correct weight
+for each application endpoint.</A>
+  <E>
+While Systems Manager could be used to update and patch your applications, it wouldn't allow you to split traffic between the 2 different application versions.
+The recommended approach is to use weighted records with Route 53.
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values-weighted.html
+</E>
+
+  <A correct>Using Route 53, create a weighted record set to control the percentages of traffic to each endpoint.</A>
+  <E>
+Weighted routing enables you to split traffic by percentage. If there's an issue, you can quickly point the traffic back to the old version of the application.
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-values-weighted.html
+</E>
+  <R />
+</Q>
+
+
+## Question 27
+
+<Q multi>
+You have a dynamic e-commerce website hosted on a single EC2 instance with an RDS database backend.  As traffic increases to the website, the website becomes slower, and you've observed that both the web server and the database are put under increasing load, with no obvious bottlenecks causing the problem. From the following options below, which combination would likely help with the slowness of the website, addressing both web server and database load issues?
+
+  <A correct>Add additional EC2 instances fronted by an Application Load Balancer.</A>
+  <E>This is a good method if you are experiencing problems with high traffic levels to your web server.  However, adding additional web servers will increase the load on the database even further.</E>
+
+  <A>Migrate the data from RDS to DocumentDB.</A>
+  <E>This is a complex process. Although some times migrating to a different type of database is the right approach, migration of this type would be complex and should be seen as an "if all else fails"approach.</E>
+
+  <A>Migrate the whole website to S3.</A>
+  <E>This wouldn't help. S3 is used for storing static files and running static web sites, so a dynamic website would not be a good fit for S3.</E>
+
+  <A correct>Implement Database Read Replicas to offload read traffic from the primary RDS instance.</A>
+  <E>By implementing Database Read Replicas, you can offload the read-heavy traffic from the primary database, thereby distributing the load.</E>
+  <R />
+</Q>
+
+
+## Question 28
+
+<Q>
+Your company is migrating their data to AWS S3, and included in this is a CSV file of your customers. The file is quite large, around 3 GB. Due to the primary database going offline during the migration, your manager has asked you to query this CSV file to find information about a specific customer. What AWS service should you use to achieve this?
+
+  <A correct>Amazon Athena</A>
+  <E>
+Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run.
+Reference: [Amazon Athena](https://aws.amazon.com/athena)
+</E>
+
+  <A>CloudWatch S3 Query Service</A>
+  <E>There is no such AWS service such as CloudWatch S3 Query Service.</E>
+
+  <A>S3 Simple Query Service (S3 SQS)</A>
+  <E>There is no such AWS service as the S3 Simple Query Service.</E>
+
+  <A>DynamoDB S3 Connect</A>
+  <E>There is no such AWS service as DynamoDB S3 Connect.</E>
+  <R />
+</Q>
+
+
+## Question 29
+
+<Q>
+You have a social media website that uses a DynamoDB table on the backend. Your monitoring detects that the DynamoDB table begins to throttle requests during high peak loads, which causes the slow performance of the website. How can you remedy this?
+
+  <A>Create an Aurora read replica and spread the load between DynamoDB and Aurora.</A>
+  <E>This is not technically viable.</E>
+
+  <A>Put the DynamoDB table behind an autoscaling group.</A>
+  <E>You cannot put DynamoDB behind an Autoscaling Group, only EC2.</E>
+
+  <A>Migrate the database to RDS MySQL and turn on Multi-AZ</A>
+  <E>This would provide redundancy but not scaling capability.</E>
+
+  <A correct>Use DynamoDB Autoscaling.</A>
+  <E>This is the best answer. Reference: [Autoscaling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)</E>
+  <R />
+</Q>
+
+
+## Question 30
+
+<Q>
+You work for a media company that processes large volumes of images. The processing is done by some high performance compute instances in EC2 in a custom VPC that you architected. The files are processed and then stored in S3; however, you notice this is taking longer than you anticipated. You investigate and discover that the EC2 instances are uploading the files via the public internet to S3. You need to design a solution that bypasses the public internet. What solution should you implement?
+
+  <A>Deploy a File Gateway in to the VPC, and update the route table to upload the files directly to S3.</A>
+  <E>This would not be technically possible. You would need additional steps.</E>
+
+  <A correct>Create a VPC endpoint, and update your route table giving you a direct connection to S3.</A>
+  <E>This would be the best solution.</E>
+
+  <A>Create a Direct Connect connection between your VPC and S3. Upload the files using that connection.</A>
+  <E>This is not technically accurate, as you cannot use Direct Connect to connect two AWS services — it's a connection to a physical location.</E>
+
+  <A>Add an additional internet gateway to the VPC, and update your route table to connect to this gateway.</A>
+  <E>You cannot add more than one internet gateway to a VPC.</E>
+  <R />
+</Q>
+
+
+## Question 31
+
+<Q>
+You work for a fintech company that stores its backups on a tape solution in-house at the company's headquarters. They need to move the backup solution to the cloud and have a mandatory retention period of seven years due to regulations. They will only access the backups once a year for auditing purposes, and they can be flexible on how long the access will take. What is the most cost-effective solution?
+
+  <A>Use AWS Snowball to back the tape data up to S3 every month. Archive the data to S3 Glacier Deep Archive once every seven years.</A>
+  <E>Using AWS Snowball to transfer data every month would incur recurring costs and complexity. Frequent data transfers are not necessary in this scenario, and Snowball is typically used for one-time or infrequent large data migrations, which could be inefficient for backups.</E>
+
+  <A>Use AWS Storage Gateway to back the environment up to Amazon S3. Create a lifecycle rule to archive the data to S3 Glacier Deep Archive once every seven years.</A>
+  <E>This option is better than using S3 File Gateway but may not provide enough flexibility for retrieval times. S3 Glacier Deep Archive is suitable for extremely long-term archival with retrieval times of hours to days, but it might not align well with the requirement for infrequent access once a year.</E>
+
+  <A>Use Amazon S3 File Gateway to save the files to an EC2 instance connected to EBS. Archive the data to DynamoDB once every seven years.</A>
+  <E>Using Amazon S3 File Gateway and DynamoDB is not cost-effective or efficient for long-term archival storage. DynamoDB is typically used for NoSQL database purposes and is not designed for archival storage. It would be expensive to maintain data in DynamoDB for seven years.</E>
+
+  <A correct>Use AWS Storage Gateway to back the environment up to Amazon S3. After you eject the tapes from your backup application, your tapes can be archived to S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive. Configure the lifecycle rules to keep the backups for the required seven years.</A>
+  <E>
+This option utilizes AWS Storage Gateway, which is designed for integrating on-premises environments with cloud storage. It allows you to back up the data to Amazon S3, which is suitable for long-term storage. After the tapes are ejected from the backup application, they can be archived to either S3 Glacier Flexible Retrieval or S3 Glacier Deep Archive, which are both cost-effective options for long-term archival storage. The key advantage of this option is the flexibility to choose between S3 Glacier Flexible Retrieval and S3 Glacier Deep Archive based on your retrieval time requirements.  Additionally, configuring lifecycle rules ensures automatic management of data retention for the required seven years, making it a cost-effective and efficient solution.
+Reference: [Archiving Virtual Tapes](https://docs.aws.amazon.com/storagegateway/latest/tgw/archiving-tapes-vtl.html)
+</E>
+  <R />
+</Q>
+
+
+## Question 32
+
+<Q>
+Your web application is designed to encourage people to vote for your chosen celebrity at a major national talent contest. Unfortunately, some hackers have managed to deploy a SQL injection against your application, and they have managed to drop your MySQL database. You have a backup, so you haven't lost any data, but you need to prevent this from happening again. How should you complete this?
+
+  <A correct>Set up an AWS WAF and create rules that prevent SQL injections. Associate the WAF to your application load balancer.</A>
+  <E>This is the best answer, as AWS WAF is capable of this.</E>
+
+  <A>Use GuardDuty to set up SQL firewalls so that they cannot launch another SQL injection.</A>
+  <E>GuardDuty cannot do this, so this is technically incorrect.</E>
+
+  <A>Discover the IP address from which the SQL injection was delivered and use NACLs to block the offending IP address.</A>
+  <E>The hackers could just change their IP address, so this would not be a good approach to prevent hacks in the future.</E>
+
+  <A>Refactor the application to use NeptuneDB as the backend database.</A>
+  <E>This would not prevent database drops.</E>
+  <R />
+</Q>
+
+
+## Question 33
+
+<Q>
+You have several EC2 instances in an Auto Scaling group fronted by a Network Load Balancer. The instances will need access to S3 and DynamoDB. The Auto Scaling group was created from a launch template. What needs to be configured in the launch template to enable newly launched instances access to S3 and DynamoDB?
+
+  <A>An IAM group for EC2 with policies giving permission to S3 and DynamoDB</A>
+  <E>Groups can be used to grant a group of users specific permissions based on the policies attached to the group, but groups are not used with EC2 instances.</E>
+
+  <A>Access keys to be passed to newly launched EC2 instances</A>
+  <E>Storing access keys on an EC2 instance is bad practice. What is more secure: storing access keys on an EC2 instance or granting appropriate permissions to the instance by attaching a role to it? Attaching the role is best practice for allowing EC2 to work with other services.</E>
+
+  <A correct>An IAM role attached to newly launched instances with permissions to S3 and DynamoDB</A>
+  <E>IAM roles are designed so that your applications can securely make API requests from your instances, without requiring you to manage the security credentials that the applications use. Instead of creating and distributing your AWS credentials, you can delegate permission to make API requests using IAM roles.</E>
+
+  <A>An IAM policy attached to newly launched instances with permissions to S3 and DynamoDB</A>
+  <E>Although policies ultimately grant or deny permissions, the policy is attached to a role. An IAM role is attached to EC2 instances to grant permissions to AWS services.</E>
+  <R />
+</Q>
+
+
+## Question 34
+
+<Q>
+Your developers are building an application on EC2 that will require access to S3 and DynamoDB.  You need to provide access to these services for your application in the most secure way possible. What should you do to achieve this?
+
+  <A>Create a master IAM username and password with Admin Access and share this user name and password with your developers.</A>
+  <E>This does not comply to the principle of least privilege. You should not grant universal access to your developers.</E>
+
+  <A correct>Assign a role to the EC2 instance allowing access to S3 and DynamoDB.</A>
+  <E>This would be the most efficient solution.</E>
+
+  <A>Create a master IAM username and password with power user access and share this user name and password with your developers.</A>
+  <E>This does not comply to the principle of least privilege. You should not grant power user access to your developers.</E>
+
+  <A>Use AWS KMS to provide access to these resources.</A>
+  <E>AWS KMS is not capable of doing this.</E>
+  <R />
+</Q>
+
+
+## Question 35
+
+<Q>
+Your development team leverages Amazon ECS Fargate to run their containerized application in AWS. At this time, they are leveraging an internal image registry on Amazon EC2 instances for hosting image repositories due to requiring image scanning for software vulnerabilities. You have suggested they explore other options to avoid the operational overhead and unnecessary costs associated with the solution.
+What solution best fits the needs for the scenario?
+
+  <A>Shift to the public Docker Hub. Image scanning is automatic.</A>
+  <E>This is not an AWS solution, and there is a more efficient way to store and scan images. Furthermore, scanning is not automatic in Docker Hub.</E>
+
+  <A correct>Host images in Amazon ECR repositories with scan on push enabled.</A>
+  <E>
+Amazon ECR offers the ability to enable scan on push, which enables software vulnerability scanning of all images pushed to your repositories.
+Reference: [What is Amazon Elastic Container Registry?](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) [Creating a private repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
+</E>
+
+  <A>Use Amazon S3 for image storage and Amazon Athena for querying for vulnerabilities.</A>
+  <E>Amazon Athena does not do vulnerability scanning.</E>
+
+  <A>Use Amazon S3 for image storage and Amazon Macie to find compromised images.</A>
+  <E>Amazon Macie does not do vulnerability scanning for images.</E>
+  <R />
+</Q>
+
+
+## Question 36
+
+<Q>
+A small social media company has begun to develop an application. They want to run entirely within the AWS cloud. The initial architecture is fairly straightforward and seems like it should only include a handful of compute instances and a MySQL relational database.
+
+Their initial concern is that they do not know the usage patterns for the application itself, especially with the application's calls to the database. They would like to implement a development database for initial testing that is flexible and cost-effective as it does not need to be available at all times throughout the day.
+
+Which AWS service should they use?
+
+  <A>Amazon RDS with MySQL Reserved Instances</A>
+  <E>There is a better answer for this problem. While RDS can be used here, and Reserved Instances can save money, it is not good for unknown workloads.</E>
+
+  <A>Amazon Aurora with MySQL</A>
+  <E>There is a better answer for this problem. This is a provisioned database, so you need to specify a size when creating a cluster.</E>
+
+  <A correct>Amazon Aurora Serverless with MySQL</A>
+  <E>
+Variable workloads are a perfect use case for the Amazon Aurora Serverless offering. You can set up scaling as needed to handle influxes of traffic, including scaling down to zero ACUs when it is not used.
+
+Reference: [Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html)
+</E>
+
+  <A>Amazon RDS with MySQL with AWS Savings Plans</A>
+  <E>There are no RDS-specific AWS Savings Plans.</E>
+  <R />
+</Q>
+
+
+## Question 37
+
+<Q>
+You work for a VC (Venture Capital) company that uses EC2 on the frontend and an Aurora DB cluster using single-master replication on the backend. The VC company wants to understand what happens if the primary database in Aurora fails. Which of the following best describes how Aurora handles this failure?
+
+  <A>Aurora will attempt to create a new database in a different Availability Zone than where the primary database has failed.</A>
+  <E>
+This does not describe how Aurora would handle the failure.
+
+Reference: [Amazon Aurora FAQs](https://aws.amazon.com/rds/aurora/faqs/)
+</E>
+
+  <A>Aurora updates its DNS records so that a read replica now handles the traffic, and Aurora will promote that replica to the primary database.</A>
+  <E>
+This is not what happens.
+
+Reference: [Amazon Aurora FAQs](https://aws.amazon.com/rds/aurora/faqs/)
+</E>
+
+  <A>Aurora will fail the primary database over automatically to DynamoDB.</A>
+  <E>
+This is not how Aurora would handle the failure.
+
+Reference: [Amazon Aurora FAQs](https://aws.amazon.com/rds/aurora/faqs/)
+</E>
+
+  <A correct>Aurora automatically fails over by either promoting an existing Aurora Replica to the new primary instance or creating a new primary instance.</A>
+  <E>
+If the primary instance in a DB cluster using single-master replication fails, Aurora fails over to a new primary instance, either by promoting an existing Aurora Replica to the new primary instance or by creating a new primary instance.
+Reference: [How Aurora Endpoints Work with High Availability](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Overview.Endpoints.HA)
+</E>
+  <R />
+</Q>
+
+
+## Question 38
+
+<Q>
+You have created a meme generation website where users upload their own images and create the captions they want; the images can be up to several gigabytes in size. Then, the web application processes this and stores the processed image in S3. What AWS services could achieve this while keeping the cost as low as possible?
+
+  <A>Use a temporary Elastic File System (EFS) for the web application to store the images. Configure a separate group of EC2 instances with a polling service to check the EFS file system for new files. When found, have these EC2 instances process and create memes from the images. Once complete, store the processed memes into a S3 bucket.</A>
+  <E>Although technically feasible, using EFS vs another storage service such as S3 would be more costly, which goes against the question's requirements.</E>
+
+  <A>Use an SQS queue to queue the requests. Use a fleet of EC2 instances behind an Application Load Balancer and Autoscaling group to process each request from the queue, and then once the image is generated, store the image in S3.</A>
+  <E>Although this is technically feasible, it is not the cheapest option.</E>
+
+  <A>Use SNS to queue the requests. Set up an SNS notification with an EC2 instance as its target. Use an EC2 instance to process the request and, once done, send the request back to SNS, which then saves the image to S3.</A>
+  <E>This is not a technically viable option. SNS is a messaging service and not designed to process requests.</E>
+
+  <A correct>Use a temporary S3 bucket for the web application to store the images, configure S3 event triggers to notify Lambda when a new image is uploaded. Use Lambda to process the images and create the memes, once complete store the processed memes into a separate S3 bucket.</A>
+  <E>This is both technically possible and the most cost-effective option.</E>
+  <R />
+</Q>
+
+
+## Question 39
+
+<Q>
+You work for a large PR and advertising company in New York City. They have an internal file server that mounts its storage using an Internet Small Computer System Interface (iSCSI) compliant storage device. The file server's iSCSI attached storage device is beginning to run out of storage. They are considering replacing the file server's iSCSI attached storage device with a cloud-based solution that will continue to support iSCSI. What solution should you recommend?
+
+  <A>Storage Gateway Tape Gateway</A>
+  <E>This option is designed for archiving data to virtual tape libraries and doesn't provide iSCSI block storage access. It's suitable for backup and archiving use cases but not for replacing iSCSI storage.</E>
+
+  <A>AWS Storage Gateway FSx for Windows</A>
+  <E>Storage Gateway FsX for Windows is designed to provide access to Windows File System data in Amazon FSx for Windows File Server, and it doesn't offer iSCSI block storage access.</E>
+
+  <A>Amazon S3 File Gateway</A>
+  <E>This option is designed for file-based access to data in Amazon S3 and doesn't provide iSCSI block storage access. It's more suited for scenarios where you need to access files in S3 as if they were on a local file server.</E>
+
+  <A correct>Storage Gateway Volume Gateway</A>
+  <E>This option allows you to create iSCSI block storage volumes that are backed by Amazon EBS (Elastic Block Store) volumes in the AWS cloud. It specifically supports iSCSI access, which aligns with the requirement to continue using iSCSI. It is a suitable choice for your use case.</E>
+  <R />
+</Q>
+
+
+## Question 40
+
+<Q>
+Which of the following is the cheapest AWS support service?
+
+  <A correct>Developer</A>
+  <E>Developer is the cheapest AWS support service.</E>
+
+  <A>Enterprise</A>
+  <E>Enterprise is not the cheapest AWS support service.</E>
+
+  <A>Enterprise on-ramp</A>
+  <E>Enterprise on-ramp is not the cheapest AWS support service.</E>
+
+  <A>Business</A>
+  <E>Business is not the cheapest AWS support service.</E>
+  <R />
+</Q>
+
+
+## Question 41
+
+<Q>
+You have a website that uses MongoDB, a NoSQL database, on its backend. It requires high, sequential read and write access to very large data sets on local storage. You need to migrate this database to AWS and host it on EC2 with Amazon EBS. What EC2 instance type would be best suited to handle I/O-intensive database workloads and sequential writes?
+
+  <A>Use memory optimized instances with provisioned IOPS SSD volumes</A>
+  <E>Memory optimized instances are designed to deliver fast performance for workloads that process large data sets in memory. A storage optimized instance is recommended for this scenario because it is designed for workloads that require high, sequential read and write access to very large data sets on local storage.</E>
+
+  <A>Use storage optimized instances with general purpose SSD volumes</A>
+  <E>General purpose SSD volumes are recommended for medium-sized, single-instance databases, but not for use cases with I/O-intensive database workloads.</E>
+
+  <A correct>Use storage optimized instances with provisioned IOPS SSD volumes</A>
+  <E>Storage optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage. Provisioned IOPS SSD volumes are recommended for I/O-intensive database workloads that require sustained IOPS performance. AWS Documentation: [Amazon EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html).</E>
+
+  <A>Use compute optimized instances with general purpose SSD volumes</A>
+  <E>Compute optimized instances are ideal for compute-bound applications that benefit from high-performance processors. A compute optimized instance with general purpose SSD volumes would not give you a suitable performance to handle I/O-intensive database workloads and sequential writes.</E>
+  <R />
+</Q>
+
+
+## Question 42
+
+<Q>
+You work for a startup that has grown considerably in size. The startup has a single MySQL database, which you are now looking to migrate to AWS with the least disruptive architectural changes. The database is 50 GB in size, and you need to ensure that the new database is ACID compliant. The average item size is greater than 400 KB. Which solution meets these requirements and will give you the best performance and highest redundancy?
+
+  <A correct>Amazon Aurora</A>
+  <E>Amazon Aurora is ACID compliant and designed for unparalleled high performance and availability at global scale with full MySQL and PostgreSQL compatibility.</E>
+
+  <A>Amazon Neptune</A>
+  <E>Amazon Neptune is ACID compliant with immediate consistency. However, Neptune should be used for graph use cases such as recommendation engines, fraud detection, knowledge graphs, drug discovery, and network security.</E>
+
+  <A>Amazon DynamoDB</A>
+  <E>Amazon DynamoDB transactions provide developers atomicity, consistency, isolation, and durability (ACID) across one or more tables within a single AWS account and region. However, the maximum item size in DynamoDB is 400 KB, which includes both attribute name binary length (UTF-8 length) and attribute value lengths (again binary length). The attribute name counts towards the size limit.</E>
+
+  <A>Amazon RDS</A>
+  <E>Amazon RDS is ACID compliant; however, it will not give you the best performance and redundancy in this scenario.</E>
+  <R />
+</Q>
+
+
+## Question 43
+
+<Q multi>
+You need to host a static website on S3. Your boss asks you to register a domain name for the website with Route 53. What is a prerequisite to ensure that you can achieve this?
+
+  <A correct>You must have a bucket name that is the same as the domain name.</A>
+  <E>The bucket name must always be the same as the domain name.</E>
+
+  <A>You must configure a CNAME in Route 53 to point to your DNS address of your bucket.</A>
+  <E>Configuring a CNAME in Route 53 to point to the DNS address of your bucket would not resolve the issue.</E>
+
+  <A correct>You must create an A Record in Route 53 to point to your bucket.</A>
+  <E>You need to have an A Record using an alias to point to the DNS of the S3 bucket.</E>
+
+  <A>You must enable CORS in your S3 bucket in order to enable a static website.</A>
+  <E>Although you may need CORS enabled, there is something else you need to do.</E>
+  <R />
+</Q>
+
+
+## Question 44
+
+<Q>
+Your organization stores highly confidential data on Amazon S3 and requires encryption with AWS Key Management Service (KMS) for added security.  When uploading objects to S3, which of the following request headers should you use to ensure that the objects are encrypted with AWS KMS?
+
+  <A>`x-amz-encrypt: true`</A>
+  <E>This header does not specify the encryption method or service to be used for Server-Side Encryption. It's not a recognized header for configuring encryption, so it would not activate AWS KMS encryption or any other specific encryption method.</E>
+
+  <A>`x-amz-encryption: AWS-KMS`</A>
+  <E>This header is not the correct syntax for specifying AWS Key Management Service (KMS) encryption. The correct header for enabling KMS encryption is `x-amz-server-side-encryption: aws:kms`.  Using `x-amz-encryption: AWS-KMS` would not activate KMS encryption on the objects.</E>
+
+  <A correct>`x-amz-server-side-encryption: aws:kms`</A>
+  <E>This header specifies that Server-Side Encryption with AWS Key Management Service (KMS) should be used for encrypting the objects stored in Amazon S3.</E>
+
+  <A>`x-amz-server-side-encryption: AES256`</A>
+  <E>This header specifies Server-Side Encryption (SSE) using the AES256 encryption algorithm. While it does enable encryption, it doesn't utilize AWS Key Management Service (KMS). It's a valid option for SSE, but it doesn't meet the requirement for AWS KMS encryption.</E>
+  <R />
+</Q>
+
+
+## Question 45
+
+<Q>
+You work for a doctor's surgery in New York City that has thousands of patients. The patients data is stored on-premises, but the backups need to be stored on S3 in the most secure way possible. Which of the following is the most secure way of achieving this?
+
+  <A correct>Encrypt the data locally using your own encryption keys. Upload the data to AWS S3 using HTTPS. Use AES 256 server-side encryption on the S3 bucket to encrypt the bucket.</A>
+  <E>This is the best solution in this scenario.</E>
+
+  <A>Upload the backups directly to a public S3 bucket.</A>
+  <E>This is a bad idea, as the S3 bucket is public, meaning anyone can access it.</E>
+
+  <A>Encrypt the data locally using your own encryption keys. Upload the data to AWS S3 using HTTP. Use AES 256 server side encryption on the S3 bucket to encrypt the bucket.</A>
+  <E>This is a viable solution. However, there is a more secure way of doing this in this scenario.</E>
+
+  <A>Store the data on AWS Fargate and use server-side encryption to encrypt the backups.</A>
+  <E>This is not technically viable. AWS Fargate is a serverless, pay-as-you-go compute engine that lets you focus on building applications without managing servers. It is not used for security purposes.</E>
+  <R />
+</Q>
+
+
+## Question 46
+
+<Q>
+Your company has an internal web application that uses RDS in the backend with Multi-AZ deployment for redundancy. You have been asked to improve security and make sure the database credentials and API keys are encrypted and rotated on a regular basis. The internal web application should also use the latest version of the encrypted credentials when connecting to the RDS database. What is the easiest way to achieve this?
+
+  <A>Store the API keys and database credentials in KMS.</A>
+  <E>You cannot store credentials in KMS.</E>
+
+  <A correct>Store the API keys and database credentials in AWS Secrets Manager.</A>
+  <E>AWS Secrets Manager is designed to store your key confidential data.</E>
+
+  <A>Store the API keys and database credentials in CloudWatch.</A>
+  <E>You cannot store this information in CloudWatch. CloudWatch is used for performance monitoring of your AWS environment.</E>
+
+  <A>Store the API keys and database credentials in a public S3 bucket for access.</A>
+  <E>This is a very bad idea, as public access would expose your credentials to the general public.</E>
+  <R />
+</Q>
+
+
+## Question 47
+
+<Q>
+You run a cryptocurrency application that allows you to trade cryptocurrency with hard currency. This application runs concurrently with another application where the prices of the currency are time indexed, and these indexes are saved to Amazon Redshift for later data analysis. Both applications consume this data from the same Amazon Kinesis Data Stream. You notice, however, that for both applications, there are lots of examples where a shard iterator expires unexpectedly. When you try and troubleshoot this, you notice that the DynamoDB table used by Kinesis does not have enough write capacity to store the incoming data. What should you do?
+
+  <A>Increase the ingress capacity of the Kinesis shard.</A>
+  <E>This is not technically feasible.</E>
+
+  <A correct>Increase the write capacity assigned to the DynamoDB table.</A>
+  <E>This would be the ideal solution.</E>
+
+  <A>Enable DynamoDB DAX.</A>
+  <E>This would not solve your problem, as the bottleneck is not the caching capacity.</E>
+
+  <A>Increase the storage capacity of the DynamoDB table.</A>
+  <E>The bottleneck is not the storage capacity of the DynamoDB table.</E>
+  <R />
+</Q>
+
+
+## Question 48
+
+<Q multi>
+You are developing an application for a customer that will be hosted on AWS. They will access the application via their corporate headquarters using the internet. The network connection relies on a list of whitelisted IP addresses, so you will need a static IP address to access this application. However, the application requires many EC2 instances. What are the best ways to achieve this and still maintain a high level of performance?
+
+  <A correct>Configure an ALB as an endpoint for AWS Global Accelerator, and associate a static IP address.</A>
+  <E>When you configure an Application Load Balancer as an endpoint for AWS Global Accelerator, the accelerator provides static IP addresses that you can associate with your Application Load Balancer.</E>
+
+  <A>Assign a static IP address to the internet gateway of the VPC.</A>
+  <E>It is not possible to assign a static IP address to an internet gateway.</E>
+
+  <A correct>Assign a static IP address to a Network Load Balancer.</A>
+  <E>You can assign static IP addresses to a Network Load Balancer.</E>
+
+  <A>Assign a single static IP address to the fleet of EC2 instances.</A>
+  <E>It is not possible to assign a single static IP address to a fleet of EC2 instances without using a load balancer.</E>
+  <R />
+</Q>
+
+
+## Question 49
+
+<Q>
+You have a sports betting website that is hosted on AWS.  The NBA finals are coming up, and your traffic usually increases three to four times its normal load.  The majority of the traffic is read traffic. The website is hosted on EC2 and RDS with Multi-AZ deployments.  Historically, the web tier has coped without a problem, but the RDS database struggles with the additional read requests. You need to ensure the solution will be able to handle the load. What option below would best achieve this?
+
+  <A>Add additional EBS volumes to the EC2 instance.</A>
+  <E>Adding additional EBS volumes will not alleviate the load on your database.</E>
+
+  <A correct>Create two or three read replicas of the RDS database and update the site to send the read traffic to these read replicas.</A>
+  <E>This will help decrease the load on your production database, and the website will be able to take more load.</E>
+
+  <A>Add an Application Load Balancer to the environment.</A>
+  <E>Adding an Application Load Balancer will not alleviate the load on your database.</E>
+
+  <A>Update your internet gateway on your VPC to have AWS Traffic Accelerator turned on.</A>
+  <E>This will not alleviate the load on your database, and there is no such service as AWS Traffic Accelerator.</E>
+  <R />
+</Q>
+
+
+## Question 50
+
+<Q>
+Your company has recently been getting charged overuse fees for software licenses for your Oracle products. Currently, there is a hybrid environment in place where there are Amazon EC2 instances running databases, as well as on-premises virtual machines running Oracle databases. It has been determined that the Oracle software needs to continue to be used, and there will not be a shift to any other database products. You are assigned to find a way to better manage license usage to avoid overuse charges in the future.
+
+Which AWS service can help you accomplish this?
+
+  <A>AWS Service Catalog</A>
+  <E>
+This is a catalog that end users can leverage to deploy preapproved IT services via CloudFormation templates.
+
+</E>
+
+  <A correct>AWS License Manager</A>
+  <E>
+You can use this to manage both cloud-based and on-premises software licenses to prevent license abuse and overages. It works with several well-known vendors, including Oracle.
+
+Reference: [What Is AWS License Manager?](https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html)
+</E>
+
+  <A>AWS Budgets</A>
+  <E>This is meant for creating budgets and alerts on account costs.</E>
+
+  <A>AWS Control Tower</A>
+  <E>
+This is an account governance tool that does not manage software licenses.
+
+</E>
+  <R />
+</Q>
+
+
+## Question 51
+
+<Q>
+A financial institution conducts nightly post-trading analysis to gain insights for the next day's trading. They plan to leverage AWS for this task. What would be the ideal combination of AWS services for handling their requirements?
+
+  <A correct>Amazon S3, AWS Batch, and Amazon Redshift</A>
+  <E>The financial institution can utilize Amazon S3 for storing trading data, AWS Batch for managing batch processing and computation, and Amazon Redshift for storing and analyzing structured data derived from the post-trading analysis. This combination allows for scalable storage, efficient batch processing, and structured data analysis to derive valuable insights for trading activities.</E>
+
+  <A>Amazon EC2, AWS Lambda, and Amazon RDS</A>
+  <E>While Amazon EC2 offers scalable computing and AWS Lambda enables serverless computing, and Amazon RDS is a relational database service, they are not be the best fit for managing large-scale data storage and batch processing required for nightly post-trading analysis in this scenario.</E>
+
+  <A>AWS Glue, Amazon Kinesis, and Amazon Athena</A>
+  <E>AWS Glue is used for ETL tasks, Amazon Kinesis for real-time data streaming, and Amazon Athena for interactive querying, but they do not efficiently cover the specific batch processing and structured data analysis requirements as needed in this scenario.</E>
+
+  <A>Amazon Redshift, AWS Lambda, and Amazon QuickSight</A>
+  <E>Amazon Redshift is a powerful data warehousing service, AWS Lambda enables serverless computing, and Amazon QuickSight is a data visualization tool. While they are valuable services, this is not the right combination of services for storage, processing and analysis.</E>
+  <R />
+</Q>
+
+
+## Question 52
+
+<Q>
+You have a large amount of data stored in S3 that you need to access from on-premises servers using the NFS or SMB protocol. Additionally, you will want to authenticate access to these files through on-premises Microsoft Active Directory. What AWS service would you use?
+
+  <A>AWS Database Migration Service (DMS)</A>
+  <E>This is used for database migration, not file migration.</E>
+
+  <A correct>AWS Storage Gateway - File Gateway</A>
+  <E>File Gateway supports NFS and SMB protocol and can integrate with an on-premises Active Directory.</E>
+
+  <A>AWS Storage Gateway - Tape Gateway</A>
+  <E>Tape Gateway is used for tape migration and does not integrate with an on-premises Active Directory.</E>
+
+  <A>AWS Storage Gateway - Volume Gateway</A>
+  <E>This does not support NFS and SMB protocols and does not integrate with an on-premises Active Directory.</E>
+  <R />
+</Q>
+
+
+## Question 53
+
+<Q multi>
+You have an S3 bucket that contains some vital files for your company. You need to be alerted if these files are deleted or have write operations performed on them. What AWS services are event notification destinations for S3 buckets?
+
+  <A correct>SNS</A>
+  <E>You can use SNS as an event notification service for S3. Reference: [Event notification types and destinations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html)</E>
+
+  <A correct>Lambda</A>
+  <E>You can use Lambda as an event notification service for S3. Reference: [Event notification types and destinations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html)</E>
+
+  <A correct>SQS</A>
+  <E>You can use SQS as an event notification service for S3. Reference: [Event notification types and destinations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html)</E>
+
+  <A>SES</A>
+  <E>You cannot use SES as an event notification service for S3. Reference: [Event notification types and destinations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html)</E>
+  <R />
+</Q>
+
+
+## Question 54
+
+<Q>
+You are migrating a media server to the AWS cloud that contains only images and video files. The server needs to be publicly accessible globally and you must keep costs to a minimum. What is the most cost-effective solution?
+
+  <A correct>Use a public S3 bucket backed by CloudFront.</A>
+  <E>This is the cheapest solution.</E>
+
+  <A>Use an EC2 instance connected to an EBS volume with general purpose SSD (gp2).</A>
+  <E>This is not the most cost-effective option.</E>
+
+  <A>Use a public S3 bucket backed by CloudFormation.</A>
+  <E>This is not technically feasible, as CloudFormation is an automated provisioning service.</E>
+
+  <A>Use an EC2 instance connected to an EBS volume with provisioned IOPS.</A>
+  <E>This is not the most cost-effective option.</E>
+  <R />
+</Q>
+
+
+## Question 55
+
+<Q>
+You work for a major gaming company based out of Norway. The company needs to distribute gaming traffic across multiple servers using UDP and store this information in a NoSQL database. What solution should you use?
+
+  <A correct>Network Load Balancer and DynamoDB.</A>
+  <E>This is the best answer in the scenario. Network Load Balancers support UDP and DynamoDB is a NoSQL database.</E>
+
+  <A>Application Load Balancer with Microsoft SQL Server in RDS.</A>
+  <E>Application Load Balancers do not support direct UDP connections and Microsoft SQL Server is a relational database.</E>
+
+  <A>Network Load Balancer with Amazon Aurora Serverless.</A>
+  <E>Network Load Balancers support UDP. However, Amazon Aurora Serverless is a relational database.</E>
+
+  <A>Application Load Balancer with Amazon Aurora.</A>
+  <E>Application Load Balancers do not support direct UDP connections and Amazon Aurora is a relational database.</E>
+  <R />
+</Q>
+
+
+## Question 56
+
+<Q>
+You work for a market sentiment company that monitors social media platforms, such as Twitter and Facebook, for the general public's sentiment based on particular keywords. You need to store this data in a document store where the database schema can be extremely flexible and change on the basis of individual records. Which AWS database service best suits this requirement?
+
+  <A>RDS</A>
+  <E>RDS is not suitable because the schema needs to change on individual records so you require a NoSQL database, and RDS is a SQL-based database.</E>
+
+  <A>Neptune</A>
+  <E>Neptune is used to build and run graph applications with highly connected datasets and is not suitable for this scenario.</E>
+
+  <A correct>DynamoDB</A>
+  <E>Because the schema needs to change on individual records, you require a NoSQL database and DynamoDB is a NoSQL database.</E>
+
+  <A>Aurora</A>
+  <E>Aurora is not suitable because the schema needs to change on individual records so you require a NoSQL database, and Aurora is a SQL-based database.</E>
+  <R />
+</Q>
+
+
+## Question 57
+
+<Q>
+You have recently terminated an employee from the company due to gross misconduct. Unfortunately, you discover they have been using a backdoor account to access your internal web application. They have been doing this from their home, which has a static IP address. You need to block access from this IP address immediately and then fix the backdoor. What is the fastest approach to achieve this?
+
+  <A>Block the IP address using an Internet Gateway.</A>
+  <E>You cannot block IP addresses using Internet Gateway.</E>
+
+  <A correct>Block the IP address on the public NACL.</A>
+  <E>This is the best solution as it's a static IP address.</E>
+
+  <A>Use Amazon Shield to block the IP address.</A>
+  <E>You cannot block IP addresses using AWS Shield.</E>
+
+  <A>Block the IP address using a security group.</A>
+  <E>You cannot block IP addresses using security groups.</E>
+  <R />
+</Q>
+
+
+## Question 58
+
+<Q>
+You have a high-performing website that captures a large amount of financial information, runs some AI/ML analysis on this data, and then stores the analyzed data in DynamoDB. You have a Lambda function that then needs to query this new update and make sure the data is valid. What is the most efficient way to make the Lambda function trigger automatically every time DynamoDB is updated?
+
+  <A>Use CloudWatch to monitor DynamoDB, and configure CloudWatch to trigger the Lambda function every time there is an update.</A>
+  <E>This is technically possible, but it is not the most efficient way to do this.</E>
+
+  <A correct>Enable DynamoDB Streams to monitor table activity and automatically trigger the Lambda function.</A>
+  <E>
+This would be the most efficient way of achieving your aim in this scenario.
+Reference: [DynamoDB Streams and AWS Lambda Triggers](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.Lambda.html)
+</E>
+
+  <A>Use Lambda to monitor the table activity, and use this Lambda function to automatically trigger another Lambda function.</A>
+  <E>This is technically possible, but it is not the most efficient way to do this.</E>
+
+  <A>Use CloudTrail to monitor DynamoDB, and configure CloudWatch to trigger the Lambda function every time there is an update.</A>
+  <E>CloudTrail is not suitable for this purpose. It is used to record API calls in an AWS account.</E>
+  <R />
+</Q>
+
+
+## Question 59
+
+<Q>
+Which architecture below fulfills the requirement of being serverless while maintaining the most cost-effective solution?
+
+  <A>Application Load Balancer < EC2 < EFS < S3</A>
+  <E>This solution is not serverless, as EC2 requires management.</E>
+
+  <A correct>API Gateway < Lambda < DynamoDB < S3</A>
+  <E>This solution is serverless and the most cost-effective.</E>
+
+  <A>Application Load Balancer < EC2 < DynamoDB < S3</A>
+  <E>This option is not serverless, as EC2 requires management.</E>
+
+  <A>Application Load Balancer < EC2 < RDS < S3</A>
+  <E>This architecture is not serverless, as EC2 requires management.</E>
+  <R />
+</Q>
+
+
+## Question 60
+
+<Q>
+You work for a government agency that needs to host a sensitive internal application on AWS. They have very strict encryption requirements, so they must control all keys and have root access to the HSM that generates the keys. What AWS service should they use?
+
+  <A>KMS</A>
+  <E>You do not have root access to KMS. Reference: [Comparison of HSM to KMS](https://docs.aws.amazon.com/crypto/latest/userguide/awscryp-choose-hsm.html)</E>
+
+  <A>KMS with HSM enabled.</A>
+  <E>KMS is built on hardware security modules. However, you do not have root-level access to the device.</E>
+
+  <A>AWS Inspector.</A>
+  <E>Amazon Inspector is a vulnerability management service that continuously scans your AWS workloads for vulnerabilities. It does not generate security keys.</E>
+
+  <A correct>AWS CloudHSM</A>
+  <E>This is the best answer, as you have root-level access to HSM. Reference: [Comparison of HSM to KMS](https://docs.aws.amazon.com/crypto/latest/userguide/awscryp-choose-hsm.html)</E>
+  <R />
+</Q>
+
+
+## Question 61
+
+<Q>
+You work for a security company with a custom VPC and S3 buckets. You plan on allowing access to your trusted S3 buckets from EC2 servers in the VPC, but you are unable to allow traffic to traverse the internet. What would be the best approach for this scenario?
+
+  <A correct>Create a VPC endpoint for S3.</A>
+  <E>Creating a VPC endpoint for S3 will allow communication from your EC2 instances to the S3 buckets without the need to traverse the internet, as all communication goes via the Amazon network.</E>
+
+  <A>Set up S3 security groups.</A>
+  <E>This is not a control that can be applied to S3 directly and would not prevent traffic from flowing over the internet.</E>
+
+  <A>Configure S3 bucket policies.</A>
+  <E>Although S3 bucket policies provide excellent control over access to the buckets themselves, S3 bucket policies do not prevent traffic from getting to the S3 buckets via the internet.</E>
+
+  <A>Detach the internet gateway from the VPC.</A>
+  <E>Good idea! However, although this does prevent communication from traversing the internet, it will unfortunately mean that no communication will then be possible with S3.</E>
+  <R />
+</Q>
+
+
+## Question 62
+
+<Q>
+A small startup company has begun using AWS for all of its IT infrastructure. The company has two AWS Solutions Architects, and they are very proficient with AWS deployments. They want to choose a deployment service that best meets the given requirements. Those requirements include version control of their infrastructure documentation and granular control of all of the services to be deployed. Which AWS service would best meet these requirements?
+
+  <A>OpsWorks</A>
+  <E>Incorrect. OpsWorks does not provide a template like CloudFormation that can be version controlled. And while it does offer some granular control, it does not have the level of control offered by CloudFormation.</E>
+
+  <A>Terraform</A>
+  <E>Incorrect. Terraform is not an AWS product.</E>
+
+  <A correct>CloudFormation</A>
+  <E>
+Correct. CloudFormation is infrastructure as code, and the CloudFormation feature of templates allows this infrastructure as code to be version controlled. While it can be argued that both OpsWorks and Elastic Beanstalk provide some granular control of services, this is not the main feature of either. Both OpsWorks and Elastic Beanstalk, to varying degrees, allow some detailed configuration.
+How is AWS CloudFormation different from AWS Elastic Beanstalk?
+These services are designed to complement each other. AWS Elastic Beanstalk provides an environment to deploy and run applications in the cloud. It is integrated with developer tools and provides a one-stop experience for you to manage the lifecycle of your applications. AWS CloudFormation is a convenient provisioning mechanism for a broad range of AWS and third-party resources. It supports the infrastructure needs of many different types of applications, such as existing enterprise applications, legacy applications, applications built using a variety of AWS resources, and container-based solutions (including those built using AWS Elastic Beanstalk).
+AWS CloudFormation supports Elastic Beanstalk application environments as one of the AWS resource types. This allows you, for example, to create and manage an AWS Elastic Beanstalk–hosted application along with an RDS database to store the application data. In addition to RDS instances, any other supported AWS resource can be added to the group as well.
+
+https://aws.amazon.com/cloudformation/faqs/
+</E>
+
+  <A>Elastic Beanstalk</A>
+  <E>Incorrect. Elastic Beanstalk does not provide a template like CloudFormation that can be version controlled. While it does offer some granular control, it does not have the level of control offered by CloudFormation.</E>
+  <R />
+</Q>
+
+
+## Question 63
+
+<Q>
+You have a fleet of EC2 instances that all use EBS storage. Due to new regulatory requirements, you are required to back these EBS volumes up daily, automatically, in the most cost-effective way possible. What solution below allows you to do this?
+
+  <A>Create a bootstrap script to copy the files on the EBS volume directly to S3 every day. Reboot the EC2 fleet on a nightly basis.</A>
+  <E>Although technically possible, this is neither the most efficient nor cost-effective method available.</E>
+
+  <A correct>Use Amazon Data Lifecycle Manager to automate the creation of EBS snapshots.</A>
+  <E>This would be the most efficient and cost-effective method.</E>
+
+  <A>Use AWS Storage Gateway - Tape to back the EBS volumes up directly to RDS.</A>
+  <E>This is not technically feasible.</E>
+
+  <A>Create a bootstrap script to copy the files on the EBS volume directly to EFS every day. Reboot the EC2 fleet on a nightly basis.</A>
+  <E>Although technically possible, this is neither the most efficient nor cost-effective method available.</E>
+  <R />
+</Q>
+
+
+## Question 64
+
+<Q>
+You work for a real estate company that has a bunch of different batch processes they need to automate, such as patch management and data synchronization. You need to automate this and integrate it with AWS services and you need to do this serverless if possible. What AWS service should you use?
+
+  <A>AWS Batch Manager</A>
+  <E>There is no such AWS service as AWS Batch Manager. There is AWS Batch, which enables developers, scientists, and engineers to easily and efficiently run hundreds of thousands of batch computing jobs on AWS. However, this is not suitable for things like patch management.</E>
+
+  <A>AWS Batch Assist</A>
+  <E>There is no such AWS service as AWS Batch Assist. There is AWS Batch, which enables developers, scientists, and engineers to easily and efficiently run hundreds of thousands of batch computing jobs on AWS. However, this is not suitable for things like patch management.</E>
+
+  <A>AWS X-Ray</A>
+  <E>AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices architecture. It is not suitable in this case.</E>
+
+  <A correct>AWS Step-Functions</A>
+  <E>AWS Step Functions is a low-code, visual workflow service that developers use to build distributed applications, automate IT and business processes, and build data and machine learning pipelines using AWS services.</E>
+  <R />
+</Q>
+
+
+## Question 65
+
+<Q>
+A software company has created an application to capture service requests from users and also enhancement requests. The application is deployed on an Auto Scaling Group of EC2 instances fronted by an Application Load Balancer. The Auto Scaling Group has scaled to maximum capacity, but there are still requests being lost. The company has decided to use SQS with the Auto Scaling Group to ensure all messages are saved and processed. What is an appropriate metric for Auto Scaling with SQS?
+
+  <A>CPU utilization</A>
+  <E>CPU utilization measures the computational workload on an instance, but it doesn't directly correlate with the number of messages waiting in an SQS queue. In scenarios where the processing of each message is computationally light, an instance might have low CPU utilization even with a high number of messages to process. Conversely, an instance could have high CPU utilization with fewer messages if each message requires intensive processing. While CPU utilization is essential, it's not the most appropriate metric for this specific SQS scenario.</E>
+
+  <A correct>Backlog per instance</A>
+  <E>
+The issue with using a CloudWatch Amazon SQS metric like ApproximateNumberOfMessagesVisible for target tracking is that the number of messages in the queue might not change proportionally to the size of the Auto Scaling Group that processes messages from the queue. That's because the number of messages in your SQS queue does not solely define the number of instances needed. The number of instances in your Auto Scaling Group can be driven by multiple factors, including how long it takes to process a message and the acceptable amount of latency (queue delay).
+The solution is to use a backlog per instance metric with the target value being the acceptable backlog per instance to maintain. You can calculate these numbers as follows:
+Backlog per instance: To calculate your backlog per instance, start with the ApproximateNumberOfMessages queue attribute to determine the length of the SQS queue (number of messages available for retrieval from the queue). Divide that number by the fleet's running capacity, which for an Auto Scaling Group is the number of instances in the InService state, to get the backlog per instance.
+Reference: [Scaling Based on Amazon SQS](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)
+</E>
+
+  <A>Backlog per user</A>
+  <E>The primary concern is the number of messages in the SQS queue and the instances processing those messages. In general AWS practices, while user-based metrics might be relevant for certain applications, especially those with user-specific workloads, it's not a standard metric for scaling with SQS. The emphasis is on ensuring that messages in the queue are processed efficiently, regardless of the user origin.</E>
+
+  <A>Backlog per hour</A>
+  <E>The focus is on the current state of the queue and the instances, not on how the backlog accumulates over a specific time frame like an hour. From a broader AWS perspective, while time-based metrics can be useful in certain scenarios, especially when analyzing trends, they might not be as effective for real-time scaling decisions as the immediate backlog per instance.</E>
+  <R />
+</Q>
