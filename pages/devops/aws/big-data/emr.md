@@ -6,9 +6,9 @@ Amazon EMR is an AWS service to help with **ETL processing**.
 
 EMR is a managed big data platform that allows you to process vast amounts of data using open-source tools, such as Spark, Hive, HBase, Flink, Hudi, and Presto.
 
-Amazon EMR requires a learning curve to operate the open-source frameworks that it uses.
-
 EMR is made up of EC2 instances. You can employ EC2 instance cost-saving measures.
+
+EMR requires a learning curve to operate the open-source frameworks that it uses.
 
 
 ## Use cases
@@ -40,8 +40,8 @@ Instance store volumes only remain during the lifecycle of the Amazon EC2 instan
 Clusters are groups of EC2 instances within Amazon EMR. Each instance is a node.
 
 - **Primary Node**: manages the cluster, coordinates distribution of data and tasks, tracks health statuses.
-- **Core Node**: runs tasks and stores data in Hadoop Distributed File System (HDFS). For long-running tasks.
-- **Task Node**: ONLY run one tasks, with no storage on the system. Optional. Typically get ran using Spot instances.
+- **Core Node**: runs tasks and stores data in Hadoop Distributed File System. For long-running tasks.
+- **Task Node** (optional): ONLY run one tasks, with no storage on the system. Typically get ran using Spot instances.
 
 Clusters can be either long-running, or they can be transient (a.k.a. temporary).
 

@@ -9,7 +9,11 @@ Can use standard SQL queries to process streaming data.
 
 Provides real-time data transformation and analysis using Apache Flink (Apache Flink is an open-source framework and engine for processing data streams).
 
-Support destinations: S3, RedShift, Elasticsearch and Kinesis Data Streams.
+Support destinations:
+- S3
+- RedShift
+- Elasticsearch
+- Kinesis Data Streams
 
 Can configure destinations to persist the results.
 

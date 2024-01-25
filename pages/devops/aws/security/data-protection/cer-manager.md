@@ -4,7 +4,9 @@
 
 AWS Certificate Manager (ACM) allows you to create, manage, and deploy public and private SSL certificates for use with other AWS services.
 
-It integrates with Elastic Load Balancing, CloudFront, API Gateway, etc. Allowing you to easily manage and deploy SSL certificates in your AWS environment.
+It allows you to easily manage and deploy SSL certificates in your AWS environment.
+
+It integrates with Elastic Load Balancing, CloudFront, API Gateway, etc.
 
 
 ## Benefits

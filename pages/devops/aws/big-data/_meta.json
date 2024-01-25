@@ -1,8 +1,8 @@
 {
   "redshift": { "title": "Amazon Redshift" },
   "emr": { "title": "Amazon EMR" },
-  "athena": { "title": "Amazon Athena" },
   "glue": { "title": "Amazon Glue" },
+  "athena": { "title": "Amazon Athena" },
   "kinesis": { "title": "Amazon Kinesis" },
   "quicksight": { "title": "Amazon QuickSight" },
   "data-pipeline": { "title": "AWS Data Pipeline" },

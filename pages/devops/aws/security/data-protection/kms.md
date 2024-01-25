@@ -2,17 +2,15 @@
 
 ## Overview
 
-AWS KMS is a managed service that makes it easy for you to create and **control encryption keys** of encrypted data.
-
-AWS KMS is integrated with many AWS services (e.g., EBS, S3, RDS) to make it simple to encrypt data with encryption keys you manage.
-
-It is integrated with AWS CloudTrail to provide you with logs of key usage to help meet regulatory and compliance needs.
+AWS KMS allows you to centrally manage and securely store encryption keys.
 
 You can create new keys whenever you wish, and you can control who can manage keys separately from who can use them.
 
-You can choose the specific levels of access control that you need for your keys.
+You can choose the specific levels of access control that you need for your keys. *For example, you can specify which IAM users and roles are able to manage keys. Alternatively, you can temporarily disable keys so that they are no longer in use by anyone.*
 
-*For example, you can specify which IAM users and roles are able to manage keys. Alternatively, you can temporarily disable keys so that they are no longer in use by anyone.*
+AWS KMS is integrated with many AWS services (e.g., EBS, S3, RDS) to make it simple to encrypt data with encryption keys you manage.
+
+It is integrated with AWS CloudTrail to provide you key usage logs to help meet regulatory and compliance needs.
 
 
 ## Customer master key
@@ -45,7 +43,9 @@ Automatic key rotation is not supported for imported keys, asymmetric keys, or k
 
 ## Policies
 
-The primary way to manage access to your AWS KMS CMKs is with policies. Policies are documents that describe who has access to what.
+The primary way to manage access to your AWS KMS CMKs is with policies.
+
+Policies are documents that describe who has access to what.
 
 In AWS KMS, you must attach resource-based policies to your customer master keys (CMKs). These are called **key policies**.
 
@@ -54,6 +54,8 @@ All KMS CMKs have a key policy.
 
 ## 3 Ways to Control Permission
 
-- **Use the Key policy**. Controlling access this way means the full scope of access to the CMK is defined in a single document (the key policy).
-- **Use IAM policies in combination with the Key policy**. Controlling access this way enables you to manage all the permissions for your IAM identities in IAM.
-- **Use grants in combination with the Key policy**. Controlling access this way enables you to allow access to the CMK in the key policy, as well as allow users to delegate their access to others.
+**Use the Key policy**. Controlling access this way means the full scope of access to the CMK is defined in a single document (the key policy).
+
+**Use IAM policies in combination with the Key policy**. Controlling access this way enables you to manage all the permissions for your IAM identities in IAM.
+
+**Use grants in combination with the Key policy**. Controlling access this way enables you to allow access to the CMK in the key policy, as well as allow users to delegate their access to others.

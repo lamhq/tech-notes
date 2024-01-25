@@ -10,4 +10,11 @@ AWS Glue is based on the Apache Spark big data framework, so it can be used to q
 
 It can design a schema for your data.
 
-It can import data from: S3, RDS, AWS CloudFront, AWS CloudTrail, AWS Billing, AWS Elastic Load Balancing, on-premises database that supports JDBC.
+It can import data from: 
+- S3
+- RDS
+- AWS CloudFront
+- AWS CloudTrail
+- AWS Billing
+- AWS Elastic Load Balancing
+- on-premises database that supports JDBC
