@@ -3,15 +3,15 @@
 ## Overview
 
 AWS Migration Hub gives you a single place to:
-- discover existing servers
-- plan your migration efforts
-- track the progress of your application migration to AWS.
+- Discover existing servers
+- Plan your migration efforts
+- Track the progress of your application migration to AWS.
 
 It helps you visualize connection and server/database statuses that are a part of your migrations.
 
-You have options to start migrations immediately or group servers into application groups first.
+You have the options to start migrations immediately or group servers into application groups first.
 
-It integrates with Server Migration Service (SMS) and Database Migration Service (DMS).
+Integrates with Server Migration Service (SMS) and Database Migration Service (DMS).
 
 
 ## Migration phases

@@ -2,15 +2,24 @@
 
 ## Overview
 
-Amazon Kinesis Data Streams is a data pipeline enables you to ingest, buffer, and process streaming big data in **real-time**.
+Amazon Kinesis Data Streams is a data pipeline enables you to **ingest, buffer, and process streaming big data in real-time**.
 
 Kinesis can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies.
 
-Example sources: website clickstreams, database event streams, financial transactions, social media feeds, IT logs, location-tracking events...
+Example sources:
+- website clickstreams
+- database event streams
+- financial transactions
+- social media feeds
+- IT logs
+- location-tracking events
+- ...
 
 It does not transform data.
 
-It reliably **stores data** for later processing by applications (key difference with Firehose which delivers data directly to AWS services), maximum retention period is 7 days.
+It reliably **stores data** for later processing by applications (key difference with Firehose which delivers data directly to AWS services), maximum retention period is **7 days**.
+
+It's **pull-based** (like Amazon SQS).
 
 The collected data is available (to consumers) in milliseconds.
 
@@ -39,8 +48,6 @@ Each shard supports up to 5 read transactions/sec, maximum data rate of 2 MB/sec
 
 For writes, you can push up to 1,000 records per second, with a data rate of 1 MB per second.
 
-Each shard can support up to 1000 PUT records per second.
-
 A stream is composed of one or more shards.
 
 The total capacity of the stream is the sum of the capacities of its shards.
@@ -52,11 +59,13 @@ A record is the unit of data stored in a Amazon Kinesis data stream.
 
 Each record has a sequence number, a partition key, and a data blob.
 
-Kinesis Data Streams uses partition key to determine which shard a given data record belongs to. It ensures data records with the same partition key are processed in the order in which they were added to the stream.
+Partition key is used to determine which shard a given data record belongs to.
+
+Data records with the same partition key are processed in the order in which they were added to the stream.
 
 A data blob is the data that producer adds to a data stream.
 
-The maximum size of a data blob (before Base64-encoding) within one record is 1 MB.
+The maximum size of a data blob (before Base64-encoding) within one record is **1 MB**.
 
 
 ## Resharding

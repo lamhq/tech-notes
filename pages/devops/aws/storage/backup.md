@@ -2,7 +2,7 @@
 
 ## Overview
 
-Backup allows you to **consolidate backups** across multiple AWS services (EC2, EBS, EFS, Amazon FSx for Lustre, Amazon FSx for Windows File Server, AWS Storage Gateway).
+Backup allows you to **consolidate backups** across multiple AWS services (EC2, EBS, EFS, Amazon FSx for Lustre/Windows, AWS Storage Gateway).
 
 It can include other services, such as database technologies like RDS and DynamoDB.
 

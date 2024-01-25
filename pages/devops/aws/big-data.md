@@ -11,11 +11,13 @@ from a wide range of sources and formats.
 
 ## Data lake
 
-A data lake collects data from multiple sources into one combined repository.
+A data lake is a centralized database that collects and stores massive amounts of data from any number of places.
 
 It holds raw, unprocessed data of various types, including structured, semi-structured, and unstructured data.
 
-It is designed to capture and store large amounts of data. They serve as a foundation for machine learning, AI, other analytics. After processing, data from a lake can be transferred to a data warehouse.
+It allows to search, analyze, visualize, and correlate your data on the fly.
+
+After processing, data from a lake can be transferred to a data warehouse.
 
 
 ## Data Warehouse

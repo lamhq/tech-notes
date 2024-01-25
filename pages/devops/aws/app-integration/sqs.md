@@ -6,11 +6,13 @@ Amazon SQS is a fully managed, **message queuing service** that you can use to d
 
 SQS enables you to send, store, and receive messages between software components.
 
-SQS is pull-based (Amazon SNS is push-based). One resource will write a message to an SQS queue, and then other resources will poll the queue to retrieve messages.
+SQS is **pull-based** (Amazon SNS is push-based). One resource will write a message to an SQS queue, and then other resources will poll the queue to retrieve messages.
 
 SQS doesn't offer real-time.
 
-Data are stored redundantly in multiple AZs within a region.
+SQS scales automatically.
+
+High availability. Data are stored redundantly in multiple AZs within a region.
 
 
 ## SQS with Lambda

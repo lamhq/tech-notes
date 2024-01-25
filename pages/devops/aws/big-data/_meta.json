@@ -1,12 +1,12 @@
 {
+  "lake-formation": { "title": "AWS Lake Formation" },
   "redshift": { "title": "Amazon Redshift" },
   "emr": { "title": "Amazon EMR" },
   "glue": { "title": "Amazon Glue" },
-  "athena": { "title": "Amazon Athena" },
-  "kinesis": { "title": "Amazon Kinesis" },
-  "quicksight": { "title": "Amazon QuickSight" },
   "data-pipeline": { "title": "AWS Data Pipeline" },
+  "kinesis": { "title": "Amazon Kinesis" },
   "msk": { "title": "Amazon MSK" },
-  "opensearch": { "title": "Amazon OpenSearch" },
-  "lake-formation": { "title": "AWS Lake Formation" }
+  "quicksight": { "title": "Amazon QuickSight" },
+  "athena": { "title": "Amazon Athena" },
+  "opensearch": { "title": "Amazon OpenSearch" }
 }

@@ -49,6 +49,34 @@ FSx for Lustre is compatible with the most popular Linux-based AMIs, including A
 You access your Amazon FSx file system from endpoints in your Amazon VPC, which enables you to isolate your file system in your own virtual network.
 
 
+## File system deployment
+
+Amazon FSx for Lustre provides two file system deployment options: **scratch** and **persistent**.
+
+### Scratch file systems
+
+Designed for temporary storage and shorter-term processing of data.
+
+Provide high burst throughput, up to 6x the baseline throughput, 200 MBps per TiB of storage capacity.
+
+Use when you need cost-optimized storage for short-term, processing-heavy workloads.
+
+Data is not replicated. Lost if file servers fail.
+
+
+### Persistent file systems
+
+Designed for longer-term storage and workloads.
+
+Highly available. Data is replicated within the same AZ in which the file system is located.
+
+If a file server becomes unavailable, it's replaced automatically within minutes of failure.
+
+Use for:
+- longer-term storage.
+- throughput-focused workloads that run for extended periods or indefinitely, and that might be sensitive to disruptions in availability.
+
+
 ## S3 integration
 
 Amazon FSx works natively with Amazon S3, making it easy to access your S3 data to run data processing workloads.

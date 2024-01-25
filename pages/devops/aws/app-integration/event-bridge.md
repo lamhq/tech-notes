@@ -14,11 +14,18 @@ It's the only event-based service that integrates directly with third-party SaaS
 
 It's the fastest way to respond to things happening in your environment.
 
-Automatically ingests events **from** over 90 AWS services.
+Automatically ingests events from over 90 AWS services.
 
 Can be used to schedule automated actions that self-trigger at certain times using cron or rate expressions.
 
 Can match events and route them to one or more target functions or streams.
+
+
+## Use cases
+
+Recommended for applications that react to events from SaaS applications or AWS services.
+
+Common use case is triggering Lambda functions when an AWS API call happens.
 
 
 ## Targets
@@ -40,13 +47,6 @@ Supports over 15 AWS services as targets:
 - Amazon Inspector assessment templates.
 - Amazon SNS topics.
 - Amazon SQS queues.
-
-
-## Use cases
-
-EventBridge is recommended for applications that react to events from SaaS applications or AWS services.
-
-Common use case is triggering Lambda functions when an AWS API call happens.
 
 
 ## Concepts

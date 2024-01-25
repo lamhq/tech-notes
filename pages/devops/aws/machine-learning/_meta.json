@@ -2,10 +2,10 @@
   "comprehend": { "title": "Amazon Comprehend" },
   "kendra": { "title": "Amazon Kendra" },
   "textract": { "title": "Amazon Textract" },
+  "rekognition": { "title": "Amazon Rekognition" },
   "forecast": { "title": "Amazon Forecast" },
   "speech": { "title": "Working with Text and Speech" },
-  "rekognition": { "title": "Amazon Rekognition" },
-  "sage-maker": { "title": "Amazon Sage Maker" },
   "translate": { "title": "Amazon Translate" },
-  "fraud-detector": { "title": "Amazon Fraud Detector" }
+  "fraud-detector": { "title": "Amazon Fraud Detector" },
+  "sage-maker": { "title": "Amazon Sage Maker" }
 }

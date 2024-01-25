@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon MQ is a managed **message broker service** for ActiveMQ.
+Amazon MQ is a managed **message broker service** for **ActiveMQ**.
 
 MQ supports industry-standard APIs and protocols so you can migrate messaging and applications without rewriting code.
 

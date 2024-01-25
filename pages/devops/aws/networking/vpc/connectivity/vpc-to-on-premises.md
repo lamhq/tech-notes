@@ -60,8 +60,6 @@ This solution combines the AWS managed benefits of the VPN solution with low lat
 
 The AWS VPN CloudHub Connect locations in a hub and spoke manner using AWSs Virtual Private Gateway.
 
-> In this model, the hub is the central point of communication, while the spokes are the remote sites that connect to the hub.
-
 Use this design if you have multiple branch offices and existing internet connections and would like to implement a convenient, potentially low-cost hub-and-spoke model for primary or backup connectivity between these remote offices.
 
 VPN CloudHub is used for hardware-based VPNs and allows you to configure your branch offices to go into a VPC and then connect that to the corporate DC (hub and spoke topology with AWS as the hub).

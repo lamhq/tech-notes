@@ -2,9 +2,9 @@
 
 ## Overview
 
-OpenSearch is a managed service allowing you to run search and analytics engines for various use cases.
+OpenSearch is a managed service allowing you to run s**earch and analytics engines** for various use cases.
 
-It is used as a managed analytics and visualization service. Primarily used for **analyzing log files** and various documents, especially within an ETL process.
+Primarily used for **analyzing log files** and various documents, especially within an ETL process.
 
 Easily integrate with Amazon CloudWatch, AWS Cloud Trail, Amazon S3, and Amazon Kinesis.
 

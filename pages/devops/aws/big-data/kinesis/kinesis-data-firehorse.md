@@ -2,21 +2,19 @@
 
 ## Overview
 
-Kinesis Data Firehose can capture, transform, and load streaming data to a destination.
+Kinesis Data Firehose can **capture, transform, and load streaming data to a destination**.
 
 It can batch (buffer), compress, transform, encrypt data before before delivering it to destination.
 
-With Firehose, data is immediately loaded into a destination.
+It's **push-based**. Data is immediately loaded into a destination.
 
 It automatically scales based on the data throughput and requires minimal ongoing administration.
 
 Firehose synchronously replicates data across three AZs as it is transported to destinations.
 
-Each delivery stream stores data records for up to 24 hours.
+Each delivery stream stores data records for up to **24 hours**.
 
-The maximum size of a record (before Base64-encoding) is 1 MB.
-
-No shards, totally automated.
+The maximum size of a record (before Base64-encoding) is **1 MB**.
 
 Uses Lambda functions to perform the data transformation, support custom transformations.
 

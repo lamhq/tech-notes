@@ -2,7 +2,7 @@
 
 ## Overview
 
-Amazon MSK is **managed service for running data streaming applications** that leverage **Apache Kafka** to process streaming data.
+Amazon MSK is managed service for running data streaming applications that leverage **Apache Kafka** to process streaming data.
 
 The service handles control plane operations for you (creation, updating, and deletion of cluster).
 
@@ -19,9 +19,11 @@ of Apache Kafka.
 
 ## Components
 
-- **Broker Nodes**: Specify the amount of broker nodes per AZ you want at time of cluster creation.
-- **ZooKeeper Nodes**: ZooKeeper nodes are created for you.
-- **Producers, Consumers, Topics**: Kafka data-plane operations allow creation of topics and ability to produce/consume data.
+**Broker Nodes**: Specify the amount of broker nodes per AZ you want at time of cluster creation.
+
+**ZooKeeper Nodes**: ZooKeeper nodes are created for you.
+
+**Producers, Consumers, Topics**: Kafka data-plane operations allow creation of topics and ability to produce/consume data.
 
 
 ## Resiliency

@@ -5,9 +5,9 @@
 
 Amazon Kinesis Data Analytics is the easiest way to **process and analyze real-time, streaming data**.
 
-Can use standard SQL queries to process streaming data.
+Can use **standard SQL** queries to process streaming data.
 
-Provides real-time data transformation and analysis using Apache Flink (Apache Flink is an open-source framework and engine for processing data streams).
+Provides **real-time data transformation and analysis** using **Apache Flink** (an open-source framework and engine for processing data streams).
 
 Support destinations:
 - S3

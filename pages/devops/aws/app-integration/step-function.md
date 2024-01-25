@@ -2,7 +2,7 @@
 
 ## Overview
 
-AWS Step Functions is a serverless workload orchestration service which can be used to coordinate the components of distributed applications as a series of steps in a visual workflow.
+AWS Step Functions is a serverless **workload orchestration service** which can be used to coordinate the components of distributed applications as a series of steps in a visual workflow.
 
 It provides a graphical console for viewing application workflow views and flows, a detailed event log for every execution.
 
@@ -15,6 +15,17 @@ You can automatically retry failed or timed-out tasks, catch errors.
 IAM policies can be used to control access to the Step Functions APIs.
 
 Services and data can be orchestrated that run on Amazon EC2 instances, containers, or on-premises servers.
+
+
+## Use Cases
+
+Build workflows across multiple Amazon services.
+
+Build data pipeline, long-running ETL jobs.
+
+Automate recurring tasks, such as updating patches, selecting infrastructure, and synchronizing data
+
+Create responsive serverless applications and microservices with multiple AWS Lambda functions without writing code for workflow logic, parallel processes, error handling, or timeouts.
 
 
 ## How it works
@@ -92,14 +103,3 @@ Each workflow has executions. Executions are instances where you run your workfl
 - Can run for up to five minutes.
 - Useful for high-event-rate workloads. Things that comes in and goes out very quickly. E.g., IoT data streaming and ingestion.
 - Pricing based on number of executions, durations, memory consumed
-
-
-## Use Cases
-
-Build workflows across multiple Amazon services
-
-Buidl data pipeline, long-running ETL jobs
-
-Automate recurring tasks, such as updating patches, selecting infrastructure, and synchronizing data
-
-Create responsive serverless applications and microservices with multiple AWS Lambda functions without writing code for workflow logic, parallel processes, error handling, or timeouts.
