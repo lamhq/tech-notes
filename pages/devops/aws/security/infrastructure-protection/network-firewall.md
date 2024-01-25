@@ -2,18 +2,18 @@
 
 ## Overview
 
-Network Firewall is a managed service that makes it easy to deploy **physical firewall** protection **across your VPCs**.
-
-It includes a firewall rules engine that allow you to block outbound Server Message Block (SMB) requests to stop the spread of malicious activity.
+Network Firewall is a managed service that makes it easy to deploy **physical firewall** protection across your **VPCs**.
 
 It gives you control and visibility of **VPC-to-VPC traffic** to logically separate networks hosting sensitive applications or line-of-business resources.
 
-Keywords:
-- filtering your network traffic before it reaches your internet gateway
-- require intrusion prevention systems
-- tracking connections and protocol identification
-- enforce policies such as preventing your VPCs from accessing domains using an unauthorized protocol
-- any hardware firewall requirements...
+It includes a firewall rules engine that allow you to block outbound Server Message Block (SMB) requests to stop the spread of malicious activity.
+
+Use cases:
+- Filtering your network traffic before it reaches your internet gateway
+- Require intrusion prevention systems
+- Tracking connections and protocol identification
+- Enforce policies such as preventing your VPCs from accessing domains using an unauthorized protocol
+- Any hardware firewall requirements...
 
 
 ## Benefits
@@ -25,7 +25,7 @@ AWS Network Firewall works with **AWS Firewall Manager,** so you can centrally m
 It also provides an intrusion prevention system (IPS) that gives you active traffic flow inspection.
 
 
-## Use cases
+## Features
 
 ### Filter Internet Traffic
 You can use methods like access control list (ACL) rules, stateful inspection, protocol detection, and intrusion prevention to filter your internet traffic.

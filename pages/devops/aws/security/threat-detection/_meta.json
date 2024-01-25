@@ -1,5 +1,4 @@
 {
-  "cloudtrail": "AWS CloudTrail",
   "macie": "Amazon Macie ",
   "inspector": "Amazon Inspector",
   "guardduty": "Amazon GuardDuty",

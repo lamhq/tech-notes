@@ -1,4 +1,4 @@
-# Optimizing Solutions on AWS
+# Availability
 
 ## What Is Availability?
 

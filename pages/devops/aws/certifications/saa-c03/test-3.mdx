@@ -1,0 +1,1387 @@
+import Q from '@/Question'
+import A from '@/Answer'
+import R from '@/Reveal'
+import E from '@/Explanation'
+
+# Practice Test 3
+
+## Question 1
+
+<Q>
+A web analytics company is receiving both structured and semi-structured data from a large number of different sources each day. The developers plan on using big data processing frameworks to analyze the data and access it using Business Intelligence (BI) tools and SQL queries.
+Which of the following provides the best high-performing solution?
+
+  <A>Use Amazon Kinesis Data Analytics and store the processed data in Aurora.</A>
+  <E>Using Amazon Kinesis Data Analytics for SQL Applications, you can process and analyze streaming data using standard SQL. It is not a data warehouse solution.</E>
+
+  <A correct>Create an Amazon EMR Cluster and store the data in Amazon Redshift.</A>
+  <E>Amazon EMR is a managed cluster platform that simplifies running big data frameworks on AWS to process and analyze vast amounts of data. Redshift is Amazon's managed Big Data Warehouse.</E>
+
+  <A>Use Amazon EC2 and store the data in RDS.</A>
+  <E>RDS is a good database solution. However, it is not specifically a good data warehouse solution.</E>
+
+  <A>Use AWS Glue and store the processed data in S3.</A>
+  <E>AWS Glue is a serverless data integration service that makes it easy to discover, prepare, and combine data for analytics, machine learning, and application development. It is not suitable for this scenario.</E>
+  <R />
+</Q>
+
+
+## Question 2
+
+<Q>
+You run a popular online store that specializes in Christmas decorations. You are about to enter the Christmas period and the traffic to your website is expected to increase by 10 times. Your website uses API Gateway, Lambda, and DynamoDB on the background. Last year during the sale, you got the following exception from DynamoDB: *ProvisionedThroughputExceededException*. You need to prevent this from happening again this year. What would you do to prevent this?
+
+
+  <A correct>Use DynamoDB auto-scaling.</A>
+  <E>
+DynamoDB auto-scaling allows your table's read and write capacity to automatically adjust based on the incoming traffic.  It can automatically increase provisioned capacity to accommodate higher request rates and reduce capacity during lower traffic periods.
+Reference: [Managing throughput capacity automatically with DynamoDB auto scaling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/AutoScaling.html)
+</E>
+
+  <A>Create an Auto Scaling group in front of your Lambda function so that the queries are dealt with in parallel.</A>
+  <E>You cannot create an Auto Scaling group in front of your Lambda function.</E>
+
+  <A>Migrate from DynamoDB to Amazon RDS for better scalability</A>
+  <E>DynamoDB is a NoSQL model whereas RDS is SQL-based. This would be complex to do and would not achieve the levels of scale possible with DynamoDB.  The cost model of these two types of services would mean an increase in cost would be greater as well, which is not ideal when you are trying to maximise sales during the Christmas period. </E>
+
+  <A>Use Aurora Serverless NoSQL as an alternative.</A>
+  <E>There is no such service as Aurora Serverless NoSQL.</E>
+  <R />
+</Q>
+
+
+## Question 3
+
+<Q>
+You are a solutions architect for an online gambling company. You notice a series of web-layer DDoS attacks. This is coming from a large number of multiple IP addresses. In order to mitigate these web-layer DDoS attacks, you have been asked to implement a rule capable of blocking all IPs that have more than 2,000 requests in the last 5 minute interval. What should you do?
+
+  <A>Create a standard rule on your AWS WAF and associate the web access control list (ACL) to the Application Load Balancer</A>
+  <E>Standard rules cannot be used to configure a rate-based threshold. You would need a rate-based rule to block all IPs that have more than 2,000 requests in the last 5 minute interval.</E>
+
+  <A correct>Create a rate-based rule on your AWS WAF and associate the web access control list (ACL) to the Application Load Balancer</A>
+  <E>A rate-based rule tracks the rate of requests for each originating IP address, and triggers the rule action on IPs with rates that go over a limit. You set the limit as the number of requests per 5-minute time span. You can use this type of rule to put a temporary block on requests from an IP address that's sending excessive requests. AWS Documentation: [Rate-based rule statement](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html).</E>
+
+  <A>Use AWS Trusted Advisor to filter the traffic</A>
+  <E>AWS Trusted Advisor is an automated advisory service and is not used to mitigate layer 7 attacks.</E>
+
+  <A>Update your VPC's network access control list (NACL) and block access to the IP addresses as and when they come in</A>
+  <E>This is not a feasible way to block requests from IP addresses that are sending a specific number of requests in the last 5 minute interval.</E>
+  <R />
+</Q>
+
+
+## Question 4
+
+<Q>
+You have a steady application serving around 3,000 customers that needs to be migrated to AWS. Based on historical data, traffic and usage has not grown very much in the past 24 months and you expect the application to remain steady for the next 3 years. You need to run the application on EC2. What is the most cost-effective EC2 instance type to use?
+
+  <A>Spot Instances</A>
+  <E>Although this is cost effective, it is not suitable for running stable workloads, as the Spot fleet can be terminated any time.</E>
+
+  <A>Dedicated Instances</A>
+  <E>This is not the most cost-effective solution.</E>
+
+  <A correct>Reserved Instances</A>
+  <E>Using Reserved Instances is the most cost-effective solution for running EC2 instances over long periods of time.</E>
+
+  <A>On-Demand Instances</A>
+  <E>This is not the most cost-effective solution.</E>
+  <R />
+</Q>
+
+
+## Question 5
+
+<Q>
+You use AWS Route53 as your DNS service and you have updated your domain, hello.acloud.guru, to point to a new Elastic Load Balancer (ELB). However, when you check the update it looks like users are still redirected to the old ELB. What could be the problem?
+
+  <A>Your Application Load Balancer needs to be a Network Load Balancer to interface with Route53.</A>
+  <E>This would not achieve anything. This is a DNS issue and you need to wait for the TTL to expire.</E>
+
+  <A>The CNAME needs to be changed to an A record.</A>
+  <E>Changing the CNAME to an A record won't achieve anything.</E>
+
+  <A>The A record needs to be changed to a CNAME.</A>
+  <E>Changing the A record to a CNAME won't achieve anything.</E>
+
+  <A correct>The TTL needs to expire. After that, the record will be updated.</A>
+  <E>You need to wait for the TTL to expire. Your computer has cached the previous DNS request, but once the TTL has expired it will get the new address.</E>
+  <R />
+</Q>
+
+
+## Question 6
+
+<Q>
+You work for a popular streaming service that runs its NoSQL backend in-house on large Cassandra clusters. You recently had a major outage and realize you need to migrate your Cassandra workload on to something more reliable, such as the AWS Cloud. You do a cost analysis and realize that, in the long run, this will probably save the company a lot of overhead fees. You need to select a Cassandra-compatible service on which to run your workloads. Which service should you select?
+
+  <A>Amazon DocumentDB</A>
+  <E>This is a MongoDB-compatible database and is not compatible with Cassandra.</E>
+
+  <A correct>Amazon Keyspaces</A>
+  <E>This is a Cassandra-compatible database and is the best choice for this scenario.</E>
+
+  <A>Neptune</A>
+  <E>This is a fully managed graph database and is not compatible with Cassandra.</E>
+
+  <A>Amazon Keystone</A>
+  <E>This is not an AWS service.</E>
+  <R />
+</Q>
+
+
+## Question 7
+
+<Q>
+You are working as a Solutions Architect for an online travel company. Your application is going to use an Auto Scaling group of EC2 instances, but you need to have some decoupling to store messages because of high volume. Which AWS service can be added to the solution to meet this requirement?
+
+  <A>Implement Elasticache as a storage location for messages when high volumes of traffic are present.</A>
+  <E>Elasticache can be used to offload traffic in front of a database but is not intended to store messages for long periods of time.</E>
+
+  <A>Implement AWS Simple Workflow Service, which initiates a Lambda function to process the messages during high volume traffic loads.</A>
+  <E>The scenario outlines the necessity for decoupling to store messages due to high volume, where an Auto Scaling group of EC2 instances is being used. While the integration of AWS SWF and Lambda can facilitate the orchestration and execution of distributed tasks and workflows, it doesn't inherently address the message storage requirement.</E>
+
+  <A correct>Implement AWS SQS for message storage during high-volume traffic.</A>
+  <E>
+Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS eliminates the complexity and overhead associated with managing and operating message-oriented middleware and empowers developers to focus on differentiating work. Using SQS, you can send, store, and receive messages between software components at any volume, without losing messages or requiring other services to be available. Get started with SQS in minutes using the AWS console, Command Line Interface, or SDK of your choice, and 3 simple commands.
+SQS offers 2 types of message queues. Standard queues offer maximum throughput, best-effort ordering, and at-least-once delivery. SQS FIFO queues are designed to guarantee that messages are processed exactly once, in the exact order that they are sent.
+https://aws.amazon.com/sqs/
+</E>
+
+  <A>Configure RDS read replicas as a storage location for messages during high volumes of traffic.</A>
+  <E>Read replicas are used to offload read traffic from a master database. They can also be promoted to a master database in emergency situations, but they are not meant to queue up messages as SQS does.</E>
+  <R />
+</Q>
+
+
+## Question 8
+
+<Q>
+You are database administrator for a security company using a large  graph database used to build graph queries for near real-time identity fraud pattern detection in financial and purchase transactions. You recently  experienced an outage and you want to migrate this database to somewhere more secure and stable such as AWS. What AWS service would you  recommend to the business to handle graph queries?
+
+  <A>Amazon Keyspaces</A>
+  <E>This is a Cassandra-compatible database and is not used for graph queries.</E>
+
+  <A>Aurora Serverless</A>
+  <E>This is a relational database and would not be best used for graph queries.</E>
+
+  <A>Amazon DocumentDB</A>
+  <E>This is a MongoDB database and is not used for graph queries.</E>
+
+  <A correct>Neptune</A>
+  <E>This is a graph database and would be suitable to handle graph queries.</E>
+  <R />
+</Q>
+
+
+## Question 9
+
+<Q>
+You work for a large chip manufacturer in Taiwan who has a large dedicated cluster running MongoDB. Unfortunately, they have a large period of downtime and would now like to migrate their MongoDB instance to the AWS cloud. They do not want to make any changes to their application architecture. What AWS service would you recommend to use for MongoDB?
+
+  <A correct>Amazon DocumentDB</A>
+  <E>This supports MongoDB and would be suitable in this scenario.</E>
+
+  <A>Amazon QLDB</A>
+  <E>This is a ledger database service and does not support MongoDB.</E>
+
+  <A>Amazon Neptune</A>
+  <E>This is a managed graph database service and does not support MongoDB.</E>
+
+  <A>Aurora Serverless</A>
+  <E>This is a relational database service and does not support MongoDB.</E>
+  <R />
+</Q>
+
+
+## Question 10
+
+<Q>
+You have a secure web application hosted on AWS using Application Load Balancers, Auto Scaling, and a fleet of EC2 instances connected to an RDS database. You need to ensure that your RDS database can only be accessed using the profile credentials specific to your EC2 instances (via an authentication token). How can you achieve this?
+
+  <A>Using Amazon Cognito</A>
+  <E>Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. It does not have authentication capabilities with RDS.</E>
+
+  <A>Using IAM roles</A>
+  <E>IAM roles are used to grant access to AWS services from other AWS services. You would be better using IAM database authentication.</E>
+
+  <A correct>Using IAM database authentication</A>
+  <E>
+IAM has database authentication capabilities that would allow an RDS database to only be accessed using the profile credentials specific to your EC2 instances.
+Reference: [IAM Database Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+</E>
+
+  <A>Using Active Directory federation via Amazon Inspector</A>
+  <E>This is technically incorrect. You cannot perform Active Directory federation using Amazon Inspector.</E>
+  <R />
+</Q>
+
+
+## Question 11
+
+<Q>
+A pharmaceutical company has created a hybrid cloud that connects their on-premises data center and cloud infrastructure in AWS. They need to back up their storage to AWS. The backups must be stored and retrieved from AWS using the Server Message Block (SMB) protocol. The backups must be immediately accessible within minutes and stored for three months. What is the best solution?
+
+  <A>Create a Direct Connect connection and store the backups using Route 53.</A>
+  <E>Route 53 is a DNS service and does not support backups.</E>
+
+  <A>Use AWS Tape Gateway.</A>
+  <E>Although a Tape Gateway provides cost-effective and durable archive backup, it does not meet the criteria of being immediately retrievable.</E>
+
+  <A>Create a Direct Connect connection and store the backups in DynamoDB.</A>
+  <E>DynamoDB is a NoSQL database solution and does not support the SMB protocol.</E>
+
+  <A correct>Use AWS File Gateway.</A>
+  <E>A File Gateway supports storage on S3 and combines a service and a virtual software appliance. By using this combination, you can store and retrieve objects in Amazon S3 using industry-standard file protocols such as Network File System (NFS) and Server Message Block (SMB).</E>
+  <R />
+</Q>
+
+
+## Question 12
+
+<Q>
+You have an online store and you are preparing for the week before Christmas, which is your busiest period of the year. You estimate that your traffic will increase by 50% during this period. Your website is using an SQS standard queue, and you're running a fleet of EC2 instances configured in an Auto Scaling group which then consumes the SQS messages. What should you do to prepare your SQS queue for the 50% increase in traffic?
+
+  <A>Create multiple SQS queues and deploy these behind an SQS Load Balancer.</A>
+  <E>You don't need to do anything. SQS scales automatically.</E>
+
+  <A>Create additional EC2 instances to help query the SQS queue.</A>
+  <E>You don't need to do anything. SQS scales automatically.</E>
+
+  <A>Increase the size of your SQS queue.</A>
+  <E>You don't need to do anything. SQS scales automatically.</E>
+
+  <A correct>Nothing. SQS scales automatically.</A>
+  <E>SQS scales automatically.</E>
+  <R />
+</Q>
+
+
+## Question 13
+
+<Q>
+You work for a large advertising company that is moving its videos and photos to AWS. The size of the migration is 70 terabytes, and it needs to be completed as quickly and cost-effectively as possible. What is the best way to achieve this?
+
+  <A>AWS Direct Connect</A>
+  <E>AWS Direct Connect is not the most cost-effective solution in this scenario. Although Direct Connect would allow for a dedicated low-latency connection to AWS, there is no mention that this is an existing option for the data migration to use. Provisioning this network connection would take longer than using other options you have.</E>
+
+  <A>AWS Storage Gateway</A>
+  <E>AWS Storage Gateway is not the most cost-effective solution in this scenario. In addition, the question does not identify if there is a hybrid network in place between on-premises and AWS. For Storage Gateway, you would need a high-speed, low-latency connection in place for this method to be suitable.</E>
+
+  <A>AWS File Gateway</A>
+  <E>AWS File Gateway is not the most cost-effective solution in this scenario. In addition, the question does not identify if there is a hybrid network in place between on-premises and AWS. For file gateway you would need a high-speed, low-latency connection in place for this method to be suitable.</E>
+
+  <A correct>An AWS Snowball Edge Storage Optimized device</A>
+  <E>This would be the cheapest way to transfer large amounts of data. However, it is worth noting there is a period of time needed to wait for the Snowball device to turn up. There are methods of delivery available to choose from that lower the time it takes to arrive.</E>
+  <R />
+</Q>
+
+
+## Question 14
+
+<Q>
+You have launched an EC2 instance that will host a PHP application. You install all the required software such as PHP and MySQL. You make a note of the EC2 public IPv4 address and then you stop and restart your EC2 instance. You notice that after the restart, you can't access the EC2 instance and that the instance's public IPv4 has been changed. What should you do to make sure your IPv4 address does not change?
+
+  <A>Install the PHP application on an S3 bucket and configure the bucket to have a fixed IP address.</A>
+  <E>S3 does not support dynamic websites, so hosting a PHP application on S3 would be ineffective.</E>
+
+  <A correct>Create an elastic IP address and assign it to your EC2 instance.</A>
+  <E>This will give you a fixed IP address.</E>
+
+  <A>Raise a support request with AWS Support and ask them to issue you a permanent IPv4 address.</A>
+  <E>AWS Support would not be able to do this. They would just refer you to the documentation.</E>
+
+  <A>Create an Application Load Balancer with a fixed IP address and place the EC2 behind this.</A>
+  <E>You can't assign a static IP address to an Application Load Balancer. If you need a static IP address for your Application Load Balancer, it's a best practice to register the Application Load Balancer behind a Network Load Balancer.</E>
+  <R />
+</Q>
+
+
+## Question 15
+
+<Q>
+You work for a large investment bank that is migrating its applications to the cloud. The bank is developing a custom fraud detection system using Python in Jupyter Notebook. They then build and train their models and put them into production. They want to migrate to the AWS Cloud and are looking for a service that would meet these requirements. Which AWS service would you recommend they use?
+
+  <A>Amazon Forecast</A>
+  <E>Amazon Forecast is a time-series forecasting service that uses machine learning and provides business insights. You would not use it to create and train models before deploying them into production.</E>
+
+  <A>Amazon Fraud Detector</A>
+  <E>Amazon Fraud Detector is an AI service that detects fraud in your data. You would not use it to create and train models before deploying them into production.</E>
+
+  <A>Amazon Comprehend</A>
+  <E>Amazon Comprehend uses natural-language processing (NLP) to help you understand the meaning and sentiment in your text. You would not use it to create and train models before deploying them into production.</E>
+
+  <A correct>Amazon SageMaker</A>
+  <E>Amazon SageMaker is a fully managed machine learning service. Amazon SageMaker allows you to build and train machine learning models, and then directly deploy them into a production-ready hosted environment.</E>
+  <R />
+</Q>
+
+
+## Question 16
+
+<Q>
+You have started a network design for a large pharmaceutical company to migrate their on-premises environment to AWS. The network will be highly complex with over 1,000 VPCs (all of which will need to communicate to each other) as well as having transitive peering between some on-premises data centers while all supporting IP Multicast. What VPC Network Solution should you recommend?
+
+  <A>AWS Private Link</A>
+  <E>AWS PrivateLink provides private connectivity between VPCs, AWS services, and your on-premises networks, without exposing your traffic to the public internet. However, it would not be suitable to such a complex deployment.</E>
+
+  <A correct>Transit Gateway</A>
+  <E>AWS Transit Gateway connects your Amazon Virtual Private Clouds (VPCs) and on-premises networks through a central hub. This simplifies your network and puts an end to complex peering relationships. It acts as a cloud router; each new connection is only made once.</E>
+
+  <A>VPN CloudHub</A>
+  <E>The AWS VPN CloudHub operates on a simple hub-and-spoke model and would not be suitable due to the complexity of the requirements.</E>
+
+  <A>Direct Connect</A>
+  <E>This is used for direct network connections to AWS and would not be suitable.</E>
+  <R />
+</Q>
+
+
+## Question 17
+
+<Q>
+You have a subscription website that stores private images and videos in S3. You need to distribute that content globally, so you have set up a CloudFront distribution and configured your S3 bucket to only allow the distribution's Origin Access Identity to have access to the data. You want to distribute private content to users for a limited amount of time. Which CloudFront feature allows you to securely distribute this private content?
+
+  <A>CloudFront Forward Distributors</A>
+  <E>There is no such service as CloudFront Forward Distributors.</E>
+
+  <A>Origin Access Identity</A>
+  <E>This is used for identification purposes within CloudFront and S3, and it would not be suitable for signed URL's.</E>
+
+  <A>S3 Public Access</A>
+  <E>This would make the website public, which is the opposite of what you want to achieve.</E>
+
+  <A correct>CloudFront Signed URL's</A>
+  <E>CloudFront Signed URL's are commonly used to distribute paid content through dynamically generated signed URL's.</E>
+  <R />
+</Q>
+
+
+## Question 18
+
+<Q>
+You have a serverless image-sharing website that utilizes S3 to store high-quality images. Unfortunately, your competitors start linking to your website and borrowing your photos. How can you best prevent unauthorized access?
+
+
+  <A>Enable CloudFront on the website.</A>
+  <E>This will not stop the sites from borrowing the content.</E>
+
+  <A>Block the IP addresses of the websites using AWS WAF.</A>
+  <E>AWS WAF helps protect web applications from attacks via rules based on conditions such as IP addresses, HTTP headers, HTTP body, URI strings, SQL injection, and cross-site scripting. While you could work on blocking competitor IPs (would likely be an ongoing effort), the best way to prevent unauthorized access is to only give access to those you want to have access via presigned URLs or a signed cookie.</E>
+
+  <A correct>Restrict public access to the bucket and turn on presigned URLs with expiry dates.</A>
+  <E>This would prevent access to your photos without authorization.</E>
+
+  <A>Store the images in an RDS database and restrict access.</A>
+  <E>This will not stop the sites from borrowing the content. Also, RDS is not designed to be a file storage service. It is a database service.</E>
+  <R />
+</Q>
+
+
+## Question 19
+
+<Q>
+You manage 12 EC2 instances and you need to have a central file repository that these EC2 instances can access. What would be the best possible solution for this limiting management overhead?
+
+  <A correct>Create an EFS volume and attach this to the EC2 instances.</A>
+  <E>EFS allows you to have centralized storage for your EC2 instances.</E>
+
+  <A>Create a custom Lambda function behind API Gateway. Point your EC2 instances to the Lambda function when they need to access the centralized storage system.</A>
+  <E>Lambda is a serverless compute system and cannot be used for storage.</E>
+
+  <A>Create a Route53 EBS storage record and create a network mount on your EC2 instances pointing at the Route53 alias record.</A>
+  <E>There is no such service as an EBS storage record with Route53.</E>
+
+  <A>Create and configure a Windows file server on an EC2 instance for all of the other EC2 instances to connect to.</A>
+  <E>Although a Windows file server would provide the connectivity needed for the central file repository this is something in addition for the IT team to manage.  The storage for the Windows file server would also not be automatically scaling with usage so additional overhead would be needed to manage storage capacity.</E>
+  <R />
+</Q>
+
+
+## Question 20
+
+<Q>
+A small financial company is running workloads on AWS using multiple Amazon EC2 Auto Scaling groups and Amazon RDS. The Auto Scaling groups are used to execute a manually driven ETL process on large datasets within Amazon RDS.
+
+The next application feature they want to introduce is the ability to store the output within Amazon S3, and then ingest that stored data into an Amazon Redshift table. They would like to leverage a managed service for executing and tracking the ETL process instead of manually doing so.
+
+Which solution would be the best for their requirements?
+
+  <A correct>AWS Glue</A>
+  <E>
+AWS Glue is a serverless data integration service for extract, transform, and load operations. You would use Glue in this instance to ingest the data from S3 into Amazon Redshift.
+Reference: [Data Integration from Amazon S3 to Amazon Redshift Using AWS Glue](https://aws.amazon.com/blogs/big-data/get-started-with-data-integration-from-amazon-s3-to-amazon-redshift-using-aws-glue-interactive-sessions/)
+</E>
+
+  <A>Amazon MQ</A>
+  <E>This is a message broker service and not meant for massive data transfers.</E>
+
+  <A>Amazon EventBridge</A>
+  <E>This service is not meant for data ingestion or data migrations.</E>
+
+  <A>AWS Lambda</A>
+  <E>This is not the most suitable service for long-running workloads.</E>
+  <R />
+</Q>
+
+
+## Question 21
+
+<Q>
+You are working for a startup that is designing a mobile gaming platform. It is being launched by a very famous celebrity, and the frontend servers will experience a lot of heavy traffic during the initial launch. You need to store the users' login and gaming details in memory, and you need caching capability that is compatible with Redis API. Which service should you use?
+
+  <A correct>Amazon Elasticache</A>
+  <E>Amazon Elasticache is a caching service that stores in memory and is compatible with Redis API.</E>
+
+  <A>Elasticsearch</A>
+  <E>Elasticsearch is a distributed search and analytics engine built on Apache Lucene. It does not have caching capability that is compatible with Redis API.</E>
+
+  <A>Amazon RDS</A>
+  <E>This is a database service and does not have caching capability that is compatible with Redis API.</E>
+
+  <A>Amazon DynamoDB</A>
+  <E>This is a NoSQL database service and does not have caching capability that is compatible with Redis API.</E>
+  <R />
+</Q>
+
+
+## Question 22
+
+<Q>
+You host a web application on Amazon EC2 that contains a large number of files that are infrequently accessed. Currently, the files are hosted on provisioned IOPS; however, due to budget cuts, your manager asks you to move the files to a more cost-effective solution. What storage solution should you choose?
+
+  <A>Use a Cold HDD (`sc1`).</A>
+  <E>This is not the most cost-effective solution in this scenario.</E>
+
+  <A>Use a Throughput Optimized HDD (`st1`).</A>
+  <E>This is not the most cost-effective solution in this scenario.</E>
+
+  <A correct>Use an S3 Infrequent Access storage bucket. Create a role in IAM granting S3 access and attach this role to your EC2 instance.</A>
+  <E>This would be the cheapest way to store your data in this scenario.</E>
+
+  <A>Use an Elastic Block Storage General Purpose SSD (`gp3`).</A>
+  <E>This is not the most cost-effective solution in this scenario.</E>
+  <R />
+</Q>
+
+
+## Question 23
+
+<Q>
+A genomics research facility is conducting two types of genetic analysis. The facility needs to determine the suitable FSx for Lustre volume type for each requirement. The first requirement involves immediate processing of massive genetic data sets for real-time genetic pattern identification, while the second requirement is for storing and accessing the results of completed genetic analysis for future reference.
+
+  <A>FSx Lustre Persistent volumes are designed for immediate, high-speed data processing, ideal for the initial phase of rapid genetic pattern identification. FSx Lustre Scratch volumes ensure long-term data durability and accessibility, suitable for storing and accessing completed genetic analysis results for future reference.</A>
+  <E>This is not the correct way around. FSx Lustre Scratch volumes are designed for immediate, high-speed data processing, ideal for the initial phase of rapid genetic pattern identification. FSx Lustre Persistent volumes ensure long-term data durability and accessibility, suitable for storing and accessing completed genetic analysis results for future reference.</E>
+
+  <A>Either FSx Lustre Persistent or Scratch volumes could serve both immediate processing and storing completed genetic analysis results equally well, providing both high-speed processing and long-term data retention capabilities.</A>
+  <E>While both volume types have distinct strengths, Persistent volumes offer long-term data durability, and Scratch volumes provide high-speed processing. However, they are each optimized for different phases of the genetic analysis process.</E>
+
+  <A>Both immediate processing and storing completed genetic analysis results are best served by FSx Lustre Persistent volumes, providing both high-speed processing and long-term data durability.</A>
+  <E>FSx Lustre Persistent volumes are optimal for long-term data durability, but they might not be the best choice for immediate high-speed data processing, which is crucial for the initial genetic pattern identification process.</E>
+
+  <A correct>For immediate processing of large genetic data sets, FSx Lustre Scratch volumes are suitable, optimized for high-speed and short-term data processing. For storing and accessing completed genetic analysis results, FSx Lustre Persistent volumes are recommended, offering long-term data durability and accessibility.</A>
+  <E>FSx Lustre Scratch volumes are designed for immediate, high-speed data processing, ideal for the initial phase of rapid genetic pattern identification. FSx Lustre Persistent volumes ensure long-term data durability and accessibility, suitable for storing and accessing completed genetic analysis results for future reference.</E>
+  <R />
+</Q>
+
+
+## Question 24
+
+<Q>
+You are planning to migrate a complex big data application to AWS using EC2. The application requires complex software to be installed, which typically takes a couple of hours. You need this application to be behind an Auto Scaling group so that it can react in a scaling event. How do you recommend speeding up the installation process when there's a scale-out event?
+
+  <A correct>Create a golden AMI with the software pre-installed.</A>
+  <E>
+This golden AMI would have the software pre-installed and would be ready to use in a scaling event.
+Reference: [The Golden AMI Pipeline](https://aws.amazon.com/blogs/awsmarketplace/announcing-the-golden-ami-pipeline/)
+</E>
+
+  <A>Create a bootstrap script to automatically install the software.</A>
+  <E>This would not speed up the installation process, as the software would still need several hours to install.</E>
+
+  <A>Create an EBS volume with PIOPS for faster installation performance.</A>
+  <E>This would not speed up the installation process; this would just give you better disk performance.</E>
+
+  <A>Pre-deploy the software on an Application Load Balancer so when there's a scaling event it will automatically be installed on the EC2 instance.</A>
+  <E>You cannot pre-deploy software on an Application Load Balancer.</E>
+  <R />
+</Q>
+
+
+## Question 25
+
+<Q>
+You run a popular retro gaming merchandise retail platform on AWS. Over the past year and a half, you've noticed that your traffic has distinct daily and weekly patterns. For example, there's a surge in traffic during weekday business hours and a huge drop during the weekends. To add to the issues, your application takes a considerable amount of time to initialize, causing a noticeable latency impact during scale-out events. You need to ensure that your infrastructure scales in anticipation of these patterns. Which AWS Auto Scaling feature would best address this scenario?
+
+
+  <A>Manual scaling</A>
+  <E>Manual scaling means adjusting the desired capacity of the Auto Scaling group manually. This would require constant monitoring and manual intervention to scale the infrastructure based on traffic patterns, which is not efficient for a scenario with predictable traffic patterns.</E>
+
+  <A correct>Predictive scaling</A>
+  <E>Predictive scaling uses machine learning to forecast traffic and capacity needs. Predictive scaling is more flexible and can adapt to changes in traffic patterns, which is why it is the best choice for the given scenario. If your traffic spikes during weekdays and drops during weekends, predictive scaling can automatically scale your resources in anticipation of these patterns. This will help to ensure that you have enough resources to handle peak traffic without causing latency issues.</E>
+
+  <A>Dynamic scaling</A>
+  <E>Dynamic scaling adjusts the number of instances in your Auto Scaling group in response to actual changes in traffic. While it can scale out or in based on real-time demand, it reacts to traffic changes rather than anticipating them. In the given scenario, since the application takes a considerable amount of time to initialize, relying solely on dynamic scaling might result in noticeable latency during scale-out events.</E>
+
+  <A>Scheduled scaling</A>
+  <E>Scheduled scaling allows you to increase or decrease the number of instances in your Auto Scaling group based on a specific schedule. While it can be set up to scale based on known traffic patterns, it doesn't automatically adjust to changes in those patterns. In the given scenario, while scheduled scaling can handle the predictable surge in traffic during weekdays and drop during weekends, it would not be as adaptive as predictive scaling.</E>
+  <R />
+</Q>
+
+
+## Question 26
+
+<Q>
+Janelle works as a cloud solutions architect for a large enterprise that has begun the process of migrating to AWS for all of their application needs. The CTO and CISO have already decided that AWS Organizations is a required service for the multi-account environment that will be put into place.  Janelle has been brought in to help solve the primary concern of member AWS accounts not following the required compliance rules set forth by the company. They want to both send alerts on configuration changes and prevent specific actions from occurring.
+Which solution would be the most efficient in solving this projected problem?
+
+  <A>Create a set of Global AWS Config rules that can cover all Regions in the management account that apply to the member accounts. Set up an AWS Lambda function in the management AWS account to alert an administrator when drift is detected.</A>
+  <E>There is no such thing as Global AWS Config rules.</E>
+
+  <A>Install third-party SIEM software on Amazon EC2 instances in each account. Attach to them a Read-Only IAM instance profile within the respective account. Have them generate alerts for each flagged activity.</A>
+  <E>This is overly complex. There is a managed AWS solution that you can use to govern accounts and automate their creation.</E>
+
+  <A>Create individual AWS Config rules in each AWS account. Set up AWS Lambda functions in each AWS account to remediate any suspected drift.</A>
+  <E>While you could do this for alerting on activities and changes, it is not an efficient way to govern accounts, nor will it prevent certain actions</E>
+
+  <A correct>Create new AWS accounts using AWS Control Tower. Leverage the preventative and detective guardrails that come with it to prevent governance drift as well as send alerts on suspicious activities.</A>
+  <E>
+AWS Control Tower allows you to implement account governance and compliance enforcement for an AWS organization. It leverages SCPs for preventative guardrails and AWS Config for detective guardrails.
+Reference: [What Is AWS Control Tower?](https://docs.aws.amazon.com/controltower/latest/userguide/index.html) [Guardrails in AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/guardrails.html)
+</E>
+  <R />
+</Q>
+
+
+## Question 27
+
+<Q>
+You need to design a stateless web application tier. Which of the following would NOT help you achieve this?
+
+  <A>Store the session data in cookies saved to the users' browsers.</A>
+  <E>This would enable a stateless application as the session data is saved to the users' browsers.</E>
+
+  <A>Store the session data in Elasticache.</A>
+  <E>Elasticache is centrally accessible to multiple EC2 instances, so this would help the application to be stateless.</E>
+
+  <A>Save your session data in Amazon RDS.</A>
+  <E>Multiple EC2 instances can access RDS at the same time, so this would help the application to be stateless.</E>
+
+  <A correct>Save your session data on an EBS volume shared by EC2 instances running across different Availability Zones.</A>
+  <E>Amazon EBS Multi-Attach enables you to attach a single Provisioned IOPS SSD (io1 or io2) volume to multiple instances that are in the same Availability Zone. This means you cannot have a stateless application with EC2 instances running across different Availability Zones and sharing the same EBS volume. AWS Documentation: [Attach a volume to multiple instances with Amazon EBS Multi-Attach](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html).</E>
+  <R />
+</Q>
+
+
+## Question 28
+
+<Q multi>
+You have developed an AI-powered app that is used to predict the prices of cryptocurrency in real time. The app requires low latency and high-throughput storage performance for processing training sets. You need to archive the completed processed training sets on storage that is as cost-effective as possible but can still maintain immediate access. What two storage solutions should you use for processing the data and for archival?
+
+  <A correct>Amazon S3 Glacier Instant Retrieval for archiving completed processed training sets</A>
+  <E>
+Amazon S3 Glacier Instant Retrieval is the lowest-cost storage for long-lived data that is rarely accessed and requires retrieval in milliseconds.
+Reference: [Amazon S3 Glacier Instant Retrieval](https://aws.amazon.com/s3/storage-classes/#Instant_Retrieval).
+</E>
+
+  <A>Amazon Elastic File System for archiving completed processed training sets</A>
+  <E>Although this is technically feasible, it is not a cost-effective method.</E>
+
+  <A>AWS Storage Gateway for processing training sets</A>
+  <E>This is not a technically viable option for processing training sets.</E>
+
+  <A correct>Amazon FSx for Lustre for processing training sets</A>
+  <E>FSx for Lustre can deliver high throughput and low latency, making it suitable for processing large training datasets quickly.  It can handle the high-performance storage needs of machine learning workloads. Lustre is a parallel file system, which means it can distribute data across multiple servers, enabling parallel access and improving throughput for data-intensive tasks like model training.</E>
+  <R />
+</Q>
+
+
+## Question 29
+
+<Q>
+You work for an insurance company that uses an AWS web application to look up customers' credit scores. For security purposes, this web application cannot traverse the internet or leave the Amazon network. It needs to communicate to Amazon DynamoDB and Amazon S3 in a custom VPC. What networking technology should you implement to achieve this?
+
+  <A>Use AWS Direct Connect to connect directly to Amazon DynamoDB and Amazon S3.</A>
+  <E>AWS Direct Connect does not encrypt traffic that is in transit by default and should be used as a dedicated private network connection between on-premises networks and AWS.</E>
+
+  <A>Use AWS VPN CloudHub to connect the web application to Amazon DynamoDB and Amazon S3.</A>
+  <E>AWS VPN CloudHub is used to easily manage multiple VPN connections and would not be suitable in this scenario.</E>
+
+  <A>Use AWS WAF to connect the web application to Amazon DynamoDB and Amazon S3.</A>
+  <E>AWS WAF is a Layer 7 firewall and does not connect to Amazon DynamoDB or Amazon S3.</E>
+
+  <A correct>Use VPC endpoints to connect the AWS web application to Amazon DynamoDB and Amazon S3.</A>
+  <E>You can access Amazon S3 or Amazon DynamoDB from your VPC using VPC endpoints. VPC endpoints enable resources within your VPC to access AWS services with no exposure to the public internet. Your AWS resources do not require public IP addresses, and you do not need an internet gateway, a NAT device, or a virtual private gateway in your VPC. You use endpoint policies to control access to AWS services. Traffic between your VPC and the AWS service does not leave the Amazon network.</E>
+  <R />
+</Q>
+
+
+## Question 30
+
+<Q>
+You work for a startup that has recently been acquired by a large insurance company. As per the insurance company's internal security controls, you need to be able to monitor and record all API calls made in your AWS infrastructure. What AWS service should you use to achieve this?
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor provides recommendations that help you follow AWS best practices. Trusted Advisor evaluates your account by using checks that identify ways to optimize your AWS infrastructure, improve security and performance, reduce costs, and monitor service quotas. It is not used to monitor and record all API calls made in your AWS infrastructure.</E>
+
+  <A>AWS Cloud Audit</A>
+  <E>There is no AWS service called AWS Cloud Audit.</E>
+
+  <A>Amazon CloudWatch</A>
+  <E>Amazon CloudWatch is a monitoring service in AWS for performance-based metrics. It is not used to monitor and record all API calls made in your AWS infrastructure.</E>
+
+  <A correct>AWS CloudTrail</A>
+  <E>AWS CloudTrail is used to monitor and record all API calls made in your AWS infrastructure.</E>
+  <R />
+</Q>
+
+
+## Question 31
+
+<Q>
+As a car manufacturing enterprise, you're using Amazon RDS to store data from a web-based application. The application typically experiences low RDS usage. However, sporadic bursts of high, read-heavy traffic to RDS will occur in response to the launch of new marketing campaigns. Additionally, you're tasked with developing an API that allows third-party database queries. Given these conditions, which architecture would be most optimal?
+
+  <A>Create an API using Amazon API Gateway. Configure S3 to handle the traffic.</A>
+  <E>S3 is not a database service and would not solve the problem.</E>
+
+  <A correct>Create an API using Amazon API Gateway. Configure a read replica to handle the additional traffic.</A>
+  <E>By sending traffic to the read replica, you can reduce the load on your production database and scale performance.</E>
+
+  <A>Create an API using Amazon API Gateway. Use Auto Scaling with EC2 to increase the load on your database.</A>
+  <E>The load is on the database and not EC2. Therefore, using EC2 with Auto Scaling would not help the scaling of your database.</E>
+
+  <A>Create an API using Amazon API Gateway. Use CloudFront to handle the scaling of read traffic.</A>
+  <E>CloudFront would not help the scaling of your database.</E>
+  <R />
+</Q>
+
+
+## Question 32
+
+<Q>
+You work for an insurance company that stores a lot of confidential medical data. They are migrating to AWS and have an encryption requirement where you need to manage the hardware security modules (HSMs) that generate and store the encryption keys. You also create the symmetric keys and asymmetric key pairs that the HSM stores. Which AWS service should you use to meet these requirements?
+
+  <A>AWS Trusted Key Advisor</A>
+  <E>This is not a valid AWS service.</E>
+
+  <A>AWS CloudTrail</A>
+  <E>AWS CloudTrail is used to record API calls within an AWS account and has nothing to do with key management.</E>
+
+  <A correct>AWS CloudHSM</A>
+  <E>With AWS CloudHSM, you can generate both symmetric keys and asymmetric key pairs. You can also manage the HSM that generates and stores your encryption keys. </E>
+
+  <A>AWS Key Management Service (KMS)</A>
+  <E>While KMS supports symmetric KMS keys and asymmetric keys, you do not manage the HSM that generates and stores your encryption keys, as required in the question scenario. AWS KMS is a managed AWS service.</E>
+  <R />
+</Q>
+
+
+## Question 33
+
+<Q>
+Your organization currently runs an on-premises Windows file server. Your manager has requested that you utilize the existing Direct Connect connection to AWS to provide a method of storing and accessing these files securely in the cloud. The method should be simple to configure, appear as a standard file share on the existing servers, use native Windows technology, and also have an SLA. Choose an option that meets these needs.
+
+  <A correct>Map an SMB share to the Windows file server using Amazon FSx for Windows File Server and use RoboCopy to copy the files across</A>
+  <E>
+While AWS Storage Gateway could be used, it does require a virtual appliance gateway or hardware appliance and there is no stated requirement for on-premises caching capabilities. We can rule out EFS and S3 as they do not use native Windows technology or provide a standard Windows file share. Therefore, the only correct answer is to use Amazon FSx for Windows File Server.
+[Amazon FSx for Windows File Server FAQs](https://aws.amazon.com/fsx/windows/faqs/)
+[AWS Storage Gateway FAQs](https://aws.amazon.com/storagegateway/faqs/)
+[Amazon EFS FAQs](https://aws.amazon.com/efs/faq/)
+</E>
+
+  <A>Create an AWS Storage Gateway for Files server and map the generated SMB share to the Windows file server, then synchronize the files</A>
+  <E>While AWS Storage Gateway could be used, it does require a virtual appliance gateway or hardware appliance, and there is no stated requirement for on-premises caching capabilities.</E>
+
+  <A>Map an Amazon Elastic File System (EFS) share to the Windows file server and use RoboCopy to copy files across</A>
+  <E>EFS does not use native Windows technology or provide a standard file share and thus would not meet your organizational needs. </E>
+
+  <A>Write a Powershell script which uses the CLI to synchronize the files into an S3 bucket</A>
+  <E>S3 does not use native Windows technology or provide a standard file share and thus would not meet your organizational needs. </E>
+  <R />
+</Q>
+
+
+## Question 34
+
+<Q>
+You work for an automotive company that initially had a small presence on AWS, with the majority of its resources hosted in an in-house data center. Now, the company aims to cut costs by gradually migrating more of its assets to AWS. As part of this expansion plan, they've started creating multiple AWS accounts within the same AWS Region. To support their growing number of Virtual Private Clouds (VPCs) across these accounts and ensure connectivity to their on-premises data center, they currently have one Direct Connect connection in place. Given this scenario, what is the most cost-effective approach to establish dedicated connectivity between the on-premises data center and the expanding AWS environment with multiple production accounts and VPCs?"
+
+  <A>Use a VPN concentrator to connect the AWS accounts back to the on-premises data center.</A>
+  <E>A virtual private gateway is the VPN concentrator on the Amazon side of the Site-to-Site VPN connection. This solution does not take advantage of the existing Direct Connect connection and would require additional charges for each VPN connection hour that your VPN connection is provisioned and available.</E>
+
+  <A>Provision an AWS VPN CloudHub and connect the AWS accounts directly back to the Direct Connect connection via a VPN connection.</A>
+  <E>If you have multiple AWS Site-to-Site VPN connections, you can provide secure communication between sites using the AWS VPN CloudHub. However, this is not required in this scenario, since you can take advantage of the existing Direct Connect connection and associate it to an AWS Direct Connect gateway with a transit gateway to connect multiple VPCs in the same Region.</E>
+
+  <A correct>Create a new Direct Connect gateway and set this up with the existing Direct Connect connection. Set up a transit gateway between the AWS accounts and connect the transit gateway to the Direct Connect gateway.</A>
+  <E>
+You can associate an AWS Direct Connect gateway with a transit gateway when you need to connect multiple VPCs in the same Region.
+Reference: [Direct Connect gateways](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-gateways-intro.html).
+</E>
+
+  <A>Provision a new Direct Connect connection for each AWS account and connect it back to your on-premises data center.</A>
+  <E>A new Direct Connect connection for each AWS account would an expensive and unnecessary approach. You can take advantage of the existing Direct Connect connection and associate it to an AWS Direct Connect gateway with a transit gateway to connect multiple VPCs in the same Region.</E>
+  <R />
+</Q>
+
+
+## Question 35
+
+<Q>
+You are migrating your automotive company's customer-facing systems to AWS. One of the backend systems requires a database that is scalable globally and that can handle frequent updates to the database schema. You need to ensure there is no downtime or performance issues every time there is a schema change. You always require low-latency responses to high-traffic queries. What database would best suit this requirement?
+
+  <A>Redshift</A>
+  <E>This is a data warehousing solution and would not be suitable.</E>
+
+  <A>RDS SQL Server with read replicas</A>
+  <E>This is a relational database that would not allow constant updates to schemas.</E>
+
+  <A correct>DynamoDB</A>
+  <E>
+DynamoDB is a NoSQL database that allows constant updates to schemas without any downtime or performance issues.
+Reference: [Getting Started with DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStartedDynamoDB.html)
+</E>
+
+  <A>Amazon Aurora Database with read replicas enabled</A>
+  <E>This is a relational database, which would not allow constant updates to schemas.</E>
+  <R />
+</Q>
+
+
+## Question 36
+
+<Q>
+You are working for a small startup that wants to design a content management system (CMS). The company wants to architect the CMS so that the company only incurs a charge when someone tries to access their content. They want to try and keep costs as low as possible and remain as cost-effective as they can once they leave the AWS Free Tier. Which of the following options is the most cost-effective architecture?
+
+  <A>Elastic Load Balancer > EC2  > DynamoDB</A>
+  <E>This option is not the most cost-effective architecture.</E>
+
+  <A>API Gateway > EC2 > DynamoDB</A>
+  <E>This would not be the most cost-effective architecture.</E>
+
+  <A correct>API Gateway > Lambda > DynamoDB > S3</A>
+  <E>This is the most cost-effective architecture.</E>
+
+  <A>Application Load Balancer > EC2 > RDS</A>
+  <E>This is not the most cost-effective architecture.</E>
+  <R />
+</Q>
+
+
+## Question 37
+
+<Q>
+You work for an online bank that is migrating a customer portal to AWS. Because of the legislative requirements, you need a threat detection service that continuously monitors your AWS accounts and workloads for malicious activity and delivers detailed security findings for visibility and remediation. Which service should you use?
+
+  <A>AWS CloudTrail</A>
+  <E>AWS CloudTrail only monitors and records API calls made within your AWS environment.</E>
+
+  <A>AWS Shield</A>
+  <E>AWS Shield is used for DDoS mitigation.</E>
+
+  <A>Amazon Inspector</A>
+  <E>Amazon Inspector is a vulnerability management service that continuously scans your AWS workloads for vulnerabilities. It is not an intrusion detection service.</E>
+
+  <A correct>Amazon GuardDuty</A>
+  <E>Amazon GuardDuty is a continuous security monitoring service that analyzes and processes the following data sources: AWS CloudTrail management event logs, AWS CloudTrail data events for S3, DNS logs, EKS audit logs, and VPC flow logs. It uses threat intelligence feeds, such as lists of malicious IP addresses and domains, and machine learning to identify unexpected and potentially unauthorized and malicious activity within your AWS environment.</E>
+  <R />
+</Q>
+
+
+## Question 38
+
+<Q>
+You have a large number of files in S3 and you have been asked to build an index of these files. In order to do this, you need to read the the first 250 bytes of each object in S3. This data contains some metadata about the content of the file itself. Unfortunately, there are over 10,000,000 files in your S3 bucket, and this is about 100 TB of data. The data will then need to be stored in an Aurora Database. How can you build this index in the fastest way possible?
+
+  <A>Create a program to use Macie to select the first 250 Bytes of data and then store this in Aurora Database.</A>
+  <E>Macie is a service used to identify PII and is not used to do byte range requests.</E>
+
+  <A>Use AWS Athena to query the S3 bucket for the first 250 bytes of data. Take the result of the query and build an Aurora Database.</A>
+  <E>This is a SQL query service and can't be limited by byte size.</E>
+
+  <A>Use the index bucket function in AWS Macie to query the S3 bucket and then load this data in to the Aurora Database.</A>
+  <E>Macie is a service used to identify PII and is not used to do byte range requests.</E>
+
+  <A correct>Create a Lambda function to process the files in S3 using the S3 Select command to target the first 250 bytes of each object. Have the Lambda function process the extracted metadata and bulk insert the data into Amazon Aurora.</A>
+  <E>This would be the fastest and easiest way to achieve your aims.</E>
+  <R />
+</Q>
+
+
+## Question 39
+
+<Q>
+You work at a mortgage brokerage firm in New York City. An intern has recently joined the company and you discover that they have been storing customer data in public S3 buckets. Because the company uses so many different S3 buckets, you need to identify a quick and efficient way to discover what personally identifiable information (PII) is being stored in S3. Which AWS service should you use?
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor is an automated advisory service and would not identify PII.</E>
+
+  <A>Amazon Athena</A>
+  <E>Amazon Athena is a service used to run SQL queries in S3 and would not automatically detect PII without first writing the SQL queries.</E>
+
+  <A correct>Amazon Macie</A>
+  <E>Amazon Macie is a quick and efficient way to discover what personally identifiable information (PII) is being stored in S3.</E>
+
+  <A>Amazon Inspector</A>
+  <E>Amazon Inspector is used to monitor and harden EC2 instances and would not be suitable.</E>
+  <R />
+</Q>
+
+
+## Question 40
+
+<Q>
+What is the most cost-effective architecture for a public-facing website, assuming a peak load of 500 users per hour will be accessing the site?
+
+  <A>An Elastic Kubernetes Service cluster</A>
+  <E>There are other more cost-efficient answers.</E>
+
+  <A>An Elastic Beanstalk configuration using Auto Scaling and EC2</A>
+  <E>This would not be the most cost-efficient solution.</E>
+
+  <A correct>A serverless website using API Gateway, Lambda, and DynamoDB</A>
+  <E>Given this short scenario, this would be the most cost-efficient and scalable solution.</E>
+
+  <A>A fleet of EC2 instances behind a Network Load Balancer connected to an RDS instance with multiple read nodes</A>
+  <E>This would not be the most cost-efficient answer.</E>
+  <R />
+</Q>
+
+
+## Question 41
+
+<Q>
+You work for an insurance company that has just been merged with two other insurance companies. All companies have production workloads on AWS using multiple AWS accounts. Which of the following is something you could recommend to your boss to immediately start saving money?
+
+  <A>Use AWS CloudTrail to start keeping track of what you are spending.</A>
+  <E>AWS CloudTrail is used to record API calls for AWS accounts and is not suitable in this scenario.</E>
+
+  <A>Run Amazon Macie to identify where you can save costs.</A>
+  <E>Amazon Macie is used to identify PII and is not suitable in this scenario.</E>
+
+  <A>Migrate all AWS accounts to a single AWS account and close the migrated accounts.</A>
+  <E>You could do this and it would save money, but it would take an awful lot of time. There is a better way to achieve the outcome you desire.</E>
+
+  <A correct>Create a root AWS account using AWS Organizations and connect all subsequent AWS accounts to the Organization. You can then take advantage of consolidated billing.</A>
+  <E>Using consolidated billing, you can pool your AWS resources to lower your total costs.</E>
+  <R />
+</Q>
+
+
+## Question 42
+
+<Q>
+A financial institution has begun using AWS services and plans to migrate as much of their IT infrastructure and applications to AWS as possible. The nature of the business dictates that strict compliance practices be in place. The AWS team has configured AWS CloudTrail to help meet compliance requirements and be ready for any upcoming audits. Which item is **NOT** a feature of AWS CloudTrail?
+
+  <A>Enable compliance.</A>
+  <E>
+AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account.
+Reference: [AWS CloudTrail FAQs](https://aws.amazon.com/cloudtrail/faqs/)
+</E>
+
+  <A correct>Monitor Auto Scaling Groups and optimize resource utilization.</A>
+  <E>This is a feature provided by CloudWatch.</E>
+
+  <A>Answer simple questions about user activity.</A>
+  <E>
+CloudTrail provides visibility into user activity by recording actions taken on your account. CloudTrail records important information about each action, including who made the request, the services used, the actions performed, parameters for the actions, and the response elements returned by the AWS service. This information helps you to track changes made to your AWS resources and to troubleshoot operational issues. CloudTrail makes it easier to ensure compliance with internal policies and regulatory standards.
+
+CloudTrail makes it easy for customers to track changes to resources, answer simple questions about user activity, demonstrate compliance, troubleshoot, and perform security analysis.
+Reference: [AWS CloudTrail FAQs](https://aws.amazon.com/cloudtrail/faqs/)
+</E>
+
+  <A>Track changes to resources.</A>
+  <E>
+CloudTrail provides visibility into user activity by recording actions taken on your account. CloudTrail records important information about each action, including who made the request, the services used, the actions performed, parameters for the actions, and the response elements returned by the AWS service. This information helps you to track changes made to your AWS resources and to troubleshoot operational issues. CloudTrail makes it easier to ensure compliance with internal policies and regulatory standards.
+
+Customers who need to track changes to resources, answer simple questions about user activity, demonstrate compliance, troubleshoot, or perform security analysis should use CloudTrail.
+Reference: [AWS CloudTrail FAQs](https://aws.amazon.com/cloudtrail/faqs/)
+</E>
+  <R />
+</Q>
+
+
+## Question 43
+
+<Q>
+You are a solutions architect working for a biotech company that has a large private cloud deployment using VMware. You have been tasked to setup their disaster recovery solution on AWS. What is the simplest way to achieve this?
+
+  <A>Deploy an EC2 instance into a private subnet and install vCenter on it</A>
+  <E>This is not the simplest way to achieve this and you need VMware’s involvement.</E>
+
+  <A>Deploy an EC2 instance into a public subnet and install vCenter on it</A>
+  <E>This is not the simplest way to achieve this and you need VMware’s involvement.</E>
+
+  <A correct>Purchase VMware Cloud on AWS, leveraging VMware disaster recovery technologies and the speed of AWS cloud to protect your virtual machines</A>
+  <E>Customers can buy VMware Cloud on AWS directly through AWS and AWS Partner Network (APN) Partners in the AWS Solution Provider Program. This allows customers the flexibility to purchase VMware Cloud on AWS either through AWS or VMware, or the AWS Solution Provider or VMware VPN Solution Provider of their choice. VMware Cloud on AWS offers a Disaster Recovery feature that uses familiar VMware vSPhere and Site Recovery Manager technologies while leveraging cloud economics. You can replicate to VMware Cloud on AWS using VMware Site Recovery Manager to one or multiple Software-Defined Data Centers. VMware Site Recovery Manager can help you automate disaster recovery, meet your recovery point objectives (RPOs), and recovery time objectives (RTOs), as well as reduce operational errors. Disaster Recovery sites can be right-sized or scaled up when you need it and down when it is no longer required. AWS Documentation: [VMware Cloud on AWS | FAQs](https://aws.amazon.com/vmware/faqs/).</E>
+
+  <A>Use the VMware landing page on AWS to provision a EC2 instance with VMware vCenter installed on it</A>
+  <E>There is no VMware landing page. There is a simpler way to achieve this.</E>
+  <R />
+</Q>
+
+
+## Question 44
+
+<Q>
+You have an image sharing website that sits on EC2 and uses EBS as the backend storage. Unfortunately, you keep running out of space and you are forced to mount additional EBS volumes. Your boss asks if there are any other services on AWS you can use to store images or videos. What service would you suggest they use that would keep costs as low as possible?
+
+  <A correct>Migrate the data to S3, and reconfigure the application to retrieve items from S3.</A>
+  <E>Amazon Simple Storage Service (Amazon S3) is an object storage service offering industry-leading scalability, data availability, security, and performance.</E>
+
+  <A>Migrate the data to an EFS volume, which can be shared between the two EC2 instances.</A>
+  <E>This would work. However, the costs for object storage are much cheaper than those for a file level service such as EFS.</E>
+
+  <A>Migrate the data to DynamoDB, and reconfigure the application to retrieve the data from the database.</A>
+  <E>DynamoDB is a NoSQL database offering. It would not be the right choice for this scenario as DynamoDB has a maximum item size of 400 KB, which would be too small for the media they require to store.</E>
+
+  <A>Migrate the data to AWS FSx for Lustre.</A>
+  <E>FSx for Lustre is a high-performance file system but would be unnecessary for this scenario due to the additional cost that this solution would incur.</E>
+  <R />
+</Q>
+
+
+## Question 45
+
+<Q>
+You have a web application that is hosted on a series of EC2 instances that have an Application Load Balancer in front of them. You have created a new CloudFront distribution. You then set up its origin to point to your ALB. You need to provide access to hundreds of private files served by your CloudFront distribution.  What should you use?
+
+  <A>CloudFront HTTPS encryption</A>
+  <E>This enables encryption while traversing the internet. This is not an authentication service.</E>
+
+  <A>CloudFront Origin Access Identity</A>
+  <E>This is used for authentication internally between S3 and CloudFront and would not give you secure access to hundreds of files.</E>
+
+  <A>CloudFront Signed URLS</A>
+  <E>Signed URLs are useful when you want to access individual files, not hundreds of files.</E>
+
+  <A correct>CloudFront signed cookies</A>
+  <E>Signed cookies are useful when you want to access multiple files.</E>
+  <R />
+</Q>
+
+
+## Question 46
+
+<Q>
+You work for a small startup that has a shoestring budget. You accidentally leave a large EC2 instance running over a few days and are hit with a huge bill. You need to prevent a high bill from occurring in the future. What should you do to identify if this happens again before it becomes too costly?
+
+  <A>Use AWS Trusted Advisor to notify you whenever an EC2 instance has been running for more than 24 hours.</A>
+  <E>AWS Trusted Advisor does not monitor and alert you about EC2 instance run times.</E>
+
+  <A>Enable CloudFormation to alert you when any EC2 instance has been running for more than 24 hours.</A>
+  <E>AWS CloudFormation does not monitor and alert you about EC2 instance run times.</E>
+
+  <A>Enable AWS CloudTrail to terminate any EC2 instance that has been running for more than 24 hours.</A>
+  <E>AWS CloudTrail does not allow you to terminate EC2 instances.</E>
+
+  <A correct>Create a billing alarm to monitor your AWS charges for when they go above a certain threshold.</A>
+  <E>This would be your best course of action.</E>
+  <R />
+</Q>
+
+
+## Question 47
+
+<Q>
+You want to migrate an on-premises Couchbase NoSQL database to AWS. You need this to be as resilient as possible and you want to minimize any management of servers. Preferably, you'd like to go serverless. Which database should you choose?
+
+  <A>Aurora DB</A>
+  <E>Aurora is a SQL-based database.</E>
+
+  <A correct>DynamoDB</A>
+  <E>DynamoDB is a NoSQL database and has serverless deployment. </E>
+
+  <A>RDS</A>
+  <E>RDS is a SQL-based database.</E>
+
+  <A>Elasticache</A>
+  <E>Elasticache is used for caching.</E>
+  <R />
+</Q>
+
+
+## Question 48
+
+<Q>
+A Fintech startup has a small application that receives intermittent and random traffic. At some points, it may not receive any traffic at all; at other times, it might receive tens of thousand of queries at once. You need to rearchitect the application for the AWS cloud using a relational database. What database technology would best suit your needs while keeping costs at a minimum?
+
+  <A correct>Aurora Serverless</A>
+  <E>This is the best answer as it keeps cost low while being a relational database.</E>
+
+  <A>RDS for MySQL</A>
+  <E>This is a relational database, but is not the most cost-effective answer.</E>
+
+  <A>NeptuneDB</A>
+  <E>NeptuneDB is not a relational database.</E>
+
+  <A>DynamoDB</A>
+  <E>DynamoDB is not a relational database.</E>
+  <R />
+</Q>
+
+
+## Question 49
+
+<Q>
+You run a financial services company that stores a large amount of data in S3. You need to query this data using SQL in the fastest and lowest-cost way possible, preferably serverless. What AWS service would you use to do this?
+
+  <A>Redshift.</A>
+  <E>This is a data warehouse solution.</E>
+
+  <A correct>Athena</A>
+  <E>Athena is a fast, low cost solution to run SQL queries on S3.</E>
+
+  <A>S3 Query Service</A>
+  <E>There is no such service called S3 Query Service in AWS.</E>
+
+  <A>Macie</A>
+  <E>Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. It does not run specific SQL queries on S3.</E>
+  <R />
+</Q>
+
+
+## Question 50
+
+<Q>
+A large fintech company is using a web application that stores its data on Amazon RDS. As a solutions architect, you have been asked to upgrade the web application so that users around the world can access it using an API. There is no requirement to replicate the application itself in other regions at present. The end-to-end application will need to be able to handle large bursts of traffic in seconds from time to time. What would an ideal solution look like for these requirements?
+
+  <A correct>Implement Route 53 geo-proximity based routing via Route 53 to direct users to an API Gateway API endpoint. Use an EC2 Auto Scaling group to control the number of EC2 instances based on load. Place an Application Load Balancer in front of the EC2 instances to ensure load is balanced. Finally, implement Elasticache to help offload traffic from the RDS database.</A>
+  <E>Route 53 geo-proximity routing directs users to the nearest endpoint, which is suitable for serving users around the world efficiently.  Using an EC2 Auto Scaling group allows you to dynamically adjust the number of EC2 instances based on the traffic load, ensuring that the application can handle bursts of traffic. An Application Load Balancer (ALB) is used to distribute traffic evenly among the EC2 instances, optimizing performance and fault tolerance.  Implementing Amazon ElastiCache for caching helps reduce the load on the RDS database during bursts of traffic.</E>
+
+  <A>Implement Route 53 geo-proximity based routing via Route 53 to direct users to an API Gateway API endpoint. Use an EC2 Auto Scaling group to control the number of EC2 instances based on load. Place a Network Load Balancer in front of the EC2 instances to ensure load is balanced. Finally implement Read replicas on the RDS database to limit read traffic from effecting database performance.</A>
+  <E>While geo-proximity routing is a good choice for global access, this option suggests using a Network Load Balancer. A Network Load Balancer is typically used at the transport layer, not for routing based on proximity or Regions.</E>
+
+  <A>Implement Route 53 geo-location based routing via Route 53 to direct users to an API Gateway API endpoint. Use an EC2 Auto Scaling group to control the number of EC2 instances based on load. Place an Application Load Balancer in front of the EC2 instances to ensure load is balanced. Finally implement Elasticache to help offload traffic from the RDS database.</A>
+  <E>Geo-location routing may not be the best choice for serving users around the world efficiently, as it routes based on user-defined geographic regions rather than proximity. While using an Application Load Balancer and ElastiCache are good practices, you would use geo-proximity based routing, as this directs users to the nearest endpoint based on location.</E>
+
+  <A>Implement Route 53 geo-location based routing via Route 53 to direct users to an API Gateway API endpoint. Use an EC2 Auto Scaling group to control the number of EC2 instances based on load. Place a Network Load Balancer in front of the EC2 instances to ensure load is balanced. Finally implement read replicas on the RDS database to limit read traffic from affecting database performance.</A>
+  <E>Geo-location routing may not be the best choice for serving users around the world efficiently, as it routes based on user-defined geographic regions rather than proximity. A Network Load Balancer is typically used at the transport layer, not for routing based on proximity or Regions.</E>
+  <R />
+</Q>
+
+
+## Question 51
+
+<Q>
+Your website is an online store that has sporadic and unpredictable transactional workloads throughout the day and night that are very hard to predict. The website is currently being hosted at your corporate data center and needs to be migrated to AWS. A new relational database is required that autoscales capacity to meet these peaks as well as being able to scale back when not being used. Which database technology would be best suited for your website?
+
+  <A correct>Aurora Serverless DB cluster</A>
+  <E>Aurora Serverless autoscales capacity to meet these peaks as well as being able to scale back when not being used.</E>
+
+  <A>Amazon RDS with Auto Scaling enabled and read replicas turned on</A>
+  <E>While Amazon RDS can be configured with Auto Scaling and read replicas, its Auto Scaling primarily enhances read capacity. It does not seamlessly scale in and out based on fluctuating transactional demand like Aurora Serverless.</E>
+
+  <A>DynamoDB with Auto Scaling enabled</A>
+  <E>DynamoDB is not a relational database.</E>
+
+  <A>Amazon Redshift with Auto Scaling enabled</A>
+  <E>This is a database warehousing service and does not autoscale on demand. This would not be suitable.</E>
+  <R />
+</Q>
+
+
+## Question 52
+
+<Q>
+You need to be able to perform vulnerability scans on your large fleet of EC2 instances. Which AWS service should you choose?
+
+  <A correct>Amazon Inspector</A>
+  <E>Amazon Inspector would be the best solution to run vulnerability scans.</E>
+
+  <A>Amazon Athena</A>
+  <E>Amazon Athena is used to run SQL queries on S3. It is not used for vulnerability scans.</E>
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor provides recommendations that help you follow AWS best practices. Trusted Advisor evaluates your account by using checks that identify ways to optimize your AWS infrastructure, improve security and performance, reduce costs, and monitor service quotas. It is not used for vulnerability scans.</E>
+
+  <A>Amazon Macie</A>
+  <E>Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. It is not used for vulnerability scans.</E>
+  <R />
+</Q>
+
+
+## Question 53
+
+<Q>
+A small biotech company has finalized their decision to begin deploying their application to the AWS cloud. They expect to have a handful of AWS accounts to begin with, but expect to grow to over 100 by the end of the year. The security engineer on the project has stressed that they want to have a centralized method of storing AWS CloudTrail logs for all accounts and alert on any notifications regarding compliance violations with AWS services in the member accounts.
+What solution would be the best fit for this scenario?
+
+  <A>AWS Organization Service Control Policies can be used to create new accounts. Then deploy the policies to each AWS account and use them to notify security on any violations.</A>
+  <E>These can prevent actions, but they do not notify when actions do occur.</E>
+
+  <A correct>AWS Control Tower can deploy a Log Archive account for centralized security logs and an Audit account for any SNS notifications around compliance violations.</A>
+  <E>
+This offers a managed solution to centralize all CloudTrail logs and alert on config changes as well. The Log Account and Audit account are both locked down by default, and the Organization admins must grant access.
+Reference: [What Is AWS Control Tower?](https://docs.aws.amazon.com/controltower/latest/userguide/index.html) [Terminology](https://docs.aws.amazon.com/controltower/latest/userguide/terminology.html)
+</E>
+
+  <A>AWS Config with AWS Lambda can deploy AWS Config rules throughout the organizations and use AWS Lambda to remediate or notify the security team.</A>
+  <E>While this can work for recording and alerting on changes, it does not solve the CloudTrail logging requirement.</E>
+
+  <A>Deploy an SIEM application on Amazon EC2 in the management account. Grant the EC2 instances permissions to assume cross-account roles into each member account with Read-Only permissions. Use them to notify security of any violations.</A>
+  <E>This requires a lot of operational overhead and does not solve the CloudTrail logging requirements.</E>
+  <R />
+</Q>
+
+
+## Question 54
+
+<Q>
+A recent audit of IT services deployed within many of the AWS Organization member accounts in your company has caused numerous remediation tasks for the SecOps team, as well as the member account owners. Post-remediation efforts, the CISO has asked you to identify a solution within AWS for preventing this from repeating. They would like you to instead find a way to allow end users in the accounts to deploy preapproved services within AWS to avoid them accidentally using the offending services.
+Which of the following is the optimal approach for this solution?
+
+  <A>Create a CloudFormation Stack Set for each approved IT service. Have an organization administrator manually deploy these templates to the targeted accounts after approval.</A>
+  <E>You can use Stack Sets, but you would not want to deploy them manually in each account due to the amount of operational overhead.</E>
+
+  <A>Create approved CloudFormation templates containing the required services that are used throughout the organization. Send email templates out to the account owners, so they can reference them as needed.</A>
+  <E>This is a possible method, but the overhead involved is extremely high, and you cannot properly ensure the users do not alter the templates. There is a better and more automated way.</E>
+
+  <A>Create approved Terraform templates containing the required services that are used throughout the organization. Create a shared catalog within AWS Service Catalog, list the templates as products, and then share the catalog with your Organization.</A>
+  <E>AWS Service Catalog does not support Terraform yet.</E>
+
+  <A correct>Create approved CloudFormation templates containing the required services that can be used throughout the organization. Load the templates to a shared catalog within AWS Service Catalog. List the templates as products, and then share the catalog with your Organization.</A>
+  <E>
+AWS Service Catalog offers a way to control which services are being deployed to AWS accounts. You create CloudFormation templates that get uploaded to a catalog that you can share with an organization. End users can then use this catalog to deploy preapproved IT services into their AWS accounts.
+Reference: [Using the end user console view](https://docs.aws.amazon.com/servicecatalog/latest/userguide/end-user-console.html) [Using the Provisioned products page](https://docs.aws.amazon.com/servicecatalog/latest/userguide/enduser-stacklist.html)
+</E>
+  <R />
+</Q>
+
+
+## Question 55
+
+<Q>
+You are working as a solutions architect for a large multinational bank in the city. AWS usage has grown exponentially over time and the identity team is spending much of their time reporting, configuring and tracking developer usage and access within the varying AWS accounts. Each AWS account has its own Identity and Access Management Configuration with its own users and permissions configured.
+
+You have been tasked with recommending an approach to reduce the time the identity team is focusing on these tasks and free them up for other project work that is on the roadmap later in the year, the identity team require a centralized method to manage and view the identities. The stakeholders for this work understand any directional change that is made needs to take precedence over their requests. What should you recommend to help out the identity team?
+
+  <A>Implement AWS Identity Center with AWS CloudTrail to provide centralized identity management with visibility.</A>
+  <E>Although AWS CloudTrail provides an audit trail for API calls in your AWS account it does not provide visibility or central identity management. As the question does not state that AWS Organizations is already configured and is a pre-requisite to enabling AWS Identity Center, this is a necessary part of the answer.</E>
+
+  <A correct>Implement AWS Organizations and create a hierarchical structure of the AWS accounts, implement AWS Identity Center to centralize identity management.</A>
+  <E>AWS Identity Center requires AWS Organizations to be active before you can configure the service, so enabling AWS Organizations is a prerequisite to this. By enabling AWS Organizations this also allows grouping of AWS accounts into organizational units, which you can apply policies to to create permission boundaries. Once AWS Identity Center is configured and users have been set up, you will have a single place to manage your AWS identities.</E>
+
+  <A>Implement AWS Organizations with Identity and access management to provide a centralized view of identities across every account in the AWS Organization.</A>
+  <E>Enabling AWS Organizations is the right approach. However, by just using Identity and access management, you are not receiving a centralized view of your identities, as IAM operates per AWS account.</E>
+
+  <A>Implement AWS Identity Center with AWS Cognito to provide a centralized approach to identity management.</A>
+  <E>You would need to first enable AWS Organizations before AWS Identity Center can be set up. AWS Cognito is designed to provide authentication and authorization for applications and not for accessing AWS accounts and services.</E>
+  <R />
+</Q>
+
+
+## Question 56
+
+<Q multi>
+A junior intern just started working at your company. During the course of the day, they accidentally delete a critical encryption key that you had stored securely in S3. You need to prevent this from happening in the future. Which two steps should you take to prevent this from happening again in the future?
+
+  <A correct>Enable multi-factor authentication (MFA) delete</A>
+  <E>This would be a good step, as it requires two-factor authentication to delete an object.</E>
+
+  <A>Enable Amazon CloudWatch</A>
+  <E>Amazon CloudWatch is a performance monitoring service for AWS cloud. It would not stop someone from deleting something in S3.</E>
+
+  <A correct>Turn on versioning</A>
+  <E>This would be a good step.</E>
+
+  <A>Enable AWS CloudTrail</A>
+  <E>AWS CloudTrail monitors and records account activity across your AWS infrastructure, but will not take preventative action.</E>
+  <R />
+</Q>
+
+
+## Question 57
+
+<Q>
+Your company has a small web application hosted on an EC2 instance. The application has just been deployed but no one is able to connect to the web application from a browser. You had recently ssh’d into this EC2 instance to perform a small update, but you also cannot browse to the application from Google Chrome. You have checked and there is an internet gateway attached to the VPC and a route in the route table to the internet gateway. Which situation most likely exists?
+
+  <A correct>The instance security group has ingress on port 22 but not port 80.</A>
+  <E>
+The following are the basic characteristics of security groups for your VPC:
+There are quotas on the number of security groups that you can create per VPC, the number of rules that you can add to each security group, and the number of security groups that you can associate with a network interface. For more information, see Amazon VPC quotas.
+You can specify allow rules, but not deny rules.
+You can specify separate rules for inbound and outbound traffic.
+When you create a security group, it has no inbound rules. Therefore, no inbound traffic originating from another host to your instance is allowed until you add inbound rules to the security group.
+By default, a security group includes an outbound rule that allows all outbound traffic. You can remove the rule and add outbound rules that allow specific outbound traffic only. If your security group has no outbound rules, no outbound traffic originating from your instance is allowed.
+Security groups are stateful. If you send a request from your instance, the response traffic for that request is allowed to flow in regardless of inbound security group rules. Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SecurityGroupRules
+
+</E>
+
+  <A>The instance security group has ingress on port 80 but not port 22.</A>
+  <E>The scenario states that you ssh'd into the instance, so port 22 must be open.</E>
+
+  <A>The instance security group has ingress on port 443 but not port 22.</A>
+  <E>The scenario states that you'd ssh'd into the instance so port 22 must be open.</E>
+
+  <A>The instance security group has no ingress on port 22 or port 80.</A>
+  <E>The scenario states that you ssh'd into the instance, so port 22 must be open.</E>
+  <R />
+</Q>
+
+
+## Question 58
+
+<Q>
+You are a database administrator working for a small start up that has just secured Venture Capital (VC) funding. As part of the new investment the VC’s have asked you to ensure that your application has minimum downtime. Currently, your backend is hosted on a dedicated cluster running MongoDB. You spend a lot of time managing the cluster, configuring backups, and trying to ensure there is no downtime. You would like to migrate your MongoDB database to the AWS cloud. What service should you use for your backend database, assuming you don’t want to make any changes to your database and application?
+
+  <A>DynamoDB</A>
+  <E>This is a NoSQL database and does not support MongoDB.</E>
+
+  <A>AWS RDS</A>
+  <E>This is a relational database service and does not support MongoDB.</E>
+
+  <A correct>Amazon DocumentDB</A>
+  <E>This would best suit the scenario.</E>
+
+  <A>Aurora Serverless</A>
+  <E>This is a relational database service and does not support MongoDB.</E>
+  <R />
+</Q>
+
+
+## Question 59
+
+<Q>
+You work for a private library that is digitizing its collection of ancient books. The library wants to store scans of each book in the cloud at the cheapest rate possible. The files will be accessed only occasionally, but will need to be retrieved instantly. What is the most cost-effective way to achieve this?
+
+  <A>S3 Standard</A>
+  <E>Although this will give you instant retrieval times, you can save money by using S3 Infrequent Access.</E>
+
+  <A correct>S3 Infrequent Access</A>
+  <E>S3 Infrequent Access is suitable for files that will be accessed only occasionally but require instant retrieval.</E>
+
+  <A>Elastic File System (EFS)</A>
+  <E>EFS is not the most cost-effective AWS service for this scenario.</E>
+
+  <A>Elastic Block Storage (EBS)</A>
+  <E>EBS is not the most cost-effective AWS service for this scenario.</E>
+  <R />
+</Q>
+
+
+## Question 60
+
+<Q>
+You work for a government agency who are migrating their production environment to AWS from on-premises. They want you to create a serverless solution that is high-performing and scales effortlessly. They have a web frontend, a MongoDB No-SQL backend, and large amounts of static files such as pictures and images. What would be the ideal serverless solution from the choices below?
+
+  <A>API Gateway > Lambda > DynamoDB > EBS</A>
+  <E>This is not a serverless solution. EBS must be mounted to EC2, so this would not technically work.</E>
+
+  <A>Application Load Balancer > EC2 > Aurora > S3</A>
+  <E>This is not a serverless solution as it uses EC2.</E>
+
+  <A correct>API Gateway > Lambda > DynamoDB > S3</A>
+  <E>This is a serverless solution and uses a NoSQL database. Reference:[How to build a web app](https://aws.amazon.com/serverless/build-a-web-app/)</E>
+
+  <A>ElasticBeanstalk > Application Load Balancer > EC2 > DynamoDB > S3</A>
+  <E>This is not a serverless solution as it uses EC2.</E>
+  <R />
+</Q>
+
+
+## Question 61
+
+<Q>
+You have a custom VPC hosted in the AWS cloud that contains your secure web application. During routine analysis, you notice some port scans coming in from unrecognizable IP addresses. You are suspicious, and decide to block these IP addresses for the next 48 hours. What is the best way to achieve this?
+
+  <A>Modify your security group for all public IP addresses and block traffic to the suspicious IP addresses.</A>
+  <E>You cannot block IP addresses at the security group level.</E>
+
+  <A correct>Modify your network access control list (NACL) for all public IP addresses and block traffic to the suspicious IP addresses.</A>
+  <E>This would be the fastest and most efficient course of action.</E>
+
+  <A>Modify your VPC control list and block access to the IP addresses.</A>
+  <E>There is no such thing as a VPC control list.</E>
+
+  <A>Modify your internet gateway for all private IP addresses and block traffic to the suspicious IP addresses.</A>
+  <E>You cannot block IP addresses using an internet gateway.</E>
+  <R />
+</Q>
+
+
+## Question 62
+
+<Q>
+You work for a pharmaceutical company that recently had a major outage due to a sophisticated DDoS attack. They need you to implement DDoS mitigation to prevent this from happening again. They require you to have near real-time visibility into attacks, as well as 24/7 access to a dedicated team who can help mitigate this in the future. Which AWS service should you recommend?
+
+  <A>AWS DDoS Prevention Advanced</A>
+  <E>There is no AWS service called AWS DDoS Prevention Advanced.</E>
+
+  <A>AWS Shield</A>
+  <E>AWS Shield does not include a dedicated team to help you respond to attacks.</E>
+
+  <A correct>AWS Shield Advanced</A>
+  <E>AWS Shield Advanced has a dedicated team to help you respond to attacks.</E>
+
+  <A>AWS DDoS Prevention Standard</A>
+  <E>There is no AWS service called AWS DDoS Prevention Standard.</E>
+  <R />
+</Q>
+
+
+## Question 63
+
+<Q>
+You work for a Fintech company that is migrating its application to AWS. You have a small team of six developers who need varying levels of access to the AWS platform. Using IAM, what is the most secure way to achieve this?
+
+  <A>Create one IAM user account with a user name and password and then share the login details with the six developers.</A>
+  <E>This would be insecure, as you would not know which developer is doing what since they all have the same account.</E>
+
+  <A>Create six IAM user accounts and add them to the administrator group, giving them full access to AWS.</A>
+  <E>This does not conform to the principle of least privilege.</E>
+
+  <A correct>Create the appropriate groups with the appropriate permissions and then create an IAM user account per developer. Assign the accounts to the appropriate groups.</A>
+  <E>This solution is best, as it adheres to the principle of least privilege.</E>
+
+  <A>Give each developer a root level AWS account and join each of these accounts to AWS Organizations.</A>
+  <E>This would be very insecure, as every developer would have full access to AWS. You should adopt the principle of least privilege.</E>
+  <R />
+</Q>
+
+
+## Question 64
+
+<Q>
+You work for a Fintech company that is launching a new cryptocurrency trading platform hosted on AWS. Because of the nature of the cryptocurrency industry, you have been asked to implement a Cloud Security Posture Management (CSPM) service that performs security best practice checks, aggregates alerts, and enables automated remediation. Which AWS service would meet this requirement?
+
+  <A>Amazon Inspector</A>
+  <E>Amazon Inspector is a vulnerability management service that continuously scans your AWS workloads for vulnerabilities. It is not a Cloud Security Posture Management service.</E>
+
+  <A>Amazon GuardDuty</A>
+  <E>Amazon GuardDuty is a continuous security monitoring service that analyzes and processes the following data sources: AWS CloudTrail management event logs, AWS CloudTrail data events for S3, DNS logs, EKS audit logs, and VPC flow logs. It uses threat intelligence feeds, such as lists of malicious IP addresses and domains, and machine learning to identify unexpected and potentially unauthorized and malicious activity within your AWS environment. It is not a Cloud Security Posture Management service.</E>
+
+  <A>AWS Trusted Advisor</A>
+  <E>AWS Trusted Advisor provides recommendations that help you follow AWS best practices. Trusted Advisor evaluates your account by using checks that identify ways to optimize your AWS infrastructure, improve security and performance, reduce costs, and monitor service quotas. It is not a Cloud Security Posture Management service.</E>
+
+  <A correct>AWS Security Hub</A>
+  <E>AWS Security Hub is a Cloud Security Posture Management service that performs security best practice checks, aggregates alerts, and enables automated remediation.</E>
+  <R />
+</Q>
+
+
+## Question 65
+
+<Q>
+A data analytics company is running their software in the AWS cloud. The current workflow process leverages Amazon EC2 instances, which process different datasets, normalizes them, and then outputs them to Amazon S3. The datasets average around 100 GB in size.
+
+The company CTO has asked that the application team start looking into leveraging Amazon EMR to generate reports and enable further analysis of the datasets, and then store the newly generated data in a separate Amazon S3 bucket.
+
+Which AWS service could be used to make this process efficient, more cost-effective, and automated?
+
+  <A>AWS Lambda</A>
+  <E>This is not the most suitable service for long-running workloads, and it only provides up to 10 GB of local file system size by default.</E>
+
+  <A correct>AWS Step Functions</A>
+  <E>
+AWS Step Functions is a serverless orchestration service that lets you build workflows for your business-crtitical applications. You would use Step functions in this scenario to orchestrate EMR workloads.
+Reference: [Using Step Functions to Orchestrate Amazon EMR Workloads](https://aws.amazon.com/blogs/aws/new-using-step-functions-to-orchestrate-amazon-emr-workloads/).
+</E>
+
+  <A>Amazon EMR Spot Capacity</A>
+  <E>This would help with costs of the EMR clusters; however, it does not manage the ETL process by itself.</E>
+
+  <A>Amazon EventBridge</A>
+  <E>This service is not meant for data ingestion or data migrations.</E>
+  <R />
+</Q>

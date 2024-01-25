@@ -1,5 +1,6 @@
 {
   "cloudwatch": { "title": "Amazon CloudWatch" },
+  "cloudtrail": "AWS CloudTrail",
   "x-ray": { "title": "AWS X-Ray" },
   "amazon-managed-grafana": { "title": "Amazon Managed Grafana" },
   "amazon-managed-prometheus": { "title": "Amazon Managed Service for Prometheus" },

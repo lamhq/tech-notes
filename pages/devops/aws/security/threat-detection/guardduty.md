@@ -7,8 +7,7 @@ GuardDuty is a **threat detection** service that uses machine learning to **cont
 It takes 7-14 days to set a baseline (to know what is normal behavior on your account)
 
 It's looking for things like:
-- Unusual API calls, calls from a known malicious IP
-Attempts to disable CloudTrail logging
+- Unusual API calls
 - Unauthorized deployments
 - Compromised instances
 - Reconnaissance by would-be attackers
