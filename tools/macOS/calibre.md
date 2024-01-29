@@ -1,13 +1,13 @@
 # Calibre (ebook viewer software)
 
-## Font for Calibre
+## Font setting
 
 - Open an ebook in E-book viewer, go to Settings `Cmd+,`
 - Choose `Fonts`
 - Select `Baskerville`
 
 
-## Styles for Calibre app
+## Styles setting
 
 - Go to Settings
 - Choose `Styles` item

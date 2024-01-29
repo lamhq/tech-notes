@@ -1,0 +1,53 @@
+import { Callout } from 'nextra/components'
+
+# Accessing Request Data
+
+## URL Path
+
+```py
+# http://localhost:8000/hi/Mom
+@app.get("/hi/{who}")
+def greet(who):
+    return f"Hello? {who}?"
+```
+
+## Query Parameters
+
+```py
+# http://localhost:8000/hi?who=Mom
+@app.get("/hi")
+def greet(who):
+    return f"Hello? {who}?"
+```
+
+## Body
+
+```py
+@app.post("/hi")
+def greet(who:str = Body(embed=True)):
+    return f"Hello? {who}?"
+```
+
+<Callout type="info">
+`Body(embed=True)` tell FastAPI that we get the value of `who` from the JSON-formatted request body.
+
+It should look like `{"who": "Mom"}` rather than just `"Mom"`.
+</Callout>
+
+
+## HTTP Header
+
+FastAPI converts HTTP header keys to lowercase, and converts a hyphen (`-`) to an underscore (`_`).
+
+```py
+@app.post("/agent")
+def get_agent(user_agent:str = Header()):
+    return user_agent
+```
+
+
+## Best practices
+
+- Follow RESTful guidelines is standard practice
+- Query strings are usually used to provide optional arguments, like pagination.
+- The body is usually used for larger inputs, like whole or partial models.
