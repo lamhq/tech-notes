@@ -8,7 +8,6 @@
       "typesetting": "article"
     }
   },
-  "devops": {
-    "title": "DevOps"
-  }
+  "devops": "DevOps",
+  "backend": "Backend"
 }

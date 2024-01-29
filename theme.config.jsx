@@ -16,5 +16,4 @@ export default {
   editLink: {
     text: 'Edit in VS Code'
   }
-  // ...
 }
