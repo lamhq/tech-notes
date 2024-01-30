@@ -56,3 +56,13 @@ For other output formats (also known as MIME types), you can use a generic `Resp
 FastAPI uses an internal function called `jsonable_encoder()` to convert any data structure to a "JSONable" Python data structure.
 
 Then calls the usual `json.dumps()` to turn that into a JSON string.
+
+You can use the `response_model` argument in the path decorator specify returned fields. FastAPI will drop any fields that were in the object that you returned but are not in the object specified by `response_model`.
+
+```py
+@app.get('/{tag_str}', response_model=TagOut)
+def get_one(tag_str: str) -> TagOut:
+    # Even though we returned a Tag, response_model will convert it to a TagOut.
+    tag: Tag = service.get(tag_str)
+    return tag
+```

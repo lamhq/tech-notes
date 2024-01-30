@@ -31,7 +31,10 @@ if __name__ == "__main__":
     uvicorn.run("hello:app", reload=True)
 ```
 
-`greet` is a path function that handle http request and return a response.
+The functions that map URLs to code are called **path functions**.
+
+In above example, `greet` is a path function.
+
 
 ## Run the app
 

@@ -1,0 +1,23 @@
+# Async
+
+This chapter emphasizes FastAPI’s underlying **Starlette** library, particularly its support of async processing.
+
+Starlette support modern Python asynchronous web standard: ASGI.
+
+ASGI avoids the blocking and busy waiting of WSGI-based applications.
+
+```py filename="example.py"
+from fastapi import FastAPI
+import asyncio
+import uvicorn
+
+app = FastAPI()
+
+@app.get("/hi")
+async def greet():
+    await asyncio.sleep(1)
+    return "Hello? World?"
+
+if __name__ == "__main__":
+    uvicorn.run("greet_async_uvicorn:app")
+```
