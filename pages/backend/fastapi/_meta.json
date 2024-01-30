@@ -2,5 +2,9 @@
   "overview": "Overview",
   "getting-started": "Getting Started",
   "request": "Request",
-  "response": "Response"
+  "response": "Response",
+  "api-doc": "Automated Documentation",
+  "async": "Asynchronous Programming",
+  "model": "Model",
+  "validation": "Field Validation"
 }

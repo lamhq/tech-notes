@@ -1,5 +1,6 @@
 {
   "pkg-mgm": "Package Management",
   "code-std": "Code standard",
-  "testing": "Testing"
+  "testing": "Testing",
+  "types": "Types"
 }
