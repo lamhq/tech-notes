@@ -1,0 +1,33 @@
+import { FileTree } from 'nextra/components'
+
+# Source Code Structure
+
+Here's how we apply layered architecture to a FastAPI project:
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="presentation" defaultOpen>
+      <FileTree.File name="__init__.py" />
+      <FileTree.File name="product.py" />
+    </FileTree.Folder>
+    <FileTree.Folder name="services">
+      <FileTree.File name="__init__.py" />
+      <FileTree.File name="product.py" />
+    </FileTree.Folder>
+    <FileTree.Folder name="repositories">
+      <FileTree.File name="__init__.py" />
+      <FileTree.File name="product.py" />
+    </FileTree.Folder>
+    <FileTree.Folder name="models">
+      <FileTree.File name="__init__.py" />
+      <FileTree.File name="product.py" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+- `presentation`: where we define your routes, parameters, responses, and dependencies
+- `services`: where we define your business rules, validations, calculations, and exceptions.
+- `repositories`: where we declare our Repository classes that will query the db
+- `models`: where we define model classes
+- `__init__.py`: Needed to treat this directory as a package
+- every layer will have separated code files to handle different domain's logic (e.g. product related)

@@ -6,5 +6,7 @@
   "api-doc": "Automated Documentation",
   "async": "Asynchronous Programming",
   "model": "Model",
-  "validation": "Field Validation"
+  "validation": "Field Validation",
+  "di": "Dependency Injection",
+  "code-structure": "Code Structure"
 }

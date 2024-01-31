@@ -7,10 +7,6 @@ p, ul, li, h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito Sans', sans-serif;
 }
 
-article ul {
-  margin-top: 0.8rem !important;
-}
-
 @media only screen and (min-width: 768px) {
   article p, article li {
     text-align: justify;

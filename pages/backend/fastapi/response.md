@@ -18,6 +18,18 @@ def happy(status_code=200):
 ```
 
 
+## Returning Error
+
+To return an error response, raise a `HTTPException`:
+```py
+from fastapi import HTTPException
+
+@app.get("/{id}")
+def find_one(id):
+    raise HTTPException(status_code=404, detail='Item not found')
+```
+
+
 ## Headers
 
 ```py
