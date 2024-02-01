@@ -86,6 +86,12 @@ poetry install --no-root
 poetry add fastapi
 ```
 
+Add dev package
+
+```shell
+poetry add pylint --dev
+```
+
 ## Remove a package
 
 ```sh
