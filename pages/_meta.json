@@ -9,5 +9,6 @@
     }
   },
   "devops": "DevOps",
-  "backend": "Backend"
+  "backend": "Backend",
+  "database": "Database"
 }
