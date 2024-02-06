@@ -1,6 +1,12 @@
-## Basic
+# Functions
 
-The first statement of the function body can optionally be a string literal; this string literal is the function's documentation string, or *docstring*. There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code; it’s good practice to include docstrings in code that you write, so make a habit of it.
+## Docstrings
+
+The first statement of the function body can optionally be a string literal; this string literal is the function's documentation string, or *docstring*.
+
+There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code.
+
+It’s good practice to include docstrings in code that you write.
 
 ```py
 # Creating a Function
@@ -16,32 +22,41 @@ def my_function(x):
     return 5 * x
 ```
 
-## Arguments
 
+## Function Arguments
+
+Default value:
 ```py
-# Default argument value
 def my_function(country = "Norway"):
     print("I am from " + country)
 
 my_function("Sweden")
 my_function()
+```
 
+Keyword Arguments:
 
-# Keyword Arguments
+```py
 def my_function(child3, child2, child1):
     print("The youngest child is " + child3)
 
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+```
 
 
-# Arbitrary Arguments, *args
+Arbitrary Arguments `*args`:
+
+```py
 def my_function(*kids):
     print("The youngest child is " + kids[2])
 
 my_function("Emil", "Tobias", "Linus")
+```
 
 
-# Arbitrary Keyword Arguments
+Arbitrary Keyword Arguments:
+
+```py
 def my_function(**kid):
     print("His last name is " + kid["lname"])
 
@@ -49,9 +64,9 @@ my_function(fname = "Tobias", lname = "Refsnes")
 ```
 
 
-## Unpacking Argument Lists
+## Unpacking Arguments
 
-The reverse situation occurs when the arguments are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments. Write the function call with the `*`-operator to unpack the arguments out of a list or tuple:
+When calling function, if the parameters are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments, write the function call with the `*`-operator to unpack the arguments out of a list or tuple:
 
 ```py
 # normal call with separate arguments
@@ -60,8 +75,11 @@ list(range(3, 6))   # [3, 4, 5]
 # call with arguments unpacked from a list
 args = [3, 6]
 list(range(*args))    # [3, 4, 5]
+```
 
-# an example for unpacking dictionary
+Unpacking dictionary:
+
+```py
 def parrot(voltage, state='a stiff', action='voom'):
     print("-- This parrot wouldn't", action, end=' ')
     print("if you put", voltage, "volts through it.", end=' ')
@@ -74,7 +92,9 @@ parrot(**d)
 
 ## Lambda Expressions
 
-Small anonymous functions can be created with the `lambda` keyword. Like nested function definitions, lambda functions can reference variables from the containing scope:
+Small anonymous functions can be created with the `lambda` keyword. 
+
+lambda functions can reference variables from the containing scope.
 
 ```py
 def make_incrementor(n):
@@ -87,6 +107,14 @@ f(1)    # 43
 
 
 ## Function Annotations
+
+Function annotations are arbitrary Python expressions associated with various parts of a function. These expressions are evaluated at compile time and have no impact during runtime.
+
+Python itself doesn’t assign any specific meaning to annotations; their significance arises when interpreted by third-party libraries or tools.
+
+Syntax:
+- Parameters are annotated using the `:` symbol after the parameter name.
+- Annotations can be any valid Python expression.
 
 ```py
 def f(ham: str, eggs: str = 'eggs') -> str:

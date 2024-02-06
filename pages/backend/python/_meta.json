@@ -1,6 +1,9 @@
 {
+  "installation": "Installation",
   "pkg-mgm": "Package Management",
+  "basic": "Basic Syntax",
+  "types": "Types",
+  "control-flow": "Control Flow",
   "code-std": "Code standard",
-  "testing": "Testing",
-  "types": "Types"
+  "testing": "Testing"
 }

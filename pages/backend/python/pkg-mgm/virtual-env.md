@@ -1,5 +1,7 @@
 # Virtual Environments
 
+Recommend to use [Poetry](./poetry.md) instead, it offers several advantages.
+
 ## Overview
 
 A virtual environment is a semi-isolated Python environment, allows packages to be installed for use by a particular application, rather than being installed system wide.

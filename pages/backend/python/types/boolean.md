@@ -2,7 +2,7 @@
 
 ## Introduction
 
-To represent true and false, Python provides you with the boolean data type. The boolean value has a technical name as `bool`.
+The boolean value has a technical name as `bool`.
 
 
 ## The bool() function

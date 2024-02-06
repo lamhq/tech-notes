@@ -1,4 +1,6 @@
-# Coding style
+# Code style
+
+You don't need to remember these rules, linter will check the code style for you:
 
 - Use 4-space indentation, and no tabs.
 - Wrap lines so that they don’t exceed 79 characters.
@@ -6,4 +8,5 @@
 - When possible, put comments on a line of their own.
 - Use docstrings
 - Use spaces around operators and after commas
-- Name your classes and functions consistently; the convention is to use `UpperCamelCase` for classes and `lowercase_with_underscores` for functions and methods.
+- Class name: `UpperCamelCase`
+- Class methods, functions, variable: `lowercase_with_underscores`

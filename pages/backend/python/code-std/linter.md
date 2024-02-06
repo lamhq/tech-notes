@@ -1,4 +1,4 @@
-# Code Linter
+# Linter
 
 ## Install Pylint package
 

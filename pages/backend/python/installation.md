@@ -1,8 +1,10 @@
-# Getting Started
+# Installation
 
-## Install multiple Python versions on macOS
+If you use Poetry, skip this guide and proceed to [install Poetry](./pkg-mgm/poetry.md).
 
-Install pyenv
+## Install multiple Python versions (macOS)
+
+Install pyenv:
 
 ```bash
 brew install pyenv
@@ -20,7 +22,7 @@ Reload shell configuration:
 source ~/.zshrc
 ```
 
-Install a Python version (example: 3.7.0):
+Install a Python version:
 
 ```bash
 pyenv install 3.7.0

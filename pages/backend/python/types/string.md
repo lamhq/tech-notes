@@ -1,8 +1,8 @@
 # Strings
 
-## Introduction
+## Defining strings
 
-A string is a series of characters. In Python, anything inside quotes is a string. And you can use either single or double quotes.
+You can use either single or double quotes.
 
 ```py
 a = 'a sample string'
@@ -22,11 +22,11 @@ print(raw_s)
 ```
 
 
-## Multiline string
+## Multi-line string
 
-String literals can span multiple lines. One way is using triple-quotes: `"""..."""` or `'''...'''`
+String literals can span multiple lines. Use triple-quotes: `"""..."""` or `'''...'''`
 
-**End of lines** are automatically included in multiline string, but it's possible to prevent this by adding a `\` at the end of the line:
+**End of lines** are automatically included in multi-line string, but you can prevent this by adding a `\` at the end of the line:
 
 ```py
 str1 = """\
@@ -168,7 +168,9 @@ print(f'{2:10} ==> {4:10d}')
 
 ## Display values
 
-The `str()` function is meant to return representations of values which are fairly human-readable, while `repr()` is meant to generate representations which can be read by the interpreter
+The `str()` function is meant to return representations of values which are fairly human-readable.
+
+The `repr()` function is meant to generate representations which can be read by the interpreter
 
 ```py
 s = 'Hello, world.'
@@ -186,7 +188,7 @@ print(hellos)
 ```
 
 
-## Immutable
+## Modify strings
 
 Python strings cannot be changed - they are immutable, You cannot change the string. For example, you’ll get an error if you update one or more characters in a string:
 
