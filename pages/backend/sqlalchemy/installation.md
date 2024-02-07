@@ -10,20 +10,29 @@
 Install via pip:
 
 ```shell
-pip install SQLAlchemy
+pip install SQLAlchemy==1.4.51
 ```
 
 
-## Install DBAPI 
+## Install dialect 
 
-Install DBAPI for Redshift:
+Install Redshift dialect for SQLAlchemy:
 
 ```shell
-pip install sqlalchemy-redshift
+pip install sqlalchemy-redshift==0.8.14
 ```
 
 
-## Checking SQLAlchemy Version
+## Install connector
+
+Install Redshift connector for Python:
+
+```shell
+pip install redshift_connector==2.0.918
+```
+
+
+## Version Check
 
 ```py
 import sqlalchemy

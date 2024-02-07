@@ -1,4 +1,5 @@
 {
   "python": "Python",
-  "fastapi": "FastAPI"
+  "fastapi": "FastAPI",
+  "sqlalchemy": "SQLAlchemy"
 }

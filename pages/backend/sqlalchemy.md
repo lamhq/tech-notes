@@ -2,11 +2,13 @@
 
 ## Version
 
-This document is for version `2.0.25` (Jan 2024).
+This document is for version `1.4.51`.
 
-## Components
 
-![](https://docs.sqlalchemy.org/en/20/_images/sqla_arch_small.png)
+## Architecture & Components
+
+![](https://docs.sqlalchemy.org/en/14/_images/sqla_arch_small.png)
+
 
 ### DBAPI
 
@@ -39,8 +41,7 @@ SQLAlchemy ORM builds upon the Core to provide optional object relational mappin
 
 ## References
 
-- [SQLAlchemy Unified Tutorial](https://docs.sqlalchemy.org/en/20/tutorial/index.html#unified-tutorial)
-- [SQLAlchemy ORM](https://docs.sqlalchemy.org/en/20/orm/index.html)
-- [SQLAlchemy Core](https://docs.sqlalchemy.org/en/20/core/index.html)
-- [Dialects](https://docs.sqlalchemy.org/en/20/dialects/index.html)
-- [Code Examples](https://docs.sqlalchemy.org/en/20/orm/examples.html)
+- [SQLAlchemy 1.4 / 2.0 Tutorial](https://docs.sqlalchemy.org/en/14/tutorial/index.html#unified-tutorial)
+- [SQLAlchemy ORM](https://docs.sqlalchemy.org/en/14/orm/index.html)
+- [SQLAlchemy Core](https://docs.sqlalchemy.org/en/14/core/index.html)
+- [Dialects](https://docs.sqlalchemy.org/en/14/dialects/index.html)

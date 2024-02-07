@@ -1,5 +1,12 @@
 # Concepts
 
+## Registry
+
+A registry in SQLAlchemy is a collection of mappings between classes and tables, which can be used to create, query, or modify database objects.
+
+A registry can be associated with one or more engines or connections, and can be used to map classes using different methods, such as declarative base, declarative decorator, or imperative mapping.
+
+
 ## The Session object
 
 The session is the way SQLAlchemy ORM interacts with the database.

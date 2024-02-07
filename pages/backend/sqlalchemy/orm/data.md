@@ -94,3 +94,15 @@ session.commit()
 ```py
 session.close()
 ```
+
+
+## Execute sql command
+
+```py
+with Session(engine) as session:
+    result = session.execute(
+        text("UPDATE some_table SET y=:y WHERE x=:x"),
+        [{"x": 9, "y": 11}, {"x": 13, "y": 15}],
+    )
+    session.commit()
+```

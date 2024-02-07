@@ -1,6 +1,6 @@
 {
-  "overview": "Overview",
   "installation": "Installation",
   "connection": "Connection",
+  "imperative": "Imperative",
   "orm": "ORM"
 }
