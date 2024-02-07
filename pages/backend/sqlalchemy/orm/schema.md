@@ -50,6 +50,17 @@ class Address(Base):
         return f"Address(id={self.id!r}, email_address={self.email_address!r})"
 ```
 
+## Persisting Schema to database
+
+```py
+# emit CREATE statements given ORM registry
+mapper_registry.metadata.create_all(engine)
+
+# the identical MetaData object is also present on the
+# declarative base
+Base.metadata.create_all(engine)
+```
+
 
 ## Init an object
 

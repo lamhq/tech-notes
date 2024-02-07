@@ -1,4 +1,21 @@
-# Query data
+# Querying data
+
+## Select
+
+```py
+from sqlalchemy import select
+
+stmt = select(user_table).where(user_table.c.name == "spongebob")
+with engine.connect() as conn:
+    for row in conn.execute(stmt):
+        print(row)
+```
+
+Select individual columns:
+
+```py
+stmt = select(user_table.c.name, user_table.c.fullname)
+```
 
 ## Fetching Rows
 

@@ -15,6 +15,23 @@ It wraps a database connection via an engine, and provides an identity map for o
 
 A session also wraps a transaction, and that transaction will be open until the session is committed or rolled back.
 
+Session can be created with Python context manager (`with` statement):
+
+```py
+stmt = select(User).where(User.name == "spongebob")
+with Session(engine) as session:
+    for row in session.execute(stmt):
+        print(row)
+```
+
+If we create a Session without using a context manager, we must make sure we close it later:
+
+```py
+session = Session(engine)
+
+# ...
+session.close()
+```
 
 ## Identity map
 

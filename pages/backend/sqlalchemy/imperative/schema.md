@@ -52,3 +52,12 @@ user_table.c.name
 # ['id', 'name', 'fullname']
 user_table.c.keys()
 ```
+
+
+## Defining table from existing schema
+
+```py
+some_table = Table("some_table", metadata_obj, autoload_with=engine)
+```
+
+`some_table` object now contains the information about the Column objects present in the table.

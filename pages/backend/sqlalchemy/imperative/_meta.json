@@ -2,5 +2,6 @@
   "concepts": "Concepts",
   "schema": "Schema definition",
   "query": "Querying data",
-  "manipulate": "Manipulating Data"
+  "manipulate": "Manipulating Data",
+  "transaction": "Transaction"
 }

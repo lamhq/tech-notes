@@ -1,6 +1,6 @@
 # Concepts
 
-## `text()` construct
+## The `text()` construct
 
 Allows us to write SQL statements as textual SQL.
 
@@ -17,6 +17,12 @@ result = conn.execute(stmt, name="Alice")
 for row in result:
     print(row)
 ```
+
+## The `select()` construct
+
+The select() construct allows you to create SQL SELECT statements in a Pythonic way.
+
+You can then use various methods and attributes of the `Select` object to modify the statement, such as `where()`, `order_by()`, `limit()`, `offset()`, `group_by()`, `having()`, `join()`, `from_()`, `alias()`, `scalar_subquery()`, `exists()`, etc. You can also use the `Select` object as a subquery or a table expression in other SQL statements.
 
 
 ## Database Metadata
@@ -43,3 +49,8 @@ users = Table('users', metadata,
 # create the table in the database
 metadata.create_all(engine)
 ```
+
+
+## Table reflection
+
+Table reflection refers to the process of generating Table and related objects by reading the current state of a database.
