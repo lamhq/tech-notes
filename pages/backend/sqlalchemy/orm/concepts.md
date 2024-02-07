@@ -18,6 +18,8 @@ A session also wraps a transaction, and that transaction will be open until the 
 Session can be created with Python context manager (`with` statement):
 
 ```py
+from sqlalchemy.orm import Session
+
 stmt = select(User).where(User.name == "spongebob")
 with Session(engine) as session:
     for row in session.execute(stmt):
@@ -27,8 +29,9 @@ with Session(engine) as session:
 If we create a Session without using a context manager, we must make sure we close it later:
 
 ```py
-session = Session(engine)
+from sqlalchemy.orm import Session
 
+session = Session(engine)
 # ...
 session.close()
 ```

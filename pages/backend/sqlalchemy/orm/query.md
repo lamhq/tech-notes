@@ -3,6 +3,10 @@
 ## Find all
 
 ```py
+session.query(User).all()
+```
+
+```py
 stmt = select(User).where(User.name == "spongebob")
 with Session(engine) as session:
     for row in session.execute(stmt):
