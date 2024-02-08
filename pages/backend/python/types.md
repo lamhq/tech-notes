@@ -1,4 +1,4 @@
-# Tips
+# Types
 
 ## Type conversion functions
 

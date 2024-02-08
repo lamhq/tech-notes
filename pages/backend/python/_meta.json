@@ -3,7 +3,8 @@
   "pkg-mgm": "Package Management",
   "basic": "Basic Syntax",
   "types": "Types",
-  "control-flow": "Control Flow",
+  "flow-control": "Flow Control",
   "code-std": "Code standard",
-  "testing": "Testing"
+  "testing": "Testing",
+  "misc": "Misc"
 }

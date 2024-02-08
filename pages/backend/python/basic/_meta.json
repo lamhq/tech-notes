@@ -2,5 +2,9 @@
   "comments": "Comment",
   "variables": "Variables",
   "constants": "Constants",
-  "functions": "Functions"
+  "functions": "Functions",
+  "modules": "Modules",
+  "exception": "Exception",
+  "oop": "OOP",
+  "async": "Asynchronous Programming"
 }

@@ -15,5 +15,8 @@ export default {
   },
   editLink: {
     text: 'Edit in VS Code'
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 1
   }
 }

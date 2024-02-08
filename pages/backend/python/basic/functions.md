@@ -122,3 +122,19 @@ def f(ham: str, eggs: str = 'eggs') -> str:
     print("Arguments:", ham, eggs)
     return ham + ' and ' + eggs
 ```
+
+
+## `pass` Statements
+
+The `pass` statement does nothing. It can be used when a statement is required syntactically but the program requires no action.
+
+```py
+while True:
+    pass  # Busy-wait for keyboard interrupt (Ctrl+C)
+
+def initlog(*args):
+    pass
+
+class MyEmptyClass:
+    pass
+```
