@@ -1,4 +1,4 @@
-# Concepts
+# High Availability and Fault Tolerance
 
 ## High Availability
 

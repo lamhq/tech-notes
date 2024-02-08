@@ -1,3 +1,5 @@
 {
-  "concepts": "Concepts"
+  "models": "Cloud Service Models",
+  "server": "Server",
+  "ha": "High Availability"
 }
