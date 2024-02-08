@@ -1,5 +1,7 @@
 {
   "vpc": "VPC",
-  "compute": "Compute Engine",
-  "storage": "Storage"
+  "compute": "Compute",
+  "storage": "Storage",
+  "develop": "Develop",
+  "analytics": "Analytics"
 }

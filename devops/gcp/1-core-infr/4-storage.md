@@ -2,14 +2,6 @@
 
 ## Cloud Storage
 
-### Object storage
-
-Object storage is a computer data storage architecture that manages data as "objects" and not as a file and folder hierarchy (file storage), or as chunks of a disk (block storage).
-
-These objects are stored in a packaged format which contains the binary form of the actual data itself, as well as relevant associated meta-data (such as date created, author, resource type, and permissions), and a globally unique identifier (in the form of URLs).
-
-Data commonly stored as objects include video, pictures, and audio recordings.
-
 ### Cloud Storage
 
 A service that offers durable and highly available object storage.
@@ -20,18 +12,6 @@ Has no minimum fee, pay only for what you use.
 
 From a security perspective, Cloud Storage always encrypts data on the server side, before it's written to disk.
 
-### Use cases
-
-A few examples include serving website content, storing data for archival and disaster recovery, and distributing large data objects to end users via Direct Download.
-
-Cloud Storage's primary use is whenever binary large-object storage (also known as a "BLOB") is needed for:
-- online content such as videos and photos
-- backup and archived data
-- storage of intermediate results in processing workflows.
-
-### Structure
-
-Cloud Storage files are organized into buckets. A bucket needs a globally unique name and a specific geographic location for where it should be stored.
 
 ### Versioning
 
@@ -56,20 +36,6 @@ Examples:
 - Keep only the 3 most recent versions
 
 Having this control ensures that you're not paying for more than you actually need.
-
-### Storage classes
-
-- Standard Storage: best for frequently accessed, or stored for only brief periods of time
-- Nearline Storage: infrequently accessed data, like reading or modifying data on average once a month or less (data backups, long-tail multimedia content, or data archiving).
-- Coldline Storage: low-cost option for storing infrequently accessed data, reading or modifying data, at most, once every 90 days.
-- Archive Storage: lowest-cost option, access less than once a year, ideally for data archiving, online backup, and disaster recovery.
-
-All of these storage classes:
-- Unlimited storage with no minimum object size requirement
-- Worldwide accessibility and locations
-- Low latency and high durability
-- A uniform experience, which extends to security, tools, and APIs, and
-- Geo-redundancy if data is stored in a multi-region or dual-region.
 
 
 ### Data transfer

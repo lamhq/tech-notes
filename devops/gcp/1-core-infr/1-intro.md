@@ -1,18 +1,5 @@
 # Introducing Google Cloud
 
-## Cloud computing overview
-
-Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
-
-Five equally important traits:
-
-- customers get computing resources that are on-demand and self-service.
-- customers get access to those resources over the Internet, from anywhere.
-- cloud provider has a big pool of those resources and allocates them to users out of that pool.
-- resources are elastic, if customers need more resources, they can get more and quickly.
-- customers pay only for what they use or reserve as they go.
-
-
 ## The Google Cloud network
 
 Google Cloud’s infrastructure is based in five major geographic **locations**: North America, South America, Europe, Asia, and Australia.
