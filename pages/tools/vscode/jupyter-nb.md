@@ -4,12 +4,18 @@
 
 While working with code cells, a cell can be in three states: unselected, command mode, and edit mode.
 
-When a cell is selected, it can be in two different modes. It can be in command mode or in edit mode. When the cell is in command mode, it can be operated on and accept keyboard commands. When the cell is in edit mode, the cell's contents (code or Markdown) can be modified.
+When a cell is selected, it can be in two different modes. It can be in command mode or in edit mode.
+
+When the cell is in command mode, it can be operated on and accept keyboard commands.
+
+When the cell is in edit mode, the cell's contents (code or Markdown) can be modified.
 
 
 ## Select multiple code cells
 
-To select multiple cells, start with one cell in selected mode. If you want to select consecutive cells, hold down `Shift` and click the last cell you want to select. 
+To select multiple cells, start with one cell in selected mode.
+
+If you want to select consecutive cells, hold down `Shift` and click the last cell you want to select. 
 
 If you want to select any group of cells, hold down `Cmd` and click the cells you'd like to add to your selection.
 

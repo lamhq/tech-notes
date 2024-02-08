@@ -74,7 +74,7 @@ By defining a top-level page or folder as `"type": "page"`, it
  will be shown as a special page on the navigation bar, instead 
  of the sidebar.
 
- In your top-level `_meta.json` file, you can set everything as 
+In your top-level `_meta.json` file, you can set everything as 
  a page, instead of a normal sidebar item:
 
 ```json filename="pages/_meta.json"

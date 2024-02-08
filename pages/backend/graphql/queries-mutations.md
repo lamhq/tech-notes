@@ -114,7 +114,7 @@ fragment comparisonFields on Character {
 }
 ```
 
-### Accessing arguments declared in query inside fragments
+**Accessing arguments declared in query inside fragments**:
 
 Getting the first 3 friends for each hero:
 

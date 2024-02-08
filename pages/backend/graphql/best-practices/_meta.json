@@ -1,0 +1,8 @@
+{
+  "http": "Serving over HTTP",
+  "versioning": "Versioning",
+  "pagination": "Pagination",
+  "auth": "Authorization",
+  "global-objectid": "Global Object Identification",
+  "caching": "Caching"
+}
