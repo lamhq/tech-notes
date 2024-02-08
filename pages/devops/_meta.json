@@ -1,4 +1,5 @@
 {
-  "cloud-computing": { "title": "Cloud Computing" },
-  "aws": { "title": "AWS" }
+  "cloud-computing": "Cloud Computing",
+  "aws": "AWS",
+  "gcp": "GCP"
 }

@@ -1,0 +1,5 @@
+{
+  "vpc": "VPC",
+  "compute": "Compute Engine",
+  "storage": "Storage"
+}
