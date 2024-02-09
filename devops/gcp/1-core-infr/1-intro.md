@@ -1,15 +1,5 @@
 # Introducing Google Cloud
 
-## The Google Cloud network
-
-Google Cloud’s infrastructure is based in five major geographic **locations**: North America, South America, Europe, Asia, and Australia.
-
-Each of these locations is divided into several different **regions** and zones. Regions represent independent geographic areas and are composed of **zones**.
-
-A zone is an area where Google Cloud resources are deployed. 
-
-You can run resources in different regions. This is useful for bringing applications closer to users around the world, and also for protection in case there are issues with an entire region, say, due to a natural disaster.
-
 ## Pricing and billing
 
 Google was the first major cloud provider to deliver **per-second billing** for its infrastructure as a service compute offering compute engine.

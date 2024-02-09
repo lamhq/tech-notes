@@ -14,9 +14,23 @@ Google Cloud is a global fiber network that spans over 35 regions, over 106 zone
 Google Cloud's fiber network provides a private secure global network that mostly does not have to touch the internet at all.
 
 
-## What's different about Google Cloud?
+## Strengths
 
-1. A robust security model applied across numerous industries, including finance, healthcare, and government.
-2. A global fiber network that covers over 35 regions, 106 zones, and 173 edge locations.
-3. Specialized infrastructure for machine learning and data, such as the Google Video Intelligence API.
-4. The capability of live migration to move VMs without downtime within the same zone.
+- A robust security model applied across numerous industries, including finance, healthcare, and government.
+- A global fiber network that use advanced software defined networking
+- Specialized infrastructure for machine learning and data, such as the Google Video Intelligence API.
+- The capability of live migration to move VMs without downtime within the same zone.
+- Google cloud platform documentation: divided into overview section, hands-on section
+
+
+## Weaknesses
+
+- Has fewer services than AWS, Azure
+- Promotes a specific usage model of its services tailored for software developers.
+
+
+## Use cases
+
+- Setting permissions on different levels for multiple projects
+- Managing resources based on projects
+- Taking the benefits of advanced big data, machine learning and analytics
