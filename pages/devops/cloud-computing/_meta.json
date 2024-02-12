@@ -1,5 +1,5 @@
 {
-  "models": "Cloud Service Models",
-  "server": "Server",
+  "solutions": "Cloud Solutions",
+  "serverless": "Serverless",
   "ha": "High Availability"
 }

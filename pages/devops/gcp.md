@@ -13,14 +13,17 @@ Google Cloud is a global fiber network that spans over 35 regions, over 106 zone
 
 Google Cloud's fiber network provides a private secure global network that mostly does not have to touch the internet at all.
 
+## What makes Google Cloud different?
 
-## Strengths
+**Security**: Google has over 15 years of experience managing their infrastructure (Google Apps). Google Cloud is based on this experience and provides additional security products for customers.
 
-- A robust security model applied across numerous industries, including finance, healthcare, and government.
-- A global fiber network that use advanced software defined networking
-- Specialized infrastructure for machine learning and data, such as the Google Video Intelligence API.
-- The capability of live migration to move VMs without downtime within the same zone.
-- Google cloud platform documentation: divided into overview section, hands-on section
+**Billing by the second**: GCE instances use a 1-second billing feature that allows customers to only pay for used resources.
+
+**Big data**: Google Cloud big data solutions are easy of use.
+
+**Global network**: A global fiber network that use advanced software defined networking.
+
+**Environment friendly**: Google has been carbon neutral and has set the goal to run all its data centers carbon free.
 
 
 ## Weaknesses

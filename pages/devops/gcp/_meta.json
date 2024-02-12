@@ -1,7 +1,13 @@
 {
-  "vpc": "VPC",
+  "infrastructure": "Infrastructure",
+  "networking": "Networking",
   "compute": "Compute",
+  "serverless": "Serverless",
   "storage": "Storage",
+  "database": "Database",
   "develop": "Develop",
+  "deployment": "Deployment",
+  "monitoring": "Monitoring",
+  "security": "Security",
   "analytics": "Analytics"
 }
