@@ -32,8 +32,48 @@ Google Cloud's fiber network provides a private secure global network that mostl
 - Promotes a specific usage model of its services tailored for software developers.
 
 
-## Use cases
+## Resource hierarchy
 
-- Setting permissions on different levels for multiple projects
-- Managing resources based on projects
-- Taking the benefits of advanced big data, machine learning and analytics
+Google Cloud's resource hierarchy contains four levels, starting from the bottom up:
+- Resources
+- Projects
+- Folders
+- Organization
+
+Policies can be defined at the project, folder, and organization node levels. Policies are also inherited downward.
+
+
+### Resources
+
+- Fundamental components make up all Google Cloud services.
+- Example: virtual machines, Cloud Storage buckets, BigQuery tables, etc.
+
+
+### Projects
+
+Serves as the foundation for creating, enabling, and managing all Google Cloud services.
+
+It allows you to handle APIs, billing, permissions, and collaborators.
+
+Key attributes are:
+- **Project ID**: globally unique identifier and unchangeable.
+- **Project Name**: User-created and modifiable.
+- **Project Number**: Assigned by Google for internal tracking.
+
+Project management is done via the **Resource Manager** section.
+
+Projects can have different owners and users because they’re billed and managed separately. 
+
+
+### Folders
+
+- An intermediate level that groups projects together.
+- A folder can contain projects or other folders
+- Allows for better organization and policy inheritance.
+
+
+### Organization
+
+- At the top of the hierarchy
+- Binds resources to a domain and provides access control and organization policies.
+- Each Google Workspace or Cloud Identity account is associated with one organization resource.

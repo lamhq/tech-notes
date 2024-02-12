@@ -1,5 +1,6 @@
 {
   "infrastructure": "Infrastructure",
+  "management": "Management interfaces",
   "networking": "Networking",
   "compute": "Compute",
   "serverless": "Serverless",
@@ -9,5 +10,6 @@
   "deployment": "Deployment",
   "monitoring": "Monitoring",
   "security": "Security",
-  "analytics": "Analytics"
+  "analytics": "Analytics",
+  "ai": "AI and ML"
 }
