@@ -56,6 +56,19 @@ Its mission is to empower computer users by creating and publishing **free softw
 The GNU Project developed nearly everything needed for a complete operating system except for the operating system kernel.
 
 
+## Software packages
+
+Software packages consist of multiple files combined into one package for installation (using a package manager).
+
+- Red Hat and related distributions use the `yum` or `dnf` commands.
+- Ubuntu or Debian use the `apt` command.
+
+
+## Libraries
+
+A library is a collection of software that is used by computer programs.
+
+
 ## GNU software
 
 The GNU software is one of the basic parts of any Linux distribution.
@@ -77,49 +90,3 @@ All GNU software was distributed under the GNU General Public License (GPL), ess
 - any user may copy, modify, and distribute the software
 to anyone else in source-code form. 
 - users may have to pay for their individual copies of GNU software.
-
-
-## Linux distributions
-
-A Linux distribution (Linux distro) consists of:
-- the Linux kernel (os)
-- a collection of software that came from the GNU Project
-- a package manager (method to install new software)
-
-All distributions have one thing in common: the Linux kernel.
-
-Most people just say Linux to refer to a specific Linux distribution.
-
-## Major Linux distributions
-
-View the [full list of Linux distributions](https://en.wikipedia.org/wiki/List_of_Linux_distributions).
-
-### Debian GNU/ Linux
-
-- noncommercial distribution, free of charge, started in 1993
-- a huge distribution that takes some time to install.
-- use `apt-get` to install packages
-
-### Ubuntu Linux
-
-- Debian-based, noncommercial Linux distribution
-- use `apt-get` to install packages
-
-### Fedora
-
-- the successor to Red Hat Linux (Linux distribution from Red Hat)
-- freely available
-- uses Red Hat Package Manager (RPM)
-
-
-## Software packages
-
-Software packages consist of multiple files combined into one package for installation (using a package manager).
-
-- Red Hat and related distributions use the `yum` or `dnf` commands.
-- Ubuntu or Debian use the `apt` command.
-
-
-## Libraries
-
-A library is a collection of software that is used by computer programs.
