@@ -1,6 +1,6 @@
 # Linux
 
-## What is Unix?
+## Unix
 
 Unix is a powerful and multitasking operating system that behaves like a bridge between the user and the computer.
 
@@ -15,7 +15,7 @@ Examples of unix are IBM AIX, Darwin, Solaris, HP-UX, macOS X, etc.
 Unix is not totally free (some versions are free, other than that is expensive).
 
 
-## What is Linux?
+## Linux?
 
 Linux is an open-source operating system.
 
@@ -34,9 +34,9 @@ Linux is free and its corporate support is available at a price.
 Linux is technically just the kernel.
 
 
-## Motivation of Linux
+## Motivation
 
-Launched by Linus Torvalds at the University of Helsinki in 1991.
+Linux is launched by Linus Torvalds at the University of Helsinki in 1991.
 
 At the start, Linux was just enough to boot up the computer and nothing else (just a kernel).
 
@@ -54,19 +54,6 @@ The GNU Project was launched in 1984 by Richard Stallman to develop a complete U
 Its mission is to empower computer users by creating and publishing **free software** that grants everyone the rights to **run**, **copy**, **distribute**, **study**, and **modify** it. 
 
 The GNU Project developed nearly everything needed for a complete operating system except for the operating system kernel.
-
-
-## Software packages
-
-Software packages consist of multiple files combined into one package for installation (using a package manager).
-
-- Red Hat and related distributions use the `yum` or `dnf` commands.
-- Ubuntu or Debian use the `apt` command.
-
-
-## Libraries
-
-A library is a collection of software that is used by computer programs.
 
 
 ## GNU software

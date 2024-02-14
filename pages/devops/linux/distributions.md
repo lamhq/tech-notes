@@ -48,4 +48,4 @@ Incorporates proactive security measures like **PaX** and **SSP** to prevent sof
 
 Alpine Linux is actively maintained and updated with new features, security patches, and bug fixes.
 
-Uses apk (Alpine Package Keeper) for package management.
+Uses `apk` (Alpine Package Keeper) for package management. Doesn’t strictly adhere to either the Debian-style or Redhat-style package management conventions.
