@@ -1,0 +1,20 @@
+{
+  "distributions": "Linux distributions",
+  "commands": "Commands",
+  "file-dir": "Files and Directories",
+  "permission": "Permissions",
+  "environment": "The Environment",
+  "redirection": "Redirection",
+  "pipelines": "Pipelines",
+  "search": "Text Searching",
+  "ssh": "SSH",
+  "pkg-mgmt": "Package Management",
+  "heredoc": "Heredoc",
+  "network": "Network",
+  "process": "Process",
+  "system": "Sytem",
+  "disk": "Disk management",
+  "cronjob": "Cron job",
+  "ssl": "SSL",
+  "utils": "Utils"
+}

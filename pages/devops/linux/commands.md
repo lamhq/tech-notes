@@ -119,6 +119,16 @@ mv bad\&filename good_filename
 - `man`: Display a command's manual page
 - `help`: Display help for Shell Builtins
 
+Display help for Shell Builtins:
+```shell
+help cd
+```
+
+Display Command's usage:
+```shell
+man tar
+```
+
 
 ## Keyboard shortcuts
 
@@ -141,18 +151,3 @@ Press `CTRL-R`, followed by the text you are looking for.
 To find the next occurrence, press `CTRL-R` again.
 
 To quit searching, press either `CTRL-G` or `CTRL-C`.
-
-
-## Display help for Shell Builtins
-
-```shell
-help cd
-```
-
-
-## Display Command's usage
-
-```shell
-docker run --help
-man tar
-```

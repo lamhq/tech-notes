@@ -1,6 +1,6 @@
 # SSL
 
-## Generate a CSR (Certificate Signing Request) in Linux
+## Generate a CSR (Certificate Signing Request)
 
 ```sh
 openssl req -new -newkey rsa:2048 -nodes -keyout example.com.key -out example.com.csr

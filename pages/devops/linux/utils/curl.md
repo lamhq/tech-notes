@@ -1,5 +1,6 @@
 # curl basic
 
+## Options
 - `-o`: save response to a specific file
 - `-O`: save response to a file with automatic file name
 - `-L`: follow http redirect

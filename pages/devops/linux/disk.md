@@ -1,4 +1,4 @@
-# Disk management guides
+# Disk management
 
 ## List all sub directories and their size
 ```bash

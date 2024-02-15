@@ -17,7 +17,7 @@ Enter command to run:
 0 9 * * * /path/to/executable
 ```
 
-## View cron jobs
+## View available cron jobs
 
 ```sh
 crontab -l

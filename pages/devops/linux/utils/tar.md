@@ -1,4 +1,4 @@
-# TAR command
+# `tar` command
 
 ## Create an archive (compress)
 

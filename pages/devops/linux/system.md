@@ -1,8 +1,4 @@
-
-## Heredoc
-
-https://linuxize.com/post/bash-heredoc/
-
+# Sytem tips
 
 ## Check os version
 

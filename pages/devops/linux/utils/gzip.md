@@ -1,4 +1,4 @@
-# gzip command
+# Gzip command guide
 
 ## Create an archive (compress)
 

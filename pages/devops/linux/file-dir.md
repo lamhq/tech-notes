@@ -1,6 +1,9 @@
 # Files and Directories
 
-filenames that begin with a period character are hidden
+## File
+
+Filenames that begin with a period character are hidden.
+
 
 ## Wildcards (globbing)
 
@@ -41,26 +44,40 @@ ln -s item link
 ```
 
 
-## Important directories
+## File attributes
 
-- `/bin`: Contains binaries (programs)
-- `/etc`: contains all of the system-wide configuration files. Everything in this directory should be readable text.
-- `/etc/crontab`: defines when automated jobs will run.
-- `/etc/passwd`: a list of the user accounts.
-- `/home`: each user is given a directory in `/home`. Ordinary users can only write files in their home
-directories.
-- `/lib`: Contains shared library files used by the core system programs
-- `/root`: home directory for the root account.
-- `/sbin`: This directory contains "system" binaries.
-- `/tmp`: intended for storage of temporary, transient files created by various programs.
-- `/usr/bin`: contains the executable programs installed by your Linux distribution.
-- `/usr/lib`: shared libraries for the programs in `/usr/bin`.
-- `/usr/local`: programs compiled from source code are normally installed in `/usr/local/bin`
-- `/var`: where data that is likely to change is stored. Various databases, spool files, user mail, etc. are located here.
-- `/var/log`: contains log files
+Look at the output of the ls command
+
+```shell
+[me@linuxbox ~]$ ls -l foo.txt
+-rw-rw-r-- 1 me me 0 2018-03-06 14:52 foo.txt
+```
+
+The first 10 characters of the listing are the **file attributes**: `-rw-rw-r--`
+
+The first character is **file type** `-`.
+
+The remaining 9 characters of the file attributes are the **file mode**, represent the read, write, and execute permissions for the file’s owner, the file’s group owner, and everybody else:
+
+| Owner | Group | World |
+|---|---|---|
+| rwx | rwx | rwx |
 
 
-## File & Directories commands
+### File types
+
+List of File types:
+
+| Attribute | File type |
+|---|---|
+| - | A regular file. |
+| d | A directory. |
+| l | A symbolic link. Notice that with symbolic links, the remaining file attributes are always `rwxrwxrwx` and are dummy values. The real file attributes are those of the file the symbolic link points to. |
+| c | A *character special* file. This file type refers to a device that handles data as a stream of bytes, such as a terminal or `/dev/null`. |
+| b | A *block special* file. This file type refers to a device that handles data in blocks, such as a hard drive or DVD drive. |
+
+
+## Commands
 
 - `pwd`: Print name of current working directory
 - `cd`: Change directory
@@ -85,18 +102,24 @@ tail -n 5 -f /var/log/system.log
 ```
 
 
-## `less` commands
+## Viewing content in terminal
 
-- Exit less: `q`.
+When viewing content in termnial (using `less` or other commands), here're some keyboard shortcuts we can use:
+
+- Exit: `q`.
+- Display help screen: `h`
+
+Navigation:
 - Page up: `b`
 - Page down: `space`
 - Scroll up oneline: `Up arrow`
 - Scroll down oneline: `Down arrow`
 - Move to end of file: `G`
 - Move to beginning of file: `g`
+
+Searching:
 - Search: `/characters`
 - Find next: `n`
-- Display help screen: `h`
 
 
 ## `ls` options
@@ -122,3 +145,22 @@ tail -n 5 -f /var/log/system.log
 
 - `r`: Recursively delete directories.
 - `f`: Ignore nonexistent files and do not prompt.
+
+
+## Important directories
+
+- `/bin`: Contains binaries (programs)
+- `/etc`: contains all of the system-wide configuration files. Everything in this directory should be readable text.
+- `/etc/crontab`: defines when automated jobs will run.
+- `/etc/passwd`: a list of the user accounts.
+- `/home`: each user is given a directory in `/home`. Ordinary users can only write files in their home
+directories.
+- `/lib`: Contains shared library files used by the core system programs
+- `/root`: home directory for the root account.
+- `/sbin`: This directory contains "system" binaries.
+- `/tmp`: intended for storage of temporary, transient files created by various programs.
+- `/usr/bin`: contains the executable programs installed by your Linux distribution.
+- `/usr/lib`: shared libraries for the programs in `/usr/bin`.
+- `/usr/local`: programs compiled from source code are normally installed in `/usr/local/bin`
+- `/var`: where data that is likely to change is stored. Various databases, spool files, user mail, etc. are located here.
+- `/var/log`: contains log files
