@@ -50,6 +50,11 @@ class Address(Base):
         return f"Address(id={self.id!r}, email_address={self.email_address!r})"
 ```
 
+Reference
+- [Column data types](https://docs.sqlalchemy.org/en/14/core/types.html)
+- [Column parameters](https://docs.sqlalchemy.org/en/14/core/metadata.html#sqlalchemy.schema.Column)
+
+
 ## Persisting Schema to database
 
 ```py

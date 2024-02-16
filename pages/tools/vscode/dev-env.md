@@ -1,4 +1,6 @@
-# Set up local development environment with Docker
+# Development environment using Container
+
+Using docker container as your development environment.
 
 ## Overview
 
@@ -14,6 +16,8 @@ Ensure that your development environment closely mirrors the production environm
 Easy to reproduce the same environment across different machines.
 
 Isolating dependencies and avoiding conflicts between different software versions.
+
+Avoid messing up your machine.
 
 
 ## Drawbacks
