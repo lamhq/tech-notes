@@ -5,6 +5,7 @@
   "types": "Types",
   "flow-control": "Flow Control",
   "code-std": "Code standard",
+  "debugging": "Debugging",
   "testing": "Testing",
   "misc": "Misc"
 }
