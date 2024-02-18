@@ -6,6 +6,13 @@ Each column of a data frame is a pandas `Series`
 
 ## Create DataFrame
 
+### Create an empty dataframe
+
+```py
+df = pd.DataFrame()
+```
+
+
 ### From arrays
 
 ```py
@@ -183,6 +190,15 @@ price_less_than_300 = df[~selection]
 
 ```py
 df.sort_values(by=['Letter'], ascending=False)
+```
+
+## Looping
+
+Loop through each rows in a dataframe:
+
+```py
+for index, row in df.iterrows():
+  print(row['c1'], row['c2'])
 ```
 
 ## Re-order columns
