@@ -57,20 +57,24 @@ Enable formatting on save for your code:
 
 ## Debugging
 
-To initialize debug configurations, click **Run and Debug** button, then click the link "**create a configuration (launch.json) file**":
+VS Code keeps debugging configuration information in a `launch.json` file located in a `.vscode` folder in your workspace (project root folder) or in your [user settings](https://code.visualstudio.com/docs/editor/debugging#_global-launch-configuration) or [workspace settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_workspace-launch-configurations).
 
-![](https://code.visualstudio.com/assets/docs/python/debugging/debug-start.png)
+To create a `launch.json` file, click the **create a `launch.json` file** link in the Run start view.
 
-The details of configuration properties are covered in [Standard configuration and options](https://code.visualstudio.com/docs/python/debugging#_set-configuration-options).
+![](https://code.visualstudio.com/assets/docs/editor/debugging/launch-configuration.png)
 
-Other configurations are described in [Debugging specific app types](https://code.visualstudio.com/docs/python/debugging#_debugging-specific-app-types).
+The attributes available in launch configurations vary from debugger to debugger. You can use IntelliSense suggestions (`^Space`) to find out which attributes exist for a specific debugger.
+
+![](https://code.visualstudio.com/assets/docs/editor/debugging/launch-json-intellisense.png)
 
 
-## Test
+## Testing
 
 The Python extension provides robust testing support for [Unittest](https://docs.python.org/3.3/library/unittest.html) and [pytest](https://pytest.org/en/7.4.x/).
 
 You can configure Python tests through the Testing view on the Activity Bar by selecting **Configure Python Tests** and selecting your test framework of choice.
+
+![](https://code.visualstudio.com/assets/docs/python/testing/test-explorer-no-tests.png)
 
 
 ## References
