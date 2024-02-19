@@ -150,3 +150,8 @@ responses: dict[str, str | int] = {"Marco": "Polo", "answer": 42}
 from typing import Any
 responses: dict[str, Any] = {"Marco": "Polo", "answer": 42}
 ```
+
+
+## Type checking tools
+
+**pytype** can be used to validate type annotations.
