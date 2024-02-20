@@ -1,5 +1,7 @@
 # vim operations
 
+## Overview
+
 Vi is a popular text editors used in Unix-like operating systems.
 
 Vim is an enhanced version of Vi with additional features and functionalities.
@@ -44,3 +46,8 @@ You could press `Esc`, then press `:`, follow with the number, (ie:`:14`)
 
 1. Place the cursor to the beginning of the line, press the `ESC` key.
 2. Press `dd`
+
+
+## References
+
+https://devhints.io/vim
