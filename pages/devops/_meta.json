@@ -2,5 +2,6 @@
   "cloud-computing": "Cloud Computing",
   "aws": "AWS",
   "gcp": "GCP",
-  "linux": "Linux"
+  "linux": "Linux",
+  "terraform": "Terraform"
 }
