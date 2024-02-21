@@ -54,7 +54,6 @@ brew upgrade hashicorp/tap/terraform
 
 Add syntax support for Terraform, install extension [Terraform](https://marketplace.visualstudio.com/items?itemName=4ops.terraform).
 
-Add syntax highlighting to Markdown fenced code blocks for Terraform, install extension [Markdown Code blocks Terraform Syntax highlighting](https://marketplace.visualstudio.com/items?itemName=64kramsystem.markdown-code-blocks-terraform-syntax-highlighting).
 
 Example:
 

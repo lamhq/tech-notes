@@ -73,6 +73,8 @@ Meta-arguments are defined by Terraform, can be used with any resource type to c
 - `lifecycle`, for lifecycle customizations
 - `provisioner`, for taking extra actions after resource creation
 
+Check [Resource Meta-arguments](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on) for detailed information.
+
 
 ## Resource Behavior
 
