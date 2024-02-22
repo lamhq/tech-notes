@@ -1,5 +1,16 @@
 {
   "installation": "Installation",
   "cli": "Commands",
-  "configuration": "Configuration"
+  "configuration": "Configuration",
+  "resources": "Resources",
+  "input-vars": "Input Variables",
+  "local-val": "Local Values",
+  "output-val": "Output Values",
+  "modules": "Modules",
+  "expressions": "Expressions",
+  "functions": "Built-in Functions",
+  "backend": "Backend Configuration",
+  "state": "State",
+  "workspaces": "Workspaces",
+  "tips": "Tips"
 }

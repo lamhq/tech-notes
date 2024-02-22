@@ -1,0 +1,9 @@
+{
+  "conf-override": "Override Files",
+  "custom-cond-check": "Custom Condition Checks",
+  "op-timeout": "Operation Timeouts",
+  "refactoring": "Refactoring",
+  "remove": "Removing",
+  "replacing": "Replacing Resources",
+  "sensitive-data": "Credentials and Sensitive Data"
+}

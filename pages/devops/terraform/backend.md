@@ -1,0 +1,98 @@
+# Backend Configuration
+
+## Overview
+
+A backend defines where Terraform stores its state data files.
+
+Terraform uses persisted state data to keep track of the resources it manages.
+
+
+## Available Backends
+
+[Available built-in backends](https://developer.hashicorp.com/terraform/language/settings/backends/local) includes:
+- [`local`](https://developer.hashicorp.com/terraform/language/settings/backends/local): stores state as a local file on disk
+- [`remote`](https://developer.hashicorp.com/terraform/language/settings/backends/remote): store state snapshots and execute operations in Terraform Cloud. You can also only store state in the Terraform Cloud backend.
+- [`s3`](https://developer.hashicorp.com/terraform/language/settings/backends/s3): Stores the state as a given key in a given bucket on Amazon S3
+- [`gcs`](https://developer.hashicorp.com/terraform/language/settings/backends/gcs): Stores the state in a Google Cloud Storage bucket.
+- [`http`](https://developer.hashicorp.com/terraform/language/settings/backends/http): Stores the state using a simple REST client.
+
+
+## Configure a backend
+
+You do not need to configure a backend when using Terraform Cloud because Terraform Cloud automatically manages state in the workspaces associated with your configuration.
+
+To configure a backend, add a nested `backend` block within the top-level `terraform` block.
+
+```hcl
+terraform {
+  backend "remote" {
+    organization = "example_corp"
+
+    workspaces {
+      name = "my-app-prod"
+    }
+  }
+}
+```
+
+The block label of the backend block (`"remote"`, in the example above) indicates which backend type to use.
+
+The arguments used in the block's body are specific to the chosen backend type.
+
+If your configuration includes a `cloud` block, it cannot include a `backend` block.
+
+A configuration can only provide one backend block.
+
+A backend block cannot refer to named values.
+
+You cannot reference values declared within backend blocks.
+
+
+## Initialization
+
+When you change a backend's configuration, you must run `terraform init`.
+
+Upon initialization, Terraform creates a local `.terraform/` directory. It stores the latest backend configuration and any CLI-provided authentication parameters. **Do not** commit this directory to Git to protect sensitive backend credentials.
+
+The local backend configuration is different and entirely separate from the `terraform.tfstate` file that contains state data about your real-world infrastruture. Terraform stores the `terraform.tfstate` file in your remote backend.
+
+When you **change backends**, Terraform gives you the option to migrate your state to the new backend. Remember to back up  `terraform.tfstate` file before migrating to a new backend.
+
+A configuration file may be specified via the `init` command line:
+
+```shell
+terraform init -backend-config=backend.hcl
+```
+
+`backend.hcl`:
+```hcl
+workspaces { name = "workspace" }
+hostname = "app.terraform.io"
+organization = "company"
+```
+
+## Sample configurations
+
+### Local Backend
+
+```hcl
+terraform {
+  backend "local" {
+    path = "relative/path/to/terraform.tfstate"
+  }
+}
+```
+
+### Remote Backend
+
+```hcl
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "ministry-of-magic"
+    workspaces {
+      name = "sorting-hat-api-prod"
+    }
+  }
+}
+```

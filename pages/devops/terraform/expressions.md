@@ -95,56 +95,23 @@ Use [Whitespace Stripping](https://developer.hashicorp.com/terraform/language/ex
 
 The main kinds of named values available in Terraform are:
 
-- Resources
-- Input variables
-- Local values
-- Child module outputs
-- Data sources
+- Resources: `<RESOURCE TYPE>.<NAME>.<ATTRIBUTE>`
+- Input variables: `var.<NAME>`
+- Local values: `local.<NAME>`
+- Child module outputs: `module.<MODULE NAME>.<OUTPUT NAME>`
+- Data sources: `data.<DATA TYPE>.<NAME>`
 - Filesystem and workspace info
-- Block-local values
+- Block-local values: `count.index`, `each.key`, `each.value`
 
-### Resource Attributes
 
-Consider the following example resource block:
-```hcl
-resource "aws_instance" "example" {
-  ami           = "ami-abc123"
-  instance_type = "t2.micro"
-
-  ebs_block_device {
-    device_name = "sda2"
-    volume_size = 16
-  }
-  ebs_block_device {
-    device_name = "sda3"
-    volume_size = 20
-  }
-
-  device "foo" {
-    size = 2
-  }
-  device "bar" {
-    size = 4
-  }
-}
-```
-
-Get the value of `ami` argument:
+## Conditional Expressions
 
 ```hcl
-aws_instance.example.ami
+condition ? true_val : false_val
 ```
 
-Obtain a list of all `device_name` values in `ebs_block_device`:
+Define defaults to replace invalid values:
 
 ```hcl
-aws_instance.example.ebs_block_device[*].device_name
+var.a != "" ? var.a : "default-a"
 ```
-
-Get the value of `size` argument of `device` block named  `foo`:
-
-```hcl
-aws_instance.example.device["foo"].size
-```
-
-Reference: [References to Resource Attributes](https://developer.hashicorp.com/terraform/language/expressions/references#references-to-resource-attributes).

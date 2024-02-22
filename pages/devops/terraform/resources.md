@@ -95,3 +95,47 @@ Applying a Terraform configuration will:
 Expressions within a Terraform module can access information about resources in the same module.
 
 Use the `<RESOURCE TYPE>.<NAME>.<ATTRIBUTE>` syntax to reference a resource attribute in an expression.
+
+Consider the following example resource block:
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-abc123"
+  instance_type = "t2.micro"
+
+  ebs_block_device {
+    device_name = "sda2"
+    volume_size = 16
+  }
+  ebs_block_device {
+    device_name = "sda3"
+    volume_size = 20
+  }
+
+  device "foo" {
+    size = 2
+  }
+  device "bar" {
+    size = 4
+  }
+}
+```
+
+Get the value of `ami` argument:
+
+```hcl
+aws_instance.example.ami
+```
+
+Obtain a list of all `device_name` values in `ebs_block_device`:
+
+```hcl
+aws_instance.example.ebs_block_device[*].device_name
+```
+
+Get the value of `size` argument of `device` block named  `foo`:
+
+```hcl
+aws_instance.example.device["foo"].size
+```
+
+Reference: [References to Resource Attributes](https://developer.hashicorp.com/terraform/language/expressions/references#references-to-resource-attributes).

@@ -31,6 +31,8 @@ locals {
 
 ## Using Local Values
 
+you can reference local value in expressions as `local.<NAME>`.
+
 ```hcl
 resource "aws_instance" "example" {
   # ...
