@@ -1,32 +1,41 @@
-# CLI
+# Frequently Used Commands
 
-## Find the Terraform version
+## Get version
 
 ```shell
 terraform version
 ```
 
-## Switch the working directory
+## Change working directory
 
 ```shell
 terraform -chdir=<path_to/tf> <subcommand>
 ```
 
-## Initialize the directory
+## Initialize
 
+Initialize the directory:
 ```shell
 terraform init
 ```
 
-## Create an execution plan
+Used when:
+- create a new working directory
+- switching to a new workspace
 
+
+## Validate code
+
+Validate the code to look for any errors in syntax, parameters, or attributes within Terraform resources that may prevent it from deploying correctly:
 ```shell
-terraform plan
+terraform validate
 ```
 
-Output the deployment plan:
+## Create plans
+
+Create an execution plan:
 ```shell
-terraform plan -out plan.txt
+terraform plan
 ```
 
 Output the destroy plan:
@@ -63,7 +72,7 @@ Pass a variable via the command line:
 terraform apply -var my_variable=<variable>
 ```
 
-## Destroy the managed infrastructure
+## Destroy
 
 ```shell
 terraform destroy
@@ -73,12 +82,33 @@ terraform destroy
 terraform destroy --auto-approve
 ```
 
-## Get information about providers
+## List providers
 
 ```shell
 terraform providers
 ```
 
+## Workspace commands
+
+List workspaces:
+```shell
+terraform workspace list
+```
+
+Create a workspace:
+```shell
+terraform workspace new <WORKSPACE_NAME>
+```
+
+Switch workspace:
+```shell
+terraform workspace select <WORKSPACE_NAME>
+```
+
+Delete workspace:
+```shell
+terraform workspace delete <WORKSPACE_NAME>
+```
 
 ## List available commands
 

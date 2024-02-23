@@ -1,7 +1,7 @@
 {
   "vim": "Vim",
-  "curl": "CURL",
-  "zip": "ZIP",
-  "gzip": "Gzip",
+  "curl": "curl",
+  "zip": "zip",
+  "gzip": "gzip",
   "tar": "tar"
 }
