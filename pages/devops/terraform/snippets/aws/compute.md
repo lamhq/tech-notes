@@ -1,4 +1,4 @@
-# Network Resources
+# Compute Resources
 
 ## AMI
 

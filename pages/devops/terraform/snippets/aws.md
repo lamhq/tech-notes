@@ -87,3 +87,8 @@ resource "aws_instance" "my-instance" {
   instance_type = "t2.micro"
 }
 ```
+
+
+## Github Action Workflow
+
+[Github Action Workflow example code](https://github.com/JesseHoch/learn-terraform-github-actions/blob/master/.github/workflows/terraform.yml) for deploying AWS resources in CI environment.

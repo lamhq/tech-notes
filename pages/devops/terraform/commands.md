@@ -110,6 +110,13 @@ Delete workspace:
 terraform workspace delete <WORKSPACE_NAME>
 ```
 
+## State
+
+List all the resources being tracked by the Terraform state file:
+```shell
+terraform state list
+```
+
 ## List available commands
 
 ```shell
