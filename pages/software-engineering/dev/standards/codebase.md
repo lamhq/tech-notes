@@ -1,6 +1,6 @@
-# Codebase Requirements
+# Codebase
 
-## General
+## Standards for all project types
 
 - Must have a linter to check code style
 - Must have a CI check to run linter upon submitted PRs
@@ -17,4 +17,4 @@
 
 ## Web
 
-- Should have document for UI components (e.g. [Storybook](https://storybook.js.org/))
+- Should have documentation for UI components (e.g. [Storybook](https://storybook.js.org/))
