@@ -20,19 +20,6 @@ Upload the zip file straight to Lambda if it's less than 50MB, otherwise upload 
 AWS SDK comes with every Lambda function by default.
 
 
-## Lambda Layers
-
-A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies.
-
-With layers, you can use libraries in your function without needing to include them in your deployment package.
-
-A function can use up to 5 layers at a time.
-
-Layers are extracted to the `/opt` directory in the function execution environment.
-
-Each runtime looks for libraries in a different location under `/opt`, depending on the language.
-
-
 ## Lambda Aliases
 
 Lambda aliases are pointers to a specific Lambda version.

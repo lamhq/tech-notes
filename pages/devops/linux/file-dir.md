@@ -1,8 +1,75 @@
 # Files and Directories
 
-## File
-
 Filenames that begin with a period character are hidden.
+
+## Snippets
+
+- `pwd`: Print name of current working directory
+- `cd`: Change directory
+- `cp`: Copy files and directories
+- `mv`: Move/rename files and directories
+- `mkdir`: Create directories
+- `rm`: Remove files and directories
+- `ln`: Create hard and symbolic links
+- `ls`: List directory contents
+- `file`: Determine file type
+- `less`: view text files (paginated)
+- `head`: view first part of file
+- `tail`: view last part of file
+- `cat`: display content of files
+
+Examples:
+
+```bash
+less ls-output.txt
+head -n 5 ls-output.txt
+tail -n 5 -f /var/log/system.log
+```
+
+
+## Viewing file
+
+When viewing file in termnial (using `less` or other commands), here're some keyboard shortcuts we can use:
+
+- Exit: `q`.
+- Display help screen: `h`
+
+Navigation:
+- Page up: `b`
+- Page down: `space`
+- Scroll up oneline: `Up arrow`
+- Scroll down oneline: `Down arrow`
+- Move to end of file: `G`
+- Move to beginning of file: `g`
+
+Searching:
+- Search: `/characters`
+- Find next: `n`
+
+
+## `ls` options
+
+- `-A`: does not list . (current directory) and .. (parent directory).
+- `-l`: List in long format.
+- `-h`: display file sizes in human readable format rather than in bytes.
+- `-S`: Sort results by file size.
+- `-t`: Sort by modification time.
+- `-r`: Display the results in reverse order.
+
+
+## `cp` options
+
+- `-a`: Copy the files and directories and all of their attributes, including ownerships and permissions
+- `-i`: silently overwrite files.
+- `-r`: Recursively copy directories and their contents.
+- `-u`: only copy files that either don't exist, or are newer than the existing corresponding files
+- `-v`: Display informative messages as the copy is performed.
+
+
+## `rm` options
+
+- `r`: Recursively delete directories.
+- `f`: Ignore nonexistent files and do not prompt.
 
 
 ## Wildcards (globbing)
@@ -75,76 +142,6 @@ List of File types:
 | l | A symbolic link. Notice that with symbolic links, the remaining file attributes are always `rwxrwxrwx` and are dummy values. The real file attributes are those of the file the symbolic link points to. |
 | c | A *character special* file. This file type refers to a device that handles data as a stream of bytes, such as a terminal or `/dev/null`. |
 | b | A *block special* file. This file type refers to a device that handles data in blocks, such as a hard drive or DVD drive. |
-
-
-## Commands
-
-- `pwd`: Print name of current working directory
-- `cd`: Change directory
-- `cp`: Copy files and directories
-- `mv`: Move/rename files and directories
-- `mkdir`: Create directories
-- `rm`: Remove files and directories
-- `ln`: Create hard and symbolic links
-- `ls`: List directory contents
-- `file`: Determine file type
-- `less`: view text files (paginated)
-- `head`: view first part of file
-- `tail`: view last part of file
-- `cat`: display content of files
-
-Example:
-
-```bash
-less ls-output.txt
-head -n 5 ls-output.txt
-tail -n 5 -f /var/log/system.log
-```
-
-
-## Viewing content in terminal
-
-When viewing content in termnial (using `less` or other commands), here're some keyboard shortcuts we can use:
-
-- Exit: `q`.
-- Display help screen: `h`
-
-Navigation:
-- Page up: `b`
-- Page down: `space`
-- Scroll up oneline: `Up arrow`
-- Scroll down oneline: `Down arrow`
-- Move to end of file: `G`
-- Move to beginning of file: `g`
-
-Searching:
-- Search: `/characters`
-- Find next: `n`
-
-
-## `ls` options
-
-- `-A`: does not list . (current directory) and .. (parent directory).
-- `-l`: List in long format.
-- `-h`: display file sizes in human readable format rather than in bytes.
-- `-S`: Sort results by file size.
-- `-t`: Sort by modification time.
-- `-r`: Display the results in reverse order.
-
-
-## `cp` options
-
-- `-a`: Copy the files and directories and all of their attributes, including ownerships and permissions
-- `-i`: silently overwrite files.
-- `-r`: Recursively copy directories and their contents.
-- `-u`: only copy files that either don't exist, or are newer than the existing corresponding files
-- `-v`: Display informative messages as the copy is performed.
-
-
-## `rm` options
-
-- `r`: Recursively delete directories.
-- `f`: Ignore nonexistent files and do not prompt.
 
 
 ## Important directories

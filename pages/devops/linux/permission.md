@@ -1,23 +1,5 @@
 # Permissions
 
-## Users and Groups
-
-A user may own files and directories. When a user owns a file or directory, the user has control over its access.
-
-Users can belong to a group of users who are given access to files and directories by their owners.
-
-An owner may also grant some set of access rights to everybody (`world`).
-
-Users are assigned a number called a user ID (uid), mapped to a username, then a group ID (gid) and may belong to additional groups.
-
-
-## Important files
-
-- `/etc/passwd`: define user accounts: (login) name, uid, gid, account's real name, home directory, and login shell
-- `/etc/group`: define groups
-- `/etc/shadow`: holds information about the user’s password
-
-
 ## Display user identity
 
 View your `uid`, `gid`:
@@ -180,13 +162,6 @@ passwd [user]
 ```
 
 
-## Other user commands
-
-- adduser
-- useradd
-- groupadd
-
-
 ## Create a Sudo User on CentOS
 
 - Log in to your server as the root user.
@@ -202,3 +177,27 @@ passwd username
 usermod -aG wheel username
 su - username
 ```
+
+## Users and Groups
+
+A user may own files and directories. When a user owns a file or directory, the user has control over its access.
+
+Users can belong to a group of users who are given access to files and directories by their owners.
+
+An owner may also grant some set of access rights to everybody (`world`).
+
+Users are assigned a number called a user ID (uid), mapped to a username, then a group ID (gid) and may belong to additional groups.
+
+
+## Important files
+
+- `/etc/passwd`: define user accounts: (login) name, uid, gid, account's real name, home directory, and login shell
+- `/etc/group`: define groups
+- `/etc/shadow`: holds information about the user’s password
+
+
+## Other user commands
+
+- adduser
+- useradd
+- groupadd

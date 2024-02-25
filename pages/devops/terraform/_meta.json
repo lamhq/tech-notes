@@ -1,11 +1,12 @@
 {
   "installation": "Installation",
   "configuration": "Configuration",
+  "providers": "Providers",
   "resources": "Resources",
+  "data-source": "Data Sources",
   "input-vars": "Input Variables",
   "local-val": "Local Values",
   "output-val": "Output Values",
-  "data-source": "Data Sources",
   "modules": "Modules",
   "expressions": "Expressions",
   "functions": "Built-in Functions",

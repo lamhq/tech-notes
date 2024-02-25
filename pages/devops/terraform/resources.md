@@ -13,10 +13,6 @@ Each resource block describes one or more infrastructure objects:
 
 A `resource` block declares a resource of a specific **type** with a specific local **name**.
 
-### Example
-
-In the following example,  the `aws_instance` resource type is named `web`:
-
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-a1b2c3d4"
@@ -24,9 +20,11 @@ resource "aws_instance" "web" {
 }
 ```
 
+In the following example, the resource type is `aws_instance`, the local name is `web`:
+
 Within the block body (between `{` and `}`) are the configuration **arguments** for the resource itself.
 
-`"ami-a1b2c3d4"` and `"t2.micro"` are expressions.
+Expressions are `"ami-a1b2c3d4"` and `"t2.micro"`.
 
 
 ## Resource Types
@@ -47,19 +45,28 @@ The resource type's documentation lists which arguments are available and how th
 
 ## Providers
 
-A [provider](https://registry.terraform.io/browse/providers) is a plugin for Terraform that offers a collection of resource types.
-
-Providers are distributed separately from Terraform.
-
 Based on a resource type's name, Terraform can usually determine which provider to use.
 
-You can use the `provider` meta-argument to manually choose a provider configuration.
+You can use the `provider` meta-argument to manually choose a provider configuration:
+```hcl
+resource "aws_instance" "foo" {
+  provider = aws.west
 
-Most providers need some configuration to access their remote API, which is provided by the root module.
+  # ...
+}
+```
 
-Every Terraform provider has its own documentation, describing its resource types and their arguments.
+To select alternate provider configurations for a child module, use its `providers` meta-argument:
+```hcl
+module "aws_vpc" {
+  source = "./aws_vpc"
+  providers = {
+    aws = aws.west
+  }
+}
+```
 
-The [Terraform Registry](https://registry.terraform.io/browse/providers) is the main home for all publicly available provider docs.
+If a resource doesn't specify which provider configuration to use, Terraform interprets the first word of the resource type as a local provider name (e.g., `aws_instance`, `aws_security_group`).
 
 
 ## Meta-arguments
@@ -73,28 +80,41 @@ Meta-arguments are defined by Terraform, can be used with any resource type to c
 - `lifecycle`, for lifecycle customizations
 - `provisioner`, for taking extra actions after resource creation
 
+```hcl
+resource "aws_instance" "server" {
+  count = 4 # create four similar EC2 instances
+
+  ami           = "ami-a1b2c3d4"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Server ${count.index}"
+  }
+}
+```
+
 Check [Resource Meta-arguments](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on) for detailed information.
 
 
 ## Resource Behavior
 
-When Terraform creates an infrastructure object from a resource block, it stores the object's identifier in its state for future updates or destruction.
+When Terraform manages infrastructure:
+- It records resource IDs in the state for management.
+- It updates resources to match their intended configuration.
 
-For existing objects in the state, Terraform checks and aligns their actual configuration with the defined arguments, updating them as needed.
 
 Applying a Terraform configuration will:
-
-- Create resources that exist in the configuration but are not associated with a real infrastructure object in the state.
-- Destroy resources that exist in the state but no longer exist in the configuration.
-- Update in-place resources whose arguments have changed.
-- Destroy and re-create resources whose arguments have changed but which cannot be updated in-place due to remote API limitations.
+- Create new resources defined in the configuration.
+- Update existing resources to match the configuration.
+- Destroy resources removed from the configuration.
+- Replace resources that cannot be updated in-place due to API constraints.
 
 
 ## Accessing Resource Attributes
 
-Expressions within a Terraform module can access information about resources in the same module.
+Expressions can access information about resources in the same module.
 
-Use the `<RESOURCE TYPE>.<NAME>.<ATTRIBUTE>` syntax to reference a resource attribute in an expression.
+Use the syntax: `<RESOURCE TYPE>.<NAME>.<ATTRIBUTE>`.
 
 Consider the following example resource block:
 ```hcl

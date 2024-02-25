@@ -2,11 +2,13 @@
 
 ## Terraform Language
 
-Terraform language is used for declaring resources, which represent infrastructure objects.
+Terraform language is used for declaring resources. Resources represent infrastructure objects.
 
-Terraform language also lets you define dependencies between resources and create multiple similar resources from a single configuration block.
+Terraform language lets you:
+- define dependencies between resources
+- create multiple similar resources from a single configuration block.
 
-Terraform language consists a few basic elements:
+The Terraform language consists of the following **elements**:
 
 ### Blocks
 
@@ -14,22 +16,34 @@ Blocks are containers for other content and usually represent the configuration 
 
 Blocks have a **block type**, can have zero or more **labels**, and have a body that contains any number of **arguments** and **nested blocks**.
 
-The ordering of blocks and the files they are organized into are generally not significant.
+```hcl
+resource "aws_instance" "example" {
+  ami = "abc123"
+
+  network_interface {
+    # ...
+  }
+}
+```
 
 
 ### Arguments
 
 Arguments assign a value to a name. They appear within **blocks**.
 
+```hcl
+ami = "abc123"
+```
 
 ### Expressions
 
 Expressions represent a value, either literally or by referencing and combining other values.
 
+Examples: `"hello"`, `15`, `local.region`, ...
 
 ## Configuration
 
-A Terraform configuration is a complete document in the **Terraform language** that tells Terraform how to manage a given collection of infrastructure.
+A Terraform configuration is a document in the **Terraform language** that tells Terraform how to manage a given collection of infrastructure.
 
 A configuration can consist of multiple files and directories.
 
@@ -49,7 +63,7 @@ directory.
 Nested directories are treated as completely separate modules, and are not automatically included in the configuration.
 
 Terraform evaluates all of the configuration files in a module.
-- You can separate various blocks into different files for better reading.
+- You can separate various blocks into different files for better reading (e.g., main, variables, output).
 - If two files attempt to define the same object, Terraform returns an error.
 
 A Terraform module can include other modules into the configuration. These child modules can come from local directories or from external sources (like the Terraform Registry).

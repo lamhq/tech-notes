@@ -1,5 +1,51 @@
 # Commands
 
+## Snippets
+
+- `history`: Display or manipulate the history list
+- `clear`: Clear the terminal screen
+- `exit` or `CTRL-D`: end a terminal session
+- `which`: display which executable program will be executed
+- `whatis`: Display one-line manual page descriptions
+- `apropos`: search command
+- `info`: Display a command’s info entry
+- `man`: Display a command's manual page
+- `help`: Display help for Shell Builtins
+
+Display help for Shell Builtins:
+```shell
+help cd
+```
+
+Display Command's usage:
+```shell
+man tar
+```
+
+
+## Keyboard shortcuts
+
+- `CTRL-A`: move cursor to the beginning of line
+- `CTRL-E`: move cursor to the end of line
+- `CTRL-L`: clear screen, same as `clear` command
+- `CTRL-D`: Delete the character at the cursor location.
+- `CTRL-K`: cut text from cursor location to the end of line
+- `CTRL-U`: cut text from cursor location to the beginning of line
+- `CTRL-Y`: insert cut text at the cursor location
+- `TAB`: trigger completion
+- up arrow: move to the previous command
+- down arrow: move to the next command
+
+
+## Search history
+
+Press `CTRL-R`, followed by the text you are looking for.
+
+To find the next occurrence, press `CTRL-R` again.
+
+To quit searching, press either `CTRL-G` or `CTRL-C`.
+
+
 ## What Are Commands?
 
 A command can be one of four different things:
@@ -105,49 +151,3 @@ echo "The balance for user $USER is: \$5.00"
 
 mv bad\&filename good_filename
 ```
-
-
-## Command utilities
-
-- `history`: Display or manipulate the history list
-- `clear`: Clear the terminal screen
-- `exit` or `CTRL-D`: end a terminal session
-- `which`: display which executable program will be executed
-- `whatis`: Display one-line manual page descriptions
-- `apropos`: search command
-- `info`: Display a command’s info entry
-- `man`: Display a command's manual page
-- `help`: Display help for Shell Builtins
-
-Display help for Shell Builtins:
-```shell
-help cd
-```
-
-Display Command's usage:
-```shell
-man tar
-```
-
-
-## Keyboard shortcuts
-
-- `CTRL-A`: move cursor to the beginning of line
-- `CTRL-E`: move cursor to the end of line
-- `CTRL-L`: clear screen, same as `clear` command
-- `CTRL-D`: Delete the character at the cursor location.
-- `CTRL-K`: cut text from cursor location to the end of line
-- `CTRL-U`: cut text from cursor location to the beginning of line
-- `CTRL-Y`: insert cut text at the cursor location
-- `TAB`: trigger completion
-- up arrow: move to the previous command
-- down arrow: move to the next command
-
-
-## Search history
-
-Press `CTRL-R`, followed by the text you are looking for.
-
-To find the next occurrence, press `CTRL-R` again.
-
-To quit searching, press either `CTRL-G` or `CTRL-C`.

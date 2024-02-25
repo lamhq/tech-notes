@@ -75,7 +75,7 @@ echo $HOME
 ```
 
 
-## Some Interesting Variables
+## Interesting Variables
 
 | Variable | Contents |
 |---|---|

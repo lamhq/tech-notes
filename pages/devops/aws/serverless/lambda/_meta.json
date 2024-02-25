@@ -1,5 +1,5 @@
 {
-  "development": "Development",
+  "dev": "Development",
   "run": "Running functions",
   "monitor": "Operations and Monitoring",
   "limits": "Limitations",

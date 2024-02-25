@@ -1,19 +1,6 @@
 # Redirection
 
-## Standard Input, Output, and Error
-
-Programs take input from a facility called standard input (stdin).
-
-Programs send their results to a special file called standard output (`stdout`) and their status messages to another file called standard error (`stderr`).
-
-Normally, output goes to the screen and input comes from the keyboard.
-
-
-## Redirecting
-
-I/O redirection allows us to change where output goes and where input comes from.
-
-The redirection operator `>` redirect standard output to a file.
+## Snippets
 
 **Send standard output to file**:
 
@@ -56,3 +43,19 @@ ls -l /bin/usr &>> ls-output.txt
 ```shell
 ls -l /bin/usr 2> /dev/null
 ```
+
+
+## Standard Input, Output, and Error
+
+Programs take input from a facility called standard input (stdin).
+
+Programs send their results to a special file called standard output (`stdout`) and their status messages to another file called standard error (`stderr`).
+
+Normally, output goes to the screen and input comes from the keyboard.
+
+
+## Redirecting
+
+I/O redirection allows us to change where output goes and where input comes from.
+
+The redirection operator `>` redirect standard output to a file.

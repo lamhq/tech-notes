@@ -1,6 +1,27 @@
 # Pipelines
 
-## Overview
+## Snippets
+
+**Show the the number of items from the pipeline:**
+
+```shell
+ls /bin /usr/bin | sort | uniq | wc -l
+```
+
+**Find all files had the word `zip` embedded in the name:**
+
+```shell
+ls /bin /usr/bin | sort | uniq | grep zip
+```
+
+**Save pipeline output to file:**
+
+```shell
+ls /usr/bin | tee ls.txt | grep zip
+```
+
+
+## Operator `|`
 
 Using the pipe operator `|`, the standard output of one command can be piped into the standard input of another command.
 
@@ -30,24 +51,3 @@ ls -l /usr/bin | less
 `grep` options:
 - `-i`: ignore case
 - `-v`: print lines do not match
-
-
-## Examples
-
-Show the the number of items from the pipeline:
-
-```shell
-ls /bin /usr/bin | sort | uniq | wc -l
-```
-
-Find all files had the word `zip` embedded in the name:
-
-```shell
-ls /bin /usr/bin | sort | uniq | grep zip
-```
-
-Save pipeline output to file:
-
-```shell
-ls /usr/bin | tee ls.txt | grep zip
-```
