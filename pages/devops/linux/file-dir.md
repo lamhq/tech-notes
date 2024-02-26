@@ -4,6 +4,22 @@ Filenames that begin with a period character are hidden.
 
 ## Snippets
 
+**View content of a file in paginated mode**:
+```shell
+less ls-output.txt
+```
+
+**Display first 5 lines of a file**:
+```shell
+head -n 5 ls-output.txt
+```
+
+**Display last 5 lines of a file**:
+```bash
+tail -n 5 -f /var/log/system.log
+```
+
+**Other commands**:
 - `pwd`: Print name of current working directory
 - `cd`: Change directory
 - `cp`: Copy files and directories
@@ -18,16 +34,8 @@ Filenames that begin with a period character are hidden.
 - `tail`: view last part of file
 - `cat`: display content of files
 
-Examples:
 
-```bash
-less ls-output.txt
-head -n 5 ls-output.txt
-tail -n 5 -f /var/log/system.log
-```
-
-
-## Viewing file
+## Viewing file shortcuts
 
 When viewing file in termnial (using `less` or other commands), here're some keyboard shortcuts we can use:
 
@@ -49,7 +57,7 @@ Searching:
 
 ## `ls` options
 
-- `-A`: does not list . (current directory) and .. (parent directory).
+- `-A`: does not list `.` (current directory) and `..` (parent directory).
 - `-l`: List in long format.
 - `-h`: display file sizes in human readable format rather than in bytes.
 - `-S`: Sort results by file size.

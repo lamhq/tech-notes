@@ -1,6 +1,6 @@
 # The Environment
 
-## Overview
+## Environment Overview
 
 The shell maintains a body of information during our shell session called the environment.
 

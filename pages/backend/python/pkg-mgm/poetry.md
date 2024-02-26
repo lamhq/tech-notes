@@ -104,3 +104,10 @@ poetry remove fastapi
 ```shell
 poetry show
 ```
+
+
+## Export a `requirements.txt`
+
+```shell
+poetry export -f requirements.txt --output requirements.txt
+```

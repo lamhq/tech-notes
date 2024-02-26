@@ -2,6 +2,22 @@
 
 ## Snippets
 
+**Set working directory for a command**:
+```shell
+(cd /desired/directory && your_command)
+```
+
+**Display help for Shell Builtins**:
+```shell
+help cd
+```
+
+**Display Command's usage**:
+```shell
+man tar
+```
+
+**Other commands**:
 - `history`: Display or manipulate the history list
 - `clear`: Clear the terminal screen
 - `exit` or `CTRL-D`: end a terminal session
@@ -11,16 +27,6 @@
 - `info`: Display a command’s info entry
 - `man`: Display a command's manual page
 - `help`: Display help for Shell Builtins
-
-Display help for Shell Builtins:
-```shell
-help cd
-```
-
-Display Command's usage:
-```shell
-man tar
-```
 
 
 ## Keyboard shortcuts
@@ -46,7 +52,7 @@ To find the next occurrence, press `CTRL-R` again.
 To quit searching, press either `CTRL-G` or `CTRL-C`.
 
 
-## What Are Commands?
+## What are Commands?
 
 A command can be one of four different things:
 - An executable program

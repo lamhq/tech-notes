@@ -20,6 +20,21 @@ ls /bin /usr/bin | sort | uniq | grep zip
 ls /usr/bin | tee ls.txt | grep zip
 ```
 
+**Other commands**:
+- `sort`: sorts the lines from files or standard input alphabetically
+- `uniq`: removes any duplicates lines
+- `wc`: display the number of lines, words, and bytes contained in files
+- `grep`: Print Lines Matching a Pattern
+- `tee`: reads standard input and sends it to both standard output and files
+
+
+`wc` options:
+- `-l` report only lines
+
+`grep` options:
+- `-i`: ignore case
+- `-v`: print lines do not match
+
 
 ## Operator `|`
 
@@ -34,20 +49,3 @@ For example, We use `less` to display, page by page, the output of `ls` command:
 ```shell
 ls -l /usr/bin | less
 ```
-
-
-## Pipeline commands
-
-- `sort`: sorts the lines from files or standard input alphabetically
-- `uniq`: removes any duplicates lines
-- `wc`: display the number of lines, words, and bytes contained in files
-- `grep`: Print Lines Matching a Pattern
-- `tee`: reads standard input and sends it to both standard output and files
-
-
-`wc` options:
-- `-l` report only lines
-
-`grep` options:
-- `-i`: ignore case
-- `-v`: print lines do not match

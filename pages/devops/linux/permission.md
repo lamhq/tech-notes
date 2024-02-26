@@ -1,11 +1,64 @@
 # Permissions
 
-## Display user identity
+## Snippets
+
+### Display user identity
 
 View your `uid`, `gid`:
 
 ```shell
 id
+```
+
+### Start a new shell as a superuser
+```shell
+su -
+```
+```shell
+sudo -i
+```
+
+### Start a new shell as another user
+```shell
+su -l [username]
+```
+
+### Execute a single command as superuser
+```shell
+su -c 'command'
+```
+
+```shell
+sudo command
+```
+
+### See what privileges are granted by `sudo`
+```shell
+sudo -l
+```
+
+### Add file permission
+
+Add execute permission for the owner
+```shell
+chmod u+x foo.txt
+```
+
+Add execute permission for the owner, group, and world (equivalent to `a+x`):
+```shell
+chmod +x foo.txt
+```
+
+### Remove file permission
+
+Remove the read and write permission from anyone besides the owner and group owner:
+```shell
+chmod o-rw foo.txt
+```
+
+Add execute permission for the owner and set the permissions for the group and others to read and execute. Multiple specifications may be separated by commas:
+```shell
+chmod u+x,go=rx foo.txt
 ```
 
 
@@ -38,29 +91,6 @@ To change the mode (permissions) of a file or directory, use the `chmod` command
 | x | Allows a file to be treated as a program and executed. Program files written in scripting languages must also be set as readable to be executed. | Allows a directory to be entered, e.g., cd directory. |
 
 
-### Examples
-
-Add execute permission for the owner:
-```shell
-chmod u+x foo.txt
-```
-
-Add execute permission for the owner, group, and world. Equivalent to `a+x`:
-```shell
-chmod +x foo.txt
-```
-
-Remove the read and write permission from anyone besides the owner and group owner:
-```shell
-chmod o-rw foo.txt
-```
-
-Add execute permission for the owner and set the permissions for the group and others to read and execute. Multiple specifications may be separated by commas:
-```shell
-chmod u+x,go=rx foo.txt
-```
-
-
 ## Changing Identities
 
 It's necessary to take on the identity of another user (to carry out some administrative task or to test an account).
@@ -75,36 +105,6 @@ The `sudo` command is like `su` in many ways but:
 - does not require access to the **superuser's password** (we are prompted for our password)
 - does not start a new shell, nor does it load another user’s environment.
 - commands do not need to be quoted
-
-
-### Examples
-
-Start a new shell as a superuser:
-```shell
-su -
-```
-```shell
-sudo -i
-```
-
-Start a new shell as another user:
-```shell
-su -l [username]
-```
-
-Execute a single command as superuser:
-```shell
-su -c 'command'
-```
-
-```shell
-sudo command
-```
-
-See what privileges are granted by `sudo`:
-```shell
-sudo -l
-```
 
 
 ### Updating sudoers file

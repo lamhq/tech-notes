@@ -1,6 +1,6 @@
 # Disk management
 
-## List all sub directories and their size
+## List directories with size
 ```bash
 du --max-depth=1 -h | sort -h
 ```

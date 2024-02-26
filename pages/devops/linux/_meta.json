@@ -16,5 +16,6 @@
   "disk": "Disk management",
   "cronjob": "Cron job",
   "ssl": "SSL",
+  "shell-script": "Shell script",
   "utils": "Utils"
 }
