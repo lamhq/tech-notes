@@ -64,8 +64,7 @@ A configuration file may be specified via the `init` command line:
 terraform init -backend-config=backend.hcl
 ```
 
-`backend.hcl`:
-```hcl
+```hcl filename="backend.hcl"
 workspaces { name = "workspace" }
 hostname = "app.terraform.io"
 organization = "company"

@@ -1,4 +1,5 @@
 {
-  "compute": "Network Resources",
-  "network": "Network Resources"
+  "compute": "Compute",
+  "network": "Network",
+  "serverless": "Serverless"
 }

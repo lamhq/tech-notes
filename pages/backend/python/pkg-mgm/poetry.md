@@ -1,5 +1,9 @@
 # Poetry
 
+## Version
+
+This documentation is for Poetry 1.7.1.
+
 ## System requirements
 
 Python 3.8+

@@ -159,3 +159,36 @@ aws_instance.example.device["foo"].size
 ```
 
 Reference: [References to Resource Attributes](https://developer.hashicorp.com/terraform/language/expressions/references#references-to-resource-attributes).
+
+
+## Provisioner
+
+**Terraform provisioners** are specific built-in components that allow you to execute scripts on a local or remote machine as part of the resource creation or destruction process.
+
+They enable additional configuration and setup tasks that can't be accomplished with Terraform's declarative syntax alone.
+
+### Purpose
+
+Provisioners are used to model specific actions on local or remote machines in order to prepare infrastructure objects for service.
+
+### Caveats
+
+While Terraform emphasizes a declarative approach, provisioners are considered a **last resort**. They exist because certain behaviors cannot be directly represented in Terraform's declarative model.
+
+Provisioners add complexity and uncertainty to Terraform usage. They require coordinating details such as network access, credentials, and external software installation.
+
+### Use cases
+
+Provisioners can be used for scenarios like:
+- passing data into virtual machines
+- executing scripts during resource creation
+- performing custom setup tasks
+
+### Types of Provisioners**
+- **local-exec**: Executes commands on the local machine where Terraform is running.
+- **remote-exec**: Executes commands on a remote machine over SSH or WinRM.
+- **file**: Uploads files to a remote machine.
+- **chef**: Integrates with Chef for configuration management (deprecated in recent Terraform versions).
+- **puppet**: Integrates with Puppet for configuration management (deprecated in recent Terraform versions).
+
+Remember that while provisioners provide flexibility, it's recommended to explore more declarative ways to handle provisioning actions before resorting to them.

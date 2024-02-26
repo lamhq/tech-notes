@@ -3,5 +3,6 @@
   "aws": "AWS",
   "gcp": "GCP",
   "linux": "Linux",
-  "terraform": "Terraform"
+  "terraform": "Terraform",
+  "bitbucket-pipelines": "Bitbucket Pipelines"
 }

@@ -1,6 +1,17 @@
 # AWS Snippets
 
-## Define providers
+## Preparing credentials
+
+Set required environment variables for working with AWS:
+
+```shell
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+export AWS_DEFAULT_REGION=us-east-1
+```
+
+
+## Define AWS provider
 
 ```hcl
 provider "aws" {
@@ -9,7 +20,7 @@ provider "aws" {
 ```
 
 
-## Using module
+## Using child module
 
 Sample code of using child module to define VPC, Subnet, EC2 resources.
 
@@ -20,8 +31,7 @@ The child module:
 - accept a input variable for `region`
 - return subnet's id, AMI's id to parent module
 
-`main.tf`:
-```hcl
+```hcl filename="main.tf"
 provider "aws" {
   region = var.region
 }
@@ -40,16 +50,14 @@ data "aws_ssm_parameter" "this" {
 }
 ```
 
-`variables.tf`:
-```hcl
+```hcl filename="variables.tf"
 variable "region" {
   type    = string
   default = "us-east-1"
 }
 ```
 
-`outputs.tf`:
-```hcl
+```hcl filename="outputs.tf"
 output "subnet_id" {
   value = aws_subnet.this.id
 }
@@ -65,8 +73,7 @@ output "ami_id" {
 - import the child module, passing the value to `region` variable of the child module
 - define a EC2 instance that uses the ami and subnet from the child module's return values
 
-`main.tf`:
-```hcl
+```hcl filename="main.tf"
 variable "main_region" {
   type    = string
   default = "us-east-1"
@@ -89,6 +96,6 @@ resource "aws_instance" "my-instance" {
 ```
 
 
-## Github Action Workflow
+## Sample codes
 
-[Github Action Workflow example code](https://github.com/JesseHoch/learn-terraform-github-actions/blob/master/.github/workflows/terraform.yml) for deploying AWS resources in CI environment.
+- [Github Action Workflow example code](https://github.com/JesseHoch/learn-terraform-github-actions/blob/master/.github/workflows/terraform.yml) for deploying AWS resources in CI environment.
