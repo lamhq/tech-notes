@@ -1,3 +1,5 @@
+import { FileTree } from 'nextra/components'
+
 # Poetry
 
 ## Version
@@ -38,7 +40,7 @@ brew update && brew upgrade pipx
 pipx install poetry
 ```
 
-## Set up virtual environment
+## Configure virtual environment location
 
 Configure Poetry to create virtual environments within your project directory:
 
@@ -46,7 +48,7 @@ Configure Poetry to create virtual environments within your project directory:
 poetry config virtualenvs.in-project true
 ```
 
-## Setup project
+## Set up project
 
 Create a new project:
 
@@ -64,7 +66,36 @@ cd pre-existing-project
 poetry init
 ```
 
-## Activating the virtual environment
+### Project structure
+
+Your code files must be located in a directory that has the same name of your python package defined in `pyproject.toml`.
+
+For example, if the package name is `app`:
+```toml filename="pyproject.toml"
+[tool.poetry]
+name = "app"
+```
+
+Your project structure will look like this:
+<FileTree>
+  <FileTree.Folder name="app" defaultOpen>
+    <FileTree.File name="main.py" />
+    <FileTree.File name="utils.py" />
+  </FileTree.Folder>
+  <FileTree.File name="pyproject.toml" />
+</FileTree>
+
+Files in project are imported under `app` package:
+```py filename="main.py"
+import app.utils
+
+print('Hello')
+```
+
+If there's no directory matching the package name in `pyproject.toml`, run `poetry install` will produce an error.
+
+
+## Activating virtual environment
 
 ```shell
 poetry shell
@@ -80,7 +111,7 @@ deactivate
 ## Install dependencies
 
 ```shell
-poetry install --no-root
+poetry install
 ```
 
 
