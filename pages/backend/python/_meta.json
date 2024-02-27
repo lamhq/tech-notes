@@ -1,11 +1,12 @@
 {
   "installation": "Installation",
   "pkg-mgm": "Package Management",
-  "basic": "Basic Syntax",
+  "syntax": "Syntax",
   "types": "Types",
-  "flow-control": "Flow Control",
   "code-std": "Code standard",
   "debugging": "Debugging",
   "testing": "Testing",
+  "api": "API Development",
+  "database": "Database",
   "misc": "Misc"
 }

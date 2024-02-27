@@ -2,6 +2,8 @@
   "comments": "Comment",
   "variables": "Variables",
   "constants": "Constants",
+  "branching": "Branching",
+  "loop": "Loop",
   "functions": "Functions",
   "modules": "Modules",
   "exception": "Exception",

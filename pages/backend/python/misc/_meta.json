@@ -1,13 +1,10 @@
 {
-  "debugging": "Debuging",
   "logging": "Logging",
   "validation": "Validation",
   "setting": "Setting",
   "email": "Email",
   "json": "JSON",
   "regex": "Regular expression",
-  "api": "API Development",
-  "database": "Database",
   "performance": "Performance",
   "file-io": "File IO",
   "file-system": "File System Operations",
