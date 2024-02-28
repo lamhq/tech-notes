@@ -1,5 +1,6 @@
 {
   "python": "Python",
   "fastapi": "FastAPI",
-  "sqlalchemy": "SQLAlchemy"
+  "sqlalchemy": "SQLAlchemy",
+  "pytest": "pytest"
 }
