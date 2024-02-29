@@ -7,7 +7,7 @@
 
 ## Organize test files
 
-Test files should be in a separate `tests` folder:
+Test files should be in a separate `tests/` folder:
 
 ```
 module/

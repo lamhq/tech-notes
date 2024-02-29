@@ -1,0 +1,50 @@
+# Developing inside a Container
+
+Using docker container as your development environment.
+
+## Overview
+
+The VS Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension helps creating a full-featured development environment by including project's dependencies, and all necessary tools (database, ) into one tidy container. 
+
+The extension lets you open your project inside (or mounted into) the container in VS Code, where you have all the dependencies and software set up.
+
+
+## Benefits
+
+Ensure that your development environment closely mirrors the production environment.
+
+Easy to reproduce the same environment across different machines.
+
+Isolating dependencies and avoiding conflicts between different software versions.
+
+Avoid messing up your machine.
+
+
+## Drawbacks
+
+Slower than running project/software directly on your machine.
+
+Consume more power and resources on your laptop.
+
+
+## Use cases
+
+You have to work on multiple projects with different tech stacks and software (Python, Node.js, Postgres, MongoDB, ...)
+
+You need to switch between machine (home computer, laptop, ...)
+
+There are so many software programs to install, and they are time-consuming.
+
+Build and install packages for runtime environments.
+
+
+## Requirements
+
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
+
+
+## References
+
+- [Setting up a Docker Container on Windows](https://code.visualstudio.com/docs/python/tutorial-fastapi#_setting-up-a-docker-container-on-windows)
+- [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)

@@ -23,7 +23,7 @@ Steps for creating and using layers:
 
 1. Package your layer content in to zip file.
 2. Create the layer in Lambda.
-3. Add the layer to your function(s). 
+3. Add the layer to your function(s).
 
 
 ## Layer versions
@@ -45,11 +45,45 @@ You must specify the exact version ARN when adding a layer to a function.
 - [Python](https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-python)
 
 
-## Packaging your layer content
+## Packaging your layer
 
 Bundle all of your layer content into a `.zip` file archive
 
-Your layer content must be able to compile and build in a Linux environment.
+Your layer content must be able to compile and build in a **Linux environment**.
+
+Here's an example of installing python packages in **linux/amd64** architecture using docker:
+```shell showLineNumbers
+docker run \
+  --platform linux/amd64 \
+  -v ./build/layer/python:/layer \
+  -v ./build/requirements.txt:/requirements.txt \
+  -v ~/.cache/pip:/.cache/pip \
+  -u $(id -u):$(id -g) \
+  amd64/python:3.11-slim \
+  pip install -r /requirements.txt -t /layer
+```
+- (2): specify the [target platform](https://docs.docker.com/build/building/multi-platform/) for the build output
+- (3): mount the destination directory where pakages are downloaded
+- (4): mount your requirements file, so pip can read it
+- (5): mount the pip cache, to avoid downloading all dependencies each time
+- (6): make the installed files and any new cache entries are owned by your user, not root
+- (7): image for **python 3.11** using amd64 architecture
+
+
+## Creating a layer
+
+To create a layer, you can either upload the `.zip` file archive from your local machine or from Amazon S3.
+
+
+## Accessing layer content
+
+Lambda extracts the layer contents into the `/opt` directory in the function execution environment.
+
+Each Lambda runtime adds specific `/opt` directory folders to the `PATH` variable (e.g., `/opt/python`). Your function code can access the layer content without having to specify the full path.
+
+Lambda merges folders with the same name.
+
+If the same file appears in multiple layers, the function uses the version in the last extracted layer.
 
 
 ### Layer paths for each Lambda runtime
@@ -66,19 +100,3 @@ Node.js:
 Python:
 - `python`
 - `python/lib/python3.x/site-packages`
-
-
-## Creating a layer
-
-To create a layer, you can either upload the `.zip` file archive from your local machine or from Amazon S3.
-
-
-## Accessing layer content from your function
-
-Lambda extracts the layer contents into the `/opt` directory in the function execution environment.
-
-Lambda merges folders with the same name.
-
-If the same file appears in multiple layers, the function uses the version in the last extracted layer.
-
-Each Lambda runtime adds specific `/opt` directory folders to the `PATH` variable. Your function code can access the layer content without having to specify the path.

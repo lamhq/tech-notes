@@ -1,6 +1,6 @@
 {
   "python": "Python",
   "jupyter-nb": "Jupyter Notebook",
-  "dev-env": "Development environment",
-  "fastapi": "FastAPI"
+  "fastapi": "FastAPI",
+  "container": "Dev Container"
 }
