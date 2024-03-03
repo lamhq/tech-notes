@@ -1,4 +1,22 @@
-# Field validation
+# Validation
+
+## Query Parameters
+
+Define an optional Query Parameter with length doesn't exceed 50 characters:
+```py
+from typing import Annotated
+from fastapi import FastAPI, Query
+
+@app.get("/items/")
+async def read_items(q: Annotated[str | None, Query(max_length=50)] = None):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+
+## Body - Field
 
 Some restrictions can be placed on the field's value:
 

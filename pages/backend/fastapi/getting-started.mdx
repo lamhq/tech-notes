@@ -1,39 +1,30 @@
 # Getting started
 
-## Installation
-
-Install FastAPI framework:
-
-```shell
-pip install fastapi
-```
-
-Install Uvicorn web server:
-
-```shell
-pip install uvicorn
-```
-
-
 ## Write code
 
-```py filename="hello.py"
+```py filename="main.py"
+from typing import Union
+
 from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/hi")
-def greet():
-    return "Hello? World?"
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
 ```
 
 The functions that map URLs to code are called **path functions**.
-
-In above example, `greet` is a path function.
 
 
 ## Run the app
 
 ```shell
-uvicorn app.main:app
+uvicorn main:app --reload
 ```

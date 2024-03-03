@@ -1,4 +1,4 @@
-# Type Hinting
+# Type Hint
 
 ## Syntax
 
@@ -18,7 +18,7 @@ physics_magic_number: float = 1.0/137.03599913
 
 ## Primitive types
 
-`int`, `float`, `bool`, and `str`:
+`int`, `float`, `bool`, `str`, `bytes`:
 
 ```py
 def add(x: int, y: int) -> int:
@@ -32,76 +32,111 @@ def to_lower(s: str) -> str:
 ```
 
 
-## Collection types
+## Generic types
 
-`list`, `tuple`, and `dict`:
-
-```py
-from typing import List, Tuple, Dict
-
-def first_and_last(l: List[int]) -> Tuple[int, int]:
-    return (l[0], l[-1])
-
-def word_count(s: str) -> Dict[str, int]:
-    words = s.split()
-    counts = {}
-    for word in words:
-        if word in counts:
-            counts[word] += 1
-        else:
-            counts[word] = 1
-    return counts
-```
-
-## Custom types
+### List
 
 ```py
-from enum import Enum
-
-class Color(Enum):
-    RED = 1
-    GREEN = 2
-    BLUE = 3
-
-def get_color(name: str) -> Color:
-    return Color[name]
-
-def print_color(color: Color) -> None:
-    print(color.name)
+def process_items(items: list[str]):
+    for item in items:
+        print(item)
 ```
+
+### Tuple and Set
+
+```py
+def process_items(items_t: tuple[int, int, str], items_s: set[bytes]):
+    return items_t, items_s
+```
+
+### Dict
+
+```py
+def process_items(prices: dict[str, float]):
+    for item_name, item_price in prices.items():
+        print(item_name)
+        print(item_price)
+```
+
+### Union
+
+Python 3.10+:
+```py
+def process_item(item: int | str):
+    print(item)
+```
+
+Python 3.8+:
+```py
+from typing import Union
+
+
+def process_item(item: Union[int, str]):
+    print(item)
+```
+
+### Possibly `None`
+
+`Optional[Something]` is actually a shortcut for `Union[Something, None]`, they are equivalent.
+
+Python 3.10+:
+```py
+def say_hi(name: str | None = None):
+    if name is not None:
+        print(f"Hey {name}!")
+    else:
+        print("Hello World")
+```
+
+Python 3.8+:
+```py
+from typing import Optional
+
+
+def say_hi(name: Optional[str] = None):
+    if name is not None:
+        print(f"Hey {name}!")
+    else:
+        print("Hello World")
+```
+
+If you are using a Python version below 3.10:
+- Avoid using `Optional[SomeType]`
+- use `Union[SomeType, None]`
 
 
 ## Class
 
 ```py
-class User:
-    name: str
-    age: int
-
-    def __init__(self, name: str, age: int) -> None:
+class Person:
+    def __init__(self, name: str):
         self.name = name
-        self.age = age
-```
 
-## Optional arguments
 
-```py
-from typing import Optional
-
-def greet(name: str, greeting: Optional[str] = "Hello") -> str:
-    return f"{greeting}, {name}"
+def get_person_name(one_person: Person):
+    return one_person.name
 ```
 
 
-## Variable-length arguments
-
-you can use the `*` syntax:
+## Enum
 
 ```py
-from typing import List
+from enum import Enum
 
-def sum_all(*numbers: int) -> int:
-    return sum(numbers)
+class ModelName(str, Enum):
+    alexnet = "alexnet"
+    resnet = "resnet"
+    lenet = "lenet"
+
+
+async def get_model(model_name: ModelName):
+    if model_name is ModelName.alexnet:
+        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+
+    if model_name.value == "lenet":
+        return {"model_name": model_name, "message": "LeCNN all the images"}
+
+    return {"model_name": model_name, "message": "Have some residuals"}
 ```
 
 
@@ -110,37 +145,10 @@ def sum_all(*numbers: int) -> int:
 You can use type aliases to create a new name for an existing type
 
 ```py
-from typing import List
-
-NumberList = List[int]
+NumberList = list[int]
 
 def sum_numbers(numbers: NumberList) -> int:
     return sum(numbers)
-```
-
-
-## Union type
-
-```py
-from typing_extensions import Union
-
-def greet(name: Union[str, int, float]) -> str:
-    if isinstance(name, str):
-        return "Hello, " + name
-    elif isinstance(name, (int, float)):
-        return "Hello, user with ID: " + str(name)
-
-print(greet("Alice"))  # Output: "Hello, Alice"
-print(greet(123))      # Output: "Hello, user with ID: 123"
-print(greet(123.4))    # Output: "Hello, user with ID: 123.4"
-```
-
-In Python 3.10 and up, you can say `type1 | type2` instead of `Union[type1, type2]`.
-
-```py
-from typing_extensions import Union
-
-responses: dict[str, str | int] = {"Marco": "Polo", "answer": 42}
 ```
 
 
@@ -152,6 +160,21 @@ responses: dict[str, Any] = {"Marco": "Polo", "answer": 42}
 ```
 
 
-## Type checking tools
+## Type Hints with Metadata Annotations
 
-**pytype** can be used to validate type annotations.
+Python also has a feature that allows putting additional metadata in these type hints using `Annotated`.
+
+```py
+from typing import Annotated
+
+
+def say_hello(name: Annotated[str, "this is just metadata"]) -> str:
+    return f"Hello {name}"
+```
+
+The first type parameter you pass to Annotated is the actual type. The rest, is just metadata for other tools.
+
+
+## References
+
+- [Python Types Intro](https://fastapi.tiangolo.com/python-types/).

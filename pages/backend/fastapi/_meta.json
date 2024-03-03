@@ -2,10 +2,10 @@
   "getting-started": "Getting Started",
   "request": "Request",
   "response": "Response",
-  "api-doc": "Automated Documentation",
+  "api-doc": "API Documentation",
   "async": "Asynchronous Programming",
   "model": "Model",
-  "validation": "Field Validation",
+  "validation": "Validation",
   "di": "Dependency Injection",
   "code-structure": "Code Structure"
 }
