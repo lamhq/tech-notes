@@ -1,11 +1,10 @@
 {
   "getting-started": "Getting Started",
+  "api-doc": "API Documentation",
   "request": "Request",
   "response": "Response",
-  "api-doc": "API Documentation",
+  "example-data": "Example Data",
   "async": "Asynchronous Programming",
-  "model": "Model",
-  "validation": "Validation",
   "di": "Dependency Injection",
   "code-structure": "Code Structure"
 }

@@ -34,16 +34,6 @@ my_function("Sweden")
 my_function()
 ```
 
-Keyword Arguments:
-
-```py
-def my_function(child3, child2, child1):
-    print("The youngest child is " + child3)
-
-my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
-```
-
-
 Arbitrary Arguments `*args`:
 
 ```py
@@ -53,6 +43,27 @@ def my_function(*kids):
 my_function("Emil", "Tobias", "Linus")
 ```
 
+
+## Keyword arguments
+
+```py
+def my_function(child3, child2, child1):
+    print("The youngest child is " + child3)
+
+my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+```
+
+You can define function parameters as keyword arguments using `*` syntax:
+
+```py
+def read_items(*, item_id: int, q: str):
+    results = {"item_id": item_id}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+Python won't do anything with that `*`, but it will know that all the following parameters should be called as keyword arguments (key-value pairs), aka. `kwargs`.
 
 Arbitrary Keyword Arguments:
 

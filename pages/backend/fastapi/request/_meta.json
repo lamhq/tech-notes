@@ -1,0 +1,9 @@
+{
+  "data-types": "Data Types",
+  "path": "Path Parameters",
+  "query": "Query Parameters",
+  "body": "Request Body",
+  "model": "Model",
+  "cookie": "Cookie Parameters",
+  "header": "Header Parameters"
+}

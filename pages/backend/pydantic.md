@@ -42,4 +42,3 @@ print(user.id)
 ## References
 
 - [Pydantic models](https://fastapi.tiangolo.com/python-types/#pydantic-models)
-- 

@@ -2,7 +2,7 @@
 
 ## Version
 
-This document is for version 0.110.0 (Feb 2024).
+This document is for FastAPI v0.110.0.
 
 
 ## Overview
@@ -22,7 +22,7 @@ More modern than most Python web frameworks, taking advantage of features added 
 
 ## Requirements
 
-Python 3.8+
+Python 3.10+
 
 
 ## Installation
