@@ -1,24 +1,57 @@
-# Modules
+# Modules and Packages
 
-## Overview
+## Modules
 
 A module is a file containing Python definitions and statements. The file name is the module name with the suffix `.py` appended.
 
-Within a module, the module's name is available as the value of the global variable __name__.
+Within a module, you can access the name of the current module using the global variable `__name__`.
 
 A module can contain executable statements, they are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
 
 Each module has its own private symbol table, the author of a module can use global variables in the module without worrying about accidental clashes with a user’s global variables.
 
 
+## Packages
+
+A Python package is a directory that contains one or more Python modules
+
+Each package must have a special file named` __init__.py`. This file can be empty or contain initialization code.
+
+A package can contain sub-packages, which are also directories containing modules.
+
+
+## Example
+
+Let's say you have a file structure like this:
+```
+.
+├── app
+│   ├── __init__.py
+│   ├── main.py
+│   ├── dependencies.py
+│   └── routers
+│   │   ├── __init__.py
+│   │   ├── items.py
+│   │   └── users.py
+│   └── internal
+│       ├── __init__.py
+│       └── admin.py
+```
+
+* The `app` directory contains everything. And it has an empty file `app/__init__.py`, it is a "Python package", named: `app`.
+* The `app/main.py` file is a module of the `app` package: `app.main`.
+* There's a subdirectory `app/routers/` with another file `__init__.py`, so it's a "Python subpackage": `app.routers`.
+* The file `app/routers/items.py` is inside a package, `app/routers/`, so, it's a submodule: `app.routers.items`.
+* The same with `app/routers/users.py`, it's another submodule: `app.routers.users`.
+* There's also a subdirectory `app/internal/` with another file `__init__.py`, so it's another "Python subpackage": `app.internal`.
+* And the file `app/internal/admin.py` is another submodule: `app.internal.admin`.
+
+
 ## Importing a module
 
-When a module named `spam` is imported, the interpreter first searches for a built-in module with that name. If not found, it then searches for a file named `spam.py` in a list of directories given by the variable `sys.path`.
+When a module named `spam` is imported, the interpreter first searches for a built-in module with that name.
 
-`sys.path` is initialized from these locations:
-- The directory containing the input script (or the current directory when no file is specified).
-- `PYTHONPATH` environment variable (a list of directory names, with the same syntax as the shell variable `PATH`).
-- The installation-dependent default.
+If not found, it then searches for a file named `spam.py` in a list of directories given by the variable [`sys.path`](#syspath).
 
 ```py
 import math
@@ -29,58 +62,70 @@ print(math.pi)
 fib(500)
 ```
 
-The variable `sys.path` is a list of strings that determines the interpreter’s search path for modules. It is initialized to a default path taken from the environment variable `PYTHONPATH`. You can modify it using standard list operations:
+## Relative import
+
+**A single dot `.`, like in:**
+
+```Python
+from .dependencies import get_token_header
+```
+
+would mean:
+
+* Starting in the same package that this module lives in ...
+* find the module `dependencies` ...
+* and from it, import the function `get_token_header`.
+
+
+**The two dots `..`, like in:**
+
+```Python
+from ..dependencies import get_token_header
+```
+
+mean:
+
+* Starting in the same package that this module lives in ...
+* go to the parent package...
+* and in there, find the module `dependencies` ...
+* and from it, import the function `get_token_header`.
+
+
+**if we had used three dots `...`, like in:**
+
+```Python
+from ...dependencies import get_token_header
+```
+
+that would mean:
+
+* Starting in the same package that this module lives in...
+* go to the parent package...
+* then go to the parent of that package...
+* and in there, find the module `dependencies`...
+* and from it, import the function `get_token_header`.
+
+
+## `sys.path`
+
+The `sys.path` variable is an essential part of the sys module.
+
+It is a list of strings that determines the interpreter’s search path for modules.
+
+`sys.path` is initialized from these locations:
+- The directory containing the input script (or the current directory when no file is specified).
+- `PYTHONPATH` environment variable (a list of directory names, with the same syntax as the shell variable `PATH`).
+- The installation-dependent default.
+
+You can modify it using standard list operations:
 
 ```py
 import sys
 sys.path.append('/ufs/guido/lib/python')
 ```
 
-## Packages
 
-Packages are a way of structuring Python’s module namespace by using "dotted module names".
-
-```
-sound/                          Top-level package
-      __init__.py               Initialize the sound package
-      formats/                  Subpackage for file format conversions
-              __init__.py
-              wavread.py
-              wavwrite.py
-              aiffread.py
-              aiffwrite.py
-              auread.py
-              auwrite.py
-              ...
-      effects/                  Subpackage for sound effects
-              __init__.py
-              echo.py
-              surround.py
-              reverse.py
-              ...
-      filters/                  Subpackage for filters
-              __init__.py
-              equalizer.py
-              vocoder.py
-              karaoke.py
-              ...
-```
-
-Users of the package can import individual modules from the package, for example:
-
-```py
-import sound.effects.echo
-sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
-
-from sound.effects import echo
-echo.echofilter(input, output, delay=0.7, atten=4)
-
-from sound.effects.echo import echofilter
-echofilter(input, output, delay=0.7, atten=4)
-```
-
-
-## Create a Module
+## Create a module
 
 Save this code in a file named `mymodule.py`:
 

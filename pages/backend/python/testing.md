@@ -7,7 +7,9 @@
 
 ## Organize test files
 
-Test files should be in a separate `tests/` folder:
+Here we define how to structure test files in the project source code.
+
+Test files should be in a separate `tests/` folder (instead of sitting next to the code file):
 
 ```
 module/

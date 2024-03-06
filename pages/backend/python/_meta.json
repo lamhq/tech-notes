@@ -8,5 +8,6 @@
   "testing": "Testing",
   "api": "API Development",
   "database": "Database",
+  "setting": "Setting",
   "misc": "Misc"
 }

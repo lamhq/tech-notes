@@ -1,0 +1,97 @@
+# App Setting
+
+How to implement application setting for a Python app.
+
+## Version
+
+This document is for Pydantic `2.2.x`.
+
+
+## Installation
+```shell
+pip install pydantic-settings
+```
+
+## Declare setting class
+
+```py filename="config.py"
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    app_name: str = "Awesome API"
+    admin_email: str
+    items_per_user: int = 50
+
+    model_config = SettingsConfigDict(env_file=".env")
+```
+
+When you create an instance of that `Settings` class, Pydantic will:
+- Read the environment variables in a case-insensitive way. e.g. variable `APP_NAME` will be read for the attribute `app_name`.
+- Convert and validate the data.
+
+The `model_config` attribute is used for Pydantic configuration. Here we define the filename of the dotenv file we want to use.
+
+
+## Use the settings
+
+In the main module, we create dependency that returns a new `config.Settings()` and require it from the path operation function as a dependency:
+
+```py filename="main.py"
+from functools import lru_cache
+from typing import Annotated
+
+from fastapi import Depends, FastAPI
+
+from .config import Settings
+
+app = FastAPI()
+
+@lru_cache
+def get_settings():
+    return Settings()
+
+@app.get("/info")
+async def info(settings: Annotated[Settings, Depends(get_settings)]):
+    return {
+        "app_name": settings.app_name,
+        "admin_email": settings.admin_email,
+        "items_per_user": settings.items_per_user,
+    }
+```
+
+The `@lru_cache` decorator cache the return value of the function it decorates instead of computing it again, executing the code of the function every time.
+
+
+## Testing
+
+It would be very easy to provide a different settings object during testing by creating a dependency override:
+
+```py
+from fastapi.testclient import TestClient
+
+from .config import Settings
+from .main import app, get_settings
+
+client = TestClient(app)
+
+
+def get_settings_override():
+    return Settings(admin_email="testing_admin@example.com")
+
+
+app.dependency_overrides[get_settings] = get_settings_override
+
+
+def test_app():
+    response = client.get("/info")
+    data = response.json()
+    assert data == {
+        "app_name": "Awesome API",
+        "admin_email": "testing_admin@example.com",
+        "items_per_user": 50,
+    }
+```
+
+## References
+
+- [Settings and Environment Variables](https://fastapi.tiangolo.com/advanced/settings/)

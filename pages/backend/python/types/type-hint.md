@@ -177,4 +177,6 @@ The first type parameter you pass to Annotated is the actual type. The rest, is 
 
 ## References
 
-- [Python Types Intro](https://fastapi.tiangolo.com/python-types/).
+- [Python Types Intro](https://fastapi.tiangolo.com/python-types/)
+- [Type hints cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+- [Support for type hints](https://docs.python.org/3/library/typing.html)

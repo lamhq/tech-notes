@@ -1,7 +1,6 @@
 {
   "logging": "Logging",
   "validation": "Validation",
-  "setting": "Setting",
   "email": "Email",
   "json": "JSON",
   "regex": "Regular expression",
