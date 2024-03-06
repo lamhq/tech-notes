@@ -1,9 +1,9 @@
 {
   "getting-started": "Getting Started",
-  "api-doc": "API Documentation",
   "request": "Request",
   "response": "Response",
-  "example-data": "Example Data",
+  "api-doc": "API Documentation",
+  "router": "APIRouter",
   "async": "Asynchronous Programming",
   "di": "Dependency Injection",
   "code-structure": "Code Structure"
