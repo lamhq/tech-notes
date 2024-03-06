@@ -1,7 +1,7 @@
 {
-	"name": "tech-notes",
+	"name": "cheat-sheet",
 	"version": "1.0.0",
-	"description": "My notes",
+	"description": "Albert's cheat sheet",
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
