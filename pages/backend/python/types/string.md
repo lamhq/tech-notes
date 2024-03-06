@@ -166,28 +166,6 @@ print(f'{2:10} ==> {4:10d}')
 ```
 
 
-## Display values
-
-The `str()` function is meant to return representations of values which are fairly human-readable.
-
-The `repr()` function is meant to generate representations which can be read by the interpreter
-
-```py
-s = 'Hello, world.'
-
-str(s)
-# 'Hello, world.'
-
-repr(s)
-# "'Hello, world.'"
-
-hello = 'hello, world\n'
-hellos = repr(hello)
-print(hellos)
-# 'hello, world\n'
-```
-
-
 ## Modify strings
 
 Python strings cannot be changed - they are immutable, You cannot change the string. For example, you’ll get an error if you update one or more characters in a string:
