@@ -2,7 +2,7 @@
 
 ## Version
 
-This documentation is for version ``.
+This documentation is for version `3.38.0`.
 
 ## Requirements
 
