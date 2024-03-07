@@ -1,47 +1,180 @@
 # Dependency Injection
 
-Dependency object needs to be of the type `Callable`, includes functions and classes.
+## Function dependencies
 
-## Defining dependency function
-
-```py
-# the dependency function:
-def user_dep(name: str = Params, password: str = Params):
-    return {"name": name, "valid": True}
-```
- 
-## Define the dependency
-
-The path function `get_user()` expects an argument variable called `user`, and that variable will get its value from the dependency function `user_dep()`.
+A dependency whose value is returned from a function:
 
 ```py
-from fastapi import FastAPI, Depends, Params
+from typing import Annotated
+
+from fastapi import Depends, FastAPI
 
 app = FastAPI()
 
-# the path function / web endpoint:
-@app.get("/user")
-def get_user(user: dict = Depends(user_dep)) -> dict:
-    return user
+
+async def common_parameters(q: str | None = None, skip: int = 0, limit: int = 100):
+    return {"q": q, "skip": skip, "limit": limit}
+
+
+@app.get("/items/")
+async def read_items(commons: Annotated[dict, Depends(common_parameters)]):
+    return commons
 ```
 
-You can also define the dependency in your path decorator:
+
+## Class dependencies
+
+A dependency which is an instance of a class.
 
 ```py
-from fastapi import FastAPI, Depends, Params
+from typing import Annotated
+
+from fastapi import Depends, FastAPI
 
 app = FastAPI()
 
-# the dependency function:
-def check_dep(name: str = Params, password: str = Params):
-    if not name:
-        raise
 
-# the path function / web endpoint:
-@app.get("/check_user", dependencies=[Depends(check_dep)])
-def check_user() -> bool:
-    return True
+class CommonQueryParams:
+    def __init__(self, q: str | None = None, skip: int = 0, limit: int = 100):
+        self.q = q
+        self.skip = skip
+        self.limit = limit
+
+
+@app.get("/items/")
+async def read_items(commons: Annotated[CommonQueryParams, Depends()]):
+    response = {}
+    if commons.q:
+        response.update({"q": commons.q})
+    return response
 ```
+
+
+## Sub-dependencies
+
+```py
+from typing import Annotated
+
+from fastapi import Cookie, Depends, FastAPI
+
+app = FastAPI()
+
+
+def query_extractor(q: str | None = None):
+    return q
+
+
+def query_or_cookie_extractor(
+    q: Annotated[str, Depends(query_extractor)],
+    last_query: Annotated[str | None, Cookie()] = None,
+):
+    if not q:
+        return last_query
+    return q
+
+
+@app.get("/items/")
+async def read_query(
+    query_or_default: Annotated[str, Depends(query_or_cookie_extractor)]
+):
+    return {"q_or_cookie": query_or_default}
+```
+
+
+## Using the same dependency multiple times
+
+If multiple dependencies have a common sub-dependency, that sub-dependency will be cached and passed to all the "dependants".
+
+If you need the dependency to be called at every step (possibly multiple times) in the same request, you can set the parameter `use_cache=False`:
+
+```py
+async def needy_dependency(fresh_value: Annotated[str, Depends(get_value, use_cache=False)]):
+    return {"fresh_value": fresh_value}
+```
+
+
+## Override dependencies
+
+Use cases:
+- override a dependency during testing
+- mock dependency
+
+```py
+from typing import Annotated
+
+from fastapi import Depends, FastAPI
+from fastapi.testclient import TestClient
+
+app = FastAPI()
+
+
+async def common_parameters(q: str | None = None, skip: int = 0, limit: int = 100):
+    return {"q": q, "skip": skip, "limit": limit}
+
+
+@app.get("/items/")
+async def read_items(commons: Annotated[dict, Depends(common_parameters)]):
+    return {"message": "Hello Items!", "params": commons}
+
+
+client = TestClient(app)
+
+
+async def override_dependency(q: str | None = None):
+    return {"q": q, "skip": 5, "limit": 10}
+
+
+app.dependency_overrides[common_parameters] = override_dependency
+
+
+def test_override_in_items():
+    response = client.get("/items/")
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Hello Items!",
+        "params": {"q": None, "skip": 5, "limit": 10},
+    }
+
+
+def test_override_in_items_with_q():
+    response = client.get("/items/?q=foo")
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Hello Items!",
+        "params": {"q": "foo", "skip": 5, "limit": 10},
+    }
+
+
+def test_override_in_items_with_params():
+    response = client.get("/items/?q=foo&skip=100&limit=200")
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Hello Items!",
+        "params": {"q": "foo", "skip": 5, "limit": 10},
+    }
+```
+
+You can reset your overrides:
+```py
+app.dependency_overrides = {}
+```
+
+
+## Define Dependencies in path operation decorators
+
+Use cases:
+- When you don't really need the return value of a dependency inside your path operation function.
+- the dependency doesn't return a value but it need to be executed/solved (e.g. auth check).
+
+Reference: [Dependencies in path operation decorators](https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-in-path-operation-decorators/)
+
+
+## Global Dependencies
+
+Add dependencies to the whole application.
+
+Reference: [Global Dependencies](https://fastapi.tiangolo.com/tutorial/dependencies/global-dependencies/)
+
 
 ## Router scoped dependency
 
@@ -53,20 +186,9 @@ from fastapi import FastAPI, Depends, APIRouter
 router = APIRouter(..., dependencies=[Depends(depfunc)])
 ```
 
-## Global scoped dependency
 
-```py
-from fastapi import FastAPI, Depends
+## Clean up dependencies
 
-def depfunc1():
-    pass
+Declare dependencies that do some extra steps after finishing.
 
-def depfunc2():
-    pass
-
-app = FastAPI(dependencies=[Depends(depfunc1), Depends(depfunc2)])
-
-@app.get("/main")
-def get_main():
-    pass
-```
+Reference: [Dependencies with yield](https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/).

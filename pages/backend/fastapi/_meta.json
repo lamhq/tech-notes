@@ -6,5 +6,6 @@
   "router": "APIRouter",
   "async": "Asynchronous Programming",
   "di": "Dependency Injection",
-  "code-structure": "Code Structure"
+  "code-structure": "Code Structure",
+  "testing": "Testing"
 }
