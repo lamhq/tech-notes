@@ -1,4 +1,4 @@
-# Codebase
+# Codebase Setup
 
 ## Standards for all project types
 

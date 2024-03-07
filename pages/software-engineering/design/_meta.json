@@ -1,3 +1,5 @@
 {
-  "dac": "Diagram as Code"
+  "tools": "Tools",
+  "api": "API",
+  "database": "Database"
 }
