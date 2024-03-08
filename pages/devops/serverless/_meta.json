@@ -1,5 +1,6 @@
 {
   "commands": "Commands",
   "monitoring": "Monitoring",
-  "plugins": "Plugins"
+  "api-gateway": "API Gateway",
+  "python": "Python"
 }
