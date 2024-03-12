@@ -8,9 +8,8 @@ There are four categories of types we can use inside of SQLAlchemy:
 - Vendor specific
 - User defined
 
-## Generic Type
 
-The generic types and their associated type representations in both Python and SQL:
+Here are some generic types and their associated type representations in both Python and SQL:
 
 | SQLAlchemy  | Python             | SQL                         |
 |-------------|--------------------|-----------------------------|
@@ -27,5 +26,9 @@ The generic types and their associated type representations in both Python and S
 | Unicode     | unicode            | UNICODE or VARCHAR          |
 | Text        | str                | CLOB or TEXT                |
 | Time        | datetime.time      | DATETIME                    |
+
+```py
+from sqlalchemy import Integer, String, DateTime
+```
 
 Reference: [Generic “CamelCase” Types](https://docs.sqlalchemy.org/en/14/core/type_basics.html#generic-camelcase-types)

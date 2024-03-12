@@ -1,5 +1,7 @@
 # Defining Schema
 
+In SQLAlchemy Core, we created a metadata container and then declared a Table object associated with that metadata.
+
 ## Database Metadata
 
 Database metadata in SQLAlchemy is a collection of objects that describe the structure and features of databases.

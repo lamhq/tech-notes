@@ -1,6 +1,7 @@
 {
-  "concepts": "Concepts",
   "schema": "Schema definition",
+  "session": "The Session object",
+  "insert": "Inserting Data",
   "query": "Querying data",
   "manipulate": "Manipulating Data"
 }

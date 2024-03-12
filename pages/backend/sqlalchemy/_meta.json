@@ -3,5 +3,5 @@
   "connection": "Connection",
   "types": "Types",
   "core": "SQLAlchemy Core",
-  "orm": "ORM"
+  "orm": "SQLAlchemy ORM"
 }

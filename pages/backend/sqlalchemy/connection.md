@@ -19,7 +19,7 @@ A connection string is a specially formatted string that provides:
 - Optional database name
 
 
-## Create a connection
+## Create an engine
 
 Example for creating an engine for a **SQLite** database:
 ```py
@@ -45,14 +45,18 @@ engine = create_engine('postgresql+psycopg2://' \
     'username:password@localhost:5432/mydb')
 ```
 
+If you want to see the details of what is happening here, you can add `echo=True` to your `create_engine` statement as a keyword argument after the connection string. Make sure to only do this for testing, and don’t use `echo=True` in production!
+
+Check [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) for `create_engine` function.
+
+
+## Create a connection
+
 Create a connection from the engine:
 ```py
 connection = engine.connect()
 ```
 
-The Engine connect to the database only the first time it is asked to perform a task against the database (lazy initialization).
-
-Check [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) for `create_engine` function.
 
 ## Using connection
 
