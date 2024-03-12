@@ -1,0 +1,7 @@
+{
+  "schema": "Schema definition",
+  "query": "Querying data",
+  "insert": "Inserting data",
+  "transaction": "Transaction",
+  "reflection": "Reflection"
+}

@@ -9,12 +9,12 @@ Edge Functions are developed using Deno:
 - Support WebAssembly
 
 
-## Initialize a project
+## Initializing a project
 
 See [init an existing project](./cli.md#init-an-existing-project).
 
 
-## Create a Function
+## Creating a Function
 
 ```shell
 supabase functions new hello-world
@@ -41,4 +41,22 @@ Deno.serve(async (req) => {
 
   return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } })
 })
+```
+
+
+## Running Functions locally
+
+```shell
+supabase start # start the supabase stack
+supabase functions serve # start the Functions watcher
+```
+
+
+## Invoking Functions locally
+
+```shell
+curl --request POST 'http://localhost:54321/functions/v1/hello-world' \
+  --header 'Authorization: Bearer SUPABASE_ANON_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{ "name":"Functions" }'
 ```

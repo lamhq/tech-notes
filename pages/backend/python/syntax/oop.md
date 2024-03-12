@@ -19,6 +19,30 @@ class Employee:
         print("Name : ", self.name,  ", Salary: ", self.salary)
 ```
 
+
+## Creating class instances
+
+```py
+x = Employee()
+x.displayCount()
+```
+
+## Chaining methods in multiline
+
+```py
+# Create an instance of MyClass
+my_instance = MyClass(10)
+
+# Chain multiple method calls in multiline with \
+result = my_instance \
+    .add(5) \
+    .multiply(2) \
+    .add(3) \
+    .multiply(4) \
+    .value
+```
+
+
 ## Inheritance
 
 ```py
@@ -48,14 +72,6 @@ class DerivedClassName(Base1, Base2, Base3):
 ```
 
 If an attribute is not found in `DerivedClassName`, it is searched for in `Base1`, then (recursively) in the base classes of `Base1`, and if it was not found there, it was searched for in `Base2`, and so on.
-
-
-## Using class
-
-```py
-x = Employee()
-x.displayCount()
-```
 
 
 ## Iterators

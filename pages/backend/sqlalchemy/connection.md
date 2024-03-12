@@ -1,27 +1,58 @@
-# Establishing Database Connection
+# Connecting to a Database
 
 ## The Engine
+
+To connect to a database, we need to create a SQLAlchemy engine.
 
 The Engine is a object acts as a central source of connections to a particular database.
 
 It provides both a factory as well as a connection pool for database connections. 
 
+## Connection string
+
+A connection string is a specially formatted string that provides:
+- Database type/engine (Postgres, MySQL, etc.)
+- Dialect for the database type (Psycopg2, PyMySQL, etc.)
+- Optional authentication details (username and password)
+- Location of the database (file or hostname of the database server)
+- Optional database server port
+- Optional database name
+
 
 ## Create a connection
 
+Example for creating an engine for a **SQLite** database:
 ```py
 from sqlalchemy import create_engine
 
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
+# a SQLite database file named `cookies.db` stored in the current directory
+engine = create_engine('sqlite:///cookies.db')
+
+# an in-memory database
+engine2 = create_engine('sqlite:///:memory:')
+
+# full path to the database file
+engine3 = create_engine('sqlite:////home/cookiemonster/cookies.db')
+
+# specify enfine and dialect
+engine4 = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
 ```
 
-The main argument to `create_engine` is a string URL (in this case: `sqlite+pysqlite:///:memory:`), indicates three important facts:
-- The database we are communicating (`sqlite`)
-- The DBAPI (`pysqlite`)
-- Where to locate the database. In this case, it's an in-memory-only SQLite database: (`/:memory:`)
+Example for creating an engine for a local **PostgreSQL** database:
+```py
+from sqlalchemy import create_engine
+engine = create_engine('postgresql+psycopg2://' \
+    'username:password@localhost:5432/mydb')
+```
+
+Create a connection from the engine:
+```py
+connection = engine.connect()
+```
 
 The Engine connect to the database only the first time it is asked to perform a task against the database (lazy initialization).
 
+Check [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) for `create_engine` function.
 
 ## Using connection
 

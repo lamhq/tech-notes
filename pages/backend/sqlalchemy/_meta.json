@@ -1,6 +1,7 @@
 {
   "installation": "Installation",
   "connection": "Connection",
-  "imperative": "Imperative",
+  "types": "Types",
+  "core": "SQLAlchemy Core",
   "orm": "ORM"
 }
