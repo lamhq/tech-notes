@@ -18,5 +18,6 @@ export default {
   },
   sidebar: {
     defaultMenuCollapseLevel: 1
-  }
+  },
+  gitTimestamp: ({ timestamp }) => `Last update: ${timestamp.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`
 }
