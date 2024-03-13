@@ -144,7 +144,7 @@ s = select([cookies.c.cookie_name, 'SKU-' + cookies.c.cookie_sku])
 
 
 ## Conjuntions
-To combine boolean conditions:
+To combine filter conditions:
 ```py
 from sqlalchemy import and_, or_, not_
 

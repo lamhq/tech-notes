@@ -3,5 +3,6 @@
   "session": "The Session object",
   "insert": "Inserting Data",
   "query": "Querying data",
-  "manipulate": "Manipulating Data"
+  "update": "Updating Data",
+  "delete": "Deleting Data"
 }

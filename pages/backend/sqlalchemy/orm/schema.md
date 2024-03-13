@@ -112,6 +112,26 @@ class LineItem(Base): __tablename__ = 'line_items'
 The `uselist=False` keyword argument defines it as a one-to-one relationship.
 
 
+## Self-referential table
+
+Define a table of managers and their reports:
+```py
+class Employee(Base):
+    __tablename__ = 'employees'
+
+    id = Column(Integer(), primary_key=True)
+    manager_id = Column(Integer(), ForeignKey('employees.id'))
+    name = Column(String(255), nullable=False)
+
+    manager = relationship("Employee",
+        backref = backref('reports'),
+        remote_side = [id]
+    )
+```
+
+We need to specify an option called `remote_side` to make the relationship a many to one.
+
+
 ## Persisting Schema
 
 ```py

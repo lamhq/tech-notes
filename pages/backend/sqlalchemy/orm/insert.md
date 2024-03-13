@@ -25,6 +25,31 @@ cc_cookie.cookie_id
   - the transaction is committed
 
 
+## Adding related objects
+
+```py
+o1 = Order()
+o1.user = cookiemon
+session.add(o1)
+
+cc = session.query(Cookie) \
+  .filter(Cookie.cookie_name == "chocolate chip") \
+  .one()
+line1 = LineItem(cookie=cc, quantity=2, extended_cost=1.00)
+
+pb = session.query(Cookie) \
+  .filter(Cookie.cookie_name == "peanut butter") \
+  .one()
+line2 = LineItem(quantity=12, extended_cost=3.00)
+line2.cookie = pb
+line2.order = o1
+
+o1.line_items.append(line1)
+o1.line_items.append(line2)
+session.commit()
+```
+
+
 ## Inserting multiple records
 
 ```py
