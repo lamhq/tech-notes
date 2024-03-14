@@ -6,7 +6,7 @@ To connect to a database, we need to create a SQLAlchemy engine.
 
 The Engine is a object acts as a central source of connections to a particular database.
 
-It provides both a factory as well as a connection pool for database connections. 
+It provides both a factory as well as a connection pool for database connections.
 
 ## Connection string
 
@@ -41,8 +41,7 @@ engine4 = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
 Example for creating an engine for a local **PostgreSQL** database:
 ```py
 from sqlalchemy import create_engine
-engine = create_engine('postgresql+psycopg2://' \
-    'username:password@localhost:5432/mydb')
+engine = create_engine('postgresql+psycopg2://albert:LpcCfWmYezV5UDSq@localhost:5432/test_db')
 ```
 
 If you want to see the details of what is happening here, you can add `echo=True` to your `create_engine` statement as a keyword argument after the connection string. Make sure to only do this for testing, and don’t use `echo=True` in production!

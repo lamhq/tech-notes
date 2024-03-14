@@ -1,0 +1,178 @@
+# Alembic
+
+## Overview
+
+Alembic serves as a lightweight database migration tool for SQLAlchemy.
+
+Alembic provides a way to programmically create and perform migrations to handle changes to the database.
+
+Alembic store the migration history in database, `alembic_version` table.
+
+
+## Installation
+
+```shell
+pip install alembic
+```
+
+
+## Creating the Migration Environment
+
+Init the existing directory:
+```shell
+alembic init <directory>
+```
+
+```
+.
+├── migrations/
+│ ├── README
+│ ├── env.py
+    │   ├── script.py.mako
+    │   └── versions/
+    └── alembic.ini
+```
+
+- `versions/`: hold migration scripts.
+- `env.py`: used by Alembic to define and instantiate a SQLAlchemy engine
+- `script.py.mako`: template for migrations
+
+
+## Configuring the Migration Environment
+
+Change the `sqlalchemy.url` option in `alembic.ini` to match our database connection string:
+
+```ini filename="alembic.ini"
+sqlalchemy.url = sqlite:///alembictest.db
+```
+
+Change the value of `target_metadata` in `env.py` to point to the application `metadata` object:
+
+```py filename="env.py"
+from app.db import Base
+
+target_metadata = Base.metadata
+```
+
+Alembic uses the metadata to compare the database with the models defined in SQLAlchemy.
+
+
+## Generate migration
+
+```shell
+alembic revision --autogenerate -m "Added Cookie model"
+```
+
+Schema changes that autogenerate can detect:
+
+| Schema element | Changes |
+|---|---|
+| Table | Additions and removals |
+| Column | Additions, removals, change of nullable status on columns |
+| Index | Basic changes in indexes and explicitly named unique constraints, support for autogenerate of indexes and unique constraints |
+| Keys | Basic renames |
+
+Schema changes that autogenerate cannot detect:
+
+| Schema element | Actions |
+|---|---|
+| Tables | Name changes |
+| Column | Name changes |
+| Constraints | Constraints without an explicit name |
+| Types | Types like ENUM that aren't directly supported on a database backend |
+
+
+## Create an empty migration
+
+```shell
+alembic revision -m "Init db"
+```
+
+
+## Get current migration version
+
+```shell
+alembic current
+```
+
+## View migration history
+
+```shell
+alembic history
+```
+
+Or you can look at the table `alembic_version` in the database.
+
+
+## Get migration version
+
+When you want to change the database's current migration version without running migrations.
+
+```shell
+alembic stamp 2e6a6cc63e9
+```
+
+## Run all migrations
+
+```shell
+alembic upgrade head
+```
+
+## Downgrading Migrations
+
+To downgrade migrations, we need to choose the revision ID for the migration that we want to go back to.
+
+```shell
+alembic downgrade 34044511331
+```
+
+## Writing migrations
+
+```py
+def upgrade():
+  op.rename_table('cookies', 'new_cookies')
+```
+
+Alembic operations:
+
+| Operation                | Used for                                       |
+|--------------------------|------------------------------------------------|
+| add_column               | Adds a new column                              |
+| alter_column             | Changes a column type, server default, or name |
+| create_check_constraint  | Adds a new CheckConstraint                     |
+| create_foreign_key       | Adds a new ForeignKey                          |
+| create_index             | Adds a new Index                               |
+| create_primary_key       | Adds a new PrimaryKey                          |
+| create_table             | Adds a new table                               |
+| create_unique_constraint | Adds a new UniqueConstraint                    |
+| drop_column              | Removes a column                               |
+| drop_constraint          | Removes a constraint                           |
+| drop_index               | Drops an index                                 |
+| drop_table               | Drops a table                                  |
+| execute                  | Run a raw SQL statement                        |
+| rename_table             | Renames a table                                |
+
+
+## Generate SQL
+
+Generate SQL commands required to change the database without running migration code.
+
+Use cases:
+- Manually changing multiple databases using SQL scripts
+
+```shell
+alembic upgrade <start-version>:<end-version> --sql > migration.sql
+```
+
+Example output:
+```log
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade 34044511331 -> 2e6a6cc63e9,
+      Renaming cookies to new_cookies
+-- Running upgrade 34044511331 -> 2e6a6cc63e9
+ALTER TABLE cookies RENAME TO new_cookies;
+UPDATE alembic_version SET version_num='2e6a6cc63e9'
+WHERE alembic_version.version_num = '34044511331';
+```
