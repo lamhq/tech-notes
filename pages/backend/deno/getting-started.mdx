@@ -1,0 +1,27 @@
+# Getting Started
+
+## Install Deno (macOS)
+
+Run this command:
+```shell
+curl -fsSL https://deno.land/install.sh | sh
+```
+
+Then follow the instructions in the terminal.
+
+## Create a web server
+
+Create a TypeScript file:
+```ts filename="server.ts"
+Deno.serve((_request: Request) => {
+  return new Response("Hello, world!");
+});
+```
+
+Start your server:
+```shell
+deno run --allow-net server.ts
+```
+
+Explanations:
+- `Request`, `Response` types are from the [`fetch` API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).

@@ -1,9 +1,10 @@
 # Installation
 
+## Install Postgres for macOS
+
 Install PostgreSQL 14 on macOS for local development.
 
-
-## Install using zip archive
+### Using zip archive
 
 Download a [zip archive](https://www.enterprisedb.com/download-postgresql-binaries) for MacOS, then unzip the archive:
 
@@ -31,7 +32,7 @@ echo 'postgres -D /Users/admin/Desktop/apps/pgsql/data' > /Users/admin/Desktop/a
 chmod +x /Users/admin/Desktop/apps/postgresql.sh
 ```
 
-### Persmission setting
+#### Persmission setting
 
 If the `initdb` command fails, go to **Privacy & Security** to allow apps from `Anywhere`.
 
@@ -42,7 +43,7 @@ sudo spctl --master-disable
 ```
 
 
-## Install using Homebrew
+### Using Homebrew
 
 ```sh
 brew install postgresql
@@ -57,6 +58,13 @@ Start the server (in foreground):
 ```
 
 To get the command above, run `brew info postgresql` and copy it from the output.
+
+
+## Install Postgresql client on Amazon Linux 2
+
+```sh
+sudo amazon-linux-extras install postgresql13
+```
 
 
 ## Connect to database
@@ -85,11 +93,4 @@ GRANT ALL PRIVILEGES ON DATABASE test_db TO albert;
 
 ```sql
 ALTER USER albert WITH PASSWORD 'LpcCfWmYezV5UDSq';
-```
-
-
-## Install Postgresql client on Amazon Linux 2
-
-```sh
-sudo amazon-linux-extras install postgresql13
 ```

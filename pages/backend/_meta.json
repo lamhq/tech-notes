@@ -2,5 +2,6 @@
   "python": "Python",
   "fastapi": "FastAPI",
   "sqlalchemy": "SQLAlchemy",
-  "pytest": "pytest"
+  "pytest": "pytest",
+  "deno": "Deno"
 }
