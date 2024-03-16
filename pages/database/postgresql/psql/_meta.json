@@ -1,0 +1,6 @@
+{
+  "connect": "Connecting to database",
+  "explore": "Database exploration",
+  "backup-restore": "Backup and Restore",
+  "debug": "Debug"
+}
