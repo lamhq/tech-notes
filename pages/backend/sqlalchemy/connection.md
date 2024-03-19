@@ -21,7 +21,8 @@ A connection string is a specially formatted string that provides:
 
 ## Create an engine
 
-Example for creating an engine for a **SQLite** database:
+### SQLite
+
 ```py
 from sqlalchemy import create_engine
 
@@ -38,15 +39,39 @@ engine3 = create_engine('sqlite:////home/cookiemonster/cookies.db')
 engine4 = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
 ```
 
-Example for creating an engine for a local **PostgreSQL** database:
+### PostgreSQL
+
 ```py
 from sqlalchemy import create_engine
+
 engine = create_engine('postgresql+psycopg2://albert:LpcCfWmYezV5UDSq@localhost:5432/test_db')
 ```
 
+Specify the default schema:
+```py
+url = URL.create(
+    drivername='postgresql+psycopg2',
+    host='localhost',
+    port=5432,
+    database='test_db',
+    username='albert',
+    password='LpcCfWmYezV5UDSq'
+)
+schema = 'public'
+engine = create_engine(
+    url,
+    connect_args={ 'options': F'-csearch_path={schema}' }
+)
+```
+
+### Show output log
+
 If you want to see the details of what is happening here, you can add `echo=True` to your `create_engine` statement as a keyword argument after the connection string. Make sure to only do this for testing, and don’t use `echo=True` in production!
 
-Check [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) for `create_engine` function.
+
+### References
+
+- Available [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) of `create_engine` function.
 
 
 ## Create a connection

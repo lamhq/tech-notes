@@ -176,6 +176,17 @@ for row in query:
     print(row)
 ```
 
+Using a specific foreign key:
+```py
+results = session.query(
+        Order.order_id,
+        User.username,
+    ).join(User, User.id==Order.user_id) \
+    .join(LineItem).join(Cookie) \
+    .filter(User.username == 'cookiemon') \
+    .all()
+print(results)
+```
 
 ## Grouping
 

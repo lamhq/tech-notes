@@ -23,9 +23,9 @@ Install **Redshift** dialect for SQLAlchemy:
 pip install sqlalchemy-redshift==0.8.14
 ```
 
-PostgreSQL:
+PostgreSQL (macOS):
 ```shell
-pip install psycopg2
+pip install psycopg2-binary
 ```
 
 MySQL:

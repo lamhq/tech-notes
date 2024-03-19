@@ -3,5 +3,6 @@
   "fastapi": "FastAPI",
   "sqlalchemy": "SQLAlchemy",
   "pytest": "pytest",
+  "faker": "Faker",
   "deno": "Deno"
 }

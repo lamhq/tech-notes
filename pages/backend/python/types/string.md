@@ -33,7 +33,7 @@ str1 = """\
 Usage: thingy [OPTIONS]
      -h                        Display this usage message
      -H hostname               Hostname to connect to
-""")
+"""
 
 str2 = '''Lorem ipsum dolor sit amet,
 consectetur adipiscing elit,
