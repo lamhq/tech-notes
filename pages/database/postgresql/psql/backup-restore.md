@@ -16,9 +16,3 @@ Execute a sql file:
 ```sh
 psql -f some_script_file
 ```
-
-Execute inline SQL command with `-c` option:
-
-```sql
-psql -d postgresql_book -c "DROP TABLE IF EXISTS dross; CREATE SCHEMA staging;"
-```

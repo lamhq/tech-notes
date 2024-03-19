@@ -1,5 +1,22 @@
 # psql
 
+## Executing inline SQL commands
+
+Execute one command:
+```sql
+psql -d test_db -c "DROP TABLE IF EXISTS dross"
+```
+
+Execute multiple commands:
+```sql
+psql -d postgres << EOF
+DROP DATABASE test_db;
+CREATE DATABASE test_db;
+GRANT ALL PRIVILEGES ON DATABASE test_db TO albert;
+EOF
+```
+
+
 ## Get help on psql commands
 
 To know all available psql commands:
@@ -15,7 +32,7 @@ To get help on specific PostgreSQL statement, you use the `\h` command:
 ```
 
 
-## Executing Shell Commands
+## Executing shell commands
 
 In psql, you can call out to the OS shell with the `\!` command
 
