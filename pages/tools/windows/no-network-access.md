@@ -1,4 +1,4 @@
-# Tips
+# Fixing "No network access"
 
 ## Fix No network connection issue
 
