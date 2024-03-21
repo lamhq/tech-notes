@@ -2,7 +2,10 @@
   "python": "Python",
   "fastapi": "FastAPI",
   "sqlalchemy": "SQLAlchemy",
+  "alembic": "Alembic",
+  "pydantic": "Pydantic",
   "pytest": "pytest",
-  "faker": "Faker",
+  "faker": "Faker (python)",
+  "graphql": "GraphQL",
   "deno": "Deno"
 }
