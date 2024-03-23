@@ -1,5 +1,13 @@
 # Git Remote
 
+## Add Remote and Push
+
+```bash
+git remote add origin git@github.com:lamhq/aws-amplify-web.git
+git push --set-upstream origin main
+```
+
+
 ## Changing a remote's URL
 
 ```bash
@@ -26,13 +34,6 @@ git config --get remote.origin.url
 
 ```bash
 git remote remove <name>
-```
-
-
-## Add Remote
-
-```bash
-git remote add origin git@git.assembla.com:portfolio/space.space_name.git
 ```
 
 

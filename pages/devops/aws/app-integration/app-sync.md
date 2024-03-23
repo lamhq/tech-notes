@@ -11,3 +11,8 @@ Enables data interaction for developers via GraphQL
 Seamless integration with React, React Native, iOS, and Android
 
 Keywords: GraphQL, fetching app data, declarative coding, frontend app data fetching.
+
+
+## References
+
+- [Developer Guide](https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html)
