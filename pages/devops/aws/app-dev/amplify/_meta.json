@@ -2,5 +2,6 @@
   "cli": "Amplify CLI",
   "api": "API",
   "auth": "Authentication",
-  "react": "React"
+  "hosting": "Amplify Hosting",
+  "studio": "Amplify Studio"
 }

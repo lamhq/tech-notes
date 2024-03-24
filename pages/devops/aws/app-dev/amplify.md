@@ -4,7 +4,9 @@
 
 AWS Amplify is a complete solution that offers tools for front-end web and mobile developers to quickly **build full-stack applications** on AWS.
 
-Amplify provides the following independen products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
+## Products
+
+Amplify provides the following independent products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
 - **Amplify CLI**: Configure all the services needed to power your backend through a simple command line interface.
 - **Amplify Libraries**: Client libraries to build common use cases such as Auth, data, and File Storage by connecting your frontend app to your backend resources.
 - **Amplify Studio**: Build your fullstack web and mobile app using a simple and intuitive visual development environment.
@@ -12,22 +14,49 @@ Amplify provides the following independen products to build fullstack iOS, Andro
 - **Amplify Hosting** is an AWS service that provides a git-based workflow for continuous deployment & hosting of fullstack web apps.
 
 
-## Amplify Hosting
+## Pricing
 
-Support for common single-page application (SPA)
-frameworks, like React, Angular, and Vue
+### Free tier
 
-Also supports Gatsby and Hugo static site generators
+Free for 12 months.
 
-Allows for separate production and staging environments for the front-end and backend
+- **Build & Deploy**: No cost up to 1,000 build minutes per month 
+- **Data Storage**: No cost up to 5 GB stored on CDN per month 
+- **Data Transfer Out**: No cost up to 15 GB per month 
+- **Request Count (SSR)**: No cost up to 500,000 requests per month
+- **Request Duration (SSR)**: No cost up to 100 GB-hours per month
 
-Support for **server-side rendering** apps, like Next.js. You can't do server-side rendering with a static application in S3.
+
+### Pay-as-You-Go
+Once you exceed the free tier limits, Amplify switches to pay-as-you-go pricing.
+
+The following AWS backend services are offered on the AWS free tier and pay-as-you-go basis:
+- **API Gateway**
+- **AppSync**
+- **CloudFront**
+- **Cognito**
+- **DynamoDB**
+- **Elasticsearch**
+- **Kinesis** (pay-as-you-go only)
+- **Lambda**
+- **Lex**
+- **Location Service**
+- **Pinpoint**
+- **Rekognition**
+- **S3**
+
+Here are the pay-as-you-go rates:
+- **Build & Deploy**: $0.01 per minute
+- **Data Storage**: $0.023 per GB per month (recurs until the app is deleted)
+- **Data Transfer Out**: $0.15 per GB served
+- **Request Count (SSR)**: $0.30 per 1 million requests
+- **Request Duration (SSR)**: $0.20 per hour (GB-hour)
+
+No flat fee per user; includes multiple sites per project and public SSL certificates at no extra cost.
 
 
-## Amplify Studio
+### Pricing Examples
 
-**Easy Auth**. Easy authentication and authorization for implementation within your applications
-
-**Simplified Development**. Visual development environment to simplify creation of full-stack web or mobile applications
-
-**Ready to Use**. Offers ready-to-use components, easy creation of backends, and automated connections between the front-end and backend.
+These examples are applied outside the free tier:
+- Example 1: Suppose you build and deploy an app for 1 hour (60 minutes). The cost would be $0.01.
+- Example 2: If your app stores 10 GB of data on the CDN for a month, the cost would be $0.23.
