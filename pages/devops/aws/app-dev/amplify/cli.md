@@ -18,7 +18,7 @@ npm install -g @aws-amplify/cli
 
 Amplify CLI requires an IAM user with permissions assigned through the policy `AdministratorAccess-Amplify`.
 
-Run this command and enter **access key id** and **secret access key** of your IAM user:
+After [creating an IAM user](https://docs.amplify.aws/react/start/getting-started/installation/#configure-the-amplify-cli), run this command and enter **access key id** and **secret access key** :
 ```shell
 amplify configure
 ```

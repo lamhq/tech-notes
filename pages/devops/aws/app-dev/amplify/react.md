@@ -1,7 +1,5 @@
 # React
 
-## Set up project
+## References
 
-```shell
-amplify init
-```
+- [Getting started](https://docs.amplify.aws/react/start/getting-started/)
