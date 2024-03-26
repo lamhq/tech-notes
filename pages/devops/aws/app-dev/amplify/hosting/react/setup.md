@@ -15,14 +15,14 @@ When you initialize a new Amplify project, a few things happen:
 - A new Amplify app is created in your AWS account
 
 
-## Install Amplify Client Libraries
+## Install Amplify Client Library
 
 ```sh npm2yarn
 npm install aws-amplify
 ```
 
 
-## Configure Amplify Client Libraries
+## Configure Amplify Client Library
 
 ```tsx
 import { Amplify } from 'aws-amplify';

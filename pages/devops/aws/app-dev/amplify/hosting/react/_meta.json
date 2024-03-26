@@ -1,6 +1,6 @@
 {
   "setup": "Set up project",
   "deploy": "Deploy",
-  "integrate-api": "API Integration",
-  "integrate-auth": "Integrate Authentication"
+  "integrate-api": "Integrate API",
+  "integrate-auth": "Integrate Auth"
 }
