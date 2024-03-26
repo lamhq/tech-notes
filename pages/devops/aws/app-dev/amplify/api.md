@@ -14,7 +14,7 @@ You can access the GraphQL schema at `amplify/backend/api/<your-api-name>/schema
 ## Deploying the API
 
 ```shell
-amplify push
+amplify push -y
 ```
 
 
@@ -31,4 +31,11 @@ amplify console api
 amplify mock api
 ```
 
-This will open the GraphiQL explorer on a local port. 
+This will open the GraphiQL explorer on a local port.
+
+
+## Update the generated schema
+
+```shell
+amplify api gql-compile
+```

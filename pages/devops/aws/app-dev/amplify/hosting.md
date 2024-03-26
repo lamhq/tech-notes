@@ -10,12 +10,14 @@ Deploy and host **SSR web apps** created using the Next.js framework.
 
 Connect your application to a **custom domain**.
 
-**Password protect** your web app.
+Manage production and staging **environments** for your frontend and backend by connecting git branches.
 
-Set up rewrites and redirects.
+**Password protect** your web app. Can be configured per environment.
 
-Preview changes during code reviews by setting up pull request previews.
+Set up **rewrites and redirects**.
 
-Improve your app quality with end to end tests.
+Preview changes during code reviews by setting up **pull request previews**.
 
-Manage production and staging environments for your frontend and backend by connecting new branches.
+Improve your app quality with **end to end tests**.
+
+Connect your git branches to Amplify Hosting to **automatically deploy** both your frontend and backend changes on every push.

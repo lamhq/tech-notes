@@ -7,11 +7,18 @@ AWS Amplify is a complete solution that offers tools for front-end web and mobil
 ## Products
 
 Amplify provides the following independent products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
+- **Amplify Hosting** provides hosting for static and server-side rendered Next.js apps.
 - **Amplify CLI**: Configure all the services needed to power your backend through a simple command line interface.
 - **Amplify Libraries**: Client libraries to build common use cases such as Auth, data, and File Storage by connecting your frontend app to your backend resources.
 - **Amplify Studio**: Build your fullstack web and mobile app using a simple and intuitive visual development environment.
 - **Amplify UI Components**: UI libraries to build your frontend app built for React, React Native, Angular, Vue and Flutter.
-- **Amplify Hosting** is an AWS service that provides a git-based workflow for continuous deployment & hosting of fullstack web apps.
+
+
+## Architecture example
+
+The following diagram outlines a few scenarios you could implement with Amplify. 
+
+![Different Amplify implementations.](https://docs.amplify.aws/images/how-amplify-works/nextImageExportOptimizer/amplify-scenarios-opt-1920.WEBP)
 
 
 ## Pricing
