@@ -215,3 +215,8 @@ print(query.all())
 ```py
 some_squidward is squidward
 ```
+
+
+## References
+
+- [Query API](https://docs.sqlalchemy.org/en/14/orm/query.html)

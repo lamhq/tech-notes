@@ -19,7 +19,7 @@ metadata = MetaData()
 ```
 
 
-## Defining Tables
+## Tables
 
 ```py
 from datetime import datetime

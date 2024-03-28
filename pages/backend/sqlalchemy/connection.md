@@ -64,14 +64,35 @@ engine = create_engine(
 )
 ```
 
-### Show output log
+### Redshift
 
-If you want to see the details of what is happening here, you can add `echo=True` to your `create_engine` statement as a keyword argument after the connection string. Make sure to only do this for testing, and don’t use `echo=True` in production!
+Connect using IAM credentials:
 
+```py
+import redshift_connector
 
-### References
+# Connects to Redshift cluster using IAM credentials
+conn: redshift_connector.Connection = redshift_connector.connect(
+    iam=True,
+    database='dev',
+    db_user='awsuser',
+    password='',
+    user='',
+    cluster_identifier='examplecluster',
+    access_key_id="my_aws_access_key_id",
+    secret_access_key="my_aws_secret_access_key",
+    session_token="my_aws_session_token",
+    region="us-east-2"
+ )
+```
 
-- Available [parameters](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive) of `create_engine` function.
+IAM credentials can be defined in `~/.aws/credentials`:
+```
+[default]
+aws_access_key_id="my_aws_access_key_id"
+aws_secret_access_key="my_aws_secret_access_key"
+aws_session_token="my_aws_session_token"
+```
 
 
 ## Create a connection
@@ -91,3 +112,21 @@ with engine.connect() as conn:
     result = conn.execute(text("select 'hello world'"))
     print(result.all())
 ```
+
+
+## Show output log
+
+Enable logging SQL statements to console:
+
+```py
+engine = create_engine(url, echo=True, future=True)
+```
+
+Make sure to only do this for testing, and don’t use `echo=True` in production!
+
+
+## References
+
+- Configuration options for [`create_engine`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine.params.case_sensitive).
+- Configuration options for the [Amazon Redshift Python connector](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html)
+- [Connecting to Amazon Redshift](https://github.com/aws/amazon-redshift-python-driver/blob/master/tutorials/001%20-%20Connecting%20to%20Amazon%20Redshift.ipynb)

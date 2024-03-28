@@ -20,7 +20,7 @@ Base = declarative_base()
 ```
 
 
-## Defining Tables via ORM Classes
+## Tables
 
 ```py
 from sqlalchemy import Column, Integer, Numeric, String
@@ -112,7 +112,7 @@ class LineItem(Base): __tablename__ = 'line_items'
 The `uselist=False` keyword argument defines it as a one-to-one relationship.
 
 
-## Self-referential table
+### Self-reference
 
 Define a table of managers and their reports:
 ```py
@@ -132,7 +132,7 @@ class Employee(Base):
 We need to specify an option called `remote_side` to make the relationship a many to one.
 
 
-## Persisting Schema
+## Create Schema from ORM classes
 
 ```py
 from sqlalchemy import create_engine
@@ -140,4 +140,11 @@ engine = create_engine('sqlite:///:memory:')
 
 
 Base.metadata.create_all(engine)
+```
+
+
+## List columns of a table
+
+```py
+available_cols = [col.key for col in Cookie.__table__.columns]
 ```

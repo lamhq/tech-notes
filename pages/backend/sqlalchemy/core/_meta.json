@@ -1,4 +1,5 @@
 {
+  "build-stm": "Building Statements",
   "schema": "Schema definition",
   "query": "Querying data",
   "insert": "Inserting data",

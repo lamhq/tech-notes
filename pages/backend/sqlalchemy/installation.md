@@ -16,30 +16,27 @@ pip install SQLAlchemy==1.4.51
 
 ## Install Database Drivers (dialect)
 
+### SQLite3
+
 By default, SQLAlchemy will support SQLite3 with no additional drivers.
 
-Install **Redshift** dialect for SQLAlchemy:
+### Amazon Redshift
+
+Install dialect and connector for Redshift:
 ```shell
-pip install sqlalchemy-redshift==0.8.14
+pip install sqlalchemy-redshift==0.8.14 redshift_connector==2.0.918
 ```
 
-PostgreSQL (macOS):
+### PostgreSQL (macOS)
+
 ```shell
 pip install psycopg2-binary
 ```
 
-MySQL:
+### MySQL
+
 ```shell
 pip install pymysql
-```
-
-
-## Install connector
-
-Install Redshift connector for Python:
-
-```shell
-pip install redshift_connector==2.0.918
 ```
 
 
