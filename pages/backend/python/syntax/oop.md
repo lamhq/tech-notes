@@ -27,7 +27,7 @@ x = Employee()
 x.displayCount()
 ```
 
-## Chaining methods in multiline
+## Chaining methods
 
 ```py
 # Create an instance of MyClass
@@ -138,4 +138,39 @@ sum(x*y for x,y in zip(xvec, yvec))         # dot product
 data = 'golf'
 list(data[i] for i in range(len(data)-1, -1, -1))
 # ['f', 'l', 'o', 'g']
+```
+
+
+## Batching instance's method at runtime
+
+```py
+import types
+
+# Create an instance of a class
+class MyClass:
+    def method(self, n):
+        return n
+
+obj = MyClass()
+
+# get the original method from the instance
+org_mt = obj.method
+
+# define the new method
+my_method = lambda self, n: 0 if n < 5 else org_mt(n)
+
+# Bind the function 'my_method' to the instance 'obj'
+obj.method = types.MethodType(my_method, obj)
+
+print(obj.method(6))  # Calls my_method(self=obj)
+```
+
+- `MethodType` is a class provided by the Python standard library. It allows you to bind a function to an instance of a user-defined class and call the function on that instance.
+- `my_method` is the function that extends the original `obj.method` method
+- `obj.method` is a new callable object that holds both the function and the instance
+- Calling `obj.method()` is equivalent to calling `obj.my_method()`.
+
+Make sure to restore the orginal method after finishing:
+```py
+obj.method = org_mt
 ```

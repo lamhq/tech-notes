@@ -1,5 +1,7 @@
 {
+  "git": "Git",
   "vscode": "VS Code",
+  "jupyter-notebook": "Jupyter Notebook",
   "homebrew": "Homebrew",
   "windows": "Windows"
 }

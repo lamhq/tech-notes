@@ -38,14 +38,14 @@ import types
 
 identifier_preparer = session.connection().dialect.identifier_preparer
 # extend the method `_requires_quotes`
-org_fn = identifier_preparer._requires_quotes
-new_fn = lambda self, value: False if value == '"your"."table"' else org_fn(value)
-identifier_preparer._requires_quotes = types.MethodType(new_fn, identifier_preparer)
+org_mt = identifier_preparer._requires_quotes
+new_mt = lambda self, value: False if value == '"your"."table"' else org_mt(value)
+identifier_preparer._requires_quotes = types.MethodType(new_mt, identifier_preparer)
 ```
 
 Restore the original behavior:
 ```py
-identifier_preparer._requires_quotes = types.MethodType(org_fn, identifier_preparer)
+identifier_preparer._requires_quotes = types.MethodType(org_mt, identifier_preparer)
 ```
 
 

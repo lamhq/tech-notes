@@ -8,5 +8,6 @@
   "modules": "Modules",
   "exception": "Exception",
   "oop": "OOP",
-  "async": "Asynchronous Programming"
+  "async": "Asynchronous Programming",
+  "context-manager": "Context Managers"
 }

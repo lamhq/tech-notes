@@ -2,5 +2,6 @@
   "python": "Python",
   "jupyter-nb": "Jupyter Notebook",
   "fastapi": "FastAPI",
-  "container": "Dev Container"
+  "container": "Dev Container",
+  "debug": "Debug"
 }

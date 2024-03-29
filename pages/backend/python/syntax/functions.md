@@ -25,7 +25,7 @@ def my_function(x):
 
 ## Function Arguments
 
-Default value:
+### Default value
 ```py
 def my_function(country = "Norway"):
     print("I am from " + country)
@@ -34,7 +34,7 @@ my_function("Sweden")
 my_function()
 ```
 
-Arbitrary Arguments `*args`:
+### Arbitrary postional arguments
 
 ```py
 def my_function(*kids):
@@ -43,8 +43,7 @@ def my_function(*kids):
 my_function("Emil", "Tobias", "Linus")
 ```
 
-
-## Keyword arguments
+### Keyword arguments
 
 ```py
 def my_function(child3, child2, child1):
@@ -53,7 +52,7 @@ def my_function(child3, child2, child1):
 my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
 ```
 
-You can define function parameters as keyword arguments using `*` syntax:
+You can define function parameters as keyword arguments using `*` syntax. All the parameters after `*` should be called as keyword arguments (key-value pairs, aka. `kwargs`).
 
 ```py
 def read_items(*, item_id: int, q: str):
@@ -63,9 +62,17 @@ def read_items(*, item_id: int, q: str):
     return results
 ```
 
-Python won't do anything with that `*`, but it will know that all the following parameters should be called as keyword arguments (key-value pairs), aka. `kwargs`.
 
-Arbitrary Keyword Arguments:
+Mixing positional arguments with keyword argument:
+```py
+def greet(name, age, *, city):
+    print(f"Hi, I am {name}. My age is {age}. I live in {city}.")
+
+greet('abc', 23, city='def')
+```
+
+
+### Arbitrary Keyword Arguments
 
 ```py
 def my_function(**kid):
@@ -75,26 +82,20 @@ my_function(fname = "Tobias", lname = "Refsnes")
 ```
 
 
-## Unpacking Arguments
+## Passing Arguments
 
-When calling function, if the parameters are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments, write the function call with the `*`-operator to unpack the arguments out of a list or tuple:
+When calling function, if the parameters are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments, write the function call with the `*` operator to unpack the arguments out of a list or tuple.
 
+Passing a list to function as positional arguments (unpacking list):
 ```py
-# normal call with separate arguments
-list(range(3, 6))   # [3, 4, 5]
-
-# call with arguments unpacked from a list
 args = [3, 6]
 list(range(*args))    # [3, 4, 5]
 ```
 
-Unpacking dictionary:
-
+Passing a dict to function as key-value arguments (unpacking dictionary):
 ```py
 def parrot(voltage, state='a stiff', action='voom'):
-    print("-- This parrot wouldn't", action, end=' ')
-    print("if you put", voltage, "volts through it.", end=' ')
-    print("E's", state, "!")
+    pass
 
 d = {"voltage": "four million", "state": "bleedin' demised", "action": "VOOM"}
 parrot(**d)
