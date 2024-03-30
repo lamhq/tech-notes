@@ -65,3 +65,161 @@ with open("hello.txt", mode="w") as file:
 with A() as a, B() as b:
     pass
 ```
+
+
+## Async `with`
+
+The with statement also has an asynchronous version, `async with`.
+
+This example checks if a given site is online:
+```py
+# site_checker_v0.py
+
+import aiohttp
+import asyncio
+
+async def check(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            print(f"{url}: status -> {response.status}")
+            html = await response.text()
+            print(f"{url}: type -> {html[:17].strip()}")
+
+async def main():
+    await asyncio.gather(
+        check("https://realpython.com"),
+        check("https://pycoders.com"),
+    )
+
+asyncio.run(main())
+```
+
+
+## Handling exception in context manager
+
+You can return a truthy value in `.__exit__()` to swallow the exception in the `with` code block.
+
+```py
+# exc_handling.py
+
+class HelloContextManager:
+    def __enter__(self):
+        print("Entering the context")
+        return "Hello, World!"
+
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        print("Leaving the context")
+        if isinstance(exc_value, IndexError):
+            # Handle IndexError here
+            print(f"An exception occurred in your with block: {exc_type}")
+            print(f"Exception message: {exc_value}")
+            return True
+
+with HelloContextManager() as hello:
+    print(hello)
+    hello[100]
+
+print("Continue normally from here")
+```
+
+If you return `False`, the exception propagates out.
+
+
+## Creating Context Managers
+
+### Class-based
+
+```py
+class HelloContextManager:
+    def __enter__(self):
+        print("Entering the context")
+        return "Hello, World!"
+
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        print("Leaving the context")
+        print('Exception type:', exc_type, 'Exception Value:', exc_value, 'Trace back:', exc_tb, sep="\n")
+
+with HelloContextManager() as hello:
+    print(hello)
+```
+
+Output:
+```
+Entering the context
+Hello, World!
+Leaving the context
+Exception type:
+None
+Exception Value:
+None
+Trace back:
+None
+```
+
+
+### Function-Based
+
+If you decorate a generator function with `@contextmanager`, then you get a function-based context manager:
+
+```py
+from contextlib import contextmanager
+
+@contextmanager
+def hello_context_manager():
+    print("Entering the context")
+    yield "Hello, World!"
+    print("Leaving the context")
+
+
+with hello_context_manager() as hello:
+    print(hello)
+```
+
+Output:
+```
+Entering the context
+Hello, World!
+Leaving the context
+```
+
+- Before the `yield` statement, you have the setup section.
+- The `yield` statement itself provides the object that will be assigned to the with `target` variable.
+- After the `yield` statement, you have the teardown section
+
+
+### Asynchronous Context Manager
+
+To create an asynchronous context manager, you need to define the `.__aenter__()` and `.__aexit__()` methods.
+
+```py
+# site_checker_v1.py
+
+import aiohttp
+import asyncio
+
+class AsyncSession:
+    def __init__(self, url):
+        self._url = url
+
+    async def __aenter__(self):
+        self.session = aiohttp.ClientSession()
+        response = await self.session.get(self._url)
+        return response
+
+    async def __aexit__(self, exc_type, exc_value, exc_tb):
+        await self.session.close()
+
+async def check(url):
+    async with AsyncSession(url) as response:
+        print(f"{url}: status -> {response.status}")
+        html = await response.text()
+        print(f"{url}: type -> {html[:17].strip()}")
+
+async def main():
+    await asyncio.gather(
+        check("https://realpython.com"),
+        check("https://pycoders.com"),
+    )
+
+asyncio.run(main())
+```

@@ -141,7 +141,7 @@ list(data[i] for i in range(len(data)-1, -1, -1))
 ```
 
 
-## Batching instance's method at runtime
+## Monkey patch instance's method at runtime
 
 ```py
 import types
