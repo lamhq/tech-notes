@@ -7,7 +7,7 @@ Reference: [https://docs.python.org/3/library/re.html#regular-expression-syntax]
 
 ## Notice
 
-The `re.search()` method is similar to `re.match()` but it doesn’t limit us to find matches at the beginning of the string only.
+The `re.search()` method is similar to `re.match()` but it doesn't limit us to find matches at the beginning of the string only.
 
 The `re.findall()` helps to get a list of all matching patterns. It only returns all matched text, not match objects. To return match objects instead of strings, use `re.finditer()`
 

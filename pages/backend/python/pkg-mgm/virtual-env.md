@@ -23,7 +23,7 @@ Activate a virtual environment (MacOS):
 source .venv/bin/activate
 ```
 
-Now, anytime you run pip install, it will install packages under `.venv`. And when you run Python programs, that’s where your Python interpreter and modules will be found.
+Now, anytime you run pip install, it will install packages under `.venv`. And when you run Python programs, that's where your Python interpreter and modules will be found.
 
 
 ## Deactivate

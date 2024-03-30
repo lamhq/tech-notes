@@ -1,33 +1,40 @@
 # Working with Files
 
-## Open a file
+## Pattern
+
+Here's a general pattern that you should consider using when you're working with files:
 
 ```py
-with open('workfile') as f:
-    read_data = f.read()
+import logging
+
+try:
+    with open('workfile', 'w') as file:
+        file.write("Hello, World!")
+except OSError as error:
+    logging.error("Writing to file %s failed due to: %s", file_path, error)
 ```
 
-`open(filename, mode)` returns a file object. The second argument describes the way in which the file will be used:
+- You wrap the `with` statement in a `try … except` statement.
+- If an `OSError` occurs during the execution of with, then you use `logging` to log the error with a user-friendly and descriptive message.
+- If you're not using the `with` keyword, then you should call `f.close()` to close the file.
 
-- 'r' when the file will only be read (default)
-- 'w' for only writing
-- 'a' opens the file for appending
-- 'r+' opens the file for both reading and writing
-
-If you’re not using the `with` keyword, then you should call `f.close()` to close the file.
+`open(filename, mode)` returns a **file object**. The `mode` argument describes the way in which the file will be used:
+- `r` when the file will only be read (default)
+- `w` for only writing
+- `a` opens the file for appending
+- `r+` opens the file for both reading and writing
 
 
 ## Methods of File Objects
 
-`read(size?)`: reads some quantity of data and returns it as a string (in text mode) or bytes object (in binary mode). If the end of the file has been reached, `f.read()` will return an empty string `('')`
+- `read(size?)`: reads some quantity of data and returns it as a string (in text mode) or bytes object (in binary mode). If the end of the file has been reached, return an empty string `('')`
+- `readline()` reads a single line from the file
+- `write(string)` writes the contents of string to the file, returning the number of characters written
+- `tell()` returns an integer giving the file object's current position
+- `seek(offset, whence)` change the file object's position. The position is computed from adding offset to a reference point; the reference point is selected by the `whence` argument.(0 from the beginning of the file, 1 uses the current file position, 2 uses the end of the file). `whence` can be omitted and defaults to 0.
 
-`readline()` reads a single line from the file
 
-`write(string)` writes the contents of string to the file, returning the number of characters written
-
-`tell()` returns an integer giving the file object’s current position
-
-`seek(offset, whence)` change the file object’s position. The position is computed from adding offset to a reference point; the reference point is selected by the `whence` argument.(0 from the beginning of the file, 1 uses the current file position, 2 uses the end of the file). `whence` can be omitted and defaults to 0.
+## Reading file by lines
 
 For reading lines from a file, you can loop over the file object. This is memory efficient, fast, and leads to simple code:
 
@@ -37,6 +44,7 @@ for line in f:
 ```
 
 If you want to read all the lines of a file in a list you can also use `list(f)` or `f.readlines()`.
+
 
 ## Write text to file
 

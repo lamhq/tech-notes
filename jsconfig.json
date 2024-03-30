@@ -2,5 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": { "@/*": ["components/*"] }
-  }
+  },
+  "exclude": [
+    ".next",
+    "node_modules",
+    "out"
+  ]
 }

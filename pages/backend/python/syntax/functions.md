@@ -6,7 +6,7 @@ The first statement of the function body can optionally be a string literal; thi
 
 There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code.
 
-It’s good practice to include docstrings in code that you write.
+It's good practice to include docstrings in code that you write.
 
 ```py
 # Creating a Function
@@ -122,7 +122,7 @@ f(1)    # 43
 
 Function annotations are arbitrary Python expressions associated with various parts of a function. These expressions are evaluated at compile time and have no impact during runtime.
 
-Python itself doesn’t assign any specific meaning to annotations; their significance arises when interpreted by third-party libraries or tools.
+Python itself doesn't assign any specific meaning to annotations; their significance arises when interpreted by third-party libraries or tools.
 
 Syntax:
 - Parameters are annotated using the `:` symbol after the parameter name.

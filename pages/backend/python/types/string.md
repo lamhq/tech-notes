@@ -13,7 +13,7 @@ d = "doesn't"
 
 ## Raw string
 
-If you don’t want characters prefaced by `\` to be interpreted as special characters, you can use raw strings by adding an `r` before the first quote:
+If you don't want characters prefaced by `\` to be interpreted as special characters, you can use raw strings by adding an `r` before the first quote:
 
 ```py
 raw_s = r'Hi\nHello'
@@ -168,7 +168,7 @@ print(f'{2:10} ==> {4:10d}')
 
 ## Modify strings
 
-Python strings cannot be changed - they are immutable, You cannot change the string. For example, you’ll get an error if you update one or more characters in a string:
+Python strings cannot be changed - they are immutable, You cannot change the string. For example, you'll get an error if you update one or more characters in a string:
 
 ```py
 str = "Python String"

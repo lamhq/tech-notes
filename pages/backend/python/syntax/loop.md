@@ -149,7 +149,7 @@ for index in range(0, 10):
 3    
 ```
 
-When you use the `break` statement in a nested loop, it’ll terminate the innermost loop.
+When you use the `break` statement in a nested loop, it'll terminate the innermost loop.
 
 ```py
 while True:

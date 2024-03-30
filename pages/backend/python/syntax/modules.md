@@ -8,7 +8,7 @@ Within a module, you can access the name of the current module using the global 
 
 A module can contain executable statements, they are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
 
-Each module has its own private symbol table, the author of a module can use global variables in the module without worrying about accidental clashes with a user’s global variables.
+Each module has its own private symbol table, the author of a module can use global variables in the module without worrying about accidental clashes with a user's global variables.
 
 
 ## Packages
@@ -110,7 +110,7 @@ that would mean:
 
 The `sys.path` variable is an essential part of the sys module.
 
-It is a list of strings that determines the interpreter’s search path for modules.
+It is a list of strings that determines the interpreter's search path for modules.
 
 `sys.path` is initialized from these locations:
 - The directory containing the input script (or the current directory when no file is specified).

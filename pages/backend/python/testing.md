@@ -27,5 +27,5 @@ tests/
 - Isolated Work: allows individuals to concentrate on writing tests without interfering with others' code files.
 
 **Disadvantages**:
-- It’s not easy to find and import code files.
+- It's not easy to find and import code files.
 - You can not use relative imports in test files to import code files.

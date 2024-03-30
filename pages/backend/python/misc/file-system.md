@@ -30,10 +30,22 @@ os.getcwd()
 os.rmdir("d:\\tempdir")
 ```
 
-### List Files and Sub-directories
+
+### Traversing Directories
 
 ```py
-os.listdir('c:\python37')
+import os
+
+def list_files_and_directories(path):
+    for root, dirs, files in os.walk(path):
+        for name in dirs:
+            print(f"Directory: {os.path.join(root, name)}")
+        for name in files:
+            print(f"File: {os.path.join(root, name)}")
+
+# Example usage:
+target_path = "/path/to/your/directory"
+list_files_and_directories(target_path)
 ```
 
 ### Get path of executable file
