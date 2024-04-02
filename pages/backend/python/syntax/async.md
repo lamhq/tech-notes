@@ -2,6 +2,7 @@
 
 Require Python 3.5+
 
+
 ## Simple example
 
 ```py
@@ -14,7 +15,10 @@ async def main():
 asyncio.run(main())
 ```
 
+
 ## Running tasks concurrently
+
+Await multiple asynchronous tasks:
 
 ```py
 import asyncio

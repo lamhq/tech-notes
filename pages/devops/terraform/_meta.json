@@ -15,6 +15,6 @@
   "workspaces": "Workspaces",
   "cloud": "Terraform Cloud",
   "tips": "Tips",
-  "snippets": "Snippets",
-  "commands": "Commands"
+  "commands": "Commands",
+  "aws": "AWS"
 }
