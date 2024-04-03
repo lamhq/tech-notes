@@ -20,7 +20,7 @@ tbl_obj = table('users',
 ```py
 from sqlalchemy.sql import select
 
-query = select(tbl_obj.c.id).limit(10)
+query = select(tbl_obj.c.id, tbl_obj.c.name).limit(10)
 data = session.execute(query).all()
 ```
 
