@@ -2,34 +2,63 @@
 
 If you use Poetry, skip this guide and proceed to [install Poetry](./pkg-mgm/poetry.md).
 
-## Install multiple Python versions (macOS)
+We'll use Pyenv to easily install and switch between multiple versions of Python.
 
-Install pyenv:
+
+## MacOS
+
+### Install Pyenv
 
 ```bash
+brew update
 brew install pyenv
 ```
 
-Add pyenv init to `~/.zshrc` (or equivalent shell configuration file):
+### Set up shell environment (zsh)
+
+Run these commands:
 
 ```bash
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
 Reload shell configuration:
 
 ```bash
-source ~/.zshrc
+exec "$SHELL"
 ```
 
-Install a Python version:
 
-```bash
-pyenv install 3.7.0
+### Upgrading Pyenv
+
+```shell
+brew upgrade pyenv
 ```
 
-Set global Python version:
+
+### Uninstall Pyenv
+
+```shell
+brew uninstall pyenv
+```
+
+
+## Install python
 
 ```bash
-pyenv global 3.7.0
+pyenv install 3.12.2
+```
+
+## Switch between Python versions
+
+```bash
+pyenv global 3.12.2
+```
+
+## Uninstall Python versions
+
+```bash
+pyenv uninstall 3.12.2
 ```
