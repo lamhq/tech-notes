@@ -174,3 +174,43 @@ Make sure to restore the orginal method after finishing:
 ```py
 obj.method = org_mt
 ```
+
+### Using Context manager to restore patched object
+
+```py
+import types
+from contextlib import contextmanager
+
+class MyClass:
+    def method(self, n):
+        print("the old method")
+        return n
+
+
+@contextmanager
+def monkey_patch(obj):
+    # get the original method from the instance
+    org_mt = obj.method
+
+    # define the new method
+    def my_method(self, n): 
+        print("the new method")
+        return 0 if n < 5 else org_mt(n)
+
+    # Bind the function 'my_method' to the instance 'obj'
+    obj.method = types.MethodType(my_method, obj)
+
+    yield obj
+
+    obj.method = org_mt
+
+# the object need to be patched
+obj = MyClass()
+
+# patching the object
+with monkey_patch(obj) as new_obj:
+    print(new_obj.method(4))  # 0
+
+# the object should be restored after exiting context manager block
+print(new_obj.method(4)) # 4
+```

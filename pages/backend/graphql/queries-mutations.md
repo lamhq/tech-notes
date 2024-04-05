@@ -159,7 +159,7 @@ query HeroNameAndFriends {
 
 The **operation type** is either `query`, `mutation`, or `subscription` and describes what type of operation you're intending to do.
 
-The operation name is a meaningful and explicit name for your operation. It is only required in multi-operation documents, but its use is encouraged because it is very helpful for debugging and server-side logging.
+The **operation name** is a meaningful and explicit name for your operation. It is only required in multi-operation documents, but its use is encouraged because it is very helpful for debugging and server-side logging.
 
 If you're using the query shorthand syntax, you can't supply a name or variable definitions for your operation.
 

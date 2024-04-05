@@ -79,8 +79,8 @@ Could produce the following JSON result:
 9. **Introspection and Tooling**: GraphQL's built-in **introspection** feature enables powerful developer tools. Tools like GraphiQL and Apollo Studio allow exploration, testing, and debugging of APIs.
 
 
-## Resources
+## References
 
-- [Code and libraries](https://graphql.org/code/)
 - [Tutorials](https://www.howtographql.com/)
+- [Code and libraries](https://graphql.org/code/)
 - [Course: Exploring GraphQL: A Query Language for APIs](https://www.edx.org/learn/graphql/the-linux-foundation-exploring-graphql-a-query-language-for-apis)

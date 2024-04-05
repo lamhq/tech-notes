@@ -1,4 +1,6 @@
 {
+  "rest-api": "REST",
+  "graphql": "GraphQL",
   "python": "Python",
   "fastapi": "FastAPI",
   "sqlalchemy": "SQLAlchemy",
@@ -6,6 +8,6 @@
   "pydantic": "Pydantic",
   "pytest": "pytest",
   "faker": "Faker (python)",
-  "graphql": "GraphQL",
-  "deno": "Deno"
+  "deno": "Deno",
+  "nestjs": "NestJS"
 }
