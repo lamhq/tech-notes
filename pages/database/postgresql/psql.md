@@ -1,22 +1,5 @@
 # psql
 
-## Executing inline SQL commands
-
-Execute one command:
-```sql
-psql -d test_db -c "DROP TABLE IF EXISTS dross"
-```
-
-Execute multiple commands:
-```sql
-psql -d postgres << EOF
-DROP DATABASE test_db;
-CREATE DATABASE test_db;
-GRANT ALL PRIVILEGES ON DATABASE test_db TO albert;
-EOF
-```
-
-
 ## Get help on psql commands
 
 To know all available psql commands:
@@ -32,9 +15,26 @@ To get help on specific PostgreSQL statement, you use the `\h` command:
 ```
 
 
+## Executing SQL commands
+
+Execute a single sql command:
+```sql
+psql -d test_db -c "DROP TABLE IF EXISTS dross"
+```
+
+Execute multiple commands:
+```sql
+psql -d postgres << EOF
+DROP DATABASE test_db;
+CREATE DATABASE test_db;
+GRANT ALL PRIVILEGES ON DATABASE test_db TO albert;
+EOF
+```
+
+
 ## Executing shell commands
 
-In psql, you can call out to the OS shell with the `\!` command
+In psql [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), you can call out to the OS shell with the `\!` command
 
 
 ## Dynamic SQL Execution

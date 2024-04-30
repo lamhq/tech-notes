@@ -56,7 +56,7 @@ f = len('abc')
 ```
 
 
-## Concatenating
+## Concat strings
 
 Strings can be concatenated with the `+` operator, and repeated with `*`:
 
@@ -65,6 +65,12 @@ Strings can be concatenated with the `+` operator, and repeated with `*`:
 >>> 3 * 'un' + 'ium'
 'unununium'
 ```
+
+## Check string contains a sub string
+```py
+x = "Hello" in " Hello, World!"
+```
+
 
 ## Indexing
 
@@ -94,31 +100,29 @@ s3 = word[4:]
 ```
 
 
-## String methods
+## Joining list of string
 
 ```py
-a = " Hello, World!"
-b = a.lower()
-c = a.upper()
-d = a.strip()
-
-# replace
-e = a.replace("H", "J")
-
-# split a string by delimiter
-f = a.split(",") # returns ['Hello', ' World!']
-
-# check string contains a sub string
-x = "Hello" in " Hello, World!"
+my_list = ['a', 'b', 'c', 'd']
+my_string = ','.join(my_list)
+# Result: 'a,b,c,d'
 ```
 
-- `endswith`: Returns true if the string ends with the specified value
-- `find`: Searches the string for a specified value and returns the position of where it was found
-- `isalnum`: Returns True if all characters in the string are alphanumeric
-- `isdigit`: Returns True if all characters in the string are digits
-- `join`: Joins the elements of an iterable to the end of the string
-- `split`: Splits the string at the specified separator, and returns a list
-- `splitlines`: Splits the string at line breaks and returns a list
+
+## Splitting string into list
+
+```py
+my_string = " apple , banana , cherry , date "
+my_list = my_string.split(", ")
+# Result: ['apple', 'banana', 'cherry', 'date']
+```
+
+Splits the string at line breaks and returns a list:
+```py
+my_string = "Thank you for the music\nWelcome to the jungle"
+lines_list = my_string.splitlines()
+# Result: ['Thank you for the music', 'Welcome to the jungle']
+```
 
 
 ## Format a string
@@ -187,3 +191,21 @@ str = "Python String"
 new_str = 'J' + str[1:]
 print(new_str)
 ```
+
+
+## String methods
+
+```py
+a = " Hello, World!"
+b = a.lower()
+c = a.upper()
+d = a.strip()
+
+# replace
+e = a.replace("H", "J")
+```
+
+- `endswith`: Returns true if the string ends with the specified value
+- `find`: Searches the string for a specified value and returns the position of where it was found
+- `isalnum`: Returns True if all characters in the string are alphanumeric
+- `isdigit`: Returns True if all characters in the string are digits
