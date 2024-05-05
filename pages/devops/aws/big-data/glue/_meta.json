@@ -1,0 +1,7 @@
+{
+  "components": "Components",
+  "permission": "Permission",
+  "schema-conv": "Schema Conversion",
+  "tables": "AWS Glue tables",
+  "crawlers": "Crawlers"
+}
