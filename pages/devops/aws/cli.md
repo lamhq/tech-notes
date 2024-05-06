@@ -19,17 +19,18 @@
 You can set credentials for AWS CLI by set up these environment variables:
 
 ```shell
-export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-export AWS_SECRET_ACCESS_KEY=wJalrXUtn...
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
-### Update profile credentials 
+### Update profile config 
 
 Open the file `~/.aws/credentials`, add the credentials for default profile:
 
-``` filename="~/.aws/credentials"
+``` filename="~/.aws/config"
 [default]
-aws_access_key_id=...
+aws_access_key_id=
 aws_secret_access_key=...
+region=us-east-1
 ```

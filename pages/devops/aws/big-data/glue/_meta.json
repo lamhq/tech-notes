@@ -2,6 +2,9 @@
   "components": "Components",
   "permission": "Permission",
   "schema-conv": "Schema Conversion",
-  "tables": "AWS Glue tables",
-  "crawlers": "Crawlers"
+  "tables": "Tables",
+  "crawlers": "Crawlers",
+  "jobs": "Jobs",
+  "scripts": "Job Scripts",
+  "int-sessions": "Interactive sessions"
 }

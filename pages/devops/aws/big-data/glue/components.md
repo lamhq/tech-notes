@@ -22,6 +22,8 @@ Data can be stored onto:
 - Redshift
 - any other JDBC connection
 
+Output files formats: JSON, CSV, ORC (Optimized Row Columnar), Apache Parquet, and Apache Avro.
+
 A data store is a repository for persistently storing your data.
 
 A data source is a data store that is used as input to a process or transform.
@@ -62,15 +64,22 @@ A table is metadata representation of a collection of structured or semi-structu
 
 The business logic that is required to perform ETL work.
 
-It is composed of a transformation script, data sources, and data targets.
+It is composed of a **transformation script**, data sources, and data targets.
 
-Job runs are initiated by triggers that can be scheduled or triggered by events.
+Job runs are initiated by triggers that can be scheduled or triggered by events, or on demand.
+
+You can monitor job runs to understand runtime metrics such as completion status, duration, and start time.
+
+Three types of jobs:
+- A **Spark** job is run in an Apache Spark environment managed by AWS Glue. It processes data in batches.
+- A **streaming ETL** job is similar to a Spark job, except that it performs ETL on data streams. It uses the Apache Spark Structured Streaming framework.
+- A **Python shell** job runs Python scripts as a shell. You can use these jobs to schedule and run tasks that don't require an Apache Spark environment.
 
 
 ## Script
 
 Code that extracts data from sources, transforms it, and loads it into targets.
 
-For example, a script might convert a CSV file into a relational form and save it in Amazon Redshift.
+*For example, a script might convert a CSV file into a relational form and save it in Amazon Redshift.*
 
-The script can be either Scalar or Python code. They can be either manually written or automatically generated (using the metadata in the Data Catalog).
+The script can be either Scalar or Python code. They can be either manually written or automatically generated.
