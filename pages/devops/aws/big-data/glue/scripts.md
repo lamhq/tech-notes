@@ -37,10 +37,17 @@ Docker image: `amazon/aws-glue-libs:glue_libs_4.0.0_image_01`.
 
 To set up docker for local development:
 
-1. Set up a profile for AWS CLI:
-    ```shell
-    aws configure
+1. Set up AWS credentials:
+    ```filename="~/.aws/config"
+    [default]
+    region = us-east-1
     ```
+    ```filename="~/.aws/credentials"
+    [default]
+    aws_access_key_id = 
+    aws_secret_access_key = 
+    ```
+
 2. Pull the image:
     ```shell
     docker pull amazon/aws-glue-libs:glue_libs_4.0.0_image_01

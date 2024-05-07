@@ -51,3 +51,13 @@ conf.set('spark.authenticate', True)
 conf.set('spark.authenticate.secret', 'secret-key')
 sc = SparkContext(conf=conf)
 ```
+
+
+## Set log level
+
+```py
+from pyspark.context import SparkContext
+
+spark_context = SparkContext.getOrCreate()
+spark_context.setLogLevel("WARN")
+```

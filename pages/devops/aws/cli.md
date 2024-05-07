@@ -24,13 +24,29 @@ export AWS_SECRET_ACCESS_KEY=
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
-### Update profile config 
+### Update AWS config 
 
-Open the file `~/.aws/credentials`, add the credentials for default profile:
+Add the credentials for default profile to `~/.aws/credentials`:
+``` filename="~/.aws/credentials"
+[default]
+aws_access_key_id = 
+aws_secret_access_key = 
+```
 
+Update the `~/.aws/config` file:
 ``` filename="~/.aws/config"
 [default]
-aws_access_key_id=
-aws_secret_access_key=...
-region=us-east-1
+region = us-east-1
+```
+
+## Export credentials to terminal
+
+Use default profile:
+```shell
+eval $(aws configure export-credentials --format env)
+```
+
+Use a specific profile:
+```shell
+eval $(aws configure export-credentials --profile <profile_name> --format env)
 ```
