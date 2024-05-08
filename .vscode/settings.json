@@ -15,6 +15,5 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
-    "markdown.styles": ["preview.css"],
-    "markdown-mermaid.darkModeTheme": "default"
+    "markdown.styles": ["preview.css"]
 }
