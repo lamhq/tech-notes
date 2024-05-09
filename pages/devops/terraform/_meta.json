@@ -1,20 +1,7 @@
 {
-  "installation": "Installation",
-  "configuration": "Configuration",
-  "providers": "Providers",
-  "resources": "Resources",
-  "data-source": "Data Sources",
-  "input-vars": "Input Variables",
-  "local-val": "Local Values",
-  "output-val": "Output Values",
-  "modules": "Modules",
-  "expressions": "Expressions",
-  "functions": "Built-in Functions",
-  "backend": "Backend Configuration",
-  "state": "State",
-  "workspaces": "Workspaces",
-  "cloud": "Terraform Cloud",
+  "language": "Language",
   "tips": "Tips",
   "commands": "Commands",
-  "aws": "AWS"
+  "cloud": "Terraform Cloud",
+  "snippets": "Snippets"
 }

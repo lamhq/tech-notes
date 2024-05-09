@@ -1,11 +1,6 @@
-# Installation
-
-If you use Poetry, skip this guide and proceed to [install Poetry](./pkg-mgm/poetry.md).
+# Installation (MacOS)
 
 We'll use Pyenv to easily install and switch between multiple versions of Python.
-
-
-## MacOS
 
 ### Install Pyenv
 
@@ -13,6 +8,12 @@ We'll use Pyenv to easily install and switch between multiple versions of Python
 brew update
 brew install pyenv
 ```
+
+For linux, use automatic installer:
+```shell
+curl https://pyenv.run | bash
+```
+
 
 ### Set up shell environment (zsh)
 
