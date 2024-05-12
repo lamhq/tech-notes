@@ -1,6 +1,5 @@
 {
   "components": "Components",
-  "permission": "Permission",
   "tables": "Tables",
   "crawlers": "Crawlers",
   "dpu": "Data Processing Units",
@@ -8,6 +7,8 @@
   "scripts": "Job Scripts",
   "triggers": "Triggers",
   "monitoring": "Monitoring",
+  "permission": "Permission",
   "bookmarks": "Job Bookmarks",
-  "int-sessions": "Interactive sessions"
+  "int-sessions": "Interactive sessions",
+  "data-shuffling": "Data Shuffling"
 }

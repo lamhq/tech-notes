@@ -2,7 +2,7 @@
   "dev": "Development",
   "layer": "Layer",
   "run": "Running functions",
-  "monitor": "Operations and Monitoring",
+  "monitoring": "Operations and Monitoring",
   "limits": "Limitations",
   "concurrent-exec": "Concurrent executions",
   "elb": "Elastic Load Balancing",
