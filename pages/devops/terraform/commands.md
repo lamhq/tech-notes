@@ -12,6 +12,11 @@ terraform version
 terraform -chdir=<path_to/tf> <subcommand>
 ```
 
+Example:
+```shell
+terraform -chdir="infra" apply -var-file="test.tfvars"
+```
+
 ## Initialize
 
 Initialize the directory:

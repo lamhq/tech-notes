@@ -26,6 +26,7 @@ brew uninstall <package_name>
 brew upgrade <package_name>
 ```
 
+
 ## Upgrade all packages
 
 ```shell
@@ -39,6 +40,10 @@ brew upgrade
 brew list
 ```
 
+List top-level packages:
+```shell
+brew leaves | xargs brew desc --eval-all
+```
 
 ## List outdated packages
 

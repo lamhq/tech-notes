@@ -19,6 +19,7 @@ You are charged an hourly rate based on the number of Data Processing Units (or 
 
 No upfront costs, no charged for startup or shutdown time.
 
+
 ## Use cases
 
 ### Query data in S3

@@ -1,10 +1,13 @@
 {
   "components": "Components",
   "permission": "Permission",
-  "schema-conv": "Schema Conversion",
   "tables": "Tables",
   "crawlers": "Crawlers",
+  "dpu": "Data Processing Units",
   "jobs": "Jobs",
   "scripts": "Job Scripts",
+  "triggers": "Triggers",
+  "monitoring": "Monitoring",
+  "bookmarks": "Job Bookmarks",
   "int-sessions": "Interactive sessions"
 }
