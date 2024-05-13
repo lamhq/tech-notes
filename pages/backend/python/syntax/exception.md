@@ -50,6 +50,22 @@ finally:
     print('Goodbye, world!')
 ```
 
+
+## Built-in Exceptions
+
+Predefined exceptions are instances of classes derived from `BaseException`.
+
+Some common built-in exceptions include:
+- `TypeError`: Raised when an operation is performed on an inappropriate data type.
+- `ValueError`: Raised when a function receives an argument of the correct type but an inappropriate value.
+- `IndexError`: Raised when an index is out of range for a sequence (e.g., list, tuple).
+- `KeyError`: Raised when a mapping (dictionary) key is not found in the set of existing keys.
+- `ZeroDivisionError`: Raised when dividing by zero.
+- `FileNotFoundError`: Raised when a file or directory is not found.
+
+You can find a comprehensive list of built-in exceptions in the [Python documentation](https://docs.python.org/3/library/exceptions.html).
+
+
 ## User-defined Exceptions
 
 ```py

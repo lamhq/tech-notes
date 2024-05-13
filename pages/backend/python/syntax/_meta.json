@@ -1,7 +1,8 @@
 {
-  "comments": "Comment",
   "variables": "Variables",
   "constants": "Constants",
+  "operators": "Operators",
+  "comments": "Comment",
   "branching": "Branching",
   "loop": "Loop",
   "functions": "Functions",
