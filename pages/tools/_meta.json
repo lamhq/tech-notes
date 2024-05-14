@@ -2,6 +2,7 @@
   "git": "Git",
   "vscode": "VS Code",
   "jupyter-notebook": "Jupyter Notebook",
-  "homebrew": "Homebrew",
-  "windows": "Windows"
+  "macos": "macOS",
+  "windows": "Windows",
+  "youtube": "YouTube"
 }
