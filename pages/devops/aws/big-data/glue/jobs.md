@@ -92,3 +92,8 @@ Common properties of a Spark job:
 - Continuous logging
 
 Check the full list of [job properties](https://docs.aws.amazon.com/glue/latest/dg/add-job.html#create-job).
+
+
+## Job's Lifecycle
+
+![](https://docs.aws.amazon.com/images/glue/latest/dg/images/job-state-diagram.png)

@@ -88,15 +88,25 @@ w3 = word[-6]   # 'P'
 
 ## Slicing
 
+Syntax:
 ```py
-# characters from position 0 (included) to 2 (excluded): 'Py'
-s1 = word[0:2]  
+str_var[start_index:end_index]
+```
 
-# character from the beginning to position 2 (excluded): 'Py'
-s2 = word[:2]   
+Get first 2 characters:
+```py
+word = 'Python'
+s1 = word[0:2]  # 'Py'
+```
 
-# characters from position 4 (included) to the end: 'on'
-s3 = word[4:]   
+Get 2 characters from the second character:
+```py
+s2 = word[1:3]  # 'yt'
+```
+
+Get last 3 characters:
+```py
+s3 = word[-3:]  # 'hon'
 ```
 
 

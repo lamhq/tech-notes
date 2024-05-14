@@ -13,6 +13,8 @@ Job bookmarks are implemented for:
 - the Relationalize transform
 - some Amazon S3 sources.
 
+You can't use job bookmarks with Python shell jobs.
+
 
 ## How it works
 
