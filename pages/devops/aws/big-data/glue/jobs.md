@@ -1,4 +1,4 @@
-## Working with Spark jobs
+# Working with Spark jobs
 
 ## AWS Glue version
 

@@ -1,0 +1,6 @@
+{
+  "ec2": "EC2",
+  "vpc": "VPC",
+  "lambda": "Lambda",
+  "iam": "IAM"
+}

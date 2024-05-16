@@ -11,6 +11,14 @@ You can automate your serverless application’s release process using AWS CodeP
 You can enable your Lambda function for tracing with AWS X-Ray.
 
 
+## Packaging lambda function
+
+Here's an example command to package the zip file for the lambda function in `src/functions` directory:
+```shell
+(cd src/functions/ && zip -r ../../function_code.zip .)
+```
+
+
 ## Function Dependencies
 
 If your Lambda function depends on external libraries such as AWS X-Ray SDK, database clients etc. you need to install the packages with the code and zip it all up.
