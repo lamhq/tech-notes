@@ -46,7 +46,7 @@ Rename column in the orginal dataframe:
 df.rename(columns= {'Book Value': 'BookValue'}, inplace=True)
 ```
 
-### Adding
+## Adding
 
 Append new column:
 ```py
@@ -57,6 +57,30 @@ Insert a new column:
 ```py
 # insert RoundedPrice as the second column in the DataFrame
 df.insert(1, 'RoundedPrice', df.Price.round())
+```
+
+## Deleting
+
+Remove a single column (in-place):
+```py
+del df['Book Value']
+```
+
+Remove sing column and return it as a series (in-place):
+```py
+popped = copy.pop('Sector')
+```
+
+Remove multiple columns (in-place):
+```py
+df.drop(['Sector'], axis=1, inplace=True)
+```
+
+Remove multiple columns and return modified dataframe:
+```py
+# return a new DataFrame without the Sector column
+# the original DataFrame object is not modified
+afterdrop = df.drop(['Sector'], axis=1)
 ```
 
 ## Re-ordering

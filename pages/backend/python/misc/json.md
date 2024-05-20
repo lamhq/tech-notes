@@ -24,5 +24,6 @@ x = json.loads('[1, 2, 3]')
 ## Load from file
 
 ```py
-x = json.load(f)
+with open('/path/to/file.json', 'r') as f:
+  x = json.load(f)
 ```

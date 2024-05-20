@@ -35,18 +35,27 @@ thisdict["year"] = 2018
 
 ## Loop Through a Dictionary
 
+Loop through all keys:
 ```py
-# loop through all keys
 for key in thisdict:
     print(key)
+```
 
-# loop through keys and values
+Loop through keys and values:
+```py
 knights = {'gallahad': 'the pure', 'robin': 'the brave'}
 for k, v in knights.items():
     print(k, v)
 ```
 
-## Check if a key exists in a dictionary
+
+## Get all keys
+```py
+d.keys()
+```
+
+
+## Check if a key exists
 
 ```py
 d = {"key1": 10, "key2": 23}

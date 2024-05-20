@@ -10,7 +10,7 @@
   },
   "devops": "DevOps",
   "backend": "Backend",
-  "data-engineering": "DE",
-  "software-engineering": "SE",
+  "data-engineering": "Data",
+  "software-engineering": "Software",
   "tools": "Tools"
 }

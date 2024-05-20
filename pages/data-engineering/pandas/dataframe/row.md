@@ -74,3 +74,27 @@ Filter rows by negative condition:
 selection = df.Price > 300
 price_less_than_300 = df[~selection]
 ```
+
+
+## Concatenating
+
+Concat rows in two dataframes and return a new one:
+```py
+pd.concat([df1, df2])
+```
+
+
+## Updating
+Append or replacing row by index:
+```py
+# create a new row with index label FOO
+# and assign some values to the columns via a list
+df.loc['FOO'] = ['the sector', 100, 110]
+```
+
+## Removing rows
+Remove rows by indexes:
+```py
+# drop rows with labels ABT and ACN (out-of-place)
+afterdrop = df.drop(['ABT', 'ACN'])
+```
