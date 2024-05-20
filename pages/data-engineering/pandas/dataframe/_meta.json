@@ -1,5 +1,6 @@
 {
   "column": "Column",
   "row": "Row",
-  "cell": "Cell"
+  "cell": "Cell",
+  "computation": "Computation"
 }

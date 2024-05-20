@@ -357,3 +357,23 @@ Change index's type:
 s2 = pd.Series([3, 4, 5], index=['0', '1', '2'])
 s2.index = s2.index.values.astype(int)
 ```
+
+
+## Statistics
+
+Counts of values:
+```py
+s = pd.Series(['a', 'a', 'b', 'c', np.NaN])
+# number of occurrences of each unique value
+s.count()
+```
+
+Unique values:
+```py
+s.unique()
+```
+
+Number of unique values (excluding NaN):
+```py
+s.nunique()
+```
