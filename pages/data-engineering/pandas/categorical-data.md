@@ -121,11 +121,11 @@ lmh_cat.value_counts()
 ```
 
 
-## Segment
+## Quantiling & labeling
 
 Assign categorial value base on numeric field.
 
-The below example assign grade to each student base on their scores:
+The below example devide student's scores in to quantiles and assign grade to each student base on quantiles:
 
 Create 10 student with random grades:
 ```py
@@ -144,9 +144,9 @@ letter_grades = ['F', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B',
                  'B+', 'A-', 'A', 'A+']
 ```
 
-Assign the letter grade to each student:
+Assign the grade to each student:
 ```py
-# cut based upon the bins and assign the letter grade
+# cut the scores based on bins and assign the letter grade
 letter_cats = pd.cut(scores.Grade, score_bins, labels=letter_grades)
 scores['Letter'] = letter_cats
 ```

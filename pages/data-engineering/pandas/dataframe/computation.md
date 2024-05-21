@@ -28,9 +28,14 @@ df.sub(a_col, axis=0)
 
 ## Statistics
 
-Get descriptive statistics:
+Get descriptive statistics of all columns:
 ```py
 df.describe()
+```
+
+Get descriptive statistics of one column:
+```py
+df['MSFT'].describe()
 ```
 
 ### Min, max
@@ -61,4 +66,47 @@ Get the top `n` largest values (numeric values only):
 ```py
 # get the 4 largest values
 df.nlargest(4, ['MSFT'])['MSFT']
+```
+
+
+### Mean, median, mode
+
+Get mean of each columns:
+```py
+df.mean()
+```
+
+Get mean of each row:
+```py
+df.mean(axis=1)
+```
+
+Get median of each columns:
+```py
+df.median()
+```
+
+
+### Variance, Standard Deviation
+Variance of each column:
+```py
+df.var()
+```
+
+Standard deviation:
+```py
+df.std()
+```
+
+
+## Covariance, Correlation
+
+Covariance of two columns:
+```py
+df.MSFT.cov(df.AAPL)
+```
+
+Correlation of two columns:
+```py
+df.MSFT.corr(df.AAPL)
 ```

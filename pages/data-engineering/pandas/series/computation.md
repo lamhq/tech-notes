@@ -111,6 +111,36 @@ Get the top `n` largest values:
 s.nlargest(4)
 ```
 
+
+### Mean, median, mode
+
+Mean:
+```py
+s.mean()
+```
+
+Median:
+```py
+s.median()
+```
+
+Mode:
+```py
+s.mode()
+```
+
+### Variance, Standard Deviation
+Variance:
+```py
+s.var()
+```
+
+Standard deviation:
+```py
+s.std()
+```
+
+
 ## Accumulations
 
 Accumulations are statistical methods that determine a value by continuously applying the calculation on the current value to the last result.
@@ -126,4 +156,27 @@ Cumulative sum:
 ```py
 # calculate a cumulative sum
 pd.Series([1, 2, 3, 4]).cumsum()
+```
+
+
+## Quantiling
+
+Quantiling is the process where values are divided into adjacent subgroups. Each subgroup is labeled with different names.
+
+Quantiling helps in categorizing values.
+
+The below example devide age values in to several groups:
+
+```py
+# generate 50 ages between 6 and 45
+np.random.seed(123456)
+ages = np.random.randint(6, 45, 50)
+
+# cut into ranges and then get descriptive stats
+ranges = [6, 12, 18, 35, 50]
+agebins = pd.cut(ages, ranges)
+
+# The resulting is a pandas Categorical variable. 
+# It consists of a set of labels and an index that describes how the data has been split.
+agebins.describe()
 ```
