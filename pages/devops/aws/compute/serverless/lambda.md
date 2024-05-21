@@ -87,7 +87,7 @@ AWS Lambda Power Turning also supports cross-Region invocations, and you can ena
 
 > For example, the following diagram shows results for two CPU-intensive functions, which become both cheaper and faster with more power.
 
-![](./images/power-tunning.png)
+![](./lambda/images/power-tunning.png)
 
 
 ## AWS Lambda Powertools

@@ -192,4 +192,4 @@ API Gateway is deployed and published to many different AWS Lambda functions tha
 
 This allows for API Gateway to front internal private services and interact with those services that live within things like a VPC and a private subnet.
 
-![](./images/api-gateway-diagram.png)
+![](./api-gateway/images/api-gateway-diagram.png)

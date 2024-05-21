@@ -1,4 +1,5 @@
 {
+  "api-gateway": "Amazon Api Gateway",
   "app-flow": { "title": "Amazon AppFlow" },
   "app-sync": { "title": "AWS AppSync" },
   "event-bridge": { "title": "Amazon EventBridge" },

@@ -1,7 +1,6 @@
 {
   "vpc": { "title": "Amazon VPC" },
   "elb": { "title": "Elastic Load Balancing" },
-  "api-gateway": { "title": "Amazon Api Gateway" },
   "cloudfront": { "title": "Amazon CloudFront" },
   "route53": { "title": "Amazon Route 53" },
   "global-acc": { "title": "AWS Global Accelerator" }
