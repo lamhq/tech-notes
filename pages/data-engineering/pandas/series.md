@@ -24,7 +24,7 @@ dtype: int64
 
 ## Labels
 
-By default, the values are labeled with their index number. First value has index 0.
+By default, the values are labeled with their index number. First value has index `0`.
 
 This label can be used to access a specified value.
 
@@ -285,47 +285,6 @@ dtype: float64
 ```
 
 
-## Calculating
-
-Calculation of two series is performed on items have the same labels.
-
-Two series to test:
-```py
-s1 = pd.Series([1, 2], index=['a', 'b'])
-s2 = pd.Series([3, 4], index=['a', 'b'])
-```
-
-Add two series:
-```py
-s1 + s2
-"""
-a    4
-b    6
-dtype: int64
-"""
-```
-
-Multiply a series with a number:
-```py
-s1 * 2
-"""
-a    2
-b    4
-dtype: int64
-"""
-```
-
-Multiply two series:
-```py
-s1 * s2
-"""
-a    3
-b    8
-dtype: int64
-"""
-```
-
-
 ## Re-indexing
 
 The series to test:
@@ -356,24 +315,4 @@ Change index's type:
 ```py
 s2 = pd.Series([3, 4, 5], index=['0', '1', '2'])
 s2.index = s2.index.values.astype(int)
-```
-
-
-## Statistics
-
-Counts of values:
-```py
-s = pd.Series(['a', 'a', 'b', 'c', np.NaN])
-# number of occurrences of each unique value
-s.count()
-```
-
-Unique values:
-```py
-s.unique()
-```
-
-Number of unique values (excluding NaN):
-```py
-s.nunique()
 ```

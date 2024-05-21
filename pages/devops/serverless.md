@@ -1,4 +1,4 @@
-# Serverless
+# Serverless Framework
 
 ## Version
 

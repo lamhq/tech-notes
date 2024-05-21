@@ -8,7 +8,7 @@ Multiply every values in a dataframe:
 df * 2
 ```
 
-Subtract first row from every row of the DataFrame:
+Subtract a row from every row of the DataFrame:
 ```py
 # get first row 
 s = df.iloc[0] 
@@ -23,4 +23,42 @@ Subtract a column from every column:
 a_col = df['A']
 # subtract the A column values from every column
 df.sub(a_col, axis=0)
+```
+
+
+## Statistics
+
+Get descriptive statistics:
+```py
+df.describe()
+```
+
+### Min, max
+Get minimum values of columns:
+```py
+# minimum values for both columns
+df[['MSFT', 'AAPL']].min()
+```
+
+Get maximum values of columns:
+```py
+# maximum values for both columns
+df[['MSFT', 'AAPL']].max()
+```
+
+Get location of the min values of columns:
+```py
+df[['MSFT', 'AAPL']].idxmin()
+```
+
+Get the top `n` smallest values:
+```py
+# get the 4 smallest values
+df.nsmallest(4, ['MSFT'])['MSFT']
+```
+
+Get the top `n` largest values (numeric values only):
+```py
+# get the 4 largest values
+df.nlargest(4, ['MSFT'])['MSFT']
 ```
