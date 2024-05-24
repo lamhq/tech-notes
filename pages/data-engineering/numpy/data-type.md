@@ -1,7 +1,8 @@
 # NumPy Data Types
 
-Below is a list of all data types in NumPy and the characters used to represent them.
+## Available NumPy types
 
+Below is a list of all data types in NumPy and the characters used to represent them:
 - `i` - integer
 - `b` - boolean
 - `u` - unsigned integer
@@ -13,6 +14,7 @@ Below is a list of all data types in NumPy and the characters used to represent 
 - `S` - string
 - `U` - unicode string
 - `V` - fixed chunk of memory for other type ( void )
+
 
 ## Checking the Data Type of an Array
 

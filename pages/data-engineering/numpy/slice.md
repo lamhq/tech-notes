@@ -1,17 +1,17 @@
-# NumPy Array Slicing
+# Slicing Array
 
-Slicing in python means taking elements from one given index to another given index.
+Slicing refers to extracting a portion of an array by specifying a range of indices.
 
-## Slicing syntax
+## 1-D Array
 
-```
+```py
 arr[start:end]
 arr[start:end:step]
 ```
 
-- If we don't pass start its considered 0
+- If we don't pass start its considered `0`
 - If we don't pass end its considered length of array in that dimension
-- If we don't pass step its considered 1
+- If we don't pass step its considered `1`
 - The result includes the start index, but excludes the end index.
 - Use the minus operator to refer to an index from the end
 
@@ -37,7 +37,7 @@ print(arr[-3:-1])
 ```
 
 
-## Slicing 2-D Arrays
+## 2-D Arrays
 
 ```py
 import numpy as np

@@ -1,6 +1,6 @@
-# NumPy Joining Array
+# Joining Arrays
 
-## Join two arrays
+## Join two 1-D arrays
 
 ```py
 import numpy as np

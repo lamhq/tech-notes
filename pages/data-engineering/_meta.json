@@ -1,6 +1,7 @@
 {
   "postgresql": "PostgreSQL",
   "pyspark": "PySpark",
-  "pandas": "pandas",
+  "numpy": "NumPy",
+  "pandas": "Pandas",
   "matlab": "MATLAB"
 }

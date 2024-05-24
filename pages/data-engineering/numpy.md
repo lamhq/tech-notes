@@ -1,4 +1,8 @@
-# NumPy Introduction
+# NumPy
+
+## Version
+
+This document is for NumPy version `1.26.4`.
 
 ## What is NumPy?
 
@@ -27,15 +31,16 @@ NumPy arrays are stored at one continuous place in memory unlike lists, so proce
 This is the main reason why NumPy is faster than lists. Also it is optimized to work with latest CPU architectures.
 
 
-## Installation of NumPy
+## Install NumPy
 
 ```shell
 pip install numpy
 ```
 
 
-## Import NumPy
+## Quick start
 
+Define a numpy array:
 ```py
 import numpy as np
 

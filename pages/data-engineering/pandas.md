@@ -4,6 +4,7 @@
 
 This document is for version `1.5.3`.
 
+
 ## What is Pandas?
 
 Pandas is a Python library used for working with data sets.
@@ -18,3 +19,10 @@ The name "Pandas" has a reference to both "Panel Data", and "Python Data Analysi
 Pandas allows us to analyze big data and make conclusions based on statistical theories.
 
 Pandas can clean messy data sets, and make them readable and relevant.
+
+
+## Reference
+
+The code for this document is from the book **Learning pandas, 2nd edition**.
+
+The example code and data is located at [Github](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition).

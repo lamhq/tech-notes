@@ -1,9 +1,6 @@
-# NumPy Array Copy vs View
+# Copying Array
 
-The main difference between a copy and a view of an array is that the **copy is a new array**, and the view is just a **view of the original array**.
-
-
-## COPY
+## Copy
 
 ```py
 import numpy as np
@@ -19,7 +16,9 @@ print(x)
 ```
 
 
-## VIEW
+## View
+
+The main difference between a copy and a view of an array is that the **copy is a new array**, and the view is just a **view of the original array**.
 
 ```py
 import numpy as np
@@ -34,10 +33,7 @@ print(x)
 # [42  2  3  4  5]
 ```
 
-
-## Check if Array Owns it's Data
-
-Every NumPy array has the attribute `base` that returns `None` if the array owns the data.
+To check if an array owns it's data, use the attribute `base` that returns `None` if the array owns the data.
 
 ```py
 import numpy as np

@@ -1,6 +1,6 @@
-# NumPy Array Iterating
+# Array Iterating
 
-## Iterating with `for` loop
+## Using `for` loop
 
 ```py
 import numpy as np
@@ -14,7 +14,7 @@ for x in arr:
 # 3
 ```
 
-
+2-D array:
 ```py
 import numpy as np
 
@@ -26,7 +26,7 @@ for x in arr:
 ```
 
 
-## Iterating Arrays Using `nditer()`
+## Using `nditer()`
 
 ```py
 import numpy as np
@@ -35,7 +35,6 @@ arr = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
 
 for x in np.nditer(arr):
   print(x)
-
 """
 1
 2
@@ -53,28 +52,32 @@ for x in np.nditer(arr):
 ```py
 import numpy as np
 
-arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+arr = np.array([[1, 2, 3, 4, 9], [5, 6, 7, 8, 0]])
 
+# arr[:, ::2] -> slicing operation on the array which selects all rows (:) 
+# and every other column starting from the first column (slicing with step 2)
 for x in np.nditer(arr[:, ::2]):
   print(x)
-
 """
 1
 3
+9
 5
-7  
+7
+0
 """
 ```
 
-## Enumerated Iteration Using `ndenumerate()`
+
+## Using `ndenumerate()`
 
 ```py
 import numpy as np
 
 arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 
-for idx, x in np.ndenumerate(arr):
-  print(idx, x)
+for idx, item in np.ndenumerate(arr):
+  print(idx, item)
 
 """
 (0, 0) 1

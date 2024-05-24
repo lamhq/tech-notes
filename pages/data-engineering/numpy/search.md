@@ -1,4 +1,4 @@
-# NumPy Searching Arrays
+# Searching Arrays
 
 ## Search by value
 

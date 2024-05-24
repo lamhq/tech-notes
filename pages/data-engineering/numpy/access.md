@@ -1,6 +1,6 @@
-# NumPy Array Indexing
+# Accessing Array Elements
 
-## Access Array Elements
+## 1-D Array
 
 The indexes in NumPy arrays start with 0
 
@@ -19,7 +19,7 @@ print(arr[-1])
 ```
 
 
-## Access 2-D Arrays
+## 2-D Arrays
 
 ```py
 import numpy as np
@@ -31,7 +31,7 @@ print('2nd element on 1st row: ', arr[0, 1])
 ```
 
 
-## Access 3-D Arrays
+## 3-D Arrays
 
 ```py
 import numpy as np

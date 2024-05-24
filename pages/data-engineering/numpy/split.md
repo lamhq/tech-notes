@@ -1,5 +1,6 @@
-# NumPy Splitting Array
+# Splitting Array
 
+# Split 1-D array into `n` arrays
 ```py
 import numpy as np
 

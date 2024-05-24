@@ -1,0 +1,12 @@
+{
+  "create": "Creating Arrays",
+  "data-type": "Data Types",
+  "access": "Accessing Array Elements",
+  "copy": "Copying Array",
+  "iterate": "Array Iterating",
+  "join": "Joining Arrays",
+  "search": "Searching Aharrays",
+  "slice": "Slicing Array",
+  "split": "Splitting Array",
+  "shape": "Array Shape"
+}
