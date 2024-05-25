@@ -1,5 +1,6 @@
 {
-  "rest-api": "REST",
+  "language": "Programming Languages",
+  "rest-api": "REST API",
   "graphql": "GraphQL",
   "python": "Python",
   "fastapi": "FastAPI",

@@ -7,8 +7,9 @@
   "performance": "Performance",
   "file-io": "File IO",
   "file-system": "File System Operations",
-  "cli": "CLI",
+  "cli-api": "CLI API",
   "excel": "Excel",
   "table-extraction": "Table Extraction",
-  "web-scraping": "Web Scraping"
+  "web-scraping": "Web Scraping",
+  "interpreter": "Python Interpreter"
 }

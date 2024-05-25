@@ -1,4 +1,6 @@
 {
+  "ipython": "IPython",
+  "introspection": "Introspection",
   "magic-command": "Magic commands",
   "jupytext": "Jupytext"
 }
