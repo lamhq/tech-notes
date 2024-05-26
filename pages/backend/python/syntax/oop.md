@@ -43,6 +43,15 @@ result = my_instance \
 ```
 
 
+## Accessing attributes
+
+Attributes and methods can also be accessed by name via the `getattr` function:
+```py
+a = "foo"
+getattr(a, "split")
+```
+
+
 ## Inheritance
 
 ```py

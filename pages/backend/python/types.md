@@ -1,6 +1,12 @@
 # Types
 
-## Type conversion functions
+## Type categories
+
+- Scalar types: `None`, `str`, `bytes`, `float`, `bool`, `int`
+- Sequence types: `tuple`, `list`, `dictionary`
+
+
+## Type conversion
 
 - `int(str)` – convert a string to a number.
 - `float(str)` – convert a string to a floating-point number.
@@ -16,7 +22,7 @@ i = str(3.0)  # z will be '3.0'
 ```
 
 
-## Getting the type of a value
+## Getting type of a value
 
 To get the type of a value, you use the `type(value)` function
 
@@ -35,6 +41,14 @@ isinstance(val, float)
 ```
 
 
+## Check variables refer to the same object
+
+use the `is` keyword:
+```py
+a is b
+```
+
+
 ## Check if a value is `None`
 
 ```py
@@ -42,4 +56,29 @@ if foo is None:
     print('foo is None')
 else:
     print('foo is not None')
+```
+
+## Dynamic references
+
+A variable can refer to a different type of object simply by doing an assignment.
+
+There is no problem with the following:
+```py
+a = 5
+type(a)
+# int
+
+a = "foo"
+type(a)
+# str
+```
+
+
+## Strong types
+
+Every object has a specific type (or class), and implicit conversions will occur only in certain permitted circumstances (such as convert an interger to float)
+
+Implicit cast like this is not allowed:
+```py
+"5" + 5
 ```
