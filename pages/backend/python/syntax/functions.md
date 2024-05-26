@@ -82,7 +82,7 @@ my_function(fname = "Tobias", lname = "Refsnes")
 ```
 
 
-## Passing Arguments
+### Passing Arguments
 
 When calling function, if the parameters are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments, write the function call with the `*` operator to unpack the arguments out of a list or tuple.
 
@@ -102,19 +102,29 @@ parrot(**d)
 ```
 
 
-## Lambda Expressions
+## Returning values
 
-Small anonymous functions can be created with the `lambda` keyword. 
+To return multiple values from a function, return a tuple:
+```py
+def f(): 
+    a=5; b=6; c=7
+    return a, b, c 
 
-lambda functions can reference variables from the containing scope.
+a, b, c = f()
+```
+
+
+## Lambda Funtions
+
+A way of writing functions consisting of a single statement.
+
+Lambda functions can reference variables from the containing scope.
 
 ```py
-def make_incrementor(n):
-    return lambda x: x + n
-
-f = make_incrementor(42)
-f(0)    # 42
-f(1)    # 43
+strings = ["foo", "card", "bar", "aaaa", "abab"]
+strings.sort(key=lambda x: len(set(x)))
+strings
+# ['aaaa', 'foo', 'abab', 'bar', 'card']
 ```
 
 
@@ -149,4 +159,21 @@ def initlog(*args):
 
 class MyEmptyClass:
     pass
+```
+
+
+## Namespaces, Scope, and Local Functions
+
+Variable scope in Python is named *namespace*.
+
+Functions can access variables created inside the function as well as those outside the function in higher scopes. 
+
+Any variables that are assigned within a function by default are assigned to the *local namespace*. After the function is finished, the local namespace is destroyed.
+
+To assign variables outside of the function’s scope, use `global` or `nonlocal` keywords.
+```py
+a = None
+def my_fn():
+    global a
+    a = []
 ```

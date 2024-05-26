@@ -10,5 +10,6 @@
   "exception": "Exception",
   "oop": "OOP",
   "async": "Asynchronous Programming",
-  "context-manager": "Context Managers"
+  "context-manager": "Context Managers",
+  "iterators": "Iterators and Generators"
 }

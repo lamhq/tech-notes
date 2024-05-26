@@ -1,7 +1,7 @@
 {
   "installation": "Installation",
-  "syntax": "Syntax",
   "types": "Types",
+  "syntax": "Syntax",
   "pkg-mgm": "Package Management",
   "code-std": "Code standard",
   "debugging": "Debugging",
