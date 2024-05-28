@@ -14,10 +14,7 @@ Different types of servers:
 
 Serverless is a cloud computing execution model in which the cloud provider allocates machine resources on demand.
 
-No provisioning and managing of hardware or underlying infrastructure.
-
-No managing of operating systems, security patching, or the runtime environment
-
-User simply write the code and cloud provider do the rest.
-
-Automatically scales as required and only pay for what you use.
+- No provisioning and managing of hardware or underlying infrastructure.
+- No managing of operating systems, security patching, or the runtime environment
+- User simply write the code and cloud provider do the rest.
+- Automatically scales as required and only pay for what you use.

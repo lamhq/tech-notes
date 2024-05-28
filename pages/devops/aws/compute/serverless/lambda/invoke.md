@@ -1,39 +1,39 @@
-# Running Lambda function
+# Invoking Lambda Function
 
-## Invoking Lambda Function
+## Invocation models
 
-You can invoke Lambda functions directly with the Lambda console, the Lambda API, the AWS SDK, the AWS CLI, and AWS toolkits.
+The different ways a function can be called:
 
-You can also configure other AWS services to invoke your function, or you can configure Lambda to read from a stream or queue and invoke your function.
+### Synchronous invoke
 
-When you invoke a function, you can choose to invoke it synchronously or asynchronously.
+The calling code pauses and waits until a Lambda function returns a result.
+- The calling application makes a request to the Lambda service to execute a function
+- AWS Lambda will route this request to an available data center,
+where a function will be initialized and then executed.
+- The response will then be rooted back
+to the calling application
 
-### Synchronous invocation
+### Asynchronous invoke
+- The calling application makes a request to the Lambda service to execute a function
+- The service will queue this request and then return an immediate response
+and the application can continue
+- Lambda will then run each queued execution against a function.
+The response can then be rooted to an output service (SNS topic, SQS Queue,
+EventBridge bus, another Lambda function).
 
-You wait for the function to process the event and return a response.
+### Event Source Mappings
+Lambda service will handle mapping events
+from a source to the functions.
+- An event source is configured in the Lambda service
+- The Lambda service will poll the source on your behalf:  
+  - Read events from the sources
+  - Perform batching of the events together
+  - Filter events based on your configuration
+  - Initialize functions as required and invoke them with the events as an input.
+- Response of these executions can then be rooted
+to an output service (SNS topic, SQS Queue, ...)
 
-### Asynchronous invocation
-
-You don’t wait for a response from the function code. Lambda places the event in a queue and returns a success response without additional information.
-
-Lambda handles retries and can send invocation records to a destination.
-
-
-## Event source mappings
-
-Lambda is an event-driven compute service where AWS Lambda runs code in response to events.
-
-You can use event source mappings to process items from a stream or queue in services that don’t invoke Lambda functions directly.
-
-An event source mapping uses permissions in the function’s execution role to read and manage items in the event source.
-
-Permissions, event structure, settings, and polling behavior vary by event source.
-
-The configuration of the event source mapping for stream-based services (DynamoDB, Kinesis), and Amazon SQS, is made on the Lambda side.
-
-### Supported event sources
-
-Supported AWS event sources include:
+Supported AWS event sources:
 - Amazon S3.
 - Amazon DynamoDB.
 - Amazon Kinesis Data Streams.

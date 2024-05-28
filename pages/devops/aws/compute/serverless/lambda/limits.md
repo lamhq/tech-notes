@@ -9,6 +9,7 @@
 - 128 MB - 10 GB memory allocation
 - Can run for up to 900 seconds (15 minutes). For anything longer, use ECS, Batch or EC2.
 
+
 ## Deployments and Configuration
 
 - Compressed deployment package (`.zip`) size must be ≤ 50 MB

@@ -1,7 +1,7 @@
 {
   "dev": "Development",
-  "layer": "Layer",
-  "run": "Running functions",
+  "layer": "Lambda Layer",
+  "invoke": "Invoking Lambda Function",
   "monitoring": "Operations and Monitoring",
   "limits": "Limitations",
   "concurrent-exec": "Concurrent executions",

@@ -2,28 +2,20 @@
 
 ## Overview
 
-AWS Lambda lets you run code without provisioning or managing servers.
+AWS Lambda lets you run code without provisioning or managing servers. Your application runs on servers that are managed by AWS.
 
-Lambda-based applications are composed of functions triggered by events.
+You upload the function code in many supported programming languages. AWS Lambda then runs function code in response to events.
 
-With serverless computing, your application still runs on servers, but all the server management is done by AWS.
+You can also set the required performance,
+concurrency limits, link directly to event sources,
+...
 
-Lambda functions:
-- Consist of code and any associated dependencies.
-- Configuration information is associated with the function.
-- You specify the configuration information when you create the function.
-- API provided for updating configuration data.
+Lambda isn't supposed to be a long running process.
 
-Use cases: web backends, IoT backends, mobile backends, data processing, ...
+Lambda is an example of Function-as-a-Service.
 
-You specify the amount of memory you need allocated to your Lambda functions. AWS Lambda allocates CPU power proportional to the memory you specify using the same ratio as a general purpose EC2 instance type.
-
-Lambda assumes an IAM role when it executes the function.
-
-Lambda also integrates with X-Ray for debugging:
-- Can trace Lambda with X-Ray.
-- Need to enable in the Lambda configuration and it will run the X-Ray daemon.
-- Use AWS SDK in your code.
+No upfront or monthly subscription costs for a standard function. You'll simply pay per request as well as pay
+based on the duration of the code execution.
 
 
 ## Use cases
@@ -49,15 +41,20 @@ Scheduled events can be configured to run code on a scheduled basis through the 
 
 ## How Lambda Works
 
-![](https://blog.vsoftconsulting.com/hubfs/AWS%20Lambda%20working.png)
+### Lambda Function
 
-1. You upload your code to Lambda. 
-1. You set your code to trigger from an event source, such as AWS services, mobile applications, or HTTP endpoints.
-1. Lambda runs your code only when triggered.
-1. You pay only for the compute time that you use. 
+The Lambda Function is the definition that will be initialized and called by the Lambda service, including:
+- The function code
+- Configuration of how to execute it: RAM, CPU, permissions, ...
+
+### Lambda Service
+
+The Lambda service handles:
+- initializing and calling Lambda functions
+- inputs and outputs
 
 
-## Configuration
+## Function Configuration
 
 - **Runtime**: You'll need to pick from an available runtime or bring your own. This is the environment your code will run in.
 - **Permissions**: If your Lambda function needs to make an AWS API call, you'll need to attach a role.
