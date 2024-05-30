@@ -3,5 +3,7 @@
   "cpu": "CPU",
   "timeout": "Timeout",
   "networking": "Networking",
-  "storage": "Storage"
+  "storage": "Storage",
+  "env-var": "Environment Variables",
+  "roles": "Roles"
 }

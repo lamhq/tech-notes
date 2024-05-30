@@ -26,3 +26,18 @@ to an Amazon SSNS topic named `MyTopic`:
   ]
 }
 ```
+
+
+## Resource-Based Policies
+
+Resource-based policy is what others are allowed to do to the function.
+
+It grants usage permissions for either invocation or management
+
+It can grant access to AWS accounts, organizations, and other services
+
+Resource-based policies are applied to a function, version, alias, or layer version
+
+Example: Allow API Gateway to invoke a function to process requests
+
+Is configured under the **Permission** section, **Resource-based policy statements**.

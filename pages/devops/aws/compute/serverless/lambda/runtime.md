@@ -37,7 +37,7 @@ At around 60 days before deprecation, AWS will send emails to any customer using
 
 ## Runtime Modifications
 
-### Environment variables
+### Using Environment variables
 
 Some environment variables can be configured for certain runtimes.
 
@@ -52,7 +52,7 @@ to display a full trace for each warning.
 that injects custom functionality into .NET Lambda function.
 
 
-### Wrapper Script
+### Using Wrapper Script
 
 A Wrapper Script in Lambda lets you execute custom logic before the runtime starts by configuring it to run prior to the **native runtime**, along with the original arguments.
 
