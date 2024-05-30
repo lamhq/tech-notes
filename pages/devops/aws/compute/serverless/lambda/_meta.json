@@ -1,11 +1,12 @@
 {
+  "invoke": "Invoking Lambda Function",
+  "runtime": "Runtime",
+  "processor": "Processors",
   "dev": "Development",
   "layer": "Lambda Layer",
-  "invoke": "Invoking Lambda Function",
   "monitoring": "Operations and Monitoring",
-  "limits": "Limitations",
+  "limitations": "Limitations",
   "concurrent-exec": "Concurrent executions",
-  "elb": "Elastic Load Balancing",
-  "vpc": "Amazon VPC",
-  "pricing": "Pricing"
+  "integration": "Integration",
+  "vpc": "Amazon VPC"
 }

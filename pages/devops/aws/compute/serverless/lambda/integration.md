@@ -1,15 +1,15 @@
-# Elastic Load Balancing
+# Integration with other AWS services
 
-## Overview
+## Elastic Load Balancing
 
 Application Load Balancers (ALBs) support AWS Lambda functions as targets.
 
 When the load balancer forwards the request to a target group with a Lambda function as a target, it invokes your Lambda function and passes the content of the request to the Lambda function, in JSON format.
 
-If you create the target group and register the Lambda function using the AWS Management Console, the console adds the required permissions to your Lambda function policy on your behalf. Otherwise, you must grant Elastic Load Balancing permission to invoke your Lambda function.
+You must grant Elastic Load Balancing permission to invoke your Lambda function.
 
 
-## Limits
+### Limitations
 
 - The Lambda function and target group must be in the same account and in the same Region.
 - The maximum size of the request body that you can send to a Lambda function is 1 MB.
@@ -17,7 +17,7 @@ If you create the target group and register the Lambda function using the AWS Ma
 - WebSockets are not supported. Upgrade requests are rejected with an HTTP 400 code.
 
 
-## Health check
+### Health check
 
 You can enable health checks to implement DNS failover with Amazon Route 53. 
 

@@ -66,3 +66,25 @@ A qualified ARN has a version suffix.
 An unqualified ARN does not have a version suffix.
 
 You cannot create an alias from an unqualified ARN.
+
+
+## Development Best Practices
+
+Perform one-off time-consuming tasks outside of the function handler, e.g.:
+- Connect to databases.
+- Initialize the AWS SDK.
+- Pull in dependencies or datasets.
+
+Use environment variables for:
+- Connection strings, S3 bucket etc.
+- Passwords and other sensitive data (can be encrypted with KMS).
+
+Minimize deployment packages size to runtime necessities:
+- Break down the function if required.
+- Remember the Lambda limits.
+
+Cache static assets locally in the` /tmp` directory.
+
+Avoid using recursive code.
+
+Don’t put you Lambda function in a VPC unless you need to (can take longer to initialize).
