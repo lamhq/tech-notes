@@ -86,7 +86,7 @@ Workflow:
 1. An invocation request hits the Lambda Service to execute a function.
 2. The Lambda Service load the function package and run the bootstrap executable.
 3. The initialization tasks within the runtime starts a process loop
-4. The process loop call a Runtime API to get the invocation request, pass it to the handler code that process the event, then return response/errors to the Runtime API
+4. The process loop call a Runtime API to get the invocation request, pass it to the **handler** code that process the event, then return response/errors to the Runtime API
 5. The Lambda Service return the result to the application or configured destination
 6. The process loop continues
 

@@ -130,14 +130,15 @@ and make it much easier to maintain and debug your application.
 
 The Lambda Function is the definition that will be initialized and called by the Lambda service, including:
 - The function code
-- Configuration of how to execute it: RAM, CPU, permissions, ...
+- Configuration of how to execute the code: RAM, CPU, permissions, ...
 
 ### Lambda Service
 
-The Lambda service handles:
-- initializing and calling Lambda functions
-- inputs and outputs
+The Lambda service:
+- Initializing and calling Lambda functions
+- Handling inputs and outputs
 
+It sits between the world and your code.
 
 ## Function Configuration
 

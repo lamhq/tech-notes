@@ -1,5 +1,6 @@
 {
   "invoke": "Invoking Lambda Function",
+  "handler": "Lambda Handler",
   "runtime": "Runtime",
   "processor": "Processors",
   "dev": "Development",
