@@ -1,5 +1,5 @@
 {
-  "infra": { "title": "Infrastructure" },
+  "infrastructure": { "title": "AWS Global Infrastructure" },
   "compute": { "title": "Compute" },
   "database": { "title": "Database" },
   "dev-tools": { "title": "Developer Tools" },

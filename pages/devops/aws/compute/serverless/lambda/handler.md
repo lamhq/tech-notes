@@ -8,7 +8,7 @@ in your code responsible for processing events.
 When the Lambda service invokes your function
 it calls the handler to process the incoming event.
 
-![](images/handler.png)
+![](./images/handler.png)
 
 A handler in JavaScript:
 ```js

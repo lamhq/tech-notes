@@ -1,13 +1,13 @@
 {
-  "invoke": "Invoking Lambda Function",
-  "handler": "Lambda Handler",
+  "invoke": "Invoking",
+  "handler": "Handler",
   "runtime": "Runtime",
   "processor": "Processors",
+  "configuration": "Configuration",
   "dev": "Development",
   "layer": "Lambda Layer",
   "monitoring": "Operations and Monitoring",
   "limitations": "Limitations",
   "concurrent-exec": "Concurrent executions",
-  "integration": "Integration",
-  "vpc": "Amazon VPC"
+  "integration": "Integration"
 }

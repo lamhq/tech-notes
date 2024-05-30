@@ -1,4 +1,4 @@
-# AWS Global Infrastructure
+# AWS Infrastructure
 
 ## Regions
 
@@ -6,9 +6,7 @@ A Region is a physical location in the world that consists of two or more Availa
 
 Example: `us-east-1`, `ap-northeast-1`, ...
 
-
-Choose the Right AWS Region:
-
+To choose the right AWS Region:
 - **Latency**: choose a Region that is close to your user base.
 - **Price**: prices may vary from one Region to another.
 - **Service availability**: Some services may not be available in some Regions.

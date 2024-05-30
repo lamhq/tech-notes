@@ -1,5 +1,7 @@
 {
   "solutions": "Cloud Solutions",
   "serverless": "Serverless",
-  "ha": "High Availability"
+  "availability": "Availability",
+  "ha": "High Availability",
+  "disaster-recovery": "Disaster Recovery"
 }

@@ -5,12 +5,11 @@
 A subnet is a section of a VPC that can contain resources (such as Amazon EC2 instances)
 
 When you create a subnet, you need to choose three settings.
-
 - The  VPC you want your subnet to live in.
 - The Availability  Zone you want your subnet to live in.
 - A CIDR  block for your subnet, which must be a subset of the VPC CIDR block.
 
-In a VPC, subnets can communicate with each other.
+Resources in subnets within a VPC can communicate with each other.
 
 
 ## Address Ranges
@@ -35,13 +34,19 @@ Availability Zones are connected with low latency, high throughput, and highly r
 
 Subnets can be public, private, or VPN-only.
 
-**Public subnets**:
+### Public subnets
 - `Auto-assign public IPv4 address` is set to `Yes`.
-- The subnet route table has an attached Internet Gateway.
+- Subnet with a route to Internet Gateway
+- Instances within the subnet can be accessible from the Internet
+- Typical use: frontend services (e.g. web server)
 
-**Private subnets**: contain resources that should be accessible only through your private network, such as a database.
+### Private subnets
+- Subnet with no route to Internet Gateway
+- Instances within the subnet can't be accessible from the Internet
+- A NAT device can be used to allow outbound connections to the Internet
+- Typical use: backend services (e.g. database server)
 
-**VPN-only subnet**:
+### VPN-only subnet
 - has traffic routed to a virtual private gateway for a VPN connection
 - doesn’t have a route to the internet gateway
 

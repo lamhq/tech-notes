@@ -23,7 +23,7 @@ Lambda is an example of Function-as-a-Service.
 
 - Intergrates with numerous AWS services, including S3, DynamoDB, EventBridge, SQS/SNS, Kinesis.
 - Bult-in monitoring. Logging and monitoring using CloudWatch.
-- Memory requirement can be set up to **10,240 MB**. CPU scales with memory.
+- Memory requirement can be set up to **10,240 MB**.
 - Support popular programming languages: Python, Golang, Java, Node.js, ...
 
 
@@ -139,14 +139,6 @@ The Lambda service:
 - Handling inputs and outputs
 
 It sits between the world and your code.
-
-## Function Configuration
-
-- **Runtime**: You'll need to pick from an available runtime or bring your own. This is the environment your code will run in.
-- **Permissions**: If your Lambda function needs to make an AWS API call, you'll need to attach a role.
-- **Networking**: Optionally define the VPC, subnet, and security groups your functions are a part of. If you don't specify networking configurations, your Lambda functions run in an AWS owned VPC with internet access in place.
-- **Resources**: Define the amount of available memory allocated to your function. CPU scales with memory.
-- **Trigger**: Things can kick off Lambda functions. Common triggers: S3, Kinesis, and EventBridge
 
 
 ## Traffic Shifting

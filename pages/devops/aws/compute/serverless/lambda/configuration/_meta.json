@@ -1,0 +1,7 @@
+{
+  "memory": "Memory",
+  "cpu": "CPU",
+  "timeout": "Timeout",
+  "networking": "Networking",
+  "storage": "Storage"
+}

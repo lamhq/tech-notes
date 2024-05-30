@@ -63,4 +63,4 @@ The compute environment can reference the object and the bucket using the job co
 
 Once complete, the Batch service can run a batch write item command to store the processed data in a DynamoDB table.
 
-![](./images/batch-arch.png)
+![](./aws-batch/images/batch-arch.png)

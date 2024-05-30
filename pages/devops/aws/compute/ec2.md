@@ -49,6 +49,15 @@ Instance user data is available at: http://169.254.169.254/latest/user-data.
 > The IP address `169.254.169.254` is a link-local address and is valid only from the instance.
 
 
+## Instance Profiles
+
+An instance profile is a container for an IAM role that you can attach to an EC2 instance when the instance starts.
+
+An instance profile can contain only one IAM role, although a role can be included in multiple instance profiles.
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/iam-instance-profiles.jpeg)
+
+
 ## Metadata
 
 Instance metadata is data about your instance that you can use to configure or manage the running instance.

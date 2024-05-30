@@ -76,7 +76,9 @@ All rules are evaluated until a permit is encountered or continues until the imp
 
 There is an implicit deny rule at the end of the security group.
 
-Security groups are stateful: Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+Security groups are stateful:
+- Responses to allowed inbound traffic are allowed to flow out, regardless of outbound rules.
+- Outbound and inbound ports may be different
 
 Your VPC includes a default security group. You can't delete this group, however, you can change the group's rules.
 

@@ -1,14 +1,13 @@
 # Runtime
 
+## Overview
 A runtime is an execution environment that provides the necessary resources for your Lambda function to execute successfully.
 
-When a request is sent to the Lambda Service,
-it creates a runtime instance
-which contains your Lambda function.
+When a request is sent to the Lambda Service, it creates a runtime instance which contains your Lambda function.
 
-The runtime is responsible
-for passing the **Event**
-and **Context Objects** to your function.
+The runtime acts as an interface between your function code and the Lambda service, interpreting and executing your code whenever the function is triggered.
+
+The runtime is responsible for passing the **Event** and **Context Objects** to your function.
 
 The runtime includes:
 - Programming language: Node.js, Python, Java, .NET, Go, and Ruby
@@ -90,4 +89,4 @@ Workflow:
 5. The Lambda Service return the result to the application or configured destination
 6. The process loop continues
 
-![](images/custom-runtime.png)
+![](./images/custom-runtime.png)

@@ -2,21 +2,20 @@
 
 ## Overview
 
-Amazon VPC lets you provision a logically isolated section of the AWS cloud where you can launch AWS resources in a virtual network that you define.
-
 A VPC is an isolated network you create in the AWS cloud, similar to a traditional network in a data center.
 
 You have complete control of virtual network, including your own IP address range, subnets, route tables, and network gateways.
 
-When you create a VPC, you need to choose three main things:
-
-- the name of your VPC.
-- a Region for your VPC to live in. A VPC can span multiple AZ within that Region.
+Required information when creating a VPC:
+- VPC's name.
+- a Region for your VPC to live in. 
 - a IP range for your VPC in CIDR notation.
 
 ![](https://d2908q01vomqb2.cloudfront.net/77de68daecd823babbb58edb1c8e14d7106e83bb/2021/06/15/VPC-Network-Engineers-Part-1-1.png)
 
 When we creat a VPC, it's going to create a route table, a network ACL, a router, a security group.
+
+A VPC can and should be spread over multiple AZ within a Region. This is achieved by creating subnets that exist in an AZ.
 
 A VPC can only have one internet gateway attached.
 

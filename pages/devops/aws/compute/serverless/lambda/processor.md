@@ -20,7 +20,7 @@ Your Lambda will likely run fine with the x86 instruction set.
 
 Typically used in devices such as phones, tablets, newer M1 MacBooks.
 
-Can achieve better performance for certain workloads, more power efficient.
+Can achieve better performance for certain workloads, more power efficient for certain types of workloads.
 
 Could have compatibility issues.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-An IAM Policy is a JSON document that defines permissions.
+An IAM Policy is a JSON document that defines permissions and resource access.
 
 A policy has no effect until attached.
 

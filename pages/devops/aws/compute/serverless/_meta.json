@@ -1,5 +1,5 @@
 {
-  "lambda": { "title": "AWS Lambda" },
-  "app-repo": { "title": "AWS Serverless Application Repository" },
-  "sam": { "title": "AWS Serverless Application Model" }
+  "lambda": "AWS Lambda",
+  "app-repo": "AWS Serverless Application Repository",
+  "sam": "AWS Serverless Application Model"
 }

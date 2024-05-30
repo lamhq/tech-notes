@@ -56,9 +56,9 @@ Example: `arn:aws:iam::123456789012:user/ryan`:
 - resource: `ryan`
 
 
-## IAM User
+## User
 
-An IAM user is an entity that represents a person or service.
+An IAM user is an individual with unique credentials for interacting with AWS.
 
 Can be assigned:
 - An access key ID and secret access key for programmatic access to the AWS API, CLI, SDK, and other development tools.
@@ -75,9 +75,9 @@ You can have up to 5000 users per AWS account.
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-3.jpg)
 
 
-## IAM Group
+## Group
 
-An IAM group is a collection of users.
+An IAM group is a collection of users for easier management.
 
 All users in the group inherit the permissions assigned to the group.
 
@@ -86,7 +86,7 @@ A group is not an identity and cannot be identified as a principal in an IAM pol
 You cannot nest groups (groups within groups).
 
 
-## IAM Role
+## Role
 
 An IAM role is a **temporary identity** that can be assumed by users or services to **delegate access**.
 
@@ -112,15 +112,6 @@ Role Delegation:
 - A permissions policy must also be attached to the user in the trusted account.
 
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-5.jpg)
-
-
-## Instance Profiles
-
-An instance profile is a container for an IAM role that you can use to pass role information to an EC2 instance when the instance starts.
-
-An instance profile can contain only one IAM role, although a role can be included in multiple instance profiles.
-
-![](https://digitalcloud.training/wp-content/uploads/2022/01/iam-instance-profiles.jpeg)
 
 
 ## IAM Federation

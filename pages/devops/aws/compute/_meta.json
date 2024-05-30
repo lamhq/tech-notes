@@ -1,10 +1,9 @@
 {
-  "ec2": { "title": "EC2" },
-  "ec2-auto-scaling": { "title": "EC2 Auto Scaling" },
-  "aws-batch": { "title": "AWS Batch" },
-  "beanstalk": { "title": "Elastic Beanstalk" },
-  "wavelength": { "title": "AWS Wavelength" },
-  "container": { "title": "Container" },
-  "serverless": { "title": "Serverless" },
-  "disaster-recovery": { "title": "Disaster Recovery Strategies" }
+  "ec2": "EC2",
+  "ec2-auto-scaling": "EC2 Auto Scaling",
+  "aws-batch": "AWS Batch",
+  "beanstalk": "Elastic Beanstalk",
+  "wavelength": "AWS Wavelength",
+  "container": "Container",
+  "serverless": "Serverless"
 }
