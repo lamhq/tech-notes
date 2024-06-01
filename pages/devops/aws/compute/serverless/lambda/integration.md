@@ -4,9 +4,14 @@
 
 Application Load Balancers (ALBs) support AWS Lambda functions as targets.
 
+The Load Balancer send the request to Lambda as a JSON event with request details and body. It expects a JSON response, which contain status code, headers, and body.
+
 When the load balancer forwards the request to a target group with a Lambda function as a target, it invokes your Lambda function and passes the content of the request to the Lambda function, in JSON format.
 
-You must grant Elastic Load Balancing permission to invoke your Lambda function.
+To configure the Load Balancer:
+- create a target group per function
+- add a rule to send requests to the target group
+- grant Elastic Load Balancing permission to invoke your Lambda function.
 
 
 ### Limitations
@@ -22,3 +27,58 @@ You must grant Elastic Load Balancing permission to invoke your Lambda function.
 You can enable health checks to implement DNS failover with Amazon Route 53. 
 
 The Lambda function can check the health of a downstream service before responding to the health check request.
+
+
+## API Gateway
+
+API Gateway is a serverless managed API service.
+
+Support request validation, custom domain name, caching options, throttling...
+
+Lambda can be integrated into API gateway in two ways:
+
+### Proxy integration
+
+Simple integration method.
+
+Directly routes requests to a Lambda function.
+
+API gateway automatically manages input and output transformation.
+
+Simplifies the initial API Gateway setup, including debugging.
+
+AWS-recommended integration type.
+
+### Custom integration
+
+Can be more complex to set up and debug.
+
+Provide more control over the request and response behavior in API gateway.
+
+Configuration is done with mapping templates, can be reused across different endpoints.
+
+
+## Amazon SQS
+
+We can set up Event Source Mappings for Polling SQS queue and process items with Lambda.
+
+Initially, the event source mapping read up to 5 batches from the queue, making 5 concurrent invocations of the function.
+
+Then, **the number of processes reading batches** increases by up to 60 instances a minute, this can go up to 1000.
+
+If a queue is filling up really quickly, it can take a little while for Lambda to scale up to process all the items.
+
+A maximum concurrency can be configured per event source, which can be useful if downstream systems could get overwhelmed.
+
+Examples:
+- Batch size of 10 means initially 5 batches of 10 each for an item concurrency of 50.
+- Batch size of 200 will mean an item concurrency of 1000 initially.
+
+### Batch size considering
+
+Larger batch likely means slower functions.
+
+It can actually be quicker to have smaller batches and run five batches sequentially many times versus having a few large batches in parallel.
+
+Yhe best advice is to try different batch sizes
+for your specific use case.

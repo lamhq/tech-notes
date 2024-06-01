@@ -9,7 +9,7 @@ You bring your code, and the provider builds everything for you, deploys your ap
 
 ## What Does Elastic Beanstalk Do?
 
-Elastic Beanstalk is your main stop for everything PaS in AWS. Let your developers worry about development!
+Elastic Beanstalk is your main stop for everything PaaS in AWS. Let your developers worry about development!
 
 It is meant to deploys and scales your web applications, including the web application server platform.
 

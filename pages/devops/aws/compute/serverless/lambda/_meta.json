@@ -9,5 +9,7 @@
   "monitoring": "Operations and Monitoring",
   "limitations": "Limitations",
   "concurrent-exec": "Concurrent executions",
-  "integration": "Integration"
+  "integration": "Integration",
+  "deployment": "Deployment",
+  "optimization": "Optimization"
 }
