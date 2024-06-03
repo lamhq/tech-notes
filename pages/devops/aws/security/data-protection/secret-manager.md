@@ -8,9 +8,9 @@ Secrets are retrieved via API calls.
 
 Encryption in transit and at rest using KMS.
 
-Automatically rotates credentials (rotates immediately after enabled).
+Automatically rotates credentials. Rotation happens immediately after enabled.
 
-Apply fine-grained access control using IAM policies.
+Uses IAM permissions to control access.
 
 Costs money but is highly scalable.
 

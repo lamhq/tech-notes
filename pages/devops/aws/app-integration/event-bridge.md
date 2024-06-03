@@ -2,17 +2,22 @@
 
 ## Overview
 
-EventBridge is a **event bus** service (an extension of **CloudWatch Events**) that you can use to connect your applications with data from various sources. 
+EventBridge is a **event bus** service that you can use to connect your applications with data from various sources. 
+
+It's an extension of **CloudWatch Events**.
 
 Allows you to **pass events from a source to an endpoint**.
 
-Has limited throughput at launch, can be increased on request. 
+It has a typical latency of about half a second.
 
-Has a typical latency of about half a second.
+It has limited throughput at launch, can be increased on request. 
 
 It's the only event-based service that integrates directly with third-party SaaS AWS Partners.
 
 It's the fastest way to respond to things happening in your environment.
+
+
+## Features
 
 Automatically ingests events from over 90 AWS services.
 
@@ -20,24 +25,38 @@ Can be used to schedule automated actions that self-trigger at certain times usi
 
 Can match events and route them to one or more target functions or streams.
 
+Support event transformation 
+
+Support archive/replay and error handling/retry built in.
+
 
 ## Use cases
 
-Recommended for applications that react to events from SaaS applications or AWS services.
+Applications that react to events from SaaS applications or AWS services.
 
-Common use case is triggering Lambda functions when an AWS API call happens.
+Triggering Lambda functions when an AWS API call happens.
+
+EventBridge is used by most AWS systems, which will send events to the default event bus that is in all AWS accounts.
 
 
-## Targets
+## How it works
 
-Supports over 15 AWS services as targets:
+- Events are published to an event bus
+- Rules are run on the events to find targets
+- A target is a resource or endpoint that events are sent to
 
-- AWS Lambda functions.
+
+## Supported Targets
+
+- HTTP endpoints
+- Amazon SNS topics.
+- Amazon SQS queues.
 - Streams in Amazon Kinesis Data Streams.
 - Delivery streams in Amazon Kinesis Data Firehose.
+- AWS Lambda functions.
+- Step Functions state machines.
 - Amazon EC2 instances.
 - AWS Batch jobs.
-- Step Functions state machines.
 - Log groups in Amazon CloudWatch Logs.
 - Amazon ECS tasks.
 - Systems Manager Run Command.
@@ -45,8 +64,6 @@ Supports over 15 AWS services as targets:
 - Pipelines in CodePipeline.
 - CodeBuild projects.
 - Amazon Inspector assessment templates.
-- Amazon SNS topics.
-- Amazon SQS queues.
 
 
 ## Concepts

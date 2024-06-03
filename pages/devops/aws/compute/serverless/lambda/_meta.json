@@ -1,9 +1,11 @@
 {
-  "invoke": "Invoking",
+  "invoke": "Invoke",
   "handler": "Handler",
   "runtime": "Runtime",
   "processor": "Processors",
   "configuration": "Configuration",
+  "error-handling": "Error Handling",
+  "secrets": "Secrets Handling",
   "dev": "Development",
   "layer": "Lambda Layer",
   "monitoring": "Operations and Monitoring",

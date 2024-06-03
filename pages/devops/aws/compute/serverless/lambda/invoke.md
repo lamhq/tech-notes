@@ -79,6 +79,39 @@ Supported destinations:
 - EventBridge event buses
 
 
+### Destinations
+
+You can route asynchronous function results as an **execution record** to a destination resource without writing additional code.
+
+An execution record contains details about the request and response in JSON format, including:
+- version
+- timestamp
+- request context
+- request payload
+- response context
+- response payload.
+
+For each execution status such as **Success** or **Failure** you can choose one of four destinations:
+- SNS
+- SQS
+- EventBridge
+- another Lambda function
+
+Lambda can also be configured to route different execution results to different destinations.
+
+On-Success:
+- When a function is invoked successfully, Lambda routes the record to the destination resource for every successful invocation.
+- You can use this to monitor the health of your serverless applications via execution status or build workflows based on the invocation result.
+
+
+On-Failure:
+- Destinations gives you the ability to handle the Failure of function invocations along with their Success.
+- When a function invocation fails, such as when retries are exhausted or the event age has been exceeded (hitting its TTL),
+- Destinations routes the record to the destination resource for every failed invocation for further investigation or processing.
+- Destinations provide more useful capabilities than Dead Letter Queues (DLQs) by passing additional function execution information, including code exception stack traces, to more destination services.
+- Destinations and DLQs can be used together and at the same time although Destinations should be considered a more preferred solution.
+
+
 ### Integrations
 
 Services that use asynchronous invocation pattern:
@@ -92,7 +125,7 @@ and handle messages when they're published.
 when matching events go through an event bus.
 
 
-## Event Source Mappings
+### Event Source Mappings
 
 Event source mappings connect events from certain services to Lambda functions.
 
@@ -110,7 +143,7 @@ to an output service (SNS topic, SQS Queue, ...)
 
 ![](./images/esm.png)
 
-### Batching
+#### Batching
 
 Items from the source are sent to the function in a batch. This can be configured by:
 
@@ -126,7 +159,7 @@ Batching window:
 - Could optimize the processing quite a lot, to save on processing many small batches in a short space of time.
 
 
-### Filtering
+#### Filtering
 
 Filtering controls which records are sent to the
 Lambda function.
@@ -142,7 +175,7 @@ Supports null/empty/exists checks, equals, and/or/not, range and prefix checks.
 
 Rules are case-sensitive, numbers are treated like strings.
 
-### Sources
+#### Sources
 Supported AWS event sources:
 - Amazon S3.
 - Amazon DynamoDB (stream).
@@ -165,50 +198,3 @@ Supported AWS event sources:
 - Amazon CloudFront.
 - Amazon Kinesis Data Firehose.
 - Other Event Sources: Invoking a Lambda Function On Demand.
-
-
-## Success and Failure Destinations
-
-With Destinations, you can route asynchronous function results as an execution record to a destination resource without writing additional code.
-
-An execution record contains details about the request and response in JSON format including:
-- version
-- timestamp
-- request context
-- request payload
-- response context
-- response payload.
-
-For each execution status such as Success or Failure you can choose one of four destinations:
-- another Lambda function
-- SNS
-- SQS
-- EventBridge
-
-Lambda can also be configured to route different execution results to different destinations.
-
-On-Success:
-
-- When a function is invoked successfully, Lambda routes the record to the destination resource for every successful invocation.
-- You can use this to monitor the health of your serverless applications via execution status or build workflows based on the invocation result.
-
-
-On-Failure:
-- Destinations gives you the ability to handle the Failure of function invocations along with their Success.
-- When a function invocation fails, such as when retries are exhausted or the event age has been exceeded (hitting its TTL),
-- Destinations routes the record to the destination resource for every failed invocation for further investigation or processing.
-- Destinations provide more useful capabilities than Dead Letter Queues (DLQs) by passing additional function execution information, including code exception stack traces, to more destination services.
-- Destinations and DLQs can be used together and at the same time although Destinations should be considered a more preferred solution.
-
-
-## Dead Letter Queue (DLQ)
-
-A dead-letter queue saves discarded events for further processing. A dead-letter queue acts the same as an on-failure destination in that it is used when an event fails all processing attempts or expires without being processed.
-
-However, a dead-letter queue is part of a function’s version-specific configuration, so it is locked in when you publish a version.
-
-On-failure destinations also support additional targets and include details about the function’s response in the invocation record.
-
-You can setup a DLQ by configuring the ‘DeadLetterConfig’ property when creating or updating your Lambda function.
-
-You can provide an SQS queue or an SNS topic as the ‘TargetArn’ for your DLQ, and AWS Lambda will write the event object invoking the Lambda function to this endpoint after the standard retry policy (2 additional retries on failure) is exhausted.

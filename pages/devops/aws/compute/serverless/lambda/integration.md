@@ -82,3 +82,16 @@ It can actually be quicker to have smaller batches and run five batches sequenti
 
 Yhe best advice is to try different batch sizes
 for your specific use case.
+
+
+## Amazon EventBridge
+
+EventBridge invokes Lambda using the asynchronous invocation method.
+
+The event that is sent to Lambda is from the event bus, but wrapped with some other metadata.
+
+EventBridge schedules offer cron job functionality for your AWS account
+
+If EventBridge fails to pass the event to the Lambda service, it will retry (default is 24 hours with a backing off strategy between each retry, up to 185 times).
+
+If the function fails, Lambda will retry twice before passing the failure to a dead letter queue or a failure destination.
