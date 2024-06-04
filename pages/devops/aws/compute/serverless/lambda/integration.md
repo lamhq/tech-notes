@@ -95,3 +95,17 @@ EventBridge schedules offer cron job functionality for your AWS account
 If EventBridge fails to pass the event to the Lambda service, it will retry (default is 24 hours with a backing off strategy between each retry, up to 185 times).
 
 If the function fails, Lambda will retry twice before passing the failure to a dead letter queue or a failure destination.
+
+
+## Amazon RDS
+
+Three main ways to connect to a RDS database from a Lambda function:
+
+Using stored credentials: which is securely kept in Secrets Manager.
+
+[IAM database authentication](https://aws.amazon.com/blogs/database/iam-role-based-authentication-to-amazon-aurora-from-serverless-applications/):
+- No passwords needed, generated auth token can be used instead
+- Downsides: connection throttling possible when high connections per second rates are seen
+
+[RDS proxy](https://aws.amazon.com/blogs/compute/using-amazon-rds-proxy-with-aws-lambda/):
+- Manages connection pooling, especially useful for many Lambdas with many connections

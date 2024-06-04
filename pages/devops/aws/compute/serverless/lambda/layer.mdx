@@ -2,47 +2,70 @@
 
 ## Overview
 
-A layer is a ZIP archive that contains libraries, a custom runtime, or other dependencies.
+A layer is a ZIP archive that contains code, or data, that can be linked to Lambda functions.
 
-With layers, you can use libraries in your function without needing to include them in your deployment package.
+On invocation, the layer will be extracted into the `/opt` directory in the function execution environment. Each runtime (Node,js, Python, ...) looks for libraries in a different location under `/opt`, depending on the language.
+
+Using a layer should have little impact to invocation time, only deployment time.
 
 A function can use up to **5** layers at a time.
 
 The total unzipped size of the function and all layers cannot exceed **250 MB**.
 
-Layers are extracted to the `/opt` directory in the function execution environment.
-
-Each runtime (Node,js, Python, ...) looks for libraries in a different location under `/opt`, depending on the language.
-
 ![](https://docs.aws.amazon.com/images/lambda/latest/dg/images/lambda-layers-diagram.png)
 
 
-## Using layer
+## Benefits
 
-Steps for creating and using layers:
-
-1. Package your layer content in to zip file.
-2. Create the layer in Lambda.
-3. Add the layer to your function(s).
+- Reduce size of function deployment packages
+- Speed up code deployments
+- Easy sharing of common functionality, libraries, or data
 
 
 ## Layer versions
 
-A **layer version** is an immutable snapshot of a layer.
+A layer is a series of immutable versions.
+
+Any update to a layer creates a new version.
 
 New layers start at version number 1.
-
-Updates to the layer result in an incremented version number and new layer version.
 
 Each version has a unique ARN.
 
 You must specify the exact version ARN when adding a layer to a function.
 
+Versions can be deleted.
 
-## Sample applications
+
+## Sample codes
 
 - [Node.js](https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-nodejs)
 - [Python](https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/blank-python)
+
+
+## Public layers
+
+There are many layers created and published publicly that you can use.
+
+### AWS Parameters and Secrets Lambda extension
+
+AWS created.
+
+Can be used for accessing Secrets manager and Parameters store
+with a built-in cache.
+
+
+### Lambda Powertools
+
+AWS created.
+
+Adds many different utilities such as tracing, validation, logging, and much more.
+
+### Lambda Insights
+
+AWS created.
+
+Collects system level metrics for utilizing in CloudWatch.
 
 
 ## Packaging your layer
@@ -51,7 +74,7 @@ Bundle all of your layer content into a `.zip` file archive
 
 Your layer content must be able to compile and build in a **Linux environment**.
 
-Here's an example of installing python packages in **linux/amd64** architecture using docker:
+Here's a docker command that installs python packages for **linux/amd64** architecture:
 ```shell showLineNumbers
 docker run \
   --platform linux/amd64 \
@@ -68,11 +91,6 @@ docker run \
 - (5): mount the pip cache, to avoid downloading all dependencies each time
 - (6): make the installed files and any new cache entries are owned by your user, not root
 - (7): image for **python 3.11** using amd64 architecture
-
-
-## Creating a layer
-
-To create a layer, you can either upload the `.zip` file archive from your local machine or from Amazon S3.
 
 
 ## Accessing layer content

@@ -6,12 +6,14 @@
   "configuration": "Configuration",
   "error-handling": "Error Handling",
   "secrets": "Secrets Handling",
-  "dev": "Development",
+  "lifecycle": "Lifecycle",
+  "concurrency": "Concurrency",
+  "integration": "Integration",
   "layer": "Lambda Layer",
+  "cost": "Cost",
+  "dev": "Development",
   "monitoring": "Operations and Monitoring",
   "limitations": "Limitations",
-  "concurrent-exec": "Concurrent executions",
-  "integration": "Integration",
   "deployment": "Deployment",
   "optimization": "Optimization"
 }
