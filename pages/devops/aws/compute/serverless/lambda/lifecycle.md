@@ -91,11 +91,14 @@ To make the most of warm starts, getting as much work done as possible in the in
 - Load external libraries.
 - open databaso connections
 - Load configuration and secrets.
-- Use the ephemeral storage, such as a local cache for files.
+- Use the ephemeral storage (`/tmp` directory) as a local cache for files, static assets.
+- initialize SDK clients and database connections outside of the function handler
 
 Reduce package size: Less dependencies and smaller, more targeted functions can help.
 
 Always use local scoped variables unless this is desired behavior (caching global values such as configuration).
+
+Don't use the execution environment to store user data, events, or other information with security implications.
 
 Careful of using anything scoped outside of the handler.
 

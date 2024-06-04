@@ -84,6 +84,8 @@ Track cost at an account level: Use billing alarms, set up budgets, and try Cost
 
 ## Optimize cost
 
+### Guide
+
 Choose an appropriate **memory configuration** to minimize duration. More doesn't always mean faster, and less doesn't always mean cheaper.
 
 AWS **Lambda Power Tuning** can be used to test different configurations.
@@ -102,9 +104,7 @@ If using **event source mappings**:
 - Test different batch sizes. Balance it with concurrency limits and acceptable processing times
 - Use filtering to avoid needless invocations.
 
-*It's probably not a good idea to run a function
-with a batch of one item if another few will arrive
-in a couple of seconds*
+*It's probably not a good idea to run a function with a batch of one item if another few will arrive in a couple of seconds*
 
 Use keep-alives on **persistent connections** and consider RDS proxy for databases.
 
@@ -116,5 +116,26 @@ Try **SnapStart** if initialization is slow. It may even be able to replace prov
 
 Set up **concurrency limits** to ensure they don't ramp up too high.
 
-Use **Compute Savings Plans** for applications that have fairly
-consistent invocation traffic.
+Use **Compute Savings Plans** for applications that have fairly consistent invocation traffic.
+
+
+### AWS Lambda Power Tuning
+
+AWS Lambda Power Tuning is an open-source tool that helps find the most optimal memory and CPU allocation for your lambda functions.
+
+It runs in your own AWS account, and it supports three optimization strategies: cost, speed, and balanced.
+
+To work with AWS Lambda Power Turning, you provide a Lambda function Amazon Resource Name (ARN) as input. It then invokes that function with multiple power configurations. Then, it analyzes all the execution logs and suggests the best power configuration to minimize cost or maximize performance.
+
+AWS Lambda Power Turning also supports cross-Region invocations, and you can enable parallel execution to generate results in a few seconds.
+
+> For example, the following diagram shows results for two CPU-intensive functions, which become both cheaper and faster with more power.
+
+![](./images/power-tunning.png)
+
+
+### AWS Lambda Powertools
+
+AWS Lambda Powertools helps you optimize your Lambda functions and use best practices. 
+
+It's a suite of utilities for AWS Lambda functions that is designed to make it easier to adopt best practices such as tracing, structured logging, custom metrics, idempotency, batching, and more. 
