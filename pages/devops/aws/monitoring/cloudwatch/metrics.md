@@ -1,18 +1,18 @@
-# Metrics
+# Cloudwatch Metrics
 
 ## Overview
 
 A metric represents a time-ordered set of data points that are published to CloudWatch.
 
-AWS services send metrics to CloudWatch.
-
-You can also send your own custom metrics to CloudWatch.
+Many AWS services send metrics to CloudWatch (free). You can also send your own custom metrics to CloudWatch (not free).
 
 Metrics exist within a region.
 
 Metrics cannot be deleted but automatically expire after 15 months.
 
-Metrics are uniquely defined by a name, a namespace, and zero or more dimensions.
+Metrics can be either at standard or high resolution.
+
+Metrics are identified by name, namespace, and dimensions.
 
 A dimension is a name/value pair that is part of the metric's identity. You can use dimensions to filter the results that CloudWatch returns.
 

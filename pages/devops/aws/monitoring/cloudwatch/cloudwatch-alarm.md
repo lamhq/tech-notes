@@ -2,14 +2,11 @@
 
 ## Overview
 
-You can use an alarm to automatically initiate actions on your behalf.
+A feature of CloudWatch that watches metrics and goes into an alarm state when certain thresholds or expressions are met.
 
-An alarm watches a single metric over a specified time period, and performs one or more specified actions, based on the value of the metric relative to a threshold over time.
+An alarm can watch a single metric (or multiple metrics) over a specified time period, and performs one or more specified actions, based on the value of the metric relative to a threshold over time.
 
-Actions can be:
-- an Amazon EC2 action
-- an Auto Scaling action
-- a notification sent to Amazon SNS.
+An alarm can send SNS notifications, which can alert via email/messages as well as automatically trigger custom code. Amazon EventBridge events are also sent.
 
 You can add alarms to dashboards.
 

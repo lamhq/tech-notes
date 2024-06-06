@@ -14,6 +14,5 @@
   "dev": "Development",
   "monitoring": "Operations and Monitoring",
   "limitations": "Limitations",
-  "deployment": "Deployment",
-  "optimization": "Optimization"
+  "deployment": "Deployment"
 }
