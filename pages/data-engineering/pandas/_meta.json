@@ -2,6 +2,8 @@
   "installation": "Installation",
   "series": "Series",
   "dataframe": "Dataframe",
+  "computation": "Computation",
+  "tidying-data": "Tidying Data",
   "categorical-data": "Categorical Data",
   "visualization": "Visualization"
 }

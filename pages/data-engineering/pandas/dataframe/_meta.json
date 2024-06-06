@@ -2,6 +2,5 @@
   "loading-data": "Loading Data",
   "column": "Column",
   "row": "Row",
-  "cell": "Cell",
-  "computation": "Computation"
+  "cell": "Cell"
 }

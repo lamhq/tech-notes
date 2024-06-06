@@ -48,7 +48,8 @@ Create from a dictionary:
 ```python
 calories = {"day1": 420, "day2": 380, "day3": 390}
 myvar = pd.Series(calories, index = ["day1", "day2"])
-print(myvar)
+
+myvar
 """
 day1    420
 day2    380
@@ -59,6 +60,7 @@ dtype: int64
 Create using NumPy functions:
 ```python
 import numpy as np
+
 pd.Series(np.arange(4, 9))
 """
 0    4
@@ -71,8 +73,9 @@ dtype: int64
 ```
 
 
-## `.index` and `.values` properties
+## Series's properties
 
+`.index` and `.values` properties:
 ```python
 import pandas as pd
 import numpy as np
@@ -86,8 +89,7 @@ print(s.index)
 ```
 
 
-## `size` and `shape` properties
-
+`size` and `shape` properties:
 ```python
 import pandas as pd
 s = pd.Series([0, 1, 2, 3])
@@ -243,7 +245,7 @@ Return total value of items whose values < 3:
 ```
 
 
-## Modifying
+## Modifying Item
 
 The series to test:
 ```py
@@ -257,7 +259,7 @@ dtype: float64
 """
 ```
 
-Modify the value by lable `'d'`:
+Modify the value by label `'d'`:
 ```py
 s['d'] = -100
 ```
@@ -281,6 +283,51 @@ a      0.469112
 b    111.000000
 c     -1.509059
 dtype: float64
+"""
+```
+
+
+## Replacing values
+
+Replace values in a Series with a new value:
+```py
+s = pd.Series([4, 5, 6, 8, 8])
+s.replace(8, 5)
+"""
+0    4
+1    5
+2    6
+3    5
+4    5
+dtype: int64
+"""
+```
+
+Replaces multiple values from a list to new list:
+```py
+s.replace([5, 8], [4, 1])
+"""
+0    4
+1    4
+2    6
+3    1
+4    1
+dtype: int64
+"""
+```
+
+## Mapping values
+
+Map values from a Series to a new Series using a dict, non mapped values result to `NaN`:
+```py
+x = pd.Series({"one": 1, "two": 2, "three": 3})
+m = {1: "a", 2: "b", 3: "c"}
+x.map(m)
+"""
+one      a
+two      b
+three    c
+dtype: object
 """
 ```
 
