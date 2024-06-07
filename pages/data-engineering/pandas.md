@@ -34,6 +34,18 @@ Clean and prepare data before analysis:
 - Save DataFrames to different file formats.
 
 
+## Installation
+```sh
+pip install pandas
+```
+
+```python
+import pandas as pd
+
+print(pd.__version__)
+```
+
+
 ## Reference
 
 The code for this document is from the book **Learning pandas, 2nd edition**.

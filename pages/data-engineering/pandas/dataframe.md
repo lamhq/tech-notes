@@ -1,4 +1,4 @@
-# Dataframe
+# DataFrame
 
 ## Overview
 
@@ -7,7 +7,7 @@ A pandas DataFrame is a two-dimensional, size-mutable, tabular data structure in
 Each column of a data frame is a pandas `Series`.
 
 
-## Creating
+## Creating DataFrame
 
 Create an empty dataframe:
 ```py
@@ -22,7 +22,7 @@ df = pd.DataFrame({
 })
 ```
 
-Setting row index when creating dataframe:
+Specify index when creating:
 ```py
 df = pd.DataFrame({
   "calories": [420, 380, 390],
@@ -39,7 +39,7 @@ data = [{'col_1': 3, 'col_2': 'a'},
 pd.DataFrame.from_records(data)
 ```
 
-From pandas series:
+From pandas Series of columns:
 ```py
 dates = pd.date_range('2016-04-01', '2016-04-06')
 temps1 = pd.Series([80, 82, 85, 90, 83, 87], index = dates)
@@ -50,130 +50,95 @@ df = pd.DataFrame({
 })
 ```
 
-From CSV file:
+
+## Dataframe Information
+
 ```py
-# read in the data and print the first five rows
-# use the Symbol column as the index, and 
-# only read in columns in positions 0, 2, 3, 7
-df = pd.read_csv("data/df.csv", index_col='Symbol', usecols=[0, 2, 3, 7])
+df = pd.DataFrame({
+  "calories": [420, 380, 390],
+  "duration": [50, 40, 45]
+})
+```
+
+Get shape:
+```py
+df.shape
+# (3, 2) -> 3 rows, 2 columns
+```
+
+Get column list:
+```py
+df.columns
+```
+
+Get number of values:
+```py
+df.size
+# 6 -> 6 items in both rows and columns
+```
+
+Get number of rows:
+```py
+len(df)
 ```
 
 
-## Viewing
+## Viewing Data
 
+Print the first 5 rows of the DataFrame:
 ```py
-# printing the first 5 rows of the DataFrame
 df.head()
+```
 
-# Print the last 5 rows of the DataFrame
+Print the last 5 rows of the DataFrame
+```py
 df.tail()
+```
 
-# Print information about the data
+Print information about the data:
+```
 df.info()
+"""
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3 entries, 0 to 2
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype
+---  ------    --------------  -----
+ 0   calories  3 non-null      int64
+ 1   duration  3 non-null      int64
+dtypes: int64(2)
+memory usage: 176.0 bytes
+"""
 ```
 
 
-## Copying
+## Copying DataFrame
 
 ```py
 df_copy = df.copy()
 ```
 
-## Sorting
+
+## Concatenating
+
+Concat rows in two dataframes and return a new one:
+```py
+pd.concat([df1, df2])
+```
+
+
+## Sorting DataFrame
 
 ```py
 df.sort_values(by=['Letter'], ascending=False)
 ```
 
 
-## Looping
+## Looping through DataFrame
 
 Loop through each rows in a dataframe:
 
 ```py
 for index, row in df.iterrows():
   print(row['c1'], row['c2'])
-```
-
-
-## Replacing Values
-
-Replace values in multiple columns:
-```py
-df = pd.DataFrame({'a': [0, 1, 2, 3, 4], 'b': [5, 6, 7, 8, 9]})
-
-# replace value 1 in column a with value 100
-# replace value 8 in column b with value 100
-df.replace({'a': 1, 'b': 8}, 100)
-"""
-	a   b
-0	0   5
-1	100	6
-2	2   7
-3	3   100
-4	4   9
-"""
-
-# replace value 1 in column a with value 3
-# replace value 8 in column b with value 4
-df.replace({'a': 1, 'b': 8}, {'a': 3, 'b': 4})
-"""
-	a   b
-0	0   5
-1	3 	6
-2	2   7
-3	3   4
-4	4   9
-"""
-```
-
-
-## Transforming values
-
-```py
-df = pd.DataFrame(
-  np.arange(12).reshape(4, 3), 
-  columns=['a', 'b', 'c'])
-"""
-	a	b   c
-0	0	1   2
-1	3	4   5
-2	6	7   8
-3	9	10  11
-```
-
-Apply a function on each column:
-```py
-df.apply(lambda col: col.sum())
-"""
-a    18
-b    22
-c    26
-dtype: int64
-"""
-```
-
-Apply a function on each row:
-```py
-df.apply(lambda row: row.sum(), axis=1)
-"""
-0     3
-1    12
-2    21
-3    30
-dtype: int64
-"""
-```
-
-Add new column with value computed from other columns:
-```py
-df['d'] = df.apply(lambda r: r.a * r.b, axis=1)
-df
-"""
-  a b   c   d
-0 0 1   2   0
-1 3 4   5   12
-2 6 7   8   42
-3 9 10  11	90
-"""
 ```

@@ -79,7 +79,7 @@ df['c'].dropna()
 ```
 
 
-## Handling missing data
+## Behavior
 
 For mathematical operations:
 - When a **NumPy function** encounters a `NaN` value, it returns `NaN`

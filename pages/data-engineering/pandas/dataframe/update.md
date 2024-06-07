@@ -1,36 +1,40 @@
-# Column Operations
+# Updating Data
 
-## Get column list
+## Column 
+
+### Replacing Values
+
+Replace values in multiple columns:
 ```py
-df.columns
+df = pd.DataFrame({'a': [0, 1, 2, 3, 4], 'b': [5, 6, 7, 8, 9]})
+
+# replace value 1 in column a with value 100
+# replace value 8 in column b with value 100
+df.replace({'a': 1, 'b': 8}, 100)
+"""
+	a   b
+0	0   5
+1	100	6
+2	2   7
+3	3   100
+4	4   9
+"""
+
+# replace value 1 in column a with value 3
+# replace value 8 in column b with value 4
+df.replace({'a': 1, 'b': 8}, {'a': 3, 'b': 4})
+"""
+	a   b
+0	0   5
+1	3 	6
+2	2   7
+3	3   4
+4	4   9
+"""
 ```
 
-## Column access
 
-Columns are pandas Series.
-
-Get a single column (return a pandas Series):
-```py
-df['Missoula']
-```
-
-Get multiple columns (return a new dataframe):
-```py
-df[['Philadelphia', 'Missoula']]
-```
-
-Get column using property syntax:
-```py
-df.Missoula.head()
-```
-
-Get column from sliced dataframe:
-```py
-# select column Price from rows with range indexes
-df.loc['2016-04-01':'2016-04-03', 'Price']
-```
-
-## Renaming
+### Renaming
 
 Return a new dataframe with column is renamed:
 ```py
@@ -46,7 +50,7 @@ Rename column in the orginal dataframe:
 df.rename(columns= {'Book Value': 'BookValue'}, inplace=True)
 ```
 
-## Adding
+### Adding
 
 Append new column:
 ```py
@@ -59,7 +63,7 @@ Insert a new column:
 df.insert(1, 'RoundedPrice', df.Price.round())
 ```
 
-## Deleting
+### Deleting
 
 Remove a single column (in-place):
 ```py
@@ -83,7 +87,7 @@ Remove multiple columns and return modified dataframe:
 afterdrop = df.drop(['Sector'], axis=1)
 ```
 
-## Re-ordering
+### Re-ordering
 
 ```py
 # method 1: define new column
@@ -104,4 +108,22 @@ df = pd.DataFrame(technologies)
 temp_cols=df.columns.tolist()
 new_cols=temp_cols[-1:] + temp_cols[:-1]
 df=df[new_cols]
+```
+
+
+## Row
+
+### Updating
+Append or replacing row by index:
+```py
+# create a new row with index label FOO
+# and assign some values to the columns via a list
+df.loc['FOO'] = ['the sector', 100, 110]
+```
+
+### Removing rows
+Remove rows by indexes:
+```py
+# drop rows with labels ABT and ACN (out-of-place)
+afterdrop = df.drop(['ABT', 'ACN'])
 ```

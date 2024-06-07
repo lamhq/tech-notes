@@ -1,9 +1,8 @@
 {
-  "installation": "Installation",
   "series": "Series",
-  "dataframe": "Dataframe",
-  "computation": "Computation",
+  "dataframe": "DataFrame",
   "tidying-data": "Tidying Data",
+  "computation": "Computation",
   "categorical-data": "Categorical Data",
   "visualization": "Visualization"
 }

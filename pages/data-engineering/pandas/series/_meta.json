@@ -1,3 +1,5 @@
 {
-  "computation": "Computation"
+  "access": "Accessing Data",
+  "update": "Updating Data",
+  "transform": "Transforming Data"
 }
