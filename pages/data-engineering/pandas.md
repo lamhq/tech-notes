@@ -11,6 +11,8 @@ Pandas is a Python library used for working with data sets.
 
 It has functions for analyzing, cleaning, exploring, and manipulating data.
 
+It makes data cleaning and analysis fast and convenient.
+
 
 ## Use case
 

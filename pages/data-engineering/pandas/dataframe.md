@@ -119,14 +119,6 @@ df_copy = df.copy()
 ```
 
 
-## Concatenating
-
-Concat rows in two dataframes and return a new one:
-```py
-pd.concat([df1, df2])
-```
-
-
 ## Sorting DataFrame
 
 ```py

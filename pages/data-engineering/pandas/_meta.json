@@ -1,8 +1,9 @@
 {
   "series": "Series",
   "dataframe": "DataFrame",
+  "numerial-ops": "Numerial Operations",
   "tidying-data": "Tidying Data",
-  "computation": "Computation",
+  "reshaping-data": "Reshaping Data",
   "categorical-data": "Categorical Data",
   "visualization": "Visualization"
 }

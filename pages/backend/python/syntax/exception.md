@@ -1,5 +1,4 @@
-# Error and Exception
-
+# Error and Exception Handling
 
 ## `try ... except` Statement
 
@@ -40,7 +39,7 @@ except Exception as inst:
     print('y =', y)
 ```
 
-The `try` statement has another optional clause which is intended to define clean-up actions that must be executed under all circumstances.
+The `try` statement has another optional clause `finally` which is intended to define clean-up actions that must be executed under all circumstances.
 
 ```py
 try:
