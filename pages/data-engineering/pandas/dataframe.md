@@ -94,3 +94,86 @@ Loop through each rows in a dataframe:
 for index, row in df.iterrows():
   print(row['c1'], row['c2'])
 ```
+
+
+## Replacing Values
+
+Replace values in multiple columns:
+```py
+df = pd.DataFrame({'a': [0, 1, 2, 3, 4], 'b': [5, 6, 7, 8, 9]})
+
+# replace value 1 in column a with value 100
+# replace value 8 in column b with value 100
+df.replace({'a': 1, 'b': 8}, 100)
+"""
+	a   b
+0	0   5
+1	100	6
+2	2   7
+3	3   100
+4	4   9
+"""
+
+# replace value 1 in column a with value 3
+# replace value 8 in column b with value 4
+df.replace({'a': 1, 'b': 8}, {'a': 3, 'b': 4})
+"""
+	a   b
+0	0   5
+1	3 	6
+2	2   7
+3	3   4
+4	4   9
+"""
+```
+
+
+## Transforming values
+
+```py
+df = pd.DataFrame(
+  np.arange(12).reshape(4, 3), 
+  columns=['a', 'b', 'c'])
+"""
+	a	b   c
+0	0	1   2
+1	3	4   5
+2	6	7   8
+3	9	10  11
+```
+
+Apply a function on each column:
+```py
+df.apply(lambda col: col.sum())
+"""
+a    18
+b    22
+c    26
+dtype: int64
+"""
+```
+
+Apply a function on each row:
+```py
+df.apply(lambda row: row.sum(), axis=1)
+"""
+0     3
+1    12
+2    21
+3    30
+dtype: int64
+"""
+```
+
+Add new column with value computed from other columns:
+```py
+df['d'] = df.apply(lambda r: r.a * r.b, axis=1)
+df
+"""
+  a b   c   d
+0 0 1   2   0
+1 3 4   5   12
+2 6 7   8   42
+3 9 10  11	90
+"""
+```

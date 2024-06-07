@@ -72,6 +72,12 @@ dtype: int64
 """
 ```
 
+Create a series with `n` elements:
+```py
+import numpy as np
+
+s = pd.Series([np.nan]*4, index=range(4))
+```
 
 ## Series's properties
 
@@ -303,7 +309,7 @@ dtype: int64
 """
 ```
 
-Replaces multiple values from a list to new list:
+Replaces values from a list with values in another list:
 ```py
 s.replace([5, 8], [4, 1])
 """
@@ -315,6 +321,21 @@ s.replace([5, 8], [4, 1])
 dtype: int64
 """
 ```
+
+Replace values using entries in a dict:
+```py
+s.replace({6: 2, 8: 3})
+"""
+0    4
+1    5
+2    2
+3    7
+4    3
+5    3
+dtype: int64
+"""
+```
+
 
 ## Mapping values
 
@@ -330,6 +351,22 @@ three    c
 dtype: object
 """
 ```
+
+## Transforming values
+Apply a function to every item of a Series:
+```py
+s = pd.Series(range(0, 5))
+s.apply(lambda v: v * 2)
+"""
+0    0
+1    2
+2    4
+3    6
+4    8
+dtype: int64
+"""
+```
+
 
 
 ## Re-indexing
