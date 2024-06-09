@@ -2,6 +2,7 @@
   "invoke": "Invoke",
   "handler": "Handler",
   "runtime": "Runtime",
+  "extension": "Extensions",
   "processor": "Processors",
   "configuration": "Configuration",
   "error-handling": "Error Handling",

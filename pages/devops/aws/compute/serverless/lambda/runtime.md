@@ -12,6 +12,7 @@ The runtime is responsible for passing the **Event** and **Context Objects** to 
 The runtime includes:
 - Programming language: Node.js, Python, Java, .NET, Go, and Ruby
 - Software libraries and frameworks that are commonly used with the programming language
+- The AWS SDK: major version is guaranteed, minor versions can change at any time.
 - Operating system: managed by AWS, which handles aspects such as updates and patches.
 
 

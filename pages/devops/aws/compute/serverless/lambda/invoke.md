@@ -143,6 +143,17 @@ to an output service (SNS topic, SQS Queue, ...)
 
 ![](./images/esm.png)
 
+
+#### Sources
+The following services use event source mappings to invoke Lambda functions:
+- Amazon DynamoDB
+- Amazon Kinesis
+- Amazon MQ
+- Amazon MSK
+- Amazon SQS
+- Amazon DocumentDB
+
+
 #### Batching
 
 Items from the source are sent to the function in a batch. This can be configured by:
@@ -174,27 +185,3 @@ If an event doesn't match the filter, it won't be sent to the function.
 Supports null/empty/exists checks, equals, and/or/not, range and prefix checks.
 
 Rules are case-sensitive, numbers are treated like strings.
-
-#### Sources
-Supported AWS event sources:
-- Amazon S3.
-- Amazon DynamoDB (stream).
-- Amazon Kinesis Data Streams.
-- Apache Kafka or Amazon MSK.
-- Amazon DocumentDB.
-- Amazon Simple Notification Service.
-- Amazon Simple Email Service.
-- Amazon Simple Queue Service.
-- Amazon Cognito.
-- AWS CloudFormation.
-- Amazon CloudWatch Logs.
-- Amazon CloudWatch Events.
-- AWS CodeCommit.
-- AWS Config.
-- Amazon Alexa.
-- Amazon Lex.
-- Amazon API Gateway.
-- AWS IoT Button.
-- Amazon CloudFront.
-- Amazon Kinesis Data Firehose.
-- Other Event Sources: Invoking a Lambda Function On Demand.

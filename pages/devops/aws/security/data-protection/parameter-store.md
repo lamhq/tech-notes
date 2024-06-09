@@ -11,7 +11,7 @@ Great place for distributed configuration values that may be accessed from many 
 Support several types:
 - `String`
 - `StringList`: comma-separated text, unencrypted
-- `SecureString`: encrypted text via AWS KMS
+- `SecureString`: encrypted text via AWS KMS, can be decrypted before being returned.
 
 Free at the standard tier. KMS product related incur cost.
 
