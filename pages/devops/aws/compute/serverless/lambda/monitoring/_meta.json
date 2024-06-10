@@ -1,0 +1,6 @@
+{
+  "logging": "Logging",
+  "tracing": "Tracing",
+  "metrics": "Metrics",
+  "lambda-insight": "Lambda Insight"
+}

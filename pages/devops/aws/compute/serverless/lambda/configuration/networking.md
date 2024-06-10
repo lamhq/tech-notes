@@ -30,6 +30,7 @@ Because this ENI is situated within the VPC, it can access other resources in th
 
 ![](../images/vpc.png)
 
+Note: for functions that don't need Internet, use VPC endpoints to access resources.
 
 ## Permissions
 

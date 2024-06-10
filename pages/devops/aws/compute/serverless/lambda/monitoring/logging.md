@@ -8,8 +8,6 @@ Default location: `/aws/lambda/{function-name}`
 
 This includes default logs from the runtime and any log output from the code.
 
-A function's execution role needs permissions to create CloudWatch groups, streams and to write log events. The `AWSLambdaBasicExecutionRole` policy includes these.
-
 No cost associated with logging in Lambda, but CloudWatch costs apply (includes a free tier but after that there are charges for ingestion, archiving and querying)
 
 Logs are organized into groups. One group per function is the default.
@@ -92,6 +90,16 @@ Log output:
 ```
 
 
+## Permissions
+
+A function's execution role needs permissions:
+- `logs:CreateLogGroup`
+- `logs:CreateLogStream`
+- `logs:PutLogEvents`
+
+The `AWSLambdaBasicExecutionRole` policy includes these.
+
+
 ## Best practices
 
 Do:
@@ -99,25 +107,8 @@ Do:
 - Use log levels and configure them per environment. For example, use environment variable to enable `DEBUG` logs in dev, but only `WARN` and `ERRORs` in production.
 - Use structured logging. It's much easier to filter and search. You can also create CloudWatch metrics from the structured logs.
 - Make log messages more specific to easily find the related code (e.g. an ID to a row in a database)
+- Use Logs Insights to remove noise and drill down to failures
 
 Don't:
 - Log too much or too little
 - Log sensitive data
-
-
-## X-Ray
-
-You can use AWS X-Ray to visualize the components of your application, identify performance bottlenecks, and troubleshoot requests that resulted in an error.
-
-Your Lambda functions send trace data to X-Ray, and X-Ray processes the data to generate a service map and searchable trace summaries.
-
-
-## X-Ray Daemon
-
-The AWS X-Ray Daemon is a software application that gathers raw segment data and relays it to the AWS X-Ray service.
-
-The daemon works in conjunction with the AWS X-Ray SDKs so that data sent by the SDKs can reach the X-Ray service.
-
-When you trace your Lambda function, the X-Ray daemon automatically runs in the Lambda environment to gather trace data and send it to X-Ray.
-
-Must have permissions to write to X-Ray in the execution role.

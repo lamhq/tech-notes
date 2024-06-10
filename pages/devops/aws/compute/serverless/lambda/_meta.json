@@ -12,8 +12,9 @@
   "cost": "Cost",
   "integration": "Integration",
   "layer": "Lambda Layer",
-  "dev": "Development",
-  "monitoring": "Operations and Monitoring",
+  "version": "Versions and Aliases",
+  "deployment": "Deployment Strategies",
+  "monitoring": "Monitoring",
   "limitations": "Limitations",
-  "deployment": "Deployment"
+  "powertools": "Powertools for AWS Lambda"
 }

@@ -185,3 +185,21 @@ If an event doesn't match the filter, it won't be sent to the function.
 Supports null/empty/exists checks, equals, and/or/not, range and prefix checks.
 
 Rules are case-sensitive, numbers are treated like strings.
+
+#### Permission
+
+Lambda service needs permissions to access the source:
+- SQS: `ReceiveMessage`, `DeleteMessage`, and `GetQueueAttributes`
+- DynamoDB Streams: `DescribeStream`, `GetRecords`, `GetShardIterator` and `ListStreams`
+
+
+## Invocation Issues
+
+If you are having invocation issues, check the permissions on the role or account which is doing that invocation:
+- Ensure they have `lambda:InvokeFunction` permission.
+- Also check if there is a resource-based policy
+on the function.
+
+Try using AWS CloudTrail to see the API calls being made. It's a great way to find permission-related problems.
+
+Watch out for concurrency limits. These can be account or function quotas and that includes burst concurrency. In that cases, try slowing down the events into the function by using a queue or a stream.
