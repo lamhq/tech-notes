@@ -124,21 +124,109 @@ or Simple Queue Service. This can help reduce latency and improve fault toleranc
 and make it much easier to maintain and debug your application.
 
 
-## Concepts
-
-### Lambda Function
+## Lambda Function
 
 The Lambda Function is the definition that will be initialized and called by the Lambda service, including:
 - The function code
 - Configuration of how to execute the code: RAM, CPU, permissions, ...
 
-### Lambda Service
+
+## Lambda Service
 
 The Lambda service:
 - Initializing and calling Lambda functions
 - Handling inputs and outputs
 
 It sits between the world and your code.
+
+
+## Lambda@Edge
+
+Lambda@Edge runs on Amazon CloudFront.
+
+Amazon CloudFront serves content from hundreds of locations around the world. It hepls reduce latency by bringing content and processing closer to the users.
+
+CloudFront supports simple JavaScript CloudFront Functions
+and Lambda functions.
+
+CloudFront Lambda functions:
+- support Node.js and Python.
+- can use more memory, longer compute time, network access and file access.
+- have access to the request body.
+
+### Use Cases
+- Custom user Authentication and Authorization
+- Analytics
+- Dynamic Content, such as resized images
+- Custom Routing and Redirection
+- Request Normalization, can be used to increase cache hit ratio.
+
+### How it work
+
+When a request comes from the user (**Viewer Request**), the cache is checked.
+
+If no object is found, an **origin request** is made to the origin web server.
+
+The **Origin's response** is cached based on configuration before being returned to the viewer (**Viewer Response**).
+
+Lambda@Edge functions can run on these request types.
+
+![Image not found](./lambda/images/lambda-edge.png)
+
+
+### Usage
+To use Lambda@Edge:
+- Publish a version of a Lambda function in the `us-east-1` region.
+- Add a function association to a distribution behavior, specifying the Lambda function and type of events to be triggered from.
+- The function version will be distributed to the edge locations by CloudFront.
+
+
+## S3 Object Lambda
+
+Lambda can be used in S3 to modify objects as they're requested.
+
+Use cases:
+- Data format conversion: convert XML file to a JSON file
+- Compression/decompression
+- Sensitive data redaction
+- Data augmentation: combining object data with data from elsewhere
+
+S3 object Lambdas uses standard Lambda functions.
+
+They can get invoked from GET, HEAD or LIST S3 requests.
+
+They work by linking an S3 access point to a function. Clients need to use that new access point, which will start to invoke the function on each request.
+
+
+## IoT Greengrass
+
+If you are working with IoT devices and need local processing, then it's worth checking out.
+
+This is a technology to bridge the gap between local Internet of Things devices and AWS services.
+
+It can enable running logic closer to the IOT devices by using local Lambda functions. Including:
+- Run machine learning inference locally from cloud-trained models.
+- Carry on working even with poor Internet connectivity.
+- Process sensitive data locally (no need to send to the cloud).
+
+Lambda functions can be deployed to loT Greengrass. Functions run in a local containerized Lambda runtime on the device.
+
+Functions need to be ported from the AWS Lambda service to Greengrass:
+- The runtime must be supported and installed.
+- Minimal changes need to be made to the code.
+
+Two lifecycles are supported:
+- On-demand (default)
+- Long-lived: they are invoked when Greengrass starts. Can use for preparing data.
+
+
+## Lambda on Snowball Edge
+
+On a Snowball Edge device, you have the ability to run Lambda functions.
+
+It's powered by AWS IoT Greengrass.
+
+Use cases: processing and analyzing data locally, saving space, time and cost.
 
 
 ## References
