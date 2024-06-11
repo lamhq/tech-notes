@@ -27,26 +27,25 @@ print(raw_s)
 String literals can span multiple lines. Use triple-quotes: `"""..."""` or `'''...'''`
 
 **End of lines** are automatically included in multi-line string, but you can prevent this by adding a `\` at the end of the line:
-
 ```py
-str1 = """\
-Usage: thingy [OPTIONS]
-     -h                        Display this usage message
-     -H hostname               Hostname to connect to
-"""
-
-str2 = '''Lorem ipsum dolor sit amet,
-consectetur adipiscing elit,
-sed do eiusmod tempor incididunt
-ut labore et dolore magna aliqua.'''
+s = '''\
+123\
+456\
+789\
+'''
+# '123456789'
 ```
 
 String literals next to each other are automatically concatenated:
-
 ```py
-str3 = ('Put several strings within parentheses '
+s = '123' '456'
+# '123456'
+```
+
+Put several strings within parentheses to have them joined together:
+```py
+s = ('Put several strings within parentheses '
     'to have them joined together.')
-# 'Put several strings within parentheses to have them joined together.'
 ```
 
 ## Get string's length

@@ -16,5 +16,6 @@
   "deployment": "Deployment Strategies",
   "monitoring": "Monitoring",
   "limitations": "Limitations",
+  "architecture": "Architecture",
   "powertools": "Powertools for AWS Lambda"
 }
