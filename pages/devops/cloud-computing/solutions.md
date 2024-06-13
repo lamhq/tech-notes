@@ -118,3 +118,18 @@ Limitations:
 - Lack of control
 - Feature limitations.
 - Performance and downtime.
+
+
+## Who manages what?
+
+|                | Traditional IT | IaaS | Paas | Saas |
+|---------------:|:--------------:|:----:|:----:|:----:|
+| Applications   | You            | You  | You  |      |
+| Data           | You            | You  | You  |      |
+| Runtime        | You            | You  |      |      |
+| Middleware     | You            | You  |      |      |
+| OS             | You            |      |      |      |
+| Virtualization | You            |      |      |      |
+| Servers        | You            |      |      |      |
+| Storage        | You            |      |      |      |
+| Networking     | You            |      |      |      |

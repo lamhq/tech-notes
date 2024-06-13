@@ -1,4 +1,5 @@
 {
+  "database": "Database",
   "postgresql": "PostgreSQL",
   "pyspark": "PySpark",
   "numpy": "NumPy",
