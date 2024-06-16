@@ -1,4 +1,7 @@
 {
-  "storing-pwd": "Storing Password",
-  "concurrency": "Concurrency"
+  "sql": "SQL Database",
+  "no-sql": "NoSQL Database",
+  "choosing-db": "Choosing Database",
+  "concurrency": "Concurrency",
+  "transaction": "Database transaction"
 }

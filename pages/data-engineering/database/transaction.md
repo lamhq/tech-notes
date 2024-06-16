@@ -1,0 +1,48 @@
+# Database transaction
+
+## Overview
+
+A database transaction is a sequence of one or more operations performed on database data. It is treated as a single, indivisible unit, ensuring that either all operations within it are successfully completed, or none are. 
+
+This all-or-nothing approach provides reliability and security to the data operations.
+
+Transactions are often executed concurrently (e.g., multiple transactions reading and writing to a table at the same time).
+
+Transactions adhere to the ACID properties to maintain integrity in the database system.
+
+
+## ACID properties
+
+These properties are designed to ensure that database transactions are processed reliably.
+
+- **Atomicity**: This property ensures that all operations within a transaction are treated as a single unit, which either completely succeeds or fails.
+- **Consistency**: A transaction can only bring the database from one valid state to another, maintaining the integrity of the data.
+- **Isolation**: Concurrent execution of transactions results in a system state that would be obtained if transactions were executed serially.
+- **Durability**: Once a transaction has been committed, it will remain so, even in the event of power loss, crashes, or errors.
+
+
+## Transactional databases
+
+Transactional databases are systems that support database transactions with ACID properties, ensuring data integrity and consistency across multiple operations.
+
+They allow multiple users to access and modify the database concurrently without leading to data conflicts or corruption. 
+
+Examples include relational databases like MySQL, PostgreSQL, and Oracle.
+
+Transactions are available in most SQL database implementations.
+
+
+## Distributed Transactions
+
+Distributed transactions are complex processes where a single transaction spans across multiple databases or different nodes within a network, ensuring that all involved databases maintain the ACID properties despite being distributed.
+
+A distributed transaction might include systems such as databases, storage managers, file systems, messaging systems, and other data managers.
+
+In a distributed transaction there is typically an entity coordinating all the process to ensure that all parts of the transaction are applied to all relevant systems.
+
+Some DBMS that support distributed transactions include:
+- Oracle
+- Microsoft SQL Server
+- PostgreSQL (with extensions like Postgres-XL)
+- MySQL Cluster
+- IBM DB2

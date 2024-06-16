@@ -16,11 +16,20 @@ You can scale up or scale down tables' throughput capacity with minimal downtime
 
 Offer Multi-AZ redundancy and Cross-Region Replication.
 
-Strongly consistent or eventually consistent reads, support ACID transactions.
+Support Strongly consistent or eventually consistent reads, ACID transactions.
 
 The aggregate size of an item cannot exceed 400KB including keys and all attributes.
 
 Can store pointers to objects in S3, including items over 400KB.
+
+Eventually consistent reads:
+- Consistency across all copies of data is usually reached within a second.
+- Repeating a read after a short time should return the updated data.
+- Best read performance.
+
+Strongly consistent reads:
+- A strongly consistent read returns a result that reflects all writes that received a successful response prior to the read.
+- You don't need to wait for all the updates complete before reading the data.
 
 
 ## Anti-Patterns
