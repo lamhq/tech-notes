@@ -6,6 +6,7 @@ const withNextra = require('nextra')({
 
 module.exports = {
   ...withNextra(),
+  // export static html assets instead of a nodejs app
   output: 'export',
   images: { unoptimized: true }
 }
