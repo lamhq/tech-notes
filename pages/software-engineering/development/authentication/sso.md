@@ -21,4 +21,4 @@ Single Sign-On (SSO) is an authentication scheme. It allows a user to log in to 
 
 The process is complete and the user gets back access to their account.
 
-![](images/sso-workflow.png)
+![](./images/sso-workflow.png)
