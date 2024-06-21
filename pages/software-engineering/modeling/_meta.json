@@ -1,6 +1,3 @@
 {
-  "activity-diagram": "Activity diagram",
-  "sequence-diagram": "Sequence Diagram",
-  "component-diagram": "Component Diagram",
-  "use-case-diagram": "Use Case Diagram"
+  "uml": "UML"
 }

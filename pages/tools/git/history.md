@@ -1,6 +1,6 @@
 # Git history
 
-## List the project history
+## List the commit history
 
 ```sh
 git log
@@ -16,6 +16,26 @@ git log --author="Alana"
 
 # Returns any commit with a commit message which matches the string you entered
 git log --grep="HOT-"
+```
+
+
+## Export all files in a commit
+
+TAR format:
+```sh
+git archive --format=tar --output=commit.tar.gz HEAD
+```
+
+ZIP format:
+```sh
+git archive --format=zip --output=commit.zip HEAD
+```
+
+
+## Export changed files between commits
+
+```sh
+git diff --name-only <FROM_COMMIT> <TO_COMMIT> | zip changes.zip -@
 ```
 
 
