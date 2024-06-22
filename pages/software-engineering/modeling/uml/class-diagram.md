@@ -15,14 +15,14 @@ Each attribute has a type. Each operation has a signature. The class name is the
 
 ![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/02-class-notation.png)
 
-## Attributes
+### Attributes
 
 - Attributes are shown in the second partition.
 - The attribute type is shown after the colon.
 - Attributes map onto member variables (data members) in code.
 
 
-## Operations
+### Operations
 
 - Operations are shown in the third partition. They are services the class provides.
 - The return type of a method is shown after the colon at the end of the method signature.
@@ -32,7 +32,7 @@ Each attribute has a type. Each operation has a signature. The class name is the
 ![](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/03-class-notation-with-examples.png)
 
 
-## Visibility
+### Visibility
 
 The `+`, `-` and `#` symbols before an attribute and operation name in a class denote the visibility of the attribute and operation.
 
@@ -42,6 +42,14 @@ The `+`, `-` and `#` symbols before an attribute and operation name in a class d
 - `-` denotes private attributes or operations
 - `#` denotes protected attributes or operations
 
+
+## Notes and Comments
+
+Notes can stand on their own, or they can be linked with a dashed line to the elements they are commenting.
+
+They can appear in any kind of diagram.
+
+![](https://i.sstatic.net/Jv9UO.png)
 
 ## References
 
