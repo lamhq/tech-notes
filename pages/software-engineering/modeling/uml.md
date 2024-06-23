@@ -20,6 +20,20 @@ UML 2 describes 13 official diagram types:
 
 ![](./uml/images/diagram-types.svg)
 
+### Interaction Diagrams
+
+Interaction diagrams describe how groups of objects collaborate in some behavior. 
+
+Sequence diagrams represents the interaction between objects within a single use case.
+
+State diagrams show the behavior of a single object across many use cases. 
+
+Activity diagram illustrates the flow of activities or processes within a system, including decision points and parallel activities.
+
+Communication diagrams for showing connections
+
+Timing diagrams for showing timing constraints.
+
 
 ## UML in software processes
 

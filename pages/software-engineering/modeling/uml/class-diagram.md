@@ -51,6 +51,14 @@ They can appear in any kind of diagram.
 
 ![](https://i.sstatic.net/Jv9UO.png)
 
+
+## Guidelines
+
+- **Start Simple:** Use basic elements like classes, associations, attributes, and generalization.
+- **Key Focus:** Model only key areas; maintain a few updated diagrams.
+- **Combine Techniques:** Integrate class diagrams with behavioral techniques for better understanding.
+
+
 ## References
 
 - [UML Class Diagram Tutorial](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/)

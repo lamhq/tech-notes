@@ -95,6 +95,6 @@ If an arrow is on both sides (or no arrows at all), the association is known as 
 
 A bidirectional association implies that if you follow both properties, you should get back to a set that contains your starting point.
 
-For example, if I begin with a particular car, find its owner, and then look at its owner’s cars, they should be a set that contain the car that I started from.
+For example, if I begin with a particular car, find its owner, and then look at its owner's cars, they should be a set that contain the car that I started from.
 
 ![](./images/bidirectional-association.png)

@@ -2,9 +2,7 @@
 
 ## Overview
 
-Sequence diagrams are used to show a design team how objects in a program interact with each other to complete tasks.
-
-Sequence diagrams are used by software developers and business professionals to understand requirements for a new system or to document an existing process.
+Sequence diagrams show the collaborations of several objects and the messages that are passed between these objects within a single use case.
 
 
 ## Use cases
@@ -22,9 +20,9 @@ Plan and understand the detailed functionality of an existing or future scenario
 
 ### Object symbol
 
-Represents a class or object
+Represents a class or object.
 
-Demonstrates how an object will behave in the context of the system.
+Name in the box can follow the format: `object name: class name`
 
 Class attributes should not be listed in this shape.
 
@@ -69,25 +67,25 @@ Lifelines may begin with a labeled rectangle shape or an actor symbol.
 <img  alt="Lifeline symbol" src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/discovery/UML/UML-Sequence/uml-lifeline-symbol.svg" width="150" />
 
 
-### Option loop symbol
-
-Used to model if/then scenarios.
+### Loop symbol
 
 <img  alt="Option loop symbol" src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/discovery/UML/UML-Sequence/uml-option-loop-symbol.svg" width="150" />
 
 
 ### Alternative symbol
 
-Symbolizes a choice between two or more message sequences.
+Used to model if/then scenarios.
 
 To represent alternatives, use the labeled rectangle shape with a dashed line inside.
 
 <img  alt="Alternative symbol" src="https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/discovery/UML/UML-Sequence/uml-alternative-symbol.svg" width="150" />
 
 
-## Message symbols
+## Message Symbols
 
-Symbols that show how information is transmitted between objects.
+Symbols show how information is transmitted between objects. 
+
+They can be thought of as methods provided by the object.
 
 ### Synchronous message symbol
 
@@ -127,6 +125,27 @@ This message destroys an object.
 
 
 ## Examples
+
+### Modeling a class method
+
+Pseudocode for a method `dispatch` of `Order` class:
+```
+procedure dispatch:
+  foreach (lineitem):
+    if (product.value > $10K):
+      careful.dispatch
+    else:
+      regular.dispatch
+    end if
+  end for
+  
+  if (needsConfirmation):
+    messenger.confirm
+end procedure
+```
+
+![](./images/sequence-diagram-class-method.png)
+
 
 ### ATM systems
 
