@@ -52,6 +52,14 @@ getattr(a, "split")
 ```
 
 
+## Getting class name
+```py
+class Account:
+    def get_name(self):
+        return self.__class__.__name__
+```
+
+
 ## Inheritance
 
 ```py
