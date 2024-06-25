@@ -1,4 +1,4 @@
-# Object-Oriented Programming
+# Class
 
 ## Define a class
 

@@ -8,10 +8,9 @@
   "functions": "Functions",
   "modules": "Modules",
   "exception": "Exception",
-  "oop": "Object-Oriented Programming",
-  "async": "Asynchronous Programming",
+  "class": "Class",
   "interface": "Interface",
-  "magic-methods": "Magic Methods",
+  "async": "Asynchronous Programming",
   "context-manager": "Context Managers",
   "iterators": "Iterators and Generators"
 }

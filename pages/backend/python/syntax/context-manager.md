@@ -1,4 +1,6 @@
-# Context Managers and Python's `with` Statement
+# Context Managers
+
+Context Managers and Python's `with` Statement
 
 ## The `with` Statement
 
