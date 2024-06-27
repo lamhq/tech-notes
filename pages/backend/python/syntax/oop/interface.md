@@ -8,9 +8,7 @@ Python doesn't have a dedicated `interface` keyword, but you can achieve similar
 
 ## Defining Interfaces
 
-Python's **Abstract Base Classes (ABCs)** provide a more structured way to define interfaces.
-
-ABCs allow you to define abstract methods (methods without implementation) that must be overridden by concrete classes.
+Abstract base classes (ABCs) allow you to define abstract methods (methods without implementation) that must be overridden by concrete classes.
 
 To create an interface using ABCs, follow these steps:
 - Import the `abc` module: `import abc`
@@ -20,15 +18,15 @@ To create an interface using ABCs, follow these steps:
 
 Interface:
 ```py 
-import abc
+from abc import ABC, abstractmethod
 
-class Shape(abc.ABC):
-    @abc.abstractmethod
+class Shape(ABC):
+    @abstractmethod
     def area(self) -> float:
         """Calculate the area of the shape."""
         pass
 
-    @abc.abstractmethod
+    @abstractmethod
     def perimeter(self) -> float:
         """Calculate the perimeter of the shape."""
         pass
@@ -54,5 +52,3 @@ rectangle = Rectangle(length=4, width=6)
 print(f"Rectangle area: {rectangle.area()}")
 print(f"Rectangle perimeter: {rectangle.perimeter()}")
 ```
-
-Remember that Python's approach to interfaces is flexible and relies on the principle of duck typing. Use ABCs when you need more structure or enforce specific method signatures. 🐍🔍

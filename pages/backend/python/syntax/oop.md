@@ -1,6 +1,6 @@
-# Class
+# Object-oriented Programming
 
-## Define a class
+## Defining a class
 
 ```py
 class Employee:

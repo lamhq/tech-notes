@@ -1,4 +1,6 @@
 {
+  "eafp": "EAFP",
+  "lbyl": "LBYL",
   "style-guide": "Style Guide",
   "linter": "Linter",
   "source-fmt": "Source Formatting"

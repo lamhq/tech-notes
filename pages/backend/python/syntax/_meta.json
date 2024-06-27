@@ -8,8 +8,7 @@
   "functions": "Functions",
   "modules": "Modules",
   "exception": "Exception",
-  "class": "Class",
-  "interface": "Interface",
+  "oop": "OOP",
   "async": "Asynchronous Programming",
   "context-manager": "Context Managers",
   "iterators": "Iterators and Generators"

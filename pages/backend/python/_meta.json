@@ -3,7 +3,7 @@
   "types": "Types",
   "syntax": "Syntax",
   "pkg-mgm": "Package Management",
-  "code-std": "Code standard",
+  "code-style": "Code Style",
   "debugging": "Debugging",
   "testing": "Testing",
   "api": "API Development",
