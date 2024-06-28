@@ -4,7 +4,15 @@
 
 AWS Budgets allows organizations to easily plan and set expectations around cloud costs.
 
-You can easily track your ongoing spend and create alerts to let users know when they're close to exceeding their allotted spend.
+
+## Features
+- Track your ongoing spend
+- Create budgets of different types
+- Support granular time periods for budgets: annual, quarterly, monthly, daily
+- Receive alert notifications for your actual usage
+or forecasted usage
+- Able to choose daily, weekly, or monthly reports
+via notification
 
 
 ## Types of budget

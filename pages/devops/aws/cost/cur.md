@@ -1,22 +1,18 @@
-# AWS Cost and Usage Reports (AWS CUR)
+# AWS Cost and Usage Reports
 
 ## Overview
 
-It is the most comprehensive set
-of cost and usage data that is available to you
-for AWS spending.
+AWS Cost and Usage Reports (AWS CUR) is a comprehensive report that includes metadata about: services, pricing, credits, fees, taxes, discounts, cost categories, savings plans, and reserved instances.
 
-It allows you to **publish your billing reports**
-to an Amazon S3 bucket for centralized collection. Useful
-if you need to use those reports
-with a third party spending application.
+Can be published to an S3 bucket for centralized collection and are updated **once a day**.
 
-Those reports break down the costs
-by certain time span (hour, day, month), service, resource, tags (similar to Cost Explorer).
+Can be broken down by certain time span (hour, day, month), service, resource, tags (similar to Cost Explorer).
 
-AWS CUR updates reports in Amazon S3 buckets **once a day** using CSV formats.
+Can be exported into XML or CSV files.
 
-Built-in support for configuring reports to be queried with Athena, ingested to Redshift, or visualized with QuickSight
+Can be used with analytics services like Athena to query your data, or ingested to Redshift or visualized with QuickSight.
+
+The report can be found in the billing console of your AWS account.
 
 
 ## Use cases

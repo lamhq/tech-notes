@@ -1,11 +1,12 @@
 {
-  "free-tier": { "title": "Free Tier" },
-  "pricing": { "title": "Pricing Concepts" },
-  "consolidated-billing": { "title": "Consolidated Billing" },
-  "budgets": { "title": "AWS Budgets" },
-  "cur": { "title": "AWS Cost and Usage Report" },
-  "cost-explorer": { "title": "AWS Cost Explorer" },
-  "compute-optimizer": { "title": "AWS Compute Optimizer" },
-  "savings-plans": { "title": "Savings Plans" },
-  "support": { "title": "Support Plans" }
+  "free-tier": "Free Tier",
+  "pricing": "Pricing Concepts",
+  "consolidated-billing": "Consolidated Billing",
+  "budgets": "AWS Budgets",
+  "cur": "AWS Cost and Usage Report",
+  "cost-explorer": "AWS Cost Explorer",
+  "cost-profiler": "AWS Application Cost Profiler",
+  "compute-optimizer": "AWS Compute Optimizer",
+  "savings-plans": "Savings Plans",
+  "support": "Support Plans"
 }
