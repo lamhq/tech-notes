@@ -1,8 +1,4 @@
 {
-  "language": "Programming Languages",
-  "techniques": "Techniques",
-  "rest-api": "REST API",
-  "graphql": "GraphQL",
   "python": "Python",
   "fastapi": "FastAPI",
   "sqlalchemy": "SQLAlchemy",
@@ -10,6 +6,6 @@
   "pydantic": "Pydantic",
   "pytest": "pytest",
   "faker": "Faker (python)",
-  "deno": "Deno",
-  "nestjs": "NestJS"
+  "nestjs": "NestJS",
+  "deno": "Deno"
 }
