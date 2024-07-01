@@ -1,5 +1,5 @@
 {
-  "features": "Features",
-  "scps": "Service Control Policies (SCPs)",
-  "resource-group": "Resource Groups"
+  "scps": "Service Control Policies",
+  "resource-group": "Resource Groups",
+  "migrate-accounts": "Migrating accounts"
 }

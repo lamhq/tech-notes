@@ -6,7 +6,22 @@ AWS Organizations is a free governance tool that hepls you **centrally manage mu
 
 Using a multi-account environment is a recommended best-practice when scaling your cloud environment.
 
-Available to all AWS customers at no additional charge.
+
+## Features
+
+- **Simplify account creation** by programmatically creating new accounts using the AWS CLI, SDKs, or APIs.
+- **Group accounts into organizational units** (OUs), or groups of accounts that serve a single application or service.
+- **Apply service control policies** (SCPs) to users, accounts, or organization units to control access to AWS resources, services, and Regions within your organization.
+- **Consolidated Billing**: Rolls all bills up to the payer account. Single payment method
+- **Set up Single Sign-On** (SSO) to provide access to AWS accounts and resources using your active directory, and customize permissions based on separate job roles.
+- **View resources's usage** across accounts and track costs using AWS Cost Explorer and optimize your usage of compute resources using AWS Compute Optimizer.
+- **Share AWS resources** across accounts (within your organization) using AWS RAM.
+- **Shared Savings**: Easily share Reserved Instances and Savings Plans across the org. *For example, you can share your central AWS Directory Service running on Managed Active Directory with all accounts in your organization, for application to access your central identity store*
+- **Apply tag polices** to classify or track resources in your organization and provide attribute-based access control for users or applications.
+- Provide central tools to achieve maximum security across accounts
+- Delegate responsibility for supported AWS services to accounts so users can manage them on behalf of your organization.
+- You can activate CloudTrail across accounts to create logs of all activities in your accounts to keep an eye on accounts for compliance.
+
 
 ## Account types
 
@@ -16,7 +31,6 @@ Available to all AWS customers at no additional charge.
 - SCPs do not affect the management account.
 
 ### Member Account
-
 - All other AWS accounts that belong to the organization. 
 - Can include development accounts, testing accounts, production accounts.
 
@@ -46,23 +60,6 @@ A group of AWS accounts within an organization. An OU can also contain other OUs
 Provides capability to require specific tags is leveraged for all AWS resources.
 
 This ensures consistent tagging practices and it enables better resource categorization and tracking
-
-
-## Migrating accounts between organizations
-
-Accounts can be migrated between organizations.
-
-You must have root or IAM access to both the member and management accounts.
-
-For migrating a few accounts, use AWS Organizations console. Otherwise, use API or AWS CLI.
-
-Billing history and billing reports for all accounts stay with the management account in an organization.
-
-Before migration download any billing or report history for any member accounts that you want to keep.
-
-When a member account leaves an organization, all charges incurred by the account are charged directly to the standalone account.
-
-Even if the account move only takes a minute to process, it is likely that some charges will be incurred by the member account.
 
 
 ## Best practices

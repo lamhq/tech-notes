@@ -21,7 +21,8 @@ Keywords and Scenarios: Automated multi-account governance, guardrails, account 
 - **CloudFormation StackSet**: Automated deployments of templates deploying repeated resources for governance
 - **Shared accounts**: Three accounts used by Control Tower created during landing zone creation: management account, log archive account, audit account.
 
-### Guardrails
+
+## Guardrails
 
 Guardrails have two different types:
 
