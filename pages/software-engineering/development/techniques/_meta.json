@@ -1,4 +1,5 @@
 {
   "storing-pwd": "Storing Password",
-  "generate-id": "Generate global IDs"
+  "generate-id": "Generate ID",
+  "authentication": "Authentication"
 }

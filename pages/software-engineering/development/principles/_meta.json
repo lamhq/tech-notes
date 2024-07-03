@@ -2,5 +2,6 @@
   "codebase": "Codebase Setup",
   "vcs": "Version control",
   "coding": "Coding",
-  "releasing": "Releasing"
+  "releasing": "Releasing",
+  "di": "Dependency Injection"
 }
