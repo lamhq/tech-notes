@@ -1,6 +1,7 @@
 {
   "free-tier": "Free Tier",
   "pricing": "Pricing Concepts",
+  "optimization": "Cost Optimization",
   "consolidated-billing": "Consolidated Billing",
   "budgets": "AWS Budgets",
   "cur": "AWS Cost and Usage Report",
