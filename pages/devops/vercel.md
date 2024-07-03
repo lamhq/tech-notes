@@ -9,8 +9,18 @@ Go to project setting, **Environment Variables** section, add variable `VERCEL_F
 
 ## Deploy without Vercel build
 
-Deploy applications without importing Git repository.
+Benefits:
+- Deploy applications without importing Git repository.
+- Run CI/CD workflow on custom CI providers (Github Actions, Gitlab, ...)
+- Able to define custom build command.
+- No running of `vercel build` command
 
+Reasons:
+- Connecting Git repository is not allowed
+- `vercel build` command is buggy
+- You want to customize your CI workflows
+
+References:
 - [Build Output API (v3)](https://vercel.com/docs/build-output-api/v3)
 - [Build Output API Examples](https://github.com/vercel/examples/tree/main/build-output-api)
 - [Build your own web framework](https://vercel.com/blog/build-your-own-web-framework)
