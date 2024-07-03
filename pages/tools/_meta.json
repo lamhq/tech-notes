@@ -2,8 +2,10 @@
   "git": "Git",
   "vscode": "VS Code",
   "jupyter-notebook": "Jupyter Notebook",
+  "pdf": "PDF Files",
   "macos": "macOS",
   "windows": "Windows",
   "youtube": "YouTube",
-  "pdf": "PDF Files"
+  "facebook": "Facebook",
+  "google": "Google"
 }
