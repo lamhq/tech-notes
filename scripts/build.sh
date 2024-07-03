@@ -6,3 +6,6 @@ mkdir -p .vercel/output/static
 
 # move assets to Vercel Build Output directory
 mv out/* .vercel/output/static/
+
+# create config file
+echo '{ "version": 3 }' > .vercel/output/config.json
