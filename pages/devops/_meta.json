@@ -4,5 +4,6 @@
   "gcp": "GCP",
   "linux": "Linux",
   "terraform": "Terraform",
-  "bitbucket-pipelines": "Bitbucket Pipelines"
+  "bitbucket-pipelines": "Bitbucket Pipelines",
+  "vercel": "Vercel"
 }
