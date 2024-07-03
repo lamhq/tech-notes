@@ -4,4 +4,10 @@ const withNextra = require('nextra')({
   defaultShowCopyCode: true
 })
 
-module.exports = withNextra()
+module.exports = {
+  ...withNextra(),
+  // export static html assets instead of a nodejs app
+  output: 'export',
+  // disable Image Optimization API dut to not compatible with export
+  images: { unoptimized: true }
+}
