@@ -13,7 +13,7 @@ export default {
     next: true
   },
   // make the edit link in navigation panel to open local file
-  docsRepositoryBase: 'vscode://file//Users/admin/Desktop/repos/cheat-sheet/',
+  // docsRepositoryBase: 'vscode://file//Users/admin/Desktop/repos/cheat-sheet/',
   editLink: {
     text: 'Edit in VS Code'
   },
