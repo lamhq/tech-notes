@@ -13,12 +13,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 8
-          run_install: |
-            - args: [--frozen-lockfile]
+          # run_install: |
+          #   - args: [--frozen-lockfile]
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
@@ -31,11 +36,6 @@ jobs:
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18.x
 
       # - name: Build
       #   run: npm run build
