@@ -18,10 +18,10 @@ jobs:
         with:
           node-version: 20.x
 
-      # - name: Set up pnpm
-      #   uses: pnpm/action-setup@v4
-      #   with:
-      #     version: 8
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
       #     run_install: |
       #       - args: [--frozen-lockfile]
 
