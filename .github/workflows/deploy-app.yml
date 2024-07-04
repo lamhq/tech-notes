@@ -25,9 +25,6 @@ jobs:
       #     run_install: |
       #       - args: [--frozen-lockfile]
 
-      # - name: Build
-      #   run: ./scripts/build.sh
-
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 

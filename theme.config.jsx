@@ -14,9 +14,9 @@ export default {
   },
   // make the edit link in navigation panel to open local file
   // docsRepositoryBase: 'vscode://file//Users/admin/Desktop/repos/cheat-sheet/',
-  editLink: {
-    text: 'Edit in VS Code'
-  },
+  // editLink: {
+  //   text: 'Edit in VS Code'
+  // },
   // collapse the top items
   sidebar: {
     defaultMenuCollapseLevel: 1
