@@ -1,24 +1,5 @@
 # Regular expression
 
-## Regular Expression Syntax
-
-Reference: [https://docs.python.org/3/library/re.html#regular-expression-syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax)
-
-
-## Notice
-
-The `re.search()` method is similar to `re.match()` but it doesn't limit us to find matches at the beginning of the string only.
-
-The `re.findall()` helps to get a list of all matching patterns. It only returns all matched text, not match objects. To return match objects instead of strings, use `re.finditer()`
-
-Raw string notation (`r"text"`) keeps regular expressions sane. Without it, every backslash (`'\'`) in a regular expression would have to be prefixed with another one to escape it.
-
-```py
-re.search(r"\W(.)\1\W", " ff ")
-re.search("\\W(.)\\1\\W", " ff ")
-```
-
-
 ## Check for a match
 
 ```py
@@ -28,14 +9,16 @@ import re
 string = "The rain in Spain"
 pattern = "^The.*Spain$"
 result = re.search(pattern, string)
-print(result is None)
-
-# compile regular expression pattern into
-# a regular expression object for future use
-prog = re.compile(pattern)
-result = prog.search(string)
+is_match = result is not None
 ```
 
+Compile a regular expression pattern into a regex object for future use:
+```py
+import re
+
+checker = re.compile(pattern)
+result = checker.search(string)
+```
 
 ## Split string by pattern
 
@@ -54,7 +37,7 @@ print(entries)
 ```
 
 
-## Replace string by pattern
+## Replace strings by pattern
 
 ```py
 import re
@@ -63,3 +46,25 @@ def repl(m):
 text = "Professor Abdolmalek, please report your absences promptly."
 print(re.sub(r"(\w)(\w+)(\w)", repl, text))
 ```
+
+
+## Notice
+
+`re.search()` can find matches anywhere in the string.
+
+`re.match()` find matches at the beginning of the string only.
+
+`re.findall()` returns a list of all matching patterns. It only returns matched text, not match objects. 
+
+`re.finditer()` return match objects instead of strings.
+
+Raw string notation (`r"text"`) simplifies regular expressions by avoiding the need to escape backslashes:
+```py
+re.search(r"\W(.)\1\W", " ff ")
+re.search("\\W(.)\\1\\W", " ff ")
+```
+
+
+## Regular Expression Syntax
+
+Reference: [https://docs.python.org/3/library/re.html#regular-expression-syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax)
