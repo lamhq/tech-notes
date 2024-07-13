@@ -46,6 +46,25 @@ export function Navigation({ navLinks }) {
 }
 ```
 
+
+## Use with Material UI components
+With `Button`:
+```tsx
+<Link href="/about" passHref>
+  <Button variant="contained" color="secondary">About</Button>
+</Link>
+```
+
+With `ListItem`:
+```tsx
+<Link href="/about" passHref>
+ <ListItem button component="a" onClick={onClick}>
+  <ListItemText>About</ListItemText>
+ </ListItem>
+</Link>
+```
+
+
 ## `useRouter()` Hook
 
 ```jsx filename="app/page.js"

@@ -22,7 +22,7 @@ i = str(3.0)  # z will be '3.0'
 ```
 
 
-## Getting type of a value
+## Getting type
 
 To get the type of a value, you use the `type(value)` function
 
@@ -34,14 +34,14 @@ type(True)
 ```
 
 
-## Check variable is type
+## Type checking
 ```py
 val = 1.0
 isinstance(val, float)
 ```
 
 
-## Check variables refer to the same object
+## Check variables refer to same object
 
 use the `is` keyword:
 ```py
@@ -49,7 +49,7 @@ a is b
 ```
 
 
-## Check if a value is `None`
+## `None` checking
 
 ```py
 if foo is None:

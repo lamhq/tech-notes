@@ -15,6 +15,12 @@ pip install requests==2.6.0
 ```
 
 
+## Uninstall package
+```shell
+pip uninstall --yes requests
+```
+
+
 ## Upgrade the package
 
 ```shell
