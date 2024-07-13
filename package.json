@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Albert's cheat sheet",
 	"scripts": {
-		"dev": "next",
+		"dev": "next -p 5050",
 		"build": "next build"
 	},
 	"dependencies": {
