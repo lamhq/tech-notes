@@ -2,6 +2,7 @@
 
 ## Pseudo-classes
 
+Common modifiers:
 - `hover:`, `focus:`, `active:`
 - `first:`, `last:`, `odd:`, `even:`
 
@@ -11,11 +12,12 @@
 </button>
 ```
 
-See the [pseudo-class reference](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference) for a complete list of available pseudo-class modifiers.
+Check out the [pseudo-class reference](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference) for a complete list of available pseudo-class modifiers.
 
 
 ### Form states
 
+Common modifiers:
 - `required:`, `invalid:`, `disabled:`
 
 ```html
@@ -37,23 +39,24 @@ See the [pseudo-class reference](https://tailwindcss.com/docs/hover-focus-and-ot
 
 ### Styling based on parent state
 
-See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state).
+Check out the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state).
 
 ### Styling based on sibling state
 
-See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-sibling-state).
+Check out the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-sibling-state).
 
 ### Styling direct children
 
-See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-direct-children).
+Check out the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-direct-children).
 
 ### Styling based on descendants
 
-See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-descendants).
+Check out the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-descendants).
 
 
 ## Pseudo-elements
 
+Common modifiers:
 - Before and after: `before:`, `after:`
 - Placeholder text: `placeholder:`
 - File input buttons: `file:`
@@ -81,6 +84,7 @@ See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states
 
 ## Media and feature queries
 
+Common modifiers:
 - Responsive breakpoints: check out the [Responsive Design](responsive.md) section.
 - Prefers color scheme: check out the [Dark Mode](https://tailwindcss.com/docs/dark-mode) documentation.
 - Viewport orientation: `portrait:`, `landscape:`
@@ -103,6 +107,7 @@ See the [official doc](https://tailwindcss.com/docs/hover-focus-and-other-states
 
 ## Attribute selectors
 
+Common modifiers:
 - [ARIA states](https://tailwindcss.com/docs/hover-focus-and-other-states#aria-states): `aria-*` (e.g., `aria-checked`, `aria-disabled`, ...)
 - [Data attributes](https://tailwindcss.com/docs/hover-focus-and-other-states#data-attributes): `data-*`
 - [Open/closed state](https://tailwindcss.com/docs/hover-focus-and-other-states#open-closed-state): `open:` (add styles when a `<details>` or `<dialog>` element is in an open state).
