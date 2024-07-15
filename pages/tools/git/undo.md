@@ -1,12 +1,12 @@
 # Undoing changes
 
-## Undo commits
+## Revert working directory
 
 - Change the working directory to the state before commits were made
 - Reverted files are added as **staged changes**
 - Commit history is not modified
-- Caution: Requires your working tree to be clean
-- Use cases: revert the working directory to the state before commits were made but keep commit history untouched.
+- Caution: require your working tree to be clean
+- Use cases: revert the working directory to the state before commits were made but keep commit history untouched
 
 Revert changes of one commit:
 ```sh
@@ -21,8 +21,8 @@ git revert <commit>...HEAD --no-commit
 
 ## Reset everything to a commit
 
-- Reset history to selected commit.
-- Discards any uncommitted changes and resets everything to the state of the specified commit.
+- Reset history to selected commit
+- Working directory is rolled back to the state of the specified commit
 - Caution: always check that your working directory is clean before using this command
 - Use cases: undoing unwanted changes permanently
 
@@ -37,8 +37,9 @@ git reset --hard <commit>
 - Working directory is not changed
 - Leaves all your changed files as `Changes not staged for commit`
 - Use cases:
-  - Undo commit but keep your changes staged for recommitting later.
-  - Combining local commits before pushing
+  - Undo commits but keep your changes staged for recommitting later
+  - Combine local (uncommited) commits before pushing
+  - Roll back history to a specific commit and see what changed (make sure to back up your branch first)
 
 ```shell
 git reset <commit>
