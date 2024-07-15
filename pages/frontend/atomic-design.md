@@ -18,7 +18,7 @@ The basic building blocks. When applied to web interfaces, they are our HTML tag
 
 These are fairly abstract elements.
 
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/atom-atomic-design.png)
+![](https://bradfrost.com/wp-content/uploads/2013/06/atoms.jpg)
 
 
 ### Molecules
@@ -27,14 +27,14 @@ Molecules are a set of atoms combined.
 
 This could include a form input with a title and input standing next to each other or a header containing multiple atoms like icons, buttons, or inputs.
 
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/molecule-atomic-design.png)
+![](https://bradfrost.com/wp-content/uploads/2013/06/molecule.jpg)
 
 
 ### Organisms
 
 Molecules when joined together create organisms which is a relatively complex and distinct section of an interface.
 
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/organisms-atomic-design.png)
+![](https://bradfrost.com/wp-content/uploads/2013/06/organism-examples.jpg)
 
 
 ### Templates
@@ -43,23 +43,17 @@ Templates consist mostly of groups of organisms to form pages, keep in mind that
 
 In this stage we can really see the design coming together and making more sense for the clients to see the layout of the interface before finalizing it.
 
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/template-atomic-design.png)
+![](https://bradfrost.com/wp-content/uploads/2013/06/template1.jpg)
 
 
 ### Pages
 
 Pages are specific instances of templates. Here, placeholder content is replaced with real representative content to give an accurate depiction of what a user will ultimately see.
 
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/page-atomic-design.png)
-
-
-## Source code structure
-
-![](https://publish-01.obsidian.md/access/5368b88f000f35791077606eecf74f45/_assets/folder-structure-atomic-design.png)
+![](https://bradfrost.com/wp-content/uploads/2013/06/page1.jpg)
 
 
 ## Reference
 
-- [Dwarves Brainery](https://brain.d.foundation/Engineering/Frontend/Atomic+Design+Pattern)
 - [bradfrost atomic design](https://bradfrost.com/blog/post/atomic-web-design)
-- [Structuring your React Application — Atomic Design Principles](https://andela.com/insights/structuring-your-react-application-atomic-design-principles/)
+- [Best Practices for Organizing Code with Atomic Folder Structure in React Native](https://medium.com/@prathiba2796/react-native-best-practices-for-organizing-code-with-atomic-folder-structure-131858653eb1)

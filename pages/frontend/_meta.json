@@ -1,3 +1,5 @@
 {
-  "tailwind-css": "Tailwind CSS"
+  "css": "CSS",
+  "tailwind-css": "Tailwind CSS",
+  "atomic-design": "Atomic Design"
 }

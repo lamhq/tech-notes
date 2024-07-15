@@ -3,11 +3,6 @@
 > *You could think of flexbox as "one dimensional."*
 
 
-## Reference
-
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-
-
 ## Concepts
 
 ![](https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg)
@@ -254,3 +249,9 @@ Make children's width fill parent container using `flex-auto` (`flex: 1 1 auto`)
   <input class="flex-auto w-1" type="text">
 </div>
 ```
+
+
+
+## Reference
+
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

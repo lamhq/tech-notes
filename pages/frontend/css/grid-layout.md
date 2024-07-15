@@ -1,4 +1,4 @@
-# CSS Grid Layout
+# Grid Layout
 
 > *You could think of grid as "two dimensional"*.
 
@@ -532,7 +532,7 @@ Values:
 - `<align-self> / <justify-self>`: If the second value is omitted, the first value is assigned to both properties.
 
 
-## Demo
+## Snippets
 
 ```html
 <style>

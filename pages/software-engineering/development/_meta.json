@@ -1,6 +1,6 @@
 {
   "language": "Programming Languages",
-  "techniques": "Techniques",
-  "doc-snippets": "Documentation Snippets",
-  "principles": "Principles"
+  "principles": "Principles",
+  "documentation": "Documentation",
+  "techniques": "Techniques"
 }
