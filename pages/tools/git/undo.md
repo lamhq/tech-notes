@@ -39,7 +39,7 @@ git reset --hard <commit>
 - Use cases:
   - Undo commits but keep your changes staged for recommitting later
   - Combine local (uncommited) commits before pushing
-  - Roll back history to a specific commit and see what changed (make sure to back up your branch first)
+  - Compare changes since the last commit by rolling back history (make sure to back up your branch first)
 
 ```shell
 git reset <commit>

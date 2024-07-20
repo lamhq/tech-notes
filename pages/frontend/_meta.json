@@ -1,5 +1,6 @@
 {
   "css": "CSS",
   "tailwind-css": "Tailwind CSS",
-  "atomic-design": "Atomic Design"
+  "atomic-design": "Atomic Design",
+  "react-hook-form": "React Hook Form"
 }

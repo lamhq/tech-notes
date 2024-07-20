@@ -1,0 +1,324 @@
+# React Hook Form
+
+## Version
+
+This document is for version `7.52.1` (2024).
+
+
+## Installation
+
+```sh npm2yarn
+npm install react-hook-form
+```
+
+
+## Basic Usage
+
+You register an input field with `register()` function.
+
+Fields can only be native HTML inputs like: `input`, `select`.
+
+Each field is required to have a `name` as a key for the registration process:
+
+```tsx
+const { register } = useForm(...)
+
+<input {...register("firstName")} />
+```
+
+Full example code:
+```tsx
+import { useForm, SubmitHandler } from "react-hook-form"
+
+type Inputs = {
+  example: string
+  exampleRequired: string
+}
+
+export default function App() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>()
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+  console.log(watch("example")) // watch input value by passing the name of it
+
+  return (
+    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {/* register your input into the hook by invoking the "register" function */}
+      <input defaultValue="test" {...register("example")} />
+
+      {/* include validation with required or other standard HTML validation rules */}
+      <input {...register("exampleRequired", { required: true })} />
+
+      {/* errors will return when field validation fails  */}
+      {errors.exampleRequired && <span>This field is required</span>}
+
+      <input type="submit" />
+    </form>
+  )
+}
+```
+
+
+## Field Validation
+
+List of validation rules supported:
+- required
+- min
+- max
+- minLength
+- maxLength
+- pattern
+- validate
+
+```tsx
+<input {...register("firstName", { required: true, maxLength: 20 })} />
+<input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+<input type="number" {...register("age", { min: 18, max: 99 })} />
+```
+
+You can read more detail on each rule in the [register section](https://react-hook-form.com/api#register).
+
+
+## Schema Validation
+
+You can pass your schema to validate input data against the schema and return with either `errors` or a valid result.
+
+Support Yup, Zod, Superstruct, Joi.
+
+```sh
+yarn add @hookform/resolvers yup
+```
+
+```tsx
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+interface IFormInputs {
+  firstName: string
+  age: number
+}
+
+const schema = yup.object().shape({
+  firstName: yup.string().required(),
+  age: yup.number().positive().integer().required(),
+});
+
+export default function App() {
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({
+    resolver: yupResolver(schema)
+  });
+  const onSubmit = (data: IFormInputs) => console.log(data);
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("firstName")} />
+      <p>{errors.firstName?.message}</p>
+
+      <input {...register("age")} />
+      <p>{errors.age?.message}</p>
+
+      <input type="submit" />
+    </form>
+  );
+}
+```
+
+
+## Displaying errors
+
+Use the `errors` object to show you the errors in the form:
+```tsx
+const { formState: { errors } } = useForm()
+```
+
+```tsx
+{errors.mail && <p role="alert">{errors.mail.message}</p>}
+
+{errors.firstName?.type === "required" && (
+  <p role="alert">First name is required</p>
+)}
+```
+
+Full example code:
+```tsx
+import { useForm } from "react-hook-form"
+
+export default function App() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm()
+  const onSubmit = (data) => console.log(data)
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        {...register("firstName", { required: true })}
+        aria-invalid={errors.firstName ? "true" : "false"}
+      />
+      {errors.firstName?.type === "required" && (
+        <p role="alert">First name is required</p>
+      )}
+
+
+      <input
+        {...register("mail", { required: "Email Address is required" })}
+        aria-invalid={errors.mail ? "true" : "false"}
+      />
+      {errors.mail && <p role="alert">{errors.mail.message}</p>}
+
+
+      <input type="submit" />
+    </form>
+  )
+}
+```
+
+
+## Integrating with UI libraries
+
+Integrate with external controlled components such as React-Select, AntD and MUI.
+
+When the input component doesn't expose input's ref.
+
+
+### Using `useController` hook
+
+- Less code than using `Controller` component.
+
+```tsx filename="Input.tsx"
+import { useController, UseControllerProps, FieldValues } from "react-hook-form"
+
+type InputProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'render'> & {
+  customProp: string;
+};
+
+function Input<T extends FieldValues>({ customProp, ...controllerProps }: InputProps<T>) {
+  const { field, fieldState } = useController(controllerProps)
+  return (
+    <div>
+      <input {...field} placeholder={controllerProps.name} />
+      <p>{fieldState.isTouched && "Touched"}</p>
+      <p>{fieldState.isDirty && "Dirty"}</p>
+      <p>{fieldState.invalid ? "invalid" : "valid"}</p>
+    </div>
+  )
+}
+```
+
+```tsx filename="App.tsx"
+import Input from './Input'
+import { useForm, SubmitHandler } from "react-hook-form"
+
+type FormValues = {
+  FirstName: string
+  LastName: string;
+}
+
+export default function App() {
+  const { control, handleSubmit } = useForm<FormValues>({
+    defaultValues: {
+      FirstName: ""
+    }
+  });
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        control={control}
+        name="FirstName"
+        rules={{ required: true }}
+        customProp="custom"
+      />
+      <button type="submit">Save</button>
+    </form>
+  )
+}
+```
+
+
+Return values of `useController`:
+```ts
+const { field, fieldState, formState } = useController(controllerProps);
+```
+- `field`:
+  - `name`, `value`, `disabled`, `ref`
+  - `onChange`: `(value: any) => void`
+  - `onBlur`: `() => void`
+- `fieldState`:
+  - `invalid`, `isTouched`, `isDirty`, `error: object`
+- [`formState`](https://react-hook-form.com/docs/useform/formstate)
+
+
+### Using `Controller` component
+
+Your input is wrapped with `Controller` component. Then it is rendered by the `render` props.
+
+```tsx filename="Input.tsx"
+import { Controller, ControllerProps, FieldValues } from "react-hook-form"
+
+type InputProps<T extends FieldValues> = Omit<ControllerProps<T>, 'render'> & {
+  customProp: string;
+};
+
+export function Input<T extends FieldValues>({ customProp, ...rest }: InputProps<T>) {
+  return (
+    <Controller
+      {...rest}
+      render={({ field }) => {
+        console.log(field);
+        return <input {...field} />
+      }}
+    />
+  )
+}
+```
+
+Render function:
+```ts
+render({ field, fieldState, formState }) => React.ReactElement
+```
+
+
+## Sending form data to API endpoint
+
+The [`<Form />`](https://react-hook-form.com/docs/useform/form) component take care of form submission handling, allow you to easily send form data to an API endpoint or other service.
+
+```tsx
+import { Form } from "react-hook-form"
+
+function App() {
+  const { register, control } = useForm()
+
+  return (
+    <Form
+      action="/api/save"
+      method="post"
+      headers={{ 'Content-Type': 'application/json' }}
+      onSuccess={() => {
+        alert("Your application is updated.")
+      }}
+      onError={() => {
+        alert("Submission has failed.")
+      }}
+      control={control}
+    >
+      <input {...register("firstName", { required: true })} />
+      <input {...register("lastName", { required: true })} />
+      <button>Submit</button>
+    </Form>
+  )
+}
+```

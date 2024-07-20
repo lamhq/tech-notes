@@ -3,10 +3,17 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap');
 
+/* set font for better reading */
 p, ul, li, h1, h2, h3, h4, h5, h6 {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+/* reduce margin-top of list */
+ul.nx-mt-6 {
+  margin-top: 0.5rem;
+}
+
+/* make text content compact on medium and large screens */
 @media only screen and (min-width: 768px) {
   article p, article li {
     text-align: justify;
