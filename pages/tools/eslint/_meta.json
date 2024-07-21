@@ -1,0 +1,6 @@
+{
+  "configure": "Configure ESLint",
+  "cli": "ESLint CLI",
+  "api": "Node.js API",
+  "processors": "Custom Processors"
+}

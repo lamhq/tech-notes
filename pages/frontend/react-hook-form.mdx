@@ -195,10 +195,27 @@ When the input component doesn't expose input's ref.
 
 - Less code than using `Controller` component.
 
+`(props?: UseControllerProps) => { field: object, fieldState: object, formState: object }`
+- `field`:
+  - `name`, `value`, `disabled`, `ref`
+  - `onChange`: `(value: any) => void`
+  - `onBlur`: `() => void`
+- `fieldState`:
+  - `invalid`, `isTouched`, `isDirty`, `error: object`
+- [`formState`](https://react-hook-form.com/docs/useform/formstate)
+
+`UseControllerProps`:
+- `name`: field name
+- `defaultValue`
+- `control`
+- `rules`: validation rules
+- `shouldUnregister: boolean`
+- `disabled: boolean`
+
 ```tsx filename="Input.tsx"
 import { useController, UseControllerProps, FieldValues } from "react-hook-form"
 
-type InputProps<T extends FieldValues> = Omit<UseControllerProps<T>, 'render'> & {
+type InputProps<T extends FieldValues> = UseControllerProps<T> & {
   customProp: string;
 };
 
@@ -247,19 +264,6 @@ export default function App() {
   )
 }
 ```
-
-
-Return values of `useController`:
-```ts
-const { field, fieldState, formState } = useController(controllerProps);
-```
-- `field`:
-  - `name`, `value`, `disabled`, `ref`
-  - `onChange`: `(value: any) => void`
-  - `onBlur`: `() => void`
-- `fieldState`:
-  - `invalid`, `isTouched`, `isDirty`, `error: object`
-- [`formState`](https://react-hook-form.com/docs/useform/formstate)
 
 
 ### Using `Controller` component
