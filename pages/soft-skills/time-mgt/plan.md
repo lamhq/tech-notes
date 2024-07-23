@@ -48,15 +48,32 @@ Ask your self:
 8. When new needs arise, if they're not higher priority than your current focused tasks, add them to your weekly list and do NOT work on them today
 
 
+## The 80/20 Rule
+
+**In any field of endeavor, 80% of results come from 20% of actions.**
+
+Ask yourself the following questions:
+1. What 20% of sources are causing 80% of my problems and unhappiness?
+2. What 20% of sources are resulting in 80% of my desired outcomes and happiness?
+
+Ask those questions related to a variety of areas, such as:
+- Your customers/clients
+- Your business partners/vendors
+- Your employees
+- Your relationship(s)
+- Your strategies
+- Your tasks
+
+
 ## Prioritization
 
 Assess whether goals/tasks have higher priority than other tasks base on:
-- URGENT: tasks that require immediate attention, time-sensitive, often driven by deadlines or external pressures.
-- IMPORTANT: tasks that contribute significantly to long-term goals and values.
+- **URGENT**: tasks that require immediate attention, time-sensitive, often driven by deadlines or external pressures.
+- **IMPORTANT**: tasks that contribute significantly to long-term goals and values.
 
 Look at your priority list and determine which ones will provide more **value**.
 
-Rank each task in order of the amount of effort (or time) they will take to complete:
+**Rank each task** in order of the amount of effort (or time) they will take to complete:
 - Simpler Tasks First:
   - Quick completion.
   - See progress faster.
@@ -75,6 +92,11 @@ Priorities can change. Sometimes something gets dropped on your lap and you have
 Before changing, STOP first and ask yourself: *if this "emergency" truly is more urgent and valuable than the other priority I’ve already determined is my top pick?*
 
 
+## Eliminating Time Wasters
+
+Remove activities that have no clear purpose or NOT truly aligned with your goals
+
+
 ## Avoiding perfectionism
 
-Set time limits on the areas (that you tend to over-perfect) to make sure you have time left for other important things
+Set time limits on the areas (that you tend to over-perfect) to make sure you have time left for other important things.

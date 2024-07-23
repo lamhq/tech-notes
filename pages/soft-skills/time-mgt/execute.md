@@ -1,6 +1,8 @@
-# Staying Focused
+# Executing your plan
 
-## External
+## Staying Focused
+
+### External
 
 - Better to have a organized workspace
 - Communicate your needs to be left alone, put up a **"do not disturb"** sign on your office
@@ -17,7 +19,7 @@
 - Remind of things that you've accomplished in the past helps you create more success
 
 
-## Internal
+### Internal
 
 Common causes of internal distraction:
 - Low stimulation activities: leads to boredom
@@ -37,3 +39,38 @@ You can **balanced stimulation** by:
 - Secondary: This is a more focused list that contains only the 2 most important tasks you need to do right now. By concentrating on just these two tasks, you can work more efficiently and avoid feeling overwhelmed.
 
 **Train Your Brain**: MEDITATION is a tool for trainging your brain to remain calm and allow you to focus your thoughts in the direction of your choosing.
+
+
+## Taking Breaks
+
+### When?
+
+In moments of high stress, take five minutes to get away from your work. Come back to your desk with a new perspective.
+
+If you feel yourself start to get bored, restless, annoyed or mentally blocked, take a break before you get yourself into a state of frustration or become unproductive.
+
+When you see behaviors of **avoidance mechanisms**, it's time for a break. Don't force yourself to work on what you are avoiding.
+ 
+Examples of Avoidance Mechanisms:
+  - Organizing your desktop icons and/or email mailboxes
+  - Deleting emails from your phone
+  - Checking Facebook, playing games, or otherwise playing on your computer or phone
+  - Shuffling (cleaning) papers on your desk
+  - Messaging or otherwise pestering your co-workers
+  - Working on things you know you don’t need to (or shouldn’t be) working on right now instead of working on the thing you need to be working on
+
+
+### How to break?
+
+When i'm feeling frustrated, i can do the follow things to calm down:
+- 5 minute break:
+  - take a nap
+  - listen to music
+- 15 minute break:
+  - chat with a friend
+  - read a book
+  - housecleaning
+  - mediation
+- 60 minute break:
+  - go to the gym
+  - running
