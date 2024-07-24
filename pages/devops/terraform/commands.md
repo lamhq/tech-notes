@@ -8,28 +8,13 @@ terraform version
 
 ## Change working directory
 
-```shell
-terraform -chdir=<path_to/tf> <subcommand>
-```
-
-Example:
+You can add `-chdir=<path_to/tf>` flag to commands to specify the working directory:
 ```shell
 terraform -chdir="infra" apply -var-file="test.tfvars"
 ```
 
-## Initialize
 
-Initialize the directory:
-```shell
-terraform init
-```
-
-Used when:
-- create a new working directory
-- switching to a new workspace
-
-
-## Validate code
+## Validate Terraform code
 
 Validate the code to look for any errors in syntax, parameters, or attributes within Terraform resources that may prevent it from deploying correctly:
 ```shell
@@ -51,7 +36,6 @@ terraform plan -destroy
 ## Apply changes
 
 Applying a Terraform configuration is the process of creating, updating, and destroying real infrastructure objects in order to make their settings match the configuration.
-
 
 ```shell
 terraform apply
@@ -132,4 +116,19 @@ terraform
 
 ```shell
 terraform <sub_command> -h
+```
+
+
+## Upgrade Terraform
+
+First update Homebrew:
+
+```shell
+brew update
+```
+
+Upgrade Terraform to the latest version:
+
+```shell
+brew upgrade hashicorp/tap/terraform
 ```
