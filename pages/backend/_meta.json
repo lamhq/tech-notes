@@ -6,6 +6,7 @@
   "pydantic": "Pydantic",
   "pytest": "pytest",
   "faker": "Faker (python)",
+  "nodejs": "Node.js",
   "nestjs": "NestJS",
   "deno": "Deno"
 }
