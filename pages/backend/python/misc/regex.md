@@ -20,7 +20,7 @@ checker = re.compile(pattern)
 result = checker.search(string)
 ```
 
-## Split string by pattern
+## Split string
 
 ```py
 import re
@@ -36,8 +36,17 @@ entries = re.split("\n+", text)
 print(entries)
 ```
 
+## Extract matches
+```py
+import re
+text = '123_456_789.csv'
+matches = re.findall(r"(\d+)_(\d+)_(\d+)", text)
+if matches:
+    a, b, c = matches[0]
+    print(a, b, c)
+```
 
-## Replace strings by pattern
+## Substitute string with callback function
 
 ```py
 import re
@@ -47,8 +56,19 @@ text = "Professor Abdolmalek, please report your absences promptly."
 print(re.sub(r"(\w)(\w+)(\w)", repl, text))
 ```
 
+## Escape regex pattern
 
-## Notice
+You can use raw string notation (`r"text"`) to avoid the need to escape backslashes in regular expressions:
+```py
+# without raw string
+re.search("\\W(.)\\1\\W", " ff ")
+
+# with raw string
+re.search(r"\W(.)\1\W", " ff ")
+```
+
+
+## Notices
 
 `re.search()` can find matches anywhere in the string.
 
@@ -58,13 +78,7 @@ print(re.sub(r"(\w)(\w+)(\w)", repl, text))
 
 `re.finditer()` return match objects instead of strings.
 
-Raw string notation (`r"text"`) simplifies regular expressions by avoiding the need to escape backslashes:
-```py
-re.search(r"\W(.)\1\W", " ff ")
-re.search("\\W(.)\\1\\W", " ff ")
-```
 
+## References
 
-## Regular Expression Syntax
-
-Reference: [https://docs.python.org/3/library/re.html#regular-expression-syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+- [Regular Expression Syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax)

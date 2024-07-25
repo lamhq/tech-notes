@@ -29,7 +29,6 @@ def f(x):
 
 Markdown-based formats are great for documentation-oriented notebooks.
 
-❗️ This is currently unsupported by Visual Studio Code.
 
 ## Installation
 

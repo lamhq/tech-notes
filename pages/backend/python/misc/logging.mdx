@@ -1,0 +1,155 @@
+# Logging
+
+## Overview
+
+The `logging` module provides a flexible framework for emitting log messages from Python programs.
+
+
+## Getting started
+
+You can access logging functionality by creating a logger by calling `logging.getLogger(__name__)` then calling the logger’s methods.
+
+```py
+import logging
+
+# show logs of INFO and DEBUG levels
+logging.basicConfig(level=logging.DEBUG)
+
+# get the logger for the current module
+logger = logging.getLogger(__name__)
+
+# set module's log level
+logger.setLevel(logging.WARNING)
+
+# set log format
+file_handler.setFormatter(logging.Formatter(
+    '%(asctime)s : %(levelname)s : %(name)s : %(message)s'
+))
+
+# add file handler to logger
+logger.addHandler(logging.FileHandler('logfile.log'))
+
+logger.debug("This is a debug message")
+logger.info("This is an info message")
+logger.warning("This is a warning message")
+logger.error("This is an error message")
+logger.critical("critical message: %s", "error message")
+```
+
+
+## Logging Levels
+
+There're several log levels, each associated with a specific severity.
+
+Here are the standard log levels, in increasing order of severity:
+1. **DEBUG**: Detailed information, typically of interest only when diagnosing problems.
+2. **INFO**: Confirmation that things are working as expected.
+3. **WARNING**: An indication that something unexpected happened, or indicative of some problem in the near future (e.g., disk space low). The software is still working as expected.
+4. **ERROR**: Due to a more serious problem, the software has not been able to perform some function.
+5. **CRITICAL**: A serious error, indicating that the program itself may be unable to continue running.
+
+By default, the logging level is set to `WARNING`, meaning that only `WARNING`, `ERROR`, and `CRITICAL` messages will be logged unless you change the level.
+
+You can set the log level using the `setLevel()` method. For example:
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)  # Set the log level to DEBUG
+```
+
+
+## Customize module's logging
+
+Customize other module's logging behavior from the main module.
+
+Suppose we have the following files:
+```
+.
+├── code
+│   ├── __init__.py
+│   └── lib.py
+└── main.py
+```
+
+```py filename="code/lib.py"
+import logging
+
+logger = logging.getLogger(__name__)
+
+def do_sth():
+    logger.debug("This is a debug message")
+    logger.info("This is an info message")
+    logger.warning("This is a warning message")
+    logger.error("This is an error message")
+    logger.critical("critical message: %s", "error message")
+```
+
+```py filename="main.py"
+import logging
+from code.lib import do_sth
+
+# show logs of INFO and DEBUG levels
+logging.basicConfig(level=logging.DEBUG)
+
+logger = logging.getLogger('code.lib')
+logger.setLevel(logging.DEBUG)
+
+do_sth()
+```
+
+## Log to file
+
+Write log to a file instead of the console.
+```py
+import logging
+
+logging.basicConfig(level=logging.INFO, file='sample.log')
+```
+
+
+## Log format
+
+```py
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s :: %(levelname)s :: %(message)s'
+)
+logging.info("Just like that!")
+# 2019-02-17 11:40:38,254 :: INFO :: Just like that!
+```
+
+
+## Include traceback info
+
+Include traceback information in logged messages.
+
+```py
+import logging
+
+# Create or get the logger
+logger = logging.getLogger(__name__)
+
+# set log level
+logger.setLevel(logging.INFO)
+
+def divide(x, y):
+    try:
+        out = x / y
+    except ZeroDivisionError:
+        logger.exception("Division by zero problem")
+    else:
+        return out
+
+# Logs
+logger.error("Divide {x} / {y} = {c}".format(x=10, y=0, c=divide(10,0)))
+
+#> ERROR:__main__:Division by zero problem
+#> Traceback (most recent call last):
+#>   File "<ipython-input-16-a010a44fdc0a>", line 12, in divide
+#>     out = x / y
+#> ZeroDivisionError: division by zero
+#> ERROR:__main__:None
+```
