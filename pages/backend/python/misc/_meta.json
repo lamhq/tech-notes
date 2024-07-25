@@ -8,6 +8,7 @@
   "file-io": "File IO",
   "file-system": "File System Operations",
   "cli-api": "CLI API",
+  "exec-program": "Executing programs",
   "excel": "Excel",
   "table-extraction": "Table Extraction",
   "web-scraping": "Web Scraping",
