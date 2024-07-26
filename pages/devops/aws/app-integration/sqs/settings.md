@@ -2,13 +2,13 @@
 
 ## Visibility timeout
 
-The amount of time that a message that is received from a queue won’t be visible to the other message consumers.
+When a consumer reads a message from the queue, that message is marked as hidden for a period of time (called **visibility timeout**) so that other consumers won't receive and process it.
 
-If the consumer fails to process the message within the visibility timeout period, the message will reappear in the queue and become available for other consumers to receive and process.
+This ensures that only one consumer processes the message at a time.
 
-This could result in the same message being delivered twice.
+> If the consumer doesn't remove the message within the visibility timeout period, the message will reappear in the queue and become available for other consumers to receive and process. This could result in the same message being delivered twice.
 
-The default visibility timeout is 30 seconds, maximum is 12 hours.
+The default value is 30 seconds, max 12 hours.
 
 
 ## Delivery delay
@@ -17,7 +17,7 @@ The amount of time a message is delayed before being added to the queue.
 
 Up to 900 seconds (15 minutes), default is 0.
 
-Changing this setting for standard queues doesn’t affect the delay of messages already in the queue, only new messages. For FIFO queues, this affects the delay of messages already in the queue.
+Changing this setting for standard queues doesn't affect the delay of messages already in the queue, only new messages. For FIFO queues, this affects the delay of messages already in the queue.
 
 Use cases: Large distributed applications which may need to introduce a delay in processing.
 
@@ -25,6 +25,7 @@ Use cases: Large distributed applications which may need to introduce a delay in
 ## Message size
  
 The maximum message size for the queue. Up to **256KB** of text.
+
 
 ## Encryption
 
@@ -41,16 +42,23 @@ The amount of time messages remain in the queue. From 1 minute to 14 days, defau
 The maximum wait time for messages to become available after the queue gets a receive request.
 
 
-## Enable content-based deduplication
+## Content-based deduplication (FIFO queue)
 
-Amazon SQS can automatically create deduplication IDs based on the body of the message.
+When enabled, Amazon SQS can automatically create deduplication IDs based on the body of the message.
 
 
-## Enable high throughput FIFO
+## Enable high throughput FIFO (FIFO queue)
 
-This feature enables high throughput for messages in the queue. Choosing this option changes the related options (deduplication scope and FIFO throughput limit) to the required settings for enabling high throughput for FIFO queues.
+This feature enables high throughput for messages in the queue. 
+
+Choosing this option changes the related options (deduplication scope and FIFO throughput limit) to the required settings for enabling high throughput for FIFO queues.
 
 
 ## Redrive allow policy
 
 This policy defines which source queues can use this queue as the dead-letter queue.
+
+
+## Access policy
+
+Defines the accounts, users, and roles that can access the queue (send, receive, delete messages).

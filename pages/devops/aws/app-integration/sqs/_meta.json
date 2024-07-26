@@ -1,7 +1,8 @@
 {
-  "settings": "Available Settings",
-  "polling": "Polling",
-  "queue-types": "Queue Types",
+  "queue-types": "Queue types",
+  "settings": "Available settings",
+  "receiving": "Receiving messages",
   "monitoring": "Monitoring",
-  "security": "Security"
+  "security": "Security",
+  "dead-letter-queue": "Dead-Letter Queues"
 }
