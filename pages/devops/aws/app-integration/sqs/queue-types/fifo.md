@@ -7,8 +7,12 @@ No message duplication. Exactly-Once Processing. A message is delivered once and
 
 Support message groups that allow multiple ordered message groups within a single queue.
 
-Throughput: **300** messages/sec/API. **3,000** messages/sec with batching (max 10 messages/operation).
-- If FIFO high throughput is enabled: **9,000** transactions/sec/API (no batching), **90,000** transactions/sec with batching.
+Throughput:
+- **300** messages/sec/API.
+- **3,000** messages/sec with batching (max 10 messages/operation).
+- If FIFO high throughput is enabled:
+  - **9,000** transactions/sec/API (no batching)
+  - **90,000** transactions/sec with batching.
 
 Do not have the same level of performance as standard queues.
 
@@ -16,7 +20,7 @@ More expensive than standard queues.
 
 The name of a FIFO queue must end with the `.fifo` suffix.
 
-When to use it: send data between applications when the order of events is important
+Ideal for sending data between applications when the order of events is important
 
 Example use cases:
 - Processing user-entered inputs in the order entered
@@ -30,6 +34,7 @@ Use **Message group ID** tag to specify the group a message belong to.
 
 Messages that belong to the same message group are always processed one by one, in a strict order.
 
+Message group ID can't be used for Standard queues.
 
 ## Deduplication
 
@@ -71,3 +76,22 @@ Consumers can retry receiving massages as many times as necessary, using the sam
 
 
 ## Lambda concurrency behavior
+
+Behavior of Lambda functions when processing messages from an Amazon SQS FIFO queue:
+- **Single instance per message group**. Only one Lambda instance will be processing messages from a specific message group ID. This ensures that messages within the same group are processed in order
+- **Concurrent processing of different groups**. Lambda will use multiple instances to concurrently process messages from different message group IDs, one instance per group.
+
+
+## High throughput for FIFO queues
+
+High throughput FIFO queues efficiently manage high message throughput while maintaining strict message order.
+
+Ideal for scenarios demanding both **high throughput** and **strict message ordering**.
+
+Use cases:
+- Real-time data processing: event processing, telemetry data ingestion
+- E-commerce order processing: ensure that orders are processed sequentially and without delays, even during peak shopping seasons.
+- Financial services: process market data and transactions with minimal latency while adhering to strict regulatory requirements for message ordering.
+- Media streaming: manage the delivery of media files and streaming content, ensuring smooth playback experiences for users while maintaining the correct order of content delivery.
+
+You can enable high throughput for FIFO queues by chossing **Enable high throughput FIFO** while creating/editing a FIFO queue.

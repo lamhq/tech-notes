@@ -11,7 +11,7 @@ Messages can be duplicated:
 - Design your applications to be idempotent (they should not be affected adversely when processing the same message more than once).
 - You can include a unique ordering ID in each message, and have the backend application use this to deduplicate messages.
 
-When to use it: send data between applications when the throughput is important
+Ideal for sending data between applications when the throughput is important
 
 Example use cases:
 - Decouple live user requests from intensive background work: let users upload media while resizing or encoding it.
