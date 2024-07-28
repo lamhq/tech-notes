@@ -2,23 +2,18 @@
 
 ## Overview
 
-Dead-letter queues (DLQ) are targets for messages that cannot be processed successfully.
-
-Just a standard or FIFO queue that has been specified as a dead-letter queue of another queue.
+A dead-letter queues (DLQ) is a queue which source queues can target for messages that are not processed successfully.
 
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-sqs-dead-letter-queue-redrive-policy.jpeg)
 
-Messages are moved to the dead-letter queue when the `ReceiveCount` for a message exceeds the `maxReceiveCount` for a queue.
-
 Dead-letter queues will break the order of messages in FIFO queues.
 
-Useful for debugging applications and messaging systems.
+DLQ must be the same type with the original queue (standard or FIFO).
 
-**Redrive capability** allows you to move the message back into the source queue!
 
-You can use DLQs with FIFO SQS queues, but it must ALSO be FIFO queues.
+## Benefits
 
-### Benefits
+Useful for debugging applications because you can isolate unconsumed messages to determine why processing did not succeed.
 
 DLQs can be used to configure alarms based on message availability counts. Once a message is sent to DLQs, you can trigger alarms to notify operation teams.
 
@@ -28,6 +23,51 @@ Analyze the SQS message contents for any errors.
 
 Troubleshoot consumer permissions.
 
-### Tips
+
+## Configure DLQ for a queue
+
+To configure a dead-letter queue for an existing queue:
+1. Edit the queue in the console
+2. Scroll to the **Dead-letter queue** section and choose Scroll to the Dead-letter queue section and choose Enabled.
+3. Choose an existing Dead Letter Queue that you want to associate with this source queue.
+
+
+## Redrive policy
+
+This allow you to specify the `maxReceiveCount`, the number of times a consumer can receive a message (`ReceiveCount`) from a source queue before it is moved to a dead-letter queue.
+
+
+## Redrive allow policy
+
+This policy defines which source queues can use this queue as the dead-letter queue:
+- Allow All Source Queues: By default, all source queues can use the DLQ.
+- Allow Specific Source Queues: You can specify up to 10 source queues using their Amazon Resource Names (ARNs).
+- Deny All Source Queues: If you choose this option, the queue cannot be used as a DLQ.
+
+
+## DQL redrive
+
+You can move messages out of a dead-letter queue to the source queue or any other queue has the same type, using dead-letter queue redrive.
+
+Dead-letter queues redrive messages in the order they are received, starting with the oldest message.
+
+You can configure a dead-letter queue redrive using APIs or in the console.
+
+You can [configuring queue permissions for dead-letter queue redrive](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-dead-letter-queue-redrive.html#sqs-configure-dead-letter-queue-redrive-permissions), more details [here](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues-cloudtrail.html#sqs-dead-letter-queues-cloudtrail-permissions).
+
+
+## Create alarms for DLQs
+
+You can configure an alarm for any messages moved to a dead-letter queue using Amazon CloudWatch
+
+Metric: `ApproximateNumberOfMessagesVisible`.
+
+
+## Message retention periods of DLQs
+
+For standard queues, always set the retention period of a dead-letter queue to be longer than the retention period of the original queue.
+
+
+## Tips
 
 Make sure you set up an alarm and alert on queue depth.

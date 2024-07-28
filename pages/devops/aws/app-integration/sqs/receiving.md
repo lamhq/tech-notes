@@ -14,7 +14,7 @@ You send a request and the response returns immediately (even if the message que
 
 It queries only a subset of the available servers for messages (based on weighted random execution).
 
-`ReceiveMessageWaitTime` is set to 0.
+Short polling occurs when `WaitTimeSeconds` or `ReceiveMessageWaitTimeSeconds` is set to 0.
 
 More requests are used, which implies higher cost.
 
@@ -33,12 +33,12 @@ Long polling delays the response until a message becomes available or the poll t
 
 Long polling reduces unnecessary polling costs and improving efficiency.
 
-Can be enabled at the queue level or at the API level using `WaitTimeSeconds`.
-
-Long polling takes effect when `ReceiveMessageWaitTime` is greater than 0, up to 20 seconds.
-
 Shouldn't be used if your application expects an immediate response to receive message calls.
 
 In rare cases, you might receive empty responses even when a queue still contains messages, especially if you specify a low value for the `ReceiveMessageWaitTime` parameter.
 
 Same charge (per million requests) as short polling.
+
+Can be enabled by:
+- Setting the `ReceiveMessageWaitTimeSeconds` attribute in the `CreateQueueRequest` object > 0 (max 20 seconds) when calling the `createQueue` API (creating a queue)
+- Setting the `WaitTimeSeconds` request parameters > 0 when calling `ReceiveMessage` API (receiving messages).

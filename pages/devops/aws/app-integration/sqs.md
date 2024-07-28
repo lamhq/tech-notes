@@ -36,6 +36,16 @@ Each queue is assigned an unique URL that is used to perform actions.
 
 Message ID: each message has a message ID that Amazon SQS returns to you in the SendMessage response. It is useful for identifying messages.
 
+### Message states
+
+A message has three basic states:
+
+- Sent to a queue by a producer.
+- Received from the queue by a consumer.
+- Deleted from the queue.
+- Stored: message is sent to a queue but not yet received. No quota for the number of stored messages.
+- In flight: message is received but not yet deleted from the queue. Max 120,000 messages for standard queues, 20,000 for FIFO queues.
+
 ### Receipt handle
 
 Every time you receive a message from a queue, you receive an unique receipt handle (for that action).

@@ -10,21 +10,37 @@ This ensures that only one consumer processes the message at a time.
 
 The default value is 30 seconds, max 12 hours.
 
+You should set the visibility timeout to the maximum time to process and delete a message from the queue. If your consumer needs longer than 12 hours, consider using Step Functions.
+
+You can change the the visibility timeout for a message after receiving using `ChangeMessageVisibility` API.
+
+
+## Receive message wait time
+
+The maximum wait time for messages to become available after the queue gets a receive request.
+
 
 ## Delivery delay
 
 The amount of time a message is delayed before being added to the queue.
 
-Up to 900 seconds (15 minutes), default is 0.
+Default is 0, maximum is 15 minutes.
 
-Changing this setting for standard queues doesn't affect the delay of messages already in the queue, only new messages. For FIFO queues, this affects the delay of messages already in the queue.
+Changing this setting for standard queues only affects new messages. For FIFO queues, this also affects messages already in the queue.
 
-Use cases: Large distributed applications which may need to introduce a delay in processing.
+Use cases: your consumer application needs additional time to process messages.
 
 
 ## Message size
  
 The maximum message size for the queue. Up to **256KB** of text.
+
+You can use the Amazon SQS Extended Client Library for Java and the Amazon SQS Extended Client Library for Python to send large messages, up to 2 GB.
+
+
+## Access policy
+
+Defines the accounts, users, and roles that can access the queue (send, receive, delete messages).
 
 
 ## Encryption
@@ -35,30 +51,3 @@ Messages are encrypted in transit by default. Can enable "at-rest" too.
 ## Message retention
 
 The amount of time messages remain in the queue. From 1 minute to 14 days, default is **4 days**.
-
-
-## Receive message wait time
-
-The maximum wait time for messages to become available after the queue gets a receive request.
-
-
-## Content-based deduplication (FIFO queue)
-
-When enabled, Amazon SQS can automatically create deduplication IDs based on the body of the message.
-
-
-## Enable high throughput FIFO (FIFO queue)
-
-This feature enables high throughput for messages in the queue. 
-
-Choosing this option changes the related options (deduplication scope and FIFO throughput limit) to the required settings for enabling high throughput for FIFO queues.
-
-
-## Redrive allow policy
-
-This policy defines which source queues can use this queue as the dead-letter queue.
-
-
-## Access policy
-
-Defines the accounts, users, and roles that can access the queue (send, receive, delete messages).

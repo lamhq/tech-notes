@@ -5,5 +5,8 @@
   "quotas": "Quotas",
   "monitoring": "Monitoring",
   "security": "Security",
+  "metadata": "Message metadata",
+  "integrations": "Integrations",
+  "tmp-queues": "Temporary queues",
   "dead-letter-queue": "Dead-Letter Queues"
 }
