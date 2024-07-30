@@ -1,5 +1,5 @@
 # Object-oriented Design
 
-## Goals
+## Goal
 
-Build software so that we can make changes with the least possible impact on the existing code (less time reworking code, fewer bugs).
+The goals of Object-oriented Design is to build software so that we can make changes with the least possible impact on the existing code. Less time reworking code, fewer bugs.
