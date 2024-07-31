@@ -5,9 +5,11 @@
   "pkg-mgm": "Package Management",
   "code-style": "Code Style",
   "debugging": "Debugging",
-  "testing": "Testing",
+  "validation": "Validation",
   "api": "API Development",
+  "testing": "Testing",
   "database": "Database",
   "setting": "Setting",
+  "jupyter-notebook": "Jupyter Notebook",
   "misc": "Misc"
 }

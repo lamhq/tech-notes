@@ -1,6 +1,6 @@
-# Git history
+# Working with commit history
 
-## List the commit history
+## List commits
 
 ```sh
 git log
