@@ -1,7 +1,4 @@
 {
   "python": "Python",
-  "javascript": "JavaScript",
-  "nodejs": "Node.js",
-  "nestjs": "NestJS",
-  "deno": "Deno"
+  "javascript": "JavaScript"
 }

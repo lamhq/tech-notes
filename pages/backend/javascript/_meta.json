@@ -1,3 +1,5 @@
 {
-  "linters": "Linters"
+  "linters": "Linters",
+  "runtimes": "Runtimes",
+  "api": "API Development"
 }

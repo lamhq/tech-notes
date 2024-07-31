@@ -1,0 +1,21 @@
+# JavaScript Runtime
+
+## Overview
+
+A **JavaScript runtime** is an environment that allows JavaScript code to be executed.
+
+## Components
+
+A JavaScript runtime consists of several components:
+
+- **JavaScript Engine**: This is the core component that interprets and executes JavaScript code. Examples include Google's V8 (used in Chrome and Node.js), SpiderMonkey (used in Firefox), and JavaScriptCore (used in Safari).
+- **Web APIs**: These are provided by the browser and include functionalities like DOM manipulation, timers (e.g., `setTimeout`), and HTTP requests (e.g., `fetch`).
+- **Callback Queue**: This is where functions that are ready to be executed are queued up. These functions are typically callbacks from asynchronous operations.
+- **Event Loop**: This continuously checks the callback queue and pushes the functions to the call stack for execution when the stack is empty.
+
+
+## Popular Runtimes
+
+- **Node.js**: The most widely used JavaScript runtime, built on Chrome's V8 engine. It allows for server-side scripting and has a vast ecosystem of libraries and tools.
+- **Deno**: Created by the original developer of Node.js, Deno aims to address some of Node.js's shortcomings, such as security and native TypeScript support.
+- **Bun**: A newer runtime that focuses on speed and performance. It includes a built-in bundler, test runner, and package manager.
