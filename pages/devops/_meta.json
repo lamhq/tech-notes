@@ -2,8 +2,11 @@
   "cloud-computing": "Cloud Computing",
   "aws": "AWS",
   "gcp": "GCP",
+  "vercel": "Vercel",
+  "supabase": "Supabase",
   "linux": "Linux",
+  "docker": "Docker",
   "terraform": "Terraform",
-  "bitbucket-pipelines": "Bitbucket Pipelines",
-  "vercel": "Vercel"
+  "serverless": "Serverless",
+  "bitbucket-pipelines": "Bitbucket Pipelines"
 }

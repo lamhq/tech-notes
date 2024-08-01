@@ -41,8 +41,8 @@ Drop duplicate rows with values from specific columns:
 ```py
 df.drop_duplicates(['a'])
 """
-  a	b
-0	x	1
-3	y	3
+   a  b
+0  x  1
+3  y  3
 """
 ```

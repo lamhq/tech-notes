@@ -1,4 +1,4 @@
-# Available AWS Certifications
+# AWS Certifications
 
 ## Levels
 

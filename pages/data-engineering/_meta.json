@@ -1,6 +1,7 @@
 {
   "database": "Database",
   "postgresql": "PostgreSQL",
+  "big-data": "Big Data",
   "pyspark": "PySpark",
   "numpy": "NumPy",
   "pandas": "Pandas",
