@@ -1,41 +1,44 @@
-# More on Functions
+# Functions
 
-## Function Type Expressions
-
-```ts
-function greeter(fn: (a: string) => void) {
-  fn("Hello, World");
-}
-
-function printToConsole(s: string) {
-  console.log(s);
-}
-
-greeter(printToConsole);
-```
+## Function Type
 
 ```ts
 type GreetFunction = (a: string) => void;
+
 function greeter(fn: GreetFunction) {
-  // ...
+  fn("Hello, World");
 }
 ```
 
 
 ## Call Signatures
 
+A call signature in TypeScript defines the parameters and return type of a function within an object type.
+
+It allows you to create objects that can be invoked like functions but also have properties.
+
 ```ts
-type DescribableFunction = {
-  description: string;
-  (someArg: number): boolean;
+type MyCallableObject = {
+  (input: string): string; // Call signature
+  description: string;     // Property
 };
 
-function doSomething(fn: DescribableFunction) {
-  console.log(fn.description + " returned " + fn(6));
-}
+const myObject: MyCallableObject = (input: string) => {
+  return `Hello, ${input}!`;
+};
+
+myObject.description = "Greeting Function";
+
+console.log(myObject("World")); // Output: Hello, World!
+console.log(myObject.description); // Output: Greeting Function
 ```
 
+
 ## Construct Signatures
+
+Construct signatures define the shape of a constructor function, specifying the parameters it expects and the type of object it constructs.
+
+They use the `new` keyword in a type declaration to ensure the correct instantiation of classes or objects.
 
 ```ts
 type SomeConstructor = {
@@ -44,13 +47,6 @@ type SomeConstructor = {
 
 function fn(ctor: SomeConstructor) {
   return new ctor("hello");
-}
-```
-
-```ts
-interface CallOrConstruct {
-  new (s: string): Date;
-  (n?: number): number;
 }
 ```
 
