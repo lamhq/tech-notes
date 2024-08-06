@@ -1,4 +1,4 @@
-# Strategy
+# Strategy Pattern
 
 ## Overview
 
@@ -11,19 +11,7 @@ Strategy lets the algorithm vary independently from clients that use it.
 Strategy is a behavioral pattern.
 
 
-## Explanations
-
-The **Strategy** interface is implemented by all concrete strategies. It declares a method to execute a strategy.
-
-**Concrete Strategies** implement different variations of an algorithm.
-
-The **Context** (class that executes the algorithm) maintains a reference to one of the concrete strategies and communicates with this object only via the strategy interface.
-
-The context doesn’t know about concrete strategies. It calls the execution method on the linked strategy object each time it needs to run the algorithm.
-
-The **client** (code that creates the context) is responsible for selecting an appropriate algorithm and passing it to the context.
-
-You can add new algorithms or modify existing ones without changing the code of the context or other strategies.
+## Class Diagram
 
 ```mermaid
 ---
@@ -50,6 +38,20 @@ classDiagram
     Strategy <|-- ConcreteStrategyA
     Strategy <|-- ConcreteStrategyB
 ```
+
+## Explanations
+
+The **Strategy** interface is implemented by all concrete strategies. It declares a method to execute a strategy.
+
+**Concrete Strategies** implement different variations of an algorithm.
+
+The **Context** (class that executes the algorithm) maintains a reference to one of the concrete strategies and communicates with this object only via the strategy interface.
+
+The context doesn’t know about concrete strategies. It calls the execution method on the linked strategy object each time it needs to run the algorithm.
+
+The **client** (code that creates the context) is responsible for selecting an appropriate algorithm and passing it to the context.
+
+You can add new algorithms or modify existing ones without changing the code of the context or other strategies.
 
 Client code:
 ```ts

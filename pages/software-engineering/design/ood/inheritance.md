@@ -33,6 +33,7 @@ Inheritance enforces a rigid structure. Once a class hierarchy is established, i
 
 Inheritance should not be used when:
 - Code reuse is not achievable. For example: behaviors keeps changing across subclasses
+- Behaviors of some classes are different with the others
 - It's not appropriate for all subclasses to have a behavior
 
 When a behavior is inapproriate for subclasses, it can be  overriden(e.g., to do *nothing*), but it leads to:
@@ -41,8 +42,8 @@ When a behavior is inapproriate for subclasses, it can be  overriden(e.g., to do
 - code is duplicated accross subclasses
 
 For example, with the `Duck` superclass:
-- `fly()` behavior is not approriate for the `RubberDuck` subclass.
-- `DecoyDuck` doesn't support `fly()` or `quack()`.
+- `RubberDuck` doesn't support `fly()`
+- `DecoyDuck` doesn't support `fly()` or `quack()`
 
 ```mermaid
 ---
