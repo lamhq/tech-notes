@@ -39,15 +39,13 @@ classDiagram
     Strategy <|-- ConcreteStrategyB
 ```
 
-## Explanations
-
 The **Strategy** interface is implemented by all concrete strategies. It declares a method to execute a strategy.
 
 **Concrete Strategies** implement different variations of an algorithm.
 
 The **Context** (class that executes the algorithm) maintains a reference to one of the concrete strategies and communicates with this object only via the strategy interface.
 
-The context doesn’t know about concrete strategies. It calls the execution method on the linked strategy object each time it needs to run the algorithm.
+The context doesn't know about concrete strategies. It calls the execution method on the linked strategy object each time it needs to run the algorithm.
 
 The **client** (code that creates the context) is responsible for selecting an appropriate algorithm and passing it to the context.
 
@@ -126,7 +124,7 @@ In our navigation app, each routing algorithm can be extracted to its own routin
 
 The `buildRoute` method accepts an origin and destination and returns a collection of the route's checkpoints.
 
-The navigator class doesn’t care which algorithm is selected since its primary job is to render a set of checkpoints on the map.
+The navigator class doesn't care which algorithm is selected since its primary job is to render a set of checkpoints on the map.
 
 ```mermaid
 ---
@@ -190,6 +188,6 @@ Pros:
 
 Cons:
 - Code is bloated with extra classes and interfaces:
-  - If you only have a couple of algorithms and they rarely change (adding/removing), there’s no real reason to overcomplicate the program
+  - If you only have a couple of algorithms and they rarely change (adding/removing), there's no real reason to overcomplicate the program
   - You can use functional type that lets you implement strategy classes as anonymous functions without defining extra classes.
 - Clients must be aware of the differences between strategies to be able to select a proper one.

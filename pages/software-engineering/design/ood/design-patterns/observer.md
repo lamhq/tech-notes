@@ -8,7 +8,7 @@ When one object changes state, all of its dependents are notified.
 
 Observer is one of the most commonly used design patterns.
 
-You’ll find the pattern in many places, including RxJava, JavaBeans, and RMI, as well as in other language frameworks, like Cocoa, Swift, and JavaScript events.
+You'll find the pattern in many places, including RxJava, JavaBeans, and RMI, as well as in other language frameworks, like Cocoa, Swift, and JavaScript events.
 
 
 ## Class Diagram
@@ -42,8 +42,6 @@ classDiagram
   Observer o-- Subject
   ConcreteObserver --> ConcreteSubject
 ```
-
-## Explanations
 
 ### Subjects
 
@@ -96,7 +94,7 @@ window.addEventListener('click', handleClick);
 ```
 
 
-## Pulling State
+## Pulling State from Subject
 
 When a subject notifies state changes, all state is pushed to the `update()` method in observers, even if they don't need all the values.
 
@@ -162,10 +160,15 @@ classDiagram
 ## Loose Coupling
 
 The Observer Pattern is a great example of **loose coupling**. the ways the pattern achieves loose coupling:
-- The only thing the subject knows about an observer is that it implements a the `Observer` interface. It doesn’t need to know the concrete class of the observer, what it does, or anything else about it.
+- The only thing the subject knows about an observer is that it implements a the `Observer` interface. It doesn't need to know the concrete class of the observer, what it does, or anything else about it.
 - We can add, remove, or replace observers at any time.
 - We never need to modify the subject to add new types of observers. All we have to do is implement the `Observer` interface in the new class and register as an observer.
 - Changes to either the subject or an observer will not affect the other.
+
+
+## Open-closed Principle
+
+The Observer Pattern allows us to extend the Subject behavior at any time by adding new Observers without modifying the existing code.
 
 
 ## Relationship

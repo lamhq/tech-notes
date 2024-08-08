@@ -29,17 +29,23 @@ Changes in the parent class can have unintended effects on the child classes, ma
 Inheritance enforces a rigid structure. Once a class hierarchy is established, it can be challenging to make changes without affecting the entire hierarchy.
 
 
+## Limited Flexibility
+
+Inheritance is one form of extension, but it doesn't always lead to the most flexible or maintainable designs.
+
+When inheriting behavior by subclassing, that behavior is set statically at compile time, and all subclasses must inherit the same behavior (it can be a problem when a behavior isn't appropriate for some subclasses).
+
+
 ## When not to use?
 
 Inheritance should not be used when:
-- Code reuse is not achievable. For example: behaviors keeps changing across subclasses
-- Behaviors of some classes are different with the others
-- It's not appropriate for all subclasses to have a behavior
+- Code reuse is not achievable. Behaviors keeps changing across subclasses
+- Behaviors of some classes are the same but different with the others, lead to code duplication.
+- We may add functionality to the base class that isn't appropriate for some of the subclasses.
 
-When a behavior is inapproriate for subclasses, it can be  overriden(e.g., to do *nothing*), but it leads to:
-- hard to gain knowledge of all class behaviors: *which class support the behavior or not?*
-- we'll be forced to look at every new subclass and possibly override new behavior
-- code is duplicated accross subclasses
+When a behavior is inapproriate for subclasses, it can be overriden (to do *nothing*, for example), but it leads to:
+- Hard to gain knowledge of subclass behaviors: *which class support the behavior or not?*
+- We'll be forced to look at every new subclass and possibly override new behavior
 
 For example, with the `Duck` superclass:
 - `RubberDuck` doesn't support `fly()`

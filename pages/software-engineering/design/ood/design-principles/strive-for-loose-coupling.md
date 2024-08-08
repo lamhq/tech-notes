@@ -5,7 +5,7 @@ Strive for loosely coupled designs between objects that interact.
 ## Tightly Coupled
 We say a object is tightly coupled to another object when it is too dependent on that object.
 
-Here’s an example:
+Here's an example:
 ```ts
 class UserRepository {
   save(user: User) {
@@ -33,7 +33,7 @@ This makes it difficult to change the implementation of `UserRepository` without
 
 ## Loose Coupling
 
-A loosely coupled object doesn’t know or care too much about the details of another object.
+A loosely coupled object doesn't know or care too much about the details of another object.
 
 By not knowing too much about other objects, we can create designs that can handle change better. 
 
