@@ -1,73 +1,40 @@
-# Continuous logging
+# Logging
 
 ## Overview
-The continuous logging feature includes the following capabilities:
-- Continuous logging
-- A custom script logger to log application-specific messages
-- A console progress bar to track the running status of the current AWS Glue job
+
+When you start an AWS Glue job, it sends the real-time logging information to CloudWatch.
+
+You can view the logs on the AWS Glue console or the CloudWatch console dashboard.
+
+To view the logs, navigate to the `Runs` tabs, click on `Output logs` or `Error logs`.
+
+![](https://playbook.hackney.gov.uk/Data-Platform-Playbook/assets/images/glue_run_details-520527963baa9712f891b41dff95b501.png)
+
+The default log groups are as follows:
+- `/aws-glue/jobs/logs/output` for output logs
+- `/aws-glue/jobs/logs/error` for error logs
+
+Each log group contains multiple log streams, corresponding to each job run. Name follows the format: `jr_<job_run_id>`.
 
 
-## Enable continuous logging
+## Output Logs
 
-- AWS Glue console, select a Job
-- In the **Job details** tab, expand the **Advanced properties** section
-- Under **Continuous logging** select **Enable logs in CloudWatch**.
+The output stream has the standard output (stdout) from your code.
 
-Note: to make the log appear, do not specify a custom log group name (with parameter `--continuous-log-logGroup`)
+Your application-specific messages will be logged to Output Logs.
 
 
-## Writting application log
+## Error Logs
 
-To log application-specific messages, use the custom script logger:
-```py
-from awsglue.context import GlueContext
-from pyspark.context import SparkContext
+This is where you can find the details of job run's error.
 
-sc = SparkContext.getOrCreate()
-glueContext = GlueContext(sc)
-logger = glueContext.get_logger()
-logger.info("info message")
-logger.warn("warn message")
-logger.error("error message")
-```
+Oldest log messages are on top.
 
-To enable the progress bar to show job progress, initialize `glueContext` in the job script:
-```py
+You can quickly navigate to the error by typing `ERROR` or `Stack Trace` in the `Filter events` text box.
 
-import sys
-from awsglue.transforms import *
-from awsglue.utils import getResolvedOptions
-from pyspark.context import SparkContext
-from awsglue.context import GlueContext
-from awsglue.job import Job
-import time
-
-## @params: [JOB_NAME]
-args = getResolvedOptions(sys.argv, ['JOB_NAME'])
-
-sc = SparkContext()
-glueContext = GlueContext(sc)
-spark = glueContext.spark_session
-job = Job(glueContext)
-job.init(args['JOB_NAME'], args)
-
-...
-...
-code-to-profile
-...
-...
+To have better view, you can click to the `Display` option and choose `View in plain text` .
 
 
-job.commit()
-```
+## Reference
 
-
-## Viewing log
-
-To view real-time logs using the AWS Glue console dashboard:
-- When you start running a job, you navigate to a page that contains information about the running job
-- The **Continuous logging** tab shows a real-time progress bar when the job is running with glueContext initialized.
-
-To access the log group, in **Continuous logging** tab, click **Driver and executor log streams** link. You can filter application log using the keyword: `GlueLogger`.
-
-To view error logs, in **Run details** tab, click **Error logs** link in **Cloudwatch logs** section.
+- [Running Spark ETL jobs with reduced startup times](https://docs.aws.amazon.com/glue/latest/dg/reduced-start-times-spark-etl-jobs.html#reduced-start-times-logging)

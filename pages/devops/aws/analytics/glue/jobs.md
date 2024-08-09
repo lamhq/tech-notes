@@ -19,7 +19,7 @@ Check the [list of Python modules provided in AWS Glue version 2.0](https://docs
 
 Support different logging behavior:
 - Separate streams for drivers and executors
-- For each driver and executor, there are two streams: the output stream and the error stream.
+- For each driver and executor, there are two streams: the Output stream and the Error stream.
 
 Check [documentation of logging](https://docs.aws.amazon.com/glue/latest/dg/reduced-start-times-spark-etl-jobs.html#reduced-start-times-logging) for the format of log stream and log group name.
 

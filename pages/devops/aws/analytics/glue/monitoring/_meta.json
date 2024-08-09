@@ -1,5 +1,6 @@
 {
-  "metrics": "Metrics",
-  "logging": "Continuous logging",
-  "job-run-insights": "Job Run Insights"
+  "logging": "Logging",
+  "cont-log": "Continuous logging",
+  "job-run-insights": "Job Run Insights",
+  "metrics": "Metrics"
 }

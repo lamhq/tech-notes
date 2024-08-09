@@ -1,7 +1,6 @@
-# 
+# Executing Programs
 
-Call an external command within Python as typing it in a shell or command prompt.
-
+Run external programs/commands within Python code:
 ```py
 import subprocess
 

@@ -7,33 +7,59 @@ The `logging` module provides a flexible framework for emitting log messages fro
 
 ## Getting started
 
-You can access logging functionality by creating a logger by calling `logging.getLogger(__name__)` then calling the logger’s methods.
+You can access logging functionality by creating a logger by calling `logging.getLogger(__name__)` then calling the logger's methods.
 
 ```py
 import logging
 
-# show logs of INFO and DEBUG levels
-logging.basicConfig(level=logging.DEBUG)
-
 # get the logger for the current module
 logger = logging.getLogger(__name__)
 
-# set module's log level
-logger.setLevel(logging.WARNING)
+# create a logging handler and attach it to logger
+console_handler = logging.StreamHandler()
+logger.addHandler(console_handler)
 
-# set log format
-file_handler.setFormatter(logging.Formatter(
-    '%(asctime)s : %(levelname)s : %(name)s : %(message)s'
-))
-
-# add file handler to logger
-logger.addHandler(logging.FileHandler('logfile.log'))
-
+# perform logging
 logger.debug("This is a debug message")
 logger.info("This is an info message")
 logger.warning("This is a warning message")
 logger.error("This is an error message")
 logger.critical("critical message: %s", "error message")
+```
+
+
+## Logging Handlers
+
+**Logging handlers** are responsible for dispatching log messages to specific destinations.
+
+### StreamHandler
+
+This class sends logging output to streams such as `sys.stdout`, `sys.stderr`, or any file-like object.
+
+It's useful for displaying logs in the console.
+
+You can create an instance like this:
+```python
+import logging
+
+console_handler = logging.StreamHandler()
+
+logger.addHandler(console_handler)
+```
+
+### FileHandler
+
+The `FileHandler` class sends logging output to a disk file.
+
+It inherits functionality from `StreamHandler`.
+
+You can create an instance like this:
+```python
+import logging
+
+file_handler = logging.FileHandler("filename.log")
+
+logger.addHandler(file_handler)
 ```
 
 
@@ -50,20 +76,28 @@ Here are the standard log levels, in increasing order of severity:
 
 By default, the logging level is set to `WARNING`, meaning that only `WARNING`, `ERROR`, and `CRITICAL` messages will be logged unless you change the level.
 
-You can set the log level using the `setLevel()` method. For example:
+You can set the log level of the root logger like this:
+```python
+# show logs of all levels
+logging.basicConfig(level=logging.DEBUG)
+```
+
+To set the log level for a logger, you'll need to attach a log handler first, then call the `setLevel()` method before any logging operations:
 ```python
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Set the log level to DEBUG
+
+# create a logging handler
+console_handler = logging.StreamHandler()
+logger.addHandler(console_handler)
+
+# set log level, only INFO -> CRITICAL are shown
+logger.setLevel(logging.INFO)
 ```
 
 
-## Customize module's logging
-
-Customize other module's logging behavior from the main module.
-
-Suppose we have the following files:
+You can change the log level of a module from outside. Suppose we have the following file structure:
 ```
 .
 ├── code
@@ -85,26 +119,16 @@ def do_sth():
     logger.critical("critical message: %s", "error message")
 ```
 
+You can change the log level of the module `code/lib.py` in `main.py` to only display error and critial logs, like this:
 ```py filename="main.py"
 import logging
 from code.lib import do_sth
 
-# show logs of INFO and DEBUG levels
-logging.basicConfig(level=logging.DEBUG)
-
 logger = logging.getLogger('code.lib')
-logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.ERROR)
 
 do_sth()
-```
-
-## Log to file
-
-Write log to a file instead of the console.
-```py
-import logging
-
-logging.basicConfig(level=logging.INFO, file='sample.log')
 ```
 
 
@@ -114,7 +138,7 @@ logging.basicConfig(level=logging.INFO, file='sample.log')
 import logging
 
 logging.basicConfig(
-    level=logging.INFO, 
+    level=logging.INFO,
     format='%(asctime)s :: %(levelname)s :: %(message)s'
 )
 logging.info("Just like that!")

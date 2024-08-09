@@ -2,5 +2,6 @@
   "ipython": "IPython",
   "introspection": "Introspection",
   "magic-command": "Magic commands",
+  "output": "Cell Output",
   "jupytext": "Jupytext"
 }
