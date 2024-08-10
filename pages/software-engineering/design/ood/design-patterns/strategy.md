@@ -11,6 +11,13 @@ Strategy lets the algorithm vary independently from clients that use it.
 Strategy is a behavioral pattern.
 
 
+## Benefits
+- You can swap algorithms used inside an object at runtime.
+- You can isolate the implementation details of an algorithm from the code that uses it.
+- You can replace inheritance with composition.
+- Open/Closed Principle. You can introduce new strategies without having to change the context.
+
+
 ## Class Diagram
 
 ```mermaid
@@ -159,14 +166,14 @@ classDiagram
 
 ## When to use?
 
-When you want to use different variants of an algorithm within an object and be able to switch from one algorithm to another during runtime.
+- To dynamically switch between different variants of an algorithm within an object at runtime.
+- When you have similar classes that differ only in behavior execution.
+- To separate business logic from algorithm implementation details, making the code cleaner and more maintainable.
+- When your class has a large conditional operator for switching between different algorithms.
 
-When you have a lot of similar classes that only differ in the way they execute some behavior
+**Example:** Isolating algorithms from a multi-step workflow.
 
-To isolate the business logic of a class from the implementation details of algorithms that may not be as important in the context of that logic. *For example, separate algorithms from a multi-step workflow.*
-
-When your class has a massive conditional operator that switches between different variants of the same algorithm.
-- The Strategy pattern lets you extract all algorithms (which implement the same interface) into separate classes.
+The Strategy pattern allows you to extract all algorithms (which implement the same interface) into separate classes.
 
 
 ## How to apply?
@@ -177,16 +184,8 @@ When your class has a massive conditional operator that switches between differe
 4. In the context class, add a field for storing a reference to a strategy object. Provide a setter for replacing values of that field.
 5. Clients of the context must associate it with a primary strategy
 
+## Trade-offs
 
-## Pros and Cons
-
-Pros:
-- You can swap algorithms used inside an object at runtime.
-- You can isolate the implementation details of an algorithm from the code that uses it.
-- You can replace inheritance with composition.
-- Open/Closed Principle. You can introduce new strategies without having to change the context.
-
-Cons:
 - Code is bloated with extra classes and interfaces:
   - If you only have a couple of algorithms and they rarely change (adding/removing), there's no real reason to overcomplicate the program
   - You can use functional type that lets you implement strategy classes as anonymous functions without defining extra classes.
