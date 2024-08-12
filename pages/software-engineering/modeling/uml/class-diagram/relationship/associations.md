@@ -46,7 +46,7 @@ A special type of association.
 
 Object of one class "owns" object of another class.
 
-The child can exist independently of the parent. Example: delete the Classroom and the Students still exist.
+The child can exist independently of the parent. Example: delete the `Classroom` and the `Students` still exist.
 
 The relationship is displayed as a solid line with a **unfilled** diamond at the association end, which is connected to the class that represents the aggregate.
 

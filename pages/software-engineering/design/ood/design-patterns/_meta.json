@@ -1,5 +1,6 @@
 {
   "strategy": "Strategy",
   "observer": "Observer",
-  "decorator": "Decorator"
+  "decorator": "Decorator",
+  "factory": "Factory"
 }

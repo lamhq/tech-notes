@@ -4,7 +4,9 @@
 
 ***Program to an interface, not an implementation***.
 
-This design principle encourages writting code that rely on abstractions (interfaces) rather than concrete implementations (classes).
+This design principle encourages writting code that rely on abstractions (interfaces or abstract classes) rather than implementations (concrete classes).
+
+For example, when you use the `new` operator you are certainly instantiating a concrete class, so that’s definitely an implementation and not an interface.
 
 
 ## Benefits
@@ -19,6 +21,7 @@ This design principle encourages writting code that rely on abstractions (interf
 
 
 ## Rethink
+
 Let's say your code depends on a class (instead of an interface):
 - When that class changes, you need to review every change (methods and attributes) to see if you're referencing them in your code; then, possibly, a refactor is required.
 - You're forced to use instances of that class or its subclasses in your code, which reduces flexibility
@@ -27,6 +30,7 @@ Let's say your code depends on a class (instead of an interface):
 ## Example
 
 We have a function `makePayment` that process payments from users, it need a payment processor to work:
+
 ```ts
 interface PaymentProcessor {
   processPayment(amount: number): void;
