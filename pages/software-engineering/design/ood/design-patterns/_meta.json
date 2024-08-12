@@ -2,5 +2,6 @@
   "strategy": "Strategy",
   "observer": "Observer",
   "decorator": "Decorator",
-  "factory": "Factory"
+  "simple-factory": "Simple Factory",
+  "factory-method": "Factory Method"
 }

@@ -1,25 +1,32 @@
-# Factory Pattern
+# Simple Factory Pattern
 
 ## Overview
 
-The Factory pattern encapsulates object creation by extracting instantiation code from the client into a separate class.
+The Simple Factory encapsulates object creation logic in a separate class (known as the factory).
 
-It helps decoupling client code from concrete classes (implementation).
+While it isn't officially a Design Pattern, it is commonly used.
 
-Tying your code to concrete classes can make it more fragile and less flexible.
 
-Dealing with which concrete class is instantiated is really messing up our code and preventing it from being **closed for modification**.
+## Benefits
+
+It helps decoupling client code from instantiating concrete classes:
+- Tying code to concrete classes means you're [programming to implementations](../design-principles/program-to-interfaces), make it more fragile and less flexible.
+- It can mess up our code and prevent it from being **closed for modification**.
 
 By encapsulating the object creating in one class, we now have only one place to make modifications when the implementation changes.
 
-While it isn't officially a Design Pattern, it is commonly used.
+## Use Cases
+
+- When you want to encapsulate complex object creation logic.
+- To decouple client code from concrete classes.
+- When supporting multiple product variations or customization.
 
 
 ## Class Diagram
 
 ```mermaid
 ---
-title: Factory class pattern
+title: Simple Factory pattern
 ---
 classDiagram
   note for Context "useProduct() {\n product=factory.createProduct();
@@ -42,23 +49,22 @@ classDiagram
   Product <|-- ConcreteProductB
 ```
 
+`Context` is the client code that make use of `Product` objects. It goes through a `Factory` object to get instances of `Product`.
+
+The `Product` interface defines methods used by clients. Each concrete product implements the `Product` interface.
+
 The `Factory` class:
-- responsible for object creation
-- it should be the only part of the application that references concrete classes
-- has a factory method `createProduct()`, which may be parameterized, to create various product variations.
-
-The `Product` interface defines methods required by clients.
-
-Each concrete product implements the `Product` interface. It's created by `Factory`, and returned to the client.
-
-`Context` is the client of the factory. It goes through a `Factory` object to get instances of `Product`.
+- Encapsulate complex object creation logic
+- Contains a method `createProduct()`, which may be parameterized, that creates and returns instances of specific `Product`.
+- Should be the only part of the application that references concrete classes
 
 
 ## Example
 
-Suppose you run a pizza shop with a `PizzaStore` class.
+Suppose a pizza shop that has different types of pizza: `CheesePizza`, `GreekPizza`, `PepperoniPizza`, ...
 
-The class contains an `orderPizza()` method that handles ordering of pizza. It determines which type of pizza to serve and then makes the pizza:
+The `PizzaStore` class has an `orderPizza()` method that handles pizza orders. It determines which type of pizza to serve, then cooks, and returns the pizza:
+
 ```tsx
 class PizzaStore {
   orderPizza(type: string): Pizza {
@@ -89,9 +95,9 @@ In the method, we have several concrete classes being instantiated, and the deci
 
 ### Problem
 
-Frequently, the pizza object is used in several parts of the application, leading to duplicated instantiation code, making maintenance and updates more difficult and error-prone when the logic of pizza offerings change.
+Frequently, the pizza object is used in several parts of the application, leading to duplicated instantiation code. This makes maintenance and updates more difficult and error-prone when the logic of pizza creation changes.
 
-Also, the code makes use of concrete classes like `CheesePizza`, `GreekPizza` may have to be changed as new concrete classes are added. This means your code won't be "**closed for modification**" as you'll need to reopen it to extend with new types.
+Also, the code makes use of concrete pizza classes may have to be changed as new concrete classes are added. This means your code won't be "**closed for modification**" as you'll need to reopen it to extend with new types.
 
 
 ### Solution
@@ -127,23 +133,23 @@ class PizzaStore {
   private factory: SimplePizzaFactory;
 
   constructor(factory: SimplePizzaFactory) {
-      this.factory = factory;
+    this.factory = factory;
   }
 
   orderPizza(type: string): Pizza {
-      const pizza: Pizza = this.factory.createPizza(type);
+    const pizza: Pizza = this.factory.createPizza(type);
 
-      pizza.prepare();
-      pizza.bake();
-      pizza.cut();
-      pizza.box();
+    pizza.prepare();
+    pizza.bake();
+    pizza.cut();
+    pizza.box();
 
-      return pizza;
+    return pizza;
   }
 }
 ```
 
-It looks like we're just pushing the problem off to the Factory object. But the Factory may have many clients that handle the object in a different way than our `PizzaStore`.
+It looks like we're just pushing the problem off to the factory. But the factory may have many clients that handle the object in a different way than our `PizzaStore`.
 
 By encapsulating the pizza creating in one class, we now have only one place to make modifications when the implementation changes.
 
@@ -154,6 +160,6 @@ We’re also just about to remove the concrete instantiations from our client co
 
 ### How about defining a factory as a static method?
 
-BY using static method, you don’t need to instantiate an Factory object to make use of the `create()` method.
+By using static method, you don’t need to instantiate an `Factory` object to make use of the `createProduct()` method.
 
 But it also has the disadvantage that you can’t subclass and change the behavior of the create method.
