@@ -1,5 +1,6 @@
 {
   "program-to-interfaces": "Program to interfaces",
+  "dependency-inversion": "Dependency Inversion",
   "encapsulate-changes": "Encapsulate changes",
   "composition": "Composition over inheritance",
   "strive-for-loose-coupling": "Strive for Lose Coupling",

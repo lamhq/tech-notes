@@ -140,7 +140,6 @@ What varies among the regional Pizza Stores is the style of pizzas they make.
 
 We are going to push all these variations into the `createPizza()` abstract method. It's responsible for creating the right kind of pizza.
 
-
 ```ts
 abstract class PizzaStore {
   orderPizza(type: string): Pizza {
@@ -187,6 +186,30 @@ nyPizzaStore.orderPizza("cheese");
 
 When adding a new regional store, all we need to do is create a subclass of `PizzaStore` and supply a `createPizza()` method that implements their style of pizza.
 
+```mermaid
+---
+title: Factory Method pattern
+---
+classDiagram
+  class PizzaStore{
+    <<Abstract>>
+    +createPizza()*
+    +orderPizza()
+  }
+  class NYPizzaStore{
+    +createPizza()
+  }
+  class ChicagoPizzaStore{
+    +createPizza()
+  }
+  class Pizza{
+    <<interface>>
+  }
+  PizzaStore <|-- NYPizzaStore
+  PizzaStore <|-- ChicagoPizzaStore
+  Pizza <|-- NYStyleCheesePizza
+  Pizza <|-- NYStylePepperoniPizza
+```
 
 ## FAQ
 
