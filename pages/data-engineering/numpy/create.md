@@ -57,3 +57,14 @@ arr.dtype
 # 8
 arr.itemsize
 ```
+
+
+## Check array is empty
+
+```py
+import numpy as np
+
+a = np.array([])
+if a.size == 0:
+    print("Array is empty")
+```

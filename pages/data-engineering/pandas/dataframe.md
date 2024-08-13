@@ -82,6 +82,13 @@ Get number of rows:
 len(df)
 ```
 
+## Check dataframe is empty
+```py
+df_empty = pd.DataFrame()
+
+if df_empty.empty:
+    print("DataFrame is empty")
+```
 
 ## Viewing Data
 
