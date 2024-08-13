@@ -10,10 +10,13 @@ While it isn't officially a Design Pattern, it is commonly used.
 ## Benefits
 
 It helps decoupling client code from instantiating concrete classes:
+- Code that instantiates concrete classes is an area of frequent change. It can mess up our code and prevent it from being **closed for modification**.
 - Tying code to concrete classes means you're [programming to implementations](../design-principles/program-to-interfaces), make it more fragile and less flexible.
-- It can mess up our code and prevent it from being **closed for modification**.
 
-By encapsulating the object creating in one class, we now have only one place to make modifications when the implementation changes.
+Placing all creation code in one object or method helps avoid duplication and provide one place to perform maintenance.
+
+Clients now depend only upon interfaces rather than the concrete classes required to instantiate objects. This allows programming to an interface, not an implementation, which enhances code flexibility and extensibility.
+
 
 ## Use Cases
 
