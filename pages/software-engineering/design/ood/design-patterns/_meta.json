@@ -3,5 +3,6 @@
   "observer": "Observer",
   "decorator": "Decorator",
   "simple-factory": "Simple Factory",
-  "factory-method": "Factory Method"
+  "factory-method": "Factory Method",
+  "abstract-factory": "Abstract Factory"
 }

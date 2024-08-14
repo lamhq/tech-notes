@@ -131,7 +131,7 @@ Each time the implementation of those pizza classes changes (e.g., renaming, cha
 
 If you want to add California-region pizzas, you have to modify the `PizzaStore` and add more dependencies.
 
-The Pizza Store already has a framework for making pizzas in the `orderPizza()` method and you want to ensure that it’s consistent across all regions but still give each regions freedom to create its own regional pizzas.
+The Pizza Store already has a framework (procedure) for making pizzas in the `orderPizza()` method and you want to ensure that it’s consistent across all regions but still give each regions freedom to create its own regional pizzas.
 
 
 ### Solution
@@ -157,9 +157,9 @@ abstract class PizzaStore {
 }
 ```
 
-We'll keep the pizza making framework in one class and have a subclass for each regional type (`NYPizzaStore`, `ChicagoPizzaStore`, `CaliforniaPizzaStore`).
+We'll keep the pizza making logic in one class and have a subclass for each regional type (`NYPizzaStore`, `ChicagoPizzaStore`, `CaliforniaPizzaStore`).
 
-Each subclass is going to have its own regional pizza by implementing the `createPizza()` method, while all subclasses still make use of the framework defined in the `orderPizza()` method:
+Each subclass is going to have its own regional pizza by implementing the `createPizza()` method, while all subclasses still make use of the `orderPizza()` method:
 ```ts
 class NYPizzaStore extends PizzaStore {
   createPizza(type: string): Pizza | null {
@@ -257,8 +257,8 @@ The Concrete Creator do look a lot like Simple Factory.
 
 Howerver, with Factory Method you are creating a framework that lets the subclasses decide which implementation (concrete product) will be used.
 
-For example, the orderPizza() method in the Factory Method Pattern provides a general framework for creating pizzas that relies on a factory method to actually create the concrete classes that go into making a pizza.
+For example, the `orderPizza()` method in the Factory Method Pattern provides a general framework for creating pizzas that relies on a factory method to actually create the concrete classes that go into making a pizza.
 
-By subclassing the PizzaStore class, you decide what concrete products go into making the pizza that orderPizza() returns. 
+By subclassing the `PizzaStore` class, you decide what concrete products go into making the pizza that `orderPizza()` returns. 
 
 Compare that with Simple Factory, which gives you a way to encapsulate object creation, but doesn’t give you the flexibility of Factory Method because there is no way to vary the products you’re creating.
