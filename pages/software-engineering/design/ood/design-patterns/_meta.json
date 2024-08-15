@@ -4,5 +4,7 @@
   "decorator": "Decorator",
   "simple-factory": "Simple Factory",
   "factory-method": "Factory Method",
-  "abstract-factory": "Abstract Factory"
+  "abstract-factory": "Abstract Factory",
+  "builder": "Builder",
+  "cor": "Chain of Responsibility"
 }
