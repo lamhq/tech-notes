@@ -19,13 +19,13 @@ title: Observer pattern
 ---
 classDiagram
   class Subject{
-    <<interface>>
+    <<Interface>>
     +registerObserver(observer)*
     +removeObserver(observer)*
     +notifyObservers()*
   }
   class Observer{
-    <<interface>>
+    <<Interface>>
     +update(state)*
   }
   class ConcreteSubject{
@@ -135,13 +135,13 @@ title: Observer pattern (Pull version)
 ---
 classDiagram
   class Subject{
-    <<interface>>
+    <<Interface>>
     +registerObserver(observer)*
     +removeObserver(observer)*
     +notifyObservers()*
   }
   class Observer{
-    <<interface>>
+    <<Interface>>
     +update(subject)*
   }
   class ConcreteSubject{

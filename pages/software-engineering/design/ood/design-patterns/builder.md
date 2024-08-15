@@ -77,7 +77,7 @@ classDiagram
     +constructPlan()
   }
   class AbstractBuilder{
-    <<interface>>
+    <<Interface>>
     +buildDay()*
     +addHotel()*
     +addReservation()*

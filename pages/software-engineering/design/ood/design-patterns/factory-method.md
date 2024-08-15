@@ -23,7 +23,7 @@ classDiagram
     +factoryMethod()
   }
   class Product{
-    <<interface>>
+    <<Interface>>
   }
   class ConcreteProduct{
   }
@@ -203,7 +203,7 @@ classDiagram
     +createPizza()
   }
   class Pizza{
-    <<interface>>
+    <<Interface>>
   }
   PizzaStore <|-- NYPizzaStore
   PizzaStore <|-- ChicagoPizzaStore

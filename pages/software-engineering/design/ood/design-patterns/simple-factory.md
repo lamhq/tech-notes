@@ -42,7 +42,7 @@ classDiagram
     +createProduct(type)
   }
   class Product{
-    <<interface>>
+    <<Interface>>
     +methodA()
     +methodB()
   }

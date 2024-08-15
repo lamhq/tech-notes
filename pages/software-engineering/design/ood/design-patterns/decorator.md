@@ -24,7 +24,7 @@ title: Decorator pattern
 ---
 classDiagram
   class Component{
-    <<interface>>
+    <<Interface>>
     +methodA()
     +methodB()
   }

@@ -25,25 +25,25 @@ Strategy is a behavioral pattern.
 title: Strategy pattern
 ---
 classDiagram
-    class Context{
-        -strategy
-        +setStrategy(strategy)
-        +doSomething()
-    }
-    note for Context "doSomething() {\nstrategy.execute()\n}"
-    class Strategy{
-        <<interface>>
-        +execute(data)
-    }
-    class ConcreteStrategyA{
-        +execute(data)
-    }
-    class ConcreteStrategyB{
-        +execute(data)
-    }
-    Context o-- Strategy
-    Strategy <|-- ConcreteStrategyA
-    Strategy <|-- ConcreteStrategyB
+  class Context{
+    -strategy
+    +setStrategy(strategy)
+    +doSomething()
+  }
+  note for Context "doSomething() {\nstrategy.execute()\n}"
+  class Strategy{
+    <<Interface>>
+    +execute(data)
+  }
+  class ConcreteStrategyA{
+    +execute(data)
+  }
+  class ConcreteStrategyB{
+    +execute(data)
+  }
+  Context o-- Strategy
+  Strategy <|-- ConcreteStrategyA
+  Strategy <|-- ConcreteStrategyB
 ```
 
 The **Strategy** interface is implemented by all concrete strategies. It declares a method to execute a strategy.
@@ -145,7 +145,7 @@ classDiagram
   }
   note for Navigator "buildRoute(A, B) {\nreturn routeStrategy.buildRoute(A, B)\n}"
   class RouteStrategy{
-    <<interface>>
+    <<Interface>>
     +buildRoute(A, B)
   }
   class RoadStrategy{

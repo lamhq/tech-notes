@@ -22,7 +22,7 @@ title: Abstract Factory pattern
 ---
 classDiagram
   class AbstractFactory{
-    <<interface>>
+    <<Interface>>
     +createProductA()
     +createProductB()
   }
@@ -35,10 +35,10 @@ classDiagram
     +createProductB()
   }
   class AbstractProductA{
-    <<interface>>
+    <<Interface>>
   }
   class AbstractProductB{
-    <<interface>>
+    <<Interface>>
   }
   AbstractFactory <|-- ConcreteFactory1
   AbstractFactory <|-- ConcreteFactory2
@@ -86,10 +86,10 @@ title: Abstract Factory pattern (3)
 classDiagram
   class Client
   class AbstractProductA{
-    <<interface>>
+    <<Interface>>
   }
   class AbstractProductB{
-    <<interface>>
+    <<Interface>>
   }
   Client --> AbstractProductA
   Client --> AbstractProductB
@@ -173,7 +173,7 @@ title: Pizza Store with Abstract Factory
 ---
 classDiagram
   class PizzaIngredientFactory{
-    <<interface>>
+    <<Interface>>
     +createDough()
     +createSauce()
     +createCheese()
@@ -195,10 +195,10 @@ classDiagram
     +createClam()
   }
   class Dough{
-    <<interface>>
+    <<Interface>>
   }
   class Sauce{
-    <<interface>>
+    <<Interface>>
   }
   PizzaIngredientFactory <|-- NYPizzaIngredientFactory
   PizzaIngredientFactory <|-- ChicagoPizzaIngredientFactory
