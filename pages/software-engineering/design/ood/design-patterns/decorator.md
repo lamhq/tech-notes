@@ -20,7 +20,7 @@ Decorators can wrap other decorated objects and can be applied at runtime, enabl
 
 ```mermaid
 ---
-title: Decorator pattern
+title: Decorator Pattern
 ---
 classDiagram
   class Component{

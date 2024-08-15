@@ -15,7 +15,7 @@ You'll find the pattern in many places, including RxJava, JavaBeans, and RMI, as
 
 ```mermaid
 ---
-title: Observer pattern
+title: Observer Pattern
 ---
 classDiagram
   class Subject{
@@ -131,7 +131,7 @@ class ConcreteObserver implements Observer {
 
 ```mermaid
 ---
-title: Observer pattern (Pull version)
+title: Observer Pattern (Pull version)
 ---
 classDiagram
   class Subject{

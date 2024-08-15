@@ -66,11 +66,11 @@ You need to provide a way to create the complex structure without mixing it with
 
 ### Solution
 
-We encapsulate the creation of the trip plan in an object (let’s call it a builder), and have our client ask the builder to construct the trip plan structure for it.
+We encapsulate the creation of the trip plan in an object (let's call it a builder), and have our client ask the builder to construct the trip plan structure for it.
 
 ```mermaid
 ---
-title: Builder pattern
+title: Builder Pattern
 ---
 classDiagram
   class Client{

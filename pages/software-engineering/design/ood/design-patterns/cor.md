@@ -40,7 +40,7 @@ Each object in the chain acts as a handler and has a successor object. If it can
 
 Decouples the sender of the request and its receivers.
 
-Simplifies your object because it doesn’t have to know the chain’s structure and keep direct references to its members.
+Simplifies your object because it doesn't have to know the chain's structure and keep direct references to its members.
 
 Allows you to add or remove responsibilities dynamically by changing the members or order of the chain.
 
@@ -52,7 +52,7 @@ Commonly used in Windows systems to handle events like mouse clicks and keyboard
 
 ## Drawbacks
 
-Execution of the request isn’t guaranteed; it may fall off the end of the chain if no object handles it (this can be an advantage or a disadvantage).
+Execution of the request isn't guaranteed; it may fall off the end of the chain if no object handles it (this can be an advantage or a disadvantage).
 
 Can be hard to observe and debug at runtime.
 
@@ -123,6 +123,6 @@ class SpamHandler {
 }
 ```
 
-As email is received, it is passed to the first handler: `SpamHandler`. If the `SpamHandler` can’t handle the request, it is passed on to the `CustomerHandler`. And so on...
+As email is received, it is passed to the first handler: `SpamHandler`. If the `SpamHandler` can't handle the request, it is passed on to the `CustomerHandler`. And so on...
 
 Email is not handled if it falls off the end of the chain, although you can alway implement a catch-all handler.

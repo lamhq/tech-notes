@@ -22,7 +22,7 @@ Strategy is a behavioral pattern.
 
 ```mermaid
 ---
-title: Strategy pattern
+title: Strategy Pattern
 ---
 classDiagram
   class Context{
@@ -135,7 +135,7 @@ The navigator class doesn't care which algorithm is selected since its primary j
 
 ```mermaid
 ---
-title: After applying Strategy pattern
+title: After applying Strategy Pattern
 ---
 classDiagram
   class Navigator{

@@ -18,7 +18,7 @@ We can substitute different factories to get different products and behaviors bu
 
 ```mermaid
 ---
-title: Abstract Factory pattern
+title: Abstract Factory Pattern
 ---
 classDiagram
   class AbstractFactory{
@@ -58,7 +58,7 @@ Each concrete factory produces concrete products for a specific product family.
 
 ```mermaid
 ---
-title: Abstract Factory pattern (2)
+title: Abstract Factory Pattern (2)
 ---
 classDiagram
   namespace Family1 {
@@ -81,7 +81,7 @@ To create a product, the client uses the abstract factory. The  concrete factory
 
 ```mermaid
 ---
-title: Abstract Factory pattern (3)
+title: Abstract Factory Pattern (3)
 ---
 classDiagram
   class Client
@@ -105,11 +105,11 @@ All regions make up ingredient families, with each region implementing a complet
 
 A ingredient family consists of one dough, one sauce, one cheese, veggies, a pepperoni, a clam.
 
-Now we’re going to build a factory to create our ingredients; the factory will be responsible for creating each ingredient in the ingredient family.
+Now we're going to build a factory to create our ingredients; the factory will be responsible for creating each ingredient in the ingredient family.
 
 In other words, the factory will need to create dough, sauce, cheese, and so on...
 
-Let’s start by defining an interface for the factory that is going to create all our ingredients:
+Let's start by defining an interface for the factory that is going to create all our ingredients:
 
 ```ts
 interface PizzaIngredientFactory {

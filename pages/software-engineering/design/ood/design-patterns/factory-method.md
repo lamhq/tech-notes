@@ -11,7 +11,7 @@ Factory Method lets a class defer instantiation to subclasses.
 
 ```mermaid
 ---
-title: Factory Method pattern
+title: Factory Method Pattern
 ---
 classDiagram
   class Creator{
@@ -72,7 +72,7 @@ Concrete creators are subclasses of the creator.
 
 They implement the factory method and create products. This decouples the Creator from the object creation code.
 
-For every concrete creator, there’s typically a whole set of products that it creates. In other words, each set of products get its own creator class.
+For every concrete creator, there's typically a whole set of products that it creates. In other words, each set of products get its own creator class.
 
 The client know about which set of products to choose. It instantiates the concrete creator and use its to perform the task.
 
@@ -131,7 +131,7 @@ Each time the implementation of those pizza classes changes (e.g., renaming, cha
 
 If you want to add California-region pizzas, you have to modify the `PizzaStore` and add more dependencies.
 
-The Pizza Store already has a framework (procedure) for making pizzas in the `orderPizza()` method and you want to ensure that it’s consistent across all regions but still give each regions freedom to create its own regional pizzas.
+The Pizza Store already has a framework (procedure) for making pizzas in the `orderPizza()` method and you want to ensure that it's consistent across all regions but still give each regions freedom to create its own regional pizzas.
 
 
 ### Solution
@@ -188,7 +188,7 @@ When adding a new regional store, all we need to do is create a subclass of `Piz
 
 ```mermaid
 ---
-title: Factory Method pattern
+title: PizzaStore with Factory Method Pattern
 ---
 classDiagram
   class PizzaStore{
@@ -213,7 +213,7 @@ classDiagram
 
 ## FAQ
 
-### What’s the advantage of the Factory Method Pattern when you only have one ConcreteCreator?
+### What's the advantage of the Factory Method Pattern when you only have one ConcreteCreator?
 
 Even when you only have one ConcreteCreator, it's still useful because you are decoupling the creation (implementation) of the product from its use.
 
@@ -261,4 +261,4 @@ For example, the `orderPizza()` method in the Factory Method Pattern provides a 
 
 By subclassing the `PizzaStore` class, you decide what concrete products go into making the pizza that `orderPizza()` returns. 
 
-Compare that with Simple Factory, which gives you a way to encapsulate object creation, but doesn’t give you the flexibility of Factory Method because there is no way to vary the products you’re creating.
+Compare that with Simple Factory, which gives you a way to encapsulate object creation, but doesn't give you the flexibility of Factory Method because there is no way to vary the products you're creating.

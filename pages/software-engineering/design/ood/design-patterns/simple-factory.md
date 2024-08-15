@@ -29,7 +29,7 @@ Clients now depend only upon interfaces rather than the concrete classes require
 
 ```mermaid
 ---
-title: Simple Factory pattern
+title: Simple Factory Pattern
 ---
 classDiagram
   note for Context "useProduct() {\n product=factory.createProduct();
@@ -74,7 +74,7 @@ class PizzaStore {
     let pizza: Pizza;
 
     // This is what varies. As the pizza selection changes over time,
-    // you’ll have to modify this code over and over.
+    // you'll have to modify this code over and over.
     if (type === "cheese") {
       pizza = new CheesePizza();
     } else if (type === "greek") {
@@ -158,11 +158,11 @@ By encapsulating the pizza creating in one class, we now have only one place to 
 
 By using `Pizza` interface, the `PizzaStore` will work with any new classes implementing that interface through polymorphism.
 
-We’re also just about to remove the concrete instantiations from our client code.
+We're also just about to remove the concrete instantiations from our client code.
 
 
 ### How about defining a factory as a static method?
 
-By using static method, you don’t need to instantiate an `Factory` object to make use of the `createProduct()` method.
+By using static method, you don't need to instantiate an `Factory` object to make use of the `createProduct()` method.
 
-But it also has the disadvantage that you can’t subclass and change the behavior of the create method.
+But it also has the disadvantage that you can't subclass and change the behavior of the create method.

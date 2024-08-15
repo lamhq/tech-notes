@@ -6,7 +6,7 @@
 
 This design principle encourages writting code that rely on abstractions (interfaces or abstract classes) rather than implementations (concrete classes).
 
-For example, when you use the `new` operator you are certainly instantiating a concrete class, so that’s definitely an implementation and not an interface.
+For example, when you use the `new` operator you are certainly instantiating a concrete class, so that's definitely an implementation and not an interface.
 
 
 ## Benefits
