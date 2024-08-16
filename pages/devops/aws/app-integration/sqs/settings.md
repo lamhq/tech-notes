@@ -2,15 +2,21 @@
 
 ## Visibility timeout
 
-When a consumer reads a message from the queue, that message is marked as hidden for a period of time (called **visibility timeout**) so that other consumers won't receive and process it.
+Visibility timeout is the time that a message won't be visible to consumers after being consumed by another consumer. This ensures that only one consumer processes the message at a time.
 
-This ensures that only one consumer processes the message at a time.
+If you set the visibility timeout too long, you must wait for a long time to attempt to process the message again if the previous processing attempt fails.
 
-> If the consumer doesn't remove the message within the visibility timeout period, the message will reappear in the queue and become available for other consumers to receive and process. This could result in the same message being delivered twice.
+If you set the visibility timeout too short, another consumer can process the message again while the original is still working on it. causing a duplicate message.
 
-The default value is 30 seconds, max 12 hours.
+To make sure that there is sufficient time to process messages, use one of the following strategies:
+- Set the message's visibility timeout to the maximum time to process and delete a message from the queue.
+- Specify the initial visibility timeout (e.g., 2 minutes) and then keep extending it as long as your consumer still works on the message.
 
-You should set the visibility timeout to the maximum time to process and delete a message from the queue. If your consumer needs longer than 12 hours, consider using Step Functions.
+The default visibility timeout value is 30 seconds, max 12 hours.
+
+If your consumer needs longer than 12 hours, consider using Step Functions.
+
+For optimal performance, set the visibility timeout to be larger than the AWS SDK read timeout.
 
 You can change the the visibility timeout for a message after receiving using `ChangeMessageVisibility` API.
 

@@ -31,22 +31,26 @@ Example use cases:
 
 ## Sequencing
 
-Use **Message group ID** tag to specify the group a message belong to.
+**MessageGroupId** is the tag that specifies that a message belongs to a specific message group.
 
-Messages that belong to the same message group are always processed one by one, in a strict order.
+Messages that belong to the same message group are always processed one by one, in a strict order relative to the message group.
 
-Message group ID can't be used for Standard queues.
+MessageGroupId is required for FIFO queues. You can't use it for Standard queues.
+
+Avoid having a large backlog of messages with the same message group ID. A FIFO queue checks the first 20k messages for available message groups. If they all have the same `MessageGroupId`, you can't consume messages from other groups beyond the first.
 
 
 ## Deduplication
 
-Use **Message deduplication ID** token for deduplication of sent messages.
+**Message deduplication ID** is the token used for deduplication of sent messages.
 
-If a message with a specific deduplication ID is sent successfully, other messages with the same ID will be accepted but not delivered for 5 minutes (deduplication interval).
+If the setting **Content-based deduplication** is enabled, deduplication IDs are automatically created based on the body of the message (using a SHA-256 hash).
 
-If the setting **Content-based deduplication** is enabled, SQS automatically create deduplication IDs based on the body of the message (using a SHA-256 hash).
+You can explicitly provide the Message deduplication ID.
 
-You can explicitly provide the message deduplication ID.
+### Deduplication interval
+- If a message with a specific deduplication ID is sent successfully, other messages with the same ID will not be delivered for 5 minutes (deduplication interval).
+- Retrying SendMessage requests after the deduplication interval expires can introduce duplicate messages into the queue.
 
 
 ## Receiving messages

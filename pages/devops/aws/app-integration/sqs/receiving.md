@@ -27,18 +27,27 @@ Short polling is the default behavior.
 
 ## Long polling
 
-When retrieving messages, empty response is occasionally returned. To optimize message retrieval and minimize empty responses, consider using long polling.
+Long polling delays the response until a message becomes available or the poll times out. It reduces unnecessary polling costs and improving efficiency.
 
-Long polling delays the response until a message becomes available or the poll times out.
+Long polling is preferable over short polling in most cases.
 
-Long polling reduces unnecessary polling costs and improving efficiency.
-
-Shouldn't be used if your application expects an immediate response to receive message calls.
+It shouldn't be used if your application expects an immediate response to receive message calls.
 
 In rare cases, you might receive empty responses even when a queue still contains messages, especially if you specify a low value for the `ReceiveMessageWaitTime` parameter.
 
-Same charge (per million requests) as short polling.
+Long pooling is billed the same as (per million requests) short polling.
 
 Can be enabled by:
 - Setting the `ReceiveMessageWaitTimeSeconds` attribute in the `CreateQueueRequest` object > 0 (max 20 seconds) when calling the `createQueue` API (creating a queue)
 - Setting the `WaitTimeSeconds` request parameters > 0 when calling `ReceiveMessage` API (receiving messages).
+
+**Use one thread for each queue**. If you implement long polling for multiple queues, use one thread for each queue instead of a single thread for all queues. Using a single thread for each queue allows your application to process the messages in each of the queues as they become available, while using a single thread for polling multiple queues might cause your application to become unable to process messages available in other queues while the application waits for the queue which doesn't have any available messages.
+
+
+## Deduplication
+
+The receive request attempt ID is the token used for deduplication of receiving messages.
+
+It's a best practice:
+- provide the receive request attempt ID
+- retry with the same receive request attempt ID if the SDK operation fails.

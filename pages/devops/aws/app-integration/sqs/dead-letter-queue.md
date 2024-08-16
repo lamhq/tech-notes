@@ -10,6 +10,8 @@ Dead-letter queues will break the order of messages in FIFO queues.
 
 DLQ must be the same type with the original queue (standard or FIFO).
 
+It's possible for a message is delivered but the consumer never received it, we don't recommend setting the number of maximum receives to 1 for a dead-letter queue.
+
 
 ## Benefits
 
@@ -34,7 +36,9 @@ To configure a dead-letter queue for an existing queue:
 
 ## Redrive policy
 
-This allow you to specify the `maxReceiveCount`, the number of times a consumer can receive a message (`ReceiveCount`) from a source queue before it is moved to a dead-letter queue.
+The redrive policy redirects messages to a dead-letter queue after the source queue fails to process a message a specified number of times.
+
+This's specified in `maxReceiveCount`.
 
 
 ## Redrive allow policy

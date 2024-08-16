@@ -21,6 +21,11 @@ A background thread then polls the host queue and sends received messages to vir
 Virtual queues incur no cost because they make no direct API calls to Amazon SQS.
 
 
+## Best practices
+
+To prevent messages with the same message group ID sent to different virtual queues with the same host queue from blocking each other, avoid reusing the same message group ID with virtual queues.
+
+
 ## Use Cases
 
 **Request-response messaging pattern**: You can use temporary queues for scenarios like processing login requests.
