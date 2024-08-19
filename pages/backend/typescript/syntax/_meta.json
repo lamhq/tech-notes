@@ -1,4 +1,12 @@
 {
   "types": "Types",
-  "null-undefined": "null & undefined"
+  "null-undefined": "null & undefined",
+  "type-alias": "Type Aliases",
+  "interface": "Interfaces",
+  "functions": "Functions",
+  "object": "Objects",
+  "classes": "Classes",
+  "generics": "Generics",
+  "advanced-types": "Advanced Types",
+  "modules": "Modules"
 }

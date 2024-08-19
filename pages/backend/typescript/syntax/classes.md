@@ -13,25 +13,7 @@ pt.x = 0;
 pt.y = 0;
 ```
 
-The `strictPropertyInitialization` setting controls whether class fields need to be initialized in the constructor.
-
-```ts
-class GoodGreeter {
-  name: string;
-  
-  // Not initialized, but no error
-  email!: string;
-
-  constructor() {
-    this.name = "hello";
-  }
-}
-```
-
-### `readonly`
-
-This prevents assignments to the field outside of the constructor.
-
+Adding `readonly` before a field prevents assignments to the field outside of the constructor:
 ```ts
 class Greeter {
   readonly name: string = "world";
@@ -47,35 +29,100 @@ class Greeter {
     this.name = "not ok";
   }
 }
+
+const g = new Greeter();
+// Error: Cannot assign to 'name' because it is a read-only property.
+g.name = "also not ok";
 ```
 
 
 ## Constructors
 
-- Constructors can't have type parameters - these belong on the outer class declaration
-- Constructors can't have return type annotations - the class instance type is always what's returned
-- if you have a base class, you'll need to call `super();` in your constructor body before using any `this`.
+Constructors can't have return type annotations - the class instance type is always what's returned
 
-```ts
-class Base {
-  k = 4;
+Constructors can't have type parameters - these belong on the outer class declaration:
+```tsx
+class Greeter<T> {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    return "Hello, " + this.greeting;
+  }
 }
 
-class Derived extends Base {
-  constructor() {
-    // Prints a wrong value in ES5; throws exception in ES6
-    console.log(this.k);
-    // Error: 'super' must be called before accessing 'this' in the constructor of a derived class.
-    super();
+const greeter = new Greeter<string>("world");
+console.log(greeter.greet()); // Output: "Hello, world"
+```
+
+Constructor overloads:
+```ts
+class Point {
+  x: number = 0;
+  y: number = 0;
+ 
+  // Constructor overloads
+  constructor(x: number, y: number);
+  constructor(xy: string);
+  constructor(x: string | number, y: number = 0) {
+    // Code logic here
   }
 }
 ```
 
+If you have a base class, you'll need to call `super();` in your constructor body before using any `this`:
+```tsx
+class Base {
+  k = 4;
+}
+ 
+class Derived extends Base {
+  constructor() {
+    // 'super' must be called before accessing 'this' in the constructor of a derived class.
+    super();
+    console.log(this.k);
+  }
+}
+```
+
+The `strictPropertyInitialization` setting controls whether class fields need to be initialized in the constructor:
+```ts
+class GoodGreeter {
+  name: string;
+  
+  // Not initialized, but no error
+  email!: string;
+
+  constructor() {
+    this.name = "hello";
+  }
+}
+```
+
+
+## Methods
+A function property on a class is called a method.
+```ts
+class Point {
+  x = 10;
+  y = 10;
+ 
+  scale(n: number): void {
+    this.x *= n;
+    this.y *= n;
+  }
+}
+```
+
+
 ## Getters / Setters
 
-- If `get` exists but no `set`, the property is automatically readonly
+- If `get` exists but no `set`, the property is automatically `readonly`
 - If the type of the setter parameter is not specified, it is inferred from the return type of the getter
-- Getters and setters must have the same Member Visibility
+- Getters and setters must have the same [Member Visibility](#member-visibility)
 
 ```ts
 class C {
@@ -88,6 +135,7 @@ class C {
   }
 }
 ```
+
 
 ## Index Signatures
 
@@ -108,7 +156,7 @@ class MyClass {
 
 ### `implements` Clauses
 
-`implements` clause is only a check that the class can be treated as the interface type. It doesn't change the type of the class or its methods at all.
+You can use an `implements` clause to check that a class satisfies a particular `interface`. An error will be issued if a class fails to correctly implement it:
 
 ```ts
 interface Pingable {
@@ -125,23 +173,13 @@ class Sonar implements Pingable {
 ### `extends` Clauses
 
 ```ts
-class Animal {
-  move() {
-    console.log("Moving along!");
-  }
-
+class Base {
   greet() {
     console.log("Hello, world!");
-  }  
-}
-
-class Dog extends Animal {
-  woof(times: number) {
-    for (let i = 0; i < times; i++) {
-      console.log("woof!");
-    }
   }
-
+}
+ 
+class Derived extends Base {
   greet(name?: string) {
     if (name === undefined) {
       super.greet();
@@ -150,13 +188,8 @@ class Dog extends Animal {
     }
   }
 }
-
-const d = new Dog();
-// Base class method
-d.move();
-// Derived class method
-d.woof(3);
-
+ 
+const d = new Derived();
 d.greet();
 d.greet("reader");
 ```
@@ -243,7 +276,7 @@ console.log(s.secretKey);
 
 Static Members aren't associated with a particular instance of the class. They can be accessed through the class constructor object itself
 
-Static members can also use the same public, protected, and private visibility modifiers
+Static members can also use the same `public`, `protected`, and `private` visibility modifiers
 
 Static members are also inherited
 
@@ -270,25 +303,12 @@ console.log(Derived.x);
 Derived.printX();
 ```
 
-## Generic Classes
 
-The `static` members of a generic class can never refer to the class's type parameters.
+## `this` at runtime
 
-```ts
-class Box<Type> {
-  contents: Type;
-  constructor(value: Type) {
-    this.contents = value;
-  }
-}
+The value of `this` inside a function depends on **how the function was called**.
 
-const b = new Box("hello!");
-```
-
-## `this` at Runtime in Classes
-
-The value of `this` inside a function depends on **how the function was called**. In this example, because the function was called through the `obj` reference, its value of `this` was `obj` rather than the class instance.
-
+In this example, because the function was called through the `obj` reference, its value of `this` was `obj` rather than the class instance:
 ```ts
 class MyClass {
   name = "MyClass";
@@ -296,21 +316,22 @@ class MyClass {
     return this.name;
   }
 }
+
 const c = new MyClass();
+// Prints "MyClass"
+console.log(c.getName());
+
+
 const obj = {
   name: "obj",
   getName: c.getName,
 };
-
 // Prints "obj", not "MyClass"
 console.log(obj.getName());
 ```
 
 
-## Arrow Functions
-
-If you want to keep the `this` context, you can use an arrow function property instead of a method definition:
-
+If you want to keep the `this` context, you can use an **arrow function** property instead of a method definition:
 ```ts
 class MyClass {
   name = "MyClass";
@@ -318,6 +339,7 @@ class MyClass {
     return this.name;
   };
 }
+
 const c = new MyClass();
 const g = c.getName;
 // Prints "MyClass" instead of crashing
@@ -326,7 +348,7 @@ console.log(g());
 
 - The `this` value is guaranteed to be correct at runtime
 - This will use more memory, because each class instance will have its own copy of each function defined this way
-- You can't use `super.getName` in a derived class, because there's no entry in the prototype chain to fetch the base class method from
+- You can't use `super.getName()` in a derived class, because there's no entry in the prototype chain to fetch the base class method from
 
 
 ## `this` parameters
@@ -358,44 +380,15 @@ console.log(g());
 - Base method definitions can still be called via `super`.
 
 
-## `this` Types
-
-In classes, a special type called `this` refers dynamically to the type of the current class
-
-```ts
-class Box {
-  contents: string = "";
-  
-  set(value: string) {
-    // (method) Box.set(value: string): this
-    this.contents = value;
-    return this;
-  }
-
-  sameAs(other: this) {
-    return other.content === this.content;
-  }
-}
-
-class ClearableBox extends Box {
-  clear() {
-    this.contents = "";
-  }
-}
-
-const a = new ClearableBox();
-// const b: ClearableBox
-const b = a.set("hello");
-
-const base = new Box();
-const derived = new DerivedBox();
-// Error: Argument of type 'Box' is not assignable to parameter of type 'DerivedBox'.
-derived.sameAs(base);
-```
-
-
 ## `this`-based type guards
 
+You can use `this is Type` in the return position for methods in classes and interfaces to create a type guard.
+
+This type guard narrows the type of `this` (the instance of the class or interface) to the specified `Type` if the condition holds true.
+
+It allows encapsulating type guard functions as class methods without writing separate functions.
+
+In the example below, `box.value` is still marked as optional after being assigned a value. But in the type guard block, it has a new type:
 ```ts
 class Box<T> {
   value?: T;
@@ -405,21 +398,24 @@ class Box<T> {
   }
 }
 
-const box = new Box();
+const box = new Box<string>();
 box.value = "Gameboy";
 
-// (property) Box<unknown>.value?: unknown
 box.value;
-     
+// Box<string>.value?: string
+
 if (box.hasValue()) {
-  // (property) value: unknown
   box.value;
+  // value: string
 }
 ```
 
 
 ## Parameter Properties
 
+Parameter properties is a special syntax for turning a constructor parameter into a class property with the same name and value.
+
+By prefixing a constructor argument with one of the visibility modifiers `public`, `private`, `protected`, or `readonly`. The resulting field gets those modifier(s):
 ```ts
 class Params {
   constructor(
@@ -437,6 +433,7 @@ console.log(a.x);
 
 ## Class Expressions
 
+Class expressions allows declaring classes without a name:
 ```ts
 const someClass = class<Type> {
   content: Type;
@@ -474,15 +471,32 @@ const d = new Derived();
 d.printName();
 ```
 
-### construct signature
+### Construct signature
+
+Sometimes you want to accept some class constructor function that produces an instance of a class. This's how you can do it:
 
 ```ts
+abstract class Base {
+  abstract getName(): string;
+
+  printName() {
+    console.log("Hello, " + this.getName());
+  }
+}
+
+class Derived extends Base {
+  getName() {
+    return "world";
+  }
+}
+
 function greet(ctor: new () => Base) {
   const instance = new ctor();
   instance.printName();
 }
+
 greet(Derived);
-// Error
+// Error: Cannot assign an abstract constructor type to a non-abstract constructor type
 greet(Base);
 ```
 

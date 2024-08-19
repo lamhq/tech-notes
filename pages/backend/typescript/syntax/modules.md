@@ -1,13 +1,11 @@
-# Modules in TypeScript
-
-- ES Modules (or ES6 modules): `import/export`
-- CommonJS: `module.exports =`
+# Modules
 
 ## Module files
 
-In TypeScript, just as in ECMAScript 2015, any file containing a top-level `import` or `export` is considered a module.
+In TypeScript, any file containing a top-level `import` or `export` is considered a module.
 
 Modules are executed within their own scope, not in the global scope. 
+
 
 ## Non-modules
 
@@ -19,7 +17,10 @@ If you have a file that doesn't currently have any imports or exports, but you w
 export {};
 ```
 
+
 ## ES Module Syntax
+
+ES Modules (or ES6 modules): `import/export`
 
 ### Default export
 
@@ -81,6 +82,8 @@ export type Animals = Cat | Dog;
 
 
 ## CommonJS Syntax
+
+CommonJS: `module.exports =`.
 
 ```ts
 function absolute(num: number) {

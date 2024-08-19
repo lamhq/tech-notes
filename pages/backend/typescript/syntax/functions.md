@@ -2,6 +2,8 @@
 
 ## Function Type
 
+A function type represents the type of a function, including its parameter types and return type.
+
 ```ts
 type GreetFunction = (a: string) => void;
 
@@ -13,9 +15,9 @@ function greeter(fn: GreetFunction) {
 
 ## Call Signatures
 
-A call signature in TypeScript defines the parameters and return type of a function within an object type.
+Functions can have properties in addition to being callable.
 
-It allows you to create objects that can be invoked like functions but also have properties.
+A call signature in TypeScript defines the parameters and return type of a function within an **object type**. It allows you to create objects that can be invoked like functions but also have properties.
 
 ```ts
 type MyCallableObject = {
@@ -49,88 +51,6 @@ function fn(ctor: SomeConstructor) {
   return new ctor("hello");
 }
 ```
-
-
-## Generic Functions
-
-In TypeScript, **generics** are used when we want to describe a correspondence between two values.
-
-Note that the type was inferred (chosen automatically) by TypeScript, but not always.
-
-```ts
-function firstElement<Type>(arr: Type[]): Type {
-  return arr[0];
-}
-
-// s is of type 'string'
-const s = firstElement(["a", "b", "c"]);
-// n is of type 'number'
-const n = firstElement([1, 2, 3]);
-```
-
-### Constraints
-
-Sometimes we want to only operate on a certain subset of values, we can use a constraint to limit the kinds of types that a type parameter can accept.
-
-```ts
-function longest<Type extends { length: number }>(a: Type, b: Type) {
-  if (a.length >= b.length) {
-    return a;
-  } else {
-    return b;
-  }
-}
-
-// longerArray is of type 'number[]'
-const longerArray = longest([1, 2], [1, 2, 3]);
-// longerString is of type 'string'
-const longerString = longest("alice", "bob");
-// Error! Numbers don't have a 'length' property
-const notOK = longest(10, 100);
-```
-
-Common error when working with generic constraints:
-
-```ts
-function minimumLength<Type extends { length: number }>(
-  obj: Type,
-  minimum: number
-): Type {
-  if (obj.length >= minimum) {
-    return obj;
-  } else {
-    return { length: minimum };
-    /*
-      Type '{ length: number; }' is not assignable to type 'Type'.
-      '{ length: number; }' is assignable to the constraint of type 'Type', but 'Type' could be instantiated with a different subtype of constraint '{ length: number; }'.
-    */
-  }
-}
-```
-
-The problem is that the function promises to return the same kind of object as was passed in (the `Type` in type parameter), not just some object matching the constraint.
-
-### Guidelines for Writing Good Generic Functions
-
-**1. Push Type Parameters Down**:
-
-```ts
-function firstElement1<Type>(arr: Type[]) {
-  return arr[0];
-}
-
-function firstElement2<Type extends any[]>(arr: Type) {
-  return arr[0];
-}
-
-// a: number (good)
-const a = firstElement1([1, 2, 3]);
-// b: any (bad)
-const b = firstElement2([1, 2, 3]);
-```
-
-2. Use Fewer Type Parameters
-3. Type Parameters Should Appear Twice 
 
 
 ## Optional Parameters
@@ -181,7 +101,7 @@ const d2 = makeDate(5, 5, 5);
 const d3 = makeDate(1, 3);
 ```
 
-## Declaring `this` in a Function
+## Declaring type for `this`
 
 ```ts
 interface DB {
@@ -194,75 +114,16 @@ const admins = db.filterUsers(function (this: User) {
 });
 ```
 
-## Other Types to Know About
-
-### `void`
-
-`void` represents the return value of functions which don't return a value
-
-In JavaScript, a function that doesn't return any value will implicitly return the value `undefined`. However, `void` and `undefined` are not the same thing in TypeScript. 
-
-
-### `object`
-
-`object` refers to any value that isn't a primitive (`string`, `number`, `bigint`, `boolean`, `symbol`, `null`, or `undefined`).
-
-This is different from the empty object type `{ }`, and also different from the global type `Object` (it's very likely you will never use `Object`).
-
-`object` is not `Object`. Always use `object`!
-
-### `unknown`
-
-The unknown type represents any value. This is similar to the `any` type, but you cannot perform any operations on an `unknown` value without first checking its type.
-
-*For example, if you have a variable of type unknown, you cannot call any methods or properties on it without first checking its type*
-
-```ts
-function foo(bar: unknown) {
-  if (typeof bar === 'string') {
-    console.log(bar.toUpperCase());
-  }
-}
-```
-
-### `never`
-
-Some functions never return a value. This means that the function throws an exception or terminates execution of the program.:
-
-```ts
-function fail(msg: string): never {
-  throw new Error(msg);
-}
-```
-
-`never` also appears when TypeScript determines there's nothing left in a union:
-
-```ts
-function fn(x: string | number) {
-  if (typeof x === "string") {
-    // do something
-  } else if (typeof x === "number") {
-    // do something else
-  } else {
-    x; // has type 'never'!
-  }
-}
-```
-
-### `Function`
-
-This is an untyped function call and is generally best avoided because of the unsafe `any` return type.
-
-```ts
-function doSomething(f: Function) {
-  f(1, 2, 3);
-}
-```
-
-If you need to accept an arbitrary function but don't intend to call it, the type `() => void` is generally safer.
-
 
 ## Rest Parameters
+
+Rest parameters allow a function to accept an indefinite number of arguments as an array.
+
+A function can have only **one rest parameter**.
+
+The rest parameter **must appear last** in the parameter list.
+
+The type of the rest parameter is an **array type**.
 
 ```ts
 function multiply(n: number, ...m: number[]) {
@@ -272,13 +133,14 @@ function multiply(n: number, ...m: number[]) {
 const a = multiply(10, 1, 2, 3, 4);
 ```
 
-## Rest Arguments
+When passing an array as rest arguments, you can use the spread operator (`...`) to convert an array into individual arguments
 
 ```ts
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
 arr1.push(...arr2);
 ```
+
 
 ## Parameter Destructuring
 
