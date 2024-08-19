@@ -7,7 +7,7 @@ In TypeScript, any file containing a top-level `import` or `export` is considere
 Modules are executed within their own scope, not in the global scope. 
 
 
-## Non-modules
+## Non-module files
 
 A file without any top-level `import` or `export` declarations is treated as a script whose contents are available in the global scope 
 
@@ -68,16 +68,48 @@ console.log(math.pi);
 import "./maths.js";
 ```
 
-### Importing/exporting types (TypeScript)
+
+### Import entire module
+
+Import the entire module into a single variable, and use it to access the module exports
 
 ```ts
-// @filename: animal.ts
+import * as validator from "./ZipCodeValidator";
+let myValidator = new validator.ZipCodeValidator();
+```
+
+
+### Import a module for side-effects only
+
+```ts
+import "./my-module.js";
+```
+
+
+### Import types
+
+```ts
 export type Cat = { breed: string; yearOfBirth: number };
 export type Dog = { breeds: string[]; yearOfBirth: number };
+```
 
-// @filename: valid.ts
+
+### Export types
+```ts
 import type { Cat, Dog } from "./animal.js";
 export type Animals = Cat | Dog;
+```
+
+Re-exports:
+```ts
+// Export original validator but rename it
+export { ZipCodeValidator as RegExpBasedZipCodeValidator } from "./ZipCodeValidator";
+
+// exports 'StringValidator' interface
+export * from "./StringValidator";
+
+// re-exporting another module with a name
+export * as utilities from "./utilities";
 ```
 
 
@@ -86,6 +118,8 @@ export type Animals = Cat | Dog;
 CommonJS: `module.exports =`.
 
 ```ts
+const { squareTwo } = require("maths");
+
 function absolute(num: number) {
   if (num < 0) return num * -1;
   return num;
@@ -97,7 +131,13 @@ module.exports = {
   phi: 1.61,
   absolute,
 };
-
-const { squareTwo } = require("maths");
-squareTwo;
 ```
+
+## Code Generation for Modules
+
+Depending on the module target specified during compilation, the compiler will generate appropriate code for:
+- Node.js (CommonJS)
+- require.js (AMD)
+- UMD
+- SystemJS
+- ECMAScript 2015 native modules (ES6)

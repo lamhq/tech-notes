@@ -10,7 +10,6 @@ In order to use JSX you must do two things.
 1. Enable the `jsx` option
 
 TypeScript ships with three JSX modes: 
-
 - `preserve`: keep the JSX as part of the output to be further consumed by another transform step (e.g. `Babel`).
 - `react`: emit React.createElement, the output will have a `.js` file extension.
 - `react-native`: is the equivalent of `preserve` in that it keeps all JSX, but the output will instead have a `.js` file extension.

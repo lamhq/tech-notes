@@ -24,6 +24,7 @@ const todo2 = updateTodo(todo1, {
 });
 ```
 
+
 ## `Required<Type>`
 
 The opposite of `Partial`.
@@ -73,6 +74,7 @@ const todo: TodoPreview = {
 };
 ```
 
+
 ## `Omit<Type, Keys>`
 
 Constructs a type by picking all properties from `Type` and then removing `Keys` (string literal or union of string literals).
@@ -94,6 +96,7 @@ const todo: TodoPreview = {
 };
 ```
 
+
 ## `Exclude<Type, ExcludedUnion>`
 
 Constructs a type by excluding from `Type` all union members that are assignable to `ExcludedUnion`.
@@ -108,6 +111,7 @@ type T1 = Exclude<"a" | "b" | "c", "a" | "b">;
 type T2 = Exclude<string | number | (() => void), Function>;
 // type T2 = string | number
 ```
+
 
 ## `Extract<Type, Union>`
 
@@ -127,9 +131,9 @@ type T1 = Extract<string | number | (() => void), Function>;
 Constructs a type by excluding `null` and `undefined` from `Type`.
 
 
-## `Parameters<Type>`
+## `Parameters<FunctionType>`
 
-Constructs a tuple type from the types used in the parameters of a function type `Type`.
+Constructs a tuple type from the types used in the parameters of a function type named `FunctionType`.
 
 ```ts
 type T0 = Parameters<() => string>;
@@ -146,23 +150,10 @@ type T2 = Parameters<typeof f1>;
 // }]
 ```
 
-## `ConstructorParameters<Type>`
 
-Constructs a tuple or array type from the types of a constructor function type. 
+## `ReturnType<FunctionType>`
 
-```ts
-type SomeConstructor = {
-  new (s: string): string;
-};
-
-type T0 = ConstructorParameters<SomeConstructor>;
-// type T0 = [s: string]
-```
-
-
-## `ReturnType<Type>`
-
-Constructs a type consisting of the return type of function `Type`
+Constructs a type consisting of the return type of function `FunctionType`
 
 ```ts
 // inside some library - return type { baz: number } is inferred but not exported
@@ -201,15 +192,43 @@ let baz: SubInstType = {
 ```
 
 
+## `ConstructorParameters<ConstructorType>`
+
+Constructs a tuple or array type from the types of a constructor function type. 
+
+```ts
+type SomeConstructor = {
+  new (s: string): string;
+};
+
+type T0 = ConstructorParameters<SomeConstructor>;
+// type T0 = [s: string]
+```
+
+
 ## `InstanceType<Type>`
 
-Constructs a type consisting of the instance type of a constructor function in `Type`.
+InstanceType utility type allows you to extract the instance type of a constructor function or class
 
+It’s useful when you want to infer the type of instances that can be created from a constructor or class.
+
+In this example, `PersonInstance` represents the type of instances created from the `Person` class, which is equivalent to `{ name: string; age: number; }`:
+```ts
+class Person {
+  constructor(public name: string, public age: number) {}
+}
+
+type PersonInstance = InstanceType<typeof Person>;
+
+const person: PersonInstance = new Person("Alice", 30);
+console.log(person.name); // "Alice"
+console.log(person.age); // 30
+```
 
 
 ## `ThisParameterType<Type>`
 
-Extracts the type of the `this` parameter for a function type, or `unknown` if the function type has no `this` parameter.
+Extracts the type of the `this` parameter for a function type, return `unknown` if the function type has no `this` parameter.
 
 ```ts
 function toHex(this: Number) {

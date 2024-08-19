@@ -1,6 +1,7 @@
 {
   "types": "Types",
   "null-undefined": "null & undefined",
+  "enums": "Enums",
   "type-alias": "Type Aliases",
   "interface": "Interfaces",
   "functions": "Functions",
@@ -8,5 +9,8 @@
   "classes": "Classes",
   "generics": "Generics",
   "advanced-types": "Advanced Types",
-  "modules": "Modules"
+  "utility-types": "Utility Types",
+  "mixins": "Mixins",
+  "modules": "Modules",
+  "jsx": "JSX"
 }
