@@ -5,7 +5,7 @@
 The goals of Object-oriented Design is to build software so that we can make changes with the least possible impact on the existing code. Less time reworking code, fewer bugs.
 
 
-## Metrics of Good Design.
+## Features of Good Design
 
 ### Code reuse
 
@@ -29,4 +29,11 @@ Levels of code reuse:
 
 ### Extensibility
 
-Change is the only constant thing in a programmer’s life. And There are several reasons why this happens.
+Change is the only constant thing in a programmer's life. There are several reasons why this happens:
+- We understand problems better as we solve them. After finishing the first version of an app, you gain insights and your skills improve, your current code look like crap.
+- Something beyond your control has changed. For example, developers have been reworking or migrating their Flash-based applications as browsers drop support for Flash.
+- The goalposts move. Your client wants additional changes for features not in the original plan, inspired by your first version.
+
+That's why all seasoned developers try to provide for possible future changes when designing an application's architecture.
+
+Bright side: if someone asks you to change something in your app, that means someone still cares about it.

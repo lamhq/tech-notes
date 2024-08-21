@@ -6,7 +6,11 @@
 
 This design principle encourages writting code that rely on abstractions (interfaces or abstract classes) rather than implementations (concrete classes).
 
-For example, when you use the `new` operator you are certainly instantiating a concrete class, so that's definitely an implementation and not an interface.
+An example of programming to implementation is, when you use the `new` operator you are certainly instantiating a concrete class, so that's an implementation.
+
+Let's say your code depends on a class:
+- When that class changes, you need to review every change (methods and attributes) to see if you're referencing them in your code; then, possibly, a refactor is required.
+- You're forced to use instances of that class or its subclasses in your code, which reduces flexibility
 
 
 ## Benefits
@@ -20,11 +24,18 @@ For example, when you use the `new` operator you are certainly instantiating a c
 **Decoupling**: By depending on an interface, the function is decoupled from the specific implementation. This reduces dependencies and makes the code more modular.
 
 
-## Rethink
+## How to do?
 
-Let's say your code depends on a class (instead of an interface):
-- When that class changes, you need to review every change (methods and attributes) to see if you're referencing them in your code; then, possibly, a refactor is required.
-- You're forced to use instances of that class or its subclasses in your code, which reduces flexibility
+When you want to set up collaboration between objects:
+1. Determine what exactly one object needs from the other: which methods does it execute?
+2. Describe these methods in a new interface or abstract class.
+3. Make the class that is a dependency implement this interface.
+4. Now make the second class dependent on this interface rather than on the concrete class.
+
+
+## Use cases
+
+Use interfaces when you want to achieve loose coupling between modules or systems. This happens when you want to devide your system in to isolated modules or your code relies on external libraries.
 
 
 ## Example
