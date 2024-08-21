@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CAP theorem, also known as Brewer’s theorem, states that a distributed data store can provide only two of the following three guarantees (not all):
+The CAP theorem, also known as Brewer's theorem, states that a distributed data store can provide only two of the following three guarantees (not all):
 
 1. **Consistency**: every read receives the most recent write or an error.
 2. **Availability**: every request receives a (non-error) response, without guarantee that it contains the most recent write.

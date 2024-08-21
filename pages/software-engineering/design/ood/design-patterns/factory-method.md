@@ -248,7 +248,7 @@ Both are valid forms of the pattern.
 
 That would cause a runtime error. 
 
-There are several other more sophisticated techniques that can be used to make parameters more “type safe” (ensure errors in parameters can be caught at compile time) by using static constants, or enums.
+There are several other more sophisticated techniques that can be used to make parameters more "type safe" (ensure errors in parameters can be caught at compile time) by using static constants, or enums.
 
 
 ### How's it different with Simple Factory?

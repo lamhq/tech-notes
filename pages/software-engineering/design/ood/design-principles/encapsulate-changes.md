@@ -87,11 +87,11 @@ classDiagram
 
 ## Example: Encapsulate What Likely to Change
 
-Say you’re making an e-commerce website. Somewhere in your code, there’s a `getOrderTotal()` method that calculates a grand total for the order, including taxes.
+Say you're making an e-commerce website. Somewhere in your code, there's a `getOrderTotal()` method that calculates a grand total for the order, including taxes.
 
 We can anticipate that tax-related code might need to change in the future.
 
-As a result, you’ll need to change the `getOrderTotal` method quite often. But even the method’s name suggests that it doesn’t care about how the tax is calculated.
+As a result, you'll need to change the `getOrderTotal` method quite often. But even the method's name suggests that it doesn't care about how the tax is calculated.
 
 ```mermaid
 classDiagram

@@ -103,6 +103,26 @@ class GoodGreeter {
 ```
 
 
+## Parameter Properties
+
+Parameter properties is a special syntax for turning a constructor parameter into a class property with the same name and value.
+
+By prefixing a constructor argument with one of the visibility modifiers `public`, `private`, `protected`, or `readonly`. The resulting field gets those modifier(s):
+```ts
+class Params {
+  constructor(
+    public readonly x: number,
+    protected y: number,
+    private z: number
+  ) {
+    // No body necessary
+  }
+}
+const a = new Params(1, 2, 3);
+console.log(a.x);
+```
+
+
 ## Methods
 A function property on a class is called a method.
 ```ts
@@ -408,26 +428,6 @@ if (box.hasValue()) {
   box.value;
   // value: string
 }
-```
-
-
-## Parameter Properties
-
-Parameter properties is a special syntax for turning a constructor parameter into a class property with the same name and value.
-
-By prefixing a constructor argument with one of the visibility modifiers `public`, `private`, `protected`, or `readonly`. The resulting field gets those modifier(s):
-```ts
-class Params {
-  constructor(
-    public readonly x: number,
-    protected y: number,
-    private z: number
-  ) {
-    // No body necessary
-  }
-}
-const a = new Params(1, 2, 3);
-console.log(a.x);
 ```
 
 

@@ -19,7 +19,7 @@ A Python library that lets you draw cloud system architectures in code.
 
 ### Go-Diagrams
 
-It let’s you write diagrams in Go.
+It let's you write diagrams in Go.
 
 
 ### Mermaid

@@ -40,40 +40,80 @@ Use interfaces when you want to achieve loose coupling between modules or system
 
 ## Example
 
-We have a function `makePayment` that process payments from users, it need a payment processor to work:
+We have a `Company` class with different employee types:
+
+```mermaid
+classDiagram
+  class Company{
+    +createSoftware()
+  }
+  class Architect{
+    +designArchitecture()
+  }
+  class Programmer{
+    +writeCode()
+  }
+  class Tester{
+    +testSoftware()
+  }
+  Company --> Architect
+  Company --> Programmer
+  Company --> Tester
+```
 
 ```ts
-interface PaymentProcessor {
-  processPayment(amount: number): void;
-}
+class Company {
+  createSoftware() {
+    const d = new Designer();
+    d.designArchitecture();
 
-function makePayment(processor: PaymentProcessor, amount: number): void {
-  processor.processPayment(amount);
+    const p = new Programmer();
+    p.writeCode();
+
+    const t = new Tester()
+    t.testSoftware()
+  }
 }
 ```
 
-There can be many concrete implementations of the `PaymentProcessor` interface, but the developer working on the `makePayment` function only cares about the methods from the interface.
-```tsx
-class PayPalProcessor implements PaymentProcessor {
-  processPayment(amount: number): void {
-    // ...
+The `Company` class is tightly coupled to concrete classes of employees. This is bad because if we introduce new types of employer or change one of the existing employer class, we need to modify the `Company` class.
+
+To solve this problem, we can extract a common interface for all employee classes and let the `Company` class only depend on that interface:
+```mermaid
+classDiagram
+  class Company{
+    +createSoftware()
   }
-
-  // other attributes/methods ...
-}
-
-class StripeProcessor implements PaymentProcessor {
-  processPayment(amount: number): void {
-    // ...
+  class Employee{
+    <<Interface>>
+    +doWork()
   }
-
-  // other attributes/methods ...
-}
-
-// Usage
-const paypalProcessor = new PayPalProcessor();
-const stripeProcessor = new StripeProcessor();
-
-makePayment(paypalProcessor, 100);
-makePayment(stripeProcessor, 100);
+  class Architect{
+    +doWork()
+  }
+  class Programmer{
+    +doWork()
+  }
+  class Tester{
+    +doWork()
+  }
+  Company --> Employee
+  Employee <|-- Architect
+  Employee <|-- Programmer
+  Employee <|-- Tester
 ```
+
+```ts
+class Company {
+  constructor(private employees: Employee[]) {
+  }
+   
+  createSoftware() {
+    this.employees.forEach(employee => {
+      employee.doWork()
+    })
+  }
+}
+```
+
+After this change, the `Company` class has become independent from various employee classes. Now you can introduce new types of employees while still reusing the `Company` class.

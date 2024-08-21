@@ -47,7 +47,7 @@ Useful UML techniques:
 - **Activity diagram:** Show workflow, interaction between software and human activities, context for use cases, and details of complex use cases.
 - **State diagram:** Useful for concepts with interesting life cycles and state changes.
 
-It’s important to keep the notation to a minimum. Don’t introduce anything that is specific to the software implementation.
+It's important to keep the notation to a minimum. Don't introduce anything that is specific to the software implementation.
 
 
 ### Design
@@ -98,6 +98,6 @@ If a particularly complex algorithm is involved, consider using an activity diag
 
 ### Understanding Legacy Code
 
-Sketches of key classes in a package and their key interactions can help clarify what’s going on.
+Sketches of key classes in a package and their key interactions can help clarify what's going on.
 
 Gsaenerating a sequence diagram to see how multiple objects col- laborate in handling a complex method.

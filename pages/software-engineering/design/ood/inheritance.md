@@ -2,7 +2,7 @@
 
 ## Benefits
 
-Code reusability: by creating a new class (child class) that inherits attributes and methods from an existing class (parent class), you can avoid duplicating code
+Code reuse: inheritance is a straightforward way to reuse code between classes. If two classes have the same code, create a common base class and move the similar code there.
 
 Modularity: a hierarchy of classes makes it easier to manage and understand the code, as related functionalities are grouped together.
 
@@ -13,35 +13,24 @@ Maintainability: any changes or bug fixes of common functionalities in the paren
 Polymorphism: allowing you to use a child class object wherever a parent class object is expected
 
 
-## Disadvantages
+## Limitations
 
-### Complex Hierarchies
+**A subclass can't reduce the interface of the superclass**. You have to implement all abstract methods of the parent class even if you won't be using them (inappropriate behaviors).
 
-Complex class hierarchies that are difficult to understand and manage.
+**Behavior in subclass must be compatible with the base one**. It's important because objects of the subclass may be passed to any code that expects objects of the superclass and you don't want that code to break.
 
-As the hierarchy grows, it becomes harder to trace the flow of the program and understand the relationships between classes.
+**Subclasses are tightly coupled to superclasses**. Changes in the superclasses class can have unintended effects on the subclasses, making the code harder to maintain.
 
+**Trying to reuse code through inheritance can lead to creating parallel inheritance hierarchies**. Inheritance usually takes place in a single dimension. But whenever there are two or more dimensions, you have to create lots of class combinations, bloating the class hierarchy to a ridiculous size.
 
-### Tight Coupling
-
-Changes in the parent class can have unintended effects on the child classes, making the code harder to maintain.
-
-Inheritance enforces a rigid structure. Once a class hierarchy is established, it can be challenging to make changes without affecting the entire hierarchy.
-
-
-## Limited Flexibility
-
-Inheritance is one form of extension, but it doesn't always lead to the most flexible or maintainable designs.
-
-When inheriting behavior by subclassing, that behavior is set statically at compile time, and all subclasses must inherit the same behavior (it can be a problem when a behavior isn't appropriate for some subclasses).
+**Complex Hierarchies**. As the hierarchy grows, it becomes harder to trace the flow of the program and understand the relationships between classes.
 
 
 ## When not to use?
 
 Inheritance should not be used when:
 - Code reuse is not achievable. Behaviors keeps changing across subclasses
-- Behaviors of some classes are the same but different with the others, lead to code duplication.
-- We may add functionality to the base class that isn't appropriate for some of the subclasses.
+- There're some behaviors to the base class that aren't appropriate for some of the subclasses.
 
 When a behavior is inapproriate for subclasses, it can be overriden (to do *nothing*, for example), but it leads to:
 - Hard to gain knowledge of subclass behaviors: *which class support the behavior or not?*

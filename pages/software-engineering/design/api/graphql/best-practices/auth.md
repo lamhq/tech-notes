@@ -4,14 +4,14 @@ Authorization is a type of business logic that describes whether a given user/se
 
 Enforcing this kind of behavior **should happen in the business logic layer**.
 
-Here’s an example:
+Here's an example:
 
 ```javascript
 //Authorization logic lives inside postRepository
 var postRepository = require('postRepository');
 
 var postType = new GraphQLObjectType({
-  name: ‘Post’,
+  name: ‘Post',
   fields: {
     body: {
       type: GraphQLString,

@@ -24,8 +24,8 @@ It's hard to tell if a project is on track with a waterfall process.
 The iterative style breaks down a project by subsets of functionality.
 
 For example, you might take a one-year project and break it into 3-month iterations:
-- The first iteration, you’d take a quarter of the requirements and do the complete software life cycle for that quarter: analysis, design, code, and test. At the end of the first iteration, you’d have a system that does a quarter of the needed functionality.
-- Then you’d do a second iteration, so that at the end of 6 months, you’d have a system that does half the functionality.
+- The first iteration, you'd take a quarter of the requirements and do the complete software life cycle for that quarter: analysis, design, code, and test. At the end of the first iteration, you'd have a system that does a quarter of the needed functionality.
+- Then you'd do a second iteration, so that at the end of 6 months, you'd have a system that does half the functionality.
 
 With iteration, an initial exploration phase captures high-level requirements and design decisions to guide subsequent iterations. Each iteration aims to deliver production-ready software but often requires a stabilization period for final bug fixes.
 

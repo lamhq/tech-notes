@@ -8,4 +8,4 @@ The BASE model stands for:
 
 **Eventually consistent**: If we execute some writes and then the system functions long enough, we can know the state of the data; any further reads of that data item will return the same value.
 
-It’s a less strict model compared to ACID principles used in traditional databases, allowing for more flexibility and scalability in distributed systems.
+It's a less strict model compared to ACID principles used in traditional databases, allowing for more flexibility and scalability in distributed systems.

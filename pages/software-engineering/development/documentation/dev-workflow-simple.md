@@ -34,7 +34,7 @@ Github Flow can be used with [Trunk-Based Development](https://trunkbaseddevelop
     git push --set-upstream origin 'feat/MEGA-123/commit-convention'
     ```
 1. Make changes and push them to to your branch.
-1. When you’re satisfied with your work, open a pull request (PR) from your branch to the main branch. The title of the PR must follows [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/).
+1. When you're satisfied with your work, open a pull request (PR) from your branch to the main branch. The title of the PR must follows [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Finish a feature
 

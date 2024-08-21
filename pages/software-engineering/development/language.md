@@ -4,7 +4,7 @@
 
 - The source code is translated into machine code (executable code) by a compiler before execution.
 - Compilation involves several stages, including lexical analysis, syntax analysis, optimization, and code generation.
-- The compiled program can be directly executed by the computer’s processor.
+- The compiled program can be directly executed by the computer's processor.
 
 Benefits: faster execution speed and better performance.
 

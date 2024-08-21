@@ -144,7 +144,7 @@ fragment comparisonFields on Character {
 
 ## Operation name
 
-Here’s an example that includes the keyword `query` as *operation type* and `HeroNameAndFriends` as *operation name*:
+Here's an example that includes the keyword `query` as *operation type* and `HeroNameAndFriends` as *operation name*:
 
 ```gql
 query HeroNameAndFriends {
