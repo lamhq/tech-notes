@@ -6,5 +6,6 @@
   "single-resp": "Single Responsibility",
   "open-closed": "Open/Closed Principle",
   "liskov": "Liskov Substitution",
+  "interface-seg": "Interface Segregation",
   "dependency-inversion": "Dependency Inversion"
 }

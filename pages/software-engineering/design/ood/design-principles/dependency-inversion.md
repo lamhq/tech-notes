@@ -1,17 +1,29 @@
-#  Dependency Inversion Principle
+# Dependency Inversion Principle
 
 ## Overview
 
+High-level classes should not depend on low-level classes, both should depend on abstractions.
+
 Depend upon abstractions. Do not depend upon concrete classes.
 
-It suggests that high-level components should not depend on our low-level components, both should depend on abstractions.
+
+## Low-Level Components
+
+A low-level class deals with basic operations or specific technical details, such as:
+- working with a disk
+- transferring data over a network
+- connecting to a database
+- interacts with external API
+- provide common functionality (e.g., string manipulation, date formatting)
+- wrap external client library (e.g., AWS SDK, HTTP clients)
+- ...
+
+It's often reusable and focused on a single responsibility.
 
 
 ## High-Level Components
 
-A high-level component represents complex business logic or application behavior.
-
-It typically orchestrates interactions between other components.
+A high-level class contain complex business logic that directs low-level classes to do something.
 
 Examples:
 - **Service Layer**: Handles business logic, validation, and coordination.
@@ -19,25 +31,34 @@ Examples:
 - **Use Case Classes**: Represent specific application use cases.
 
 
-## Low-Level Components
+## Inverse Dependency
 
-A low-level component deals with specific technical details or basic operations.
+The term "inversion" refers to a shift in the traditional top-to-bottom dependency relationships between high-level and low-level classes. 
 
-It's often reusable and focused on a single responsibility.
+Sometimes people design low-level classes first and only then start working on high-level ones. With such an approach business logic classes tend to become dependent on primitive low-level classes.
 
-Examples:
-- **Data Access Layer (DAL)**: Interacts with databases or external APIs.
-- **Utility Classes**: Provide common functionality (e.g., string manipulation, date formatting).
-- **Infrastructure Components**: Wrappers for external services (e.g., AWS SDK, HTTP clients).
-
-
-## Inversion
-
-The term "inversion" refers to a shift in the traditional top-to-bottom dependency relationships between high-level and low-level components. 
-
-With dependency inversion, the low-level components inverted themselves by depending on a higher-level abstraction. Likewise, the high-level component is also tied to the same abstraction.
+The dependency inversion principle suggests changing the direction of this dependency:
+1. For starters, you need to describe interfaces for low-level classes that high-level classes rely on, preferably in business terms.
+2. Now you can make high-level classes dependent on those interfaces, instead of on concrete low-level classes. This dependency will be much softer than the original one.
+3. Once low-level classes implement these interfaces, they inverted themselves by depending on a higher-level abstraction.
 
 By doing so, we achieve loose coupling and greater flexibility in our codebase.
+
+
+## Guidelines
+
+The following guidelines can help you avoid OO designs that violate the Dependency Inversion Principle:
+- **No variable should hold a reference to a concrete class**. If you use `new`, you'll be holding a reference to a concrete class. Use a factory to get around that.
+- **No class should derive (inherit) from a concrete class**. If you derive from a concrete class, you're depending on a concrete class. Derive from an abstraction, like an interface or an abstract class.
+- **No method should override an implemented method of any of its base classes**. If you override an implemented method, then your base class wasn't really an abstraction to start with. Those methods implemented in the base class are meant to be reused by  all your subclasses.
+
+These guidelines are ideals to strive for, not strict rules.
+
+Being aware of these guideline when you design help you know when you are violating the principle and you'll have a good reason for doing so.
+
+If a class is unlikely to change, instantiating a concrete class isn't a major issue. If, on the other hand, a class you write is likely to change, you have some good techniques like Factory Method to encapsulate that change.
+
+> In Java, we instantiate `String` objects frequently without concern. Does it violate principles? Yes. Is it okay? Yes, because `String` is very unlikely to change.
 
 
 ## Example
@@ -107,20 +128,4 @@ classDiagram
   Pizza <-- NYStyleVeggiePizza
 ```
 
-After applying Factory Method, you'll notice that our high-level component, the `PizzaStore`, and our low-level components, the pizzas, both depend on `Pizza`, the abstraction.
-
-
-## Guidelines
-
-The following guidelines can help you avoid OO designs that violate the Dependency Inversion Principle:
-- **No variable should hold a reference to a concrete class**. If you use `new`, you'll be holding a reference to a concrete class. Use a factory to get around that.
-- **No class should derive (inherit) from a concrete class**. If you derive from a concrete class, you're depending on a concrete class. Derive from an abstraction, like an interface or an abstract class.
-- **No method should override an implemented method of any of its base classes**. If you override an implemented method, then your base class wasn't really an abstraction to start with. Those methods implemented in the base class are meant to be reused by  all your subclasses.
-
-These guidelines are ideals to strive for, not strict rules.
-
-Being aware of these guideline when you design help you know when you are violating the principle and you'll have a good reason for doing so.
-
-If a class is unlikely to change, instantiating a concrete class isn't a major issue. If, on the other hand, a class you write is likely to change, you have some good techniques like Factory Method to encapsulate that change.
-
-> In Java, we instantiate `String` objects frequently without concern. Does it violate principles? Yes. Is it okay? Yes, because `String` is very unlikely to change.
+After applying Factory Method, you'll notice that our high-level class, the `PizzaStore`, and our low-level classes, the pizzas, both depend on `Pizza`, the abstraction.

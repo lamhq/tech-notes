@@ -69,7 +69,7 @@ A subclass shouldn't change values of private fields of the superclass (e.g., vi
 
 ## Example
 
-Let's look at an example of a hierarchy of document classes that violates the substitution principle.
+Let's look at an example of a hierarchy of document classes that violates the substitution principle:
 
 ```mermaid
 classDiagram
@@ -109,6 +109,38 @@ class ReadOnlyDocument extends Document {
 }
 ```
 
-The `save` method in the `ReadOnlyDocuments` subclass throws an exception if someone tries to call it. The base method doesn't have this restriction. The client code will break if we don't check the document type before saving it.
+- The `save` method in the `ReadOnlyDocuments` subclass throws an exception if someone tries to call it. The base method doesn't have this restriction. The client code will break if we don't check the document type before saving it.
+- The `Project` class depends on the concrete class `ReadOnlyDocument`. If you introduce a new document subclass, you'll need to change the client code to support it.
 
-The `Project` class depends on the concrete class `ReadOnlyDocument`. If you introduce a new document subclass, you'll need to change the client code to support it.
+You can solve the problem by redesigning the class hierarchy: a subclass should extend the behavior of a superclass, therefore the *read-only document* becomes the base class of the hierarchy. The *writable document* is now a subclass which extends the base class and adds the saving behavior.
+
+```mermaid
+classDiagram
+  class Document {
+    -data
+    -filename
+    +open()
+  }
+  class WritableDocument {
+    +save()
+  }
+  class Project {
+    -allDocuments
+    -writableDocuments
+    +openAll()
+    +saveAll()
+  }
+  Project o--> Document
+  Document <|-- WritableDocument
+```
+
+
+```ts
+class Project {
+  saveAll() {
+    foreach (doc in writableDocuments) {
+      doc.save()
+    }
+  }
+}
+```
