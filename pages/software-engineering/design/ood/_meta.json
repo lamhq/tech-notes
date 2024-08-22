@@ -1,6 +1,5 @@
 {
-  "inheritance": "Inheritance",
-  "interface": "Interface",
+  "oop": "OOP",
   "design-principles": "Design Principles",
   "design-patterns": "Design Patterns"
 }

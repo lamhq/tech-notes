@@ -11,7 +11,7 @@ Observer is one of the most commonly used design patterns.
 You'll find the pattern in many places, including RxJava, JavaBeans, and RMI, as well as in other language frameworks, like Cocoa, Swift, and JavaScript events.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

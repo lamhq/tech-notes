@@ -7,7 +7,7 @@ The Factory Method Pattern defines an interface for creating an object, but lets
 Factory Method lets a class defer instantiation to subclasses.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

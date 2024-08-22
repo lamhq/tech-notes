@@ -5,7 +5,7 @@
 Use the Chain of Responsibility Pattern when you want to give more than one object a chance to handle a request.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

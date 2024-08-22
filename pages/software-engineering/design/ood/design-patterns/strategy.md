@@ -12,13 +12,14 @@ Strategy is a behavioral pattern.
 
 
 ## Benefits
+
 - You can swap algorithms used inside an object at runtime.
 - You can isolate the implementation details of an algorithm from the code that uses it.
 - You can replace inheritance with composition.
 - Open/Closed Principle. You can introduce new strategies without having to change the context.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

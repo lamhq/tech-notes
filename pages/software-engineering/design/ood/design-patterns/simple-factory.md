@@ -25,7 +25,7 @@ Clients now depend only upon interfaces rather than the concrete classes require
 - When supporting multiple product variations or customization.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

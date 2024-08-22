@@ -16,7 +16,7 @@ Decorator classes mirror the type of the components they decorate, sharing the s
 Decorators can wrap other decorated objects and can be applied at runtime, enabling dynamic addition of new behaviors without altering existing code.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---

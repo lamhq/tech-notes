@@ -14,7 +14,7 @@ That allows us to implement a variety of factories that produce products meant f
 We can substitute different factories to get different products and behaviors but still keep the client code stays the same.
 
 
-## Class Diagram
+## Structure
 
 ```mermaid
 ---
