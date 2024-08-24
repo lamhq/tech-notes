@@ -1,6 +1,7 @@
 # Class diagrams
 
-## Basic
+## Snippet
+
 ````mdx filename="Markdown"
 ```mermaid
 ---
@@ -48,6 +49,49 @@ classDiagram
         -int sizeInFeet
         -canEat() bool
         -doSth(int arg) int
+    }
+```
+
+
+## Class members
+````mdx filename="Markdown"
+```mermaid
+classDiagram
+    class BankAccount {
+        +String owner
+        +deposit(amount)
+        +withdrawal(amount)
+    }
+```
+````
+
+```mermaid
+classDiagram
+    class BankAccount {
+        +String owner
+        +deposit(amount)
+        +withdrawal(amount)
+    }
+```
+
+
+## Return type
+
+````mdx filename="Markdown"
+```mermaid
+classDiagram
+    class BankAccount {
+        +deposit(amount): bool
+        +withdrawal(amount): int
+    }
+```
+````
+
+```mermaid
+classDiagram
+    class BankAccount {
+        +deposit(amount): bool
+        +withdrawal(amount): int
     }
 ```
 
@@ -80,7 +124,7 @@ classDiagram
 ```mermaid
 classDiagram
 classA <|-- classB : Inheritance
-Animal <|--|> Zebra: two-way relations
+Animal <|--|> Zebra : two-way relations
 classC *-- classD
 classE o-- classF
 ```
@@ -89,7 +133,7 @@ classE o-- classF
 ```mermaid
 classDiagram
 classA <|-- classB : Inheritance
-Animal <|--|> Zebra: two-way relations
+Animal <|--|> Zebra : two-way relations
 classC *-- classD
 classE o-- classF
 ```
@@ -190,7 +234,7 @@ class Square~Shape~{
 ```
 
 
-## Note
+## Class Note
 
 ````mdx filename="Markdown"
 ```mermaid
@@ -226,8 +270,8 @@ classDiagram
 namespace BaseShapes {
     class Triangle
     class Rectangle {
-      double width
-      double height
+        double width
+        double height
     }
 }
 ```
@@ -244,7 +288,9 @@ namespace BaseShapes {
 }
 ```
 
-## Diagram Render direction
+## Render direction
+
+Setting the direction of the diagram:
 
 ````mdx filename="Markdown"
 ```mermaid
