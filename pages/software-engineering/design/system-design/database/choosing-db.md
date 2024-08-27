@@ -1,10 +1,8 @@
 # Choose the right data storage
 
-## Guide
+## Overview
 
-Goal: choose the right databases for the right data type and the right operation.
-
-It is better to think about the use case and pick the datastore suitable for your application.
+When choosing databases, it's better to think about the use case and pick the datastore suitable for your application.
 
 A datastore that serves multiple use cases may help reduce the overhead.
 

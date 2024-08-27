@@ -1,34 +1,5 @@
 # pytest Fixtures
 
-## Snippets
-
-**Prepare database resource:**
-```py
-import pytest
-
-@pytest.fixture(scope="session")
-def db():
-    """CardsDB object connected to a temporary database"""
-    with TemporaryDirectory() as db_dir: db_path = Path(db_dir)
-        db_ = cards.CardsDB(db_path)
-        yield db_
-        db_.close()
-
-@pytest.fixture(scope="function")
-def cards_db(db):
-    """CardsDB object that's empty"""
-    db.delete_all() return db
-
-def test_empty(cards_db):
-    assert cards_db.count() == 0
-
-def test_two(cards_db):
-    cards_db.add_card(cards.Card("first"))
-    cards_db.add_card(cards.Card("second"))
-    assert cards_db.count() == 2    
-```
-
-
 ## Overview
 
 Fixtures are functions that are run by pytest before/after the actual test functions.
@@ -98,3 +69,34 @@ def test_two(cards_db):
 Fixtures can only depend on other fixtures of their same scope or wider.
 
 For example, a function-scope fixture can depend on other function-scope fixtures, class-, module-, and session-scope fixtures, but you can’t go in the reverse order.
+
+
+
+
+## Snippets
+
+**Prepare database resource:**
+```py
+import pytest
+
+@pytest.fixture(scope="session")
+def db():
+    """CardsDB object connected to a temporary database"""
+    with TemporaryDirectory() as db_dir: db_path = Path(db_dir)
+        db_ = cards.CardsDB(db_path)
+        yield db_
+        db_.close()
+
+@pytest.fixture(scope="function")
+def cards_db(db):
+    """CardsDB object that's empty"""
+    db.delete_all() return db
+
+def test_empty(cards_db):
+    assert cards_db.count() == 0
+
+def test_two(cards_db):
+    cards_db.add_card(cards.Card("first"))
+    cards_db.add_card(cards.Card("second"))
+    assert cards_db.count() == 2    
+```

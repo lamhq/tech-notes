@@ -17,9 +17,9 @@ pip install pytest==7.4.4
 ```
 
 
-## Test naming
+## Naming convention
 
-Naming conventions to keep your test code discoverable by pytest:
+Name your code file to be easily discoverable by pytest:
 
 - Test files should be named `test_<something>.py` or `<something>_test.py`. 
 - Test methods and functions should be named `test_<something>`.
