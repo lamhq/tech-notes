@@ -1,5 +1,6 @@
 {
-  "commands": "Commands",
+  "running-test": "Running Test",
   "writing-test": "Writing Test",
-  "fixtures": "Fixtures"
+  "fixtures": "Fixtures",
+  "parametrization": "Parametrization"
 }

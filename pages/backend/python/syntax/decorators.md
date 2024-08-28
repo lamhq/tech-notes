@@ -96,7 +96,7 @@ def greet(name):
     print(f"Hello {name}")
 ```
 
-Decorators will be executed in the order they’re listed: `debug(do_twice(greet()))`.
+Decorators will be executed in the order they're listed: `debug(do_twice(greet()))`.
 
 
 ## Tracking State
@@ -285,7 +285,7 @@ def singleton(cls):
     return wrapper_singleton
 ```
 
-- The decorator uses `cls` instead of `func` as the parameter name to indicate that it’s meant to be a class decorator.
+- The decorator uses `cls` instead of `func` as the parameter name to indicate that it's meant to be a class decorator.
 
 ```py
 from decorators import singleton
@@ -352,5 +352,5 @@ You should use `@functools.lru_cache` or `@functools.cache` instead of writing y
 ## Built-in Decorators for Classes
 
 Commonly built-ins decorators:
-- `@classmethod`: used to define methods inside a class namespace that aren’t connected to a particular instance of that class
+- `@classmethod`: used to define methods inside a class namespace that aren't connected to a particular instance of that class
 - `@property`: used to customize getters and setters for class attributes.

@@ -40,7 +40,7 @@ class Albatross:
 birds = [Duck(), Swan(), Albatross()]
 ```
 
-The code below just calls the expected methods, it doesn’t care about what object bird is holding at a given time. If the object provides the method, then the code works without breaking. That’s the flexibility that duck typing offers:
+The code below just calls the expected methods, it doesn't care about what object bird is holding at a given time. If the object provides the method, then the code works without breaking. That's the flexibility that duck typing offers:
 
 ```py
 for bird in birds:
@@ -53,7 +53,7 @@ Because Python is a dynamically typed language, there are no type-checking restr
 
 ## Pros
 
-**Decoupling**: Objects don’t have to inherit from a common superclass, which make them flexible and decoupled.
+**Decoupling**: Objects don't have to inherit from a common superclass, which make them flexible and decoupled.
 
 **Flexibility**: objects of different types can be used interchangeably based on their behavior. This promotes modularity and extensibility in your code.
 
@@ -66,7 +66,7 @@ Because Python is a dynamically typed language, there are no type-checking restr
 
 ## Cons
 
-**Potential runtime errors**: can lead to unexpected behavior or crashes if an object doesn’t conform to the expected behavior.
+**Potential runtime errors**: can lead to unexpected behavior or crashes if an object doesn't conform to the expected behavior.
 
 **Lack of explicitness**: code might be less explicit and more challenging to understand. The lack of explicit interface definitions make it difficult to grasp what are required for a behavior (attributes or methods?).
 
@@ -74,7 +74,7 @@ Because Python is a dynamically typed language, there are no type-checking restr
 
 **No support from IDE for Refactoring**: when renaming/finding attributes/methods, you have no support from the IDE since there's no relationship between classes.
 
-## Duck Typing in Python’s Built-in Tools
+## Duck Typing in Python's Built-in Tools
 
 Built-in types, such as Lists, Tuples, Strings, Ranges, Dictionaries, Sets support operations like iteration, indexing, slicing, concatenating, getting length, sorting, and reversing.
 

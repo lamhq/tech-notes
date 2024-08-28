@@ -20,7 +20,7 @@ Each package must have a special file named` __init__.py`. This file can be empt
 A package can contain sub-packages, which are also directories containing modules.
 
 
-## Example
+## Modules & Packages Example
 
 Let's say you have a file structure like this:
 ```
@@ -106,11 +106,9 @@ that would mean:
 * and from it, import the function `get_token_header`.
 
 
-## `sys.path`
+## Modifying modules search path
 
-The `sys.path` variable is an essential part of the sys module.
-
-It is a list of strings that determines the interpreter's search path for modules.
+The `sys.path` variable is a list of strings that determines the interpreter's search path for modules. It's an essential part of the `sys` module.
 
 `sys.path` is initialized from these locations:
 - The directory containing the input script (or the current directory when no file is specified).
@@ -118,26 +116,38 @@ It is a list of strings that determines the interpreter's search path for module
 - The installation-dependent default.
 
 You can modify it using standard list operations:
-
 ```py
 import sys
 sys.path.append('/ufs/guido/lib/python')
 ```
 
 
-## Create a module
+## Creating a module
 
-Save this code in a file named `mymodule.py`:
-
+We create a module named `mymodule.py`:
 ```py
 def greeting(name):
   print("Hello, " + name)
 ```
 
-Import the module named `mymodule`, and call the `greeting` function:
+Then import the module, and call its function:
 
 ```py
 import mymodule
 
 mymodule.greeting("Jonathan")
+```
+
+
+## Running code from a module
+
+Using `if __name__ == '__main__'` is a quick way to run some code from a file but not allow the code to be run if it is imported.
+
+Explanation: When a module is imported, Python will fill in `__name__` with the name of the module, which is the name of the file without the `.py`. However, if you run the file with python file.py, `__name__` will be filled in by Python with the string `"__main__"`
+
+```py
+# module code
+
+if __name__ == "__main__":
+    # do something when running the module file
 ```

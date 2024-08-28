@@ -170,7 +170,7 @@ Functions can access variables created inside the function as well as those outs
 
 Any variables that are assigned within a function by default are assigned to the *local namespace*. After the function is finished, the local namespace is destroyed.
 
-To assign variables outside of the function’s scope, use `global` or `nonlocal` keywords.
+To assign variables outside of the function's scope, use `global` or `nonlocal` keywords.
 ```py
 a = None
 def my_fn():

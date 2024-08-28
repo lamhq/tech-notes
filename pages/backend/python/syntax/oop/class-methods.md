@@ -48,6 +48,6 @@ Similar to regular functions but are scoped within a class.
 
 Use cases:
 - utility functions that don't depend on instance or class state.
-- functions that are logically related to the class but don’t need access to instance-specific data.
+- functions that are logically related to the class but don't need access to instance-specific data.
 
 Static and class methods help enforce restrictions about class design. This can have maintenance benefits.

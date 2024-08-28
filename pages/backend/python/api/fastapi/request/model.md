@@ -29,7 +29,7 @@ class Creature(BaseModel):
     aka: str
 ```
 
-The `...` argument of `Field()` means that a value is required, and that there’s no default value.
+The `...` argument of `Field()` means that a value is required, and that there's no default value.
 
 
 ## References

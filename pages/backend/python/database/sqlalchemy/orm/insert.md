@@ -99,7 +99,7 @@ session.commit()
 - The objects are not connected to the session.
 - Fetching primary keys is not done by default.
 - No events will be triggered.
-- Great when you want to insert data into the table and you don’t need to perform additional work on that data.
+- Great when you want to insert data into the table and you don't need to perform additional work on that data.
 
 
 ## `flush()` vs. `commit()`

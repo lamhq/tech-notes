@@ -22,7 +22,7 @@ Elements can be accessed with square brackets `[]`:
 thistuple[0]
 ```
 
-It’s not possible to modify which object is stored in each slot:
+It's not possible to modify which object is stored in each slot:
 ```py
 # this won't work
 thistuple[2] = False
@@ -51,7 +51,7 @@ for foo, bar in get_foo_bar():
     pass
 ```
 
-If you’re only interested in one of the values, you can use the `*rest` syntax to collect the remaining elements into a list:
+If you're only interested in one of the values, you can use the `*rest` syntax to collect the remaining elements into a list:
 ```py
 a, *rest = (1, 2, 3, 4, 5)
 print(a)  # Outputs: 1

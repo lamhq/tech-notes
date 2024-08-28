@@ -17,36 +17,41 @@ pip install pytest==7.4.4
 ```
 
 
-## Naming convention
+## Writting test
 
-Name your code file to be easily discoverable by pytest:
-
-- Test files should be named `test_<something>.py` or `<something>_test.py`. 
-- Test methods and functions should be named `test_<something>`.
-– Test classes should be named `Test<Something>`.
-
-
-## Organize test files
-
-Here we define how to structure test files in the project source code.
-
-Test files should be in a separate `tests/` folder (instead of sitting next to the code file):
-
-```
-module/
-    __init__.py
-    module.py
-    another_module.py
-tests/
-    test_module.py
-    test_another_module.py
+Create a file `test_one.py` with content:
+```py
+def test_passing():
+    assert (1, 2, 3) == (1, 2, 3)
 ```
 
-**Advantages**:
-- This separation keeps your codebase cleaner and avoids cluttering the main code directory with test files.
-- Clean codebase helps locate code file easier
-- Isolated Work: allows individuals to concentrate on writing tests without interfering with others' code files.
+## Running test
 
-**Disadvantages**:
-- It's not easy to find and import code files.
-- You can not use relative imports in test files to import code files.
+Open terminal and run this command:
+```shell
+pytest test_one.py
+```
+
+## Test result
+
+Look at the console output after running the test:
+```
+========================= test session starts ========================== 
+collected 1 item
+test_one.py .                                                    [100%]
+========================== 1 passed in 0.01s ===========================
+```
+
+- The dot after `test_one.py` means that one test was run and it passed
+- The `[100%]` is a percentage indicator showing how much of the test suite is done so far.
+
+
+## Test Outcomes
+
+Here are the possible outcomes of a test:
+- PASSED (`.`) - The test ran successfully.
+- FAILED (`F`) - The test did not run successfully.
+- SKIPPED (`s`) - The test was skipped. You can tell pytest to skip a test by using either the `@pytest.mark.skip()` or `@pytest.mark.skipif()` decorators.
+- XFAIL (`x`) - The test was not supposed to pass, and it ran and failed. You can tell pytest that a test is expected to fail by using the `@pytest.mark.xfail()` decorator
+- XPASS (`X`) - The test was marked with xfail, but it ran and passed.
+- ERROR (`E`) - An exception happened either during the execution of a fixture or hook function, and not during the execution of a test function.

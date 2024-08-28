@@ -23,4 +23,4 @@ session = Session()
 
 ## Identity map
 
-The identity map is a cache-like data structure that contains a unique list of objects determined by the object’s table and primary key.
+The identity map is a cache-like data structure that contains a unique list of objects determined by the object's table and primary key.

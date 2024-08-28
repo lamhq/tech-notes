@@ -1,4 +1,6 @@
-# Commands
+# Running Test
+
+Running pytest without mentioning a filename will run all files of format `test_*.py` or `*_test.py` in the current directory and subdirectories.
 
 ## Running a subset of tests
 
@@ -58,12 +60,4 @@ pytest -vv test_two.py
 Shows the order of operations of tests and fixtures:
 ```shell
 pytest --setup-show test_count.py
-```
-
-
-## Fixtures
-
-Show available fixtures in a directory or test file:
-```shell
-pytest --fixtures -v path/to/directory
 ```

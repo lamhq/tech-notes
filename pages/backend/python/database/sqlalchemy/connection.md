@@ -122,7 +122,7 @@ Enable logging SQL statements to console:
 engine = create_engine(url, echo=True, future=True)
 ```
 
-Make sure to only do this for testing, and don’t use `echo=True` in production!
+Make sure to only do this for testing, and don't use `echo=True` in production!
 
 
 ## References
