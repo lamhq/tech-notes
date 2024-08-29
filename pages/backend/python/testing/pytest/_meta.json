@@ -3,5 +3,6 @@
   "writing-test": "Writing Test",
   "fixtures": "Fixtures",
   "parametrization": "Parametrization",
-  "markers": "Markers"
+  "markers": "Markers",
+  "mocking": "Mocking"
 }

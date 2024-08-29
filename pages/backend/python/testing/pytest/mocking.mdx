@@ -1,0 +1,197 @@
+# Mocking
+
+## What Is Mocking?
+
+A mock object substitutes and imitates a real object within a testing environment.
+
+Using Python mock objects, you can control your code's behavior during testing.
+
+
+## The Python Mock library
+
+Python's built-in mock object library is `unittest.mock`.
+
+`unittest.mock` provides a class called `Mock`, which you'll use to imitate real objects in your codebase.
+
+### Creating a mock
+
+Begin by instantiating a new `Mock` instance. Then substitute an object in your code with the mock object:
+```py
+from unittest.mock import Mock
+import json
+
+# Patch the json library
+json = Mock(spec=json)
+json.dumps()
+```
+- By specifying `spec=json`, we ensure that the mock object only has the same attributes and methods as the original json module.
+- A Mock creates its interface when you access its members.
+- The return value of each mocked method is also a `Mock`.
+
+
+### Autospec
+
+`unittest.mock` also provides convenient ways to automatically specify the interface of a Mock instance.
+
+```python
+from unittest.mock import create_autospec
+import json
+
+# Patch the json library
+json = create_autospec(json)
+json.dumps(['simple'])
+```
+
+
+### Assertions
+
+You've created a new `Mock` and called its method. You can make assertions to test your expectations about how the method is called:
+
+```py
+from unittest.mock import Mock
+import json
+
+json = Mock(spec=json)
+
+json.loads('{"key": "value"}')
+json.loads.assert_called()
+json.loads.assert_called_once()
+json.loads.assert_called_with('{"key": "value"}')
+json.loads.assert_called_once_with('{"key": "value"}')
+json.loads.assert_not_called()
+```
+
+
+### Introspection
+
+Instead of using assertion methods, you can inspect the value of some special attributes from the method:
+```py
+from unittest.mock import Mock
+import json
+
+json = Mock(spec=json)
+
+# Number of times you called loads():
+json.loads.call_count
+
+# The last loads() call:
+json.loads.call_args
+
+# List of loads() calls:
+json.loads.call_args_list
+
+# List of calls to json's methods (recursively):
+json.method_calls
+```
+
+### Setting return value
+
+You can set the return value of a mock object's method:
+```py
+from unittest.mock import Mock
+from datetime import datetime
+
+# Mock datetime to control today's date
+datetime = Mock(spec=datetime)
+
+# Mock .today() to return Wednesday
+datetime.today.return_value = 'wednesday'
+
+datetime.today()
+```
+
+### Side Effects
+
+The `side_effect` attribute allows you to perform specific actions when a mock object is called.
+
+Raising exceptions:
+```py
+from unittest.mock import Mock
+from datetime import datetime
+
+# Mock datetime to control today's date
+datetime = Mock(spec=datetime)
+
+# Mock .today() to return Wednesday
+datetime.today.side_effect = Exception('Boom!')
+try:
+    datetime.today()
+except Exception as e:
+    print(f"Exception raised: {e}")
+```
+
+Custom behavior:
+```py
+from unittest.mock import Mock
+import random
+
+def custom_side_effect():
+    return 10
+
+# configure a Mock on creation
+random = Mock(**{'randint.side_effect': custom_side_effect})
+
+def test_get_random_number():
+    result = random.randint()
+    assert result == 10
+```
+
+
+## Patching
+
+The `unittest.mock` library provide a function `patch()`, which looks up an object in a given module and replaces that object with a Mock.
+
+### Patching an Object in other module
+
+Say you have a Python module containing a function that returns a random number:
+```py filename="my_module.py"
+import random
+
+def get_rand_number(min, max):
+    return random.randint(min, max)
+```
+
+In your test file, you want to mock the return value of the function to return `10`. You can mock the `random` module object:
+
+```py filename="test_random.py"
+from unittest.mock import patch
+from my_module import get_rand_number
+
+def test_rand_number():
+    with patch('my_module.random', autospec=True) as mock_rand:
+        mock_rand.randint.return_value = 10
+        assert get_rand_number(0, 5) == 10
+```
+
+Or you can mock the function directly:
+```py filename="test_random.py"
+from unittest.mock import patch
+from my_module import get_rand_number
+
+def test_rand_number():
+    with patch(f'{__name__}.get_rand_number') as mock_rand:
+        mock_rand.return_value = 10
+        assert get_rand_number(0, 5) == 10
+```
+- since you import `get_rand_number` directly in you test, the module name of your test file is be used
+
+
+### Patching an Object's Attributes
+
+Say you have a Python module containing a function that returns a random number:
+```py filename="my_module.py"
+import random
+
+def get_rand_number(min, max):
+    return random.randint(min, max)
+```
+
+In your test file, you want to mock the return value of the function `get_rand_number` to return `10`. You can mock the `randint` method of the `random` module object:
+```py filename="test_random.py"
+from unittest.mock import patch
+from my_module import get_rand_number, random
+
+def test_rand_number():
+    with patch.object(random, 'randint', return_value=10):
+        assert get_rand_number(0, 5) == 10
+```
