@@ -1,0 +1,33 @@
+# Content delivery network
+
+## Overview
+
+A Content delivery network (CDN) is a network of geographically dispersed servers used to deliver static content.
+
+CDN servers cache static content like images, videos, CSS, JavaScript files, etc.
+
+You are charged for data transfers in and out of the CDN.
+
+
+## How it work?
+
+1. When a user requests a web page or any online content, the request is sent to the CDN instead of the origin server.
+2. The CDN identifies the server closest to the user based on their geographical location
+3. The nearest CDN server, also known as a Point of Presence (PoP), delivers the cached content to the user. This reduces latency and speeds up the loading time
+4. If the requested content is not available on the nearest CDN server, the request is forwarded to the origin server. The origin server then sends the content to the CDN server, which caches it for future requests
+
+![](https://learn.microsoft.com/en-us/azure/architecture/best-practices/images/cdn/cdn.png)
+
+
+## Time-to-Live
+
+Time-to-Live (TTL) refers to the duration for which cached content is stored on a CDN server before it become stale.
+
+When content is cached on a CDN server, a TTL value is assigned.
+
+Once the TTL expires, the CDN server will check with the origin server to see if the content has been updated. If it has, the CDN server fetches the new content and updates its cache.
+
+
+## Dynamic content caching
+
+It enables the caching of HTML pages that are based on request path, query strings, cookies, and request headers.

@@ -1,6 +1,8 @@
 {
   "database": "Database",
-  "scaling": "Scaling",
   "load-balancer": "Load balancer",
-  "scalable-system": "Scalable System"
+  "cache": "Cache",
+  "cdn": "CDN",
+  "scaling": "Scaling",
+  "web-app": "Web Application"
 }

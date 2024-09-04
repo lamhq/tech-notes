@@ -3,5 +3,6 @@
   "sql": "SQL Database",
   "no-sql": "NoSQL Database",
   "concurrency": "Concurrency",
-  "transaction": "Database transaction"
+  "transaction": "Database Transaction",
+  "replication": "Database Replication"
 }

@@ -1,6 +1,6 @@
 # Database
 
-## Database Components
+## Components
 
 Databases have 5 components: interface (API), query processor, metadata, indexes, and storage.
 
