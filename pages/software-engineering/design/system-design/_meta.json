@@ -4,5 +4,7 @@
   "cache": "Cache",
   "cdn": "CDN",
   "scaling": "Scaling",
+  "data-center": "Data center",
+  "message-queue": "Message Queue",
   "web-app": "Web Application"
 }
