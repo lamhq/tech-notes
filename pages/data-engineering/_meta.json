@@ -1,8 +1,9 @@
 {
   "big-data": "Big Data",
-  "postgresql": "PostgreSQL",
-  "pyspark": "PySpark",
+  "jupyter-notebook": "Jupyter Notebook",
   "numpy": "NumPy",
   "pandas": "Pandas",
+  "pyspark": "PySpark",
+  "postgresql": "PostgreSQL",
   "matlab": "MATLAB"
 }

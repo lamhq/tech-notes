@@ -8,10 +8,10 @@
       "typesetting": "article"
     }
   },
-  "devops": "DevOps",
+  "web": "Web",
   "backend": "Backend",
-  "frontend": "Frontend",
   "data-engineering": "Data",
+  "devops": "DevOps",
   "software-engineering": "Software",
   "tools": "Tools",
   "soft-skills": "Soft Skills"
