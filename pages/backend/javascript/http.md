@@ -1,4 +1,13 @@
-# Fetch API snippets
+# Working with HTTP
+
+## Fetch API
+
+The Fetch API is a modern JavaScript interface for making HTTP requests and handling responses.
+
+The Fetch API is supported at:
+- Modern web browsers
+- Node.js environment
+
 
 ## Get JSON from a URL
 

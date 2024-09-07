@@ -1,5 +1,10 @@
 {
-  "linters": "Linters",
+  "types": "Types",
+  "syntax": "Syntax",
+  "closure": "Closure",
+  "event-loop": "Event loop",
+  "http": "HTTP",
+  "api": "API Development",
   "runtimes": "Runtimes",
-  "api": "API Development"
+  "linters": "Linters"
 }

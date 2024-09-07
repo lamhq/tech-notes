@@ -1,0 +1,8 @@
+{
+  "number": "Number",
+  "string": "String",
+  "array": "Array",
+  "null-undefined": "Null and Undefined",
+  "truthy": "Truthy Values",
+  "this": "this"
+}

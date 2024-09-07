@@ -1,4 +1,4 @@
-# ES7 cheatsheet
+# ES7 Syntax
 
 ## Async
 

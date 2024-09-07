@@ -1,25 +1,4 @@
-# ES6 cheatsheet
-
-## `const`
-
-```js
-const EULER = 2.7182818284
-```
-
-
-## `let` vs `var`
-
-```js
-var average = 5
-var average = (average + 1) / 2
-average
-// 3
-
-let value = 'hello world'
-let value = 'what is new'
-// throws TypeError: Identifier 'value' has already been declared
-```
-
+# ES6 Syntax
 
 ## Arrow Function
 
