@@ -1,8 +1,13 @@
-# HOC
+# Higher-Order Component
 
-## `withTheme` HOC
+## Overview
 
-### Declare HOC
+A Higher-Order Component (HOC) is a function that takes a component and returns a new component with additional props or behavior
+
+
+## Declaring a HOC
+
+In this example, we declare a HOC that return a new component with additional props from the current selected theme:
 
 ```tsx
 interface Props extends WithThemeProps {
@@ -32,17 +37,13 @@ export function withTheme<T extends WithThemeProps = WithThemeProps>
 ```
 
 
-### Using HOC
+## Using HOC
 
+We apply the HOC on a component:
 ```tsx
-class MyButton extends React.Component<Props> {
-  public render() {
-    // Render an the element using the theme and other props.
-  }
-
-  private someInternalMethod() {
-    // The theme values are also available as props here.
-  }
+function MyButton({ theme, ...otherProps }) {
+  // Render an the element using the theme and other props.
+  return </> 
 }
 
 export default withTheme(MyButton);

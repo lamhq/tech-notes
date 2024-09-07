@@ -1,0 +1,9 @@
+{
+  "props": "Component's Props",
+  "component": "Components",
+  "hook": "Hooks",
+  "event-handler": "Event Handlers",
+  "context": "Context",
+  "ref": "Ref",
+  "hoc": "Higher-Order Component"
+}

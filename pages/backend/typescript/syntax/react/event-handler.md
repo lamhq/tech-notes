@@ -1,6 +1,6 @@
-# Forms and Events
+# Event Handlers
 
-## Event handlers
+## Input Event Handlers
 
 ```tsx
 // typing on LEFT hand side of =
@@ -9,7 +9,8 @@ const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 }
 ```
 
-## Form events
+
+## Form Event Handlers
 
 ```tsx
 const onChange = (e: React.FormEvent<HTMLInputElement>): void => {

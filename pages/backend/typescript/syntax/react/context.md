@@ -1,6 +1,6 @@
 # Context
 
-## Define context
+## Defining context
 
 ```tsx
 import { createContext } from "react";
@@ -26,7 +26,8 @@ const App = () => {
 };
 ```
 
-## Use context
+
+## Using context
 
 ```tsx
 import { useContext } from "react";
@@ -38,7 +39,8 @@ const MyComponent = () => {
 };
 ```
 
-## Custom hook for context
+
+## Declaring custom hook
 
 ```tsx
 const useCurrentUser = () => {

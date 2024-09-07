@@ -12,5 +12,6 @@
   "utility-types": "Utility Types",
   "mixins": "Mixins",
   "modules": "Modules",
-  "jsx": "JSX"
+  "jsx": "JSX",
+  "react": "React"
 }
