@@ -1,0 +1,55 @@
+# Set up ESLint for TypeScript Node.js projects
+
+## Notes
+
+- Code style used: Airbnb
+- We use `.eslintrc.json` instead of `.eslintrc.js` to ensure config file is not processed by ESLint
+
+
+## Steps
+
+1. **Install ESLint and the necessary dependencies**:
+   ```bash npm2yarn
+   npm install eslint@^8.56.0 \
+            @typescript-eslint/eslint-plugin@^7.0.0 \
+            @typescript-eslint/parser@^7.0.0 \
+            eslint-config-airbnb-typescript \
+             --save-dev
+   ```
+
+2. **Install the Airbnb config and its dependencies**:
+   ```bash
+   npx install-peerdeps --dev eslint-config-airbnb-typescript -y
+   ```
+
+3. **Create or update your `.eslintrc.json` file**:
+   ```json
+   {
+     "extends": [
+       "airbnb-base",
+       "airbnb-typescript/base"
+     ],
+     "parser": "@typescript-eslint/parser",
+     "parserOptions": {
+       "project": "./tsconfig.json"
+     },
+     "plugins": [
+       "@typescript-eslint"
+     ],
+     "rules": {
+       // Add custom rules here
+     }
+   }
+   ```
+
+4. **Add a lint script to your `package.json`**:
+   ```json
+   "scripts": {
+     "lint": "eslint . --ext .ts"
+   }
+   ```
+
+5. **Run ESLint**:
+   ```bash
+   npm run lint
+   ```
