@@ -1,0 +1,100 @@
+# TypeScript
+
+## Version
+
+This document is for TypeScript version `4.3.5`.
+
+
+## Overview
+
+TypeScript is an open-source language maintained and developed by Microsoft.
+
+
+## Installation
+
+Install TypeScript and type definitions for Node.js project:
+```sh npm2yarn
+npm i -D typescript @types/node
+```
+
+Create a TypeScript config file (`tsconfig.json`):
+```sh
+npx tsc --init
+```
+
+Open the `tsconfig.json` file and adjust the settings as needed.
+
+
+## Running code
+
+First, compile TypeScript code to JavaScript:
+```shell
+npx tsc example.ts
+```
+
+Run JavaScript with Node.js:
+
+```shell
+node example.js
+```
+
+
+## Creating projects
+
+Depending on what kind of application you want to build (REST API, GraphQL API, SPA), you should build your project based on a TypeScript framework that handles a lot of heavy lifting.
+
+Here, to create a generic TypeScript Node.js project:
+1. Create and initialize a Node.js project:
+    ```bash
+    npm init -y
+    ```
+
+2. [Install TypeScript](#installation) and create a `tsconfig.json` file (see above)
+
+3. Update the `tsconfig.json` file to include the following settings:
+    ```json filename="tsconfig.json"
+    {
+      "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "strict": true
+      }
+    }
+    ```
+
+4. Create an `index.ts` file in  `src` directory with a simple example:
+    ```typescript
+    const message: string = "Hello, TypeScript with Node.js!";
+    console.log(message);
+    ```
+
+5. Install `ts-node-dev` to run the project in development mode:
+   ```shell npm2yarn
+   npm install -D ts-node-dev
+   ```
+
+6. Add a Start Scripts in `package.json` file:
+    ```json
+    "scripts": {
+      "start-dev": "ts-node-dev --respawn src/index.ts",
+      "start": "npx tsc && node dist/index.js"
+    }
+    ```
+
+7. Now you can start your project with:
+    ```bash
+    npm run start-dev
+    ```
+
+
+## Tools
+
+- [TypeScript Playground](https://www.typescriptlang.org/play)
+
+
+## Reference
+
+- [Node.js with TypeScript](https://nodejs.org/en/learn/getting-started/nodejs-with-typescript)

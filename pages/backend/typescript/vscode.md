@@ -1,0 +1,72 @@
+# TypeScript Programming with Visual Studio Code
+
+## Refactoring
+
+Visual Studio Code supports refactoring operations such as:
+- **Extract to method or function**: Extract code to either a new method or a new function in the file.
+- **Extract to constant**: Extract the selected expression to a new constant in the file.
+- **Extract type to interface or type alias**: Extract the selected inline type to either an interface or a type alias
+- **Move to new file**: Move classes, functions, constants, or interfaces in a file to a new file. 
+- **Convert between default export and named export**
+- **Convert parameters to destructured object**: Rewrite a function that takes a long list of arguments to take a single arguments object.
+- **Generate get and set accessors**: Encapsulate a selected class property by generating a getter and setter for it.
+- **Infer function return types**: Adds explicit return type annotations to functions.
+- **Add/remove braces from arrow function**: Converts single line arrow function to multiline and back.
+- **Organize Imports**: sorts the imports in a TypeScript file and removes unused imports. To do this, right click > `Source Action...` > `Organize Imports`
+
+
+## Code Actions on Save
+
+You can configure a set of **Code Actions** that are run when a file is saved:
+- `"organizeImports"` - Enables organize imports on save.
+- `"fixAll"` - Auto Fix on Save computes all possible fixes in one round (for all providers including ESLint).
+- `"fixAll.eslint"` - Auto Fix only for ESLint.
+- `"addMissingImports"` - Adds all missing imports on save.
+```json
+// On explicit save, run fixAll source action. On auto save (window or focus change), run organizeImports source action.
+"editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "always",
+}
+```
+
+
+## Debugging
+
+You have to enable source maps in your `tsconfig.json`.
+```json
+{
+  "compilerOptions": {
+    "sourceMap": true
+  }
+}
+```
+
+Create debug configuration `launch.json` file in the `.vscode` folder:
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/helloworld.ts",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/out/**/*.js"]
+    }
+  ]
+}
+```
+VS Code has determined the program to launch, `helloworld.ts`, included the build as a `preLaunchTask`, and told the debugger where to find the generated JavaScript files.
+
+If the `program` is not set, VS Code will look in `package.json` for a `start` script and use that value.
+
+
+## References
+
+- [TypeScript in Visual Studio Code](https://code.visualstudio.com/docs/languages/typescript)
+- [Debugging TypeScript](https://code.visualstudio.com/docs/typescript/typescript-debugging)
