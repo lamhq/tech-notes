@@ -10,5 +10,6 @@
   "typescript": "TypeScript",
   "nestjs": "NestJS",
   "nodejs": "Node.js",
-  "deno": "Deno"
+  "deno": "Deno",
+  "eslint": "ESLint"
 }
