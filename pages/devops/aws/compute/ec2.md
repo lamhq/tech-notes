@@ -51,6 +51,8 @@ Instance user data is available at: http://169.254.169.254/latest/user-data.
 
 ## Instance Profiles
 
+IAM roles can be used for granting permissions to applications running on EC2 instances.
+
 An instance profile is a container for an IAM role that you can attach to an EC2 instance when the instance starts.
 
 An instance profile can contain only one IAM role, although a role can be included in multiple instance profiles.

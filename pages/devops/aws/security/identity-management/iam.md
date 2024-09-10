@@ -20,8 +20,6 @@ IAM is integrated with many AWS services by default.
 
 No additional charge.
 
-Identity Federation (including AD, Facebook etc). can be configured allowing secure access to AWS resources without creating an IAM user account.
-
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-1.jpg)
 
 
@@ -41,7 +39,7 @@ Best Practices:
 - Create an admin group for you administrators, and assign the appropriate permissions to this group. Create user accounts for administrators and add user to admin group.
 
 
-## Amazon Resource Names
+## ARN
 
 Amazon Resource Names (ARNs) are uniquely identify a resource within Amazon.
 
@@ -88,36 +86,52 @@ You cannot nest groups (groups within groups).
 
 ## Role
 
-An IAM role is a **temporary identity** that can be assumed by users or services to **delegate access**.
+An **IAM role** in AWS is a set of permissions that define what actions are allowed and denied by an entity in the AWS environment.
 
-IAM users or AWS services can assume a role to obtain temporary security credentials that can be used to make AWS API calls. They must be granted permissions to switch to that role.
+Roles provide temporary security credentials, which enhance security by reducing the risk of long-term credential exposure.
 
-A role can be assigned to a federated user who signs in using an external identity provider.
+Roles can be assumed by IAM users, AWS services (like EC2 or Lambda), or applications.
+
+To allow an entity to assume a role, you must define a trust policy that specifies which entities (users, services, etc.) are allowed to assume the role
+
+*For example, you might use an IAM role to allow an EC2 instance to access an S3 bucket without embedding AWS keys in the instance.*
+
+![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-5.jpg)
 
 Roles can enable cross-account access, allowing one AWS account to interact with resources in other AWS accounts.
 
-Using roles is preferred for security reasons as it allows you to avoid hard-coding credentials.
+A role can be assigned to a federated user who signs in using an external identity provider.
 
-IAM roles with EC2 instances:
-- IAM roles can be used for granting applications running on EC2 instances permissions to AWS API requests using instance profiles.
-- Only one role can be assigned to an EC2 instance at a time.
-- When using the AWS CLI or API instance profiles must be created manually (it’s automatic and transparent through the console).
-- Applications retrieve temporary security credentials from the instance metadata.
+### Creating IAM roles
 
-Role Delegation:
-- Create an IAM role with two policies:
-  - Permissions policy – grants the user of the role the required permissions on a resource.
-  - Trust policy – specifies the trusted accounts that are allowed to assume the role.
-- Wildcards (*) cannot be specified as a principal.
-- A permissions policy must also be attached to the user in the trusted account.
+When creating an IAM role, we have to specify two policies:
+- Permissions policy – grants the user of the role the required permissions on a resource.
+- Trust policy – specifies the trusted accounts that are allowed to assume the role.
 
-![](https://digitalcloud.training/wp-content/uploads/2022/01/IAM-5.jpg)
+Wildcards (`*`) cannot be specified as a principal.
+
+A permissions policy must also be attached to the user in the trusted account.
 
 
 ## IAM Federation
 
-You can combine your existing user account with AWS.
+Identity Federation (including AD, Facebook, Google etc). can be configured allowing secure access to AWS resources without creating an IAM user account.
 
 For example, when you log on to your PC (usually using Microsoft Active Directory), you can use the same credentials to log in to AWS if you set up federation.
 
 To do that, you use **Identity Federation**, which uses the SAML standard, Open ID Connect (OIDC), and OAuth 2.0
+
+
+## Shared Responsibility Model for IAM
+
+AWS is responsible for:
+- Infrastructure (global network security)
+- Configuration and vulnerability analysis
+- Compliance validation
+
+You are responsible for:
+- Creating users, groups, roles, policies, management and monitoring of these
+- Enable MFA on all accounts and enforcing this
+- Rotate all your access keys
+- Apply approriate permissions
+- Analyzing access patterns and review account's permissions

@@ -1,6 +1,6 @@
 {
-  "auth-methods": "Authentication Methods",
+  "credentials": "AWS Credentials",
   "policies": "IAM Policies",
-  "1-api-auth": { "title": "API authentication" },
-  "2-cross-account-role-access": { "title": "Cross-Account Role Access" }
+  "api-auth": "API authentication",
+  "cross-account-role-access": "Cross-Account Role Access"
 }

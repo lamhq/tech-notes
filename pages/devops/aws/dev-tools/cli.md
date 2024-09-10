@@ -11,8 +11,8 @@
     which aws
     aws --version
     ```
-   
-## Configure
+
+## Configure AWS Credentials for the CLI
 
 ### Set environment variables
 
@@ -38,6 +38,18 @@ Update the `~/.aws/config` file:
 [default]
 region = us-east-1
 ```
+
+
+## AWS CLI Credentials Provider Chain
+
+The CLI will look for credentials in this order:
+1. Command line options `--region`, `--output`, `--profile`
+2. Environment Variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`
+3. CLI credentials file `~/.aws/credentials`
+4. CLI configuration file `~/.aws/config`
+5. Container credentials - for ECS tasks
+6. Instance profile credentials - for EC2 instance profiles
+
 
 ## Export credentials to terminal
 

@@ -73,6 +73,23 @@ Use cases:
 - You’re writing tests first, you might have incomplete features or functionality during development
 
 
+## Marking slow tests
+
+To mark a test as slow in pytest, you can use the `@pytest.mark.slow` decorator:
+```py
+import pytest
+
+@pytest.mark.slow
+def test_example():
+    # Your test code here
+    pass
+```
+
+If you want to skip the slow tests, you can use:
+```shell
+pytest -m "not slow"
+```
+
 ## Custom Markers
 
 Custom markers are markers we make up ourselves and apply to tests.
@@ -149,14 +166,14 @@ class TestFinish:
 Parameter-level markers:
 ```py
 import pytest
-
-@pytest.mark.parametrize("value", [
-    1,
-    pytest.param(2, marks=pytest.mark.smoke),
-    3,
+ 
+@pytest.mark.parametrize("value1, value2", [
+    (3, 1),
+    pytest.param(3, -1, marks=pytest.mark.slow),
+    (2, 0),
 ])
-def test_value(value):
-    assert value > 0
+def test_value(value1, value2):
+    assert value1 > value2
 ```
 
 ## Listing Markers
