@@ -1,46 +1,88 @@
 # Access control
 
-CloudFront signed URLs and signed cookies provide the same basic functionality: they allow you to control who can access your content. 
+## Cloudfront Signed URL / Signed Cookies
 
-## Cloudfront signed URLs
+CloudFront signed URLs and signed cookies allow you to control who can access your content.
 
-A signed URL includes additional information, for example, an expiration date and time, that gives you more control over access to your content.
+When creating CloudFront Signed URL / Cookie, we need to attach a policy with:
+- Includes URL expiration
+- Includes IP ranges to access the data from
+- Trusted signers (which AWS accounts can create signed URLs)
 
-Use signed URLs in the following cases:
+Signed URLs provide access to individual files. Useful when your users are using a client that doesn't support cookies.
 
-- You want to restrict access to individual files, for example, an installation download for your application.
-- Your users are using a client (for example, a custom HTTP client) that doesn't support cookies.
+Signed Cookies provide access to multiple restricted files. Useful when you don't want to change your current URLs.
+
+### Signers
+
+There are two types of signers you can use to create signed URLs and signed cookies:
+
+**Trusted Key Groups** (recommended):
+- A trusted key group is a collection of public keys that you create and manage in CloudFront.
+- You generate your own public & private key:
+    - The private key is used by your applications (e.g. EC2) to sign URLs
+    - The public key (uploaded) is used by CloudFront to verify URLs
+- You can leverage APIs to create and rotate keys
+
+**AWS Accounts**:
+- An AWS account that contains a CloudFront key pair.
+- You use the private key from the key pair associated with the AWS account to sign URLs or cookies.
+- You neet to manage keys using the root account (not recommended) and AWS console
+- No API support
+
+**To create a key group**:
+1. Open CloudFront Console.
+2. In **Public keys** section in the left navigation, add your public key.
+3. Navigate to **Key Groups**.
+4. Create Key Group:
+   - Name your key group.
+   - Select public keys.
+
+Once the key group is created, you can reference it in one or more cache behaviors.
 
 
-## Cloudfront signed cookies
+### CloudFront signed URLs vs S3 presigned URLs
 
-Application must authenticate user and then send three Set-Cookie headers to the viewer. Users thena use those cookies to request access to content.
+They are both used to grant temporary access to private content.
 
-Use signed cookies in the following cases:
-- You want to provide access to multiple restricted files, for example, all of the files for a video in HLS format or all of the files in the subscribers' area of website.
-- You don't want to change your current URLs.
+CloudFront Signed URL:
+- Used to restrict access to content served through a CloudFront distribution.
+- Allows access to a specific path, regardless of the origin (S3 or custom origin).
+- Can specify IP ranges, start and end times, and use wildcards in paths.
+- Uses an account-wide key pair managed by the root user to sign.
+- Expiration is defined in the policy with absolute terms (milliseconds from epoch).
+- Revocation: Requires distrusting the key pair used for signing.
+- Conclusion: CloudFront signed URLs are more flexible with additional controls like IP restrictions and wildcard paths, making them suitable for complex access scenarios
 
-
-## Origin Access Identity
-
-Used in combination with signed URLs and signed cookies to restrict direct access to an S3 bucket.
-
-An origin access identity (OAI) is a special CloudFront user that is associated with the distribution.
-
-By using an OAI you can restrict users so they cannot access the content directly using the S3 URL, they must connect via CloudFront.
-
-Permissions must then be changed on the Amazon S3 bucket to restrict access to the OAI. The origin access identity has permission to access files in your Amazon S3 bucket, but users don’t.
-
-If users request files directly by using Amazon S3 URLs, they’re denied access.
+S3 Presigned URLs:
+- Used to grant temporary access to objects stored in an S3 bucket.
+- Acts as if the request is made by the IAM user who signed the URL.
+- Limited to specifying the bucket and object keys.
+- Uses IAM key of the signing IAM principle.
+- Has limited lifetime, defined relative to the signing time (in seconds).
+- Revocation: Requires revoking permissions from the IAM user or removing their access keys.
+- Conclusion: S3 presigned URLs are simpler and directly tied to IAM user permissions, making them easier to manage for straightforward access needs.
 
 
 ## Geo Restrictions
 
-Blacklists and whitelists can be used for geography (you can only use one at a time):
-- Allow your users to access your content only if they're in one of the countries on a whitelist of approved countries.
-- Prevent your users from accessing your content if they're in one of the countries on a blacklist of banned countries.
+You can restrict who can access your distribution based on the country where they try:
+- Allowlist: Allow your users to access your content only if they're in one of the countries on a list of approved countries.
+- Blocklist: Prevent your users from accessing your content if they're in one of the countries on a list of banned countries.
 
-There are two options available for geo-restriction (geo-blocking):
+The "country" is determined using a 3rd party Geo-IP database.
 
-- Use the CloudFront geo-restriction feature. For restricting access to **all files** in a distribution and at the country level.
-- Use a 3rd party geo-location service. For restricting access to a **subset of files** in a distribution and for finer granularity at the country level.
+Use case: Copyright Laws to control access to content.
+
+There are two options available for geo-restriction:
+- Use the CloudFront Geo Restriction feature for restricting access to **all files** in a distribution and at the country level.
+- Use a 3rd party geo-location service for restricting access to a **subset of files** in a distribution and for finer granularity at the country level.
+
+To enable CloudFront Geo Restriction:
+1. Open the CloudFront console.
+2. Select your distribution.
+3. Go to **Security** tab
+4. Under **CloudFront geographic restriction** and click **Edit**.
+5. Choose **Allow List** or **Block List**.
+6. Select countries to allow or block.
+7. Save changes.

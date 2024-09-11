@@ -2,13 +2,12 @@
 
 ## Overview
 
-An origin is the origin of the files that the CDN will distribute.
+An origin is the location where the original content is stored. CloudFront retrieves content from this origin to deliver it to viewers.
 
-Permitted CloudFront origins:
-- Amazon S3 bucket
-- Application Load Balancer
+CloudFront have several type of origins:
+- S3 bucket
+- Custom origin (HTTP)
 - Lambda function URL
-- Custom origin (web servers)
 - Route 53
 - AWS MediaPackage channel endpoint
 - AWS MediaStore container endpoint
@@ -20,15 +19,33 @@ The expiration time is controlled through the TTL.
 The minimum expiration time is 0.
 
 
-## Custom Origins
+## S3 Bucket Origin
 
-CloudFront can provide performance optimizations for custom origins even if they are running on on-premises servers. These include:
-- persistent TCP connections to the origin
-- SSL enhancements such as Session tickets and OCSP stapling.
+For distributing files and caching them at the edge.
+
+To guarantee that only CloudFront can access your S3 bucket, you can use Origin Access Control (OAC).
+
+CloudFront can be used to upload files to S3 (ingress).
+
+To use an Amazon S3 bucket as an origin:
+1. Navigate to the CloudFront console and create a new distribution
+2. In the "Origin domain", select your S3 bucket
+3. Under "Origin access", choose "Origin access control settings (recommended)"
+4. Under “Origin access control, click "Create new OAC".
+5. CloudFront will provide a bucket policy that you need to add to your S3 bucket policy. This policy allows CloudFront to access your S3 bucket.
+6. Add the bucket policy provided by CloudFront to your S3 bucket policy
+
+
+## Custom Origin (HTTP)
+
+You can have CloudFront stand in front of any custom origin HTTP backend:
+- Application Load Balancer
+- EC2 instance
+- S3 static website (**Static Website Hosting** must be enabled)
+- any HTTP backend
 
 When using an on-premises or non-AWS based web server you must specify the DNS name, ports, and protocols that you want CloudFront to use when fetching objects from your origin.
 
-Does not support RTMP distributions (must be an S3 bucket).
 
 ### EC2 as custom origin
 
@@ -39,10 +56,12 @@ When using EC2 for custom origins:
 
 ### S3 static website
 
-For S3 static website, enter the S3 static website hosting endpoint for your bucket in the configuration.
+CloudFront is the only option to add HTTPS to a static website being hosted in an S3 bucket.
+
+To use an Amazon S3 static website as an origin, set the origin domain name to your S3 bucket's website endpoint.
 
 
-## High availability with Origin Failover
+## Origin Failover
 
 You can set up CloudFront with origin failover for scenarios that require high availability.
 

@@ -9,9 +9,11 @@ Field-level encryption allows you to securely upload user-submitted sensitive in
 The sensitive information is encrypted at the edge closer to the user and remains encrypted throughout application processing.
 
 
-## AWS WAF
+## AWS Web Application Firewall
 
-AWS WAF is a web application firewall that lets you monitor HTTP and HTTPS requests that are forwarded to CloudFront and lets you control access to your content.
+CloudFront is integrated with AWS WAF.
+
+AWS WAF is a firewall that lets you monitor HTTP and HTTPS requests that are forwarded to CloudFront and lets you control access to your content.
 
 With AWS WAF you can shield access to content based on conditions in a Web access control list (web ACL), such as:
 - Origin IP address.

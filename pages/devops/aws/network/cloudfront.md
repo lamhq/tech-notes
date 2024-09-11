@@ -4,15 +4,11 @@
 
 CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally.
 
-It helps reduce latency and provide higher transfer speeds using AWS edge locations.
+It improves read performance by caching the content of your website at different edge locations.
 
 Used for dynamic, static, streaming, and interactive content.
 
-Protection against against multiple types of network and denial of service attacks, sudden traffic spikes.
-
-CloudFront is the only option to add HTTPS to a static website being hosted in an S3 bucket.
-
-Files can also be uploaded to CloudFront.
+It provides protection against against multiple types of network and DDoS attack, sudden traffic spikes.
 
 
 ## Edge Locations
@@ -22,6 +18,8 @@ An edge location is the location where content is cached (separate to AWS region
 Requests are automatically routed to the nearest edge location.
 
 Edge locations are not just read only, you can write to them too.
+
+CloudFront is made of over 216 points of presence (edge locations).
 
 
 ## Regional Edge Caches
@@ -39,28 +37,6 @@ Dynamic content goes straight to the origin and does not flow through Regional E
 The diagram below shows where Regional Edge Caches and Edge Locations are placed in relation to end users:
 
 ![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-cloudfront-edge-locations-and-regional-edge.jpeg)
-
-
-## Cache Behavior
-
-Allows you to configure a variety of CloudFront functionality for a given URL path pattern.
-
-For each cache behavior you can configure the following functionality:
-
-- The path pattern (e.g. `/images/*.jpg`, `/images*.php`).
-- The origin to forward requests to (if there are multiple origins).
-- Whether to forward query strings.
-- Whether to require signed URLs.
-- Allowed HTTP methods.
-- Minimum amount of time to retain the files in the CloudFront cache (regardless of the values of any cache-control headers).
-
-The default cache behavior only allows a path pattern of `/*`.
-
-Objects are cached for the TTL, recorded in seconds, default is 24 hours, default max is 1 year.
-
-Only caches for GET requests (not PUT, POST, PATCH, DELETE).
-
-Dynamic content is cached.
 
 
 ## Lambda@Edge
@@ -111,10 +87,24 @@ Methods of improving the cache hit ratio include:
 
 CloudFront typically creates a domain name such as `a232323.cloudfront.net`.
 
-Alternate domain names can be added using a Route 53 alias record.
+To use alternate domain names, add a Route 53 alias record. For other service providers, use a CNAME (cannot use the zone apex with CNAME).
 
-For other service providers use a CNAME (cannot use the zone apex with CNAME).
-
-Moving domain names between distributions:
+To move domain names between distributions:
 - You can move subdomains yourself.
 - For the root domain you need to use AWS support.
+
+
+## CloudFront vs S3 Cross Region Replication
+
+CloudFront:
+- Is a CDN to cache content all around the world
+- Use Global Edge network (216 PoE)
+- Files are cached for a TTL (maybe a day)
+- Great for static content that must be available everywhere around the world
+
+S3 Cross Region Replication:
+- To replicate an entire bucket into another region
+- Must be setup for each region you want replication to happen
+- Files are updated in near real-time (no caching happens)
+- Read only
+- Great for dynamic content that needs to be available at low-latency in few regions
