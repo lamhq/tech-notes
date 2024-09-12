@@ -63,26 +63,6 @@ Lambda@Edge can do the following:
 *Exam tip: Lambda@Edge can be used to load different resources based on the User-Agent HTTP header.*
 
 
-## Object invalidation
-
-Invalidation can be created to immediately revoke cached objects (chargeable).
-
-You cannot cancel an invalidation after submission.
-
-You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior.
-
-
-## Improving Cache Hit Ratio
-
-Methods of improving the cache hit ratio include:
-
-- Use the `Cache-Control max-age` directive to increase the time objects remain in the cache
-- Use Origin Shield.
-- Forward only the query string parameters for which your origin will return unique objects.
-- Configure CloudFront to forward only specified cookies instead of forwarding all cookies.
-- Configure CloudFront to forward and cache based on only specified headers instead of forwarding and caching based on all headers.
-
-
 ## Domain Names
 
 CloudFront typically creates a domain name such as `a232323.cloudfront.net`.

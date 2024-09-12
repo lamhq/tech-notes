@@ -4,8 +4,8 @@
   "cache-behavior": "Cache Behaviors",
   "invalidations": "Cache Invalidations",
   "access-control": "Access control",
+  "security": "Security",
   "logging": "Logging and Auditing",
   "monitoring": "Monitoring and Reporting",
-  "security": "Security",
   "pricing": "Pricing"
 }

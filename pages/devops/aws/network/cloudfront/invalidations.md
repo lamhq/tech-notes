@@ -8,6 +8,12 @@ You can invalidate all files (`*`) or a special path (`/images/*`).
 
 You can invalidate part of the cache using the `CreateInvalidation` API.
 
+It cost money for each invalidation.
+
+You cannot cancel an invalidation after submission.
+
+You cannot invalidate media files in the Microsoft Smooth Streaming format when you have enabled Smooth Streaming for the corresponding cache behavior.
+
 
 ## Guide
 

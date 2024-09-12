@@ -14,9 +14,7 @@ CloudFront have several type of origins:
 
 Objects are cached for 24 hours by default.
 
-The expiration time is controlled through the TTL.
-
-The minimum expiration time is 0.
+The expiration time is controlled through the TTL. The minimum expiration time is 0.
 
 
 ## S3 Bucket Origin
@@ -61,12 +59,22 @@ CloudFront is the only option to add HTTPS to a static website being hosted in a
 To use an Amazon S3 static website as an origin, set the origin domain name to your S3 bucket's website endpoint.
 
 
-## Origin Failover
+## Multiple Origins
 
-You can set up CloudFront with origin failover for scenarios that require high availability.
+You can have multiple origins to redirect and route to different kinds of origins based on the content type or the path being passed to CloudFront. For example:
+- path for images: `/images/*`
+- path for API: `/api/*`
+- path everything else: `/*`
 
-Uses an origin group in which you designate a primary origin plus a second origin.
 
-CloudFront automatically switches to the second origin when the primary origin returns specific HTTP status code failure responses.
+## Origin Groups
+
+You can set up Origin Group to increase high-availability and do failover.
+
+An origin group consists of one primary and one secondary origin.
+
+If the primary origin fails then CloudFront will try to failover to the second origin.
+
+You can also use this with S3 to get region level high availability and disaster recovery.
 
 Also works with Lambda@Edge functions.

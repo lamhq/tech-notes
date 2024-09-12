@@ -6,14 +6,17 @@ Only GET & HEAD requests are cached (not PUT, POST, PATCH, DELETE).
 
 You can cache dynamic content (from a custom HTTP backend, for example).
 
-CloudFront identifies each object in the cache using the **Cache Key**.
-
-You want to maximize the Cache Hit ratio to minimize requests to the origin.
+You want to maximize the Cache Hit ratio to minimize requests to the origin. Methods of improving the cache hit ratio include:
+- Use the `Cache-Control max-age` directive to increase the time objects remain in the cache
+- Forward only the query string parameters for which your origin will return unique objects.
+- Configure CloudFront to forward only specified cookies instead of forwarding all cookies.
+- Configure CloudFront to forward and cache based on only specified headers instead of forwarding and caching based on all headers.
+- Use Origin Shield.
 
 
 ## Cache Key
 
-Cache Key is a unique identifier for every object in the cache
+Cache Key is a unique identifier for every object in the cache.
 
 By default, it consists of **hostname** + **resource portion** of the URL. For example: `mywebsite.com/content/example-story.html`.
 
