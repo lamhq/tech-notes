@@ -45,7 +45,7 @@ After a load balancer and a second web server are added, we successfully solved 
 - If the website traffic grows rapidly, and two servers are not enough to handle the traffic, the load balancer can handle this problem gracefully. You only need to add more servers to the web server pool, and the load balancer automatically starts to send requests to them.
 
 
-### Making the web tier statelass
+### Making the web tier stateless
 
 We move the session data out of the web tier and store them in the persistent data store.
 
