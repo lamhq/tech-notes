@@ -8,8 +8,7 @@ A load balancer communicates with servers through private IPs. A private IP is a
 
 Servers are unreachable directly by clients anymore.
 
-<!-- system-components.drawio\load balancer -->
-<iframe frameborder="0" style="width:100%;height:473px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%23%257B%2522pageId%2522%253A%2522EADSuXCYXhjZmKITLNcT%2522%257D&layers=1&nav=1&title=system-components.drawio&page-id=EADSuXCYXhjZmKITLNcT#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./load-balancer.md/../load-balancer/load-balancer.drawio.svg)
 
 
 ## High available for load balancer
@@ -27,8 +26,7 @@ A stateful server remembers client data (state) from one request to the next. Th
 
 Stateful architecture require every request from the same client must be routed to the same server.
 
-<!-- system-components.drawio\stateful arch -->
-<iframe frameborder="0" style="width:100%;height:319px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%23%257B%2522pageId%2522%253A%2522h5CpQ38r8wOmC6ru1zOl%2522%257D&layers=1&nav=1&title=system-components.drawio&page-id=h5CpQ38r8wOmC6ru1zOl#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./load-balancer.md/../load-balancer/stateful.drawio.svg)
 
 In above figure, user A's session data is stored in Server 1. To authenticate User A, HTTP requests must be routed to Server 1. If a request is sent to other servers like Server 2, authentication would fail because Server 2 does not contain User A's session data.
 
@@ -50,7 +48,8 @@ State data is stored in a shared data store and kept out of web servers.
 
 Each request contains all the information the server needs to fulfill it. Requests from a client can be sent to any of the servers.
 
-<iframe frameborder="0" style="width:100%;height:446px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%23%257B%2522pageId%2522%253A%2522QG3ORtGX80Ndne1MTkmY%2522%257D&layers=1&nav=1&title=system-components.drawio&page-id=QG3ORtGX80Ndne1MTkmY#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./load-balancer.md/../load-balancer/stateless.drawio.svg)
+
 
 ### Benefits
 

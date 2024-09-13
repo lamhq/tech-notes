@@ -13,8 +13,7 @@ The traffic to the server comes from two sources: web browser and mobile applica
 - Web browser: sending HTTP requests (GET, POST, etc.) to the server. The server processing these requests and send back HTML content
 - Mobile application: communicate with servers using APIs. JSON is a lightweight data format commonly used for API communication.
 
-<!-- web-app.drawio\single server -->
-<iframe frameborder="0" style="width:100%;height:357px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522QPsRIN0huZrPv1nBiWiu%2522%257D&layers=1&nav=1&title=web-app.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
+![](./web-app/single-server.drawio.svg)
 
 
 ## Separated Database Server
@@ -22,9 +21,6 @@ The traffic to the server comes from two sources: web browser and mobile applica
 With the growth of the user base, we need multiple servers: one for web/mobile traffic, the other for the database.
 
 Separating web/mobile traffic (web tier) and database (data tier) servers allows them to be scaled independently.
-
-<!-- web-app.drawio\database -->
-<iframe frameborder="0" style="width:100%;height:543px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522z6L2SULGltuUVYjcrTCg%2522%257D&layers=1&nav=1&title=web-app.drawio&page-id=z6L2SULGltuUVYjcrTCg#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
 
 
 ## Scaling web tier
@@ -37,8 +33,7 @@ With the web app running on a single server:
 
 A load balancer is the best technique to address these problems.
 
-<!-- web-app.drawio\scaling web tier -->
-<iframe frameborder="0" style="width:100%;height:659px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522uVLxW6dq7hjAvalbILpc%2522%257D&layers=1&nav=1&title=web-app.drawio&page-id=uVLxW6dq7hjAvalbILpc#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
+![](./web-app/load-balancer.drawio.svg)
 
 After a load balancer and a second web server are added, we successfully solved no failover issue and improved the availability of the web tier:
 - If server 1 goes offline, all the traffic will be routed to server 2. This prevents the website from going offline. We will also add a new healthy web server to the server pool to balance the load.
@@ -58,8 +53,7 @@ The current design has one database run on one server, so it does not support fa
 
 Database replication is a common technique to enhance read performance and fault tolerance.
 
-<!-- web-app.drawio\scaling database -->
-<iframe frameborder="0" style="width:100%;height:659px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=web-app.drawio&page-id=keHfDQNO_mXEXI1srIso#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
+![](./web-app/replication.drawio.svg)
 
 
 ## Improving server's response time
@@ -68,16 +62,12 @@ Here we improve performance of the web app by storing frequently accessed data i
 
 After receiving a request, a web server first checks if the cache has the available response. If it has, it sends data back to the client. If not, it queries the database, stores the response in cache, and sends it back to the client (read-through strategy).
 
-<!-- web-app.drawio\caching -->
-<iframe frameborder="0" style="width:100%;height:658px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522e-EDtGbRkuV0W_EjE2Hr%2522%257D&layers=1&nav=1&title=web-app.drawio&page-id=e-EDtGbRkuV0W_EjE2Hr#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
-
 
 ## Improving asset's load time
 
 Static assets (JS, CSS, images, etc.,) are no longer served by web servers. They are fetched from the CDN for better performance.
 
-<!-- web-app.drawio\cdn -->
-<iframe frameborder="0" style="width:100%;height:658px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522RqgIj2kOrB5L2GNeduSk%2522%257D&layers=1&nav=1&title=web-app.drawio&page-id=RqgIj2kOrB5L2GNeduSk#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
+![](./web-app/cdn.drawio.svg)
 
 
 ## Decoupling system's components
@@ -111,5 +101,4 @@ To improve availability and provide a better user experience across wider geogra
 
 We set up two data centers. Users are routed to to the closest data center. This can be done using a DNS service that allows domain names to be resolved to IP addresses based on the location of a user.
 
-<!-- web-app.drawio\data-center -->
-<iframe frameborder="0" style="width:100%;height:364px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%23%257B%2522pageId%2522%253A%2522X2BW6R0PYg4GPtCjOR8k%2522%257D&layers=1&nav=1&title=web-app.drawio&page-id=X2BW6R0PYg4GPtCjOR8k#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D18poo0rGcx1q2YrQx0205v00-XP9cD6Bl%26export%3Ddownload"></iframe>
+![](./web-app/data-center.drawio.svg)

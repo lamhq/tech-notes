@@ -20,3 +20,8 @@ ul.nx-mt-6 {
     letter-spacing: 0.03125em;
   }
 }
+/* make img have a white background in dark mode */
+html[class~=dark] img[src$=".svg"] {
+  background-color: whitesmoke;
+  padding: 0.5rem;
+}

@@ -8,8 +8,7 @@ A master database generally only supports write operations.  All the data-modify
 
 Most applications require a much higher ratio of reads to writes. Thus, the number of slave databases in a system is usually larger than the number of master databases.
 
-<!-- system-components.drawio\db replication -->
-<iframe frameborder="0" style="width:100%;height:423px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%23%257B%2522pageId%2522%253A%2522odzAmTk5b5iR8ck5uN4J%2522%257D&layers=1&nav=1&title=system-components.drawio&page-id=odzAmTk5b5iR8ck5uN4J#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./replication/replication.drawio.svg)
 
 
 ## Advantages

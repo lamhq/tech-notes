@@ -29,8 +29,7 @@ Anytime you access data, a hash function is used to find the corresponding shard
 
 In our example, `user_id % 4` is used as the hash function. If the result equals to `0`, **shard 0** is used to store and fetch data. If the result equals to `1`, **shard 1** is used. The same logic applies to other shards.
 
-<!-- system-components.drawio\db-sharding -->
-<iframe frameborder="0" style="width:100%;height:193px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=https%3A%2F%2Fapp.diagrams.net%2F%23G1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%23%257B%2522pageId%2522%253A%2522eBzyNzvXHGSGHi2O0qMN%2522%257D&layers=1&nav=1&title=system-components.drawio&page-id=eBzyNzvXHGSGHi2O0qMN#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./scaling/sharding.drawio.svg)
 
 
 ### Sharding key

@@ -16,85 +16,15 @@ We can substitute different factories to get different products and behaviors bu
 
 ## Structure
 
-```mermaid
----
-title: Abstract Factory Pattern
----
-classDiagram
-  class AbstractFactory{
-    <<Interface>>
-    +createProductA()
-    +createProductB()
-  }
-  class ConcreteFactory1{
-    +createProductA()
-    +createProductB()
-  }
-  class ConcreteFactory2{
-    +createProductA()
-    +createProductB()
-  }
-  class AbstractProductA{
-    <<Interface>>
-  }
-  class AbstractProductB{
-    <<Interface>>
-  }
-  AbstractFactory <|-- ConcreteFactory1
-  AbstractFactory <|-- ConcreteFactory2
-  AbstractProductA <|-- ProductA1
-  AbstractProductA <|-- ProductA2
-  AbstractProductB <|-- ProductB1
-  AbstractProductB <|-- ProductB2
-```
+![](./abstract-factory/structure.drawio.svg)
 
-The Abstract Factory defines the interface that all Concrete factories must implement, which consists of a set of methods for producing products.
-
-The job of an Abstract Factory is to define an interface for creating a set of products. Each method in that interface is responsible for creating a concrete product.
+The `AbstractFactory` defines the interface that all Concrete factories must implement, which consists of a set of methods for producing products (`createProductA()`, `createProductB()`).
 
 A product family consists of a set of related products with different interfaces (`AbstractProductA`, `AbstractProductB`).
 
-Each concrete factory produces concrete products for a specific product family.
+Each concrete factory produces concrete products for a specific product family (`ConcreteFactory1`, `ConcreteFactory2`).
 
-```mermaid
----
-title: Abstract Factory Pattern (2)
----
-classDiagram
-  namespace Family1 {
-    class ConcreteFactory1
-    class ProductA1
-    class ProductB1
-  }
-  namespace Family2 {
-    class ConcreteFactory2
-    class ProductA2
-    class ProductB2
-  }
-  ConcreteFactory1 --> ProductA1
-  ConcreteFactory1 --> ProductB1
-  ConcreteFactory2 --> ProductA2
-  ConcreteFactory2 --> ProductB2
-```
-
-To create a product, the client uses the abstract factory. The  concrete factory is composed and pass to client at runtime. The client works with products through product interfaces.
-
-```mermaid
----
-title: Abstract Factory Pattern (3)
----
-classDiagram
-  class Client
-  class AbstractProductA{
-    <<Interface>>
-  }
-  class AbstractProductB{
-    <<Interface>>
-  }
-  Client --> AbstractProductA
-  Client --> AbstractProductB
-  Client --> AbstractFactory
-```
+To create a product, the client uses the `AbstractFactory`. The  concrete factory is composed and pass to client at runtime. The client works with products through product interfaces (`AbstractProductA`, `AbstractProductB`).
 
 
 ## Example
@@ -167,44 +97,7 @@ class NYPizzaStore extends PizzaStore {
 }
 ```
 
-```mermaid
----
-title: Pizza Store with Abstract Factory
----
-classDiagram
-  class PizzaIngredientFactory{
-    <<Interface>>
-    +createDough()
-    +createSauce()
-    +createCheese()
-    +createPepperoni()
-    +createClam()
-  }
-  class NYPizzaIngredientFactory{
-    +createDough()
-    +createSauce()
-    +createCheese()
-    +createPepperoni()
-    +createClam()
-  }
-  class ChicagoPizzaIngredientFactory{
-    +createDough()
-    +createSauce()
-    +createCheese()
-    +createPepperoni()
-    +createClam()
-  }
-  class Dough{
-    <<Interface>>
-  }
-  class Sauce{
-    <<Interface>>
-  }
-  PizzaIngredientFactory <|-- NYPizzaIngredientFactory
-  PizzaIngredientFactory <|-- ChicagoPizzaIngredientFactory
-  Dough <|-- ThickCrustDough
-  Sauce <|-- PlumTomatoSauce
-```
+![](./abstract-factory/pizza-store.drawio.svg)
 
 
 ## Compare with Factory Method

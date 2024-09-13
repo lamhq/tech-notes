@@ -33,5 +33,4 @@ The producer and the consumer can be scaled independently:
 - When the size of the queue becomes large, more workers are added to reduce the processing time.
 - if the queue is empty most of the time, the number of workers can be reduced.
 
-<!-- system-components.drawio\message-queue -->
-<iframe frameborder="0" style="width:100%;height:154px;" src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=system-components.drawio&page-id=IEAndSJpFX4PgUut0UVS#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1xrjy2i7EtAS1xlFNMl48jnZR4opOYRTK%26export%3Ddownload"></iframe>
+![](./message-queue/queue.drawio.svg)
