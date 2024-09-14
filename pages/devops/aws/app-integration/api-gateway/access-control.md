@@ -2,14 +2,13 @@
 
 ## Overview
 
-There are several mechanisms for controlling and managing access to an API:
-
-- Resource-based policies.
-- Standard IAM Roles and Policies (identity-based policies).
-- IAM Tags.
-- Endpoint policies for interface VPC endpoints.
-- Lambda authorizers.
-- Amazon Cognito user pools.
+There are several mechanisms for controlling access to an API:
+- IAM Roles and Policies: useful for internal application
+- Cognito User Pools: identity for external users
+- Lambda authorizers: custom logic
+- Resource-based policies
+- IAM Tags
+- Endpoint policies for interface VPC endpoints
 - STS credentials
 
 

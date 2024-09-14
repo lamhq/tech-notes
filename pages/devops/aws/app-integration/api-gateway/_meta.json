@@ -1,7 +1,8 @@
 {
   "end-points": "Endpoint types",
+  "stage": "Stages",
   "integration": "Integration",
-  "access-mng": "Identity and Access Management",
+  "access-control": "Identity and Access Management",
   "monitoring": "Logging and Monitoring",
   "pricing": "Pricing"
 }

@@ -4,44 +4,26 @@
 
 Amazon API Gateway is a fully managed service that allows you to easily publish, create, maintain, monitor, and secure your API.
 
-Integrates with Lambda functions, HTTP endpoints, and other AWS services.
+Features:
+- Support WebSocket Protocol
+- Handle API versioning (v1, v2...)
+- Handle different environments (dev, test, prod...)
+- Handle security (Authentication and Authorization)
+- Support API keys and Usage Plans, quota management
+- Handle request throttling
+- Allow importing and exporting Swagger / Open API to quickly define APIs
+- Can transform and validate requests and responses
+- Generate SDK and API specifications
+- Cache API responses
 
-![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-api-gateway-overview.jpeg)
-
-API calls include traffic management, authorization and access control, monitoring, and API version management.
-
-Supports API keys and Usage Plans for user identification, throttling or quota management.
-
-There're 3 types of options for us when creating an API using API Gateway.
-
+Allow creating 3 types of API:
 - **REST API**: allow you to create and leverage things like API keys, per-client throttles, requests validation, Web application firewall (WAF) integration.
 - **HTTP API**: simpler option than REST API, cheaper, minimal features.
 - **WebSocket API**: collection of WebSocket routes, integrated with Lambda functions, HTTP endpoints, other AWS services.
 
-Use HTTPS endpoints only.
+AWS WAF can be used to protect against DDoS and layer seven attacks when placed in front of your API
 
-By default API Gateway assigns an internal domain that automatically uses the API Gateway certificates. When configuring your APIs to run under a custom domain name you can provide your own certificate.
-
-CloudFront is used as the public endpoint for API Gateway.
-
-**AWS WAF** can be used to protect against DDoS and layer seven attacks when placed in front of your API.
-
-
-## Features
-
-**Security**: provides multiple tools to authorize access to APIs and control service operation access.
-
-**Resiliency**: Manage traffic with throttling so that backend operations can withstand traffic spikes.
-
-**Private integrations with AWS ELB & AWS Cloud Map**:
-- you can route requests to private resources in your VPC
-- you can build APIs for services behind private ALBs, private NLBs, and IP-based services registered in AWS Cloud Map, such as ECS tasks.
-
-**Metering**: Define plans that meter and restrict third-party developer access to APIs.
-
-**Operations Monitoring**: provides a metrics dashboard to monitor calls to services.
-
-**Lifecycle Management**: Operate multiple API versions and multiple stages for each version simultaneously so that existing applications can continue to call previous versions after new API versions are published.
+![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-api-gateway-overview.jpeg)
 
 
 ## API Types
@@ -59,41 +41,6 @@ CloudFront is used as the public endpoint for API Gateway.
 - A collection of WebSocket routes and route keys that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services.
 - The collection can be deployed in one or more stages.
 - API methods are invoked through frontend WebSocket connections that you can associate with a registered custom domain name.
-
-
-## Deployments
-
-Deployments are a snapshot of the APIs resources and methods.
-
-Deployments must be created and associated with a stage for anyone to access the API.
-
-
-## Stages
-
-![](https://digitalcloud.training/wp-content/uploads/2022/01/amazon-api-gateway-stages.jpeg)
-
-A stage is a logical reference to a lifecycle state of your REST or WebSocket API (for example, ‘dev’, ‘prod’, ‘beta’, ‘v2’).
-
-API stages are identified by API ID and stage name.
-
-
-## Stage variables
-Stage variables are like environment variables for API Gateway.
-
-Stage variables can be used in:
-- Lambda function ARN.
-- HTTP endpoint.
-- Parameter mapping templates.
-
-Use cases for stage variables:
-- Configure HTTP endpoints your stages talk to (dev, test, prod etc.).
-- Pass configuration parameters to AWS Lambda through mapping templates.
-
-Stage variables are passed to the "context" object in Lambda.
-
-Stage variables are used with Lambda aliases. You can create a stage variable to indicate the corresponding Lambda alias.
-
-You can create canary deployments for any stage – choose the % of traffic the canary channel receives.
 
 
 ## Mapping templates
@@ -180,11 +127,56 @@ Can also export current APIs as Swagger / Open API 3.0 definition.
 With the import API you can either create a new API by submitting a POST request that includes a Swagger definition in the payload and endpoint configuration, or you can update an existing API by using a PUT request that contains a Swagger definition or merge a definition with an existing API. You specify the options using a mode query parameter in the request URL.
 
 
-## Architecture Diagram
+## Domain
 
-Here's an architecture diagram for the ACG platform that uses serverless technology.
+API Gateway use HTTPS endpoints only.
 
-The public domain name is hit and the request is sent to AWS infrastructure via Route 53. 
+By default API Gateway assigns an internal domain that automatically uses the API Gateway certificates.
+
+To use custom domain names:
+- You must set up a CNAME or A-alias record in Route53
+- You can provide the certificate through integration with AWS Certificate Manager.
+- If using Edge-Optimized endpoint, then the certificate must be in `us-east-1`
+- If using Regional endpoint, the certificate must be in the API Gateway's region
+
+
+## Integrations
+
+### AWS Lambda
+- Can API Gateway invoke Lambda function to create a serverless REST API backed by AWS Lambda
+- It's an easy way to expose Lambda function to outside world
+
+### HTTP
+
+- API Gateway can sit in front of any HTTP endpoints in the backend.
+- It could be: an internal HTTP API on-premises or an Application Load Balancer.
+- Benefit: allows leveraging API Gateway's features (rate limiting, caching, authentication, API keys, ...).
+
+### AWS Service
+
+- You can expose any AWS service through the API Gateway.
+- Example: start an AWS Step Function workflow, post a message to SQS.
+- Benefits: expose services to the public, leveraging API Gateway's features.
+
+
+## Example Integrations
+
+### Kinesis Data Streams
+
+We want to have people send data into a Kinesis Data Streams in a secure way,
+
+To do that, the clients will send HTTP request into the API Gateway. And it's been configured to then send the messages into a Kinesis Data Streams (we don't have to manage any servers).
+
+Then from Kinesis Data Stream, we can send the records into a Kinesis Data Firehose and eventually put them into an Amazon S3 bucket in the JSON format.
+
+![](./api-gateway/kinesis.drawio.svg)
+
+
+### CloudFront
+
+A backend application that uses serverless technology.
+
+The HTTP request is sent from client to Amazon CloudFront. 
 
 The CloudFront distribution leverages different backend services such as API Gateway and Amazon S3 for specific path patterns.
 
@@ -192,4 +184,4 @@ API Gateway is deployed and published to many different AWS Lambda functions tha
 
 This allows for API Gateway to front internal private services and interact with those services that live within things like a VPC and a private subnet.
 
-![](./api-gateway/images/api-gateway-diagram.png)
+![](./api-gateway/cloudfront.drawio.svg)
