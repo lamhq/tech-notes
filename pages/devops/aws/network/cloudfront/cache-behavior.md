@@ -58,4 +58,6 @@ You can route to different kind of origins/origin groups based on the content ty
 - `/api/*`
 - `/*` (default cache behavior)
 
+![](./cache-behavior/multi-origins.drawio.svg)
+
 When adding additional Cache Behaviors, the Default Cache Behavior is always the last to be processed and is always `/*`
