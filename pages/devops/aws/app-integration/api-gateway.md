@@ -43,17 +43,6 @@ AWS WAF can be used to protect against DDoS and layer seven attacks when placed 
 - API methods are invoked through frontend WebSocket connections that you can associate with a registered custom domain name.
 
 
-## Mapping templates
-
-Mapping templates can be used to modify request / responses:
-- Rename parameters.
-- Modify body content.
-- Add headers.
-- Map JSON to XML for sending to backend or back to client.
-- Uses Velocity Template Language (VTL).
-- Filter output results (remove unnecessary data).
-
-
 ## Caching
 
 Caching allows you to cache the endpoint’s response.
@@ -159,7 +148,7 @@ To use custom domain names:
 - Benefits: expose services to the public, leveraging API Gateway's features.
 
 
-## Example Integrations
+## Scenarios
 
 ### Kinesis Data Streams
 

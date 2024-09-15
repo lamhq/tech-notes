@@ -1,7 +1,8 @@
 {
   "end-points": "Endpoint types",
   "stage": "Stages",
-  "integration": "Integration",
+  "canary-deployment": "Canary Deployment",
+  "integration-type": "Integration Types",
   "access-control": "Identity and Access Management",
   "monitoring": "Logging and Monitoring",
   "pricing": "Pricing"
