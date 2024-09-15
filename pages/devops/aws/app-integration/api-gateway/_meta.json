@@ -3,7 +3,11 @@
   "stage": "Stages",
   "canary-deployment": "Canary Deployment",
   "integration-type": "Integration Types",
+  "openapi": "OpenAPI",
+  "caching": "Caching",
+  "usage-plans": "Usage Plans",
+  "throttling": "Throttling",
+  "monitoring": "Monitoring",
   "access-control": "Identity and Access Management",
-  "monitoring": "Logging and Monitoring",
   "pricing": "Pricing"
 }
