@@ -56,6 +56,21 @@ To use custom domain names:
 - If using Regional endpoint, the certificate must be in the API Gateway's region
 
 
+## CORS
+
+CORS must be enabled if client want to be able to call your API from another domain.
+
+To enable CORS in Amazon API Gateway:
+1. Sign in to the [API Gateway console](https://console.aws.amazon.com/apigateway).
+2. Choose the API you want to enable CORS for.
+3. Under the **Resources** section, click on **Actions** and then **Enable CORS**.
+4. In the **Enable CORS** dialog box, you can specify the allowed origins, headers, and methods. For example:
+     - **Access-Control-Allow-Origin**: `*` (to allow all origins) or specify a particular origin.
+     - **Access-Control-Allow-Headers**: `Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token`.
+     - **Access-Control-Allow-Methods**: `GET,POST,OPTIONS`.
+5. deploy the API to make the changes effective.
+
+
 ## Integrating with other AWS Services
 
 ### AWS Lambda
