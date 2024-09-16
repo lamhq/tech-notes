@@ -1,4 +1,5 @@
 {
+  "api-types": "API Types",
   "end-points": "Endpoint types",
   "stage": "Stages",
   "canary-deployment": "Canary Deployment",
@@ -9,5 +10,6 @@
   "throttling": "Throttling",
   "monitoring": "Monitoring",
   "access-control": "Identity and Access Management",
-  "pricing": "Pricing"
+  "pricing": "Pricing",
+  "scenarios": "Scenarios"
 }

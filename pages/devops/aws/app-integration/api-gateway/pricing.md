@@ -1,11 +1,12 @@
 # Pricing
 
-You pay only for the API calls you receive, and the amount of data transferred out.
+You pay for:
+- Number of API calls received (HTTP and REST APIs)
+- Number of messages sent and received (WebSocket APIs)
+- Duration of the connection in minutes (WebSocket APIs)
+- Amount of data transferred out of the API Gateway. No data transfer charges for Private APIs (however, AWS PrivateLink charges still apply when using Private APIs in Amazon API Gateway)
+- Cache size and the duration it is enabled (hourly)
 
-No minimum fees or upfront commitments.
-
-There are no data transfer out charges for Private APIs (however, AWS PrivateLink charges apply when using Private APIs in Amazon API Gateway).
-
-Amazon API Gateway also provides optional data caching charged at an hourly rate that varies based on the cache size you select.
-
-The API Gateway free tier includes one million API calls per month for up to 12 months.
+Amazon API Gateway offers a free tier per month for the first 12 months, includes:
+- 1 million API calls for REST and HTTP APIs
+- 1 million messages, and 750,000 connection minutes for WebSocket APIs.
