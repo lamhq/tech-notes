@@ -83,3 +83,31 @@ Each JWT consists of three parts: the header, the payload, and the signature, se
 The signature must be verified to ensure the JWT can be trusted.
 
 The Payload contain the user information (sub UUID, given_name, email, phone_number, attributes...).
+
+
+## Integrations
+
+### Application Load Balancer
+
+Application Load Balancer can securely authenticate users.
+
+It helps offload the work of authenticating users from the application to load balancer. Your applications can focus on their business logic
+
+You can authenticate users through:
+- Identity Provider (IdP): OpenID Connect (OIDC) compliant
+- Cognito User Pools:
+  - Social Identity Providers, such as Amazon, Facebook, or Google
+  - Corporate identities using SAML, LDAP, or Microsoft AD
+
+You must use an HTTPS listener for your load balancer, and set authenticate-oidc & authenticate-cognito rules.
+
+In case user is unauthenticated, you can:
+- require user to authenticate
+- deny request
+- allow request
+
+Below is a diagram illustrating user authentication with Cognito User Pools:
+![](./user-pool/alb.drawio.svg)
+
+For authentication using Identity Provider with OIDC compliant, check this [guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/listener-authenticate-users.html#authentication-flow):
+![](./user-pool/oidc.drawio.svg)

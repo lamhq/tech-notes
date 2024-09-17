@@ -23,6 +23,8 @@ AWS credentials are obtained by Cognito Identity Pools through STS (Security Tok
 
 Once users obtained AWS credentials, they can then access AWS services directly or through API Gateway.
 
+![](./identity-pool/identity-pool.drawio.svg)
+
 Identity Pools can integrate with user pools or other identity providers. Here's how:
 1. You're logging into your app
 2. The app connects to a **User Pool** in Cognito for authenticating and getting **tokens**.
