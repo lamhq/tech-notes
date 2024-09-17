@@ -13,6 +13,9 @@ Signed URLs provide access to individual files. Useful when your users are using
 
 Signed Cookies provide access to multiple restricted files. Useful when you don't want to change your current URLs.
 
+![](./access-control/signed-url.drawio.svg)
+
+
 ### Signers
 
 There are two types of signers you can use to create signed URLs and signed cookies:

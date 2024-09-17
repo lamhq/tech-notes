@@ -44,13 +44,24 @@ You can have CloudFront stand in front of any custom origin HTTP backend:
 
 When using an on-premises or non-AWS based web server you must specify the DNS name, ports, and protocols that you want CloudFront to use when fetching objects from your origin.
 
+To restrict access to your origin to CloudFront only:
+- Configure your origin server to accept requests only from CloudFront's IP ranges using AWS-provided lists.
+- Utilize custom headers in CloudFront and configure your origin to accept only requests with these headers.
 
-### EC2 as custom origin
 
-When using EC2 for custom origins:
-- Use an AMI that automatically installs the software for a web server.
-- Use ELB to handle traffic across multiple EC2 instances.
-- Specify the URL of your load balancer as the domain name of the origin server.
+### EC2 Origin
+
+When using EC2 as custom origins:
+- Our HTTP backend will run on the EC2 instance.
+- Users will connect to CloudFront's edge locations.
+- These edge locations will forward requests to our EC2 instance.
+- The EC2 instances must be publicly accessible; otherwise, the edge locations won't be able to reach them.
+- We need a security group that permits access from all the public IP addresses of CloudFront's edge locations.
+
+For Application Load Balancers:
+- It must be public
+- The public IPs of the edge locations must be allowed in the security group of the ALB
+
 
 ### S3 static website
 

@@ -5,7 +5,7 @@
   "invalidations": "Cache Invalidations",
   "access-control": "Access control",
   "security": "Security",
-  "logging": "Logging and Auditing",
-  "monitoring": "Monitoring and Reporting",
-  "pricing": "Pricing"
+  "monitoring": "Monitoring",
+  "pricing": "Pricing",
+  "scenarios": "Scenarios"
 }
