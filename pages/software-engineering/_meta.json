@@ -1,7 +1,8 @@
 {
-  "modeling": "Modeling",
-  "design": "Design",
-  "architecture": "Architecture",
-  "development": "Development",
+  "modeling": "Software Modeling",
+  "design": "Software Design",
+  "system-design": "System Design",
+  "architecture": "Software Architecture",
+  "development": "Software Development",
   "management": "Project Management"
 }

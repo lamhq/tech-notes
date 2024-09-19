@@ -1,11 +1,9 @@
 # Design Architecture for a Web application
 
-## Overview
-
-In this topic, we build a system that supports a single user and gradually scale it up to serve millions of users.
+Design a scalable and highly available web app that can serve millions of users.
 
 
-## Single Server
+## Single Server Setup
 
 Start with a single server setup where everything is running on one server: web app, database, cache, etc.
 

@@ -1,6 +1,5 @@
 {
   "api": "API",
   "database": "Database",
-  "ood": "Object-oriented Design",
-  "system-design": "System Design"
+  "ood": "Object-Oriented Design"
 }

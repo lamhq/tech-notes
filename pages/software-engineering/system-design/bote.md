@@ -1,0 +1,106 @@
+# Back-of-the-envelope estimation
+
+## Overview
+
+**Back-of-the-envelope estimation** is a technique used to quickly approximate values and make rough calculations using simple arithmetic and basic assumptions.
+
+When you're designing a system, sometimes you need to estimate system capacity or performance requirements using a back-of-the-envelope estimation.
+
+This method is particularly useful in scenarios where precise data isn't available or when a quick estimate is sufficient for decision-making.
+
+Some concepts should be well understood:
+- power of two (^2)
+- latency numbers
+- availability numbers
+
+
+## Power of two
+
+| Power | Approximate value | Full name  | Short name |
+|-------|-------------------|------------|------------|
+| 10    | 1 Thousand        | 1 Kilobyte | 1 KB       |
+| 20    | 1 Million         | 1 Megabyte | 1 MB       |
+| 30    | 1 Billion         | 1 Gigabyte | 1 GB       |
+| 40    | 1 Trillion        | 1 Terabyte | 1 TB       |
+| 50    | 1 Quadrillion     | 1 Petabyte | 1 PB       |
+
+
+## Latency numbers
+
+These numbers should give us an idea of the fastness and slowness of different computer operations.
+
+| Operation name                          | Time                           |
+|-----------------------------------------|--------------------------------|
+| L1 cache reference                      | 0.5 ns                         |
+| Branch mispredict                       | 5 ns                           |
+| L2 cache reference                      | 7 ns                           |
+| Mutex lock/unlock                       | 100 ns                         |
+| Main memory reference                   | 100 ns                         |
+| Compress 1K bytes with Zippy            | 10,000 ns = 10 $\mu\text{s}$   |
+| Send 2K bytes over 1 Gbps network       | 20,000 ns = 20 $\mu\text{s}$   |
+| Read 1 MB sequentially from memory      | 250,000 ns = 250 $\mu\text{s}$ |
+| Round trip within the same datacenter   | 500,000 ns = 500 $\mu\text{s}$ |
+| Disk seek                               | 10,000,000 ns = 10 ms          |
+| Read 1 MB sequentially from the network | 10,000,000 ns = 10 ms          |
+| Read 1 MB sequentially from disk        | 30,000,000 ns = 30 ms          |
+
+Second > Milisecond > Microsecond ($\mu\text{s}$) > Nanosecond ($\text{ns}$) > Picosecond ($\text{ps}$)
+
+Some things to notice:
+- Memory is fast and disks are slow.
+- Avoid disk seeks if possible.
+- Compress data before sending it over the internet if possible.
+- Data centers are usually in different regions, and it takes time to send data between them.
+- Global shared data is expensive. This is a fundamental limitation of distributed systems. The lock contention in shared heavily written objects kills performance as transactions become serialized and slow.
+- Design your system in a way that can handle an increasing number of write operations as your application grows
+- Optimize for low write contention (delays and conflicts when multiple processes try to write to the same resource simultaneously).
+- Optimize wide. Make writes as parallel as you can. Spreading out write operations to occur simultaneously rather than sequentially.
+
+
+## Availability numbers
+
+High availability is the ability of a system to be continuously operational for a desirably long period of time.
+
+High availability is measured as a percentage, with 100% means a service that has 0 downtime.
+
+A service level agreement (SLA) is a commonly used term for service providers. This is an agreement between you (the service provider) and your customer, and this agreement formally defines the level of uptime your service will deliver.
+
+Uptime is traditionally measured in nines. The more the nines, the better.
+
+List of availability numbers and expected downtime:
+
+| **Availability** | **Downtime per Year** | **Downtime per Day** |
+|------------------|-----------------------|----------------------|
+| 99%              | 3.65 days             | 14.4 minutes         |
+| 99.9%            | 8.76 hours            | 1.44 minutes         |
+| 99.95%           | 4.38 hours            | 43.2 seconds         |
+| 99.99%           | 52.6 minutes          | 8.64 seconds         |
+| 99.999%          | 5.26 minutes          | 0.864 seconds        |
+| 99.9999%         | 31.56 seconds         | 86.4 miliseconds     |
+
+
+## Examples
+
+### Estimate Twitter QPS and storage requirements
+
+Assumptions:
+- 300 million monthly active users.
+- 50% of users use Twitter daily.
+- Users post 2 tweets per day on average. • 10% of tweets contain media.
+- Data is stored for 5 years.
+
+Query per second (QPS) estimate:
+- Daily active users (DAU) = 300 million * 50% = 150 million
+- Tweets QPS = 150 million * 2 tweets / 24 hour / 3600 seconds = ~3500
+- Peek QPS = 2 * QPS = ~7000
+
+Media storage estimate:
+- Average tweet size: 1 MB
+- Mediastorage: 150 million * 2 * 10% * 1MB = 30 TB per day
+- 5-year media storage: 30TB * 365 * 5 = ~55 PB
+
+
+## References
+
+- [The System Design Primer](https://github.com/donnemartin/system-design-primer)
+- [Latency Numbers Every Programmer Should Know](https://colin-scott.github.io/personal_website/research/interactive_latency.html).

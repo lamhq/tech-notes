@@ -7,5 +7,6 @@
   "message-queue": "Message Queue",
   "scalability": "Scalability",
   "high-availability": "High Availability",
-  "web-app": "Web Application"
+  "bote": "Back-of-the-envelope estimation",
+  "examples": "Examples"
 }
