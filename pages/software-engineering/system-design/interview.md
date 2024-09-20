@@ -1,0 +1,114 @@
+# System Design Interview
+
+## Overview
+
+System design interviews can be intimidating due to their vague and broad nature. It could be as vague as "designing Youtube / Facebook?".
+
+No one expects you to design a real-world system in an hour. The focus is on the design process, not the final design.
+
+A system design interview lets you demonstrate your design skills, problem-solving, defend your choices, and respond to feedback, simulating real-life problem-solving and collaboration.
+
+
+## Key Traits
+
+What is an interviewer looking for in a system design interview?
+- Technical design skills
+- Ability to collaborate
+- Handling pressure
+- Resolving ambiguity constructively
+- Asking good questions
+- Red flags:
+  - Over-engineering, which ignores tradeoffs and incurs high costs
+  - Narrow-mindedness: unwillingness to accept or consider different opinions
+  - Stubbornness: not changing one's attitude or position on something, even in the face of good reasons to do so
+
+
+## Framework for System Design Interview
+
+### 1. Understand the problem and establish design scope
+
+Do not jump right in to give a solution.
+
+Always ask for clarification.
+
+Do not assume your assumption is correct.
+
+Write down your assumptions on the whiteboard or paper.
+
+Questions to ask:
+- What type of application are we going to build? Web or mobile?
+- What specific features are we going to build?
+- How many users does the system have?
+- What is the company's technology stack?
+- What existing services you might leverage to simplify the design?
+- Required information for doing a **Back-of-the-envelope estimation**
+
+
+### 2. Propose high-level design
+
+Develop a high-level design and ask for feedback.
+
+Draw box diagrams with key components on the whiteboard or paper.
+
+Do back-of-the-envelope calculations to evaluate if your blueprint fits the scale constraints.
+
+If possible, go through a few concrete use cases. It's likely that the use cases would help you discover edge cases you have not yet considered.
+
+#### Example
+
+To design a news feed system. At the high level, the design is divided into two flows:
+- Feed publishing: when a user publishes a post, corresponding data is written into cache/database, and the post will be populated into friends' news feed.
+- Newsfeed building: the news feed is built by aggregating friends' posts in a reverse chronological order.
+
+
+### 3. Design deep dive
+
+At this step, you and your interviewer should have already achieved the following objectives:
+- Agreed on the overall goals and feature scope
+- Sketched out a high-level blueprint for the overall design
+- Obtained feedback from your interviewer on the high-level design
+- Had some initial ideas about areas to focus on in deep dive based on her feedback
+
+Dig into details of some system components. Design the most critical components first.
+- For URL shortener, dive into the hash function design that converts a long URL to a short one.
+- For a chat system, how to reduce latency and how to support online/offline status
+
+Time management is essential. Try not to get into unnecessary details that do not demonstrate your abilities.
+
+Draw a detailed design for the motst important use cases (features, flows).
+
+
+### 4. Wrap up
+
+Discuss other additional points:
+- System bottlenecks and potential improvements. Never say your design is perfect and nothing can be improved. There is always something to improve upon. This is a great opportunity to show your critical thinking and leave a good final impression.
+- Give the interviewer a recap of your design.
+- Error cases (server failure, network loss, etc.) are interesting to talk about.
+- Monitoring, logging, metrics, error notification
+- How to scale the system?
+- Propose other refinements you need if you had more time.
+
+
+## Tips
+
+Dos:
+- Always ask for clarification. Do not assume your assumption is correct.
+- Let the interviewer know what you are thinking. Communicate with your interview.
+- Suggest multiple approaches if possible.
+
+Don'ts:
+- Don't be unprepared for typical interview questions.
+- Don't jump into a solution without clarifying the requirements and assumptions.
+- Don't go into too much detail on a single component in the beginning. Give the high- level design first then drills down.
+- If you get stuck, don't hesitate to ask for hints.
+- Don't think in silence. Remember, communicate.
+- Don't think your interview is done once you give the design. You are not done until your interviewer says you are done. Ask for feedback early and often.
+
+
+## Time allocation
+
+With a 45-minute interview session, the rough estimation of the time you should spend on each step is:
+1. Understand the problem and establish design scope: 3 - 10 minutes.
+2. Propose high-level design and get buy-in: 10 - 15 minutes
+3. Design deep dive: 10 - 25 minutes
+4. Wrap: 10 - 15 minutes.
