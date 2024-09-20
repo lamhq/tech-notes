@@ -9,6 +9,17 @@ CDN servers cache static content like images, videos, CSS, JavaScript files, etc
 You are charged for data transfers in and out of the CDN.
 
 
+## Benefits
+
+CDN allow placing your static assets close to users.
+
+It may help reducing cost, because you don't need to have multiple servers.
+
+Decrease latency and improves user experience.
+
+Increase complexity of your system: content invalidation, configuration, debugging and troubleshooting.
+
+
 ## How it work?
 
 1. When a user requests a web page or any online content, the request is sent to the CDN instead of the origin server.

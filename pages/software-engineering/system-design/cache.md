@@ -4,26 +4,34 @@
 
 A cache is a temporary storage area that stores the result of expensive responses or frequently accessed data in memory so that subsequent requests are served more quickly.
 
-Caching is one of the easiest ways to increase system performance. If done right, caches can reduce response times, decrease load on the database, and save costs. Otherwise, you may introduce additional latency or, at the very least, not see the full benefits.
+The goal of cache is to speed up getting some data from a slower storage by storing part of this data in a faster storage.
 
-Use Cases: work best for read-heavy workloads, when data is read frequently but modified infrequently.
+Caches are used to improve the performance and efficiency of data retrieval operations.
+
+You want to maximize cache hit ratio. Otherwise, it may introduce additional latency.
+
+Work best for read-heavy workloads, when data is read frequently but modified infrequently.
 
 
 ## Best Practices
 
-Don't use cache to store critical data. Since cached data is stored in memory, if a cache server restarts, all the data in memory is lost.
+Don't use cache to store critical data.
 
-Implement an **expiration policy** to remove data on expired. Setting the expiration date too short will cause the system to reload data from the database frequently. Meanwhile, if set too long, the data can become stale.
+> Since cached data is stored in memory, if a cache server restarts, all the data in memory is lost.
 
-Ensure **data consistency** by keeping the data store and the cache in sync.
+Choose an approriate expiration time (TTL).
 
-Multiple cache servers across different data centers are recommended to avoid **SPOF** (Single point of failure).
+> Setting the expiration date too short will cause the system to reload data from the database frequently. Meanwhile, if set too long, the data can become stale.
+
+Keep data store and cache in sync to ensure data consistency.
+
+Set up multiple cache servers across different data centers to avoid **SPOF** (Single point of failure).
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Single_Point_of_Failure.png/400px-Single_Point_of_Failure.png)
 
-**Overprovision the required memory** for cache servers to handle unexpected spikes in demand without performance degradation.
+**Overprovision the required memory for cache servers** to handle unexpected spikes in demand without performance degradation.
 
-Choose an approriate **eviction policy** to determines which data should be removed once the cache is full: Least-recently-used (LRU), Least Frequently Used (LFU) or First in First Out (FIFO).
+**Choose an approriate eviction policy** to determines which data should be removed once the cache is full.
 
 
 ## Caching strategy

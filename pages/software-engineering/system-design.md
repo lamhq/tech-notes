@@ -1,7 +1,26 @@
 # System design
 
+## Overview
+
 System design is the process of defining the architecture, components, modules, interfaces, and data for a system to satisfy specified requirements.
 
 It involves translating user requirements into a detailed blueprint that guides the implementation phase.
 
 The desired outcome is to come up with an architecture that achieves system design goals with acceptable tradeoffs.
+
+
+## Components of System Diagrams
+
+Different building blocks of your diagrams:
+
+![](./system-design/system-components.drawio.svg)
+
+
+## Diagram Drawing Tips
+
+For better reading your diagrams:
+- Try to maintain one direction of all your blocks. Left to right, top to bottom
+- Actors should be on the same side
+- Avoid intersections when connect your blocks. It's better to draw a longer direction that don't intersect
+- Keep your connection vertical and horizontal, not diagonal
+- Keep blocks aligned

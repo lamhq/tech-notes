@@ -46,15 +46,16 @@ These numbers should give us an idea of the fastness and slowness of different c
 
 Second > Milisecond > Microsecond ($\mu\text{s}$) > Nanosecond ($\text{ns}$) > Picosecond ($\text{ps}$)
 
+Speed: CPU cache > RAM > Disk > Local network > Global Network.
+
 Some things to notice:
-- Memory is fast and disks are slow.
 - Avoid disk seeks if possible.
 - Compress data before sending it over the internet if possible.
 - Data centers are usually in different regions, and it takes time to send data between them.
 - Global shared data is expensive. This is a fundamental limitation of distributed systems. The lock contention in shared heavily written objects kills performance as transactions become serialized and slow.
 - Design your system in a way that can handle an increasing number of write operations as your application grows
 - Optimize for low write contention (delays and conflicts when multiple processes try to write to the same resource simultaneously).
-- Optimize wide. Make writes as parallel as you can. Spreading out write operations to occur simultaneously rather than sequentially.
+- Make writes as parallel as you can. Spreading out write operations to occur simultaneously rather than sequentially.
 
 
 ## Availability numbers
