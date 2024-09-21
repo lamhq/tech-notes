@@ -11,5 +11,6 @@
   "nestjs": "NestJS",
   "nodejs": "Node.js",
   "deno": "Deno",
-  "eslint": "ESLint"
+  "eslint": "ESLint",
+  "redis": "Redis"
 }

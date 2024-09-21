@@ -1,3 +1,4 @@
 {
-  "caching-strategies": "Caching Strategies"
+  "caching-strategies": "Caching Strategies",
+  "eviction-policies": "Eviction Policies"
 }

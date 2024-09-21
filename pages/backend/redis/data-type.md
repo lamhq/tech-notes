@@ -1,4 +1,4 @@
-# Redis Data Types
+# Data Types
 
 Redis supports 5 types of data types.
 

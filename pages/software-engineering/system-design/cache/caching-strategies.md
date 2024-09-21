@@ -11,76 +11,73 @@ It checks the key in cache, and if it's not there, the application fetches it fr
 
 ![](https://codeahoy.com/img/cache-aside.png)
 
-1. The application first checks the cache.
-2. If the data is found in cache, we’ve cache hit. The data is read and returned to the client.
-3. If the data is not found in cache, we’ve cache miss. The application queries the database to read the data, returns it to the client and stores the data in cache so the subsequent reads for the same data results in a cache hit.
-
 Pros:
-- Systems using cache-aside are resilient to cache failures. If the cache cluster goes down, the system can still operate by going directly to the database.
+- Cache only what's needed
 - Data model in cache can be different than the data model in database.
 
 Cons:
-- **Stale Data**: it is possible for data to become inconsistent between cache and the database
-  - To deal with this, time to live (TTL) is used. Stale data continues to be used until TTL expires.
-  - If data freshness must be guaranteed, developers either invalidate the cache entry or use an appropriate write strategy.
-- **Complexity**: Handling cache invalidation, eviction policies, and concurrent requests in code is challenging and increases the risk of bugs.
-- **Increased Read Latency**: fetching new data incurs the extra penalty of loading data to the cache.
+- Cache misses are expensive due to the extra penalty of loading, and updating data in the cache.
+- Stale data can occur when the cache is inconsistent with the database.
+- Managing the cache increases the complexity for the application.
 
 
-## Read-Through Cache
+## Read-Through
 
-The cache layer sits before the database. When there is a cache miss, it loads missing data from database, populates the cache and returns it to the application.
+Application doesn't have access to the database but instead always interacts with the cache API.
+
+In case of a cache miss, the API loads the missing data from the database, populates the cache, and returns it to the application.
+
+It's a common pattern in ORM frameworks.
 
 ![](https://codeahoy.com/img/read-through.png)
 
-While read-through and cache-aside are very similar, there are at least two key differences:
-- In cache-aside, the application is responsible for fetching data from the database and populating the cache. In read-through, this logic is usually supported by the library or stand-alone cache provider.
-- The data model in read-through cache cannot be different than that of the database.
-
-
 Pros:
-- **Simplicity**: application doesn't need to manage cache
+- Cache only what's needed
+- Transparent to the application
 
-Cons: same as cache-aside
+Cons:
+- Data model must be the same with database.
+- Cache misses are expensive
+- Data staleness
 
 
-## Write-Through Cache
+## Write-Through
 
-Writes always go through the cache to the database. This helps cache maintain consistency with the main database.
+Similar to Read Through, application interact with an API that also update the cache when data is written.
 
 DynamoDB Accelerator (DAX) is a good example of read-through / write-through cache.
 
 ![](https://codeahoy.com/img/write-through.png)
 
-When an application wants to write data or update a value:
-1. The application writes the data directly to the cache.
-2. The cache updates the data in the main database.
 
 Pros:
 - Cache always remains consistent with the database
 
 Cons:
-- Latency for Writes: When using a write-through strategy, writes can be slower because data needs to be updated in both the cache and the database
+- Writes are expensive because data needs to be updated in both the cache and the database
+- Redudant data: we write data to cache that never be read
 
 
 
-## Write-Back
+## Write-Behind (Write-Back)
 
-Similar to Write-Through, but data is written asynchronously to the cache, the application doesn't need to wait for the cache to be updated before returning a response.
+Similar to Write-Through, but data is not written immediately.
+
+Data updates are batched and flushed to the database later.
 
 ![](https://codeahoy.com/img/write-back.png)
 
-This is sometimes called write-behind as well.
+When combined with **Read-through**, it works good for mixed workloads, where the most recently updated and accessed data is always available in cache.
 
-If batching or coalescing is supported, it can reduce overall writes to the database, which decreases the load and reduces costs.
-
-Most relational databases storage engines (i.e. InnoDB) have write-back cache enabled by default in their internals. Queries are first written to memory and eventually flushed to the disk.
+Most relational databases storage engines (i.e. InnoDB) have Write-Behind cache enabled by default in their internals. Queries are first written to memory and eventually flushed to the disk.
 
 Use cases:
 - Good for write-heavy workloads.
 
 Pros:
-- When combined with read-through, it works good for mixed workloads, where the most recently updated and accessed data is always available in cache.
+- No write penalty
+- Reduce load on the database (because of bulk update)
 
 Cons:
-- If there’s a cache failure, the data may be permanently lost.
+- If there's a cache failure, the data may be permanently lost.
+- Data staleness if we don't flush data to database often
