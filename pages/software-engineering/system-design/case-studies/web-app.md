@@ -1,4 +1,4 @@
-# Design Architecture for a Web application
+# Web application
 
 Design a scalable and highly available web app that can serve millions of users.
 

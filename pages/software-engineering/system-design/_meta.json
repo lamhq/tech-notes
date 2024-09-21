@@ -1,6 +1,7 @@
 {
-  "database": "Database",
+  "server": "Server",
   "load-balancer": "Load balancer",
+  "database": "Database",
   "cache": "Cache",
   "cdn": "CDN",
   "data-center": "Data center",
@@ -9,5 +10,5 @@
   "high-availability": "High Availability",
   "bote": "Back-of-the-envelope estimation",
   "interview": "System Design Interview",
-  "examples": "Examples"
+  "case-studies": "Case Studies"
 }
