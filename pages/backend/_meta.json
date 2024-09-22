@@ -12,5 +12,7 @@
   "nodejs": "Node.js",
   "deno": "Deno",
   "eslint": "ESLint",
-  "redis": "Redis"
+  "redis": "Redis",
+  "rabbitmq": "RabbitMQ",
+  "kafka": "Kafka"
 }

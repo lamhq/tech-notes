@@ -12,7 +12,7 @@ Consumers/subscribers connect to the queue, pull the messages, and perform actio
 
 Pros:
 - Improve scalability and reliability of system
-- Queues enable asynchronous processing, allowing tasks to be queued up and processed later
+- Enable asynchronous processing, allowing tasks to be queued up and processed later
 - Decoupling Components: different parts of a system can communicate without being directly connected.
 
 Cons:
@@ -20,7 +20,27 @@ Cons:
 - Increase latency
 
 
-## Example
+## Mesaging Paradigms
+
+How messages can be delivered from producers to consumers.
+
+### Message Queue
+
+Messages are persisted in a queue.
+
+One or more consumers can consume the messages in the queue.
+
+A message can only be consumed by one consumer at a time.
+
+Once a consumer reads a message in the queue, it disappears from that queue.
+
+Useful for tasks that need to be processed sequentially or when the producer and consumer operate at different speeds.
+
+Example: RabbitMQ, Amazon SQS.
+
+![](https://www.tutorialspoint.com/apache_kafka/images/point_to_point_messaging_system.jpg)
+
+**Example**:
 
 Consider the following use case: your application supports photo customization, including cropping, sharpening, blurring, etc. Those customization tasks take time to complete.
 
@@ -35,30 +55,11 @@ The producer and the consumer can be scaled independently:
 ![](./queues/queue.drawio.svg)
 
 
-## Mesaging Paradigms
-
-How messages can be delivered from producers to consumers using queues.
-
-### Message Queue
-
-Messages are stored in a queue and processed in a first-in, first-out (FIFO) order.
-
-A message is delivered exactly once.
-
-Messages can arrive out of order.
-
-Useful for tasks that need to be processed sequentially or when the producer and consumer operate at different speeds.
-
-Example: RabbitMQ, Amazon SQS.
-
-
 ### Publish/Subscribe (Pub/Sub)
 
-Messages are published to a topic and multiple subscribers can receive the messages.
+Messages are published to a topic.
 
-Ensure at least once delivery.
-
-Messages are always arrive in order.
+Consumers can subscribe to one or more topic and consume all the messages in that topic.
 
 Ideal for broadcasting messages to multiple consumers who are interested in specific topics.
 
