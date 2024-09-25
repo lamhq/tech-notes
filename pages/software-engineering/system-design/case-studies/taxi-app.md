@@ -1,0 +1,21 @@
+# Taxi App
+
+## Requirements
+
+What you expect the system will work on the user level:
+
+> I expect that when I have this taxi app installed on my phone, I open it, see taxis that are around me, then I enter where I want to go, and a taxi picks me up and drives me there.
+
+
+## Assumptions
+
+- We have a mobile app, we need to install it on our phone to book a taxi
+- There're two different kinds of users: customers and drivers
+- Driver also have dedicated mobile devices
+- Customer:
+  - 100M customers in total
+  - 10M active customers
+- Drivers
+  - 1M drivers in total
+  - 500k active drivers
+  - Each driver work 6 hours a day
