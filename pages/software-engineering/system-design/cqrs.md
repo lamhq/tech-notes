@@ -1,0 +1,57 @@
+# Command Query Responsibility Segregation
+
+## Overview
+
+Command Query Responsibility Segregation (CQRS), is a design pattern that separates the read and write operations of a data store into distinct models.
+
+Useful in applications with high read-to-write ratios.
+
+When combined with event sourcing, CQRS can provide a powerful way to handle complex state changes and maintain a complete history of changes to the data
+
+
+## Separation of Models
+
+Instead of using a single data model for both reading and writing, CQRS recommends having separate models.
+
+The command model is optimized for handling write operations, ensuring data consistency and integrity.
+
+The query model is designed for efficient data retrieval and is optimized for read operations.
+
+
+## Command and Query Paths
+
+The application's code is divided into two distinct paths
+- The Command Path handles write operations, such as creating, updating, or deleting data
+- The Query Path handles read operations and is optimized for querying and displaying data to users
+
+
+## Eventually consistent
+
+Due to the asynchronous nature of write operations and the use of separate models, it is common for data in the query store to lag behind recent updates.
+
+Some ways to address this:
+- Inform the user that changes might take some time to appear.
+- Apply the user's changes within the local application even if they are not yet reflected in the query store.
+
+> For example, after a user has added a comment to a conversation, the comment appears in their local browser/app even if it hasn't yet been handled by the command processor on the server (and thus isn't visible to anyone else).
+
+
+## Benefits
+
+Read and write operations can be optimized independently.
+
+Read and write workloads can be scaled independently.
+
+
+## Disdvantages
+
+- Eventually consistent: delay between updated being reflected.
+- System become more complicated. More things could go wrong.
+
+
+## When to use?
+
+- When your application has complex business logic and validation rules for writes, and different read models for various queries.
+- If your read and write workloads have different scaling needs.
+- When you need to optimize performance for both reads and writes.
+- If you need to minimize conflicts and improve performance by separating the concerns of reading and writing data.

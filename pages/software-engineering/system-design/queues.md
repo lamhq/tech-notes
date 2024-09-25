@@ -40,7 +40,21 @@ Example: RabbitMQ, Amazon SQS.
 
 ![](https://www.tutorialspoint.com/apache_kafka/images/point_to_point_messaging_system.jpg)
 
-**Example**:
+
+### Publish/Subscribe (Pub/Sub)
+
+Messages are published to a topic.
+
+Consumers can subscribe to one or more topic and consume all the messages in that topic.
+
+Ideal for broadcasting messages to multiple consumers who are interested in specific topics.
+
+Example: Apache Kafka, AWS SNS.
+
+
+## Message Queue Example
+
+### Background Tasks
 
 Consider the following use case: your application supports photo customization, including cropping, sharpening, blurring, etc. Those customization tasks take time to complete.
 
@@ -55,12 +69,21 @@ The producer and the consumer can be scaled independently:
 ![](./queues/queue.drawio.svg)
 
 
-### Publish/Subscribe (Pub/Sub)
+### Prevent Data Races
 
-Messages are published to a topic.
+Imagine you have an e-commerce application where multiple users can place orders simultaneously. Each order updates the inventory count of a product. If two threads try to update the inventory at the same time, a data race can occur.
 
-Consumers can subscribe to one or more topic and consume all the messages in that topic.
+**Without Message Queue:**
+1. **Thread A** reads the current inventory (10 units).
+2. **Thread B** reads the current inventory (10 units).
+3. **Thread A** updates the inventory to 9 units.
+4. **Thread B** updates the inventory to 9 units (incorrectly, as it should be 8).
 
-Ideal for broadcasting messages to multiple consumers who are interested in specific topics.
+**With Message Queue:**
+1. Each order request is placed into a message queue.
+2. A single worker thread processes each message sequentially.
+3. **Worker Thread** reads the current inventory (10 units).
+4. **Worker Thread** updates the inventory to 9 units.
+5. **Worker Thread** reads the next message and updates the inventory to 8 units.
 
-Example: Apache Kafka, AWS SNS.
+By using a message queue, you ensure that only one thread processes each order at a time, eliminating the possibility of a data race and ensuring consistent updates to the inventory.

@@ -9,6 +9,7 @@
   "scalability": "Scalability",
   "high-availability": "High Availability",
   "bote": "Back-of-the-envelope estimation",
+  "cqrs": "CQRS",
   "interview": "System Design Interview",
   "case-studies": "Case Studies"
 }
