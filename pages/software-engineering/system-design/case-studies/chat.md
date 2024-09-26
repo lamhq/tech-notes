@@ -1,0 +1,21 @@
+# Design a Chat app (WhatsApp)
+
+## Requirements
+
+Questions to ask:
+- How many active users will we have?
+  - 100M active users
+- How many chats we need to support at the same time?
+  - 1M chat sessions
+- How many messages per day?
+  - 1 Billion
+- What platforms do we need to support?
+  - Mobile and Web
+- Do we need to support group chats?
+  - No
+
+How it work?
+1. We have a mobile device and a list of friends
+2. We pick one friend from the list and start sending messages
+3. If our friends have chat open at the moment, they can see the messages are sent to them
+4. If the chat is closed, they won't be notified

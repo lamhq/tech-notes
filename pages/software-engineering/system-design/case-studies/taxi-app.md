@@ -1,6 +1,8 @@
-# Taxi App
+# Design a Taxi App (Uber)
 
 ## Requirements
+
+Design a taxi hailing app.
 
 What you expect the system will work on the user level:
 
