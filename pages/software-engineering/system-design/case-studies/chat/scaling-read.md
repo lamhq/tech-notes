@@ -11,11 +11,9 @@ One of the most basic push mechanisms is WebSocket, that both support mobile and
 How it work?
 1. Client connect to the system (only once)
 2. Client requests conversation history to display the previous messages
-3. The system can push new messages to client, no need for polling anymore
+3. When a new message comes in, system can notify the client, no need for polling anymore
 
 ![](./websocket.drawio.svg)
-
-Although we have resolved polling issue from client, but the WebSocket handlers still produce the same load on database (200K selects per second) when fetching chat history.
 
 
 ## Read replicas
@@ -30,6 +28,8 @@ Cons:
 
 
 ## Sharding
+
+We use sharding to obtain the conversation history between two person.
 
 Choosing a shard key:
 - `UserID`: to get all messages between two person, we need to query two shards, then filter out unrelevant messages

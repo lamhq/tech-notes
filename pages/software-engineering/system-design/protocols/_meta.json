@@ -1,0 +1,4 @@
+{
+  "websocket": "WebSocket",
+  "grpc": "gRPC"
+}

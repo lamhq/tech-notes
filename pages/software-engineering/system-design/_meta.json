@@ -1,15 +1,16 @@
 {
   "server": "Server",
-  "load-balancer": "Load balancer",
-  "database": "Database",
-  "cache": "Cache",
-  "cdn": "CDN",
-  "data-center": "Data center",
-  "queues": "Queues",
   "scalability": "Scalability",
   "high-availability": "High Availability",
-  "bote": "Back-of-the-envelope estimation",
+  "data-center": "Data center",
+  "load-balancer": "Load balancer",
+  "cache": "Cache",
+  "cdn": "CDN",
+  "queues": "Queues",
+  "protocols": "Protocols",
   "cqrs": "CQRS",
+  "database": "Database",
+  "bote": "Back-of-the-envelope estimation",
   "interview": "System Design Interview",
   "case-studies": "Case Studies"
 }
