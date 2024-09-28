@@ -1,0 +1,41 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="381px" height="201px" viewBox="-0.5 -0.5 381 201" content="&lt;mxfile&gt;&lt;diagram id=&quot;d5zoADveRXJv4QpY1_J-&quot; name=&quot;Page-1&quot;&gt;1ZbBbqMwEEC/hrvBgZDjhob2sCu1JVLPDh7AqsNEjtsk/fp1gglQU6Wqoo1WSMjzZjD280jg0WS9v1dsU/1BDtILCN979M4LgulsZu5HcGhARKMGlErwBvkdyMQHWEgsfRMctoNCjSi12AxhjnUNuR4wphTuhmUFyuFbN6wEB2Q5ky59EVxXDY1D0vEHEGXVvtknNrNmbbEF24px3PUQXXg0UYi6Ga33Cciju9ZL81z6Rfa8MAW1/tYDdh3vTL7ZzS2TR7s2fWg3XAgpE5SoTiFdpClJqUfnW63wFdpMjbWpn3O2reA4PzHBOygtjLlfUpS1YRo3hhZY68xOT2zcm99cqRnQubsdu8PjtLDvIbu9e8A1aHUwJW22VW17zY9svOtOjsaWVb1TC9pDY7ZbyvPcnVAzsE6/8Os7fl9glWH+CvqS5aKAKM8dyybDp7MVIT9TfQ2lk6HScxf1lI4Z9ek1jAaO0Yfl8mLLcgZxMSozymNYFTeTGXxD5rnm+japY/N5kS0vtmacw3hrruJwEt6uNYPwk83QtRmNyIyv4XLiuDx9/p5+X9IJPg9hOqZzFk0pi26mk9Ib6gwdneXzY/Lfupz4/8ylCbtfiFOu9x9GF38B&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="380" height="200" fill="#eff0f3" stroke="none" pointer-events="all"/>
+        <g fill="#232F3D" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="189.5" y="17.5">
+                TCP
+            </text>
+        </g>
+        <rect x="20" y="50" width="80" height="130" fill="#ffe6cc" stroke="#d79b00" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="59.5" y="67.5">
+                WebSocket
+            </text>
+        </g>
+        <rect x="120" y="50" width="240" height="130" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="239.5" y="67.5">
+                HTTP
+            </text>
+        </g>
+        <rect x="130" y="90" width="60" height="80" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="159.5" y="107.5">
+                REST
+            </text>
+        </g>
+        <rect x="210" y="90" width="60" height="80" fill="#e1d5e7" stroke="#9673a6" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="239.5" y="107.5">
+                GraphQL
+            </text>
+        </g>
+        <rect x="290" y="90" width="60" height="80" fill="#e1d5e7" stroke="#9673a6" pointer-events="all"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" text-anchor="middle" font-size="12px">
+            <text x="319.5" y="107.5">
+                gRPC
+            </text>
+        </g>
+    </g>
+</svg>
