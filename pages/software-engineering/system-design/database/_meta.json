@@ -1,9 +1,10 @@
 {
-  "choosing-db": "Choosing Database",
   "sql": "SQL Database",
   "no-sql": "NoSQL Database",
+  "indexes": "Indexes",
+  "sharding": "Sharding",
   "concurrency": "Concurrency",
   "transaction": "Transaction",
   "replication": "Replication",
-  "scaling": "Scaling"
+  "choosing-db": "Choosing Database"
 }

@@ -10,6 +10,7 @@
   "protocols": "Protocols",
   "cqrs": "CQRS",
   "database": "Database",
+  "consistent-hashing": "Consistent Hashing",
   "bote": "Back-of-the-envelope estimation",
   "interview": "System Design Interview",
   "case-studies": "Case Studies"
