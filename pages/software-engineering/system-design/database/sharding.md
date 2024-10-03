@@ -2,7 +2,7 @@
 
 ## Overview
 
-Database sharding is a technique used to improve the performance and scalability of databases by splitting a large database into smaller, more manageable pieces called shards.
+Sharding is a technique that splits a large database into smaller, more manageable pieces called shards to improve the performance and scalability of databases.
 
 Each shard shares the same schema and is stored on a different server, allowing for parallel processing and reducing the load on any single server.
 

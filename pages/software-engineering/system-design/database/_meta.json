@@ -3,8 +3,9 @@
   "no-sql": "NoSQL Database",
   "indexes": "Indexes",
   "sharding": "Sharding",
+  "partitioning": "Partitioning",
+  "replication": "Replication",
   "concurrency": "Concurrency",
   "transaction": "Transaction",
-  "replication": "Replication",
   "choosing-db": "Choosing Database"
 }
