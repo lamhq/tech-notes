@@ -47,3 +47,36 @@ When a node is removed, items belong to that node are redistributed to the next 
 ![](./consistent-hashing/remove-node.drawio.svg)
 
 *In above figure, when $n_1$ is removed, $k_1$ is redistributed to $n_2$.*
+
+
+## Virtual nodes
+
+Let's start with some problems with the basic approach:
+- Uneven partition sizes: Some partitions may be very small or very large.
+- Non-uniform key distribution: Data (keys) may not spread evenly across all nodes because nodes are distributed at different positions on the ring.
+
+**Virtual nodes** (or **v-nodes**) are a technique used to improve the distribution of data across a cluster of servers. It helps to evenly distribute data and load across all servers.
+
+Each physical server in the cluster is assigned multiple virtual nodes.
+
+They are distributed around the hash ring, along with data.
+
+To find which server a key is stored on, we go clockwise from the key’s location and find the first virtual node encountered on the ring.
+
+
+### Benefits
+
+By having multiple virtual nodes per physical server, the data is more evenly spread out, leading to better load balancing.
+
+If a server fails, its virtual nodes can be quickly reassigned to other servers, ensuring continuous availability.
+
+
+### Example
+
+Suppose you have two physical servers (A, B).
+
+Instead of each server being represented once on the hash ring, each server might be represented by multiple virtual nodes (e.g., A0, A1, A2, B0, B1, B2).
+
+This way, the data is more evenly distributed across the servers.
+
+![](./consistent-hashing/virtual-nodes.drawio.svg)
