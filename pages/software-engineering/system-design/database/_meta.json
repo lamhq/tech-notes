@@ -5,6 +5,9 @@
   "sharding": "Sharding",
   "partitioning": "Partitioning",
   "replication": "Replication",
+  "cap-theorem": "CAP Theorem",
+  "base-model": "BASE model",
+  "eventual-consistency": "Eventual consistency",
   "concurrency": "Concurrency",
   "transaction": "Transaction",
   "choosing-db": "Choosing Database"
