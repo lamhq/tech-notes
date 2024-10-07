@@ -63,17 +63,6 @@ Lambda@Edge can do the following:
 *Exam tip: Lambda@Edge can be used to load different resources based on the User-Agent HTTP header.*
 
 
-## Domain Names
-
-CloudFront typically creates a domain name such as `a232323.cloudfront.net`.
-
-To use alternate domain names, add a Route 53 alias record. For other service providers, use a CNAME (cannot use the zone apex with CNAME).
-
-To move domain names between distributions:
-- You can move subdomains yourself.
-- For the root domain you need to use AWS support.
-
-
 ## CloudFront vs S3 Cross Region Replication
 
 CloudFront:

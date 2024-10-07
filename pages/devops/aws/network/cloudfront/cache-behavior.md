@@ -60,4 +60,6 @@ You can route to different kind of origins/origin groups based on the content ty
 
 ![](./cache-behavior/multi-origins.drawio.svg)
 
-When adding additional Cache Behaviors, the Default Cache Behavior is always the last to be processed and is always `/*`
+When adding additional Cache Behaviors, the Default Cache Behavior is always the last to be processed and is always `/*`.
+
+The URI of the request sent to your origin will include the path pattern. For example, if a client requests `https://your-distribution.cloudfront.net/api/users`, CloudFront will forward the request to the origin as `/api/users`.

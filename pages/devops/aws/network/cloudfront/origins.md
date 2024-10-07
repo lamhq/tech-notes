@@ -72,10 +72,25 @@ To use an Amazon S3 static website as an origin, set the origin domain name to y
 
 ## Multiple Origins
 
-You can have multiple origins to redirect and route to different kinds of origins based on the content type or the path being passed to CloudFront. For example:
-- path for images: `/images/*`
-- path for API: `/api/*`
-- path everything else: `/*`
+You can have multiple origins so that when requests sent to CloudFront, you can route them to different origins based on the content type or the URI path.
+
+For example:
+- Requests with URIs starting with `/images/` will be routed to an S3 bucket origin.
+- Requests with URIs starting with `/api/` will be routed to an API Gateway.
+- Everything else (`/*`) will be routed to a custom HTTP server.
+
+![](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*fu9jLxAnX3XnmHTCCgytrg.png)
+
+See [cache behaviors](./cache-behavior.md#cache-behaviors) for more details.
+
+
+## Origin Path
+
+If you have an **Origin path** set in your CloudFront configuration, it will be prefixed to the request URI.
+
+For instance, if your origin path is `/backend`, the request to `https://your-distribution.cloudfront.net/api/users` will be forwarded to the origin as `/backend/api/users`.
+
+![](https://user-images.githubusercontent.com/1059139/39093857-3c948a30-45f4-11e8-9a62-df5edac33f07.png)
 
 
 ## Origin Groups
