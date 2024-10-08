@@ -6,8 +6,10 @@ Only GET & HEAD requests are cached (not PUT, POST, PATCH, DELETE).
 
 You can cache dynamic content (from a custom HTTP backend, for example).
 
-You want to maximize the Cache Hit ratio to minimize requests to the origin. Methods of improving the cache hit ratio include:
-- Use the `Cache-Control max-age` directive to increase the time objects remain in the cache
+You want to maximize the Cache Hit ratio to minimize requests to the origin.
+
+Methods of improving the cache hit ratio include:
+- Use the `Cache-Control: max-age=???` directive to control how long objects remain in the cache
 - Forward only the query string parameters for which your origin will return unique objects.
 - Configure CloudFront to forward only specified cookies instead of forwarding all cookies.
 - Configure CloudFront to forward and cache based on only specified headers instead of forwarding and caching based on all headers.
@@ -62,4 +64,11 @@ You can route to different kind of origins/origin groups based on the content ty
 
 When adding additional Cache Behaviors, the Default Cache Behavior is always the last to be processed and is always `/*`.
 
-The URI of the request sent to your origin will include the path pattern. For example, if a client requests `https://your-distribution.cloudfront.net/api/users`, CloudFront will forward the request to the origin as `/api/users`.
+
+## Origin Request URI
+
+The URI of requests sent to your origin will include the path pattern.
+
+For example, if a client requests `https://your-distribution.cloudfront.net/api/users`, CloudFront will forward the request to the origin as `/api/users`.
+
+You can use [CloudFront Functions](./functions.md) to customize the requests sent to your origins, such as rewriting the URI, headers, and query string

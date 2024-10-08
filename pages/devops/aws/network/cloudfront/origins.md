@@ -19,9 +19,11 @@ The expiration time is controlled through the TTL. The minimum expiration time i
 
 ## S3 Bucket Origin
 
-For distributing files and caching them at the edge.
+When you create a CloudFront distribution, you specify the S3 bucket as the origin to effectively deliver your content.
 
 To guarantee that only CloudFront can access your S3 bucket, you can use Origin Access Control (OAC).
+
+You can define the TTL for specific objects in S3 by adding a `Cache-Control` header to the object's metadata (key: `Cache-Control`, value: `max-age=3600` or `no-cache`).
 
 CloudFront can be used to upload files to S3 (ingress).
 

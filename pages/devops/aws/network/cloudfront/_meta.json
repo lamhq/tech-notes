@@ -8,5 +8,6 @@
   "monitoring": "Monitoring",
   "pricing": "Pricing",
   "custom-domain-name": "Custom Domain Name",
+  "functions": "CloudFront Functions",
   "scenarios": "Scenarios"
 }
