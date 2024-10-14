@@ -22,9 +22,12 @@ sam deploy --guided
 
 Require starting docker first.
 
+If you make changes to the code, you need to rebuild and start the API again.
+
 ```sh
 sam local start-api
 ```
+
 
 ## Invoke Lambda functions
 
@@ -33,10 +36,28 @@ sam local invoke "HelloWorldFunction" -e events/event.json
 ```
 
 
+## Monitoring
+
+You can fetch logs of deployed Lambda function using the SAM CLI:
+```shell
+sam logs -n HelloWorldFunction --stack-name api-lambda --tail
+```
+
+
+## Unit tests
+
+Tests are defined in the `hello-world/tests` folder in the generated project.
+
+To run unit tests:
+```shell
+npm run test
+```
+
+
 ## Clean Up
 
 You can remove created AWS resources by deleting the CloudFormation stack:
 
 ```sh
-aws cloudformation delete-stack --stack-name sam-app --region region
+sam delete --stack-name app-name
 ```
