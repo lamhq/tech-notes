@@ -344,3 +344,15 @@ const MyArray = [
 type PersonType = typeof MyArray[number]; // { name: string; age: number; }
 type AgeType = typeof MyArray[number]["age"]; // AgeType is 'number'
 ```
+
+
+## Non-null Assertion operator `!`
+
+The non-null assertion operator tells the TypeScript compiler that an expression is not `null` or `undefined`:
+
+```ts
+function liveDangerously(x?: number | null) {
+  // No error
+  console.log(x!.toFixed());
+}
+```

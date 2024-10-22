@@ -10,7 +10,7 @@ JavaScript has a concept of `truthy` i.e. things that evaluate like `true` would
 | `number`        | `0`  `NaN`               | any other number         |
 | `null`          | always                   | never                    |
 | `undefined`     | always                   | never                    |
-| Any other Object including empty ones like `{}`,`[]` | never | always |
+| Any objects, including `{}`,`[]` | never | always |
 
 
 ## The `!!` pattern

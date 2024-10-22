@@ -1,6 +1,5 @@
 {
   "types": "Types",
-  "null-undefined": "null & undefined",
   "enums": "Enums",
   "type-alias": "Type Aliases",
   "interface": "Interfaces",

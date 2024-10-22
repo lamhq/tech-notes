@@ -11,7 +11,7 @@ console.log({max: Number.MAX_SAFE_INTEGER, min: Number.MIN_SAFE_INTEGER});
 
 JavaScript uses double-precision floating-point format numbers as specified in IEEE 754 and can only safely represent numbers between `-(2^53 - 1)` and `2^53 - 1`.
 
-Safe in this context refers to the ability to represent integers exactly and to correctly compare them.
+"Safe" in this context refers to the ability to represent integers exactly and to correctly compare them.
 
 For example, `Number.MAX_SAFE_INTEGER + 1 === Number.MAX_SAFE_INTEGER + 2` will evaluate to true, which is mathematically incorrect.
 
@@ -29,9 +29,9 @@ For true decimal math, use `big.js`. Whenever you use math for financial calcula
 * Perfect decimal math
 * Safe out of bound integer values
 
-```sh
-yarn add big.js
-yarn add --dev @types/big.js
+```sh npm2yarn
+npm i big.js
+npm i -D @types/big.js
 ```
 
 ```js
