@@ -1,8 +1,10 @@
 {
-  "pdf": "PDF Files",
+  "vscode": "Visual Studio Code",
   "macos": "macOS",
   "windows": "Windows",
-  "youtube": "YouTube Revanced",
   "facebook": "Facebook app",
-  "google": "Google app"
+  "google": "Google app",
+  "youtube": "YouTube Revanced",
+  "udemy": "Udemy",
+  "pdf": "PDF Files"
 }
