@@ -1,11 +1,14 @@
 # FIFO queues
 
 ## Overview
+
 Order is strictly preserved. First-In-First-Out Delivery.
 
 No message duplication. Exactly-Once Processing. A message is delivered once and remains available until a consumer processes and deletes 
 
 Support message groups that allow multiple ordered message groups within a single queue.
+
+Queue name must end with the `.fifo` suffix.
 
 Throughput:
 - **300** messages/sec/API.
@@ -17,8 +20,6 @@ Throughput:
 Do not have the same level of performance as standard queues.
 
 More expensive than standard queues.
-
-The name of a FIFO queue must end with the `.fifo` suffix.
 
 Ideal for sending data between applications when the order of events is important
 

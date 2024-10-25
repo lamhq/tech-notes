@@ -2,7 +2,7 @@
 
 We'll use Pyenv to easily install and switch between multiple versions of Python.
 
-### Install Pyenv
+## Install Pyenv
 
 ```bash
 brew update

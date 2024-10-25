@@ -1,6 +1,14 @@
 # AWS Toolkit
 
-Develop AWS SAM Serverless Application with AWS Toolkit (VS Code).
+## Overview
+
+AWS Toolkit is a set of integrated tools designed to help developers build, debug, and deploy Serverless Application on AWS more efficiently.
+
+There are different versions of the AWS Toolkit available as extensions for various IDEs:
+* [VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html)
+* [Visual Studio](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/welcome.html)
+* [IntelliJ](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
+
 
 ## Benefits
 
@@ -21,13 +29,15 @@ The path to a handler can be found in the `template.yaml` file through a resourc
 
 ## Debug
 
-VS Code launch configurations for all Lambda handlers have been generated in `.vscode/launch.json`.
+VS Code launch configurations for all Lambda handlers are generated in `.vscode/launch.json`.
 
 You can debug the Lambda handlers locally by adding a breakpoint to the source file, then running the launch configuration.
 
 This works by using Docker on your local machine.
 
 Invocation parameters, including payloads and request parameters, can be edited either by the `Edit SAM Debug Configuration` command (through the Command Palette) or by editing the `launch.json` file.
+
+If you're using TypeScript, this feature is not supported.
 
 
 ## Deploy

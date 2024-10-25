@@ -125,7 +125,7 @@ Reasons why this feature exist?
 
 
 ### Limitations
-- Supports limited runtimes and architectures
+- Only supports Java 11 (and later) runtimes.
 - Supports limited ephemeral storage
 - Cannot be used with provisioned concurrency
 

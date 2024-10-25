@@ -10,15 +10,25 @@ sam init
 - `hello_world/app.js`: Contains your actual Lambda handler logic.
 
 
-## Build and Deploy
+## Build
 
 ```sh
 sam build
+```
+
+## Deploy
+
+Starts an interactive session to guide you through the deployment:
+```sh
 sam deploy --guided
 ```
 
+Deploy silently
+```shell
+sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+```
 
-## Run API Locally
+## Run API locally
 
 Require starting docker first.
 
@@ -29,7 +39,7 @@ sam local start-api
 ```
 
 
-## Invoke Lambda functions
+## Invoke functions locally
 
 ```sh
 sam local invoke "HelloWorldFunction" -e events/event.json
