@@ -13,6 +13,7 @@
   "deno": "Deno",
   "eslint": "ESLint",
   "prettier": "Prettier",
+  "jest": "Jest",
   "redis": "Redis",
   "rabbitmq": "RabbitMQ",
   "kafka": "Kafka"

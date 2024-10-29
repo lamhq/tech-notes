@@ -1,5 +1,6 @@
 {
   "git": "Git",
+  "husky": "Husky",
   "vscode": "Visual Studio Code",
   "macos": "macOS",
   "windows": "Windows",

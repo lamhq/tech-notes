@@ -23,13 +23,15 @@ You can configure Prettier via (in order of precedence):
 - A `.prettierrc.toml` file.
 
 
-### Basic Configuration
+## Basic Configuration
 
 ```json
 {
-  "trailingComma": "es5",
+  "useTabs": false,
   "tabWidth": 2,
   "semi": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 80
 }
 ```

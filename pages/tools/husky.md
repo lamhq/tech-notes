@@ -1,6 +1,18 @@
-# Husky (version 7)
+# Husky
 
-You can use it to lint your commit messages, run tests, lint code, etc... when you commit or push. Husky supports all Git hooks.
+## Version
+
+This document is for version 7.
+
+
+## About
+
+Husky is a tool that simplifies the use of Git hooks.
+
+Git hooks are scripts that run automatically on certain Git events, like committing or pushing code.
+
+Husky makes it easy to set up and manage Git hooks, ensuring tasks like code formatting, linting, or tests are run automatically before commits or pushes.
+
 
 ## Install (automatic)
 

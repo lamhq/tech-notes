@@ -1,0 +1,97 @@
+# Set up Codebase for Node.js projects
+
+## Linting and Formatting
+
+1. **Installation**: Install dependencies:
+    ```bash npm2yarn
+    npm install --save-dev eslint \
+      @eslint/js \
+      @types/eslint__js \
+      typescript \
+      typescript-eslint \
+      prettier \
+      eslint-config-prettier \
+      eslint-plugin-prettier \
+      husky \
+      lint-staged
+    ```
+2. **Configuration**: create an `eslint.config.mjs` config file in the root of your project:
+    ```js filename="eslint.config.mjs"
+    // @ts-check
+    import eslint from '@eslint/js';
+    import tseslint from 'typescript-eslint';
+    import eslintConfigPrettier from 'eslint-config-prettier';
+    import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+
+    const tseslintConfig = tseslint.config(
+      eslint.configs.recommended,
+      ...tseslint.configs.strictTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+      {
+        languageOptions: {
+          parserOptions: {
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
+          },
+        },
+      }
+    );
+
+    export default [
+      ...tseslintConfig,
+      eslintConfigPrettier,
+      eslintPluginPrettierRecommended,
+      {
+        // include only the `src` directory
+        ignores: [
+          "*",
+          "!src/",
+        ]
+      }
+    ];
+    ```
+
+    Create a Prettier config file:
+    ```json filename=".prettierrc"
+    {
+      "useTabs": false,
+      "tabWidth": 2,
+      "semi": true,
+      "singleQuote": true,
+      "trailingComma": "es5",
+      "printWidth": 80
+    }
+    ```
+
+    Set up Git Hook:
+    ```shell
+    npx husky init
+    node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
+    ```
+
+3. **Update your `package.json`**:
+    ```json
+    "scripts": {
+      "lint": "eslint"
+    },
+    "lint-staged": {
+      "*.ts": "eslint --fix"
+    }
+    ```
+4. **Run ESLint**:
+    ```bash
+    npm run lint
+    ```
+
+
+## Testing
+
+## Debugging
+
+
+## References
+
+- [typescript-eslint](https://typescript-eslint.io/getting-started/)
+- [Prettier](/backend/prettier)
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)

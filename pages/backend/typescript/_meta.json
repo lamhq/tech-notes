@@ -2,5 +2,6 @@
   "syntax": "Syntax",
   "style-guide": "Style Guide",
   "module-resolution": "Module Resolution",
-  "configuration": "Configuration Options"
+  "configuration": "Configuration Options",
+  "codebase": "Codebase Setup"
 }

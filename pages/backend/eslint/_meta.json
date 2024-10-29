@@ -1,6 +1,5 @@
 {
   "configure": "Configure ESLint",
   "processors": "Custom Processors",
-  "integrations": "Integrations",
-  "guides": "Guides"
+  "integrations": "Integrations"
 }

@@ -17,18 +17,11 @@ export default [
 ];
 ```
 
-Patterns specified in `files` and `ignores` use [minimatch](https://www.npmjs.com/package/minimatch) syntax and are evaluated relative to the location of the `eslint.config.js` file.
+Patterns specified in `files` and `ignores` use [minimatch](https://www.npmjs.com/package/minimatch) syntax, evaluated relative to the location of the configuration file.
 
 If using an alternate config file via the `--config` command line option, then all patterns are evaluated relative to the current working directory.
 
 Check out the [official doc](https://eslint.org/docs/latest/use/configure/configuration-files#specifying-files-and-ignores) for details.
-
-
-## Ignoring files
-
-You can configure ESLint to ignore certain files and directories while linting by specifying one or more glob patterns in the following ways:
-- Inside of your `eslint.config.js` file
-- On the command line using `--ignore-pattern`
 
 
 ## Ignoring Directories
@@ -51,7 +44,9 @@ export default [
 ];
 ```
 
-You can also unignore files and directories. For example, this config unignores `node_modules/mylibrary`:
+You can also unignore files and directories.
+
+For example, this config keeps `node_modules/mylibrary` but ignores other files in `node_modules`:
 ```js
 export default [
   {
@@ -64,7 +59,9 @@ export default [
 ];
 ```
 
-If you’d like to ignore a directory except for specific files or subdirectories, then the ignore pattern `directory/**/*` must be used instead of `directory/**`. For example, if you’d like to ignore everything in the `build` directory except for `build/test.js`, you’d need to create a config like this:
+If you'd like to ignore a directory except for specific files or subdirectories, then the ignore pattern `directory/**/*` must be used instead of `directory/**`.
+
+For example, if you'd like to ignore everything in the `build` directory except for `build/test.js`, you'd need to create a config like this:
 ```js
 export default [
   {
@@ -76,12 +73,37 @@ export default [
 ];
 ```
 
-Patterns that don’t end with `/` match both files and directories.
+Patterns that don't end with `/` match both files and directories.
 
 
-## Including `.gitignore` Files
+## Globally ignoring files
 
-If you want to include patterns from a `.gitignore` file or any other file with gitignore-style patterns, refer to this [doc](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files).
+If `ignores` is used without any other keys in the configuration object, then the patterns act as global ignores.
+
+```js filename="eslint.config.js"
+export default [
+  {
+    // all files in the `.config` directory should be ignored.
+    ignores: [".config/*"]
+  }
+];
+```
+
+You can use global ignores to ignore files/directories included in other configuration objects. This also apply to predefined configurations.
+```js filename="eslint.config.js"
+export default [
+  ...tseslintConfig,
+  eslintConfigPrettier,
+  eslintPluginPrettierRecommended,
+  {
+    // include only the `src` directory
+    ignores: [
+      "*",
+      "!src/",
+    ]
+  }  
+];
+```
 
 
 ## Reference

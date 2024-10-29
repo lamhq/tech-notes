@@ -1,6 +1,7 @@
 # Configuration Files
 
 ## Overview
+
 The file `eslint.config.js` is where you can configure ESLint for your project.
 
 It should be placed in the root directory of your project.
@@ -13,18 +14,18 @@ It export an **array of configuration objects**.
 ### Structure
 
 Each configuration object is made up of these properties:
-- [`name`](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-naming-conventions): name for the configuration object.
-- `files`: An array of glob patterns indicating the files that the configuration object should apply to
-- `ignores`: An array of glob patterns indicating the files that the configuration object should not apply to.
+- [`name`](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-naming-conventions): name for the configuration object
+- `files`: files that the configuration object should apply to
+- `ignores`: files that the configuration object should not apply to
 - `languageOptions`: An object containing settings related to how JavaScript is configured for linting
   - `ecmaVersion`: `latest`, `2022`
   - `sourceType`: `script`, `module`, `commonjs`
-  - `globals`: An object specifying additional objects that should be added to the global scope during linting.
+  - `globals`: An object specifying additional objects that should be added to the global scope during linting
   - `parser`: the parser that ESLint should use to parse your code. Default: `espree`
   - `parserOptions`: An object specifying additional options that are passed directly to the parser
 - `rules`: An object containing the configured rules
-- `plugins`: An object containing a name-value mapping of plugin names to plugin objects.
-- `settings`: An object containing name-value pairs of information that should be available to all rules.
+- `plugins`: An object containing a name-value mapping of plugin names to plugin objects
+- `settings`: An object containing name-value pairs of information that should be available to all rules
 
 Check out the [official doc](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-objects) for the full list of properties.
 
@@ -54,7 +55,8 @@ The first value is the error level of the rule and can be one of these values:
 
 When more than one configuration object matches a given filename, the configuration objects are merged with later objects overriding previous objects when there is a conflict.
 
-```js
+In below example, any JavaScript file in the `tests` directory, both configuration objects are applied, so `languageOptions.globals` are merged to create a final result:
+```js filename="eslint.config.js"
 export default [
   {
     files: ["**/*.js"],
@@ -77,7 +79,7 @@ export default [
 ```
 
 If your project does not specify `"type":"module"` in its `package.json` file, then `eslint.config.js` must be in CommonJS format:
-```js
+```js filename="eslint.config.js"
 module.exports = [
   {
     rules: {
