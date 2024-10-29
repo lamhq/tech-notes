@@ -2,6 +2,5 @@
   "syntax": "Syntax",
   "style-guide": "Style Guide",
   "module-resolution": "Module Resolution",
-  "configuration": "Configuration Options",
-  "vscode": "Visual Studio Code"
+  "configuration": "Configuration Options"
 }

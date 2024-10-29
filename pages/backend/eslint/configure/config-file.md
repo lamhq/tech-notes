@@ -1,47 +1,35 @@
 # Configuration Files
 
 ## Overview
-After running init command, you'll have a configuration file named `eslint.config.js` in your directory.
+The file `eslint.config.js` is where you can configure ESLint for your project.
 
-It is a place where you put the configuration for ESLint in your project.
+It should be placed in the root directory of your project.
 
-You can:
-- include built-in rules, configure thems
-- plugins custom rules, shareable configurations
-- specify which files you want rules to apply to
-
-It should be placed in the root directory of your project and export an **array of configuration objects**.
-
-
-## Configuration File Resolution
-
-ESLint resolves configuration files in a specific order to determine which rules and settings to apply to your code:
-
-1. **Command Line Options**: Options specified directly in the command line when running ESLint.
-   ```sh
-   npx eslint --config some-other-file.js **/*.js
-   ```
-2. **eslint.config.\*** files: Configuration files in the current working directory.
-3. **Parent Directories**: Configuration files in the in parent directories up to the root directory.
-
+It export an **array of configuration objects**.
 
 
 ## Configuration Objects
 
+### Structure
+
 Each configuration object is made up of these properties:
-- `files`
-- `ignores`
-- `languageOptions`:
+- [`name`](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-naming-conventions): name for the configuration object.
+- `files`: An array of glob patterns indicating the files that the configuration object should apply to
+- `ignores`: An array of glob patterns indicating the files that the configuration object should not apply to.
+- `languageOptions`: An object containing settings related to how JavaScript is configured for linting
   - `ecmaVersion`: `latest`, `2022`
   - `sourceType`: `script`, `module`, `commonjs`
-  - `globals`
-  - `parser`
-  - `parserOptions`
-- `rules`
-- `plugins`
+  - `globals`: An object specifying additional objects that should be added to the global scope during linting.
+  - `parser`: the parser that ESLint should use to parse your code. Default: `espree`
+  - `parserOptions`: An object specifying additional options that are passed directly to the parser
+- `rules`: An object containing the configured rules
+- `plugins`: An object containing a name-value mapping of plugin names to plugin objects.
 - `settings`: An object containing name-value pairs of information that should be available to all rules.
 
 Check out the [official doc](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-objects) for the full list of properties.
+
+
+### Example
 
 ```js filename="eslint.config.js"
 export default [
@@ -65,12 +53,24 @@ The first value is the error level of the rule and can be one of these values:
 ## Cascading Configuration Objects
 
 When more than one configuration object matches a given filename, the configuration objects are merged with later objects overriding previous objects when there is a conflict.
+
 ```js
 export default [
   {
-    rules: {
-      semi: "error",
-      "prefer-const": "error"
+    files: ["**/*.js"],
+    languageOptions: {
+      globals: {
+        MY_CUSTOM_GLOBAL: "readonly"
+      }
+    }
+  },
+  {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: {
+        it: "readonly",
+        describe: "readonly"
+      }
     }
   }
 ];
@@ -98,10 +98,47 @@ ESLint has two predefined configurations for JavaScript:
 
 To include these predefined configurations, install the `@eslint/js` package and update the configuration:
 
-```js
+```js filename="eslint.config.js"
 import js from "@eslint/js";
 
 export default [
   js.configs.recommended
 ];
 ```
+
+
+## Using a Shareable Configuration Package
+
+A sharable configuration is an npm package that exports a configuration object or array.
+
+For example, to use a shareable configuration named `eslint-config-example`, your configuration file would look like this:
+```js filename="eslint.config.js"
+import exampleConfig from "eslint-config-example";
+
+export default [
+  exampleConfig
+];
+```
+
+
+## Configuration File Resolution
+
+THe configuration file may be named as:
+1. eslint.config.js
+2. eslint.config.mjs
+3. eslint.config.cjs
+4. eslint.config.ts
+5. eslint.config.mts
+6. eslint.config.cts
+
+When running ESLint from the command line, it searches for the configuration file starting in the current working directory and moves up to the parent directories until it either finds a config file or reaches the root directory.
+
+You can specify a config file using the `--config` option:
+```sh
+npx eslint --config some-other-file.js **/*.js
+```
+
+
+## References
+
+https://eslint.org/docs/latest/use/configure/configuration-files

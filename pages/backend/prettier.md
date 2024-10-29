@@ -2,7 +2,7 @@
 
 ## Version
 
-This document is for version `2.8.8`.
+This document is for version `3.3.3` (Oct 2024).
 
 
 ## What is Prettier?
@@ -31,3 +31,8 @@ Prettier is an opinionated code formatter with support for:
 Prettier is an opinionated code formatter that enforces a consistent style. It makes your code look good.
 
 Linters catch code errors, enforce best practices, and ensure code quality. Linters make sure your code is good.
+
+
+## References
+
+- https://prettier.io

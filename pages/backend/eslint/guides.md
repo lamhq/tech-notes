@@ -1,6 +1,6 @@
 # Setup Guides
 
-How to set up ESLint for different projects:
-- Node.js
-- React
-- Next.js
+This section provide instructions about setting up ESLint for projects:
+- TypeScript (Node.js)
+- TypeScript (React)
+- TypeScript (Next.js)

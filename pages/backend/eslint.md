@@ -2,7 +2,9 @@
 
 ## Version
 
-This document is for version `9.7.0` (2024).
+This document is for version `9.13.0` (2024).
+
+*ESLint v8.x reached end-of-life on 2024-10-05 and is no longer maintained.*
 
 
 ## Overview
@@ -22,8 +24,14 @@ Node.js `^18.18.0`, `^20.9.0`, or `>=21.1.0`.
 ## Installation
 
 Install and configure ESLint:
-```sh npm2yarn
+```sh
 npm init @eslint/config@latest
+```
+
+If you want to use a specific shareable config that is hosted on npm, you can use the `--config` option:
+```shell
+# use `eslint-config-standard` shared config
+npm init @eslint/config@latest -- --config eslint-config-standard
 ```
 
 
