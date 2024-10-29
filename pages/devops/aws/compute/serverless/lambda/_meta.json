@@ -1,21 +1,22 @@
 {
   "invoke": "Invoke",
   "handler": "Handler",
+  "lifecycle": "Lifecycle",
+  "architecture": "Architecture",
   "runtime": "Runtime",
-  "extension": "Extensions",
   "processor": "Processors",
+  "extension": "Extensions",
   "configuration": "Configuration",
   "error-handling": "Error Handling",
   "secrets": "Secrets Handling",
-  "lifecycle": "Lifecycle",
   "concurrency": "Concurrency",
-  "cost": "Cost",
-  "integration": "Integration",
   "layer": "Lambda Layer",
   "version": "Versions and Aliases",
+  "cost": "Cost",
   "deployment": "Deployment Strategies",
+  "integration": "Integrations",
   "monitoring": "Monitoring",
   "limitations": "Limitations",
-  "architecture": "Architecture",
-  "powertools": "Powertools for AWS Lambda"
+  "powertools": "Powertools for AWS Lambda",
+  "development": "Development"
 }

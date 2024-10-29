@@ -2,23 +2,33 @@
 
 ## Overview
 
-Docker is an open-source platform that allows developers to build, deploy, run, update, and manage applications in containers.
+Docker is a platform that allows developers to build, deploy, run, update, and manage applications in containers.
 
 Docker makes it easy to create, package, deploy, and run containers.
 
+It includes various tools and components like Docker Engine, Docker Hub, Docker Compose, and Docker Desktop.
 
-## Container
 
-A container is a standardized unit that packages up your code and all of its dependencies. This package is designed to run reliably on any platform, because the container creates its own independent environment.
+## Docker Engine
 
-This makes it easy to carry workloads from one place to another, such as from development to production or from on-premises to the cloud.
+Docker Engine is an open source containerization technology for creating and running Docker containers.
 
-### Difference Between Containers and VMs?
+It comprise:
+- Docker daemon: a server that performs container management `dockerd`
+- APIs which specify interfaces that programs can use to talk to and instruct the Docker daemon.
+- A command line interface (CLI) client `docker`.
 
-Containers share the same operating system and kernel as the host they exist on, whereas virtual machines contain their operating system.
+Docker Engine is the core part of the Docker platform.
 
-Since each virtual machine has to maintain a copy of an operating system, there's a degree of wasted space.
 
-A container is more lightweight. They spin up quicker, almost instantly.
+## Installations
 
-While containers can provide speed, virtual machines offer you the full strength of an operating system and offer more resources, like package installation, a dedicated kernel, and more.
+Docker Desktop is not free for companies with more than 250 employees or annual revenue exceeding $10 million are required to have a paid subscription.
+
+Alternatives:
+- Podman is a quick substitute, but required a lot of tedious changes and extra setup, not really a "Docker replacement"
+
+
+## References
+
+- [How to use Docker without Docker Desktop on MacOS](https://dev.to/elliotalexander/how-to-use-docker-without-docker-desktop-on-macos-217m)

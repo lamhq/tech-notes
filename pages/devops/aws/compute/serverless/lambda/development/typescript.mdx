@@ -1,0 +1,95 @@
+# Building Lambda functions with TypeScript
+
+## Overview
+
+Because Node.js doesn't run TypeScript code natively, you must first transpile your TypeScript code into JavaScript. Then, deploy your JavaScript code to Lambda.
+
+Your code runs in an environment that includes the AWS SDK for JavaScript, with credentials from an IAM role that you manage.
+
+Lambda supports Node.js 20, which runs on Amazon Linux 2023.
+
+
+## Setting up a TypeScript development environment
+
+You can't create TypeScript code on the Lambda console.
+
+To transpile your TypeScript code, set up a compiler such as `esbuild` or TypeScript Compiler (aka `tsc`, bundled with TypeScript distribution).
+
+Example `tsconfig.json`:
+```json
+ {
+  "compilerOptions": {
+    "target": "es2020",
+    "strict": true,
+    "preserveConstEnums": true,
+    "noEmit": true,
+    "sourceMap": false,
+    "module":"commonjs",
+    "moduleResolution":"node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+  },
+  "exclude": ["node_modules", "**/*.test.ts"]
+}
+```
+
+
+## Installation
+
+Install the type definitions for Lambda:
+```shell npm2yarn
+npm install -D @types/aws-lambda
+```
+
+
+## Coding
+
+### Handler
+```ts
+import { Handler } from 'aws-lambda';
+
+export const handler: Handler = async (event, context) => {
+  console.log('EVENT: \n' + JSON.stringify(event, null, 2));
+  return context.logStreamName;
+};
+```
+
+### Async handler
+```ts
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+
+const url = 'https://aws.amazon.com/';
+
+export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  try {
+    // fetch is available with Node.js 18
+    const res = await fetch(url);
+    return {
+      statusCode: res.status,
+      body: JSON.stringify({
+        message: await res.text(),
+      }),
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: 'some error happened',
+      }),
+    };
+  }
+};
+```
+
+
+### Event object
+```ts
+import { S3Event } from "aws-lambda";
+
+export const lambdaHandler = async (event: S3Event): Promise<void> => {
+  event.Records.map((record) => console.log(record.s3.object.key));
+};
+```

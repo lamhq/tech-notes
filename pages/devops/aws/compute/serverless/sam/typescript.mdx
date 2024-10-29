@@ -1,0 +1,72 @@
+# Building TypeScript projects with AWS SAM CLI
+
+## Initializing a TypeScript codebase
+
+Generate the boilerplate:
+```shell
+sam init --app-template hello-world-typescript --name sam-app --package-type Zip --runtime nodejs20.x
+```
+
+Install project's dependencies:
+```shell npm2yarn
+npm install
+```
+
+To lint the code:
+```shell
+npm run lint
+```
+
+Run unit test
+```shell
+npm run test
+```
+
+
+## Building project
+
+```shell
+sam build
+```
+
+The `build` command will:
+- transpile code from TypeScript to JavaScript
+- bundles local dependencies and symlinks
+- minifies files to reduce asset size.
+
+AWS SAM uses `esbuild` to perform these tasks (you can't change it).
+
+You can customize the `esbuild` properties by editing the Metadata section in the `template.yaml` file:
+```yml
+Resources:
+  HelloWorldFunction:
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+        - app.ts
+```
+
+
+## Deploy
+
+```shell
+sam deploy --guided
+```
+
+
+## Sourcemap
+
+If you set `Sourcemap: true` in the `template.yaml` file, an environment variable `NODE_OPTIONS` will be automatically added to your function which enable sourcemap support in CloudWatch.
+
+Please note that the `console.trace()` method is not supported.
+
+
+## References
+
+- [Building TypeScript projects with AWS SAM CLI](https://aws.amazon.com/blogs/compute/building-typescript-projects-with-aws-sam-cli/)
+- [Building Lambda functions with TypeScript](https://docs.aws.amazon.com/lambda/latest/dg/lambda-typescript.html)
+- [Building Node.js Lambda functions with esbuild in AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build-typescript.html)

@@ -21,13 +21,13 @@ By default, logs are retained indefinitely, even if the function is deleted.
 
 ## Default Log Messages
 
-Log Messages which are logged automatically by the runtime.
+Log Messages are logged automatically by the runtime.
 
 When a Lambda function is invoked, the start log entry is logged. It contains the function version and unique request ID.
 
 When the function is completed, there is an end log entry. It contains the request ID.
 
-A REPORT line is logged that contains:
+A `REPORT` line is logged that contains:
 - The unique request ID
 - For cold requests, the duration of initialization
 - The duration of the handler processing, and the billed duration
@@ -44,10 +44,10 @@ Any messages sent to the `stdout` or `stderr` stream will be stored in CloudWatc
 
 You can use `console` or `print` methods, as well as common logging libraries.
 
-Logging can be configured in **Monitoring and operaations** tools section, you can:
-- Choose JSON as a log format
-- Set a specific log level for System log and Application log
-- Set a custom log group
+Logging can be configured in **Monitoring and operations tools** section in your function Configuration tab, you can:
+- Set the log format to Text or JSON
+- Set a specific log level for **System log** and **Application log**
+- Set a custom log group for your function
 
 
 Logging for python:

@@ -23,19 +23,24 @@ Starts an interactive session to guide you through the deployment:
 sam deploy --guided
 ```
 
-Deploy silently
+Deploy silently:
 ```shell
 sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
 ```
 
-## Run API locally
+Deploy upon changes (watch mode):
+```shell
+sam sync --stack-name sam-app --watch
+```
 
-Require starting docker first.
 
-If you make changes to the code, you need to rebuild and start the API again.
+## Unit tests
 
-```sh
-sam local start-api
+Tests are defined in the `hello-world/tests` folder in the generated code.
+
+To run unit tests:
+```shell
+npm run test
 ```
 
 
@@ -43,6 +48,11 @@ sam local start-api
 
 ```sh
 sam local invoke "HelloWorldFunction" -e events/event.json
+```
+
+You can [generates event payload samples](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-generate-event.html) for supported AWS services:
+```shell
+sam local generate-event s3 put >> S3PutEvent.json
 ```
 
 
@@ -54,13 +64,14 @@ sam logs -n HelloWorldFunction --stack-name api-lambda --tail
 ```
 
 
-## Unit tests
+## Run API locally
 
-Tests are defined in the `hello-world/tests` folder in the generated project.
+Require starting docker first.
 
-To run unit tests:
-```shell
-npm run test
+If you make changes to the code, you need to rebuild and start the API again.
+
+```sh
+sam local start-api
 ```
 
 

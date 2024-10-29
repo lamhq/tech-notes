@@ -4,6 +4,27 @@
 
 This documentation is for version `3.38.0`.
 
+
+## Overview
+
+Serverless Framework is a Node.js command line tool for building and deploying serverless applications.
+
+Supports various programming languages like Node.js, Python, Java, Go, ...
+
+It use YAML-based syntax to define your infrastructure and application.
+
+Allows you to test your applications locally.
+
+Pros:
+- Support multiple cloud providers including AWS, Microsoft Azure, GCP
+- Support building and deploying application with different programming languages
+- Support local development for AWS by using `serverless-offline` plugin 
+
+Cons:
+- Require Node.js to install the tool
+- Require a learning curve to learn its template syntax
+
+
 ## Requirements
 
 - Node.js

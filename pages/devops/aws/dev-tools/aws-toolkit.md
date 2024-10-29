@@ -10,11 +10,16 @@ There are different versions of the AWS Toolkit available as extensions for vari
 * [IntelliJ](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
 
 
-## Benefits
+Pros:
+- Seamlessly integrates with popular IDEs like Visual Studio Code
+- Supports local debugging for Lambda functions and API Gateway through VS Code's debugger (require a SAM template)
+- Debugger use docker to emulate Lambda runtime environment
+- Simplifies AWS management without needing to switch between command-line and IDE
+- Allow interacting with AWS services within the IDE
 
-1. Seamlessly integrates with popular IDEs like Visual Studio Code
-2. Simplifies AWS configuration and management without needing to switch between command-line and IDE
-3. Supports local debugging for serverless applications through VS Code's debugger
+Cons:
+- Doesn't support debugging TypeScript through VS Code's debugger
+- Require a lot of input steps to deploy application
 
 
 ## Create a sample application
@@ -63,3 +68,8 @@ A deployed application can be found in the **AWS Explorer** under region and **C
 You can invoke _remote_ AWS Lambda Functions by right-clicking the **Lambda node** and selecting "Invoke on AWS".
 
 Similarly, the API Gateway API can be found in the **API Gateway node**, and can be invoked via right-clicking the API node and selecting "Invoke on AWS".
+
+
+## References
+
+https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/welcome.html

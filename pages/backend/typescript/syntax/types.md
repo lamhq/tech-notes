@@ -346,6 +346,18 @@ type AgeType = typeof MyArray[number]["age"]; // AgeType is 'number'
 ```
 
 
+## Generate Type Definition
+
+Use the [`quicktype`](https://quicktype.io/typescript) utility to generate type definitions from an object in json file:
+```shell npm2yarn
+npm install -g quicktype
+```
+
+```shell
+quicktype S3PutEvent.json -o S3PutEvent.ts
+```
+
+
 ## Non-null Assertion operator `!`
 
 The non-null assertion operator tells the TypeScript compiler that an expression is not `null` or `undefined`:
