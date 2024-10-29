@@ -80,7 +80,7 @@ Patterns that don't end with `/` match both files and directories.
 
 If `ignores` is used without any other keys in the configuration object, then the patterns act as global ignores.
 
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 export default [
   {
     // all files in the `.config` directory should be ignored.
@@ -90,7 +90,7 @@ export default [
 ```
 
 You can use global ignores to ignore files/directories included in other configuration objects. This also apply to predefined configurations.
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 export default [
   ...tseslintConfig,
   eslintConfigPrettier,

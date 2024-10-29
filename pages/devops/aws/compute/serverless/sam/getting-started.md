@@ -16,6 +16,13 @@ sam init
 sam build
 ```
 
+1. The build command uses npm to install dependencies specified in your `package.json`
+2. It then copies your source code and dependencies into a build directory `.aws-sam`
+3. If you use the `--use-container` option, sam build runs the build process inside a container image, ensuring a consistent build environment
+
+Tip: by using `.npmignore`, you can control which files are excluded from the build process.
+
+
 ## Deploy
 
 Starts an interactive session to guide you through the deployment:

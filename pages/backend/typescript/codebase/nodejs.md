@@ -1,5 +1,49 @@
 # Set up Codebase for Node.js projects
 
+## Features
+
+- [x] Node.js v20
+- [x] TypeScript v5
+- [x] ESLint v9 with flat config system
+- [x] Use Prettier for code formatting
+- [x] Display linting errors in VS Code
+- [x] Sample unit test with Jest
+- [ ] Run and debug unit test with VS Code
+- [ ] Conventional Commit support
+- [ ] esbuild
+- [ ] Terraform
+- [ ] CI/CD with Github Actions
+
+
+## Creating project
+
+1. Generate `package.json` file:
+    ```bash
+    npm init -y
+    ```
+2. Install [TypeScript](/backend/typescript.mdx#installation)
+3. Update `tsconfig.json`:
+    ```json
+    {
+      // Reference: https://github.com/tsconfig/bases/blob/main/bases/node20.json
+      "compilerOptions": {
+        "lib": ["es2023"], // Use ES2023 library definitions.
+        "module": "node16", // Use Node.js module system for ES modules.
+        "target": "es2022", // Transpile code to ES2022.
+        "strict": true,
+        "esModuleInterop": true, // Allow default imports from CommonJS modules.
+        "skipLibCheck": true, // Skip type checking of declaration files.
+        "moduleResolution": "node16", // Use Node's module resolution algorithm.
+
+        "preserveConstEnums": true, // Keeps const enums in the code as they are
+        "noEmit": true, // Prevents TypeScript from generating any output files (for type-checking only)
+        "forceConsistentCasingInFileNames": true // Ensures file imports have consistent casing
+      },
+      "include": ["src"]
+    }
+    ```
+
+
 ## Linting and Formatting
 
 1. **Installation**: Install dependencies:
@@ -7,7 +51,6 @@
     npm install --save-dev eslint \
       @eslint/js \
       @types/eslint__js \
-      typescript \
       typescript-eslint \
       prettier \
       eslint-config-prettier \
@@ -85,6 +128,9 @@
 
 
 ## Testing
+
+Follow this guide to set up [Jest](/backend/jest/getting-started) for the project.
+
 
 ## Debugging
 

@@ -4,6 +4,14 @@
 
 Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
+Update your VS Code setting to auto fix ESLint errors on save:
+```json filename=".vscode/settings.json"
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  }
+}
+```
 
 ## Git (Source Control)
 

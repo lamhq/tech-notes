@@ -32,7 +32,7 @@ Check out the [official doc](https://eslint.org/docs/latest/use/configure/config
 
 ### Example
 
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 export default [
   {
     rules: {
@@ -56,7 +56,7 @@ The first value is the error level of the rule and can be one of these values:
 When more than one configuration object matches a given filename, the configuration objects are merged with later objects overriding previous objects when there is a conflict.
 
 In below example, any JavaScript file in the `tests` directory, both configuration objects are applied, so `languageOptions.globals` are merged to create a final result:
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 export default [
   {
     files: ["**/*.js"],
@@ -100,7 +100,7 @@ ESLint has two predefined configurations for JavaScript:
 
 To include these predefined configurations, install the `@eslint/js` package and update the configuration:
 
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 import js from "@eslint/js";
 
 export default [
@@ -114,7 +114,7 @@ export default [
 A sharable configuration is an npm package that exports a configuration object or array.
 
 For example, to use a shareable configuration named `eslint-config-example`, your configuration file would look like this:
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 import exampleConfig from "eslint-config-example";
 
 export default [
