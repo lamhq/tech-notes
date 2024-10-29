@@ -1,9 +1,9 @@
-# Usage
+# Installation
 
-## Install
+## Install Prettier
 
-```bash
-yarn add --dev --exact prettier
+```bash npm2yarn
+npm install --save-dev --save-exact prettier
 ```
 
 Create an empty config file to let editors and other tools know you are using Prettier:
@@ -25,15 +25,15 @@ coverage
 Format all files with Prettier:
 
 ```bash
-yarn prettier --write .
+npx prettier . --write
 ```
 
 
-## Set up your editor
+## Set up IDE
 
 ### Visual Studio Code
 
-`prettier-vscode` can be installed using the extension sidebar – it’s called “Prettier - Code formatter.”
+Install [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension (`esbenp.prettier-vscode`).
 
 
 ### ESLint (and other linters)
