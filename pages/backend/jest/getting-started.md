@@ -1,28 +1,26 @@
-# Getting Started
+# Getting Started (TypeScript)
 
 ## Installation 
 
-Install jest for TypeScript projects.
-
 ```sh npm2yarn
-npm install --save-dev jest @types/jest ts-jest
+npm install --save-dev jest ts-jest @jest/globals
 ```
 
 Explanation:
 - `jest`: Install jest framework
-- `@types/jest`: Install types for Jest globals (`describe`, `expect`, `test`, ...)
+- `@jest/globals`: Install types for Jest globals (`describe`, `expect`, `test`, ...)
 - `ts-jest`: Install the TypeScript preprocessor which allows jest to transpile TypeScript on the fly and have source-map support built in.
 - This assume the TypeScript compiler (`'typescript'`) is already installed.
 
 
 ## Configure Jest
 
-Create a `jest.config.js` file with below content:
+Create a `jest.config.mjs` file with below content:
 
-```js
-import type { Config } from 'jest';
+```js filename="jest.config.mjs"
+const config = {
+  testEnvironment: "node",
 
-module.exports = {
   // A list of paths to directories that Jest should use to search for files in
   roots: [
     "<rootDir>/src"
@@ -36,7 +34,7 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    "^.+.tsx?$": ["ts-jest",{}],
   },
 
   // Automatically clear mock calls, instances, contexts and results before every test
@@ -50,7 +48,9 @@ module.exports = {
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
-}
+};
+
+export default config;
 ```
 
 
@@ -65,27 +65,28 @@ npm install --save-dev eslint-plugin-jest
 ```
 
 Update your ESLint configuration:
-```js filename="eslint.config.js"
+```js filename="eslint.config.mjs"
 import pluginJest from 'eslint-plugin-jest';
-
+ 
 export default [
+  // configuration for Jest test files
   {
-    // update this to match your test files
-    files: ['**/*.spec.js', '**/*.test.js'],
-    ...jest.configs['flat/all'],,
-    plugins: { jest: pluginJest },
-    languageOptions: {
-      globals: pluginJest.environments.globals.globals,
-    },
-    rules: {
-      'jest/no-disabled-tests': 'warn',
-      'jest/no-focused-tests': 'error',
-      'jest/no-identical-title': 'error',
-      'jest/prefer-to-have-length': 'warn',
-      'jest/valid-expect': 'error',
-    },
+    files: ['**/*.spec.ts', '**/*.test.ts'],
+    ...pluginJest.configs['flat/all'],
   },
 ];
+```
+
+
+## Set up Visual Studio Code
+
+The [Jest extension](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) allows you to run and debug unit test inside VS Code.
+
+After installing, update your VS Code setting `.vscode/settings.json` to set extension's run mode to `on-demand`:
+```json
+{
+  "jest.runMode": "on-demand"
+}
 ```
 
 
@@ -94,7 +95,7 @@ export default [
 First, create a `sum.ts` file:
 
 ```js
-export default function sum(a: int, b: int) {
+export default function sum(a: number, b: number) {
   return a + b;
 }
 ```
@@ -102,21 +103,46 @@ export default function sum(a: int, b: int) {
 Then, create a file named `sum.test.ts`. This will contain our actual test:
 
 ```js
+import { describe, expect, it } from '@jest/globals';
 import sum from './sum';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+describe('sum function', () => {
+  it('adds 1 + 2 to equal 3', () => {
+    expect.assertions(1);
+    expect(sum(1, 2)).toBe(3);
+  });
+
+  it('adds -1 + -1 to equal -2', () => {
+    expect.assertions(1);
+    expect(sum(-1, -1)).toBe(-2);
+  });
+
+  it('adds 0 + 0 to equal 0', () => {
+    expect.assertions(1);
+    expect(sum(0, 0)).toBe(0);
+  });
 });
 ```
 
 
 ## Run tests
 
-Run `npx jest` from your project root and jest will execute any tests you have.
+Add a `test` script to `package.json`:
+```json
+{
+  "scripts": {
+    "test": "jest"
+  }
+}
+```
+
+Run the test from your project root:
+```shell
+npm run test
+```
 
 
 ## References
 
-- [ts-jest](https://kulshekhar.github.io/ts-jest/)
+- [jestjs.io](https://jestjs.io/docs/getting-started#using-typescript)
 - [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)
-- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/intro-1/jest)

@@ -1,3 +1,8 @@
 {
-  "getting-started": "Getting Started"
+  "getting-started": "Getting Started",
+  "matcher": "Using Matchers",
+  "async": "Testing Asynchronous Code",
+  "setup-teardown": "Setup and Teardown",
+  "mock": "Mocking",
+  "snapshot": "Snapshot Testing"
 }
