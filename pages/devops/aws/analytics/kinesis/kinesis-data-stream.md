@@ -91,7 +91,7 @@ The maximum throughput of a stream depends on the number of shards you configure
 
 ## SQS vs. SNS vs. Kinesis
 
-Check this [document](/devops/aws/app-integration/sqs#sqs-vs-sns-vs-kinesis).
+Check this [document](../../app-integration/sqs.md#sqs-vs-sns-vs-kinesis-vs-mq).
 
 
 ## Architecture

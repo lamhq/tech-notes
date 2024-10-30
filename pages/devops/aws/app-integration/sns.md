@@ -94,4 +94,4 @@ The Fanout scenario is when a message published to an SNS topic is replicated an
 
 ## SQS vs. SNS vs. Kinesis
 
-Check this [document](/devops/aws/app-integration/sqs#sqs-vs-sns-vs-kinesis).
+Check this [document](../app-integration/sqs.md#sqs-vs-sns-vs-kinesis-vs-mq).

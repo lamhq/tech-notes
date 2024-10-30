@@ -1,6 +1,7 @@
 {
+  "install": "Installation",
   "syntax": "Syntax",
-  "style-guide": "Style Guide",
+  "style-guide": "Code Style",
   "module-resolution": "Module Resolution",
   "configuration": "Configuration Options",
   "codebase": "Codebase Setup"
