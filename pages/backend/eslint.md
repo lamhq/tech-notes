@@ -21,34 +21,6 @@ It's widely used in both browser and server-side JavaScript projects to maintain
 Node.js `^18.18.0`, `^20.9.0`, or `>=21.1.0`.
 
 
-## Installation
-
-Install and configure ESLint:
-```sh
-npm init @eslint/config@latest
-```
-
-If you want to use a specific shareable config that is hosted on npm, you can use the `--config` option:
-```shell
-# use `eslint-config-standard` shared config
-npm init @eslint/config@latest -- --config eslint-config-standard
-```
-
-
-## Running ESLint
-
-Run ESLint on any file or directory:
-```sh
-npx eslint yourfile.js
-```
-
-Run and fix:
-```sh
-npx eslint --fix file.js
-```
-
-
 ## Reference
 
 - [Official doc](https://eslint.org/docs/latest/use/getting-started)
-- [awesome-eslint](https://github.com/dustinspecker/awesome-eslint)

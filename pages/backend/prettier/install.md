@@ -1,69 +1,73 @@
 # Installation
 
+Install Prettier and make it work with ESLint.
+
 ## Installing Prettier
 
+This assumes that you already have ESLint installed.
+
 ```bash npm2yarn
-npm install --save-dev --save-exact prettier
+npm install --save-dev prettier \
+  eslint-config-prettier \
+  eslint-plugin-prettier \
 ```
 
-Create an empty config file to let editors and other tools know you are using Prettier:
-```bash
-node --eval "fs.writeFileSync('.prettierrc','{}\n')"
-```
-
-Create a `.prettierignore` file to let the Prettier CLI and editors know which files to not format:
-```bash
-node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
-```
+- [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#installation) makes ESLint and Prettier play nice with each other.
+- [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier) plugin helps reporting Prettier formatting issues as linting errors.
 
 Prettier will follow rules specified in `.gitignore` if it exists the directory where Prettier is run. You can also base your `.prettierignore` on `.eslintignore`.
 
 It's important to install Prettier locally in every project, so each project gets the correct Prettier version.
 
 
-## Using Prettier
+## Configuring Prettier
 
-Format all files with Prettier:
-```bash
-npx prettier . --write
+Create a Prettier config `.prettierrc` file:
+```json filename=".prettierrc"
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
 ```
 
-Run this command in CI to make sure your code meets Prettier's formatting rules before merging any changes:
-```shell
-npx prettier . --check
+
+## Configuring ESLint
+
+Update `eslint.config.mjs` file:
+```js filename="eslint.config.mjs"
+import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+
+export default [
+  // your existing configs...
+  eslintConfigPrettier,
+  eslintPluginPrettierRecommended,
+];
+```
+
+
+## Using Prettier
+
+Prettier's formatting issues are reported as linting errors. You can run `eslint --fix` to automatically format your code.
+
+Or run Prettier directly:
+```bash
+npx prettier . --write
 ```
 
 
 ## Set up Visual Studio Code
 
+*This is optional. You can just use the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).*
+
 Install [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension (`esbenp.prettier-vscode`).
 
 
-## Set up ESLint
+## References
 
-Install [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#installation) to make ESLint and Prettier play nice with each other.
-
-Install plugin [`eslint-plugin-prettier`](https://github.com/prettier/eslint-plugin-prettier) to run Prettier as an ESLint rule (report Prettier formatting issues as linting errors).
-
-
-## Git hooks (Husky)
-
-Run Prettier as a pre-commit hook. This makes sure all your commits are formatted, without having to wait for your CI build to finish.
-
-Install `husky` and `lint-staged`:
-
-```bash npm2yarn
-npm install --save-dev husky lint-staged
-npx husky init
-node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
-```
-
-Add the following to your `package.json`:
-
-```json
-{
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  }
-}
-```
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)

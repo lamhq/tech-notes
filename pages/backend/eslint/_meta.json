@@ -1,5 +1,4 @@
 {
-  "configure": "Configure ESLint",
-  "processors": "Custom Processors",
-  "integrations": "Integrations"
+  "install": "Installation",
+  "configure": "Configure ESLint"
 }
