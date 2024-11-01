@@ -3,6 +3,7 @@
   "jupyter-nb": "Jupyter Notebook",
   "fastapi": "FastAPI",
   "typescript": "TypeScript",
-  "container": "Dev Container",
-  "debug": "Debug"
+  "debug": "Debug",
+  "extensions": "Extensions",
+  "dev-containers": "Dev Container"
 }
