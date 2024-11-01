@@ -10,6 +10,7 @@
   "typescript": "TypeScript",
   "nestjs": "NestJS",
   "nodejs": "Node.js",
+  "pnpm": "pnpm",
   "deno": "Deno",
   "eslint": "ESLint",
   "prettier": "Prettier",
