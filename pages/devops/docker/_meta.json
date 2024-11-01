@@ -1,3 +1,6 @@
 {
-  "container": "Container"
+  "syntax": "Dockerfile",
+  "image": "Image",
+  "container": "Container",
+  "cleanup": "Clean up"
 }

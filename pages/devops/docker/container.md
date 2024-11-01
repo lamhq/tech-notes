@@ -1,16 +1,67 @@
 # Container
 
-A container is a standardized unit that packages up your code and all of its dependencies. This package is designed to run reliably on any platform, because the container creates its own independent environment.
+## Start a container for testing
 
-This makes it easy to carry workloads from one place to another, such as from development to production or from on-premises to the cloud.
+```shell
+docker run --rm -it --entrypoint /bin/bash <image_name>
+```
+
+- `--rm`: removes the container after it exits
+- `-it` makes the container interactive with a terminal
+- `--entrypoint /bin/bash` sets Bash as the entry point
+
+Use cases:
+- **Development**: Running scripts or testing applications in an isolated environment.
+- **Debugging**: Inspecting a container's filesystem or environment variables to troubleshoot issues.
 
 
-## Containers vs Virtual Machines?
+## Start and mount directories
 
-Containers share the same operating system and kernel as the host they exist on, whereas virtual machines contain their operating system.
+```shell
+docker run \
+  --name <container_name> \
+  -p host_port:container_port \
+  -v "$PWD":/path/in/container \
+  -d <image_name>
+```
+- `--name <container_name>`: Names the container for easy reference.
+- `-p host_port:container_port`: Maps a port on the host to a port in the container, enabling communication.
+- `-v "$PWD":/path/in/container:` Mounts the current working directory (`$PWD`) to a specified path inside the container.
+- `-d`: Runs the container in the background.
 
-Since each virtual machine has to maintain a copy of an operating system, there's a degree of wasted space.
 
-A container is more lightweight. They spin up quicker, almost instantly.
+## Connect to a container
 
-While containers can provide speed, virtual machines offer you the full strength of an operating system and offer more resources, like package installation, a dedicated kernel, and more.
+Open terminal in a running container:
+```shell
+docker exec -it <container_name> /bin/bash
+```
+
+## List containers
+
+List running containers:
+```shell
+docker ps
+```
+
+List all containers:
+```shell
+docker ps -a
+```
+
+## Stop a container
+
+Gracefully stop the specified container
+```shell
+docker container stop <container_name or ID>
+```
+
+Force shutdown a specified container:
+```shell
+docker container kill <container_name or ID>
+```
+
+## Start a stopped container
+```shell
+docker start container_name
+```

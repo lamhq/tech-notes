@@ -1,0 +1,85 @@
+# Dockerfile
+
+## Overview
+
+A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using a Dockerfile, you can automate the image creation process. 
+
+A Dockerfile typically consists of a series of instructions. Each instruction creates a new layer in the image. 
+
+Here's an example of a Dockerfile for a Python application:
+```dockerfile
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+
+
+## Multi-Stage build
+
+Multi-stage builds allow you to use multiple `FROM` statements in your Dockerfile. Each `FROM` instruction starts a new stage of the build process, and you can selectively copy artifacts from one stage to another. 
+
+This helps in keeping the final image lean by excluding unnecessary build dependencies.
+
+Here's an example of a Dockerfile for a Go application:
+```dockerfile
+# First stage: Build the application
+FROM golang:1.23 AS builder
+WORKDIR /src
+COPY . .
+RUN go build -o /app/hello
+
+# Second stage: Create the final image
+FROM scratch
+COPY --from=builder /app/hello /app/hello
+CMD ["/app/hello"]
+```
+- The first stage (`builder`) uses the `golang` image to compile a Go application.
+- The second stage (`scratch`) creates a minimal final image that only contains the compiled binary.
+
+
+## References
+
+### FROM
+- Specifies the base image to use.
+- Example: `FROM ubuntu:latest`
+
+### RUN
+- Executes a command in the image.
+- Example: `RUN apt-get update -y`
+
+### WORKDIR
+- Sets the working directory for subsequent commands.
+- Example: `WORKDIR /app`
+
+### COPY
+- Copies files or directories from the host machine to the image.
+- Example: `COPY my_script.py .`
+
+### EXPOSE
+- Informs Docker that the container listens on a specific port.
+- Example: `EXPOSE 8080`
+
+### CMD
+- Sets the default command to be run when the container starts.
+- Example: `CMD ["python", "my_script.py"]`
+
+### ENTRYPOINT
+- Sets the executable file to run when the container starts.
+- Example: `ENTRYPOINT ["python"]`
