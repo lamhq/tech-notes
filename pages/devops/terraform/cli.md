@@ -1,4 +1,4 @@
-# Frequently Used Commands
+# CLI Commands
 
 ## Get version
 
@@ -6,11 +6,11 @@
 terraform version
 ```
 
-## Change working directory
+## Set working directory
 
 You can add `-chdir=<path_to/tf>` flag to commands to specify the working directory:
 ```shell
-terraform -chdir="infra" apply -var-file="test.tfvars"
+terraform -chdir="infra/" apply -var-file="test.tfvars"
 ```
 
 
@@ -21,7 +21,7 @@ Validate the code to look for any errors in syntax, parameters, or attributes wi
 terraform validate
 ```
 
-## Create plans
+## Preview
 
 Create an execution plan:
 ```shell
@@ -34,8 +34,6 @@ terraform plan -destroy
 ```
 
 ## Apply changes
-
-Applying a Terraform configuration is the process of creating, updating, and destroying real infrastructure objects in order to make their settings match the configuration.
 
 ```shell
 terraform apply
@@ -61,6 +59,7 @@ Pass a variable via the command line:
 terraform apply -var my_variable=<variable>
 ```
 
+
 ## Destroy
 
 ```shell
@@ -71,10 +70,18 @@ terraform destroy
 terraform destroy --auto-approve
 ```
 
-## List providers
+## View outputs
 
+Display all the output variables from your Terraform state:
 ```shell
-terraform providers
+terraform output
+```
+
+## State
+
+List all the resources being tracked by the Terraform state file:
+```shell
+terraform state list
 ```
 
 ## Workspace commands
@@ -97,13 +104,6 @@ terraform workspace select <WORKSPACE_NAME>
 Delete workspace:
 ```shell
 terraform workspace delete <WORKSPACE_NAME>
-```
-
-## State
-
-List all the resources being tracked by the Terraform state file:
-```shell
-terraform state list
 ```
 
 ## List available commands

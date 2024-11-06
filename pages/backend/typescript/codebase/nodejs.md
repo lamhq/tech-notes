@@ -8,9 +8,8 @@
 - [x] Use Prettier for code formatting
 - [x] Display linting errors in VS Code
 - [x] Sample unit test with Jest
-- [ ] Run and debug unit test with VS Code
-- [ ] Conventional Commit support
-- [ ] esbuild
+- [x] Run and debug unit test with VS Code
+- [x] Conventional Commit support
 - [ ] Terraform
 - [ ] CI/CD with Github Actions
 

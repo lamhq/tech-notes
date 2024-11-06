@@ -458,7 +458,7 @@ Your company needs to move 75 TB of data to AWS. Their internet connection peaks
   <E>Using a Snowmobile would be better when you are talking petabytes of data instead of terabytes, so this wouldn't be the best solution to choose.</E>
 
   <A correct>Order an AWS Snowball, copy the data to the device, and send the device back. Then the data will exist on S3.</A>
-  <E>This is the most cost-effective option. With AWS Snowball, you need to create a S3 bucket for the copy destination and then order the Snowball device from AWS. Once it arrives, configure the Snowball device within your environment before copying the data to the devic and, ship the device back to AWS, who will then copy the data into the S3 bucket.</E>
+  <E>This is the most cost-effective option. With AWS Snowball, you need to create an S3 bucket for the copy destination and then order the Snowball device from AWS. Once it arrives, configure the Snowball device within your environment before copying the data to the devic and, ship the device back to AWS, who will then copy the data into the S3 bucket.</E>
   <R />
 </Q>
 
@@ -831,7 +831,7 @@ Reference: [How Aurora Endpoints Work with High Availability](https://docs.aws.a
 <Q>
 You have created a meme generation website where users upload their own images and create the captions they want; the images can be up to several gigabytes in size. Then, the web application processes this and stores the processed image in S3. What AWS services could achieve this while keeping the cost as low as possible?
 
-  <A>Use a temporary Elastic File System (EFS) for the web application to store the images. Configure a separate group of EC2 instances with a polling service to check the EFS file system for new files. When found, have these EC2 instances process and create memes from the images. Once complete, store the processed memes into a S3 bucket.</A>
+  <A>Use a temporary Elastic File System (EFS) for the web application to store the images. Configure a separate group of EC2 instances with a polling service to check the EFS file system for new files. When found, have these EC2 instances process and create memes from the images. Once complete, store the processed memes into an S3 bucket.</A>
   <E>Although technically feasible, using EFS vs another storage service such as S3 would be more costly, which goes against the question's requirements.</E>
 
   <A>Use an SQS queue to queue the requests. Use a fleet of EC2 instances behind an Application Load Balancer and Autoscaling group to process each request from the queue, and then once the image is generated, store the image in S3.</A>

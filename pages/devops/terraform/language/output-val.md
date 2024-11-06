@@ -4,8 +4,7 @@
 
 Output values are similar to return values in programming languages.
 
-Output values have several uses:
-
+Use cases:
 - A child module can use outputs to expose a subset of its resource attributes
   to a parent module.
 - A root module can use outputs to print certain values in the CLI output after

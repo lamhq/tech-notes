@@ -1,15 +1,16 @@
 # CLI commands
 
-## Install all dependencies
+## Install dependencies
 
 ```bash
-pnpm install
+pnpm i
+
+# install for production, packages listed in `devDependencies` won't be installed
+# default value is `NODE_ENV === 'production'`
+pnpm i -P
 
 # pnpm-lock.yaml is not updated
 pnpm i --frozen-lockfile
-
-# will not install any package listed in `devDependencies`
-pnpm -P
 ```
 
 ## Add package

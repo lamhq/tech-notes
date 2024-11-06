@@ -10,51 +10,44 @@ which aws
 aws --version
 ```
 
-## Configure AWS CLI
 
-You can configure AWS Credentials for the CLI by:
+## Set up AWS Credentials
+
+You can set up AWS Credentials by:
 1. Setting environment variables
-2. Using Profiles
-3. Updating config file
+2. Configuring AWS CLI
+3. Updating credentials file
 
 ### Setting Environment variables
 
 You can set credentials for AWS CLI by set up these environment variables:
 
 ```shell
+export AWS_DEFAULT_REGION=us-east-1
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
-export AWS_DEFAULT_REGION=us-east-1
+export AWS_SESSION_TOKEN=
 ```
 
-### Using CLI profiles
+### Configuring AWS CLI
 
-A profile is a set of configuration settings and credentials that you can use to interact with AWS services.
+```shell
+aws configure
+```
 
-By default, the AWS CLI uses the settings found in the profile named `default`.
-
-You can create and use multiple profiles to manage different sets of credentials and configurations.
-
-To create a profile, use this command:
+You can also configure profiles for different sets of credentials:
 ```shell
 aws configure --profile myprofile
 ```
 
-To use a specific profile in your command:
+And in your code or commands, specify the profile:
 ```shell
 aws s3 ls --profile myprofile
 ```
 
-### Updating config file
+### Updating credentials file
 
-You can also manually set configuration settings and credentials in `~/.aws/config` file and `~/.aws/credentials` file:
-
-```shell filename="~/.aws/config"
-[profile myprofile]
-region = us-west-2
-output = json
-```
-
+Create a credentials file at `~/.aws/credentials` and add your credentials:
 ```shell filename="~/.aws/credentials"
 [profile myprofile]
 aws_access_key_id =

@@ -2,48 +2,47 @@
 
 ## Overview
 
-Terraform relies on **plugins** called providers to interact with cloud providers.
+Terraform relies on plugins called providers to interact with cloud providers.
 
-**Terraform configurations** must declare which providers they require so that Terraform can install and use them.
+Each provider includes a set of **resource** and **data sources** for a specific service or set of services.
 
-Each provider adds a set of **resource types** and/or **data sources** that Terraform can manage.
+*For example, the AWS provider allows you to manage AWS resources like EC2 instances, S3 buckets, and IAM roles.*
 
 Providers are released separately from Terraform itself and have their own **version numbers**.
 
 To find providers for the infrastructure platforms you use, browse the [Terraform Registry](https://registry.terraform.io/browse/providers).
 
-Each provider has its own documentation, describing its resource types and their arguments.
-
 Terraform CLI finds and installs providers when initializing a working directory.
-
-To save time and bandwidth, you can enable the plugin cache using the `plugin_cache_dir` setting in the CLI configuration file.
 
 
 ## Provider Requirements
 
-Terraform configurations must declare which providers they require.
-
-A provider requirement consists of a **local name**, a **source location**, and a **version constraint**:
+A provider requirement block consists of a **local name**, a **source location**, and a **version constraint**:
 ```hcl
 terraform {
   required_providers {
-    mycloud = {
-      source  = "mycorp/mycloud"
-      version = "~> 1.0"
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 3.0.0"
     }
   }
+
+  required_version = ">= 0.14.0"
 }
 
-provider "mycloud" {
-  # ...
+provider "aws" {
+  region = "us-west-2"
 }
 ```
 
-The above configuration declares `mycloud` as the local name for ` mycorp/mycloud` (source address) with version constraint `~> 1.0`.
+In above configuration:
+- local name: `aws`
+- source location: `hashicorp/aws`
+- version constraint `>= 3.0.0`.
+
+This configuration ensures that Terraform uses AWS provider version 3.0.0 or higher and Terraform version 0.14.0 or higher.
 
 `required_providers` block is not mandatory for every provider.
-
-Provider declaration typically used when you want to specify the minimum required version of a provider or when you need to use a non-default provider configuration.
 
 
 ### Local Names
@@ -98,13 +97,3 @@ To **use the same provider with different configurations** for different resourc
 When you declare a provider without specifying a version or alias, Terraform uses the default provider configuration.
 
 The default provider configuration is automatically created for the provider name (e.g., "aws") based on the provider plugin installed.
-
-
-## Develop Providers
-
-Providers are written in Go, using the Terraform Plugin SDK.
-
-
-## Dependency Lock File
-
-Check the [Official documentation](https://developer.hashicorp.com/terraform/language/files/dependency-lock).

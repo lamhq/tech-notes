@@ -12,7 +12,7 @@ Terraform uses persisted state data to keep track of the resources it manages.
 [Available built-in backends](https://developer.hashicorp.com/terraform/language/settings/backends/local) includes:
 - [`local`](https://developer.hashicorp.com/terraform/language/settings/backends/local): stores state as a local file on disk
 - [`remote`](https://developer.hashicorp.com/terraform/language/settings/backends/remote): store state snapshots and execute operations in Terraform Cloud. You can also only store state in the Terraform Cloud backend.
-- [`s3`](https://developer.hashicorp.com/terraform/language/settings/backends/s3): Stores the state as a given key in a given bucket on Amazon S3
+- [`s3`](https://developer.hashicorp.com/terraform/language/settings/backends/s3): Stores the state data in a S3 object in a given bucket on Amazon S3
 - [`gcs`](https://developer.hashicorp.com/terraform/language/settings/backends/gcs): Stores the state in a Google Cloud Storage bucket.
 - [`http`](https://developer.hashicorp.com/terraform/language/settings/backends/http): Stores the state using a simple REST client.
 
@@ -50,7 +50,7 @@ You cannot reference values declared within backend blocks.
 
 ## Initialization
 
-When you change a backend's configuration, you must run `terraform init`.
+When you change a backend's configuration, you must run `terraform init` again.
 
 Upon initialization, Terraform creates a local `.terraform/` directory. It stores the latest backend configuration and any CLI-provided authentication parameters. **Do not** commit this directory to Git to protect sensitive backend credentials.
 
@@ -95,3 +95,20 @@ terraform {
   }
 }
 ```
+
+
+### S3
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "your-bucket-name"
+    key            = "path/to/your/terraform.tfstate"
+    region         = "us-west-2"
+    dynamodb_table = "your-dynamodb-table-name" # For state locking and consistency checks
+    encrypt        = true
+  }
+}
+```
+
+Reference: https://developer.hashicorp.com/terraform/language/backend/s3

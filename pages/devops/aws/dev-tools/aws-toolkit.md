@@ -54,7 +54,7 @@ To deploy your serverless applications:
 2. Open the Command Palette in VS Code
 3. Select `AWS: Sync SAM Application`
 4. Choose AWS region, SAM template file
-5. Select a S3 bucket to deploy the code to
+5. Select an S3 bucket to deploy the code to
 6. Select or enter a CloudFormation stack name
 7. When the deployment is complete, you see your application listed in the **AWS Explorer** (Side Bar).
 

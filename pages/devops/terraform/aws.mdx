@@ -1,101 +1,122 @@
 # AWS Snippets
 
-## Preparing credentials
+## Preparations
 
-Set required environment variables for working with AWS:
-
-```shell
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_DEFAULT_REGION=us-east-1
-```
+1. [Set up AWS credentials](../aws/dev-tools/aws-cli.mdx#set-up-aws-credentials) on the machine
+2. Create a S3 backend bucket for storing Terraform state
+3. Create a DynamoDB table for state locking
 
 
-## Define AWS provider
-
-```hcl
-provider "aws" {
-  region     = "us-east-1"
-}
-```
-
-
-## Using child module
-
-Sample code of using child module to define VPC, Subnet, EC2 resources.
-
-### Child module
-
-The child module:
-- define subnet, vpc resource
-- accept a input variable for `region`
-- return subnet's id, AMI's id to parent module
-
-```hcl filename="main.tf"
-provider "aws" {
-  region = var.region
-}
-
-resource "aws_vpc" "this" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "this" {
-  vpc_id     = aws_vpc.this.id
-  cidr_block = "10.0.1.0/24"
-}
-
-data "aws_ssm_parameter" "this" {
-  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
-```
+## Input variables
 
 ```hcl filename="variables.tf"
+variable "project" {
+  type    = string
+  description = "Project name"
+}
+
+variable "env" {
+  type    = string
+  description = "Runtime environment (e.g., dev, prod)"
+}
+
+variable "owner" {
+  type    = string
+  description = "Email of resource owner"
+}
+
 variable "region" {
-  type    = string
-  default = "us-east-1"
+  description = "AWS region where resources will be created"
+  type        = string
+  default     = "us-central-1"
+}
+
+variable "artifact_bucket" {
+  description = "S3 bucket for storing project's artifacts (Terraform state, Lambda function code, Lambda layers)"
+  type        = string
 }
 ```
 
-```hcl filename="outputs.tf"
-output "subnet_id" {
-  value = aws_subnet.this.id
-}
-
-output "ami_id" {
-  value = data.aws_ssm_parameter.this.value
-}
+Template for `.tfvars` file:
+```hcl filename="params.tfvars"
+project = ""
+env = "dev"
+owner = ""
+region = ""
+artifact_bucket = ""
 ```
 
-### Main module
 
-- accept a input variable for `region`
-- import the child module, passing the value to `region` variable of the child module
-- define a EC2 instance that uses the ami and subnet from the child module's return values
+## Provider
 
-```hcl filename="main.tf"
-variable "main_region" {
-  type    = string
-  default = "us-east-1"
+```hcl filename="provider.tf"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+    }
+
+    # provides a data source that can create archives from individual files or collections of files
+    # useful for packaging code files to be deployed
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4.2"
+    }
+
+    # provide resources to generate random values
+    # useful for creating unique resource identifiers
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.6.0"
+    }
+  }
 }
 
 provider "aws" {
-  region = var.main_region
-}
+  region = var.region
 
-module "vpc" {
-  source = "./modules/vpc"
-  region = var.main_region
-}
-
-resource "aws_instance" "my-instance" {
-  ami           = module.vpc.ami_id
-  subnet_id     = module.vpc.subnet_id
-  instance_type = "t2.micro"
+  default_tags {
+    tags = {
+      owner = var.owner
+      project = var.project
+    }
+  }
 }
 ```
 
 
-## Sample codes
+## Name prefix
 
-- [Github Action Workflow example code](https://github.com/JesseHoch/learn-terraform-github-actions/blob/master/.github/workflows/terraform.yml) for deploying AWS resources in CI environment.
+Define a prefix for resource's name:
+```hcl filename="locals.tf"
+locals {
+  name_prefix = "${var.project}-${var.env}"
+}
+```
+
+
+## Backend
+
+```hcl filename="backend.tf"
+terraform {
+  backend "s3" {
+    bucket = var.artifact_bucket
+    key    = "${local.name_prefix}/terraform.tfstate"
+    dynamodb_table = aws_dynamodb_table.state_locking_table.name
+    encrypt        = true
+  }
+}
+
+resource "aws_dynamodb_table" "state_locking_table" {
+  name           = "${local.name_prefix}-terraform-state-lock"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 1
+  write_capacity = 1
+  hash_key       = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
+```

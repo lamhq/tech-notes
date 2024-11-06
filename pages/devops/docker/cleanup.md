@@ -10,7 +10,7 @@ docker system prune
 ## Remove image
 Remove a single image:
 ```shell
-docker rmi <image_id>
+docker rmi -f <image_id>
 ```
 
 Remove dangling images:

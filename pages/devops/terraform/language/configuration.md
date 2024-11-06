@@ -1,47 +1,6 @@
 # Configuration
 
-## Terraform Language
-
-Terraform language is used for declaring resources. Resources represent infrastructure objects.
-
-Terraform language lets you:
-- define dependencies between resources
-- create multiple similar resources from a single configuration block.
-
-The Terraform language consists of the following **elements**:
-
-### Blocks
-
-Blocks are containers for other content and usually represent the configuration of some kind of object, like a resource.
-
-Blocks have a **block type**, can have zero or more **labels**, and have a body that contains any number of **arguments** and **nested blocks**.
-
-```hcl
-resource "aws_instance" "example" {
-  ami = "abc123"
-
-  network_interface {
-    # ...
-  }
-}
-```
-
-
-### Arguments
-
-Arguments assign a value to a name. They appear within **blocks**.
-
-```hcl
-ami = "abc123"
-```
-
-### Expressions
-
-Expressions represent a value, either literally or by referencing and combining other values.
-
-Examples: `"hello"`, `15`, `local.region`, ...
-
-## Configuration
+## Overview
 
 A Terraform configuration is a document in the **Terraform language** that tells Terraform how to manage a given collection of infrastructure.
 

@@ -20,11 +20,11 @@ resource "aws_instance" "web" {
 }
 ```
 
-In the following example, the resource type is `aws_instance`, the local name is `web`:
-
-Within the block body (between `{` and `}`) are the configuration **arguments** for the resource itself.
-
-Expressions are `"ami-a1b2c3d4"` and `"t2.micro"`.
+In above example:
+- resource type: `aws_instance`
+- local name: `web`
+- expressions are `"ami-a1b2c3d4"` and `"t2.micro"`.
+- within the block body (between `{` and `}`) are the configuration **arguments** for the resource itself.
 
 
 ## Resource Types

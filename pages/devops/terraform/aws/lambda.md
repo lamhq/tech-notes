@@ -1,36 +1,90 @@
-# Serverless
+# AWS Lambda
 
-## Lambda function
-
-The below code:
-- Create a Lambda function named `test_lambda_function`
-- Package function code into a zip file
-- Refer a layer (declared in other place)
+## IAM Role
 
 ```hcl
-# packaging function code to zip file
-data "archive_file" "function_zip" {
-  type        = "zip"
-  source_dir  = "../"
-  excludes    = [".venv", "build", "infra"]
-  output_path = "../function.zip"
+# Role for Lambda function
+resource "aws_iam_role" "lambda_role" {
+  name = "${local.name_prefix}-lambda_role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "lambda.amazonaws.com"
+        }
+      }
+    ]
+  })
 }
 
-# create a lambda function
-resource "aws_lambda_function" "my_function" {
-  function_name    = "my-function"
-  filename         = "../function.zip"
-  source_code_hash = data.archive_file.function_zip.output_base64sha256
-  role             = aws_iam_role.lambda_role.arn
-  runtime          = "python3.9"
-  handler          = "my_function.lambda_handler"
-  timeout          = 10
-  layers           = [aws_lambda_layer_version.lambda_layer.arn]
+# Attach a AWS-managed policy `AWSLambdaBasicExecutionRole` to the role
+resource "aws_iam_role_policy_attachment" "lambda_basic_exec_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 ```
 
 
-## Lambda Layer
+## Function
+
+The below code:
+- Create a Lambda function named `test_lambda_function`
+- Package function code into a zip file
+- Upload the zip file to an S3 bucket
+- Define a Lambda function
+
+```hcl
+# Packaging function code to a zip archive
+data "archive_file" "function_zip" {
+  type        = "zip"
+  source_dir  = "src/"
+  output_path = "build/lambda.zip"
+}
+
+# Upload the archive to an S3 bucket
+resource "aws_s3_object" "lambda_code" {
+  bucket = var.artifact_bucket
+  key    = "${local.name_prefix}/lambda-function.zip"
+  source = data.archive_file.function_zip.output_path
+  etag = filemd5(data.archive_file.function_zip.output_path)
+}
+
+# Create a lambda function
+resource "aws_lambda_function" "get_data_function" {
+  function_name    = "${local.name_prefix}-get-data"
+  role             = aws_iam_role.lambda_role.arn
+
+  s3_bucket = var.artifact_bucket
+  s3_key    = aws_s3_object.lambda_code.key
+  source_code_hash = data.archive_file.function_zip.output_base64sha256
+  handler          = "get-data.lambda_handler"
+  runtime          = "nodejs20.x"
+  timeout          = 10
+}
+```
+
+
+## Log group
+
+Define a log group for an AWS Lambda function:
+
+```hcl
+# Create a CloudWatch log group
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name = "/aws/lambda/${aws_lambda_function.get_data_function.function_name}"
+  tags = {
+    application = "job_log_group"
+  }
+}
+```
+
+Name of the log group must follow the format: `/aws/lambda/{function_name}`.
+
+
+## Layer
 
 The below code:
 - Install project dependencies to a directory
@@ -67,52 +121,6 @@ resource "aws_lambda_layer_version" "lambda_layer" {
 ```
 
 
-## Log group
+## References
 
-Define a log group for an AWS Lambda function:
-
-```hcl
-resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name = "/aws/lambda/my-function"
-  tags = {
-    application = "job_log_group"
-  }
-}
-```
-
-Define permission to write log:
-```hcl
-resource "aws_iam_role" "lambda_role" {
-  name = "lambda_role"
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "lambda.amazonaws.com"
-        }
-      },
-    ]
-  })
-  inline_policy {
-    name = "trigger_permission"
-    policy = jsonencode({
-      Version = "2012-10-17"
-      Statement = [
-        {
-          Action = [
-            "logs:CreateLogStream",
-            "logs:PutLogEvents"
-          ]
-          Effect   = "Allow"
-          Resource = "${aws_cloudwatch_log_group.trigger_log_group.arn}:*"
-        }        
-      ]
-    })
-  }
-}
-```
-
-The log group name must follow the format: `/aws/lambda/{function name}`
+- [Deploy serverless applications with AWS Lambda and API Gateway](https://developer.hashicorp.com/terraform/tutorials/aws/lambda-api-gateway)

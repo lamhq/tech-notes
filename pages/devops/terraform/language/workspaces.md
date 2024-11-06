@@ -2,15 +2,34 @@
 
 ## Overview
 
-The persistent data stored in the backend belongs to a workspace.
+Terraform workspaces are a feature that allows you to manage multiple environments within a single Terraform configuration.
 
-Some backends support multiple named workspaces, allowing multiple states to be associated with a single configuration.
+Each workspace is a separate instance of your infrastructure, with its own state file and variables.
 
-Workspaces allows deploying multiple distinct instances of that configuration without configuring a new backend or changing authentication credentials.
+Changes in one workspace do not affect the others. This is particularly useful for managing different environments like development, staging, and production without needing separate configurations for each.
 
 The Terraform CLI workspaces are different from workspaces in Terraform Cloud.
 
 Terraform starts with a single, default workspace named `default` that you cannot delete.
+
+
+## Creating new workspace
+
+```shell
+terraform workspace new <workspace_name>
+```
+
+## Switching workspaces
+
+```shell
+terraform workspace select <workspace_name>
+```
+
+## Listing workspaces
+
+```shell
+terraform workspace list
+```
 
 
 ## Referencing Current workspace
@@ -41,3 +60,22 @@ resource "aws_instance" "example" {
   # ... other arguments
 }
 ```
+
+
+## S3 backend
+
+When using S3 backend, each workspace will have a dedicated state file in S3.
+
+When configuring your S3 backend, it's important to specify a unique `key` for each workspace to ensure their states are isolated and managed separately:
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "your-bucket-name"
+    key    = "project-name/workspace/terraform.tfstate"
+    region = "us-west-2"
+  }
+}
+```
+
+For state locking, Terraform can use the same DynamoDB table across all workspaces.

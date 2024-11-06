@@ -41,11 +41,9 @@ Restart your shell.
 
 ### VS Code setup
 
-Add syntax support for Terraform, install extension [Terraform](https://marketplace.visualstudio.com/items?itemName=4ops.terraform).
-
+Install [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform) extension.
 
 Example:
-
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-a1b2c3d4"
@@ -54,40 +52,7 @@ resource "aws_instance" "web" {
 ```
 
 
-## Getting Started
-
-Change working directory:
-```sh
-cd infra/
-```
-
-Initialize the working directory:
-```shell
-terraform init
-```
-
-Create a `test.tfvars` file that contain values for all required variables:
-```tf
-region = "eu-central-1"
-input_bucket_name = "glue-demo-input-bucket-2024"
-artifact_bucket_name = "glue-demo-artifact-bucket-2024"
-```
-
-Preview the changes before apply:
-```shell
-terraform plan -var-file="test.tfvars"
-```
-
-Establish the infrastructure:
-```shell
-terraform apply -var-file="test.tfvars" --auto-approve
-```
-
-Destroy the infrastructure when you no longer need it:
-```shell
-terraform destroy -var-file="test.tfvars" --auto-approve
-```
-
 ## References
 
-https://developer.hashicorp.com/terraform
+- [Official Documentation](https://developer.hashicorp.com/terraform)
+- [Terraform extension for VS Code adds Terraform Cloud view](https://www.hashicorp.com/blog/terraform-extension-for-vs-code-adds-terraform-cloud-view)

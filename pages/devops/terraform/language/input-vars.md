@@ -1,29 +1,27 @@
 # Input Variables
 
-Input variables are like function arguments.
-
 ## Overview
 
-Input variables let you customize aspects of Terraform modules without altering the module's own source code.
+Input variables let you customize aspects of Terraform modules without altering the module's source code.
 
 You can set variables's value in the root module using CLI options and environment variables.
 
-When you declare them in child modules, the calling module should pass values in the `module` block.
-
-
-## Declaring an Input Variable
-
-The label after the `variable` keyword is a **name** for the variable, which must be unique among all variables in the same module.
-
-The name of a variable can be any valid identifier
-*except* the following: `source`, `version`, `providers`, `count`, `for_each`, `lifecycle`, `depends_on`, `locals`.
-
+When you declare input variables in child modules, the calling module should pass values in the `module` block.
 
 ```hcl
 variable "image_id" {
   type = string
 }
+```
 
+## Declaring an Input Variable
+
+The label after the `variable` keyword is a **name** for the variable, which must be unique among all variables in the same module.
+
+The name of a variable can be any valid identifier *except* the following: `source`, `version`, `providers`, `count`, `for_each`, `lifecycle`, `depends_on`, `locals`.
+
+
+```hcl
 variable "availability_zone_names" {
   type    = list(string)
   default = ["us-west-1a"]
@@ -56,8 +54,6 @@ Terraform CLI defines the following optional arguments for variable declarations
 * `validation` - A block to define validation rules, usually in addition to type constraints.
 * `sensitive` - Limits Terraform UI output when the variable is used in configuration.
 * `nullable` - Specify if the variable can be `null` within the module.
-
-Check the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables#arguments) to detailed syntax.
 
 
 ## Accessing Variables
@@ -124,3 +120,8 @@ terraform plan
 ```
 
 For complex value (list, set, map, object, or tuple), we recommend always setting complex variable values via variable definitions files.
+
+
+## References
+
+- [Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
