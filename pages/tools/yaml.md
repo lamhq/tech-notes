@@ -1,0 +1,207 @@
+# YAML syntax
+
+## Overview
+
+YAML is a data serialization language.
+
+Easily readable by humans.
+
+It works well with other programming languages and maps easily into native data structures.
+
+It's a viable replacement for languages like JSON.
+
+
+## Indentation
+
+Use spaces for indentation. Tabs are not allowed.
+
+Stick to a consistent indentation style throughout the file.
+
+The recommended indentation is two spaces per level.
+
+```yml
+company:
+  name: "Spacelift"
+  domain:
+    - devops
+    - devsecops
+tutorial:
+  yaml:
+    name: "YAML Ain't Markup Language"
+    type: "awesome"
+    born: 2001
+  json:
+    name: "JavaScript Object Notation"
+    type: "great"
+    born: 2001
+```
+
+
+## Comments
+
+YAML supports single line comments.
+
+Multi line comments are not supported.
+
+Comments must not appear inside scalars.
+
+```yml
+# this is single line comment.
+```
+
+
+## Strings
+
+Plain Strings:
+- don't require any special characters to enclose
+- can't start with certain characters (like ``, `[]`, `{}`, etc.).
+```yml
+title: The Great Gatsby
+author: F. Scott Fitzgerald
+```
+
+Quoted Strings: for strings that include special characters or leading/trailing spaces.
+```yml
+title: 'The Great Gatsby'
+description: 'A story about the jazz age in America.'
+```
+
+Double-Quoted Strings: for strings that need to include special characters or escape sequences (like `\n`, `\t`)
+```yml
+title: "The Great Gatsby"
+quote: "She looked at him and smiled, \"Oh, Gatsby!\""
+```
+
+Multi-Line Strings:
+- Literal Block Scalar: use `|` to preserve newlines
+- Folded Block Scalar: use `>` to converts newlines to spaces
+```yml
+poem: |
+  Roses are red,
+  Violets are blue,
+  YAML is great,
+  And so are you.
+```
+
+```yml
+summary: >
+  The Great Gatsby is a novel written by 
+  American author F. Scott Fitzgerald 
+  that follows a cast of characters.
+```
+
+
+## Numbers
+
+- Integer: `age: 30`
+- Float: `height: 5.9`
+
+
+## Booleans
+
+```yml
+isStudent: true
+```
+
+
+## Null
+
+`nickname: null` or `nickname: ~`.
+
+
+## Sequences (Lists)
+
+A sequence represents a list of items. Each item in the sequence is prefixed by a dash (`-`).
+```yml
+names:
+  - Alice
+  - Bob
+  - Charlie
+```
+
+Inline sequence:
+```yml
+names: [Alice, Bob, Charlie]
+```
+
+
+## Mappings (Dictionaries)
+
+A mapping represents a collection of key-value pairs. Each key is followed by a colon (`:`) and the corresponding value.
+```yml
+person:
+  name: Alice
+  age: 30
+  city: New York
+```
+
+You can nest sequences and mappings to create complex hierarchical structures.
+```yml
+company:
+  name: "Spacelift"
+  departments:
+    - name: "Engineering"
+      employees:
+        - name: Alice
+          role: Developer
+        - name: Bob
+          role: DevOps
+    - name: "Marketing"
+      employees:
+        - name: Charlie
+          role: Manager
+```
+
+
+## Tags and Anchors
+
+YAML supports tags and anchors to reference and reuse data.
+
+- Anchors (`&`): Define a reusable node.
+- Aliases (`*`): Reference the anchored node.
+
+```yml
+default: &defaultAttrs
+  type: user
+  enabled: true
+
+users:
+  - name: Alice
+    <<: *defaultAttrs
+  - name: Bob
+    <<: *defaultAttrs
+    enabled: false
+```
+
+Above example is equivalent to:
+```yml
+users:
+  - name: Alice
+    type: user
+    enabled: true
+  - name: Bob
+    type: user
+    enabled: false
+```
+
+Another example:
+```yml
+paul: &paulUser
+  name: Paul
+  type: user
+  enabled: true
+
+books:
+  - 1923:
+      author: *paulUser
+```
+
+Above example is equivalent to:
+```yml
+books:
+  - 1923:
+      author:
+        name: Paul
+        type: user
+        enabled: true
+```
