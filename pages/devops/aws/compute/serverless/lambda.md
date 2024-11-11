@@ -11,14 +11,6 @@ You can also set the required performance, concurrency limits, link directly to 
 Lambda is an example of Function-as-a-Service.
 
 
-## Pricing
-- No upfront or monthly subscription costs for standard functions.
-- Pay per request
-- You're billed for the duration of the code execution.
-- Free tier of 1,000,000 requests and 400,000 GBs of compute per month.
-- Ideal for functions whose execution time is very low (under 100ms)
-
-
 ## Features
 
 - Intergrates with numerous AWS services, including S3, DynamoDB, EventBridge, SQS/SNS, Kinesis.
@@ -28,6 +20,8 @@ Lambda is an example of Function-as-a-Service.
 
 
 ## Use cases
+
+Ideal for functions whose execution time is very low (under 100ms)
 
 Data transformation: perform transformation on streaming data (data from Kinesis,...).
 

@@ -1,24 +1,20 @@
-# Cost
+# Pricing
 
-## What costs money?
+## What are charged?
 
-### Duration & Number of requests
+### Number of requests & Duration
 
-Charged per millisecond.
+Pay per calls.
+- First 1 million requests are free
+- \$0.2 per 1 million requests thereafter ($0.0000002 per request)
 
-Based on the amount of assigned memory and the architecture.
+Pay per duration (in increments of 100ms):
+- 400,000 GB-seconds of compute time per month FREE:
+  - = 400,000 seconds if function is 1 GB RAM
+  - = 3,200,000 seconds if function is 128 MB RAM
+- After that, $1.0 for 600,000 GB-seconds
 
-Pay for every GB-second
-
-ARM costs less per GB-second than x86.
-
-Cost is tiered:
-- Start with the free tier:
-  - 1 million requests/month
-  - 400,000 GB-second of compute time
-- Price per GB-second Reduces after different tiers of billion seconds a month
-
-Pricing is based on a monthly aggregation across the account or organization (if using consolidated billing). Compute savings plans can be used
+ARM architecture costs less than x86.
 
 
 ### Ephemeral storage
@@ -71,6 +67,24 @@ so these aren't kept indefinitely.
 **Requests to other services**: SQS polling, DynamoDB, S3, etc.
 
 
+## Estimate your cost
+
+You can use the AWS Lambda Pricing Calculator to get a detailed [estimate](https://aws.amazon.com/lambda/pricing/#AWS_Lambda_Pricing).
+
+Example pricing for a personal application:
+- Region: Asia Pacific (Singapore)
+- Include Free Tier
+- Architecture: Arm64
+- Number of requests per month: 500
+- Duration of each request: 9 seconds
+- Memory: 256 MB
+- Ephemeral storage: 512 MB
+- **Monthly compute charges: 0.00 USD**
+- **Monthly request charges: 0 USD**
+- **Monthly ephemeral storage charges: 0 USD**
+- **Lambda costs - With Free Tier (monthly): 0.00 USD**
+
+
 ## Cost Monitoring
 
 Tag resources appropriately and use AWS Cost Explorer to drill down and find where costs are.
@@ -83,6 +97,8 @@ Track cost at an account level: Use billing alarms, set up budgets, and try Cost
 
 
 ## Optimize cost
+
+You can save on AWS Lambda costs by signing up for a Compute Savings Plan. A Compute Savings Plan offers lower compute costs in exchange for committing to a consistent amount of usage over a 1-year or 3-year term.
 
 ### Guide
 
@@ -139,3 +155,8 @@ AWS Lambda Power Turning also supports cross-Region invocations, and you can ena
 AWS Lambda Powertools helps you optimize your Lambda functions and use best practices. 
 
 It's a suite of utilities for AWS Lambda functions that is designed to make it easier to adopt best practices such as tracing, structured logging, custom metrics, idempotency, batching, and more. 
+
+
+## References
+
+- https://aws.amazon.com/lambda/pricing/

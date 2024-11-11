@@ -2,17 +2,7 @@
 
 ## Overview
 
-AWS offers a variety of serverless services that allow developers to build and run applications without managing servers
-
-**AWS Lambda**: A compute service that lets you run code without provisioning or managing servers. You only pay for the compute time you consume.
-
-**Amazon API Gateway**: A fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
-
-**AWS SAM (Serverless Application Model)**: An open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings.
-
-**AWS Cloud Development Kit (CDK)**: An open-source software development framework to define cloud application resources using familiar programming languages
-
-**AWS Step Functions**: A service that makes it easy to coordinate the components of distributed applications and microservices using visual workflows.
+Serverless computing is a cloud computing model in which a cloud provider automatically manages the provisioning and allocation of compute resources.
 
 
 ## Benefits
@@ -32,6 +22,19 @@ AWS offers a variety of serverless services that allow developers to build and r
 4. **Data processing:** Process and analyze large datasets.
 5. **Machine learning:** Train and deploy machine learning models.
 6. **Serverless APIs:** Create and manage APIs without having to manage servers.
+
+
+## Services
+
+**AWS Lambda**: A compute service that lets you run code without provisioning or managing servers. You only pay for the compute time you consume.
+
+**Amazon API Gateway**: A fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
+
+**AWS SAM (Serverless Application Model)**: An open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings.
+
+**AWS Cloud Development Kit (CDK)**: An open-source software development framework to define cloud application resources using familiar programming languages
+
+**AWS Step Functions**: A service that makes it easy to coordinate the components of distributed applications and microservices using visual workflows.
 
 
 ## Resources
