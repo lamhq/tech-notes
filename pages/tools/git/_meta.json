@@ -3,6 +3,7 @@
   "merge": "Merging",
   "history": "Working with commit history",
   "undo-changes": "Undoing changes",
+  "remote": "Remotes",
   "conv-commit": "Conventional Commits",
   "commitlint": "commitlint",
   "husky": "Husky"

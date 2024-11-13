@@ -3,12 +3,21 @@
 ## Add Remote and Push
 
 ```bash
-git remote add origin git@github.com:lamhq/aws-amplify-web.git
-git push --set-upstream origin main
+git remote add origin git@github.com:lamhq/restful-api-boilerplate.git
+git config --global push.autoSetupRemote true
+git push
 ```
 
 
-## Changing a remote's URL
+## List remote
+
+```bash
+git remote
+git config --get remote.origin.url
+```
+
+
+## Updating remote's URL
 
 ```bash
 git remote set-url origin git@bitbucket.org:theappteamdevs/troocoo-web.git
@@ -19,14 +28,6 @@ git remote set-url origin git@bitbucket.org:theappteamdevs/troocoo-web.git
 
 ```bash
 git remote rename <old> <new>
-```
-
-
-## List remote
-
-```bash
-git remote
-git config --get remote.origin.url
 ```
 
 
