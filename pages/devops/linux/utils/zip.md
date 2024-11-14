@@ -1,9 +1,15 @@
 # zip command
 
-## Compress
+## Compress a folder
 
 ```sh
 zip -r archive_name.zip folder_to_compress
+```
+
+## Compress files
+
+```shell
+zip archive_name.zip file1 file2 file3
 ```
 
 
