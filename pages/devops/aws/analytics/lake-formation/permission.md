@@ -15,93 +15,11 @@ There are two main types of Lake Formation permissions:
 - Underlying Data Access Permissions
 
 
-### Metadata access permissions
+## Create database permissions
 
-These permissions control access to the metadata stored in the Data Catalog, not the underlying data itself.
+Database creation is controlled at the account-level using the Lake Formation settings.
 
-They include:
-- `Create table`: Allows creating new tables within a database.
-- `Alter`: Allows modifying metadata of existing databases and tables.
-- `Drop`: Allows deleting metadata objects, such as tables or databases
-- `Describe`: Allows viewing metadata details, such as table schemas and database properties.
-- `Super`: Grants all available permissions on the metadata resource
-
-To grant metadata access permissions in the Lake Formation console:
-1. Go to **Data lake permissions** section, choose **Grant**
-2. Choose the principals to grant permissions
-3. Choose a method to grant permissions: LF-Tags or catalog resources
-4. After that, choose the permissions to grant. Note that the permissions in the **Database permissions** and **Table permissions** sections are different.
-
-To access and manipulate the actual data, you need **Data Access Permissions** (see below).
-
-
-### Underlying Data Access Permissions
-
-These permissions control access to the actual data stored in S3 locations.
-
-They include data access permissions and data location permissions.
-
-Data access permissions:
-- grants permissions to read/write data directly to tables stored in S3 locations
-- include: `SELECT`, `INSERT`, and `DELETE` permissions
-- you can grant Data access permissions in the Lake Formation console at **Data lake permissions** section
-
-Data location permissions:
-- grants permissions to read/write data files stored in S3 locations.
-- include `DATA_LOCATION_ACCESS` permissions
-- you can grant Data location permissions in the Lake Formation console at **Data locations** section
-- when granted permission on a location, a principal can assume the associated IAM role to read/write data on that location.
-- to grant data location access, you must first register that location with Lake Formation
-
-
-## Register S3 locations
-
-To enable Lake Formation to control access to underlying data at an S3 location, you must register that location with Lake Formation.
-
-You can register data locations in the Lake Formation console at **Data lake locations** section.
-
-When you register a location, you specify an IAM role that grants read/write permissions on that location. Lake Formation assumes that role when supplying temporary credentials to integrated AWS services.
-
-> Lake Formation provides data access rather than using the users permissions.
-
-You can specify either the Lake Formation service-linked role or create your own role.
-
-When adding/removing a data location, Lake Formation service-linked role is automatically updated with read/write permissions on that location. You can't directly modify that role.
-
-You use a custom role when:
-- You plan to publish metrics in Amazon CloudWatch Logs.
-- The Amazon S3 location exists in a different account.
-- The Amazon S3 location contains data encrypted with an AWS managed key.
-- You plan to access the Amazon S3 location using Amazon EMR.
-
-A typical role might have the following policy attached:
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::{BUCKET_NAME}/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Resource": [
-        "arn:aws:s3:::{BUCKET_NAME}"
-      ]
-    }
-  ]
-}
-```
+You can grant Database creation permission in the Lake Formation console at **Administrative roles and tasks** section.
 
 
 ## Implicit permissions
@@ -135,22 +53,22 @@ The `IAMAllowedPrincipal` is a virtual IAM group within AWS Lake Formation.
 
 It includes all IAM principals who have access to Data Catalog resources (through IAM policies or AWS Glue resource policies).
 
-By default, the group has `Super` permission on all existing Data Catalog resources, and on new Data Catalog resources if **Use only IAM access control** settings are enabled..
+If this permissions exists on a database or table, all principals will be granted access to the database or table.
+
+If **Use only IAM access control** is enabled, the group has `Super` permission on all existing Data Catalog resources, and on new Data Catalog resources by default.
 
 
-## Change to Lake Formation permission mode
+## Upgrading to the Lake Formation permission model
 
-Lake Formation initially uses "Use only IAM access control" for compatibility with existing AWS Glue Data Catalog behavior, allow managing data and metadata access through IAM and S3 bucket policies.
+*Upgrading from AWS Glue data permissions to the AWS Lake Formation model.*
 
-To manage access to Data Catalog resources by Lake Formation permissions only:
+By default, AWS Glue model grants data access via Identity based and resource based IAM policies.
 
-1. Change the default security settings for new resources.
-   1. In Lake Formation console, at **Data Catalog settings** section
-   2. Clear both check boxes "**Use only IAM access ...**" and **Save**
-   3. Revoke `IAMAllowedPrincipals` permission for database creators in **Administrative roles and tasks** section
-2. Change the settings for existing Data Catalog resources.
-   1. Revoke `Super` permission from `IAMAllowedPrincipals` on each table and database in **Data lake permissions** section
-   2. When registering S3 locations with Lake Formation, set **Permission mode** to **Lake Formation**
+Lake Formation uses Data filtering and cell-level security to restrict table access at the column, row, and cell-level
+
+You can use the Lake Formation permissions model to manage your existing AWS Glue Data Catalog objects and data locations in S3.
+
+To start using Lake Formation permissions with your existing Glue Data Catalog resources, follow these [steps](https://docs.aws.amazon.com/lake-formation/latest/dg/upgrade-glue-lake-formation.html#upgrade-glue-lake-formation-step1).
 
 
 ## Hybrid access mode
@@ -162,6 +80,6 @@ Hybrid access mode lets you use both Lake Formation permissions and IAM policies
 It allows data administrators to onboard Lake Formation permissions selectively and incrementally, focusing on one data lake use case at a time.
 
 
-## Suggested policies for Lake Formation personas
+## Suggested policies
 
-See [IAM permissions for suggested Lake Formation personas](https://docs.aws.amazon.com/lake-formation/latest/dg/permissions-reference.html).
+For suggested policies for Lake Formation personas, see [Lake Formation personas and IAM permissions reference](https://docs.aws.amazon.com/lake-formation/latest/dg/permissions-reference.html).

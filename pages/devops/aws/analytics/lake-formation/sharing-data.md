@@ -2,15 +2,13 @@
 
 ## Overview
 
-You can share databases or tables to any IAM principals (IAM roles and users) to:
-- IAM principals (IAM roles and users) in an account
-- other AWS accounts at the account level
-- IAM principals in another account
+You can share Data Catalog resources within an AWS account and across accounts.
 
 You can also share tables with data filters to restrict access to the details at the row-level and cell-level details.
 
 
 ## How it work?
+
 When a resource is shared, invites are sent to the recipient account
 
 When a recipient accepts a invitation:
@@ -20,7 +18,7 @@ When a recipient accepts a invitation:
 
 ## Querying shared resources
 
-To enable querying of the shared resources, a resource link need to be created and pointed to the shared resource.
+To enable querying of the shared resources using Athena or Redshift Spectrum, a resource link need to be created and pointed to the shared resource.
 
 The administrator then grants **Describe** permissions on the resource link and also the necessary permissions on the original shared resource.
 

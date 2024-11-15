@@ -14,23 +14,6 @@ AWS Lake Formation is a service designed to simplify the process of building, se
 **Data sharing**: It allows you to share data internally and externally across multiple AWS accounts, AWS organizations or IAM principals.
 
 
-## Integrations
-
-Integrations with other AWS services.
-
-AWS Glue:
-- AWS Glue and Lake Formation share the same Data Catalog
-- AWS Glue users can access only the databases and tables on which they have Lake Formation permissions.
-
-Amazon Athena:
-- Amazon Athena users can query only the databases, tables, and columns that they have Lake Formation permissions on
-
-Amazon Redshift Spectrum:
-- Amazon Redshift users can query only the tables and columns in external schema on which they have Lake Formation permissions.
-
-Lake Formation also works with AWS KMS to enable integrated services to encrypt and decrypt data in S3.
-
-
 ## Concepts
 
 ### Data lake
@@ -103,14 +86,18 @@ A workflow defines the data source and schedule to import data into your data la
 You create a workflow from a blueprint, then executes it in AWS Glue service.
 
 
-## Query Workflow
+## Integrations
 
-1. **Data lake administrator** sets up policies for table access using Lake Formation permissions.
-2. Data lake administrator registers the S3 location of the table.
-3. **User** submits a query to an **integrated analytical engine** (Athena, Redshift Spectrum, ...)
-4. The **engine** identifies the table that is being requested and sends a request for metadata to the **Data Catalog**.
-5. **Check permissions**: the **Data Catalog** checks user's permissions with Lake Formation, returns the allowed metadata for that user if authorized
-6. **Get credentials**: If the underlying data is registered with Lake Formation, the **engine** retrieves temporary credentials from **Lake Formation** to access the data
-7. **Get data**: the **engine** uses the temporary credentials to fetches objects from S3, performs the necessary enforcement of Lake Formation policies, such as column level, row level and/or cell level filtering, then returns results back to the **user** (credential vending).
+Integrations with other AWS services.
 
-![](https://docs.aws.amazon.com/images/lake-formation/latest/dg/images/lf-workflow.png)
+AWS Glue:
+- AWS Glue and Lake Formation share the same Data Catalog
+- AWS Glue users can access only the databases and tables on which they have Lake Formation permissions.
+
+Amazon Athena:
+- Amazon Athena users can query only the databases, tables, and columns that they have Lake Formation permissions on
+
+Amazon Redshift Spectrum:
+- Amazon Redshift users can query only the tables and columns in external schema on which they have Lake Formation permissions.
+
+Lake Formation also works with AWS KMS to enable integrated services to encrypt and decrypt data in S3.
