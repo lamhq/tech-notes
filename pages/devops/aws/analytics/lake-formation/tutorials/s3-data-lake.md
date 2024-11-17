@@ -58,8 +58,7 @@ Trust policy:
       "Effect": "Allow",
       "Principal": {
         "Service": [
-          "lakeformation.amazonaws.com",
-          "glue.amazonaws.com",
+          "lakeformation.amazonaws.com"
         ]
       },
       "Action": "sts:AssumeRole"
@@ -75,15 +74,22 @@ Inline policy:
   "Statement": [
     {
       "Action": [
-        "s3:ListBucket",
         "s3:GetObject"
       ],
       "Effect": "Allow",
       "Resource": "arn:aws:s3:::test-bucket/raw/*"
+    },
+    {
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::test-bucket"
     }
   ]
 }
 ```
+- You need to grant `s3:ListBucket` action to the whole bucket
 
 
 ### Register location
@@ -105,7 +111,6 @@ The crawler will scan all the files stored in its S3 paths to gather information
 
 The actual data for catalog tables is stored in the files uploaded to S3. The crawler doesn't insert any data into the tables. Also, the data is append-only because the data file is in CSV format.
 
-The table name is the final part of the S3 path. In this case, it's `customers`.
 
 ### Create an IAM role for the crawler
 
@@ -139,16 +144,20 @@ Inline policy:
   "Statement": [
     {
       "Action": [
-        "s3:GetObject"
+        "lakeformation:GetDataAccess",
+        "lakeformation:GrantPermissions"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::test-bucket/raw/customers/*"
+      "Resource": "*"
     }
   ]
 }
 ```
+- `lakeformation:GetDataAccess`: Allows the role to get data access permissions in Lake Formation. This is for reading files stored in S3.
+- `lakeformation:GrantPermissions`: Allows the role to grant permissions to other principals.
 
-Attach managed policy: `AWSGlueServiceRole`.
+
+Managed policy attached to the role: `AWSGlueServiceRole`.
 
 For more details, see:
 - [Crawler prerequisites](https://docs.aws.amazon.com/glue/latest/dg/crawler-prereqs.html)
@@ -178,13 +187,16 @@ In the Lake Formation console, at **Data lake permissions** section, choose **Gr
   - S3 path: `s3://test-bucket/raw/customers`
 - Role name: `customer-crawler-role`
 - Target database: `raw-db`
+- Lake Formation configuration: select **Use Lake Formation credentials for crawling S3 data source**
 
 
 ## Run the crawler
 
 In crawler detail page, choose **Run**.
 
-After running, it will create data catalog tables in the provided database.
+After running, it will create a data catalog table in the provided database.
+
+The table name is the final part of the S3 path. In this case, `customers`.
 
 
 ## Query data
