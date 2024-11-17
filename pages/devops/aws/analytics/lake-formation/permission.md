@@ -11,8 +11,8 @@ To successfully access data or metadata, a principal must have both IAM and Lake
 Lake Formation permissions are managed using `GRANT` and `REVOKE` commands. They are granted at the database or table level and control access to specific data resources.
 
 There are two main types of Lake Formation permissions:
-- Metadata Access Permissions
-- Underlying Data Access Permissions
+- **Metadata Access Permissions**: access to Data Catalog resources
+- **Underlying Data Access Permissions**: ability to assume IAM roles associated with registered data locations
 
 
 ## Create database permissions
@@ -24,15 +24,21 @@ You can grant Database creation permission in the Lake Formation console at **Ad
 
 ## Implicit permissions
 
-Data lake administrators have implicit permissions:
-- `Describe` all resources in the Data Catalog
-- `Create` databases and tables in all locations
-- have access on all data locations
-- `Grant` and `Revoke` permissions on any resource.
+Data lake administrators:
+- `DESCRIBE`: have `DESCRIBE` permission to all resources, except for resources shared from another account
+- `DATA_LOCATION_ACCESS`: Data locationhave access on all data locations
+- **Grant/Revoke Access**: can grant or revoke access to any resources to any principal, including themselves
+- `CREATE_DATABASE`: Can create databases
+- Can grant the permission to create a database
+- *Can register Amazon S3 locations only if they have IAM permissions to do so*
+- *Do not have implicit permissions to drop databases or alter/drop tables created by others*
 
-Database creators get all database permissions on the databases that they create.
+Database creators:
+- get all database permissions on the databases/tables that they create
+- can grant principals in the same AWS account permission to create tables
 
-Table creators get all permissions on the tables that they create.
+Table creators:
+- get all permissions on the tables that they create.
 
 
 ## Grantable permissions

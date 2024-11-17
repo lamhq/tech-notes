@@ -14,7 +14,7 @@ If you have existing Glue Data Catalog databases and tables, follow [Upgrading A
 
 Lake Formation initially uses "Use only IAM access control" for compatibility with existing AWS Glue Data Catalog behavior. This effectively causes access to Data Catalog resources and S3 locations to be controlled solely by IAM policies.
 
-To manage access to Data Catalog resources by Lake Formation permissions only:
+To manage access to Data Catalog resources by Lake Formation permission model:
 
 1. Change the default security settings for new resources.
    1. In Lake Formation console, at **Data Catalog settings** section
@@ -81,6 +81,8 @@ A typical role might have the following policy attached:
   ]
 }
 ```
+
+For more details, see [Requirements for roles used to register locations](https://docs.aws.amazon.com/lake-formation/latest/dg/registration-role.html).
 
 
 ## Grant access to the Data Catalog encryption key
