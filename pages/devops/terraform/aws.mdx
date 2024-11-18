@@ -1,34 +1,22 @@
 # AWS Snippets
 
-## Preparations
-
-1. [Set up AWS credentials](../aws/dev-tools/aws-cli.mdx#set-up-aws-credentials) on the machine
-2. Create a S3 backend bucket for storing Terraform state
-3. Create a DynamoDB table for state locking
-
-
-## Input variables
+## Variables
 
 ```hcl filename="variables.tf"
-variable "project" {
-  type    = string
-  description = "Project name"
-}
-
-variable "env" {
-  type    = string
-  description = "Runtime environment (e.g., dev, prod)"
-}
-
-variable "owner" {
-  type    = string
-  description = "Email of resource owner"
-}
-
 variable "region" {
   description = "AWS region where resources will be created"
   type        = string
   default     = "us-central-1"
+}
+
+variable "owner" {
+  type        = string
+  description = "Email of project owner"
+}
+
+variable "project" {
+  type        = string
+  description = "Project name"
 }
 
 variable "artifact_bucket" {
@@ -37,13 +25,17 @@ variable "artifact_bucket" {
 }
 ```
 
-Template for `.tfvars` file:
+Supply values for input variables by creating a `params.tfvars` file:
 ```hcl filename="params.tfvars"
-project = ""
-env = "dev"
-owner = ""
-region = ""
+region          = ""
+owner           = ""
+project         = ""
 artifact_bucket = ""
+```
+
+And pass the file when running Terraform apply:
+```shell
+terraform apply -var-file="params.tfvars" --auto-approve
 ```
 
 
@@ -53,7 +45,7 @@ artifact_bucket = ""
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
 
     # provides a data source that can create archives from individual files or collections of files
@@ -61,13 +53,6 @@ terraform {
     archive = {
       source  = "hashicorp/archive"
       version = "~> 2.4.2"
-    }
-
-    # provide resources to generate random values
-    # useful for creating unique resource identifiers
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.6.0"
     }
   }
 }
@@ -77,7 +62,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      owner = var.owner
+      owner   = var.owner
       project = var.project
     }
   }
@@ -85,38 +70,48 @@ provider "aws" {
 ```
 
 
-## Name prefix
+## Locals
 
-Define a prefix for resource's name:
+Here's a list of recommended local values:
+- `env`: the current runtime environment to deploy to. We'll use Terraform workspace name for it
+- `name_prefix`: prefix to add to resource names (role, lambda function, log group, ...)
+- `bucket_prefix`: key prefix to add to s3 paths, for example:
+  - `arn:aws:s3:::${local.bucket_prefix}/source/*`
+  - `s3://${local.bucket_prefix}/source/*`
+
 ```hcl filename="locals.tf"
 locals {
-  name_prefix = "${var.project}-${var.env}"
+  env = terraform.workspace == "default" ? "prod": terraform.workspace
+  name_prefix = "${var.project}-${local.env}"
+  bucket_prefix = "${var.artifact_bucket}/${var.project}/${local.env}"
 }
 ```
 
 
 ## Backend
 
+*You can skip this section if you want to store Terraform state as a local file on disk.*
+
+Configuration for S3 backend:
 ```hcl filename="backend.tf"
 terraform {
   backend "s3" {
-    bucket = var.artifact_bucket
-    key    = "${local.name_prefix}/terraform.tfstate"
-    dynamodb_table = aws_dynamodb_table.state_locking_table.name
-    encrypt        = true
+    encrypt = true
   }
 }
+```
 
-resource "aws_dynamodb_table" "state_locking_table" {
-  name           = "${local.name_prefix}-terraform-state-lock"
-  billing_mode   = "PROVISIONED"
-  read_capacity  = 1
-  write_capacity = 1
-  hash_key       = "LockID"
+Since a backend block cannot refer to named values (like input variables, locals, or data source attributes). We'll define dynamic arguments in a separated file `backend.tfvars`:
 
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+```hcl filename="backend.tfvars"
+region               = ""
+workspace_key_prefix = ""
+bucket               = ""
+key                  = ""
+dynamodb_table       = ""
+```
+
+Then supply it when initialize the working directory:
+```shell
+terraform init -backend-config=backend.tfvars -reconfigure
 ```
