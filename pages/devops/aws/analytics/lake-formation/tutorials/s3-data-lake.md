@@ -31,7 +31,9 @@ Upload your data files to S3 bucket.
 
 The files will contain all records of a table in your database.
 
-You can select an example file [here](https://aws-dojo.com/ws3/customers.csv).
+Example files to use:
+- [customers.csv](https://aws-dojo.com/ws3/customers.csv)
+- [products](https://static.godatafeed.com/content/example-files/MyDataFeeds-Products.csv)
 
 S3 URI after uploaded: `s3://test-bucket/raw/customers/customers.csv`.
 
@@ -89,7 +91,8 @@ Inline policy:
   ]
 }
 ```
-- You need to grant `s3:ListBucket` action to the whole bucket
+- `s3:GetObject`: principals (Glue crawler) need to read all data files in an S3 path to build the metadata for data catalog table
+- `arn:aws:s3:::test-bucket`: the action `s3:ListBucket` need to be granted to the whole bucket
 
 
 ### Register location
@@ -101,7 +104,7 @@ In Lake Formation console, at **Data lake locations** section, click on **Regist
 
 ## Create a Lake Formation database
 
-- Name: `raw-db`
+- Name: `raw_db`
 - Do not check "Use only IAM access control" option.
 
 
@@ -114,10 +117,11 @@ The actual data for catalog tables is stored in the files uploaded to S3. The cr
 
 ### Create an IAM role for the crawler
 
-The crawler need permissions:
-- To be executed by AWS Glue service
-- To read files stored in S3 paths
-- To create data catalog tables in Lake Formation
+The crawler need permissions to:
+- Be executed by AWS Glue service (trust policy)
+- Get Lake Formation credentials for crawling the data source (inline policy)
+- Read data stored in S3 location (Location Access)
+- Create table in database (Metadata Access)
 
 Role name: `customer-crawler-role`
 
@@ -145,7 +149,6 @@ Inline policy:
     {
       "Action": [
         "lakeformation:GetDataAccess",
-        "lakeformation:GrantPermissions"
       ],
       "Effect": "Allow",
       "Resource": "*"
@@ -153,11 +156,10 @@ Inline policy:
   ]
 }
 ```
-- `lakeformation:GetDataAccess`: Allows the role to get data access permissions in Lake Formation. This is for reading files stored in S3.
-- `lakeformation:GrantPermissions`: Allows the role to grant permissions to other principals.
+- `lakeformation:GetDataAccess`: Allow the crawler to use Lake Formation credentials for crawling the data source (S3).
 
 
-Managed policy attached to the role: `AWSGlueServiceRole`.
+Attached policy: `AWSGlueServiceRole`.
 
 For more details, see:
 - [Crawler prerequisites](https://docs.aws.amazon.com/glue/latest/dg/crawler-prereqs.html)
@@ -176,7 +178,7 @@ In the Lake Formation console, at **Data locations** section, choose **Grant**:
 In the Lake Formation console, at **Data lake permissions** section, choose **Grant**:
 - IAM users and roles: `customer-crawler-role`
 - In **Choose a method to grant permissions**, choose **Named Data Catalog resources**
-- Databases: `raw-db`
+- Databases: `raw_db`
 - Database permissions: `Create table`
 
 
@@ -186,7 +188,7 @@ In the Lake Formation console, at **Data lake permissions** section, choose **Gr
 - Data sources:
   - S3 path: `s3://test-bucket/raw/customers`
 - Role name: `customer-crawler-role`
-- Target database: `raw-db`
+- Target database: `raw_db`
 - Lake Formation configuration: select **Use Lake Formation credentials for crawling S3 data source**
 
 
@@ -208,7 +210,7 @@ Query the created table to ensure the data is ingested successfully.
 Your data lake administrator may not have permissions to query the data catalog table. To fix this, in the Lake Formation console, at **Data lake permissions** section, choose **Grant**:
 - IAM users and roles: your data lake administrator role
 - In **Choose a method to grant permissions**, choose **Named Data Catalog resources**
-- Databases: `raw-db`
+- Databases: `raw_db`
 - Tables: `customers`
 - Table permissions: `Select`
 
@@ -222,7 +224,7 @@ Your data lake administrator may not have permissions to query the data catalog 
 ### Query data catalog table
 - Back to **Editor** section
 - Select the Data source: `AwsDataCatalog`
-- Select Database: `raw-db`
+- Select Database: `raw_db`
 - Select table `customers`
 - Choose `Preview Table`
 - Run the created query

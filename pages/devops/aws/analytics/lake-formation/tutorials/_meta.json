@@ -1,3 +1,4 @@
 {
-  "s3-tutorial": "Creating a data lake"
+  "s3-data-lake": "Set up S3 data lake",
+  "glue-job": "Create Glue job"
 }
