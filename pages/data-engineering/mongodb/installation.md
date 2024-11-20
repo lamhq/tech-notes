@@ -42,12 +42,6 @@ ps aux | grep -v grep | grep mongod
 mongosh
 ```
 
-## Create a database
-
-```shell
-
-```
-
 
 ## Create an user administrator
 

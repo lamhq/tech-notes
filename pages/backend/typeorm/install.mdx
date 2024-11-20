@@ -1,0 +1,86 @@
+# TypeORM
+
+## Installation
+
+```shell npm2yarn
+npm install typeorm --save typeorm reflect-metadata
+```
+
+You may need to install node typings:
+```shell npm2yarn
+npm install @types/node --save-dev
+```
+
+Install a database driver for MongoDB:
+```shell npm2yarn
+npm install mongodb@^5.2.0 --save
+```
+
+
+## TypeScript configuration
+
+```json filename="tsconfig.json"
+"emitDecoratorMetadata": true,
+"experimentalDecorators": true,
+```
+
+
+## Integrate with existing project
+
+Create a DataSource (DataSource holds your database connection settings and establishes initial database connection).
+
+```ts
+import { DataSource } from "typeorm"
+
+export const AppDataSource = new DataSource({
+  type: "mongodb",
+  url: "mongodb://testadmin:123123@localhost:27017/test",
+})
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!")
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization", err)
+  })
+```
+
+use the DataSource in your code:
+```ts
+import { AppDataSource } from "./app-data-source"
+import { User } from "../entity/User"
+
+export class UserController {
+  @Get("/users")
+  getAll() {
+    return AppDataSource.manager.find(User)
+  }
+}
+```
+
+
+## Generate a new project
+
+*Follow this guide if you don;t have existing code.*
+
+```shell
+npx typeorm init --name typeorm-starter --database mongodb
+```
+- `name`: name of your project
+- `database`: mysql, mariadb, postgres, cockroachdb, sqlite, mssql, sap, spanner, oracle, mongodb, cordova, react-native, expo, nativescript
+
+The command will generate a new project in the `MyProject` directory with the following files:
+```
+MyProject
+├── src                   // place of your TypeScript code
+│   ├── entity            // place where your entities (database models) are stored
+│   │   └── User.ts       // sample entity
+│   ├── migration         // place where your migrations are stored
+│   ├── data-source.ts    // data source and all connection configuration
+│   └── index.ts          // start point of your application
+├── .gitignore            // standard gitignore file
+├── package.json          // node module dependencies
+├── README.md             // simple readme file
+└── tsconfig.json         // TypeScript compiler options
+```
