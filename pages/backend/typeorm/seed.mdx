@@ -1,0 +1,83 @@
+# Database Seeding
+
+## Installation
+
+```shell npm2yarn
+npm install typeorm-extension@^3.6.3 --save-dev
+```
+
+Add the following scripts to `package.json`:
+```json filename="package.json"
+"scripts": {
+  "seed:run": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run",
+}
+```
+
+Specify factory & seeder location in DataSource configuration:
+```ts filename="data-source.ts"
+import "reflect-metadata"
+import { DataSource, DataSourceOptions } from "typeorm"
+import { SeederOptions } from 'typeorm-extension';
+
+const options: DataSourceOptions & SeederOptions = {
+  // ...
+  seeds: ['src/seeds/**/*.ts'],
+  factories: ['src/factories/**/*.ts'],
+  seedTracking: true, // ensure that a seeder is only executed once
+}
+
+export const AppDataSource = new DataSource(options);
+```
+
+Create a factory:
+```ts filename="user.factory.ts"
+import { setSeederFactory } from 'typeorm-extension';
+import { User } from '../entity/User';
+
+export default setSeederFactory(User, (faker) => {
+  const user = new User();
+  user.name = faker.person.fullName();
+  user.email = faker.internet.email();
+  return user;
+})
+```
+
+Create a seeder:
+```ts filename="user.seeder.ts"
+import { Seeder, SeederFactoryManager } from 'typeorm-extension';
+import { DataSource } from 'typeorm';
+import { User } from '../entity/User';
+
+export default class UserSeeder implements Seeder {
+  /**
+   * Track seeder execution.
+   *
+   * Default: false
+   */
+  track = false;
+
+  public async run(
+    dataSource: DataSource,
+    factoryManager: SeederFactoryManager
+  ): Promise<any> {
+    const userFactory = await factoryManager.get(User);
+
+    // save 1 factory generated entity, to the database
+    await userFactory.save();
+
+    // save 5 factory generated entities, to the database
+    await userFactory.saveMany(5);
+  }
+}
+```
+
+
+Execute:
+```shell
+npm run seed:run
+```
+
+
+## References
+
+- [Typeorm Extension](https://www.npmjs.com/package/typeorm-extension)
