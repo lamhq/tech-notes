@@ -1,34 +1,41 @@
-# The `mongo` shell
+# MongoDB Shell (`mongosh`)
 
-## Start the `mongo` shell and Connect to MongoDB
+## Connect to MongoDB
 
 ```sh
-mongo
-mongo "mongodb://alice@mongodb0.examples.com:28015/?authSource=admin"
-mongo "mongodb://mongodb0.example.com.local:27017,mongodb1.example.com.local:27017,mongodb2.example.com.local:27017/?replicaSet=replA"
+mongosh
+mongosh "mongodb://localhost:27017"
+mongosh "mongodb://testadmin:123123@localhost:27017/test"
 ```
 
 
-## Basic commands:
+## Basic commands
 
+Show current database:
 ```js
-// display the database you are using
 db
+```
 
-// list the available databases
+List available databases
+```js
 show dbs
+```
 
-// switch databases
+Switch databases:
+```js
 use <database>
+```
 
-// see the list of collections in the current database
+List collections in the current database:
+```js
 show collections
+```
 
+Collection manipulation:
+```js
 db.myCollection.insertOne( { x: 1 } );
 
 // insert documents into a collection
-// The operation returns a document that contains the acknowledgement indicator
-// and an array that contains the _id of each successfully inserted documents.
 db.inventory.insertMany([
   { item: "journal", qty: 25, status: "A", size: { h: 14, w: 21, uom: "cm" }, tags: [ "blank", "red" ] },
   { item: "notebook", qty: 50, status: "A", size: { h: 8.5, w: 11, uom: "in" }, tags: [ "red", "blank" ] },
@@ -53,5 +60,4 @@ db.collection.help()
 
 ## Exit the Shell
 
-To exit the shell, type `quit()` or use the `<Ctrl-C>` shortcut.
-
+To exit the shell, type `quit()` or use the `<control+d>` shortcut.
