@@ -1,15 +1,6 @@
 {
   "python": "Python",
   "javascript": "JavaScript",
-  "typescript": "TypeScript",
-  "nestjs": "NestJS",
-  "nodejs": "Node.js",
-  "typeorm": "TypeORM",
-  "pnpm": "pnpm",
-  "deno": "Deno",
-  "eslint": "ESLint",
-  "prettier": "Prettier",
-  "jest": "Jest",
   "redis": "Redis",
   "rabbitmq": "RabbitMQ",
   "kafka": "Kafka"
