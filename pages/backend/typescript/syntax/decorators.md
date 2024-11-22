@@ -42,7 +42,7 @@ Multiple decorators can be applied to a declaration, single line or multiple lin
 x
 ```
 
-Wen evaluating multiple decorators on a single declaration in TypeScript:
+When evaluating multiple decorators on a single declaration in TypeScript:
 - Decorator Factories are evaluated top-to-bottom to return the real decorators
 - Decorator are called bottom-to-top
 
@@ -76,7 +76,7 @@ second(): called
 first(): called
 ```
 
-## Decorator Evaluation
+## Decorator Evaluation Order
 
 Here's the order to how decorators applied to various declarations inside of a class are applied:
 

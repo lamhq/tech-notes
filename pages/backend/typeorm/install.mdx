@@ -35,6 +35,7 @@ import { DataSource } from "typeorm"
 export const AppDataSource = new DataSource({
   type: "mongodb",
   url: "mongodb://testadmin:123123@localhost:27017/test",
+  entities: ["src/**/*.entity.ts"],
 })
 
 AppDataSource.initialize()

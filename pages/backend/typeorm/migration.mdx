@@ -7,21 +7,20 @@
   ```ts filename="src/data-source.ts"
   import "reflect-metadata"
   import { DataSource } from "typeorm"
-  import { User } from "./entity/User"
 
   export const AppDataSource = new DataSource({
-      type: "mongodb",
-      url: "mongodb://testadmin:123123@localhost:27017/test",
-      entities: [User],
-      migrations: ["src/migration/*.ts"],
-      migrationsTableName: "custom_migration_table",
+    type: "mongodb",
+    url: "mongodb://testadmin:123123@localhost:27017/test",
+    entities: ["src/**/*.entity.ts"],
+    migrations: ["src/migration/*.ts"],
+    migrationsTableName: "custom_migration_table",
   })
   ```
 3. Prepare TypeORM entity:
-  ```ts filename="src/entity/User.ts"
+  ```ts filename="src/entity/user.entity.ts"
   import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm"
 
-  @Entity()
+  @Entity('users')
   export class User {
     @ObjectIdColumn()
     id: ObjectId

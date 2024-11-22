@@ -2,6 +2,12 @@
 
 ## Installation
 
+Setup `ts-node` in your project:
+```shell npm2yarn
+npm install ts-node@^10.9.1 --save-dev
+```
+
+Install the package:
 ```shell npm2yarn
 npm install typeorm-extension@^3.6.3 --save-dev
 ```
@@ -32,7 +38,7 @@ export const AppDataSource = new DataSource(options);
 Create a factory:
 ```ts filename="user.factory.ts"
 import { setSeederFactory } from 'typeorm-extension';
-import { User } from '../entity/User';
+import { User } from '../entity/user.entity';
 
 export default setSeederFactory(User, (faker) => {
   const user = new User();
@@ -46,21 +52,14 @@ Create a seeder:
 ```ts filename="user.seeder.ts"
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 import { DataSource } from 'typeorm';
-import { User } from '../entity/User';
+import { User } from '../entity/user.entity';
 
 export default class UserSeeder implements Seeder {
-  /**
-   * Track seeder execution.
-   *
-   * Default: false
-   */
-  track = false;
-
   public async run(
     dataSource: DataSource,
     factoryManager: SeederFactoryManager
   ): Promise<any> {
-    const userFactory = await factoryManager.get(User);
+    const userFactory = factoryManager.get(User);
 
     // save 1 factory generated entity, to the database
     await userFactory.save();
