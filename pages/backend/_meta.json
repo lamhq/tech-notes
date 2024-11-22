@@ -1,11 +1,5 @@
 {
   "python": "Python",
-  "fastapi": "FastAPI",
-  "pydantic": "Pydantic",
-  "sqlalchemy": "SQLAlchemy",
-  "alembic": "Alembic",
-  "pytest": "pytest",
-  "faker": "Faker",
   "javascript": "JavaScript",
   "typescript": "TypeScript",
   "nestjs": "NestJS",
