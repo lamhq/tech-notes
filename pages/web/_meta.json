@@ -1,5 +1,6 @@
 {
   "css": "CSS",
   "atomic-design": "Atomic Design",
-  "react": "React"
+  "react": "React",
+  "rsbuild": "Rsbuild"
 }

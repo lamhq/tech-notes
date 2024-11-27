@@ -1,0 +1,100 @@
+# Environment Variables
+
+Rsbuild supports injecting env variables or expressions into the code during build, which is helpful for distinguishing the running environment or replacing constants.
+
+
+## Default Variables
+
+- `import.meta.env.MODE`: `production' | 'development' | 'none'`
+- `import.meta.env.DEV`
+- `import.meta.env.PROD`
+- `import.meta.env.BASE_URL`: value determined by the `server.base` configuration, for public assets
+- `import.meta.env.ASSET_PREFIX`: access the URL prefix of static assets
+- `process.env.BASE_URL`: alias of `import.meta.env.BASE_URL`
+- `process.env.ASSET_PREFIX`: alias of `import.meta.env.ASSET_PREFIX`
+- `process.env.NODE_ENV`
+
+
+## Public Variables
+
+All env variables starting with `PUBLIC_` can be accessed in client code. You can also change the prefix in `rsbuild.config.ts` file.
+
+You can access these env variables through `import.meta.env.PUBLIC_*` or `process.env.PUBLIC_*`.
+
+Public variables will replace identifiers in JavaScript and HTML template files.
+
+```shell filename=".env"
+PUBLIC_NAME=jack
+PASSWORD=123
+```
+
+```js
+console.log(import.meta.env.PUBLIC_NAME); // -> 'jack'
+console.log(import.meta.env.PASSWORD); // -> undefined
+
+console.log(process.env.PUBLIC_NAME); // -> 'jack'
+console.log(process.env.PASSWORD); // -> undefined
+```
+
+
+## `.env` file
+
+Rsbuild automatically load env variables from `.env` file.
+
+Public Variables (prefix = `PUBLIC_`) will be exposed in the client code.
+
+You can access env variables through `import.meta.env.[name]` or `process.env.[name]`.
+
+
+### File types
+
+Rsbuild supports reading the following types of env files:
+
+1. `.env`: Loaded by default in all scenarios.
+2. `.env.[mode]`: `.env.development`, `.env.production`
+   - read when `process.env.NODE_ENV` is `development` or `production`
+   - store environment variables specific to the current mode
+   - is typically committed to the version control system
+3. `.env.[mode].local`: `.env.development.local`, `.env.production.local`
+   - store values that are specific to an individual developer's environment.
+   - should be added to `.gitignore`.
+
+
+### Env Mode
+
+You can specify the env mode using the `--env-mode <mode>` flag.
+```shell
+npx rsbuild dev --env-mode test
+```
+
+
+### Env Directory
+
+You can specify the env directory by using the `--env-dir <dir>` option:
+```shell
+npx rsbuild dev --env-dir env
+```
+
+
+## TypeScript
+
+When you access an environment variable in a TypeScript file, TypeScript may prompt that the variable lacks a type definition.
+```js
+const foo = process.env.PUBLIC_FOO;
+// TS2304: Cannot find name 'PUBLIC_FOO'
+```
+
+To fix this, you can create a `src/env.d.ts` file:
+```ts
+declare namespace NodeJS {
+  interface ProcessEnv {
+    // process.env.PUBLIC_FOO
+    PUBLIC_FOO: string;
+  }
+}
+```
+
+Also, install the dependency `@types/node`:
+```shell npm2yarn
+npm add @types/node -D
+```

@@ -1,0 +1,32 @@
+# Dev Server
+
+## Overview
+
+The dev server is started whe running `rsbuild dev` and `rsbuild preview` commands.
+
+It provides features such as page preview, routing, and hot module reloading.
+
+
+## View Static Assets
+
+After starting the dev server, you can access `/rsbuild-dev-server` to view all static assets generated during the current build.
+
+
+## Page Routing
+
+By default, when a resource is not found, it will fallback to `index.html`:
+
+```js filename="rsbuild.config.ts"
+export default {
+  server: {
+    htmlFallback: 'index',
+  },
+};
+```
+
+You can customize the Fallback Behavior using `server.historyApiFallback` config.
+
+
+## Configuration
+
+You can [configure](https://rsbuild.dev/guide/basic/server#configuration) the dev server using `dev` and `server` configs.

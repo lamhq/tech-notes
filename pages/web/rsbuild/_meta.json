@@ -1,0 +1,11 @@
+{
+  "quick-start": "Quick Start",
+  "cli": "CLI",
+  "css": "CSS",
+  "assets": "Assets",
+  "html": "HTML Template",
+  "env-vars": "Environment Variables",
+  "server": "Dev Server",
+  "react": "React",
+  "typescript": "TypeScript"
+}
