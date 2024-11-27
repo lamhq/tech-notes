@@ -1,4 +1,6 @@
-# Installation (TypeScript)
+# Installation
+
+Install and configure ESLint for a TypeScript project.
 
 ## Requirements
 - Node.js >=20.11.0.

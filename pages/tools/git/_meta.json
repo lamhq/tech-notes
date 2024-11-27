@@ -1,7 +1,8 @@
 {
   "getting-source": "Getting Code",
   "merge": "Merging",
-  "history": "Working with commit history",
+  "config": "Config",
+  "history": "History",
   "undo-changes": "Undoing changes",
   "remote": "Remotes",
   "conv-commit": "Conventional Commits",

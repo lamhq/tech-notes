@@ -1,4 +1,5 @@
 {
   "install": "Installation",
-  "configure": "Configure ESLint"
+  "react": "React Setup",
+  "configure": "Configure"
 }

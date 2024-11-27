@@ -1,12 +1,14 @@
-## Set email and username (global)
+# Config
 
+## Set email and username
+
+Globally:
 ```sh
 git config --global user.email "daibanglam@gmail.com"
 git config --global user.name "Lam"
 ```
 
-
-## Set email and username (per project)
+Per project:
 ```sh
 git config user.email "lam@gravitylabs.co"
 git config user.name "Lam Huynh"
