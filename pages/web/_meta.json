@@ -1,8 +1,5 @@
 {
   "css": "CSS",
-  "tailwind-css": "Tailwind CSS",
   "atomic-design": "Atomic Design",
-  "react": "React",
-  "react-hook-form": "React Hook Form",
-  "nextjs": "Next.js"
+  "react": "React"
 }
