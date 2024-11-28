@@ -9,11 +9,5 @@
 
 		// Edit Markdown files more convinient
 		"yzhang.markdown-all-in-one",
-
-		// Preview Markdown files
-		"bierner.markdown-preview-github-styles",
-
-		// add language support for MDX.
-		"unifiedjs.vscode-mdx",
 	],
 }

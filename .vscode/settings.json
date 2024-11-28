@@ -1,19 +1,28 @@
 {
-    "editor.tabSize": 2,
-    "editor.tabCompletion": "onlySnippets",
-    "editor.snippetSuggestions": "top",
-    "explorer.sortOrder": "mixed",
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "files.exclude": {
-        "**/.ipynb_checkpoints": true
-    },
-    "[python]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
-    },
-    "[markdown]": {
-        "files.trimTrailingWhitespace": false
-    },
-    "markdown.styles": ["preview.css"]
+  "editor.tabSize": 2,
+  "editor.tabCompletion": "onlySnippets",
+  "editor.snippetSuggestions": "top",
+  "explorer.sortOrder": "mixed",
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+  "files.exclude": {
+    "**/.ipynb_checkpoints": true
+  },
+  "[json]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "markdown.styles": [
+    "preview.css"
+  ]
 }
