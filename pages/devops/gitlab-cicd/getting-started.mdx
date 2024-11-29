@@ -1,0 +1,88 @@
+# Getting started
+
+## Prerequisites
+
+- A project in GitLab that you would like to use CI/CD for
+- Your GitLab account must have the **Maintainer** or **Owner** role for the project.
+- [Ensure you have runners available](https://docs.gitlab.com/ee/ci/quick_start/#ensure-you-have-runners-available) to run your jobs.
+
+
+## Create a simple pipeline
+
+Create a `.gitlab-ci.yml` file:
+```yml filename=".gitlab-ci.yml"
+build-job:
+  stage: build
+  script:
+    - echo "Hello, $GITLAB_USER_LOGIN!"
+
+test-job1:
+  stage: test
+  script:
+    - sleep 20
+
+deploy-prod:
+  stage: deploy
+  script:
+    - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
+  environment: production
+```
+- This file defines a GitLab CI pipeline with three jobs (`build-job`, `test-job1`, `deploy-prod`) that run each time code is pushed to the repository
+- `build-job`: Prints the GitLab username of the person who triggered the pipeline.
+- `test-job1`: runs the `sleep` command for 20 seconds which simulates a long test
+- `deploy-prod`: prints the current Git branch.
+
+
+## View pipeline status
+
+Go to `Build` > `Pipelines`.
+
+
+## A Node.js pipeline
+
+```yml
+stages:     # List of stages for jobs and their order of execution
+  - build
+  - deploy
+
+build-job:
+  stage: build   # Set this job to run in the `build` stage
+  image: node
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - "build/"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'  # Run for all changes to a merge request's source branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH       # Run for all changes to the default branch
+
+pages:
+  stage: deploy  # Set this new job to run in the `deploy` stage
+  script:
+    - mv build/ public/
+  artifacts:
+    paths:
+      - "public/"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH      # Run for all changes to the default branch only
+```
+- `stages`: groups of jobs
+  - jobs in the same stage run in parallel
+  - jobs in later stages wait for jobs in earlier stages to complete
+  - if a job fails, the whole stage is considered failed. Later stages do not start running.
+- `state`: define stages for each job
+- `image`: Tell the runner which Docker image to use to run the job. In this case, latest `node` image.
+- `artifacts`: share generated files of `build-job` with other jobs.
+  - You can browse the contents of the artifacts file by selecting **Browse** to the right of the job log after the job completes.
+- `rules`: configure when to run the job . Rules are evaluated from top to bottom, and if a rule matches, the job is added to the pipeline.
+  - The site should only deploy for changes to the default branch.
+  - The other jobs should run for all changes in merge requests or the default branch.
+
+
+## IDE Set up
+
+The [GitLab Workflow extension for VS Code](https://docs.gitlab.com/ee/editor_extensions/visual_studio_code/index.html)
+helps you [validate your configuration](https://marketplace.visualstudio.com/items?itemName=GitLab.gitlab-workflow#validate-gitlab-ci-configuration)
+and [view your pipeline status](https://marketplace.visualstudio.com/items?itemName=GitLab.gitlab-workflow#information-about-your-branch-pipelines-mr-closing-issue).

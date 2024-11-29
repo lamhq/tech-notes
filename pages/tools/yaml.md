@@ -160,6 +160,29 @@ YAML supports tags and anchors to reference and reuse data.
 - Anchors (`&`): Define a reusable node.
 - Aliases (`*`): Reference the anchored node.
 
+### Get content
+```yml
+paul: &paulUser
+  name: Paul
+  type: user
+  enabled: true
+
+books:
+  - 1923:
+      author: *paulUser
+```
+
+Equivalent to:
+```yml
+books:
+  - 1923:
+      author:
+        name: Paul
+        type: user
+        enabled: true
+```
+
+### Merge content
 ```yml
 default: &defaultAttrs
   type: user
@@ -173,7 +196,7 @@ users:
     enabled: false
 ```
 
-Above example is equivalent to:
+Equivalent to:
 ```yml
 users:
   - name: Alice
@@ -184,24 +207,26 @@ users:
     enabled: false
 ```
 
-Another example:
-```yml
-paul: &paulUser
-  name: Paul
-  type: user
-  enabled: true
 
-books:
-  - 1923:
-      author: *paulUser
+### Merge array
+
+```yml
+.default_scripts: &default_scripts
+  - ./default-script1.sh
+  - ./default-script2.sh
+
+job1:
+  script:
+    - *default_scripts
+    - ./job-script.sh
 ```
 
-Above example is equivalent to:
+Equivalent to:
+
 ```yml
-books:
-  - 1923:
-      author:
-        name: Paul
-        type: user
-        enabled: true
+job1:
+  script:
+    - ./default-script1.sh
+    - ./default-script2.sh
+    - ./job-script.sh
 ```

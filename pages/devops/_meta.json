@@ -8,5 +8,6 @@
   "docker": "Docker",
   "terraform": "Terraform",
   "serverless": "Serverless",
-  "bitbucket-pipelines": "Bitbucket Pipelines"
+  "bitbucket-pipelines": "Bitbucket Pipelines",
+  "gitlab-cicd": "GitLab CI/CD"
 }

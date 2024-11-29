@@ -1,0 +1,115 @@
+# Pipeline Syntax
+
+## Reuse configuration
+
+### Using `default` and `extends`
+
+```yml
+stages:
+  - build
+  - test
+  - deploy
+
+default:               # Add a default section to define the `image` keyword's default value
+  image: node
+
+.standard-rules:       # Make a hidden job to hold the common rules
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+build-job:
+  extends:
+    - .standard-rules  # Reuse the configuration in `.standard-rules` here
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - "build/"
+
+pages:
+  stage: deploy
+  image: busybox       # Override the default `image` value with `busybox`
+  dependencies:
+    - build-job
+  script:
+    - mv build/ public/
+  artifacts:
+    paths:
+      - "public/"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+```
+- `default`: Configuration apply to all jobs when not defined. Define the default `image` as `node`
+- `.standard-rules`: a hidden job. Jobs that start with `.` are never added to a pipeline. Use them to hold configuration you want to reuse.
+- `extends`: repeat configuration of a hidden job in the current job
+
+
+### Using `include` and `extends`
+
+To reuse configuration from different configuration files, combine `include` and `extends`.
+
+In the following example, a `script` is defined in the `included.yml` file. Then, it is refered in the `.gitlab-ci.yml` file by `extends`.
+
+```yml filename="included.yml"
+.template:
+  script:
+    - echo Hello!
+```
+- `.template`: a hidden job, won't be executed directly
+
+```yml filename=".gitlab-ci.yml"
+include: included.yml
+
+useTemplate:
+  image: alpine
+  extends: .template
+```
+- `included.yml` is included using the `include` keyword
+- `extends: .template`: extend the `useTemplate` job with the properties of the `.template` job.
+
+
+### Using `!reference` tags
+
+`!reference` tags allow selecting configuration from other sections.
+
+You can use `!reference` tags to reuse configuration from included configuration files as well.
+
+```yml filename="configs.yml"
+.setup:
+  script:
+    - echo creating environment
+```
+
+```yml filename=".gitlab-ci.yml"
+include:
+  - local: configs.yml
+
+.teardown:
+  after_script:
+    - echo deleting environment
+
+test:
+  script:
+    - !reference [.setup, script]
+    - echo running my own command
+  after_script:
+    - !reference [.teardown, after_script]
+```
+- `include` statement is used to add the `configs.yml` file. This allows access to the `.setup` job defined in `configs.yml`.
+- `!reference [.setup, script]`: include content of the `script` section of the `.setup` job
+- `!reference [.teardown, after_script]`: include content of the `after_script` section of the `.teardown` job
+
+Custom YAML tags like `!reference` might be treated as invalid by your editor, you can [configure some editors to accept `!reference` tags](https://docs.gitlab.com/ee/ci/yaml/yaml_optimization.html#configure-your-ide-to-support-reference-tags).
+
+
+## Validate GitLab CI/CD configuration
+
+See the [official doc](https://docs.gitlab.com/ee/ci/yaml/lint.html).
+
+
+## Reference
+
+- [CI/CD YAML syntax reference](https://docs.gitlab.com/ee/ci/yaml/index.html)
