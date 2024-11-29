@@ -1,0 +1,103 @@
+# RTK Query
+
+## Overview
+
+RTK Query is an advanced data fetching/mutation/caching tool.
+
+## Features
+
+It generates React hooks that provide data fetching state (error, loading flag, data) to components.
+
+Automatically caches fetched data, allow for invalidation or refetching.
+
+Automatically de-dupes requests, ensures that any component that subscribes to the same query will always use the same data.
+
+Supports optimistic updates to make your app feel more responsive by updating the UI before the server confirms changes.
+
+Can handle real-time data updates via WebSockets or other protocols.
+
+
+## Create an API service
+
+```ts
+// Need to use the React-specific entry point to import createApi
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import type { Pokemon } from './types'
+
+// Define a service using a base URL and expected endpoints
+export const pokemonApi = createApi({
+  reducerPath: 'pokemonApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+  endpoints: (builder) => ({
+    getPokemonByName: builder.query<Pokemon, string>({
+      query: (name) => `pokemon/${name}`,
+    }),
+  }),
+})
+
+// Export hooks for usage in functional components, which are
+// auto-generated based on the defined endpoints
+export const { useGetPokemonByNameQuery } = pokemonApi
+```
+
+With RTK Query, you define your entire API definition in one place to easier to keep track of how requests, cache invalidation, and general app configuration behave.
+
+
+## Add the service to your store
+
+```ts
+import { configureStore } from '@reduxjs/toolkit'
+// Or from '@reduxjs/toolkit/query/react'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { pokemonApi } from './services/pokemon'
+
+export const store = configureStore({
+  reducer: {
+    // Add the generated reducer as a specific top-level slice
+    [pokemonApi.reducerPath]: pokemonApi.reducer,
+  },
+  // Adding the api middleware enables caching, invalidation, polling,
+  // and other useful features of `rtk-query`.
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(pokemonApi.middleware),
+})
+
+// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+setupListeners(store.dispatch)
+```
+
+
+## Use the query in a component
+
+```tsx
+import * as React from 'react'
+import { useGetPokemonByNameQuery } from './services/pokemon'
+
+export default function App() {
+  // Using a query hook automatically fetches data and returns query values
+  const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
+  // Individual hooks are also accessible under the generated endpoints:
+  // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
+
+  return (
+    <div className="App">
+      {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <>Loading...</>
+      ) : data ? (
+        <>
+          <h3>{data.species.name}</h3>
+          <img src={data.sprites.front_shiny} alt={data.species.name} />
+        </>
+      ) : null}
+    </div>
+  )
+}
+```
+
+
+## Live Example
+
+https://codesandbox.io/p/sandbox/github/reduxjs/redux-toolkit/tree/master/examples/query/react/advanced?from-embed

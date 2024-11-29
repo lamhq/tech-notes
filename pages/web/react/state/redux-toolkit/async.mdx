@@ -1,0 +1,158 @@
+# Asynchronous Logic
+
+## Overview
+
+By default, Redux only accept plain action objects when calling `dispath()`.
+
+To allow dispatching functions that contain async logic you need to use middleware.
+
+
+## Example
+
+Below is an example of using Redux Thunk middleware.
+
+Create an action creator that returns a function (instead of plain object):
+```ts filename="actions.ts"
+export const fetchData = () => {
+  return async (dispatch) => {
+    dispatch({ type: 'FETCH_DATA_REQUEST' });
+    try {
+      const response = await fetch('https://api.example.com/data');
+      const data = await response.json();
+      dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });
+    } catch (error) {
+      dispatch({ type: 'FETCH_DATA_FAILURE', error: error.message });
+    }
+  };
+};
+```
+
+Create reducers to handle the actions:
+```ts filename="reducers.ts"
+const initialState = {
+  loading: false,
+  data: null,
+  error: null,
+};
+
+const dataReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'FETCH_DATA_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'FETCH_DATA_SUCCESS':
+      return { ...state, loading: false, data: action.payload };
+    case 'FETCH_DATA_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    default:
+      return state;
+  }
+};
+
+export default dataReducer;
+```
+
+Setup the Redux store with Thunk middleware:
+```ts filename="store.ts"
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import dataReducer from './reducers';
+
+const store = createStore(dataReducer, applyMiddleware(thunk));
+
+export default store;
+```
+
+Dispatch the thunk action in your component:
+```ts filename="App.tsx"
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from './actions';
+
+const App = () => {
+  const dispatch = useDispatch();
+  const dataState = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  if (dataState.loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (dataState.error) {
+    return <div>Error: {dataState.error}</div>;
+  }
+
+  return (
+    <div>
+      <h1>Data:</h1>
+      <pre>{JSON.stringify(dataState.data, null, 2)}</pre>
+    </div>
+  );
+};
+
+export default App;
+```
+
+
+## Redux Toolkit
+
+The Redux Toolkit configureStore function automatically sets up the thunk middleware by default.
+
+### Perform async request
+
+Define an action creator with `createAsyncThunk`:
+```ts filename="userSlice.ts"
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
+interface User {
+  id: string;
+  name: string;
+}
+
+type SliceState = {
+  entities: User[];
+  loading: string;
+}
+
+const initialState: SliceState = { entities: [], loading: 'idle' };
+
+const fetchUserById = createAsyncThunk(
+  'users/fetchByIdStatus',
+  async (userId, thunkAPI: ThunkAPI) => {
+    return Promise.resolve([{ id: userId, name: 'test' }]);
+  },
+)
+```
+- `userAPI` contains methods to interact with backend API
+- `fetchUserById` is an an asynchronous action creator that handles fetching user data by ID
+- `users/fetchByIdStatus`: action type prefix
+- `async (userId, thunkAPI) => { ... }`: a callback that does the actual async logic and returns a promise with the result
+
+Handle thunk actions:
+```ts filename="userSlice.ts"
+import { createSlice } from '@reduxjs/toolkit';
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: { entities: [], loading: 'idle' },
+  reducers: {
+    // standard reducer logic, with auto-generated action types per reducer
+  },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(fetchUserById.fulfilled, (state, action) => {
+      // Add user to the state array
+      state.entities.push(action.payload)
+    })
+  },
+})
+```
+- `extraReducers`: define reducers that respond to actions defined outside of the slice.
+- `builder.addCase()`: adds a case reducer for the fulfilled state of the `fetchUserById` action
+
+Dispatch the thunk in your React components: 
+```ts
+dispatch(fetchUserById(123))
+```
