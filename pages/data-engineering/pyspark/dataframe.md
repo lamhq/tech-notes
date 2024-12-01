@@ -1,19 +1,7 @@
 # DataFrame
 
-## Overview
-
-A DataFrame is a distributed dataset comprising data arranged in rows and columns with named attributes.
-
-It shares similarities with relational database tables or R (Python) data frames but incorporates sophisticated optimizations.
-
-## Use cases
-
-- Structured Data: data that hase well-defined schema (CSV, Parquet, JSON)
-- SQL-Like Queries: DataFrames provide a SQL-like API
-- Optimized Execution Plans: DataFrame queries are optimized resulting in efficient execution plans.
-- Integration with Spark Ecosystem: DataFrames seamlessly integrate with other Spark components like Spark SQL, MLlib, and GraphX.
-
 ## Dataframes vs RDDs
+
 **API Complexity**:
 - RDDs have a lower-level API.
 - DataFrames provide a higher-level API.
@@ -31,7 +19,7 @@ It shares similarities with relational database tables or R (Python) data frames
 - RDDs can be more efficient for specific use cases.
 
 
-## Creating DataFrame
+## Create
 
 ### From CSV
 ```py
@@ -68,6 +56,8 @@ df = spark.read.csv("Folder path")
 
 
 ### From python list
+
+From a list of rows:
 ```py
 data = [('James','','Smith','1991-04-01','M',3000),
   ('Michael','Rose','','2000-05-19','M',4000),
@@ -122,7 +112,7 @@ df.show(truncate=False)
 df = rdd.toDF()
 ```
 
-### Create an empty DataFrame
+### Empty DataFrame
 ```py
 #Create Schema
 from pyspark.sql.types import StructType,StructField, StringType
@@ -136,7 +126,12 @@ df = spark.createDataFrame([], schema)
 df.printSchema()
 ```
 
-## Display DataFrame
+## Display size
+```py
+print(f"Number of rows: {df.count()}, Number of columns: {len(df.columns)}")
+```
+
+## Display data
 
 ```py
 df.show()
@@ -147,13 +142,13 @@ df.show(truncate=False)
 ```
 
 
-## Display Schema
+## Display schema
 
 ```py
 df.printSchema()
 ```
 
-## Write DataFrame to CSV file
+## Write to CSV
 ```py
 df.write.options(header='True', delimiter=',') \
   .csv("/tmp/spark_output/zipcodes")
@@ -164,153 +159,21 @@ Saving modes: `overwrite`, `append`, `ignore`, `error`
 df.write.mode('overwrite').csv("/tmp/spark_output/zipcodes")
 ```
 
-## Rename column
-
-```py
-df.withColumnRenamed('existingName', 'newNam') \
-  .withColumnRenamed('salary', 'salary_amount')
-```
-
-## Change DataType of a column
-
-```py
-df.withColumn("salary",col("salary").cast("Integer")).show()
-```
-
-
-## Create a column
-
-Creates a new column `CopiedColumn` by multiplying `salary` column with value 100:
-```py
-df.withColumn("CopiedColumn",col("salary")*100).show()
-```
-
-Creates a new column with a constant value:
-```py
-df.withColumn("Country", lit("USA")).show()
-```
-
-
-## Drop Column
-
-```py
-df.drop("salary") \
-  .show() 
-```
-
-
-## Filter rows
-
-Using equal condition:
-```py
-df.filter(df.state == "OH")
-```
-
-Using not equal filter condition:
-```py
-df.filter(df.state != "OH") \
-    .show(truncate=False) 
-
-# Another expression
-df.filter(~(df.state == "OH")) \
-    .show(truncate=False)
-```
-
-Use the `col()` function to refer to the column name:
-```py
-from pyspark.sql.functions import col
-
-df.filter(col("state") == "OH") \
-    .show(truncate=False) 
-```
-
-Use SQL Expression:
-
-```py
-# Using SQL Expression
-df.filter("gender == 'M'").show()
-
-# For not equal
-df.filter("gender != 'M'").show()
-df.filter("gender <> 'M'").show()
-```
-
-Use multiple conditions:
-```py
-# AND
-df.filter( (df.state  == "OH") & (df.gender  == "M") )
-
-# OR
-df.filter( (df.state  == "OH") | (df.gender  == "M") )
-```
-
-Filter by a list of values:
-```py
-li=["OH","CA","DE"]
-df.filter(df.state.isin(li))
-
-# not
-df.filter(~df.state.isin(li))
-```
-
-Start with/end with/contains:
-```py
-df.filter(df.state.startswith("N"))
-
-df.filter(df.state.endswith("H"))
-
-df.filter(df.state.contains("H"))
-```
-
-Regular Expression:
-```py
-# like - SQL LIKE pattern
-df.filter(df2.name.like("%rose%"))
-
-# rlike - SQL RLIKE pattern (LIKE with Regex), case insensitive
-df.filter(df.name.rlike("(?i)^*rose$"))
-```
-
-For columns that have type array:
-```py
-from pyspark.sql.functions import array_contains
-
-df.filter(array_contains(df.languages,"Java")) \
-    .show(truncate=False)
-
-# Output
-#+----------------+------------------+-----+------+
-#|name            |languages         |state|gender|
-#+----------------+------------------+-----+------+
-#|[James, , Smith]|[Java, Scala, C++]|OH   |M     |
-#|[Anna, Rose, ]  |[Spark, Java, C++]|NY   |F     |
-#+----------------+------------------+-----+------+
-```
-
-
-## Sort
-
-```py
-df.sort("department", "state", ascending=[True, False]) 
-df.sort(df.department.asc(), df.state.desc())
-```
-
-```py
-df.orderBy("department","state")
-df.orderBy(col("department").asc(), col("state").desc())
-```
-
-
-## Group by
-
-TBD
-
-
-## Aggregate
-
-TBD
-
 
 ## Join
 
-TBD
+```py
+# Sample DataFrames
+data1 = [(1, 'Alice'), (2, 'Bob'), (3, 'Charlie')]
+columns1 = ['id1', 'name']
+df1 = spark.createDataFrame(data1, columns1)
+
+data2 = [(1, 'Engineer'), (2, 'Doctor'), (4, 'Artist')]
+columns2 = ['id2', 'profession']
+df2 = spark.createDataFrame(data2, columns2)
+
+# Inner join
+joined_df = df1.join(df2, df1.id1 == df2.id2, how='inner')
+joined_df.show()
+```
+- `how`: `inner`, `left`, `right`, `outer`

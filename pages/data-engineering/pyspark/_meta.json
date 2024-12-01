@@ -1,8 +1,12 @@
 {
-  "install": "Installing PySpark",
-  "session": "Session and Context",
-  "rdd": "RDD ",
+  "install": "Installation",
+  "session": "Session",
   "dataframe": "DataFrame",
+  "column": "Column",
+  "row": "Row",
+  "aggregation": "Aggregation",
+  "testing": "Testing",
   "sql": "SQL",
-  "streaming": "Streaming"
+  "streaming": "Streaming",
+  "rdd": "RDD (old API)"
 }

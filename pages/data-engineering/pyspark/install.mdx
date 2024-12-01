@@ -1,0 +1,140 @@
+# Getting Started
+
+## Using Docker
+
+Setting up PySpark by itself can be challenging and time consuming because of all the required dependencies and configuration.
+
+Using Docker and VS Code Dev Container is a quick way to start your development.
+
+Open VS Code, create a `requirements.txt` file in project directory:
+```txt filename="requirements.txt"
+pyspark==3.5.3
+```
+
+Add a Dev Container Configuration File with below content:
+
+```json filename=".devcontainer/devcontainer.json"
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
+{
+  "name": "Spark",
+  "image": "jupyter/pyspark-notebook",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // sets the default terminal profile for Linux to be bash
+        "terminal.integrated.defaultProfile.linux": "bash",
+        // configuring the terminal profiles for Linux
+        "terminal.integrated.profiles.linux": {
+          "bash": { "path": "/bin/bash" }
+        },
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true
+      },
+      "extensions": [
+        // Python extension
+        "ms-python.python",
+        // Jupyter Extension
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+
+  // Run commands after the container is created.
+  "postCreateCommand": "pip install -r requirements.txt"
+}
+```
+
+Then in command palette, select `Dev Containers: Reopen in Container` to open the project inside a Spark environment and start developing.
+
+To execute PySpark code:
+```shell
+spark-submit hello_world.py
+```
+
+Run PySpark shell:
+```sh
+pyspark
+```
+
+
+## Local Installation
+
+Install Apache Spark on macOS for local development.
+
+### Install Java
+
+Spark runs on Java 8/11/17, Scala 2.12/2.13, Python 3.8+, and R 3.5+.
+
+```shell
+brew update
+brew install openjdk@17
+```
+
+Add Java in your `PATH`, run:
+```shell
+echo 'export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"' >> /Users/admin/.zshrc
+```
+
+Verify the installation:
+```shell
+java -version
+```
+
+
+### Install Scala (optional)
+
+```shell
+brew install scala
+```
+
+
+### Install Apache Spark
+
+```shell
+brew install apache-spark
+```
+
+### Configure Apache Spark
+
+Find the install location:
+```shell
+brew info apache-spark
+```
+
+It should output something like this:
+```
+Installed
+/opt/homebrew/Cellar/apache-spark/3.5.3
+```
+
+Go to the `conf` directory inside the Spark installed directory:
+```shell
+cd /opt/homebrew/Cellar/apache-spark/3.5.3/libexec/conf
+```
+
+Create a config file:
+```shell
+cp spark-defaults.conf.template spark-defaults.conf
+```
+
+Open the config file and add this line:
+``` filename="spark-defaults.conf"
+spark.driver.bindAddress 127.0.0.1
+```
+
+Verify the installation by launching Spark interactive Scala shell:
+```shell
+spark-shell
+```
+
+
+### Install PySpark
+```shell
+pip install pyspark
+```
+
+Verify the installation by by running the PySpark shell:
+```shell
+pyspark
+```

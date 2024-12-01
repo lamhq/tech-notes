@@ -1,0 +1,82 @@
+# Test PySpark code
+
+In this guide, we have a function that perform data transformation. Then we'll write code to test the function.
+
+
+## The code to test
+
+The input dataframe for transformation:
+```py filename="main.py"
+data = [("Alice  ",), (" Bob",), ("  Charlie  "), ("David     Jones",)]
+df = spark.createDataFrame(data, ["name"])
+```
+
+The function that transform data, in this case, remove extra spaces of the column `name`:
+```py filename="remove_extra_spaces.py"
+from pyspark.sql.functions import col, regexp_replace
+
+# Remove additional spaces in `name`
+def remove_extra_spaces(df):
+  return df.withColumn("name", regexp_replace(col(column_name), "\\s+", " "))
+```
+
+Apply the transformation function to our DataFrame:
+```py filename="main.py"
+result_df = remove_extra_spaces(df, "name")
+```
+
+
+## Option 1: Using PySpark Test API
+
+Write code to test the function using PySpark Built-in Test Utility Functions.
+
+Compare content of two DataFrames:
+```py
+import pyspark.testing
+from pyspark.testing.utils import assertDataFrameEqual
+
+expected_data = [("Alice ",), (" Bob",), (" Charlie "), ("David Jones",)]
+expected_df = spark.createDataFrame(expected_data, ["name"])
+
+assertDataFrameEqual(result_df, expected_df)
+```
+
+Compare two DataFrame schemas:
+```py
+from pyspark.testing.utils import assertSchemaEqual
+from pyspark.sql.types import StructType, StructField, ArrayType, DoubleType
+
+s1 = StructType([StructField("names", ArrayType(DoubleType(), True), True)])
+s2 = StructType([StructField("names", ArrayType(DoubleType(), True), True)])
+
+assertSchemaEqual(s1, s2)  # pass, schemas are identical
+```
+
+
+## Option 2: Using Pytest
+
+Create a pytest fixture:
+```py filename="conftest.py"
+import pytest
+
+@pytest.fixture
+def spark_fixture():
+  spark = SparkSession.builder.appName("Testing PySpark Example").getOrCreate()
+  yield spark
+```
+
+Write test:
+```py filename="test_single_space.py"
+import pytest
+from pyspark.testing.utils import assertDataFrameEqual
+
+def test_single_space(spark_fixture):
+  data = [("Alice  ",), (" Bob",), ("  Charlie  "), ("David     Jones",)]
+  df = spark.createDataFrame(data, ["name"])
+  result_df = remove_extra_spaces(df, "name")
+
+  expected_data = [("Alice ",), (" Bob",), (" Charlie "), ("David Jones",)]
+  expected_df = spark.createDataFrame(expected_data, ["name"])
+
+  assertDataFrameEqual(result_df, expected_df)
+```

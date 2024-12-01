@@ -2,7 +2,7 @@
 
 ## Version
 
-This document is for **PySpark 3.5**.
+- Spark: `3.5.3`.
 
 
 ## What Is Spark?

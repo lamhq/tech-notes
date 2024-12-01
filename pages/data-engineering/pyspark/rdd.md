@@ -2,14 +2,13 @@
 
 ## Overview
 
-PySpark RDD (Resilient Distributed Dataset) is a data structure that is:
-- fault-tolerant
-- immutable: any transformation on an RDD results in a new RDD.
-- distributed collections of objects
+PySpark RDD (Resilient Distributed Dataset) is collection of elements that can be operated on in parallel across a cluster.
 
-Each dataset in RDD is divided into logical partitions, which can be computed on different nodes of the cluster.
-
-Processing on RDDs is delayed until the result is requested (lazy avaluation). You can stack up multiple transformations on the same RDD without any processing happening.
+RDD is:
+- **Immutable**: Once an RDD is created, it cannot be changed
+- **Lazy Evaluation**: Transformations on RDDs are not computed immediately. The actual computation is carried out when an action is called.
+- **Fault Tolerance**: If part of the data is lost, the RDD can be recomputed from the original data and previous transformations.
+- **Partitioning**: RDDs are divided into partitions. Operations on RDDs are performed on each partition in parallel
 
 
 ## Use cases
@@ -22,39 +21,63 @@ Processing on RDDs is delayed until the result is requested (lazy avaluation). Y
 
 ## Creating RDD
 
-Create a RDD from a text file using a `SparkContext`:
+Create a RDD from a text file:
 ```py
 # Create RDD from external Data source
 rdd2 = spark.sparkContext.textFile("/path/test.txt")
 ```
 
-Create a RDD from lists and tuples. The following code creates an iterator of 10,000 elements and then uses `parallelize()` to distribute that data into 2 partitions:
+Create a RDD from lists and tuples:
 ```py
+# creates an iterator of 10,000 elements
 big_list = range(10000)
+
+# distribute data into 2 partitions
 rdd = sc.parallelize(big_list, 2)
+
 odds = rdd.filter(lambda x: x % 2 != 0)
+
+# pulls a subset of data
 odds.take(5)
-[1, 3, 5, 7, 9]
+# [1, 3, 5, 7, 9]
 ```
 
 
-## RDD Operations
+## Operations
 
-You can perform two types of operations on RDD: Transformations and Actions.
+You can perform two types of operations on RDD: **Transformations** and **Actions**.
 
-Transformation pperations are lazy operations and are executed only when an action is called on RDD. They are applied in a distributed manner across a cluster of machines and return a new RDD.
+Transformation operations:
+- executed only when an action is called on RDD (lazy operations)
+- applied across a cluster of machines (distributed)
+- return a new RDD
+- examples: `map`, `filter`, `flatMap`, `groupByKey`, `reduceByKey`, `join`, `union`, `sortByKey`, `distinct`, `sample`, `mapPartitions`, and `aggregateByKey`.
 
-Examples: `map`, `filter`, `flatMap`, `groupByKey`, `reduceByKey`, `join`, `union`, `sortByKey`, `distinct`, `sample`, `mapPartitions`, and `aggregateByKey`.
+RDD actions:
+- trigger computations and return results to the Spark driver
+- any operation that returns non RDD is considered as an action 
+- examples: `collect`, `count`, `take`, `reduce`, `foreach`, `first`, `takeOrdered`, `takeSample`, `countByKey`, `saveAsTextFile`, `saveAsSequenceFile`, `saveAsObjectFile`, `foreachPartition`, `collectAsMap`, `aggregate`, and `fold`.
 
-RDD actions in PySpark trigger computations and return results to the Spark driver. Any RDD operation that returns non RDD is considered as an action. 
+Here's an example demonstrates how you can create an RDD, apply a transformation to it, and then retrieve the results with an action:
 
-Examples: `collect`, `count`, `take`, `reduce`, `foreach`, `first`, `takeOrdered`, `takeSample`, `countByKey`, `saveAsTextFile`, `saveAsSequenceFile`, `saveAsObjectFile`, `foreachPartition`, `collectAsMap`, `aggregate`, and `fold`.
+```python
+from pyspark import SparkContext
 
+# Create a SparkContext
+sc = SparkContext("local", "RDD Example")
 
-## Getting a subset of data
+# Create an RDD from a list of numbers
+data = [1, 2, 3, 4, 5]
+rdd = sc.parallelize(data)
 
-`take()` pulls a subset of data from the distributed system onto a single machine.
+# Apply a transformation (map) to multiply each element by 2
+transformed_rdd = rdd.map(lambda x: x * 2)
 
-```py
-rdd.take()
+# Apply an action (collect) to retrieve the results
+results = transformed_rdd.collect()
+
+print(results)  # Output: [2, 4, 6, 8, 10]
+
+# Stop the SparkContext
+sc.stop()
 ```
