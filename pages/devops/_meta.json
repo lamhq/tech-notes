@@ -9,5 +9,5 @@
   "terraform": "Terraform",
   "serverless": "Serverless",
   "bitbucket-pipelines": "Bitbucket Pipelines",
-  "gitlab-cicd": "GitLab CI/CD"
+  "gitlab": "GitLab"
 }
