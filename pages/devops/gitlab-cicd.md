@@ -16,8 +16,8 @@ GitLab pipelines are automated workflows that build, test, and deploy your code.
 You define a pipeline in the `.gitlab-ci.yml` file, located at the root of your project.
 
 Pipelines are made up of **jobs** and **stages**:
-- Stages define the order of execution. Typical stages might be build, test, and deploy.
-- Jobs specify the tasks to be performed in each stage. For example, compile or test code.
+- **Stages** define the order of execution. Typical stages might be build, test, and deploy.
+- **Jobs** specify the tasks to be performed in each stage. For example, compile or test code.
 
 Pipelines can be triggered by events (commits, merges, ...) or on schedule.
 

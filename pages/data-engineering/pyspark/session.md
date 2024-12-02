@@ -34,9 +34,9 @@ from pyspark.sql import SparkSession
 
 # Create SparkSession 
 spark = SparkSession.builder \
-      .master("local[*]") \
-      .appName("SparkByExamples.com") \
-      .getOrCreate() 
+  .master("local[*]") \
+  .appName("SparkByExamples.com") \
+  .getOrCreate() 
 ```
 
 - `local[*]` denotes that Spark will run in local mode, utilizing only a single JVM  on the local machine where your Python script is executed.
