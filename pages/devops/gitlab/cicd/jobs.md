@@ -162,7 +162,145 @@ deploy_prod:
 ```
 
 
-## Next
+## Job run Rules
+
+You use `rules` keyword to include or exclude jobs in pipelines.
+
+Rules are evaluated before any jobs run.
+
+Rules are evaluated in order until the first match. When a match is found, the job is either included or excluded from the pipeline, depending on the configuration.
+
+Include jobs:
+```yml
+job:
+  script: echo "Hello, Rules!"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: true
+```
+- If the pipeline is for a merge request, the job is run manually and the pipeline continues running even if the manual job is not run
+
+Exclude jobs:
+```yml
+job:
+  script: echo "Hello, Rules!"
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: on_success
+```
+- If the pipeline is for a merge request, the job is not added to the pipeline.
+- If the pipeline is a scheduled pipeline, the job is not added to the pipeline.
+- In all other cases, the job is added to the pipeline, with `when: on_success`.
+- `when: on_success`: the job should run only if all jobs in previous stages have completed successfully (default behavior)
+
+Skip jobs if the changes are empty:
+```yml
+job:
+  script:
+    - echo "This job only runs for branches that are not empty"
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      changes:
+        compare_to: 'refs/heads/main'
+        paths:
+          - '**/*'
+```
+
+Common `if` clauses:
+- `if: $CI_PIPELINE_SOURCE == "push"`: run on push to branches or tags
+- `if: $CI_PIPELINE_SOURCE == "schedule"`: run when the pipeline is triggered by a schedule
+- `if: $CI_PIPELINE_SOURCE == "merge_request_event"`: run on merge request
+- `if: $CI_COMMIT_TAG`: If changes are pushed for a tag.
+- `if: $CI_COMMIT_BRANCH`: If changes are pushed to any branch.
+- `if: $CI_COMMIT_BRANCH == "main"`: If changes are pushed to `main`.
+- `if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH`: If changes are pushed to the default
+  branch. Use when you want to have the same configuration in multiple
+  projects with different default branches.
+- `if: $CI_COMMIT_BRANCH =~ /regex-expression/`: If the commit branch matches a regular expression.
+- `if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_COMMIT_TITLE =~ /Merge branch.*/`:
+  If the commit branch is the default branch and the commit message title matches a regular expression.
+  For example, the default commit message for a merge commit starts with `Merge branch`.
+- `if: $CUSTOM_VARIABLE == "value1"`: If the custom variable `CUSTOM_VARIABLE` is
+  exactly `value1`.
+
+For possible values of `CI_PIPELINE_SOURCE`, check the [docs](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#ci_pipeline_source-predefined-variable).
+
+For complex rule condition, you can combine `if`, `changes`, `exists` in `rules` condition. The rule evaluates to true only when all included keywords evaluate to true.
+```yml
+docker build:
+  script: docker build -t my-image:$CI_COMMIT_REF_SLUG .
+  rules:
+    - if: $VAR == "string value"
+      changes:  # Include the job and set to when:manual if any of the follow paths match a modified file.
+        - Dockerfile
+        - docker/scripts/**/*
+```
+- If the `Dockerfile` file or any file in `/docker/scripts` has changed and `$VAR == “string value”`, then the job run.
+
+You can use parentheses `()` with `&&` and `||` to build more complicated variable expressions:
+```yml
+job1:
+  script:
+    - echo This rule uses parentheses.
+  rules:
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "develop") && $MY_VARIABLE
+```
+
+
+## Job scripts
+
+You can verify the syntax is valid with the CI [Lint](https://docs.gitlab.com/ee/ci/lint.html) tool.
+
+You can define scripts that run before/after scripts commands in all jobs with `before_script` and `after_script`:
+```yml
+default:
+  before_script:
+    - echo "Execute this `before_script` in all jobs by default."
+  after_script:
+    - echo "Execute this `after_script` in all jobs by default."
+
+job1:
+  script:
+    - echo "These script commands execute after the default `before_script`,"
+    - echo "and before the default `after_script`."
+
+job2:
+  before_script:
+    - echo "Execute this script instead of the default `before_script`."
+  script:
+    - echo "This script executes after the job's `before_script`,"
+    - echo "but the job does not use the default `after_script`."
+  after_script: []
+```
+- You can overwrite a default by defining a different one in a job. To ignore the default use `before_script: []` or `after_script: []`
+
+You can split long commands into multiline commands using `|` symbol (preserves newlines) and `>` symbol (folds newlines into spaces).
+```yml
+job1:
+  script: |
+    echo "This is the first line"
+    echo "This is the second line"
+    echo "This is the third line"
+
+job2:
+  script: >
+    echo "This is the first line" &&
+    echo "This is the second line" &&
+    echo "This is the third line"
+```
+
+
+## Other topics
 
 - [Run a job after a delay](https://docs.gitlab.com/ee/ci/jobs/job_control.html#run-a-job-after-a-delay)
+- [Run jobs only in specific pipeline types (branch, tag, merge request, schedule, ...)](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#run-jobs-only-in-specific-pipeline-types)
 - [Split a large job into multiple smaller jobs that run in parallel](https://docs.gitlab.com/ee/ci/jobs/job_control.html#parallelize-large-jobs)
+- [Avoid duplicate pipelines](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#avoid-duplicate-pipelines)
+- [Reuse rules in different jobs](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#reuse-rules-in-different-jobs)
+- [Use CI/CD variable expressions in Job rules](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#reuse-rules-in-different-jobs)
+- [Ignore non-zero exit codes in Job script](https://docs.gitlab.com/ee/ci/yaml/script.html#ignore-non-zero-exit-codes)
+- [Troubleshooting Job Scripts](https://docs.gitlab.com/ee/ci/yaml/script.html#troubleshooting)

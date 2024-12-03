@@ -3,5 +3,6 @@
   "pipeline-syntax": "Pipeline Syntax",
   "runners": "Runners",
   "pipelines": "Pipelines",
-  "jobs": "Jobs"
+  "jobs": "Jobs",
+  "variables": "Variables"
 }
