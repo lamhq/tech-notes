@@ -9,7 +9,8 @@
 
 ## Create a simple pipeline
 
-Create a `.gitlab-ci.yml` file:
+Below CI pipeline contains three jobs (`build-job`, `test-job1`, `deploy-prod`) that run each time code is pushed to the repository:
+
 ```yml filename=".gitlab-ci.yml"
 build-job:
   stage: build
@@ -27,10 +28,52 @@ deploy-prod:
     - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
   environment: production
 ```
-- This file defines a GitLab CI pipeline with three jobs (`build-job`, `test-job1`, `deploy-prod`) that run each time code is pushed to the repository
 - `build-job`: Prints the GitLab username of the person who triggered the pipeline.
 - `test-job1`: runs the `sleep` command for 20 seconds which simulates a long test
 - `deploy-prod`: prints the current Git branch.
+
+
+## Create a deploy pipeline
+
+Below CI pipeline contains two jobs that deploy to `dev` and `prod` environments.
+
+```yml
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying to $ENV environment"
+  environment:
+    name: $ENV
+
+deploy-to-dev:
+  extends: deploy
+  variables:
+    ENV: dev
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+deploy-to-prod:
+  extends: deploy
+  variables:
+    ENV: prod
+  rules:
+    - if: '$CI_COMMIT_TAG'
+  when: manual
+  before_script:
+    - echo "Waiting for approval to deploy to production"
+```
+- `deploy` job create an environment with name from a variable `ENV`
+- `deploy-to-dev` and `deploy-to-prod` extend the `deploy` job
+- `deploy-to-dev`:
+  - is triggered when any commits push to default branch
+  - define a variable `ENV` with value `dev`
+- `deploy-to-prod`:
+  - is triggered when new tags created on default branch
+  - define a variable `ENV` with value `prod`
+- the `prod` environment need to be configured for manual approval before running the deployment
 
 
 ## View pipeline status

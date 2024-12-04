@@ -94,8 +94,9 @@ job_name:
 
 ## Other topics
 
-- [Predefined CI/CD variables reference](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
-- [Enable debug logging (not recommended)](https://docs.gitlab.com/ee/ci/variables/#enable-debug-logging)
+- [Predefined CI/CD variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
 - [Pass an environment variable to another job](https://docs.gitlab.com/ee/ci/variables/#pass-an-environment-variable-to-another-job)
 - [Pass an environment variable to another section](https://docs.gitlab.com/ee/ci/variables/#pass-an-environment-variable-from-the-script-section-to-another-section-in-the-same-job)
 - [Use pipeline variables](https://docs.gitlab.com/ee/ci/variables/#use-pipeline-variables)
+- [Limit scope of variable](https://docs.gitlab.com/ee/ci/environments/#limit-the-environment-scope-of-a-cicd-variable)
+- [Enable debug logging (not recommended)](https://docs.gitlab.com/ee/ci/variables/#enable-debug-logging)
