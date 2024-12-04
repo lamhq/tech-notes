@@ -1,6 +1,6 @@
-# Code Style & Standards
+# Linters & Formatters
 
-## Popular JavaScript linters:
+## JavaScript Linters
 
 A JavaScript linter is a tool that analyzes your JavaScript code to identify and fix potential issues, ensuring your code adheres to certain style guidelines and best practices.
 
