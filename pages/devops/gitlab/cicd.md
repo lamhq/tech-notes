@@ -51,3 +51,8 @@ You can add a component to your pipeline with `include:component` syntax.
 You can create a component and publish it to the CI/CD Catalog to share your component across multiple projects.
 
 GitLab also has CI/CD component templates for common tasks and integrations.
+
+
+## GitLab CI/CD templates
+
+Check this link for a list of [GitLab CI/CD templates](https://gitlab.com/gitlab-org/gitlab/-/tree/master/lib/gitlab/ci/templates).

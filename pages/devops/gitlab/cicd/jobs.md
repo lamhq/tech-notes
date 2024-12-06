@@ -162,15 +162,15 @@ deploy_prod:
 ```
 
 
-## Job run Rules
+## Job Rules
 
-You use `rules` keyword to include or exclude jobs in pipelines.
+You use `rules` keyword to add configuration properties to a job if its conditions match.
 
-Rules are evaluated before any jobs run.
+Rules are evaluated before any jobs run, until the first match.
 
-Rules are evaluated in order until the first match. When a match is found, the job is either included or excluded from the pipeline, depending on the configuration.
+When a match is found, the job is either included or excluded from the pipeline, depending on the configuration.
 
-Include jobs:
+To include jobs:
 ```yml
 job:
   script: echo "Hello, Rules!"
@@ -181,7 +181,7 @@ job:
 ```
 - If the pipeline is for a merge request, the job is run manually and the pipeline continues running even if the manual job is not run
 
-Exclude jobs:
+To exclude jobs:
 ```yml
 job:
   script: echo "Hello, Rules!"
@@ -251,7 +251,7 @@ job1:
 ```
 
 
-## Job scripts
+## Job Scripts
 
 You can verify the syntax is valid with the CI [Lint](https://docs.gitlab.com/ee/ci/lint.html) tool.
 
@@ -294,6 +294,91 @@ job2:
 ```
 
 
+## Caching
+
+You usually use caches to avoid downloading content, like dependencies or libraries, each time you run a job.
+
+Here's an example of caching Node.js dependencies:
+```yml
+image: node:latest
+
+stages:
+  - install
+  - build
+  - test
+
+cache:
+  key:  # Cache modules using lock file
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+install_dependencies:
+  stage: install
+  script:
+    - echo "Dependencies installed"
+
+build:
+  stage: build
+  script:
+    - npm run build
+
+test:
+  stage: test
+  script:
+    - npm test
+```
+
+You can have a maximum of four caches.
+
+You can specify a list of keys to try to restore cache from if there is no cache found using [`cache:fallback_keys`](https://docs.gitlab.com/ee/ci/caching/#per-cache-fallback-keys) or [`CACHE_FALLBACK_KEY`](https://docs.gitlab.com/ee/ci/caching/#global-fallback-key).
+
+You can also disable cache for specific jobs.
+
+By default, the cache for each branch is separate, you can configure to have [all branches use the same cache](https://docs.gitlab.com/ee/ci/caching/#use-the-same-cache-for-all-branches).
+
+You can [clear the cache](https://docs.gitlab.com/ee/ci/caching/#clear-the-cache-manually) manually.
+
+
+## Job artifacts
+
+Jobs can output an archive of files and directories. This output is known as a job artifact.
+
+You can download job artifacts by using the GitLab UI.
+
+To create job artifacts, use the `artifacts` keyword:
+```yml
+pdf:
+  script: xelatex mycv.tex
+  artifacts:
+    paths:
+      - mycv.pdf
+```
+- The `paths` keyword determines which files to add to the job artifacts
+
+You can use wildcards for paths and directories.
+
+You can [specify how long GitLab keeps the artifacts](https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html#with-an-expiry).
+
+Artifacts from successful pipelines are always kept for the latest commit on each ref, ignoring any `expire_in` settings.
+
+You can [prevent files from being added](https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html#without-excluded-files) to an artifacts archive.
+
+Jobs download all artifacts from the completed jobs in previous stages by default. To prevent a job from downloading any artifacts, set `dependencies` to an empty array (`[]`):
+```yml
+job:
+  stage: test
+  script: make build
+  dependencies: []
+```
+
+You can view all artifacts stored in a project from the **Build > Artifacts** page.
+
+
 ## Other topics
 
 - [Run a job after a delay](https://docs.gitlab.com/ee/ci/jobs/job_control.html#run-a-job-after-a-delay)
@@ -304,3 +389,5 @@ job2:
 - [Use CI/CD variable expressions in Job rules](https://docs.gitlab.com/ee/ci/jobs/job_rules.html#reuse-rules-in-different-jobs)
 - [Ignore non-zero exit codes in Job script](https://docs.gitlab.com/ee/ci/yaml/script.html#ignore-non-zero-exit-codes)
 - [Troubleshooting Job Scripts](https://docs.gitlab.com/ee/ci/yaml/script.html#troubleshooting)
+- [Common use cases for caches](https://docs.gitlab.com/ee/ci/caching/#common-use-cases-for-caches)
+- [Cache Troubleshooting](https://docs.gitlab.com/ee/ci/caching/#troubleshooting)
