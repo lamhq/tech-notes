@@ -1,6 +1,8 @@
-# Install Node.js using pnpm
+# Install Node.js
 
-You can use pnpm to install and use the specified version of Node.js. This's similar to [nvm](https://github.com/nvm-sh/nvm).
+You can use pnpm to install and use the specified version of Node.js.
+
+This's similar to [nvm](https://github.com/nvm-sh/nvm).
 
 Install the LTS version of Node.js:
 ```bash
@@ -9,7 +11,7 @@ pnpm env use --global lts
 
 Install Node.js v16:
 ```bash
-pnpm env use --global 16
+pnpm env use --global 22
 ```
 
 Removes the specified version of Node.JS:

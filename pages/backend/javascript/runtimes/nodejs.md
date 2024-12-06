@@ -1,5 +1,9 @@
 # Node.js
 
+## Installation (macOS)
+
+Install using [pnpm](../pkg-mgm/pnpm/nodejs.md). This allow you to install multiple versions of Node.js.
+
 
 ## Reference
 

@@ -1,6 +1,14 @@
 # Homebrew
 
-## Install
+## Overview
+
+Homebrew is a popular package manager for macOS (and Linux) that simplifies the installation of software and tools.
+
+- Easy to use
+- Include a vast repository of packages, including developer tools like Python, Ruby, Node.js, etc.
+
+
+## Install (macOS)
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
