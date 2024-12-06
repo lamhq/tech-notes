@@ -148,6 +148,19 @@ vec = [-4, -2, 0, 2, 4]
 filtered = [x for x in vec if x >= 0]
 ```
 
+## Reduce a list
+```py
+from functools import reduce
+
+# Example list
+numbers = [1, 2, 3, 4, 5]
+
+# Reduce the list by summing up all the elements
+result = reduce(lambda prev, cur: prev + cur, numbers, 0)
+
+print(result)  # Output will be 15
+```
+
 
 ## Sequence Functions
 

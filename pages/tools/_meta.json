@@ -1,8 +1,7 @@
 {
   "git": "Git",
-  "husky": "Husky",
+  "yaml": "YAML",
   "vscode": "Visual Studio Code",
-  "yaml": "YAML Syntax",
   "macos": "macOS",
   "windows": "Windows",
   "facebook": "Facebook app",

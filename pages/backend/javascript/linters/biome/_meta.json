@@ -1,0 +1,8 @@
+{
+  "configure": "Configure",
+  "vcs": "Integrate with VCS",
+  "sort-imports": "Imports Sorting",
+  "format": "Formatter",
+  "lint": "Linter",
+  "ci": "Continuous Integration"
+}

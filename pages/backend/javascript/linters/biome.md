@@ -1,0 +1,81 @@
+# Biome
+
+## Overview
+
+Biome is a fast formatter and linter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL, saving CI and developer time.
+
+You can format and lint your code all at once with a single command.
+
+
+## InstallationSection
+
+```shell npm2yarn
+npm install --save-dev --save-exact @biomejs/biome
+```
+
+
+## Configuration
+
+Create the `biome.json` file:
+```shell
+npx @biomejs/biome init
+```
+
+## Usage
+
+Format files:
+```shell
+npx @biomejs/biome format --write <files>
+```
+
+Lint and fix:
+```shell
+npx @biomejs/biome lint --write <files>
+```
+
+Lint & format:
+```shell
+npx @biomejs/biome check --write <files>
+```
+
+
+## VS Code set up
+
+### Installation
+
+Install official [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
+
+
+### Use Biome as Formatter
+
+Configure Biome as the default formatter for VS Code:
+```json
+{
+  "editor.defaultFormatter": "<other formatter>",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}
+```
+
+### Fix on save
+
+```json filename=".vscode/settings.json"
+{
+  "editor.codeActionsOnSave":{
+    "quickfix.biome": "explicit"
+  }
+}
+```
+
+
+### Sort imports on save
+
+Update VS Code setting file:
+```json filename=".vscode/settings.json"
+{
+  "editor.codeActionsOnSave":{
+    "source.organizeImports.biome": "explicit"
+  }
+}
+```

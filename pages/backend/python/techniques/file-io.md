@@ -1,4 +1,23 @@
-# Working with Files
+# Reading and Writting Files
+
+## Load text from a file
+```py
+file = 'resume.md'
+
+with open(file, 'r') as file:
+    file_contents = file.read()
+```
+
+## Save text to file
+```py
+# Define the text you want to save
+text_to_save = "Hello, World!"
+
+# Open the file in write mode
+with open('file_path.txt', 'w') as file:
+    file.write(text_to_save)
+```
+
 
 ## Pattern when working with files
 

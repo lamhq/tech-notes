@@ -1,4 +1,5 @@
 {
+  "biome": "Biome",
   "eslint": "ESLint",
   "prettier": "Prettier"
 }

@@ -1,33 +1,63 @@
 # File System Operations
 
-## `os` module
+### Joining file paths
+
+```py
+os.path.join(application_path, filename)
+```
+
+
+### Get working directory
 
 ```py
 import os
+
+os.getcwd()
 ```
 
-### Creating Directory
 
+### Get dirname
+
+Get directory path that contain a file
 ```py
-os.mkdir("d:\\tempdir")
+import os
+
+os.path.dirname('/path/to/file')
 ```
 
-### Changing the Current Working Directory
+## Get file name without extension
 
 ```py
+from pathlib import Path
+
+Path(file_path).stem
+```
+
+
+### Change Working Directory
+
+```py
+import os
+
 os.chdir("d:\\tempdir")
 ```
 
-### Get current working directory
-
-```py
-os.getcwd()
-```
 
 ### Removing a Directory
 
 ```py
+import os
+
 os.rmdir("d:\\tempdir")
+```
+
+
+### Creating Directory
+
+```py
+import os
+
+os.mkdir("d:\\tempdir")
 ```
 
 
@@ -48,19 +78,16 @@ target_path = "/path/to/your/directory"
 list_files_and_directories(target_path)
 ```
 
-### Get path of executable file
+
+## File Wildcards
 
 ```py
-import sys
-os.path.dirname(sys.executable)
+import glob
+
+glob.glob('*.py')
+
+glob.glob('./[0-9].*')
 ```
-
-### Joining file paths
-
-```py
-os.path.join(application_path, filename)
-```
-
 
 ## `shutil` module
 
@@ -103,19 +130,3 @@ shutil.rmtree('journaldev')
 ```py
 print(shutil.which('bsondump'))
 ```
-
-
-## File Wildcards
-
-```py
-import glob
-
-glob.glob('*.py')
-
-glob.glob('./[0-9].*')
-```
-
-
-## Convert python code to executable file
-
-Use [PyInstaller](https://pyinstaller.org/en/stable/)
