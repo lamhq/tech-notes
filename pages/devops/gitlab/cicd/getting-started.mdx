@@ -7,7 +7,7 @@
 - [Ensure you have runners available](https://docs.gitlab.com/ee/ci/quick_start/#ensure-you-have-runners-available) to run your jobs.
 
 
-## Create a simple pipeline
+## Simple pipeline
 
 Below CI pipeline contains three jobs (`build-job`, `test-job1`, `deploy-prod`) that run each time code is pushed to the repository:
 
@@ -33,7 +33,7 @@ deploy-prod:
 - `deploy-prod`: prints the current Git branch.
 
 
-## Create a deploy pipeline
+## Deploy pipeline
 
 Below CI pipeline contains two jobs that deploy to `dev` and `prod` environments.
 
@@ -76,12 +76,7 @@ deploy-to-prod:
 - the `prod` environment need to be configured for manual approval before running the deployment
 
 
-## View pipeline status
-
-Go to `Build` > `Pipelines`.
-
-
-## A Node.js pipeline
+## Node.js pipeline
 
 ```yml
 stages:     # List of stages for jobs and their order of execution
@@ -122,6 +117,11 @@ pages:
 - `rules`: configure when to run the job . Rules are evaluated from top to bottom, and if a rule matches, the job is added to the pipeline.
   - The site should only deploy for changes to the default branch.
   - The other jobs should run for all changes in merge requests or the default branch.
+
+
+## View pipeline status
+
+Go to `Build` > `Pipelines`.
 
 
 ## IDE Set up

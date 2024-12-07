@@ -379,6 +379,16 @@ job:
 You can view all artifacts stored in a project from the **Build > Artifacts** page.
 
 
+## SSH
+
+When your jobs are running, they might use SSH keys to:
+- Check out internal submodules.
+- Download private packages using your package manager. For example, Bundler.
+- Deploy your application to your own server or, for example, Heroku.
+- Execute SSH commands from the build environment to a remote server.
+- Rsync files from the build environment to a remote server.
+
+
 ## Other topics
 
 - [Run a job after a delay](https://docs.gitlab.com/ee/ci/jobs/job_control.html#run-a-job-after-a-delay)
