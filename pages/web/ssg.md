@@ -1,4 +1,4 @@
-# Single-page application
+# Static Site Generators
 
 ## Serving a static web app locally
 

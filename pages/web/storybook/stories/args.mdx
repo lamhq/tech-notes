@@ -1,0 +1,157 @@
+# Args
+
+## Overview
+
+A story is a component with a set of arguments that define how the component should render.
+
+Args allows:
+- defining component's arguments in a single JavaScript object
+- live editing components without modifying component code.
+
+Args object can be defined at the story, component and global level.
+
+
+## Story args
+
+```tsx filename="Button.stories.ts|tsx" {13-16}
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { Button, ButtonProps } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = {
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+};
+```
+
+
+## Component args
+
+```tsx filename="Button.stories.ts|tsx" {11-14}
+import type { Meta } from '@storybook/react';
+
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+  //👇 Creates specific argTypes
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+  args: {
+    //👇 Now all Button stories will be primary.
+    primary: true,
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+```
+
+
+## Global args
+
+Apply args to every component's stories unless overwrite.
+
+```ts filename=".storybook/preview.ts"
+// Replace your-renderer with the renderer you are using (e.g., react, vue3, angular, etc.)
+import { Preview } from '@storybook/your-renderer';
+
+const preview: Preview = {
+  // The default value of the theme arg for all stories
+  args: { theme: 'light' },
+};
+
+export default preview;
+```
+
+Use cases: theming, localization, feature toggles, viewport sizes, mocking authentication states.
+
+Using globals enables users to change the value with the toolbar menu.
+
+
+## Setting args through the URL
+
+You can override initial args for a story by adding an args query parameter to the URL:
+
+```
+?path=/story/avatar--default&args=style:rounded;size:100
+```
+
+
+## Setting args from within a story
+
+This allow updating args from inside a story.
+
+For exmaple, when a user toggles a switch component, the switch should be checked, and the arg shown in Storybook should reflect the change:
+```tsx {23, 26}
+import { StoryObj, Meta } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
+import { Checkbox } from './checkbox';
+
+const meta: Meta<typeof Checkbox> = {
+  title: 'Inputs/Checkbox',
+  component: Checkbox,
+};
+export default meta;
+
+type Story = StoryObj<typeof Checkbox>;
+
+export const Example: Story = {
+  args: {
+    isChecked: false,
+    label: 'Try Me!',
+  },
+  /**
+   * 👇 To avoid linting issues, it is recommended to use a function with a capitalized name.
+   * If you are not concerned with linting, you may use an arrow function.
+   */
+  render: function Render(args) {
+    const [{ isChecked }, updateArgs] = useArgs();
+
+    function onChange() {
+      updateArgs({ isChecked: !isChecked });
+    }
+
+    return <Checkbox {...args} onChange={onChange} isChecked={isChecked} />;
+  },
+};
+```
+
+
+## Mapping to complex arg values
+
+When arg's values can not be serialized (e.g., JSX elements). We can map arg values from a simple string to a complex type.
+
+For example, mapping option's values to a list of JSX elements:
+
+```tsx {10-14}
+// Replace your-renderer with the renderer you are using (e.g., react, vue3, angular, etc.)
+import type { Meta } from '@storybook/your-renderer';
+
+import { Example } from './Example';
+
+const meta: Meta<typeof Example> = {
+  component: Example,
+  argTypes: {
+    label: {
+      options: ['Normal', 'Bold', 'Italic'],
+      mapping: {
+        Bold: <b>Bold</b>,
+        Italic: <i>Italic</i>,
+      },
+    },
+  },
+};
+
+export default meta;
+```

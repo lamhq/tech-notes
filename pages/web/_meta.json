@@ -2,5 +2,7 @@
   "css": "CSS",
   "atomic-design": "Atomic Design",
   "react": "React",
-  "build-tools": "Build Tools"
+  "storybook": "Storybook",
+  "build-tools": "Build Tools",
+  "ssg": "Static Site Generators"
 }

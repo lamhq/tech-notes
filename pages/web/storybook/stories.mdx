@@ -1,0 +1,77 @@
+# Story
+
+## What's a Story
+
+A story captures the rendered state of a UI component.
+
+Developers write multiple stories per component that describe all the “interesting” states a component can support.
+
+
+## Using stories
+
+Here's the workflow to use Storybook:
+
+- 🗃 Use the sidebar to find a suitable component
+- 👀 Review its stories to pick a variant that suits your needs
+- 📝 Copy/paste the story definition into your app code and wire it up to data
+
+
+## Component Story Format
+
+Component Story Format (CSF) is an ES6 module-based standard for writing stories in Storybook by using JavaScript objects and modules.
+
+
+## Writting Story
+
+```tsx filename="Button.stories.ts|tsx"
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+};
+export default meta;
+
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = {
+  // 👇 Rename this story (optional)
+  name: 'I am the primary',
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    ...Primary.args,
+    label: '😄👍😍💯',
+  },
+};
+```
+- The `default export` metadata controls how Storybook lists your stories and provides information used by addons.
+- Use the **named exports** to define your component’s stories (UpperCamelCase is preferred).
+
+You can [import args](https://storybook.js.org/docs/writing-stories#:~:text=you%20can%20import%20args%20to%20reuse%20when%20writing%20stories%20for%20other%20components) from other stories to reuse when writing stories for other components,
+
+Each of the args from the story can be edited in the UI using Storybook’s [Controls panel](https://storybook.js.org/docs/essentials/controls).
+
+[Actions](https://storybook.js.org/docs/essentials/actions) auto-detects which args are callbacks and appends a logging function to them.
+
+
+## Create stories (UI)
+
+To create a new story, you can click the `➕` button in the sidebar to search for your component.
+
+To add new story from an existing story, you can use the [Controls addon](https://storybook.js.org/docs/essentials/controls) to adjust the value of a control and then save those changes as a new story.
+
+
+## Edit a story
+
+Using the Controls addon, update a control's value for a story. You can then save the changes to the story and the story file's code will be updated for you.
+
+
+## References
+
+- [What's a story?](https://storybook.js.org/docs/get-started/whats-a-story)

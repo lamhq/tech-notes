@@ -1,0 +1,87 @@
+# Parameters
+
+## Overview
+
+Parameters are Storybook’s method of defining static metadata for stories.
+
+A story’s parameters can be used to provide configuration to various addons at the level of a story or group of stories (for example, setting a background color for the backgrounds addon).
+
+
+## Story parameters
+
+Setting the background for a story via parameter:
+```tsx filename="Button.stories.ts|tsx" {15-19}
+// Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-vite)
+import type { Meta, StoryObj } from '@storybook/your-framework';
+
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const OnDark: Story = {
+  // 👇 Story-level parameters
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+    },
+  },
+};
+```
+
+
+## Component parameters
+
+We can set the parameters for all stories of a component
+
+```tsx {9-13}
+// Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-vite)
+import type { Meta } from '@storybook/your-framework';
+
+import { Button } from './Button';
+
+const meta: Meta<typeof Button> = {
+  component: Button,
+  //👇 Creates specific parameters at the component level
+  parameters: {
+    backgrounds: {
+      default: 'dark',
+    },
+  },
+};
+
+export default meta;
+```
+
+
+## Global parameters
+
+We can also set the parameters for all stories via the parameters export of your `.storybook/preview.js|ts` file:
+
+```ts filename=".storybook/preview.ts"
+// Replace your-renderer with the renderer you are using (e.g., react, vue3)
+import { Preview } from '@storybook/your-renderer';
+
+const preview: Preview = {
+  parameters: {
+    backgrounds: {
+      values: [
+        { name: 'light', value: '#fff' },
+        { name: 'dark', value: '#333' },
+      ],
+    },
+  },
+};
+
+export default preview;
+```
+
+
+## Rules of parameter inheritance
+
+- More specific parameters take precedence (story > component > global)
+- Parameters are merged, so keys are only ever overwritten and never dropped.
