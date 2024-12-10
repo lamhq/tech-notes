@@ -1,0 +1,26 @@
+# Use CSS Modules
+
+## File name convention
+
+By default, only files ending with `*.module.css` are recognized as CSS Modules.
+
+
+## Type Generation
+
+Problem: When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition.
+
+To fix this, you can let Rsbuild generate type declarations for CSS Modules. It can accurately prompt which classNames are exported by a certain CSS file.
+
+```shell npm2yarn
+npm install -D @rsbuild/plugin-typed-css-modules
+```
+
+```ts filenane="rsbuild.config.ts"
+import { pluginTypedCSSModules } from '@rsbuild/plugin-typed-css-modules';
+
+export default {
+  plugins: [pluginTypedCSSModules()],
+};
+```
+
+When run, Rsbuild will generate `*.module.css.d.ts` type declaration file for every CSS module files.

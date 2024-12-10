@@ -73,6 +73,16 @@ Biome is able to resolve configuration files from the `node_modules/` directory:
 ```
 
 
+## Upgrade configuration file
+
+If the schema version specified in the configuration file doesn't match your installed Biome, you'll receive the error: `Property ... is not allowed`.
+
+To fix it, update the configuration file with this command:
+```shell
+npx biome migrate --write
+```
+
+
 ## Ignore files
 
 - use `include` and `ignore`

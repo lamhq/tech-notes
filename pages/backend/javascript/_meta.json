@@ -6,7 +6,7 @@
   "event-loop": "Event loop",
   "http": "HTTP",
   "runtimes": "Runtimes",
-  "linter": "Linters & Formatters",
+  "linters": "Linters & Formatters",
   "typescript": "TypeScript",
   "testing": "Testing",
   "database": "Database",

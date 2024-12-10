@@ -1,0 +1,109 @@
+# Configure Rsbuild
+
+## Configuration Structure
+
+```js filename="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+
+export default defineConfig({
+  plugins: [
+    // configure Rsbuild plugins
+  ],
+  dev: {
+    // options for local development
+  },
+  html: {
+    // options for HTML generation
+  },
+  tools: {
+    // options for the low-level tools
+  },
+  output: {
+    // options for build outputs
+  },
+  resolve: {
+    // options for module resolution
+  },
+  source: {
+    // options for input source code
+  },
+  server: {
+    // options for the Rsbuild Server,
+    // will take effect during local development and preview
+  },
+  security: {
+    // options for Web security
+  },
+  performance: {
+    // options for build performance and runtime performance
+  },
+  moduleFederation: {
+    // options for module federation
+  },
+  environments: {
+    // define different Rsbuild configurations for each environment
+  },
+});
+```
+
+
+## Configuration File
+
+Rsbuild will automatically read the configuration file in the root directory in the following order:
+- `rsbuild.config.mjs`
+- `rsbuild.config.ts`
+- `rsbuild.config.js`
+- `rsbuild.config.cjs`
+- `rsbuild.config.mts`
+- `rsbuild.config.cts`
+
+Use `.ts` for TypeScript projects and `.mjs` for non-TypeScript projects.
+
+
+## Using Environment Variables
+
+In the configuration file, you can use Node.js environment variables to dynamically create configuration:
+```ts
+import { defineConfig } from '@rsbuild/core';
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@request':
+        process.env.NODE_ENV === 'development'
+          ? './src/request.dev.js'
+          : './src/request.prod.js',
+    },
+  },
+});
+```
+
+
+## Export function
+
+You can [export a function](https://rsbuild.dev/guide/basic/configure-rsbuild#export-function) in the config file to dynamically compute the config.
+
+Async function is also supported.
+
+
+## Merge Configurations
+
+You can merge multiple configuration objects using the [`mergeRsbuildConfig` function](https://rsbuild.dev/guide/basic/configure-rsbuild#merge-configurations).
+
+
+## Most important configurations
+
+### `source.entry`
+
+Used to set the entry modules for building.
+
+Default:
+```ts
+export default {
+  source: {
+    entry: {
+      index: './src/index.tsx',
+    }
+  },
+};
+```

@@ -1,6 +1,6 @@
 {
-  "python": "Python",
   "javascript": "JavaScript",
+  "python": "Python",
   "redis": "Redis",
   "rabbitmq": "RabbitMQ",
   "kafka": "Kafka"

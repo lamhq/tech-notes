@@ -1,5 +1,6 @@
 {
   "css": "CSS",
+  "css-modules": "CSS Modules",
   "atomic-design": "Atomic Design",
   "react": "React",
   "storybook": "Storybook",
