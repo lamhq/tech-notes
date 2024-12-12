@@ -4,25 +4,30 @@
 
 RTK Query is an advanced data fetching/mutation/caching tool.
 
+
 ## Features
 
-It generates React hooks that provide data fetching state (error, loading flag, data) to components.
+- Automatically generates React hooks that provide data fetching state (error, loading flag, data) to components.
+- Automatically caches fetched data, allow for invalidation or refetching.
+- Automatically de-dupes requests, ensures that any component that subscribes to the same query will always use the same data.
+- Supports optimistic updates to make your app feel more responsive by updating the UI before the server confirms changes.
+- Can handle real-time data updates via WebSockets or other protocols.
 
-Automatically caches fetched data, allow for invalidation or refetching.
 
-Automatically de-dupes requests, ensures that any component that subscribes to the same query will always use the same data.
+## Reasons to use
 
-Supports optimistic updates to make your app feel more responsive by updating the UI before the server confirms changes.
-
-Can handle real-time data updates via WebSockets or other protocols.
+- You already have a Redux app
+- You want to simplify your existing data fetching logic
+- You want to use the Redux DevTools to see the history of changes to your state over time
 
 
 ## Create an API service
 
-```ts
+```ts filename="services/pokemon.ts"
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Pokemon } from './types'
+
+export type Pokemon = { name: string };
 
 // Define a service using a base URL and expected endpoints
 export const pokemonApi = createApi({
@@ -45,10 +50,9 @@ With RTK Query, you define your entire API definition in one place to easier to 
 
 ## Add the service to your store
 
-```ts
+```ts filename="store.ts"
 import { configureStore } from '@reduxjs/toolkit'
-// Or from '@reduxjs/toolkit/query/react'
-import { setupListeners } from '@reduxjs/toolkit/query'
+import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { pokemonApi } from './services/pokemon'
 
 export const store = configureStore({
@@ -70,8 +74,7 @@ setupListeners(store.dispatch)
 
 ## Use the query in a component
 
-```tsx
-import * as React from 'react'
+```tsx filename="App.tsx"
 import { useGetPokemonByNameQuery } from './services/pokemon'
 
 export default function App() {

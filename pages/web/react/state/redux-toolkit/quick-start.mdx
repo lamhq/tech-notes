@@ -6,7 +6,7 @@ Redux Toolkit Quick start for TypeScript.
 
 A slice represents a single part of the Redux state along with the reducers and actions for that part.
 
-```ts filename="features/counter/counterSlice.ts"
+```ts filename="counterSlice.ts"
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
@@ -49,9 +49,9 @@ export default counterSlice.reducer
 
 The reducer function from the counter slice is added to the store too.
 
-```ts
+```ts filename="store.ts"
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../features/counter/counterSlice'
+import counterReducer from './counterSlice'
 
 export const store = configureStore({
   reducer: {
@@ -66,7 +66,7 @@ export type AppDispatch = typeof store.dispatch
 ```
 
 Provide the Redux Store to React:
-```ts
+```ts filename="index.tsx"
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
@@ -88,20 +88,20 @@ ReactDOM.render(
 - read data from the store with `useSelector`
 - dispatch actions using `useDispatch`
 
-```tsx
-import React from 'react'
-import type { RootState } from '../../app/store'
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './counterSlice'
+```tsx filename="App.tsx"
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increment } from './counterSlice';
+import type { RootState } from './store';
 
-export function Counter() {
-  const count = useSelector((state: RootState) => state.counter.value)
-  const dispatch = useDispatch()
+export default function App() {
+  const count = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <div>
       <div>
         <button
+          type="button"
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
@@ -109,6 +109,7 @@ export function Counter() {
         </button>
         <span>{count}</span>
         <button
+          type="button"
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
@@ -116,7 +117,7 @@ export function Counter() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 ```
 
@@ -125,7 +126,7 @@ export function Counter() {
 
 Create typed versions of the `useDispatch` and `useSelector` hooks for usage in your application.
 
-```ts filename="app/hooks.ts"
+```ts filename="hooks.ts"
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState, AppDispatch } from './store'
 

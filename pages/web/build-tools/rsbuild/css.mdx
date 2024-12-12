@@ -24,30 +24,12 @@ body {
 
 ## Use Tailwind CSS
 
-You can integrate Tailwind CSS in Rsbuild via PostCSS plugins.
-
-Register the `tailwindcss` PostCSS plugin through `postcss.config.cjs` or `tools.postcss`.
-
-```js filename="postcss.config.cjs"
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-  },
-};
-```
-
-Then, install Tailwind CSS and create a `tailwind.config.js` file in the root directory:
-```shell npm2yarn
-npm add tailwindcss -D
-```
-
-```js filename="tailwind.config.js"
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{html,js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
+1. Follow [Tailwind guide](../../css/tailwind-css.mdx#installation-react) to integrate Tailwind CSS to your project
+2. Update PostCSS config to below (no need for `autoprefixer`):
+    ```js filename="postcss.config.cjs"
+    module.exports = {
+      plugins: {
+        tailwindcss: {},
+      },
+    };
+    ```

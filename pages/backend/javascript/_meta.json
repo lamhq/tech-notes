@@ -5,7 +5,7 @@
   "closure": "Closure",
   "event-loop": "Event loop",
   "http": "HTTP",
-  "runtimes": "Runtimes",
+  "runtime": "Runtime",
   "linters": "Linters & Formatters",
   "typescript": "TypeScript",
   "testing": "Testing",

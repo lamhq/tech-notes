@@ -25,21 +25,25 @@ pnpm add -D <pkg>
 pnpm add -g <pkg>
 ```
 
-## Upgrade
+## Upgrade package list
 
-updates packages to their latest version based on the specified range.
-
+Updates packages to their latest version based on the specified range:
 ```bash
 pnpm up
+```
 
-# Updates all dependencies, ignoring ranges specified in package.json
+Updates all dependencies, ignoring ranges specified in `package.json`:
+```bash
 pnpm up --latest
 ```
 
-## Checks for outdated packages
+## Find outdated packages
 
 ```shell
 pnpm outdated
+```
+
+```shell
 pnpm outdated "*gulp-*" @babel/core
 ```
 
