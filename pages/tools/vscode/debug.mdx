@@ -1,0 +1,84 @@
+# Debug
+
+## Debug Single-page application
+
+Debug a single page web application in VS Code.
+
+In this guide, we'll configure VS Code to debug a React application created with [Rsbuild](https://rsbuild.dev/).
+
+Add a NPM script to start the web server to `package.json`:
+```json filename="package.json"
+{
+  "scripts": {
+    "dev": "rsbuild dev --port 3030"
+  }
+}
+```
+- The script will run the rsbuild dev server at port 3030
+
+Add a task configuration that runs the script: 
+```json filename=".vscode/tasks.json"
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "label": "npm: dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "rsbuild-dev",
+        "pattern": {
+          "regexp": ".*?build failed.*$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "start\\s+Building.*$",
+          "endsPattern": "ready\\s+Built in.*$"
+        }
+      }
+    }
+  ]
+}
+```
+- `"script": "dev"`: the npm script to run, in this case, the `dev` script
+- `isBackground`: the task will keep running in the background
+- `problemMatcher`: check the task's run status
+
+
+Add a launch configuration to start and debug the web app with VS Code:
+```json filename=".vscode/launch.json"
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "msedge",
+      "name": "Launch and debug",
+      "request": "launch",
+      "url": "http://localhost:3030",
+      "preLaunchTask": "npm: dev"
+    }
+  ]
+}
+```
+- `"type": "msedge"`: debugging with Microsoft Edge (use Chrome may open an empty browser without extensions)
+- `"request": "launch"`: open the browser in debug mode
+- `"url": "http://localhost:3030"`: the URL of the app to debug. The port must match with the one used by web server
+- `preLaunchTask`: run the task to start the web server first
+
+Start debugging with VS Code.
+
+
+## Debug code in libraries/packages
+
+Update launch configuration with `"justMyCode": false`:
+
+```json filename="vscode/launch.json"
+{
+  "configurations": [
+    {
+      "justMyCode": false
+    }
+  ]
+}
+```

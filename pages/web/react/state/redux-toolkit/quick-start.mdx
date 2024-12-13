@@ -83,19 +83,34 @@ ReactDOM.render(
 ```
 
 
+## Define Typed React Hooks
+
+Create typed versions of the `useDispatch` and `useSelector` hooks for usage in your application.
+
+```ts filename="hooks.ts"
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState, AppDispatch } from './store'
+
+// Use throughout your app instead of plain `useDispatch` and `useSelector`
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()
+```
+
+
 ## Access Redux state in React components
 
-- read data from the store with `useSelector`
-- dispatch actions using `useDispatch`
+- read data from the store with `useAppSelector`
+- dispatch actions using `useAppDispatch`
 
 ```tsx filename="App.tsx"
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector, useAppDispatch } from 'app/hooks'
 import { decrement, increment } from './counterSlice';
 import type { RootState } from './store';
 
 export default function App() {
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  // The `state` arg is correctly typed as `RootState` already
+  const count = useAppSelector((state) => state.counter.value)
+  const dispatch = useAppDispatch()
 
   return (
     <div>
@@ -118,36 +133,5 @@ export default function App() {
       </div>
     </div>
   );
-}
-```
-
-
-## Define Typed Hooks (optional)
-
-Create typed versions of the `useDispatch` and `useSelector` hooks for usage in your application.
-
-```ts filename="hooks.ts"
-import { useDispatch, useSelector } from 'react-redux'
-import type { RootState, AppDispatch } from './store'
-
-// Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
-export const useAppSelector = useSelector.withTypes<RootState>()
-```
-
-Use them in components:
-```tsx
-import React, { useState } from 'react'
-
-import { useAppSelector, useAppDispatch } from 'app/hooks'
-
-import { decrement, increment } from './counterSlice'
-
-export function Counter() {
-  // The `state` arg is correctly typed as `RootState` already
-  const count = useAppSelector((state) => state.counter.value)
-  const dispatch = useAppDispatch()
-
-  // omit rendering logic
 }
 ```
