@@ -4,5 +4,6 @@
   "vpc": "Amazon VPC",
   "lambda": "AWS Lambda",
   "lake-formation": "AWS Lake Formation",
-  "glue": "AWS Glue"
+  "glue": "AWS Glue",
+  "appsync": "AWS AppSync"
 }
