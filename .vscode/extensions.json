@@ -4,10 +4,8 @@
 
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
-		// Edit Drawio diagrams
 		"hediet.vscode-drawio",
-
-		// Edit Markdown files more convinient
-		"yzhang.markdown-all-in-one",
+		"bierner.markdown-preview-github-styles",
+		"yzhang.markdown-all-in-one"
 	],
 }

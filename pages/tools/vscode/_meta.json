@@ -1,4 +1,5 @@
 {
+  "markdown": "Markdown",
   "python": "Python",
   "jupyter-nb": "Jupyter Notebook",
   "fastapi": "FastAPI",
