@@ -9,7 +9,8 @@ const str = String.raw`Hello\nWorld`;
 console.log(str); // Output: "Hello\nWorld"
 ```
 
-## Number Formatting
+
+## Padding
 
 Format a number with leading zeros
 ```ts
@@ -21,9 +22,33 @@ console.log(str); // "005"
 
 ## Replace 
 
-Replace all occurences within a string
-```tsx
+Replace all occurences within a string `replace()`
+```ts
 let str = 'Hello World';
-let newStr = str.replaceAll('l', 'x');
+let newStr = str.replace('l', 'x');
 console.log(newStr); // "Hexxo Worxd"
 ```
+
+Replace using regex patterns:
+```ts
+let timeString = "08:59 AM";
+
+let newTimeString = timeString.replace(/AM|PM/g, '');
+
+console.log(newTimeString); // Output: 08:59
+```
+
+
+## Split
+
+Split string by one or more words:
+```ts
+console.log( '06:40:03AM'.split(/(AM|PM)/) ) // ["06:40:03",  "AM"]
+```
+
+Split string by uppercase characters:
+```ts
+console.log( 'mobilePhone'.split(/(?=[A-Z])/) ) // ["mobile", "Phone"] 
+```
+- `(?=[A-Z])`: This is a lookahead assertion. It checks for an uppercase letter (`A-Z`) in the string but does not consume any characters. This means the split occurs just before each uppercase letter.
+- `split(/(?=[A-Z])/)`: splits a string into an array of substrings, with the split occurring before each uppercase letter.

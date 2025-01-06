@@ -46,12 +46,12 @@ export default [
 
 ## Formatting
 
-Follow this [guide](../../prettier/install.md).
+Follow this [guide](../../../javascript/linters/prettier/install.md).
 
 
 ## Testing
 
-Follow this [guide](../../jest/getting-started.md).
+Follow this [guide](../../../javascript/testing/jest/getting-started.md).
 
 
 ## Debugging

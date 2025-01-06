@@ -15,7 +15,7 @@ If the types of the two values are different, the comparison will return `false`
 
 For example:
 
-```javascript
+```js
 console.log(5 == '5'); // true
 console.log(5 === '5'); // false
 ```
@@ -52,7 +52,7 @@ The nullish coalescing operator (`??`) is used to return the right-hand side ope
 
 Here's an example:
 
-```javascript
+```js
 let x = null;
 let y = x ?? "default value";
 console.log(y); // Output: "default value"
@@ -69,7 +69,7 @@ The nullish coalescing assignment operator (`??=`) is used to assign a value to 
 
 Here's an example:
 
-```javascript
+```js
 let x = null;
 x ??= "default value";
 console.log(x); // Output: "default value"
@@ -78,3 +78,76 @@ console.log(x); // Output: "default value"
 In this example, the variable `x` is `null`, so the `??=` operator assigns the right-hand side operand `"default value"` to `x`.
 
 The nullish coalescing assignment operator can be used to provide a default value for a variable that may be `null` or `undefined`.
+
+
+## Bitwise operators
+
+Bitwise operators allow you to manipulate individual bits within an integer.
+
+They are often used in low-level programming, such as system programming or performance-critical applications.
+
+### AND (`&`)
+
+Combines corresponding bits of two operands. The result bit is `1` if both bits are `1`.
+
+```js
+let a = 5;  // 0101
+let b = 3;  // 0011
+let result = a & b;  // 0001 (1)
+```
+
+### OR (`|`)
+
+Combines corresponding bits of two operands. The result bit is `1` if either bit is `1`.
+```js
+let a = 5;  // 0101
+let b = 3;  // 0011
+let result = a | b;  // 0111 (7)
+```
+
+### XOR (`^`)
+
+Combines corresponding bits of two operands. The result bit is `1` if only one of the bits is `1`.
+```js
+let a = 5;  // 0101
+let b = 3;  // 0011
+let result = a ^ b;  // 0110 (6)
+```
+
+### NOT (`~`)
+
+Inverts all bits of the operand. The result is the two's complement of the operand.
+```js
+let a = 5;  // 0101
+let result = ~a;  // 1010 (-6)
+```
+
+### Left Shift (`<<`)
+
+Shifts bits of the first operand to the left by the number of positions specified by the second operand.
+
+Zero bits are shifted in from the right.
+```js
+let a = 5;  // 0101
+let result = a << 1;  // 1010 (10)
+```
+
+### Right Shift (`>>`)
+
+Shifts bits of the first operand to the right by the number of positions specified by the second operand.
+
+The leftmost bits are filled with the sign bit (0 for positive numbers, 1 for negative numbers).
+```js
+let a = 5;  // 0101
+let result = a >> 1;  // 0010 (2)
+```
+
+### Zero-fill Right Shift (`>>>`)
+
+Shifts bits of the first operand to the right by the number of positions specified by the second operand.
+
+The leftmost bits are always filled with zeros.
+```js
+let a = -5;  // 11111111111111111111111111111011 (in 32-bit representation)
+let result = a >>> 1;  // 01111111111111111111111111111101 (2147483645)
+```
