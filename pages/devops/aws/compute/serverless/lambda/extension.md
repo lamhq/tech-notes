@@ -49,22 +49,26 @@ API methods:
 ## Lifecycle
 
 **Initialization Phase**:
+
 1. **Execution Environment Creation**: Starts with Lambda creating a new environment upon invocation.
 2. **Extension Execution**: The extension executable is located and executed, initiating the process.
 3. **Registration**: The extension must register using the extension API.
 
 **Ready State**:
+
 4. **API Interaction**: After registration, the extension calls the `next` method on the API to signal readiness.
 
 **Invocation Handling**:
+
 5. **Function Handler Invocation**: Lambda invokes the function handler with the event.
 6. **Event Receipt**: The extension receives the invoke event as a response to its previous `next` method call.
 7. **Processing**: Any necessary processing is performed by the extension.
 
 **Post-Invocation**:
+
 8. **Ready for Next**: The extension calls the `next` method on the API again to prepare for possible further invocations.
 
-**Shutdown Phase**
+**Shutdown Phase**:
 
 9. **Idle Period**: If no further invocations occur after some time, Lambda begins shutting down the environment.
 10. **Shutdown Event**: The extension receives a shutdown event.
@@ -72,8 +76,7 @@ API methods:
 
 ![](./images/extension-lifecycle.png)
 
-**Extension Failures**:
-If an extension fails during initialization or invocation, then the Lambda service resets the execution environment.
+**Extension Failures**: If an extension fails during initialization or invocation, then the Lambda service resets the execution environment.
 
 
 ## Telemetry API

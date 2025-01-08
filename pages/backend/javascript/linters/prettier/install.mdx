@@ -46,6 +46,20 @@ export default [
 ```
 
 
+## Organize import statements
+
+```shell npm2yarn
+npm install --save-dev prettier-plugin-organize-imports
+```
+
+Update Prettier config `.prettierrc` file:
+```json filename=".prettierrc"
+{
+  "plugins": ["prettier-plugin-organize-imports"]
+}
+```
+
+
 ## Using Prettier
 
 Or run Prettier directly:
@@ -58,8 +72,16 @@ npx prettier . --write
 
 Install [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension (`esbenp.prettier-vscode`).
 
+Update workspace setting file:
+```json filename=".vscode/settings.json"
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2
+}
+```
 
 ## References
 
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
-- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)

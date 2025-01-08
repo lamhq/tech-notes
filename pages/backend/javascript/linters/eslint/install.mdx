@@ -10,12 +10,12 @@ Install and configure ESLint for a TypeScript project.
 
 Install ESLint, `typescript-eslint`, `husky`, `lint-staged`:
 ```bash npm2yarn
-npm install --save-dev eslint \
-  @eslint/js \
-  @types/eslint__js \
-  typescript-eslint \
-  husky \
-  lint-staged
+npm install --save-dev eslint@^9.17.0 \
+  @eslint/js@^9.17.0 \
+  @types/eslint__js@^8.42.3 \
+  typescript-eslint@^8.19.0 \
+  husky@^9.1.7 \
+  lint-staged@^15.3.0
 ```
 
 
@@ -39,14 +39,19 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  }
+  },
+
+  // global ignore config to include only files in `src` directory
+  {
+    ignores: ['*', '!src'],
+  },
 );
 ```
 
-`tseslint.config()` is a helper function that provide types for your flat config file without the need for JSDoc type comments. It accepts any number flat config objects and returns an array of configuration objects.
+- `tseslint.config()` is a helper function that provide types for your flat config file without the need for JSDoc type comments. It accepts any number flat config objects and returns an array of configuration objects.
 
 
-## Installing Git hook
+## Enable Git hook
 
 Set up Git Hook to run `lint-staged` on commit:
 
@@ -56,7 +61,7 @@ node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
 ```
 
 
-## Setting up Visual Studio Code
+## Visual Studio Code Setup
 
 Install [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 

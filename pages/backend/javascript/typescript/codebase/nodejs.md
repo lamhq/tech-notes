@@ -1,4 +1,4 @@
-# Set up Codebase for Node.js projects
+# Instructions for setting up Node.js codebase
 
 ## Features
 
@@ -7,9 +7,10 @@
 - [x] ESLint v9 with flat config system
 - [x] Use Prettier for code formatting
 - [x] Display linting errors in VS Code
-- [x] Sample unit test with Jest
-- [x] Run and debug unit test with VS Code
-- [x] Conventional Commit support
+- [ ] Conventional Commit support
+- [ ] Sample unit test with Jest
+- [ ] Run and debug unit test with VS Code
+- [ ] API e2e test
 - [ ] Terraform
 - [ ] CI/CD with Github Actions
 
@@ -29,7 +30,7 @@
 
 ## Linting
 
-Follow this [guide](../../eslint/install.md).
+Follow this [guide](../../linters/eslint/install.mdx).
 
 To only process files in your `src/` directory, add this config to `eslint.config.mjs`:
 ```js
@@ -46,15 +47,12 @@ export default [
 
 ## Formatting
 
-Follow this [guide](../../../javascript/linters/prettier/install.md).
+Follow this [guide](../../linters/prettier/install.mdx).
 
 
 ## Testing
 
-Follow this [guide](../../../javascript/testing/jest/getting-started.md).
-
-
-## Debugging
+Follow this [guide](../../testing/jest/getting-started.mdx).
 
 
 ## References
