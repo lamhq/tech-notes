@@ -1,5 +1,5 @@
 {
-  "biome": "Biome",
   "eslint": "ESLint",
-  "prettier": "Prettier"
+  "prettier": "Prettier",
+  "biome": "Biome"
 }

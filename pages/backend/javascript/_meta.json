@@ -10,5 +10,6 @@
   "typescript": "TypeScript",
   "testing": "Testing",
   "database": "Database",
-  "api": "API Development"
+  "api": "API Development",
+  "codebase": "Codebase Setup"
 }

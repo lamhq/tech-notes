@@ -1,0 +1,59 @@
+# Node.js
+
+Instructions for setting up Node.js TypeScript codebase
+
+## Creating project
+
+1. Generate `package.json` file:
+    ```shell
+    npm init -y
+    ```
+2. Generate a `.gitignore` file for Node.js project:
+    ```shell
+    npx gitignore Node
+    ```
+3. Install [TypeScript](../typescript/install.md)
+
+
+## Code Linting
+
+Set up ESLint using this [guide](../linters/eslint/install.mdx).
+
+To only process files in your `src/` directory, add this config to `eslint.config.mjs`:
+```js filename="eslint.config.mjs"
+export default [
+  // other configs...
+
+  {
+    // include only the `src` directory
+    ignores: ["*", "!src/"]
+  }
+];
+```
+
+
+## Formatting
+
+Follow this [guide](../linters/prettier/install.mdx).
+
+
+## Unit Test
+
+Follow this [guide](../testing/jest/getting-started.mdx).
+
+
+## End-to-end Test
+
+
+## Commit Linting
+
+
+## Debugging
+
+
+## CI/CD pipelines
+
+
+## References
+
+- [tsconfig/bases](https://github.com/tsconfig/bases/blob/main/bases/node20.json)

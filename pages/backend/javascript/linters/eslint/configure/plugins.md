@@ -51,7 +51,7 @@ export default [
 
 ## Use plugin's processor
 
-Plugins may provide [processors](../processors.md).
+Plugins may provide processors.
 
 To specify processors in a configuration file, use the `processor` key and assign the name of processor:
 ```js

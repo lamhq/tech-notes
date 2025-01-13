@@ -1,0 +1,25 @@
+# Debug Your Configuration
+
+## Use the Config Inspector
+
+ESLint Config Inspector is a visual tool (web page) that helps you understand and inspect your ESLint flat configuration files.
+
+Features:
+- it provides a visual representation of your ESLint configuration, include all defined configuration objects
+- you can specifies files and examining which configuration objects apply to them
+- it helps you identify which rules are enabled or disabled for specific files, and which configuration object is the source of a particular rule
+
+To open ESLint Config Inspector, run:
+```shell
+npx eslint --inspect-config
+```
+
+![](https://eslint.org/docs/latest/assets/images/configure/config-inspector.png)
+
+
+## Print Calculated Configuration
+
+When there're multiple config objects match a file, to view the final config:
+```shell
+npx eslint --print-config file.js 
+```

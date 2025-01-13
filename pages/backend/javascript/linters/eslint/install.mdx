@@ -3,6 +3,7 @@
 Install and configure ESLint for a TypeScript project.
 
 ## Requirements
+
 - Node.js >=20.11.0.
 
 
@@ -29,10 +30,21 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  // ESLint recommended
   {
+    name: '@eslint/js/recommended',
+    ...eslint.configs.recommended,
+  },
+
+  // normal Typescript
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked.filter(
+    (config) => config.name === 'typescript-eslint/stylistic-type-checked',
+  ),
+  {
+    // enable linting with type information
+    name: 'typescript-parser-options',
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -40,15 +52,12 @@ export default tseslint.config(
       },
     },
   },
-
-  // global ignore config to include only files in `src` directory
-  {
-    ignores: ['*', '!src'],
-  },
 );
 ```
 
 - `tseslint.config()` is a helper function that provide types for your flat config file without the need for JSDoc type comments. It accepts any number flat config objects and returns an array of configuration objects.
+- We assign a name to each config object to facilitate easy debugging.
+- The `stylisticTypeChecked` config has duplicated config objects with `strictTypeChecked`, so we use `filter` to remove the unnecessary configs.
 
 
 ## Enable Git hook
@@ -88,10 +97,9 @@ Add `lint` script to `package.json`:
   }
 }
 ```
+- Because ESLint doesn't catch TypeScript errors, we need to perform type checks using `tsc`.
 
-*Because ESLint doesn't catch TypeScript errors, we need to perform type checks using `tsc`*.
-
-Run ESLint for current directory:
+Run ESLint for the current and sub directories:
 ```sh
 npm run lint
 ```
@@ -99,6 +107,11 @@ npm run lint
 Run and fix:
 ```sh
 npm run lint --fix
+```
+
+You can run ESLint directly without using npm script:
+```shell
+npx eslint
 ```
 
 

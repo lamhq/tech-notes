@@ -4,10 +4,11 @@ Install Prettier and make it work with ESLint.
 
 This assumes that you already have ESLint installed.
 
+
 ## Installing Prettier
 
 ```bash npm2yarn
-npm install --save-dev prettier eslint-config-prettier
+npm install --save-dev prettier@^3.4.2 eslint-config-prettier@^9.1.0
 ```
 
 - [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#installation) makes ESLint and Prettier play nice with each other.
@@ -27,29 +28,36 @@ Create a Prettier config `.prettierrc` file:
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "trailingComma": "es5",
-  "printWidth": 80
+  "trailingComma": "all",
+  "printWidth": 85
 }
 ```
 
 
 ## Configuring ESLint
 
-Update `eslint.config.mjs` file to turn off rules that conflict or are unnecessary with Prettier, by using these pre-made configs:
+Turn off rules that conflict or are unnecessary with Prettier, by using pre-made configs:
 ```js filename="eslint.config.mjs"
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   // your existing configs...
-  eslintConfigPrettier,
+
+  // turns off all rules that are unnecessary or might conflict with Prettier.
+  {
+    name: 'eslint-config-prettier',
+    ...eslintConfigPrettier,
+  },
 ];
 ```
 
+This config only turns rules off, so it only makes sense to put it after other configs.
 
-## Organize import statements
+
+## Enable Organize Import feature
 
 ```shell npm2yarn
-npm install --save-dev prettier-plugin-organize-imports
+npm install --save-dev prettier-plugin-organize-imports@^4.1.0
 ```
 
 Update Prettier config `.prettierrc` file:
@@ -62,7 +70,7 @@ Update Prettier config `.prettierrc` file:
 
 ## Using Prettier
 
-Or run Prettier directly:
+Format with Prettier:
 ```bash
 npx prettier . --write
 ```

@@ -1,11 +1,14 @@
 # Installation
 
+Install TypeScript for Node.js v22 project.
+
+
 ## Install TypeScript
 
-Install TypeScript and type definitions for Node.js project:
+Install TypeScript and type definitions for Node.js:
 
 ```sh npm2yarn
-npm i -D typescript @types/node
+npm i -D typescript@^5.7.2 @types/node@^22.10.5
 ```
 
 
@@ -13,14 +16,14 @@ npm i -D typescript @types/node
 
 Install a [predefined config](https://github.com/tsconfig/bases) from the community for your runtime environment:
 ```shell npm2yarn
-npm install --save-dev @tsconfig/node20
+npm install --save-dev @tsconfig/node22
 ```
 
 Update your `tsconfig.json` to extend the installed config:
 ```json
 {
   // Inherits the settings tailored for Node.js v20
-  "extends": "@tsconfig/node20/tsconfig.json",
+  "extends": "@tsconfig/node22/tsconfig.json",
 
   // your config goes here
   "compilerOptions": {

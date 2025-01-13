@@ -1,7 +1,8 @@
 {
   "config-file": "Configuration Files",
-  "files-ignores": "Files and ignores",
-  "rules": "Rules",
-  "plugins": "Plugins",
-  "parsers": "Parsers"
+  "files-ignores": "Include and ignore files",
+  "rules": "Configure Rules",
+  "plugins": "Configure Plugins",
+  "parsers": "Configure Parsers",
+  "debug": "Debug Configuration"
 }
