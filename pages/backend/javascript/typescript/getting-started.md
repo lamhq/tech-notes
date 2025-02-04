@@ -1,11 +1,8 @@
-# Installation
+# Getting Started
 
-Install TypeScript for Node.js v22 project.
+## Installation
 
-
-## Install TypeScript
-
-Install TypeScript and type definitions for Node.js:
+Install TypeScript and type definitions for Node.js (v22):
 
 ```sh npm2yarn
 npm i -D typescript@^5.7.2 @types/node@^22.10.5
@@ -46,7 +43,7 @@ Update your `tsconfig.json` to extend the installed config:
 ```
 
 
-## Running code
+## Run code
 
 First, compile TypeScript code to JavaScript:
 ```shell
@@ -58,3 +55,11 @@ Run JavaScript with Node.js:
 ```shell
 node example.js
 ```
+
+
+## VS Code set up
+
+Extensions:
+- [Pretty TypeScript Errors](https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors): make TypeScript errors prettier and human-readable in VSCode
+- [Prettify TypeScript: Better Type Previews](https://marketplace.visualstudio.com/items?itemName=MylesMurphy.prettify-ts): provide better previews for TypeScript types
+- [Twoslash Query Comments](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-twoslash-queries): lets you use `// ^?` inside editor to display types without hovering, useful for debugging

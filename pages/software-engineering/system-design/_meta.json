@@ -1,8 +1,8 @@
 {
   "server": "Server",
+  "data-center": "Data center",
   "scalability": "Scalability",
   "high-availability": "High Availability",
-  "data-center": "Data center",
   "load-balancer": "Load balancer",
   "cache": "Cache",
   "cdn": "CDN",

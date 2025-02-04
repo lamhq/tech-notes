@@ -1,8 +1,5 @@
 export default {
   logo: <span>Cheat Sheet</span>,
-  project: {
-    link: 'https://github.com/lamhq/cheat-sheet'
-  },
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Albert\'s Cheat Sheet'
@@ -21,6 +18,10 @@ export default {
   sidebar: {
     defaultMenuCollapseLevel: 1
   },
+  feedback: {
+    content: null
+  },
+  editLink: '',
   // update the display of Last Update Time
   gitTimestamp: ({ timestamp }) => `Last update: ${timestamp.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`
 }

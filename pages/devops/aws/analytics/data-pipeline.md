@@ -37,11 +37,10 @@ To use data pipeline, you create steps that are dependent on previous tasks comp
 
 ## Example diagram
 
-We export MySQL data to Amazon S3 for report generation using a data pipeline with resources such as EC2, RDS, Amazon S3, and EMR.
+We set up task runners that run on EC2 instances.
 
-We set up our task runners to authenticate into our database. We then export our data from RDS into Amazon S3 using those task runners.
+Our task runners authenticate into the MySQL database, export the data to Amazon S3.
 
-After our data is exported to Amazon S3, we can then leverage that to generate reports
-in our Amazon EMR service.
+After our data is exported to Amazon S3, we can then leverage that to generate reports in our Amazon EMR service.
 
-![](./images/data-pl-arch.png)
+![](./data-pipeline/data-pl.drawio.svg)

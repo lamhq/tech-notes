@@ -38,8 +38,19 @@ npm uninstall -g <package>
 
 ### Install
 
+Install all packages defined in `package.json` file:
+```bash
+npm install
+```
+- If the `NODE_ENV` environment variable is set to `production`, only packages in `devDependencies` are installed.
+
+Add a new package to `dependencies` section of `package.json` file:
 ```bash
 npm install <package_name> --save
+```
+
+Add a new package to `devDependencies` section of `package.json` file:
+```bash
 npm install <package_name> --save-dev
 ```
 

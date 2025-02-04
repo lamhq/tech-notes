@@ -1,4 +1,5 @@
 {
+  "npm": "npm",
   "pnpm": "pnpm",
-  "npm": "npm"
+  "packagejson": "package.json"
 }

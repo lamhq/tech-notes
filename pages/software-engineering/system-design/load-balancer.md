@@ -15,8 +15,8 @@ Servers are unreachable directly by clients anymore.
 
 ## Benefits
 
-1. Make system more resilient. If a server fails, the load balancer reroutes requests to other servers.
-2. Make system horizontally scalable. You can add more servers easily.
+1. Make system more resilient. If a server fails, the load balancer reroutes requests to other servers (scalability).
+2. Make system horizontally scalable. You can add more servers easily (high availability).
 
 
 ## Routing Strategies

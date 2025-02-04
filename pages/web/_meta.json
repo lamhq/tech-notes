@@ -3,6 +3,6 @@
   "atomic-design": "Atomic Design",
   "react": "React",
   "storybook": "Storybook",
-  "build-tools": "Build Tools",
-  "ssg": "Static Site Generators"
+  "ssg": "Static Site Generators",
+  "build-tools": "Build Tools"
 }

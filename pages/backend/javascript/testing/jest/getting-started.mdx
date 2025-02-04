@@ -3,13 +3,12 @@
 ## Installation 
 
 ```sh npm2yarn
-npm install --save-dev jest ts-jest @jest/globals
+npm install --save-dev jest@^29.7.0 ts-jest@^29.2.5 @jest/globals@^29.7.0
 ```
 
-Explanation:
 - `jest`: Install jest framework
-- `@jest/globals`: Install types for Jest globals (`describe`, `expect`, `test`, ...)
-- `ts-jest`: Install the TypeScript preprocessor which allows jest to transpile TypeScript on the fly and have source-map support built in.
+- `@jest/globals`: the official package that contain types for Jest globals (`describe`, `expect`, `test`, ...)
+- `ts-jest`: TypeScript preprocessor which allows jest to transpile TypeScript on the fly and have source-map support built in.
 - This assume the TypeScript compiler (`'typescript'`) is already installed.
 
 
@@ -61,7 +60,7 @@ export default config;
 
 Install `eslint-plugin-jest`:
 ```shell npm2yarn
-npm install --save-dev eslint-plugin-jest
+npm install --save-dev eslint-plugin-jest@^28.10.0
 ```
 
 Update your ESLint configuration:
@@ -69,13 +68,16 @@ Update your ESLint configuration:
 import pluginJest from 'eslint-plugin-jest';
  
 export default [
-  // configuration for Jest test files
+  // Jest test files
   {
+    name: 'eslint-plugin-jest',
     files: ['**/*.spec.ts', '**/*.test.ts'],
     ...pluginJest.configs['flat/all'],
-  },
+  }
 ];
 ```
+
+Since we're importing the Jest global helpers (describe, it, etc.) from `@jest/globals`, we don't need to configure ESLint to support these.
 
 
 ## Set up Visual Studio Code
