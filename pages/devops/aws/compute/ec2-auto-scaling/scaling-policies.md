@@ -2,13 +2,26 @@
 
 ## Simple Scaling Policy
 
-You specify what to do when a CloudWatch alarm is triggered.
+You specify what to do when a CloudWatch alarm is triggered: **scale in** or **scale out**.
 
-Waits for the health check and cool down periods to expire before re-evaluating.
+The Auto Scaling group will waits for the health check and **cool down periods to expire** before triggering another scaling activity.
 
 Useful when load is erratic.
 
-*Example: add 1 instance if CPU utilization metric > 80%.*
+### Example
+
+Add 2 instances when the average CPU utilization > 70% and remove 1 instances when it drops below 30%
+
+**Scale Out Policy**:
+- Alarm: CPUUtilization > 70%
+- Scaling Adjustment: +2 instances
+- Cooldown Period: 300 seconds
+
+**Scale In Policy**:
+- Alarm: CPUUtilization < 30%
+- Scaling Adjustment: -1 instance
+- Cooldown Period: 300 seconds
+
 
 ## Step Scaling Policy
 

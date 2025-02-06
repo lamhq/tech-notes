@@ -1,0 +1,253 @@
+# React Router
+
+## Version
+
+This document is for React Router v7.1.5 (2025).
+
+
+## Installation
+
+```shell npm2yarn
+npm i react-router
+```
+
+Use React Router in the application:
+```tsx showLineNumbers
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router";
+import App from "./app";
+
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
+
+
+## Basic Routes
+
+Routes are configured by rendering `<Routes>` and `<Route>` components:
+
+```tsx {10, 11, 12}
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router";
+import App from "./app";
+
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+    </Routes>
+  </BrowserRouter>
+);
+```
+
+
+## Nested Routes
+
+This will define two routes:
+- `/dashboard`
+- `/dashboard/settings`
+
+```tsx {2, 4}
+<Routes>
+  <Route path="dashboard" element={<Dashboard />}>
+    <Route index element={<Home />} />
+    <Route path="settings" element={<Settings />} />
+  </Route>
+</Routes>
+```
+
+The component of parent route must use `<Outlet/>` to render child routes:
+
+```tsx {8}
+import { Outlet } from "react-router";
+
+export default function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      {/* will either be <Home/> or <Settings/> */}
+      <Outlet />
+    </div>
+  );
+}
+```
+
+
+## Index Routes
+
+An index route is a special route that matches the parent route's path exactly.
+
+It's useful when you want to render a default component when no specific sub-routes are matched.
+
+```tsx {4, 8}
+<Routes>
+  <Route path="/" element={<Root />}>
+    {/* renders into the outlet in <Root> at "/" */}
+    <Route index element={<Home />} />
+
+    <Route path="dashboard" element={<Dashboard />}>
+      {/* renders into the outlet in <Dashboard> at "/dashboard" */}
+      <Route index element={<DashboardHome />} />
+      <Route path="settings" element={<Settings />} />
+    </Route>
+  </Route>
+</Routes>
+```
+
+
+## Dynamic Routes
+
+If a path segment starts with `:` then it becomes a "dynamic segment".
+
+```tsx
+<Route path="teams/:teamId" element={<Team />} />
+```
+
+To get the value from dynamic segment:
+
+```tsx filename="Team.tsx"
+import { useParams } from "react-router";
+
+export default function Team() {
+  let params = useParams();
+  // params.teamId
+}
+```
+
+
+## Getting URL values
+
+Get query string parameters:
+```tsx
+function SearchResults() {
+  let [searchParams] = useSearchParams();
+  return (
+    <div>
+      <p>
+        You searched for <i>{searchParams.get("q")}</i>
+      </p>
+      <FakeSearchResults />
+    </div>
+  );
+}
+```
+
+Location information:
+```ts
+function useAnalytics() {
+  let location = useLocation();
+  // location.pathname
+  // location.key
+}
+```
+
+
+## Layout
+
+Layouts are routes without the `path` prop, they don't add any segments to the URL, only render child routes (using `<Outlet/>`):
+
+```tsx {2}
+<Routes>
+  <Route element={<MarketingLayout />}>
+    <Route index element={<MarketingHome />} />
+    <Route path="contact" element={<Contact />} />
+  </Route>
+</Routes>
+```
+
+
+## Linking
+
+Using components:
+```tsx
+import { NavLink, Link } from "react-router";
+
+function Header() {
+  return (
+    <nav>
+      {/* NavLink makes it easy to show active states */}
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "active" : ""
+        }
+      >
+        Home
+      </NavLink>
+
+      <Link to="/concerts/salt-lake-city">Concerts</Link>
+    </nav>
+  );
+}
+```
+
+
+Using hook API:
+```tsx
+import { useNavigate } from "react-router";
+
+export function LoginPage() {
+  let navigate = useNavigate();
+
+  return (
+    <>
+      <MyHeader />
+      <MyLoginForm
+        onSuccess={() => {
+          navigate("/dashboard");
+        }}
+      />
+      <MyFooter />
+    </>
+  );
+}
+```
+
+
+## Splats (Catch All Routes)
+
+If a route path pattern ends with `/*` then it will match any characters following the `/`, including other `/` characters.
+
+```tsx
+<Route path="files/*" element={<File />} />
+```
+
+This will match:
+- `/files`
+- `/files/documents`
+- `/files/images`
+- `/files/videos`
+- `/files/documents/report.pdf`
+- `/files/images/photo.jpg`
+- `/files/videos/2025/clip.mp4`
+- `/files/documents/2024/budget.xlsx`
+
+To get the matched part:
+```tsx
+let params = useParams();
+// params["*"] will contain the remaining URL after files/
+let filePath = params["*"];
+```
+
+
+## Optional Segments
+
+You can make a route segment optional by adding a `?` to the end of the segment.
+
+```tsx
+<Route path=":lang?/categories" element={<Categories />} />
+```
+
+Will match:
+- `/categories`
+- `/en/categories`
+- `/fr/categories`

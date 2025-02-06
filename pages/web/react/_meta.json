@@ -1,6 +1,7 @@
 {
   "typescript": "TypeScript",
-  "form": "Form Handling",
+  "form": "Form",
   "state": "State Management",
-  "nextjs": "Next.js"
+  "react-router": "Routing",
+  "nextjs": "Server Rendering"
 }

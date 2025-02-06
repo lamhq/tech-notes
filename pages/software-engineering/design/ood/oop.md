@@ -2,7 +2,11 @@
 
 ## Overview
 
-Object-oriented programming is a paradigm based on the concept of wrapping pieces of data, and behavior related to that data, into special bundles called **objects**, which are constructed from a set of "blueprints", defined by a programmer, called **classes**.
+Object-oriented programming is a programming paradigm.
+
+It's based on the concept of wrapping pieces of data, and behavior related to that data, into special bundles called **objects**.
+
+Objects are constructed from a set of "blueprints", called **classes**, defined by a programmer.
 
 
 ## Pillars of OOP
