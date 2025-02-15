@@ -3,5 +3,6 @@
   "form": "Form",
   "state": "State Management",
   "react-router": "Routing",
-  "nextjs": "Server Rendering"
+  "nextjs": "Server Rendering",
+  "react-oidc-context": "Authentication"
 }

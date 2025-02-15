@@ -36,5 +36,3 @@ Install for React app:
 ```shell npm2yarn
 npm install @reduxjs/toolkit react-redux
 ```
-
-## Install Redux DevTools extension

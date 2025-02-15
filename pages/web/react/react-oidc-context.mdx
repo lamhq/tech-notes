@@ -1,0 +1,185 @@
+# react-oidc-context
+
+## Installation
+
+```shell npm2yarn
+npm install oidc-client-ts react-oidc-context --save
+```
+
+## Set up
+
+Wrap your application in `AuthProvider`:
+
+```tsx filename="index.tsx"
+import { AuthProvider } from "react-oidc-context";
+
+const oidcConfig = {
+  authority: "<your authority>",
+  client_id: "<your client id>",
+  redirect_uri: "<your redirect uri>",
+  // ...
+};
+
+<AuthProvider {...oidcConfig}>
+  <App />
+</AuthProvider>
+```
+
+
+## Access authentication state
+
+Inside a React component:
+```tsx filename="App.tsx"
+import { useAuth } from "react-oidc-context";
+
+export default function App() {
+  const auth = useAuth();
+  const signIn = () => void auth.signinRedirect();
+  const signOut = () => void auth.removeUser();
+
+  if (auth.isAuthenticated) {
+    return (
+      <>
+        <pre> Hello: {auth.user?.profile.email} </pre>
+        <pre> ID Token: {auth.user?.id_token} </pre>
+        <pre> Access Token: {auth.user?.access_token} </pre>
+        <pre> Refresh Token: {auth.user?.refresh_token} </pre>
+        <button onClick={signOut}>Log out</button>
+      </>
+    );
+  }
+
+  return <button onClick={signIn}>Log in</button>;
+}
+```
+
+In normal Javascript code:
+```ts
+import { User } from "oidc-client-ts";
+
+function getUser() {
+  const oidcStorage = localStorage.getItem(
+    `oidc.user:<your authority>:<your client id>`
+  );
+  if (!oidcStorage) {
+    return null;
+  }
+
+  return User.fromStorageString(oidcStorage);
+}
+
+async function getPosts() {
+  const user = getUser();
+  const token = user?.access_token;
+  return fetch("https://api.example.com/posts", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+```
+
+
+## Show authentication status
+```tsx
+import { useAuth } from "react-oidc-context";
+
+export default function App() {
+  const auth = useAuth();
+
+  switch (auth.activeNavigator) {
+    case "signinSilent":
+      return <div>Signing you in...</div>;
+    case "signoutRedirect":
+      return <div>Signing you out...</div>;
+  }
+
+  if (auth.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (auth.error) {
+    return <div>Oops... {auth.error.message}</div>;
+  }
+
+  return null;
+}
+```
+
+
+## Protect private component
+
+```tsx
+import { withAuthenticationRequired } from "react-oidc-context";
+
+const PrivatePage = () => <div>Private</div>;
+
+export default withAuthenticationRequired(PrivatePage, {
+  OnRedirecting: () => <div>Redirecting to the login page...</div>,
+});
+```
+
+
+## Capture auth events
+
+Re-login when token is expiring:
+```tsx
+import { useAuth } from "react-oidc-context";
+
+export default function App() {
+  const auth = useAuth();
+
+  React.useEffect(() => {
+    // the `return` is important - `addAccessTokenExpiring()` returns a cleanup function
+    return auth.events.addAccessTokenExpiring(() => {
+      alert("You're about to be signed out due to inactivity. Press continue to stay signed in.");
+      auth.signinSilent();
+    });
+  }, [auth.events, auth.signinSilent]);
+
+  return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
+}
+```
+
+
+## Sign-in automatically
+
+```tsx filename="index.tsx"
+const oidcConfig: AuthProviderProps = {
+  ...
+  userStore: new WebStorageStateStore({ store: window.localStorage }),
+};
+```
+
+```tsx
+import { useAuth, hasAuthParams } from "react-oidc-context";
+
+export default function App() {
+  const auth = useAuth();
+  const [hasTriedSignin, setHasTriedSignin] = React.useState(false);
+
+  // automatically sign-in
+  React.useEffect(() => {
+    if (
+      !hasAuthParams() &&
+      !auth.isAuthenticated &&
+      !auth.activeNavigator &&
+      !auth.isLoading &&
+      !hasTriedSignin
+    ) {
+      auth.signinRedirect();
+      setHasTriedSignin(true);
+    }
+  }, [auth, hasTriedSignin]);
+
+  if (auth.isLoading) {
+    return <div>Signing you in/out...</div>;
+  }
+
+  if (!auth.isAuthenticated) {
+    return <div>Unable to log in</div>;
+  }
+
+  return <button onClick={() => void auth.removeUser()}>Log out</button>;
+}
+```

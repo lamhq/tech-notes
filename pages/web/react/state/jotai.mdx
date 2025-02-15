@@ -1,0 +1,110 @@
+# Jotai
+
+## Version
+
+This guide is for version 2 (2025).
+
+
+## Why use Jotai?
+
+- Simple and easy to integrate to existing projects
+- No unnecessary boilerplate code
+- If you're looking for a Recoil-similar libarary 
+- Jotai has a small bundle size
+- Jotai has excellent TypeScript support
+
+
+## Installation
+
+```shell npm2yarn
+npm install jotai
+```
+
+
+## Getting started
+
+### Create atoms
+
+Primitive atoms:
+```ts
+import { atom } from 'jotai'
+
+const countAtom = atom(0)
+
+const countryAtom = atom('Japan')
+
+const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka'])
+
+export const animeAtom = atom([
+  {
+    title: 'Ghost in the Shell',
+    year: 1995,
+    watched: true
+  },
+  {
+    title: 'Serial Experiments Lain',
+    year: 1998,
+    watched: false
+  }
+])
+```
+
+Derived atoms (an atom can read from other atoms):
+```ts
+const progressAtom = atom((get) => {
+  const anime = get(animeAtom)
+  return anime.filter((item) => item.watched).length / anime.length
+})
+```
+
+
+### Use atoms
+
+Read and write from React component:
+
+```tsx
+import { useAtom } from 'jotai'
+
+import { animeAtom } from './atoms'
+
+function AnimeApp() {
+  const [anime, setAnime] = useAtom(animeAtom);
+
+  return (
+    <>
+      <ul>
+        {anime.map((item) => (
+          <li key={item.title}>{item.title}</li>
+        ))}
+      </ul>
+      <button
+        onClick={() => {
+          setAnime((ani) => [
+            ...ani,
+            {
+              title: 'Cowboy Bebop',
+              year: 1998,
+              watched: false,
+            },
+          ]);
+        }}
+      >
+        Add Cowboy Bebop
+      </button>
+    </>
+  );
+}
+```
+
+Read:
+
+```ts
+const anime = useAtomValue(animeAtom)
+```
+
+
+Write:
+
+```ts
+const setAnime = useSetAtom(animeAtom)
+```
