@@ -1,13 +1,49 @@
 # Static Site Generators
 
-## Serving a static web app locally
+## Overview
 
-Install `serve` package:
-```shell
-npm install -g serve
-```
+A Static Site Generator (SSG) takes content (like Markdown files) and templates, and processes them to produce static HTML files.
 
-Serve a static website in `build` directory:
-```shell
-serve -s build
-```
+These files can then be served directly by a web server without the need for server-side processing.
+
+This results in faster load times, improved security, and easier scalability.
+
+
+## Advantages of static sites
+
+- **Performance**: Static sites load very fast because they don't require server-side processing.
+- **Security**: With no server-side code execution, the attack surface is reduced.
+- **Scalability**: Static sites can handle high traffic with ease.
+- **Cost-Effective**: Hosting static sites is often cheaper since they can be served from a simple web server or a CDN.
+
+## Popular Static Site Generators
+
+### Rspress
+
+Rspress is a static site generator based on Rsbuild, rendered with the React framework.
+
+It helps you to quickly build a documentation site.
+
+Advantages:
+- Fast build times, because it uses the Rust-based Rspack bundler
+- Supports MDX, allowing you to write content in Markdown and include React components.
+- The full-Text Search feature works well in both dev and production modes
+- Provide a default customizable theme and a lot of built-in components
+
+Disadvantages:
+- The dev server may crash when renaming files, requiring a restart.
+
+
+### Nextra
+
+Nextra is a static site generation framework built on top of Next.js (a React framework that enables you to build server-rendered web applications, also support SSG).
+
+Advantages:
+- Supports MDX, allowing you to write content in Markdown and include React components
+- Provide a default customizable theme
+- Good development experience
+- Provide two default customizable themes for documentation and blog
+
+Disadvantages:
+- The full-text search returns incorrect results
+- Buid can be very slow and may crash for large projects

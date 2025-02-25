@@ -17,6 +17,9 @@ const oidcConfig = {
   authority: "<your authority>",
   client_id: "<your client id>",
   redirect_uri: "<your redirect uri>",
+  // for authorization code exchange
+  response_type: 'code',
+  scope: 'email openid profile',
   // ...
 };
 
@@ -26,9 +29,42 @@ const oidcConfig = {
 ```
 
 
+## Protect private components
+
+```tsx
+import { withAuthenticationRequired } from "react-oidc-context";
+
+const PrivatePage = () => <div>Private</div>;
+
+export default withAuthenticationRequired(PrivatePage, {
+  OnRedirecting: () => <div>Redirecting to the login page...</div>,
+  onBeforeSignin: () => {
+    // save the current route for going back after signin
+    window.localStorage.setItem(REDIRECT_ROUTE, window.location.pathname);
+  },
+});
+```
+
+
+## Getting access token after redirection
+
+To enable the `AuthProvider` to exchange authorization token for access token automatically, add these settings:
+
+```tsx
+const oidcConfig: AuthProviderProps = {
+  // ...
+  client_authentication: 'client_secret_basic',
+  client_secret: process.env.PUBLIC_OIDC_CLIENT_SECRET,
+  skipSigninCallback: window.location.pathname !== '<your redirect uri>',
+}
+```
+
+
+
 ## Access authentication state
 
 Inside a React component:
+
 ```tsx filename="App.tsx"
 import { useAuth } from "react-oidc-context";
 
@@ -54,6 +90,7 @@ export default function App() {
 ```
 
 In normal Javascript code:
+
 ```ts
 import { User } from "oidc-client-ts";
 
@@ -81,6 +118,7 @@ async function getPosts() {
 
 
 ## Show authentication status
+
 ```tsx
 import { useAuth } from "react-oidc-context";
 
@@ -107,44 +145,11 @@ export default function App() {
 ```
 
 
-## Protect private component
-
-```tsx
-import { withAuthenticationRequired } from "react-oidc-context";
-
-const PrivatePage = () => <div>Private</div>;
-
-export default withAuthenticationRequired(PrivatePage, {
-  OnRedirecting: () => <div>Redirecting to the login page...</div>,
-});
-```
-
-
-## Capture auth events
-
-Re-login when token is expiring:
-```tsx
-import { useAuth } from "react-oidc-context";
-
-export default function App() {
-  const auth = useAuth();
-
-  React.useEffect(() => {
-    // the `return` is important - `addAccessTokenExpiring()` returns a cleanup function
-    return auth.events.addAccessTokenExpiring(() => {
-      alert("You're about to be signed out due to inactivity. Press continue to stay signed in.");
-      auth.signinSilent();
-    });
-  }, [auth.events, auth.signinSilent]);
-
-  return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
-}
-```
-
-
 ## Sign-in automatically
 
 ```tsx filename="index.tsx"
+import { WebStorageStateStore } from 'oidc-client-ts';
+
 const oidcConfig: AuthProviderProps = {
   ...
   userStore: new WebStorageStateStore({ store: window.localStorage }),
@@ -181,5 +186,27 @@ export default function App() {
   }
 
   return <button onClick={() => void auth.removeUser()}>Log out</button>;
+}
+```
+
+
+## Capture auth events
+
+Re-login when token is going to expire (this is just an example, refreshing tokens is done automatically by the library):
+```tsx
+import { useAuth } from "react-oidc-context";
+
+export default function App() {
+  const auth = useAuth();
+
+  React.useEffect(() => {
+    // the `return` is important - `addAccessTokenExpiring()` returns a cleanup function
+    return auth.events.addAccessTokenExpiring(() => {
+      alert("You're about to be signed out due to inactivity. Press continue to stay signed in.");
+      auth.signinSilent();
+    });
+  }, [auth.events, auth.signinSilent]);
+
+  return <button onClick={() => void auth.signinRedirect()}>Log in</button>;
 }
 ```

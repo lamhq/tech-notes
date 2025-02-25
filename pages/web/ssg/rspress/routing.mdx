@@ -1,0 +1,38 @@
+# Routing
+
+## Mapping rules
+
+Rspress automatically scans the root directory and all subdirectories, and maps file paths to route paths.
+
+For example, if you have the following file structure:
+
+```
+docs
+├── foo
+│   └── bar.md
+└── foo.md
+```
+
+If `docs` is the root path (can be configured in Rspress config file), then:
+- `bar.md` will be routed as `/foo/bar`
+- `foo.md` will be routed to `/foo`
+
+In addition to `.md(x)` files, you can also use `.tsx` files as [route components](https://rspress.dev/guide/basic/conventional-route#component-routing).
+
+If you want to [customize the routing behavior](https://rspress.dev/guide/basic/conventional-route#custom-behavior), you can use the `route` field in the configuration file
+
+
+## Structuring files
+
+- place documentation files in the `docs` directory
+- non-documentation content (functions, utils, ...) can be maintained outside the `docs` directory
+
+```
+docs
+└── foo.mdx
+src
+├── components
+│   └── CustomComponent.tsx
+└── utils
+    └── utils.ts
+```
