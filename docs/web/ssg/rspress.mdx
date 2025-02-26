@@ -1,3 +1,5 @@
+import { PackageManagerTabs } from '@theme';
+
 # Rspress
 
 Lightning Fast Static Site Generator.
@@ -16,22 +18,19 @@ Lightning Fast Static Site Generator.
 
 ## Quick start
 
-### For new project
+### Create new project
 
-```shell
-npm create rspress@latest
-```
+<PackageManagerTabs command="create rspress@latest" />
 
 
 ### Add Rspress to existing project
 
-```shell npm2yarn
-npm install rspress -D
-```
+<PackageManagerTabs command="install rspress -D" />
+
 
 Add the following script to `package.json`:
 
-```json
+```json title="package.json"
 {
   "scripts": {
     "dev": "rspress dev --port 5050",
@@ -43,7 +42,7 @@ Add the following script to `package.json`:
 
 Create a configuration file:
 
-```js filename="rspress.config.ts"
+```js title="rspress.config.ts"
 import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
@@ -53,7 +52,7 @@ export default defineConfig({
 
 Create a TypeScript configuration file:
 
-```json filename="tsconfig.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "target": "ES2020",

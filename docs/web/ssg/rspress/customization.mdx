@@ -21,7 +21,7 @@ You can define navigation menu item in `themeConfig.nav`.
 
 Another way to customize the Navbar is modifying the `_meta.json` in the root directory (typically the `docs` directory)
 
-```json filename="_meta.json"
+```json title="_meta.json"
 [
   {
     "text": "Guide",
@@ -39,7 +39,7 @@ https://rspress.dev/guide/default-theme/navbar
 To customize the Sidebar (on the left side of the page), modify the `_meta.json` in the subdirectory of the document root directory
 
 Basic items with label extracted from the h1 title in the document:
-```json filename="_meta.json"
+```json title="_meta.json"
 [
   "page1",
   "page2",
@@ -107,7 +107,7 @@ Custom link:
 
 
 Add icon before title:
-```json filename="_meta.json"
+```json title="_meta.json"
 {
   "type": "file",
   "name": "introduction",
@@ -135,7 +135,7 @@ https://rspress.dev/guide/default-theme/doc-page#previousnext-page-text
 
 ## Show Last Update Time
 
-```ts filename="rspress.config.ts"
+```ts title="rspress.config.ts"
 import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
@@ -148,7 +148,7 @@ export default defineConfig({
 
 ## Show Scroll to top
 
-```ts filename="rspress.config.ts"
+```ts title="rspress.config.ts"
 import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
@@ -195,13 +195,13 @@ You can also add [Tailwind CSS](https://rspress.dev/guide/basic/custom-page#tail
 
 You can specify the layout structure of a page using the `pageType` field in the frontmatter to :
 
-```md filename="foo.mdx"
+```md title="foo.mdx"
 ---
 pageType: custom
 ---
 ```
 
-```tsx filename="foo.tsx"
+```tsx title="foo.tsx"
 export const frontmatter = {
   // Declare layout type
   pageType: 'custom',
