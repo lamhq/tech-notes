@@ -133,7 +133,33 @@ With the `prevPageText` and `nextPageText` config, you can set the previous/next
 https://rspress.dev/guide/default-theme/doc-page#previousnext-page-text
 
 
-## Change Layout
+## Show Last Update Time
+
+```ts filename="rspress.config.ts"
+import { defineConfig } from 'rspress/config';
+
+export default defineConfig({
+  themeConfig: {
+    lastUpdated: true,
+  },
+});
+```
+
+
+## Show Scroll to top
+
+```ts filename="rspress.config.ts"
+import { defineConfig } from 'rspress/config';
+
+export default defineConfig({
+  themeConfig: {
+    enableScrollToTop: true,
+  },
+});
+```
+
+
+## Change page layout
 
 You can set the layout of a page to use Home page layout and define the content through frontmatter
 
