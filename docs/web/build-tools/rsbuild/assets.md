@@ -100,6 +100,6 @@ Avoid importing files from the public directory into the source code. The correc
 When you import static assets in TypeScript code, TypeScript may prompt that the module is missing a type definition.
 
 To fix this, you need to add a type declaration file for the static assets by creating a `src/env.d.ts` (you must install `@rsbuild/core` package):
-```ts filename="src/env.d.ts"
+```ts title="src/env.d.ts"
 /// <reference types="@rsbuild/core/types" />
 ```

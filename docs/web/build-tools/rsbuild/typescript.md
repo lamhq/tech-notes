@@ -7,7 +7,7 @@ Rsbuild uses SWC by default for transpiling TypeScript code (can be switched to 
 
 When using TypeScript in Rsbuild, you need to enable the `isolatedModules` option in your `tsconfig.json` file:
 
-```json filename="tsconfig.json"
+```json title="tsconfig.json"
 {
   "compilerOptions": {
     "isolatedModules": true

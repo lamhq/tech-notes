@@ -1,4 +1,4 @@
-# Atomic design pattern
+# Atomic Design
 
 Atomic design is a methodology for crafting design systems with five key fundamental building blocks, which, when combined, promote consistency, modularity, and scalability.
 

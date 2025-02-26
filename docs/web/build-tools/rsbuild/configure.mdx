@@ -1,8 +1,8 @@
-# Configure Rsbuild
+# Configure
 
 ## Configuration Structure
 
-```js filename="rsbuild.config.ts"
+```js title="rsbuild.config.ts"
 import { defineConfig } from '@rsbuild/core';
 
 export default defineConfig({
@@ -63,6 +63,7 @@ Use `.ts` for TypeScript projects and `.mjs` for non-TypeScript projects.
 ## Using Environment Variables
 
 In the configuration file, you can use Node.js environment variables to dynamically create configuration:
+
 ```ts
 import { defineConfig } from '@rsbuild/core';
 
@@ -98,6 +99,7 @@ You can merge multiple configuration objects using the [`mergeRsbuildConfig` fun
 Used to set the entry modules for building.
 
 Default:
+
 ```ts
 export default {
   source: {

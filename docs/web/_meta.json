@@ -1,3 +1,6 @@
 [
+  { "name": "index", "label": "Web Development" },
+  { "name": "design-patterns", "type": "dir" },
+  { "name": "build-tools", "type": "dir" },
   { "name": "ssg", "type": "dir" }
 ]

@@ -1,3 +1,5 @@
+import { PackageManagerTabs } from '@theme';
+
 # Environment Variables
 
 Rsbuild supports injecting env variables or expressions into the code during build, which is helpful for distinguishing the running environment or replacing constants.
@@ -23,7 +25,7 @@ You can access these env variables through `import.meta.env.PUBLIC_*` or `proces
 
 Public variables will replace identifiers in JavaScript and HTML template files.
 
-```shell filename=".env"
+```shell title=".env"
 PUBLIC_NAME=jack
 PASSWORD=123
 ```
@@ -95,6 +97,5 @@ declare namespace NodeJS {
 ```
 
 Also, install the dependency `@types/node`:
-```shell npm2yarn
-npm add @types/node -D
-```
+
+<PackageManagerTabs command="install @types/node -D" />
