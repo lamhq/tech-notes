@@ -1,0 +1,35 @@
+[
+  {
+    "text": "Software Engineering",
+    "link": "/se"
+  },
+  {
+    "text": "Backend",
+    "link": "/backend"
+  },
+  {
+    "text": "Web",
+    "link": "/web"
+  },
+  {
+    "text": "Others",
+    "items": [
+      {
+        "text": "DevOps",
+        "link": "/devops"
+      },
+      {
+        "text": "Data Engineering",
+        "link": "/data"
+      },
+      {
+        "text": "Tools",
+        "link": "/tools"
+      },
+      {
+        "text": "Soft Skills",
+        "link": "/soft-skills"
+      }
+    ]
+  }
+]
