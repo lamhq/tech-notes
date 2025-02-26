@@ -1,4 +1,6 @@
 {
   "routing": "Routing",
-  "navigation": "Navigation"
+  "content": "Writting content",
+  "customization": "Customization",
+  "ui-components": "UI Components"
 }

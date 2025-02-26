@@ -1,0 +1,149 @@
+# Writting content
+
+## Use React in Markdown file
+
+Rspress supports [MDX](https://mdxjs.com/), a powerful way to develop content.
+
+You can use React components in Markdown files:
+
+```md
+import { CustomComponent } from './custom';
+
+# Hello world
+
+<CustomComponent />
+```
+
+MDX files can import each other:
+
+```md
+import Foo from './shared/foo.mdx';
+
+# Hello world
+
+<Foo />
+```
+
+## Page title and metadata
+
+You can add Front Matter (YAML-formatted object) at the beginning of your Markdown file to define metadata
+
+```md
+---
+title: Hello world
+---
+```
+
+By default, Rspress uses h1 headings as html headings.
+
+You can also access properties defined in Front Matter in the body:
+
+```md
+---
+title: Hello world
+---
+
+# {frontmatter.title}
+```
+
+
+## Content Block
+
+You can use the `:::` syntax to create custom blocks with title:
+
+```md
+:::note
+This is a `block` of type `note`
+:::
+
+:::tip
+This is a `block` of type `tip`
+:::
+
+:::info
+This is a `block` of type `info`
+:::
+
+:::warning
+This is a `block` of type `warning`
+:::
+
+:::danger
+This is a `block` of type `danger`
+:::
+
+:::details
+This is a `block` of type `details` (toggleable)
+:::
+
+:::tip Custom Title
+This is a `block` of `Custom Title`
+:::
+
+:::tip{title="Custom Title"}
+This is a `block` of `Custom Title`
+:::
+```
+
+You can also use [GitHub Markdown Alerts Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) to create custom blocks:
+
+```md
+> [!NOTE]
+> This is a `block` of type `note`
+
+> [!TIP]
+> This is a `block` of type `tip`
+
+> [!INFO]
+> This is a `block` of type `info`
+
+> [!WARNING]
+> This is a `block` of type `warning`
+
+> [!DANGER]
+> This is a `block` of type `danger`
+
+> [!DETAILS]
+> This is a `block` of type `details`
+```
+
+
+## Code block
+
+````md
+```js
+console.log('Hello World');
+```
+
+```js title="hello.js"
+console.log('Hello World');
+```
+````
+
+### Show line numbers
+
+To display line numbers, you can enable the `showLineNumbers` option in the [config file](https://rspress.dev/api/config/config-build#markdownshowlinenumbers).
+
+
+### Line highlighting
+
+````md
+```js title="hello.js" {1,3-5}
+console.log('Hello World');
+
+const a = 1;
+
+console.log(a);
+
+const b = 2;
+
+console.log(b);
+```
+````
+
+
+## Customizing title's anchor id
+
+```md
+## Hello world \{#custom-id}
+```

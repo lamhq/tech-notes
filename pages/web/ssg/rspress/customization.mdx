@@ -1,0 +1,221 @@
+# Customization
+
+## Logo (top left)
+
+https://rspress.dev/guide/basic/static-assets#top-left-corner-logo
+
+
+## Favicon
+
+https://rspress.dev/guide/basic/static-assets#favicon
+
+
+## Homepage logo
+
+https://rspress.dev/guide/basic/static-assets#homepage-logo
+
+
+## Navbar
+
+You can define navigation menu item in `themeConfig.nav`.
+
+Another way to customize the Navbar is modifying the `_meta.json` in the root directory (typically the `docs` directory)
+
+```json filename="_meta.json"
+[
+  {
+    "text": "Guide",
+    "link": "/guides/introduction",
+    "activeMatch": "^/guides/"
+  }
+]
+```
+
+https://rspress.dev/guide/default-theme/navbar
+
+
+## Sidebar
+
+To customize the Sidebar (on the left side of the page), modify the `_meta.json` in the subdirectory of the document root directory
+
+Basic items with label extracted from the h1 title in the document:
+```json filename="_meta.json"
+[
+  "page1",
+  "page2",
+  "page3"
+]
+```
+
+File navigation item:
+
+```ts
+{
+  type: 'file';
+  name: string; // file name
+  label?: string;
+  tag?: string;
+  overviewHeaders?: number[];
+  context?: string;
+}
+```
+
+Directory navigation item:
+
+```ts
+{
+  type: 'dir';
+  name: string;
+  label?: string;
+  collapsible?: boolean;
+  collapsed?: boolean;
+  tag?: string;
+  overviewHeaders?: number[];
+  context?: string;
+}
+```
+
+Divider:
+
+```ts
+{
+  type: 'divider';
+  dashed?: boolean;
+}
+```
+
+Section header:
+
+```ts
+{
+  type: 'section-header';
+  label: string;
+  tag?: string;
+}
+```
+
+Custom link:
+
+```ts
+{
+  type: 'custom-link';
+  label: string;
+  link: string;
+  context?: string;
+};
+```
+
+
+Add icon before title:
+```json filename="_meta.json"
+{
+  "type": "file",
+  "name": "introduction",
+  "label": "Introduction",
+  "tag": "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 32 32\"><path fill=\"currentColor\" d=\"M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z\"/></svg>"
+}
+```
+
+You can also customize sidebar through [`themeConfig.sidebar`](https://rspress.dev/api/config/config-theme#sidebar) property in the config file.
+
+
+## Outline
+
+You can set the title of the outline bar on the right using `outlineTitle` config.
+
+https://rspress.dev/guide/default-theme/doc-page#outline-title
+
+
+## Bottom navigation
+
+With the `prevPageText` and `nextPageText` config, you can set the previous/next page text.
+
+https://rspress.dev/guide/default-theme/doc-page#previousnext-page-text
+
+
+## Change Layout
+
+You can set the layout of a page to use Home page layout and define the content through frontmatter
+
+```
+---
+pageType: home
+---
+```
+
+https://rspress.dev/guide/default-theme/home-page
+
+Note: there's an issue with hot reloading for the homepage
+
+Other layouts to use: `docs`, `custom`.
+
+## Add global component
+
+You can add some custom global components to the page, like **Back to top** button.
+
+https://rspress.dev/guide/basic/custom-page#custom-global-components
+
+
+## Add custom style
+
+You may add global styles on top of the theme UI through `globalStyles` configuration item.
+
+https://rspress.dev/guide/basic/custom-page#custom-styles
+
+You can also add [Tailwind CSS](https://rspress.dev/guide/basic/custom-page#tailwind-css) to your site.
+
+
+## Change page layout
+
+You can specify the layout structure of a page using the `pageType` field in the frontmatter to :
+
+```md filename="foo.mdx"
+---
+pageType: custom
+---
+```
+
+```tsx filename="foo.tsx"
+export const frontmatter = {
+  // Declare layout type
+  pageType: 'custom',
+};
+```
+
+https://rspress.dev/guide/basic/custom-page#using-pagetype
+
+
+To turn page's components (navbar, sidebar, ...) on/off, you can define them in frontmatter:
+
+```
+---
+navbar: false
+sidebar: false
+outline: false
+footer: false
+globalUIComponents: false
+---
+```
+
+
+## Add custom metadata
+
+In `rspress.config.ts`, you can custom HTML's metadata in `head` tag for all pages.
+
+You can also customize individual page's metadata using frontmatter:
+
+```
+---
+title: This is title
+description: This is description
+---
+```
+
+This will add `<meta name="description" content="This is description">` to `<head>` tag.
+
+
+## Add custom tags
+
+You can add custom html through `builderConfig.html.tags`  configuration item.
+
+https://rspress.dev/guide/basic/ssg#adding-custom-site-content
