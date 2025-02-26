@@ -1,4 +1,6 @@
-# Use CSS Modules
+import { PackageManagerTabs } from '@theme';
+
+# CSS Modules
 
 ## File name convention
 
@@ -11,11 +13,9 @@ Problem: When you import CSS Modules in TypeScript code, TypeScript may prompt t
 
 To fix this, you can let Rsbuild generate type declarations for CSS Modules. It can accurately prompt which classNames are exported by a certain CSS file.
 
-```shell npm2yarn
-npm install -D @rsbuild/plugin-typed-css-modules
-```
+<PackageManagerTabs command="install -D @rsbuild/plugin-typed-css-modules" />
 
-```ts filenane="rsbuild.config.ts"
+```ts title="rsbuild.config.ts"
 import { pluginTypedCSSModules } from '@rsbuild/plugin-typed-css-modules';
 
 export default {
