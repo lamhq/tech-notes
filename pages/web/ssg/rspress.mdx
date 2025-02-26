@@ -34,9 +34,9 @@ Add the following script to `package.json`:
 ```json
 {
   "scripts": {
-    "dev": "rspress dev",
+    "dev": "rspress dev --port 5050",
     "build": "rspress build",
-    "preview": "rspress preview"
+    "preview": "rspress preview --port 5050"
   }
 }
 ```
@@ -93,9 +93,4 @@ npm run build
 
 ```shell
 npm run preview
-```
-
-Specify the preview port number:
-```shell
-rspress preview --port 8080
 ```
