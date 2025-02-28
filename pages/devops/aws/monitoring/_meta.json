@@ -1,7 +1,7 @@
 {
-  "cloudwatch": { "title": "Amazon CloudWatch" },
+  "cloudwatch": "Amazon CloudWatch",
   "cloudtrail": "AWS CloudTrail",
-  "grafana": { "title": "Amazon Managed Grafana" },
-  "prometheus": { "title": "Amazon Managed Prometheus" },
-  "health": { "title": "AWS Health" }
+  "grafana": "Amazon Managed Grafana",
+  "prometheus": "Amazon Managed Prometheus",
+  "health": "AWS Health"
 }

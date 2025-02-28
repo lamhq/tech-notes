@@ -1,4 +1,4 @@
 {
-  "audit-manager": { "title": "AWS Audit Manager" },
-  "artifact": { "title": "AWS Artifact" }
+  "audit-manager": "AWS Audit Manager",
+  "artifact": "AWS Artifact"
 }

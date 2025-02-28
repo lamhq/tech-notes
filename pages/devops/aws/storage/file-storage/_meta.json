@@ -1,4 +1,4 @@
 {
-  "efs": { "title": "EFS" },
-  "fsx": { "title": "FSx" }
+  "efs": "EFS",
+  "fsx": "FSx"
 }

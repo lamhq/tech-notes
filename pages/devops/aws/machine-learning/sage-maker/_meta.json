@@ -1,5 +1,5 @@
 {
-  "basic": { "title": "Basic Operations" },
-  "deploy": { "title": "Deploy" },
-  "text-classification": { "title": "Text Classification" }
+  "basic": "Basic Operations",
+  "deploy": "Deploy",
+  "text-classification": "Text Classification"
 }

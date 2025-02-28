@@ -1,5 +1,5 @@
 {
-  "install": { "title": "Installing" },
-  "query": { "title": "Query" },
-  "table": { "title": "Table" }
+  "install": "Installing",
+  "query": "Query",
+  "table": "Table"
 }

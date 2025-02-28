@@ -1,7 +1,7 @@
 {
-  "aws-shield": { "title": "AWS Shield" },
-  "aws-waf": { "title": "AWS WAF" },
-  "network-firewall": { "title": "AWS Network Firewall" },
-  "firewall-manager": { "title": "AWS Firewall Manager" },
-  "aws-security-hub": { "title": "AWS Security Hub" }
+  "aws-shield": "AWS Shield",
+  "aws-waf": "AWS WAF",
+  "network-firewall": "AWS Network Firewall",
+  "firewall-manager": "AWS Firewall Manager",
+  "aws-security-hub": "AWS Security Hub"
 }
