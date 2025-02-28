@@ -1,6 +1,6 @@
 {
-	"install": "Installation",
-	"cli": "Using CLI",
-	"migration": "Migrations",
-	"seed": "Database Seeding"
+  "install": "Installation",
+  "cli": "Using CLI",
+  "migration": "Migrations",
+  "seed": "Database Seeding"
 }

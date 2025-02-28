@@ -1,6 +1,6 @@
 {
-  "iam": { "title": "IAM" },
-  "sts": { "title": "Amazon STS" },
-  "cognitor": { "title": "Amazon Cognito" },
-  "sso": { "title": "AWS Single Sign-On" }
+  "iam": "IAM",
+  "sts": "Amazon STS",
+  "cognitor": "Amazon Cognito",
+  "sso": "AWS Single Sign-On"
 }

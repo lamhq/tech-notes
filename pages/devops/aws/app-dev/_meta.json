@@ -1,5 +1,5 @@
 {
-  "amplify": { "title": "AWS Amplify" },
-  "device-farm": { "title": "AWS Device Farm" },
-  "pinpoint": { "title": "Amazon Pinpoint" }
+  "amplify": "AWS Amplify",
+  "device-farm": "AWS Device Farm",
+  "pinpoint": "Amazon Pinpoint"
 }

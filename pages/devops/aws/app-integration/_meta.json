@@ -1,10 +1,10 @@
 {
   "api-gateway": "Amazon Api Gateway",
-  "app-flow": { "title": "Amazon AppFlow" },
-  "app-sync": { "title": "AWS AppSync" },
-  "event-bridge": { "title": "Amazon EventBridge" },
-  "sns": { "title": "Amazon SNS" },
-  "mq": { "title": "Amazon MQ" },
-  "sqs": { "title": "Amazon SQS" },
-  "step-function": { "title": "AWS Step Functions" }
+  "app-flow": "Amazon AppFlow",
+  "app-sync": "AWS AppSync",
+  "event-bridge": "Amazon EventBridge",
+  "sns": "Amazon SNS",
+  "mq": "Amazon MQ",
+  "sqs": "Amazon SQS",
+  "step-function": "AWS Step Functions"
 }

@@ -1,14 +1,14 @@
 {
-  "storage-classes": { "title": "Storage Classes" },
-  "replication": { "title": "Replication" },
-  "versioning": { "title": "Versioning" },
-  "lifecycle": { "title": "Lifecycle" },
-  "object-lock": { "title": "Object Lock" },
-  "event": { "title": "Event Notifications" },
-  "encryption": { "title": "Encryption" },
-  "access-control": { "title": "Access Control" },
+  "storage-classes": "Storage Classes",
+  "replication": "Replication",
+  "versioning": "Versioning",
+  "lifecycle": "Lifecycle",
+  "object-lock": "Object Lock",
+  "event": "Event Notifications",
+  "encryption": "Encryption",
+  "access-control": "Access Control",
   "monitoring": "Monitoring and Reporting",
   "logging": "Logging and Auditing",
-  "pricing": { "title": "Pricing" },
-  "optimizing-perf": { "title": "Optimizing Performance" }
+  "pricing": "Pricing",
+  "optimizing-perf": "Optimizing Performance"
 }

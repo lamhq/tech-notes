@@ -1,7 +1,7 @@
 {
-  "s3": { "title": "Amazon S3" },
+  "s3": "Amazon S3",
   "block-storage": "Block Storage",
-  "file-storage": { "title": "File Storage" },
-  "storage-gateway": { "title": "AWS Storage Gateway" },
-  "backup": { "title": "AWS Backup" }
+  "file-storage": "File Storage",
+  "storage-gateway": "AWS Storage Gateway",
+  "backup": "AWS Backup"
 }
