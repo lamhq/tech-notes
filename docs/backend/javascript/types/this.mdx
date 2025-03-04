@@ -8,12 +8,12 @@ Here is an example:
 function foo() {
   console.log(this);
 }
-
 foo(); // logs out the global e.g. `window` in browsers
+
 let bar = {
   foo
 }
 bar.foo(); // Logs out `bar` as `foo` was called on `bar`
 ```
 
-So be mindful of your usage of `this`. If you want to disconnect `this` in a class from the calling context use an [arrow function](https://basarat.gitbook.io/typescript/future-javascript/arrow-functions).
+If you want to disconnect `this` in a class from the calling context, use an [arrow function](https://basarat.gitbook.io/typescript/future-javascript/arrow-functions).

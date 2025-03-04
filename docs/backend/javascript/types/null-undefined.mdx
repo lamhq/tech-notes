@@ -28,7 +28,8 @@
    ```
 4. Accessing a non-existent property of an object returns `undefined`. 
 
-    Before reading from an optional property, you'll have to check for `undefined` or use **optional chaining operator**.
+    Before reading from an optional property, you'll have to check for `undefined` or use [Optional Chaining operator](../syntax/operators.mdx#optional-chaining-operator-).
+
     ```js
     let obj: { name?: string } = {};
     console.log(obj.name); // undefined
@@ -71,29 +72,8 @@ if (myVariable === undefined) {
 
 `null` represents the intentional absence of any object value.
 
-### Scenarios
+`null` value must be explicitly set before it can be accessed.
 
-`null` is used when:
-
-1. **Variable Initialization**: explicitly indicating that a variable is meant to hold an object but hasn't been assigned one yet.
-   ```js
-   let user = null;
-   ```
-2. **Function Returns**: When a function is expected to return an object but doesn't find a suitable result.
-   ```js
-   function findUser(id) {
-       // If user is not found, return null
-       return null;
-   }
-   ```
-3. **Resetting Values**: When you need to clear an object reference.
-   ```js
-   user = null;
-   ```
-4. **APIs and DOM Methods**: Many APIs and DOM methods return `null` when they don't find the expected object.
-   ```js
-   let element = document.getElementById('nonexistent'); // returns null
-   ```
 
 ### Checking for `null`
 
@@ -104,21 +84,12 @@ if (myVariable === null) {
 ```
 
 
-## Optional Chaining operator `?.`
+## JSON serialization
 
-The optional chaining operator (`?.`) allows you to safely access deeply nested properties of an object without having to explicitly check for `null` or `undefined` at each level.
-
-It helps to write cleaner and more readable code.
-
-See [Optional Chaining operator](../syntax/operators.md#optional-chaining-operator-)
-
-
-## JSON and serialization
-
-The JSON standard has support for encoding `null` but not `undefined`.
-
-When JSON-encoding an object with an attribute that is `null`, the attribute will be included with its `null` value, whereas an attribute with an `undefined` value will be excluded entirely.
+When using `JSON.stringify` to convert an object into a JSON string:
+1. Attributes with `null` values will be included in the output as `null`.
+2. Attributes with `undefined` values will be completely omitted from the result.
 
 ```ts
-JSON.stringify({willStay: null, willBeGone: undefined}); // {"willStay":null}
+JSON.stringify({ willStay: null, willBeGone: undefined }); // {"willStay":null}
 ```

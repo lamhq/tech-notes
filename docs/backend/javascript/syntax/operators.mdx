@@ -2,18 +2,14 @@
 
 ## Loose equality operator (`==`)
 
-`==` operator is used to compare two values for equality.
-
-It performs type coercion if the types of the two values are different (it will try to convert one or both of them to an appropriate type before comparing them). 
+The `==` operator compares two values for equality **after** converting both values to a common type (type coercion).
 
 
 ## Strict equality operator, (`===`)
 
-`===` operator is used to compare two values for equality without performing type coercion.
+The `===` operator compares two values for equality **without** converting them to a common type (no type coercion).
 
-If the types of the two values are different, the comparison will return `false`.
-
-For example:
+Example:
 
 ```js
 console.log(5 == '5'); // true
@@ -23,9 +19,10 @@ console.log(5 === '5'); // false
 
 ## Optional Chaining operator (`?.`)
 
-The **optional chaining operator** (`?.`) is used to access a property of an object (or call a function) if it exists, without throwing an error if the object is nullish (null or undefined). 
+Access a property of an object (or call a function) if it exists, without throwing an error if the object is nullish (null or undefined). 
 
 Use cases:
+
 1. **Property Access**: If the object or property before `?.` is `null` or `undefined`, the expression returns `undefined` instead of throwing an error.
    ```typescript
    let user = { name: "Alice", address: { city: "Wonderland" } };
@@ -48,7 +45,7 @@ Use cases:
 
 ## Nullish coalescing operator (`??`)
 
-The nullish coalescing operator (`??`) is used to return the right-hand side operand when the left-hand side operand is `null` or `undefined`. Otherwise, it returns the left-hand side operand.
+Return the right-hand side operand when the left-hand side operand is `null` or `undefined`. Otherwise, it returns the left-hand side operand.
 
 Here's an example:
 
@@ -65,7 +62,7 @@ The nullish coalescing operator can be used to provide a default value for a var
 
 ## Nullish coalescing assignment operator (`??=`)
 
-The nullish coalescing assignment operator (`??=`) is used to assign a value to a variable only if the variable is `null` or `undefined`. 
+Assign a value to a variable only if the variable is `null` or `undefined`. 
 
 Here's an example:
 
