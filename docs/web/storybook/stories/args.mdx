@@ -13,7 +13,7 @@ Args object can be defined at the story, component and global level.
 
 ## Story args
 
-```tsx filename="Button.stories.ts|tsx" {13-16}
+```tsx title="Button.stories.ts|tsx" {13-16}
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button, ButtonProps } from './Button';
@@ -36,7 +36,7 @@ export const Primary: Story = {
 
 ## Component args
 
-```tsx filename="Button.stories.ts|tsx" {11-14}
+```tsx title="Button.stories.ts|tsx" {11-14}
 import type { Meta } from '@storybook/react';
 
 import { Button } from './Button';
@@ -62,7 +62,7 @@ type Story = StoryObj<typeof Button>;
 
 Apply args to every component's stories unless overwrite.
 
-```ts filename=".storybook/preview.ts"
+```ts title=".storybook/preview.ts"
 // Replace your-renderer with the renderer you are using (e.g., react, vue3, angular, etc.)
 import { Preview } from '@storybook/your-renderer';
 

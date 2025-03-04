@@ -36,5 +36,10 @@
     "type": "dir",
     "label": "Design Patterns",
     "collapsed": true
+  },
+  {
+    "name": "storybook",
+    "type": "dir",
+    "collapsed": true
   }
 ]
