@@ -3,9 +3,10 @@
 	"version": "1.0.0",
 	"description": "Albert's cheat sheet",
 	"scripts": {
-    "dev": "rspress dev --port 5050",
+    "dev": "rspress dev --port 5000",
     "build": "rspress build",
-    "preview": "rspress preview --port 5050"
+    "preview": "rspress preview --port 5000",
+		"nextra": "next -p 5051"
 	},
 	"dependencies": {
 		"next": "^14.0.4",
