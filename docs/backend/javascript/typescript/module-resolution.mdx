@@ -1,0 +1,156 @@
+# Module Resolution
+
+## Overview
+
+Module resolution is the process the compiler uses to figure out what an import refers to.
+
+
+## Relative vs. Non-relative module imports
+
+Module imports are resolved differently based on whether the module reference is relative or non-relative.
+
+A relative import is one that starts with `/`, `./` or `../`:
+
+```ts
+import Entry from "./components/Entry";
+import { DefaultHeaders } from "../constants/http";
+import "/mod"
+```
+
+Any other import is considered **non-relative**:
+
+```ts
+import * as $ from "jquery";
+import { Component } from "@angular/core";
+```
+
+A relative import is resolved relative to the importing file and cannot resolve to an ambient module declaration.
+
+A non-relative import can be resolved relative to `baseUrl`, or through **path mappin**g, they can also resolve to ambient module declarations.
+
+
+## Module Resolution Strategies
+
+1. **Classic**: This was the default in TypeScript before version 1.6. It's not commonly used in modern TypeScript projects.
+2. **Node** (default): This mimics the module resolution mechanism in Node.js. It is widely used in modern TypeScript projects.
+
+
+### Relative import
+
+1. **Relative Path**: TypeScript treats the module path as relative to the file containing the import statement. It starts looking from the directory of the importing file.
+2. **File Extensions**: TypeScript tries to resolve the import by appending various file extensions like `.ts`, `.tsx`, `.d.ts`, and `.js` to the module path.
+3. **Directory Index Files**: If the module path points to a directory, TypeScript looks for an `index.ts`, `index.tsx`, or `index.d.ts` file within that directory.
+
+
+### Non-relative import
+
+When TypeScript encounters a non-relative import, it uses the Node resolution strategy to locate the module:
+1. **Check Node.js Core Modules**: TypeScript first checks if the module is a core Node.js module (like `fs` or `path`).
+2. **Look in `node_modules`**: If it's not a core module, TypeScript looks for the module in the `node_modules` directory. It starts from the directory of the importing file and moves up the directory tree until it finds the module or reaches the root directory.
+3. **Use `baseUrl` and `paths`**: If specified in `tsconfig.json`, TypeScript uses the `baseUrl` and `paths` options to resolve the module.
+
+Consider the following project structure:
+```
+/project
+  /src
+    - main.ts
+  /node_modules
+    /lodash
+      - index.js
+  - tsconfig.json
+```
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "lodash": ["node_modules/lodash/index"]
+    }
+  }
+}
+```
+
+1. **Node.js Core Modules**: TypeScript first checks if `lodash` is a core Node.js module. It's not, so it moves to the next step.
+2. **node_modules Directory**: TypeScript looks for `lodash` in the `node_modules` directory. It finds `node_modules/lodash/index.js`.
+3. **baseUrl and paths**: If `lodash` wasn't found in `node_modules`, TypeScript would use the `baseUrl` and `paths` configuration to locate it.
+
+
+## Configuration Options
+
+### `moduleResolution`
+
+You can configure module resolution in your `tsconfig.json` file using the `moduleResolution` option.
+
+Here are some common values:
+- **node**: Uses Node.js-style resolution.
+- **classic**: Uses the classic TypeScript resolution strategy.
+- **node16** and **nodenext**: For modern Node.js versions, supporting both ECMAScript imports and CommonJS require.
+- **bundler**: For use with bundlers, supporting `package.json` "imports" and "exports" without requiring file extensions on relative paths.
+
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "node"
+  }
+}
+```
+
+
+### `baseURL`
+
+All module imports with non-relative names are assumed to be relative to the `baseUrl`.
+
+Value of `baseUrl` is determined as either command line argument or property in `tsconfig.json`
+
+
+### Path mapping
+
+Sometimes modules are not directly located under *baseUrl*.
+
+Please notice that `"paths"` are resolved relative to `"baseUrl"`.
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      // These mappings are relative to "baseUrl"
+      "jquery": ["node_modules/jquery/dist/jquery"],
+      "*": ["*", "generated/*"]
+    }
+  }
+}
+```
+
+- `"*"`: meaning the same name unchanged, so map `<moduleName>` => `<baseUrl>/<moduleName>`
+- `"generated/*"`: meaning the module name with an appended prefix `"generated"`, so map `<moduleName>` => `<baseUrl>/generated/<moduleName>`
+
+
+### `rootDirs`
+
+Using `rootDirs`, you can inform the compiler that there are many "virtual" directories acting as a single root. And thus the compiler can resolve **relative modules imports** within these "virtual" directories
+
+```ts
+{
+  "compilerOptions": {
+    "rootDirs": ["src/views", "generated/templates/views"]
+  }
+}
+```
+
+`rootDirs` is not limited to specifying a list of physical source directories. The supplied array may include any number of ad hoc, arbitrary directory names, regardless of whether they exist or not.
+
+In below example, the compiler will now resolve `import messages from './#{locale}/messages'` to `import messages from './zh/messages'` for tooling purposes, allowing development in a locale agnostic manner without compromising design time support:
+
+```json
+{
+  "compilerOptions": {
+    "rootDirs": ["src/zh", "src/de", "src/#{locale}"]
+  }
+}
+```
+
+## Tracing module resolution
+
+Enabling the compiler module resolution tracing using `--traceResolution`

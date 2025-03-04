@@ -1,0 +1,17 @@
+[
+  {
+    "name": "eslint",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "prettier",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "biome",
+    "type": "dir",
+    "collapsed": true
+  }
+]

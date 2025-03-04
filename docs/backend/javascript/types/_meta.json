@@ -1,0 +1,8 @@
+[
+  "number",
+  "string",
+  "array",
+  "null-undefined",
+  "truthy",
+  "this"
+]

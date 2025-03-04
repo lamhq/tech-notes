@@ -1,0 +1,61 @@
+[
+  {
+    "name": "types",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Types"
+  },
+  {
+    "name": "syntax",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Syntax"
+  },
+  "closure",
+  "event-loop",
+  "fetch",
+  {
+    "name": "typescript",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "pkg-mgm",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Package Management"
+  },
+  {
+    "name": "runtime",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "linters",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "testing",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Testing"
+  },
+  {
+    "name": "database",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Database"
+  },
+  {
+    "name": "api",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "codebase",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Codebase Setup"
+  }
+]

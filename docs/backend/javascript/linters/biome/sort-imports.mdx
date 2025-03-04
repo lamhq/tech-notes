@@ -1,0 +1,24 @@
+# Imports Sorting
+
+## Enable
+
+```json title="biome.json"
+{
+  "organizeImports": {
+    "enabled": false
+  }
+}
+```
+
+
+## Grouped imports
+
+To devide imports into groups, add a new line to separate the groups
+```js
+// group 1, only these two files will be sorted
+import "../styles/reset.css";
+import "../styles/layout.css";
+
+// group 2, only this one is sorted
+import { Grid } from "../components/Grid.jsx";
+```

@@ -1,0 +1,93 @@
+import { PackageManagerTabs } from '@theme'
+
+# Biome
+
+## Version
+
+This guide is for version `1.9.4`.
+
+
+## Overview
+
+Biome is a fast formatter and linter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL, saving CI and developer time.
+
+You can format and lint your code all at once with a single command.
+
+
+## Diasadvantages
+
+Limitations of Biome:
+- You can't disable a rule per file.
+- Organize Imports feature sometimes does not work correctly when applying multiple fixes in the import section.
+
+
+## Installation
+
+<PackageManagerTabs command="install --save-dev --save-exact @biomejs/biome" />
+
+
+## Configuration
+
+Create the `biome.json` file:
+```sh
+npx @biomejs/biome init
+```
+
+## Usage
+
+Format files:
+```sh
+npx @biomejs/biome format --write <files>
+```
+
+Lint and fix:
+```sh
+npx @biomejs/biome lint --write <files>
+```
+
+Lint & format:
+```sh
+npx @biomejs/biome check --write <files>
+```
+
+
+## VS Code set up
+
+### Installation
+
+Install official [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
+
+
+### Use Biome as Formatter
+
+Configure Biome as the default formatter for VS Code:
+```json title=".vscode/settings.json"
+{
+  "editor.defaultFormatter": "<other formatter>",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}
+```
+
+### Fix on save
+
+```json title=".vscode/settings.json"
+{
+  "editor.codeActionsOnSave":{
+    "quickfix.biome": "explicit"
+  }
+}
+```
+
+
+### Sort imports on save
+
+Update VS Code setting file:
+```json title=".vscode/settings.json"
+{
+  "editor.codeActionsOnSave":{
+    "source.organizeImports.biome": "explicit"
+  }
+}
+```

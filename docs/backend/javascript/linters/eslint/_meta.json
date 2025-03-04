@@ -1,0 +1,9 @@
+[
+  "install",
+  "react",
+  {
+    "name": "configure",
+    "type": "dir",
+    "collapsed": true
+  }
+]

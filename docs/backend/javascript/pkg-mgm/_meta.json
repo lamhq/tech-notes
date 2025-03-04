@@ -1,0 +1,9 @@
+[
+  "npm",
+  {
+    "name": "pnpm",
+    "type": "dir",
+    "collapsed": true
+  },
+  "packagejson"
+]

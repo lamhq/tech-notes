@@ -1,0 +1,94 @@
+# Linter
+
+## Rules
+
+A rule emits a diagnostic when it encounters a code that doesn’t meet its requirements.
+
+A rule emits diagnostics with a `info`, `warn` or `error` severity.
+
+Diagnostics with an `error` severity cause the command to exit with a non-zero code.
+
+Rules are divided into groups.
+
+```json title="biome.json"
+{
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noDebugger": "off",
+        "noConsoleLog": "info"
+      },
+      "style": {
+        "noShoutyConstants": "warn",
+        "useNamingConvention": "error"
+      }
+    }
+  }
+}
+```
+
+Many rules provide a code fix that can be automatically applied. 
+
+Biome distinguishes between safe and unsafe code fixes:
+- Safe fixes are guaranteed to not change the semantic of your code. To apply safe fixes, use `--write`
+- Unsafe fixes may change the semantic of your program. To apply both safe fixes and unsafe fixes, use `--write --unsafe`.
+
+```sh
+npx @biomejs/biome lint --write ./src
+npx @biomejs/biome lint --write --unsafe ./src
+```
+
+
+## Disable a rule
+
+```json title="biome.json"
+{
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noDebugger": "off",
+        "noConsoleLog": "info"
+      },
+      "style": {
+        "noShoutyConstants": "warn",
+        "useNamingConvention": "error"
+      }
+    }
+  }
+}
+```
+
+
+## Configure rule options
+
+A few rules have options that you can change:
+- `level` will indicate the severity of the diagnostic;
+- `options` will change based on the rule.
+
+```json title="biome.json"
+{
+  "linter": {
+    "rules": {
+      "style": {
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": false
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+
+## Disable rule
+
+Ignore a lint rule for a specific line of the code:
+```js
+// biome-ignore lint: reason
+debugger;
+// biome-ignore lint/suspicious/noDebugger: reason
+debugger;
+```

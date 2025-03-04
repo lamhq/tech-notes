@@ -1,0 +1,78 @@
+import { PackageManagerTabs } from '@theme'
+
+# Database Seeding
+
+## Installation
+
+Setup `ts-node` in your project:
+<PackageManagerTabs command="install ts-node@^10.9.2 --save-dev" />
+
+Install the package:
+<PackageManagerTabs command="install typeorm-extension@^3.6.3 --save-dev" />
+
+Add the following scripts to `package.json`:
+```json title="package.json"
+"scripts": {
+  "seed:run": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run",
+}
+```
+
+Specify factory & seeder location in DataSource configuration:
+```ts title="data-source.ts"
+import "reflect-metadata"
+import { DataSource, DataSourceOptions } from "typeorm"
+import { SeederOptions } from 'typeorm-extension';
+
+const options: DataSourceOptions & SeederOptions = {
+  // ...
+  seeds: ['src/seeds/**/*.ts'],
+  factories: ['src/factories/**/*.ts'],
+  seedTracking: true, // ensure that a seeder is only executed once
+}
+
+export const AppDataSource = new DataSource(options);
+```
+
+Create a factory:
+```ts title="user.factory.ts"
+import { setSeederFactory } from 'typeorm-extension';
+import { User } from '../entity/user.entity';
+
+export default setSeederFactory(User, (faker) => {
+  const user = new User();
+  user.name = faker.person.fullName();
+  user.email = faker.internet.email();
+  return user;
+})
+```
+
+Create a seeder:
+```ts title="user.seeder.ts"
+import { Seeder, SeederFactoryManager } from 'typeorm-extension';
+import { DataSource } from 'typeorm';
+import { User } from '../entity/user.entity';
+
+export default class UserSeeder implements Seeder {
+  public async run(
+    dataSource: DataSource,
+    factoryManager: SeederFactoryManager
+  ): Promise<any> {
+    const userFactory = factoryManager.get(User);
+
+    // save 1 factory generated entity, to the database
+    await userFactory.save();
+
+    // save 5 factory generated entities, to the database
+    await userFactory.saveMany(5);
+  }
+}
+```
+
+
+Execute:
+<PackageManagerTabs command="run seed:run" />
+
+
+## References
+
+- [Typeorm Extension](https://www.npmjs.com/package/typeorm-extension)

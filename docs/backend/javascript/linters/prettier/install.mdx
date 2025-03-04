@@ -1,0 +1,93 @@
+import { PackageManagerTabs } from '@theme'
+
+# Installation
+
+Install Prettier and make it work with ESLint.
+
+This assumes that you already have ESLint installed.
+
+
+## Installing Prettier
+
+<PackageManagerTabs command="install --save-dev prettier@^3.4.2 eslint-config-prettier@^9.1.0" />
+
+- [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier#installation) makes ESLint and Prettier play nice with each other.
+- `eslint-plugin-prettier` isn't installed due to separation of concerns between linters and formatters
+
+Prettier will follow rules specified in `.gitignore` if it exists the directory where Prettier is run. You can also base your `.prettierignore` on `.eslintignore`.
+
+It's important to install Prettier locally in every project, so each project gets the correct Prettier version.
+
+
+## Configuring Prettier
+
+Create a Prettier config `.prettierrc` file:
+```json title=".prettierrc"
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 85
+}
+```
+
+
+## Configuring ESLint
+
+Turn off rules that conflict or are unnecessary with Prettier, by using pre-made configs:
+```js title="eslint.config.mjs"
+import eslintConfigPrettier from 'eslint-config-prettier';
+
+export default [
+  // your existing configs...
+
+  // turns off all rules that are unnecessary or might conflict with Prettier.
+  {
+    name: 'eslint-config-prettier',
+    ...eslintConfigPrettier,
+  },
+];
+```
+
+This config only turns rules off, so it only makes sense to put it after other configs.
+
+
+## Enable Organize Import feature
+
+<PackageManagerTabs command="install --save-dev prettier-plugin-organize-imports@^4.1.0" />
+
+Update Prettier config `.prettierrc` file:
+```json title=".prettierrc"
+{
+  "plugins": ["prettier-plugin-organize-imports"]
+}
+```
+
+
+## Using Prettier
+
+Format with Prettier:
+```sh
+npx prettier . --write
+```
+
+
+## Set up Visual Studio Code
+
+Install [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension (`esbenp.prettier-vscode`).
+
+Update workspace setting file:
+```json title=".vscode/settings.json"
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2
+}
+```
+
+## References
+
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)

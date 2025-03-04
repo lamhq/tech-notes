@@ -1,0 +1,16 @@
+[
+  "types",
+  "enums",
+  "type-alias",
+  "interface",
+  "functions",
+  "object",
+  "classes",
+  "generics",
+  "decorators",
+  "advanced-types",
+  "utility-types",
+  "mixins",
+  "modules",
+  "jsx"
+]

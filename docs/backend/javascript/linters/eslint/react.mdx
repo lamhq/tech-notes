@@ -1,0 +1,52 @@
+import { PackageManagerTabs } from '@theme'
+
+# React
+
+Install and configure ESLint for a React (TypeScript) project.
+
+
+## Installation
+
+Finish the [base installation](./install.mdx).
+
+Adding linter support for React:
+<PackageManagerTabs command="install --save-dev eslint-plugin-react@^7.37.3 globals@^15.14.0" />
+
+## Configuration
+
+Add these config to `eslint.config.mjs`:
+```js
+import React from 'react';
+import tseslint from 'typescript-eslint';
+import reactPlugin from 'eslint-plugin-react';
+import globals from 'globals';
+
+export default tseslint.config(
+  // other config objects ...
+  
+  // React Typescript
+  {
+    name: 'eslint-plugin-react',
+    files: ['**/*.tsx'],
+    ...reactPlugin.configs.flat?.recommended,
+    ...reactPlugin.configs.flat?.['jsx-runtime'],
+    languageOptions: {
+      ...reactPlugin.configs.flat?.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+    settings: {
+      react: {
+        version: React.version,
+      },
+    },
+  }
+)
+```
+
+
+## References
+
+- [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react?tab=readme-ov-file#configuration-new-eslintconfigjs)

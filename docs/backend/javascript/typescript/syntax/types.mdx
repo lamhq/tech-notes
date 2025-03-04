@@ -1,0 +1,370 @@
+import { PackageManagerTabs } from '@theme'
+
+# Types
+
+## Primitives Types
+
+- `string`, `number`, or `boolean`
+- Arrays: `string[]`, `number[]`
+
+
+## Declaring Type
+
+Type annotations are a way to explicitly specify the types of variables, function parameters, return values, and object properties.
+
+This helps catch errors early and makes the code more readable and maintainable.
+
+```ts
+let numbers: number[] = [1, 2, 3];
+let myName: string = "Alice";
+let employee: { id: number; name: string; } = { id: 100, name: "John" };
+
+function greet(name: string): number {
+  console.log("Hello, " + name.toUpperCase() + "!!");
+  return 26;
+}
+```
+
+
+## Literal Types
+
+Literal types are types that only accepted one possible value
+
+```ts
+let x: "hello" = "hello";
+// OK
+x = "hello";
+
+// Type '"howdy"' is not assignable to type '"hello"'.
+x = "howdy";
+```
+
+
+## `void`
+
+`void` represents the return value of functions which don't return a value
+
+In JavaScript, a function that doesn't return any value will implicitly return the value `undefined`. However, `void` and `undefined` are not the same thing in TypeScript. 
+
+
+## `object`
+
+`object` refers to any value that isn't a primitive (`string`, `number`, `bigint`, `boolean`, `symbol`, `null`, or `undefined`).
+
+This is different from the empty object type `{ }`, and also different from the global type `Object` (it's very likely you will never use `Object`).
+
+`object` is not `Object`. Always use `object`!
+
+
+## `unknown`
+
+The unknown type represents any value. This is similar to the `any` type, but you cannot perform any operations on an `unknown` value without first checking its type.
+
+*For example, if you have a variable of type unknown, you cannot call any methods or properties on it without first checking its type*
+
+```ts
+function foo(bar: unknown) {
+  if (typeof bar === 'string') {
+    console.log(bar.toUpperCase());
+  }
+}
+```
+
+## `never`
+
+Some functions never return a value. This means that the function throws an exception or terminates execution of the program.:
+
+```ts
+function fail(msg: string): never {
+  throw new Error(msg);
+}
+```
+
+`never` also appears when TypeScript determines there's nothing left in a union:
+
+```ts
+function fn(x: string | number) {
+  if (typeof x === "string") {
+    // do something
+  } else if (typeof x === "number") {
+    // do something else
+  } else {
+    x; // has type 'never'!
+  }
+}
+```
+
+## `Function`
+
+This is an untyped function call and is generally best avoided because of the unsafe `any` return type.
+
+```ts
+function doSomething(f: Function) {
+  f(1, 2, 3);
+}
+```
+
+If you need to accept an arbitrary function but don't intend to call it, the type `() => void` is generally safer.
+
+
+## Union Types
+
+```ts
+function printId(id: number | string) {
+  if (typeof id === "string") {
+    // In this branch, id is of type 'string'
+    console.log(id.toUpperCase());
+  } else {
+    // Here, id is of type 'number'
+    console.log(id);
+  }
+}
+```
+
+
+## Type checking
+
+### `typeof` type guards
+
+JavaScript supports a `typeof` operator which can give very basic information about the type of values we have at runtime. `typeof` return a certain set of strings:
+- `"string"`
+- `"number"`
+- `"bigint"`
+- `"boolean"`
+- `"symbol"`
+- `"undefined"`
+- `"object"`
+- `"function"`
+
+When you use `typeof` with `undefined`, it returns `"undefined"`.
+
+While with `null`, it returns `"object"`.
+
+```ts
+function logLength(value: string | number) {
+  if (typeof value === "string") {
+    console.log(value.length); // Access string-specific property
+  } else {
+    console.log(value.toFixed(2)); // Access number-specific method
+  }
+}
+```
+
+
+### `instanceof`
+
+Check object is an instance of a class:
+```tsx
+class MyClass {}
+
+const instance = new MyClass();
+
+console.log(instance instanceof MyClass); // Output: true
+```
+
+### Using type predicates
+
+To define a user-defined type guard, we simply need to define a function whose return type is a type predicate:
+
+```ts
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+```
+
+```ts
+// Both calls to 'swim' and 'fly' are now okay.
+let pet = getSmallPet();
+
+if (isFish(pet)) {
+  pet.swim();
+} else {
+  pet.fly();
+}
+```
+
+```ts
+const zoo: (Fish | Bird)[] = [getSmallPet(), getSmallPet(), getSmallPet()];
+
+const underWater3: Fish[] = zoo.filter((pet): pet is Fish => {
+  if (pet.name === "sharkey") return false;
+  return isFish(pet);
+});
+```
+
+### `in` operator
+
+```ts
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+
+function move(animal: Fish | Bird) {
+  if ("swim" in animal) {
+    // (parameter) animal: Fish
+    return animal.swim();
+  }
+
+  // (parameter) animal: Bird
+  return animal.fly();
+}
+```
+
+### Discriminated unions
+
+```ts
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+
+interface Square {
+  kind: "square";
+  sideLength: number;
+}
+
+type Shape = Circle | Square;
+```
+
+```ts
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      // (parameter) shape: Circle
+      return Math.PI * shape.radius ** 2;
+                        
+    case "square":
+      // (parameter) shape: Square
+      return shape.sideLength ** 2;
+  }
+}
+```
+
+## Type assertions
+
+Type assertion allows you to set the type of a value and tell the compiler not to infer it.
+
+```ts
+let code: any = 123; 
+let employeeCode = <number> code; 
+console.log(typeof(employeeCode)); //Output: number
+```
+
+```ts
+const myCanvas = document.getElementById("main_canvas") 
+  as HTMLCanvasElement;
+// or
+const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+
+const a = (expr as unknown) as T;
+```
+
+
+## Type conversion
+
+These values all coerce to `false` (other values get coerced `true`):
+- `0`
+- `NaN`
+- `""` (empty string)
+- `null`
+- `undefined`
+- `0n` (`bigint` version of zero)
+
+
+Convert values to boolean:
+```ts
+// using `Boolean` function
+Boolean("hello"); // value: true
+
+// Using double-Boolean negation
+!!"world";        // value: true
+```
+
+
+## Type extraction
+
+### Get object's type
+
+The `typeof` operator returns a type that was inferred from an object.
+
+Usefull when you don't want to explicitly declare type.
+
+```tsx
+const [state, setState] = useState({
+  foo: 1,
+  bar: 2,
+}); // state's type inferred to be {foo: number, bar: number}
+
+// grabbing the type of state even though it was inferred
+const someMethod = (obj: typeof state) => {
+  // some code using obj
+  setState(obj); // this works
+};
+```
+
+### Get object's keys
+
+The `keyof` operator takes an object type and return a new type that's a string or numeric literal union of its keys:
+
+```ts
+type Point = { x: number; y: number };
+type P = keyof Point;
+```
+
+
+### Extract property's type
+
+Get the type of a property from another type using Indexed access types:
+
+```ts
+type Person = { age: number; name: string; alive: boolean };
+
+// type Age = number
+type Age = Person["age"]
+
+// type I1 = string | number
+type I1 = Person["age" | "name"];
+
+// type I2 = string | number | boolean
+type I2 = Person[keyof Person];
+
+// type I3 = string | boolean
+type AliveOrName = "alive" | "name";
+type I3 = Person[AliveOrName];
+```
+
+
+### Extract array element's type
+
+You can also use indexed access types with arrays to get the type of elements:
+```ts
+const MyArray = [
+  { name: "Alice", age: 15 },
+  { name: "Bob", age: 23 },
+  { name: "Eve", age: 38 },
+];
+
+type PersonType = typeof MyArray[number]; // { name: string; age: number; }
+type AgeType = typeof MyArray[number]["age"]; // AgeType is 'number'
+```
+
+
+## Generate Type Definition
+
+Use the [`quicktype`](https://quicktype.io/typescript) utility to generate type definitions from an object in json file:
+<PackageManagerTabs command="install -g quicktype" />
+
+```sh
+quicktype S3PutEvent.json -o S3PutEvent.ts
+```
+
+
+## Non-null Assertion operator `!`
+
+The non-null assertion operator tells the TypeScript compiler that an expression is not `null` or `undefined`:
+
+```ts
+function liveDangerously(x?: number | null) {
+  // No error
+  console.log(x!.toFixed());
+}
+```

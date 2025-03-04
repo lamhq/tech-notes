@@ -1,3 +1,12 @@
 [
-  { "name": "index", "label": "Backend Development" }
+  {
+    "name": "index",
+    "label": "Backend Development"
+  },
+  {
+    "name": "javascript",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Javascript"
+  }
 ]

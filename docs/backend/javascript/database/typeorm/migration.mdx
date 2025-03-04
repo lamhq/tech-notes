@@ -1,0 +1,104 @@
+import { PackageManagerTabs } from '@theme'
+
+# Migration
+
+## Pre-requisites
+
+1. Installing [CLI](cli.md)
+2. Setup your data source:
+  ```ts title="src/data-source.ts"
+  import "reflect-metadata"
+  import { DataSource } from "typeorm"
+
+  export const AppDataSource = new DataSource({
+    type: "mongodb",
+    url: "mongodb://testadmin:123123@localhost:27017/test",
+    entities: ["src/**/*.entity.ts"],
+    migrations: ["src/migration/*.ts"],
+    migrationsTableName: "custom_migration_table",
+  })
+  ```
+3. Prepare TypeORM entity:
+  ```ts title="src/entity/user.entity.ts"
+  import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm"
+
+  @Entity('users')
+  export class User {
+    @ObjectIdColumn()
+    id: ObjectId
+
+    @Column()
+    name: string
+
+    @Column()
+    email: string
+
+    @Column()
+    age: number
+  }
+  ```
+
+
+## Creating a migration
+
+<PackageManagerTabs command="run typeorm migration:create src/migration/AddSampleUsers" />
+
+Update your generated migration file:
+```ts
+import { MigrationInterface, QueryRunner } from "typeorm"
+
+export class AddSampleUsersTIMESTAMP implements MigrationInterface {
+  async up(queryRunner: QueryRunner): Promise<void> {
+    const userRepository = queryRunner.connection.getMongoRepository(User);
+
+    const users = [
+      {
+        name: 'John Doe',
+        email: 'john.doe@example.com'
+      },
+      {
+        name: 'Jane Smith',
+        email: 'jane.smith@example.com'
+      }
+    ];
+
+    await userRepository.insertMany(users);
+  }
+
+  async down(queryRunner: QueryRunner): Promise<void> {
+    const userRepository = queryRunner.connection.getMongoRepository(User);
+
+    await userRepository.deleteMany({
+      email: { $in: ['john.doe@example.com', 'jane.smith@example.com'] }
+    });
+  }
+}
+```
+
+
+## Running migrations
+
+<PackageManagerTabs command="run typeorm migration:run -- -d src/data-source.ts" />
+
+## Revert the changes
+
+<PackageManagerTabs command="run typeorm migration:revert -- -d src/data-source.ts" />
+
+
+## Generating migrations
+
+Automatically generate migration files base on the differences between the schema and your code.
+
+Let's say you have a `Post` entity with a `title` column, and you have changed the name `title` to `name` manually in the database. To automatically create the migration code for that, you can run following command:
+
+<PackageManagerTabs command="run typeorm migration:generate PostRefactoring -- -d src/data-source.ts" />
+
+
+## Writting Migrations
+
+For details, see [Using migration API to write migrations](https://typeorm.io/migrations#using-migration-api-to-write-migrations).
+
+
+## References
+
+- [Migrations](https://typeorm.io/migrations)

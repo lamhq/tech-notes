@@ -1,0 +1,26 @@
+# Getting Started
+
+## Install Deno (macOS)
+
+Using Homebrew:
+```sh
+brew install deno
+```
+
+
+## Create a web server
+
+Create a TypeScript file:
+```ts title="server.ts"
+Deno.serve((_request: Request) => {
+  return new Response("Hello, world!");
+});
+```
+
+Start your server:
+```sh
+deno run --allow-net server.ts
+```
+
+Explanations:
+- `Request`, `Response` types are from the [`fetch` API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
