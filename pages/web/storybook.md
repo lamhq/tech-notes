@@ -23,7 +23,7 @@ Use cases:
 
 You can install Storybook into an existing project or create a new one from scratch.
 
-```shell
+```sh
 npx storybook@latest init
 ```
 

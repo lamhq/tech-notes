@@ -3,7 +3,7 @@
 ## Build image
 
 Builds a Docker image from the Dockerfile in the current directory:
-```shell
+```sh
 docker build -t friendlyhello .
 ```
 - `-t friendlyhello`: Tags the resulting image with the name `friendlyhello` for easy reference.
@@ -12,7 +12,7 @@ docker build -t friendlyhello .
 
 ## List images
 
-```shell
+```sh
 docker images
 ```
 
@@ -20,18 +20,18 @@ docker images
 ## Publish image
 
 Log in this CLI session using your Docker credentials:
-```shell
+```sh
 docker login
 ```
 
 Tag the image for upload to registry:
 
-```shell
+```sh
 docker tag <image> repository/image:tag
 ```
 
 Upload tagged image to registry:
 
-```shell
+```sh
 docker push repository/image:tag
 ```

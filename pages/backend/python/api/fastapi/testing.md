@@ -2,12 +2,12 @@
 
 ## Installation
 
-```shell
+```sh
 pip install httpx=~0.26.0
 ```
 
 With poetry:
-```shell
+```sh
 poetry add httpx=~0.26.0 --dev
 ```
 

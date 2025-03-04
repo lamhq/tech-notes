@@ -10,7 +10,7 @@
 
 ## Install (macOS)
 
-```shell
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -19,52 +19,52 @@ Follow instructions in the terminal.
 
 ## Install a package
 
-```shell
+```sh
 brew install <package_name>
 ```
 
 
 ## Uninstall a package
 
-```shell
+```sh
 brew uninstall <package_name>
 ```
 
 
 ## Upgrade a package
 
-```shell
+```sh
 brew upgrade <package_name>
 ```
 
 
 ## Upgrade all packages
 
-```shell
+```sh
 brew upgrade
 ```
 
 
 ## List installed packages
 
-```shell
+```sh
 brew list
 ```
 
 List top-level packages:
-```shell
+```sh
 brew leaves | xargs brew desc --eval-all
 ```
 
 ## List outdated packages
 
-```shell
+```sh
 brew outdated
 ```
 
 ## Search package
 
-```shell
+```sh
 brew search <name>
 ```
 

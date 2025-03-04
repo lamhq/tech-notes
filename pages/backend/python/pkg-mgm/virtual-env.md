@@ -11,13 +11,13 @@ When you activate a virtual environment, your shell looks there first when loadi
 
 ## Creating Virtual Environments
 
-```shell copy
+```sh
 python3 -m venv .venv
 ```
 
 Activate a virtual environment (MacOS):
 
-```shell copy
+```sh
 source .venv/bin/activate
 ```
 

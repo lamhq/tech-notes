@@ -12,7 +12,7 @@ This document is for [pytest 7.4.x](https://docs.pytest.org/en/7.4.x/contents.ht
 
 ## Installation
 
-```shell
+```sh
 pip install pytest==7.4.4
 ```
 
@@ -28,7 +28,7 @@ def test_passing():
 ## Running test
 
 Open terminal and run this command:
-```shell
+```sh
 pytest test_one.py
 ```
 

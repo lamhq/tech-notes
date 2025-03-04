@@ -3,17 +3,17 @@
 ## Snippets
 
 **Set working directory for a command**:
-```shell
+```sh
 (cd /desired/directory && your_command)
 ```
 
 **Display help for Shell Builtins**:
-```shell
+```sh
 help cd
 ```
 
 **Display Command's usage**:
-```shell
+```sh
 man tar
 ```
 
@@ -71,7 +71,7 @@ For example, with the command `echo *`, the shell expands the `*`  into  the nam
 
 The mechanism by which wildcards work is called **pathname expansion**.
 
-```bash
+```sh
 echo D*
 echo *s
 echo [[:upper:]]*
@@ -82,17 +82,17 @@ echo /usr/*/share
 
 The tilde character (`~`) has a special meaning. When used at the beginning of a word, it expands into the name of the home directory of the named user or, if no user is named, the home directory of the current user.
 
-```shell
+```sh
 echo ~    # /home/me
 ```
 
 ### Arithmetic Expansion
-```bash
+```sh
 echo $((2 + 2))   # 4
 ```
 
 ### Brace Expansion
-```bash
+```sh
 echo Front-{A,B,C}-Back    # Front-A-Back Front-B-Back Front-C-Back
 echo Number_{1..5}         # Number_1 Number_2 Number_3 Number_4 Number_5
 echo {01..5}               # 01 02 03 04 05
@@ -101,7 +101,7 @@ echo a{A{1,2},B{3,4}}b     # aA1b aA2b aB3b aB4b
 ```
 
 ### Parameter Expansion
-```bash
+```sh
 echo $USER
 ```
 
@@ -111,7 +111,7 @@ Command substitution allows us to use the output of a command as an expansion.
 
 Lists detailed information about the cp command:
 
-```bash
+```sh
 ls -l $(which cp)
 ```
 - The `ls -l` part displays files in a **long listing format**
@@ -119,7 +119,7 @@ ls -l $(which cp)
 
 Alternate syntax for command substitution that uses backquotes `` ` `` instead of the dollar sign and parentheses:
 
-```shell
+```sh
 ls -l `which cp`
 ```
 
@@ -133,7 +133,7 @@ Unquoted spaces, tabs, and newlines are not considered to be part of the text. T
 
 If we need to suppress all expansions, we use *single quotes*.
 
-```bash
+```sh
 ls -l "two words.txt"
 echo "$USER $((2+2)) $(cal)"
 echo $(cal)    # result in a command contains 38 arguments
@@ -151,7 +151,7 @@ echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER'
 
 Sometimes we only want to quote a single character. To do this, we can precede a character with a backslash `\`
 
-```bash
+```sh
 echo "The balance for user $USER is: \$5.00"
 # The balance for user me is: $5.00
 

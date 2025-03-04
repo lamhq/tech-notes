@@ -1,12 +1,12 @@
 # Process
 
 ## Get available RAM
-```shell
+```sh
 free -m
 ```
 
 
 ## Get path of a process
-```shell
+```sh
 pwdx <PID>
 ```

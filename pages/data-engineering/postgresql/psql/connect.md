@@ -21,7 +21,7 @@ localhost:5432:mobilesc_dev:postgres:abc@123!
 
 ## Connect to db server
 
-```shell
+```sh
 psql -h host -d database -U user -W
 
 psql 'postgresql://user:pwd@host:port/database'

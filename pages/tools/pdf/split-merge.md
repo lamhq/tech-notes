@@ -2,7 +2,7 @@
 
 ## Installation
 
-```shell
+```sh
 pip install PyPDF2
 ```
 

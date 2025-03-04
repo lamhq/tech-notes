@@ -28,7 +28,7 @@ Check [documentation of logging](https://docs.aws.amazon.com/glue/latest/dg/redu
 When creating a AWS Glue job, you can provide configuration information through **Job Parameters**.
 
 Run a job and use `--arguments` to set a job parameter:
-```shell
+```sh
 aws glue start-job-run --job-name "CSV to CSV" \
 --arguments='--scriptLocation="s3://my_glue/libraries/test_lib.py"'
 ```

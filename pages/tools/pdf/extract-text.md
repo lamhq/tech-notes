@@ -5,7 +5,7 @@ Requirement: MacOS.
 
 ## Install tools
 
-```shell
+```sh
 brew install poppler
 brew install tesseract
 ```
@@ -13,7 +13,7 @@ brew install tesseract
 
 ## Install python packages
 
-```shell
+```sh
 pip install pytesseract pdf2image
 ```
 

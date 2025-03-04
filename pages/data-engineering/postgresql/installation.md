@@ -8,13 +8,13 @@ Install PostgreSQL 14 on macOS for local development.
 
 Download a [zip archive](https://www.enterprisedb.com/download-postgresql-binaries) for MacOS, then unzip the archive:
 
-```shell
+```sh
 unzip postgre*.zip
 ```
 
 Add postgresql's bin folder to the Path Environment Variable by executing this command:
 
-```shell
+```sh
 echo "\n# Install postgresql\n\
 export PATH=\"/Users/admin/Desktop/apps/pgsql/bin:\$PATH\"" >> ~/.zshrc
 ```
@@ -38,7 +38,7 @@ If the `initdb` command fails, go to **Privacy & Security** to allow apps from `
 
 You may need to run the below command to make the option `Anywhere` appears:
 
-```shell
+```sh
 sudo spctl --master-disable
 ```
 

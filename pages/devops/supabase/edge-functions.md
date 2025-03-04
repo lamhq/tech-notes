@@ -16,12 +16,12 @@ See [init an existing project](./cli.md#init-an-existing-project).
 
 ## Creating a Function
 
-```shell
+```sh
 supabase functions new hello-world
 ```
 
 This creates a function stub in your `supabase` folder:
-```shell
+```sh
 └── supabase
     ├── functions
     │   └── hello-world
@@ -46,7 +46,7 @@ Deno.serve(async (req) => {
 
 ## Running Functions locally
 
-```shell
+```sh
 supabase start # start the supabase stack
 supabase functions serve # start the Functions watcher
 ```
@@ -54,7 +54,7 @@ supabase functions serve # start the Functions watcher
 
 ## Invoking Functions locally
 
-```shell
+```sh
 curl --request POST 'http://localhost:54321/functions/v1/hello-world' \
   --header 'Authorization: Bearer SUPABASE_ANON_KEY' \
   --header 'Content-Type: application/json' \

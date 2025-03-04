@@ -2,12 +2,12 @@
 
 ## `for` Loop
 
+Iterate over a list/sequence:
 ```py
 words = ['cat', 'window', 'defenestrate']
 for w in words:
     print(w, len(w))
 
-# iterate over a sequence of numbers
 for i in range(1, 5):
     print(i)
 
@@ -15,6 +15,20 @@ a = ['Mary', 'had', 'a', 'little', 'lamb']
 for i in range(len(a)):
     print(i, a[i])
 ```
+
+Loop through each key-value pair in a dictionary;
+
+```py
+my_dict = {
+    "name": "Alice",
+    "age": 30,
+    "city": "Wonderland"
+}
+
+for key, value in my_dict.items():
+    print(f"Key: {key}, Value: {value}")
+```
+
 
 ### `for ... else`
 

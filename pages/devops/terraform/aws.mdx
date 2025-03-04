@@ -34,7 +34,7 @@ artifact_bucket = ""
 ```
 
 And pass the file when running Terraform apply:
-```shell
+```sh
 terraform apply -var-file="params.tfvars" --auto-approve
 ```
 
@@ -112,6 +112,6 @@ dynamodb_table       = ""
 ```
 
 Then supply it when initialize the working directory:
-```shell
+```sh
 terraform init -backend-config=backend.tfvars -reconfigure
 ```

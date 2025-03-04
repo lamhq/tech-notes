@@ -2,7 +2,7 @@
 
 ## Create an archive (compress)
 
-```bash
+```sh
 tar -czvf file.tar.gz -C /dir/to/compress .
 tar -cvf files.tar -C /dir/to/compress .; gzip -9 files.tar
 ```
@@ -17,13 +17,13 @@ tar -cvf files.tar -C /dir/to/compress .; gzip -9 files.tar
 
 ## Extract an archive to a directory
 
-```bash
+```sh
 tar -xzvf archive.tar.gz -C /path/to/dir
 ```
 
 
 ## View archive content
 
-```bash
+```sh
 tar -tvf archive.tar.gz
 ```

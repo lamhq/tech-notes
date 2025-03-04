@@ -35,7 +35,7 @@ df.to_csv("data/msft_modified.csv", index_label='date')
 ## Excel
 
 Install Openpyxl, a library for reading and writing Excel
-```shell
+```sh
 pip install openpyxl
 ```
 

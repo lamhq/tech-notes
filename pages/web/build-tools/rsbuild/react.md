@@ -3,7 +3,7 @@
 ## Create new project
 
 To create a React TypeScript project in the current directory:
-```shell
+```sh
 npx create-rsbuild -d . -t react-ts --tools biome
 ```
 

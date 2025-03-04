@@ -4,43 +4,43 @@
 
 **Send standard output to file**:
 
-```shell
+```sh
 ls -l /usr/bin > ls-output.txt
 ```
 
 **Append redirected output to a file**:
 
-```shell
+```sh
 ls -l /usr/bin >> ls-output.txt
 ```
 
 **Redirect standard error to file**:
 
-```shell
+```sh
 ls -l /bin/usr 2> ls-error.txt
 ```
 
 **Redirecting both Standard Output And Standard Error To One File**:
 
 The old way:
-```shell
+```sh
 ls -l /bin/usr > ls-output.txt 2>&1
 ```
 
 The new way:
-```shell
+```sh
 ls -l /bin/usr &> ls-output.txt
 ```
 
 **Append the standard output and standard error streams to a single file**:
 
-```shell
+```sh
 ls -l /bin/usr &>> ls-output.txt
 ```
 
 **Suppress error messages from a command**:
 
-```shell
+```sh
 ls -l /bin/usr 2> /dev/null
 ```
 

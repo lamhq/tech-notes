@@ -3,7 +3,7 @@
 ## Install Ghostscript
 
 Install Ghostscript on macOS using Homebrew:
-```shell
+```sh
 brew install ghostscript
 ```
 

@@ -23,7 +23,7 @@ You can access these env variables through `import.meta.env.PUBLIC_*` or `proces
 
 Public variables will replace identifiers in JavaScript and HTML template files.
 
-```shell filename=".env"
+```sh filename=".env"
 PUBLIC_NAME=jack
 PASSWORD=123
 ```
@@ -63,7 +63,7 @@ Rsbuild supports reading the following types of env files:
 ### Env Mode
 
 You can specify the env mode using the `--env-mode <mode>` flag.
-```shell
+```sh
 npx rsbuild dev --env-mode test
 ```
 
@@ -71,7 +71,7 @@ npx rsbuild dev --env-mode test
 ### Env Directory
 
 You can specify the env directory by using the `--env-dir <dir>` option:
-```shell
+```sh
 npx rsbuild dev --env-dir env
 ```
 
@@ -95,6 +95,6 @@ declare namespace NodeJS {
 ```
 
 Also, install the dependency `@types/node`:
-```shell npm2yarn
+```sh npm2yarn
 npm add @types/node -D
 ```

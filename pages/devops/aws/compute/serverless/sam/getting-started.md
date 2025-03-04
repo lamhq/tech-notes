@@ -31,12 +31,12 @@ sam deploy --guided
 ```
 
 Deploy silently:
-```shell
+```sh
 sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
 ```
 
 Deploy upon changes (watch mode):
-```shell
+```sh
 sam sync --stack-name sam-app --watch
 ```
 
@@ -46,7 +46,7 @@ sam sync --stack-name sam-app --watch
 Tests are defined in the `hello-world/tests` folder in the generated code.
 
 To run unit tests:
-```shell
+```sh
 npm run test
 ```
 
@@ -58,7 +58,7 @@ sam local invoke "HelloWorldFunction" -e events/event.json
 ```
 
 You can [generates event payload samples](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-local-generate-event.html) for supported AWS services:
-```shell
+```sh
 sam local generate-event s3 put >> S3PutEvent.json
 ```
 
@@ -66,7 +66,7 @@ sam local generate-event s3 put >> S3PutEvent.json
 ## Monitoring
 
 You can fetch logs of deployed Lambda function using the SAM CLI:
-```shell
+```sh
 sam logs -n HelloWorldFunction --stack-name api-lambda --tail
 ```
 

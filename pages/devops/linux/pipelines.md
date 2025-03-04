@@ -4,19 +4,19 @@
 
 **Show the the number of items from the pipeline:**
 
-```shell
+```sh
 ls /bin /usr/bin | sort | uniq | wc -l
 ```
 
 **Find all files had the word `zip` embedded in the name:**
 
-```shell
+```sh
 ls /bin /usr/bin | sort | uniq | grep zip
 ```
 
 **Save pipeline output to file:**
 
-```shell
+```sh
 ls /usr/bin | tee ls.txt | grep zip
 ```
 
@@ -40,12 +40,12 @@ ls /usr/bin | tee ls.txt | grep zip
 
 Using the pipe operator `|`, the standard output of one command can be piped into the standard input of another command.
 
-```shell
+```sh
 command1 | command2
 ```
 
 For example, We use `less` to display, page by page, the output of `ls` command:
 
-```shell
+```sh
 ls -l /usr/bin | less
 ```

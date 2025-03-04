@@ -11,7 +11,7 @@ To list all databases in the current PostgreSQL database server, you use `\l` co
 
 ## Switch database
 
-```shell
+```sh
 \c dbname
 ```
 
@@ -24,7 +24,7 @@ To list all databases in the current PostgreSQL database server, you use `\l` co
 
 
 ## Switch schema
-```shell
+```sh
 set schema 'icecatalogschema';
 ```
 

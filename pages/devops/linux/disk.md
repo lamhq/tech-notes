@@ -1,25 +1,25 @@
 # Disk management
 
 ## List directories with size
-```bash
+```sh
 du --max-depth=1 -h | sort -h
 ```
 
 
 ## Show available disk space
-```bash
+```sh
 df -h
 ```
 
 
 ## Tools to see what files are using up your disk space
-```bash
+```sh
 sudo apt install ncdu
 ```
 
 ## Unmount a partition
 
-```shell
+```sh
 sudo umount /data
 ```
 
@@ -35,12 +35,12 @@ The above line will add an EFS file system from the ip `10.0.0.24` to your syste
 
 Run this command to apply the change:
 
-```shell
+```sh
 sudo mount -a
 ```
 
 Test the mounted path:
 
-```shell
+```sh
 ls /data
 ```

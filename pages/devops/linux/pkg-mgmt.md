@@ -40,14 +40,14 @@ If a package requires a shared resource such as a shared library, it is said to 
 
 Debian:
 
-```shell
+```sh
 apt-get update
 apt-cache search <search_string>
 ```
 
 Red Hat:
 
-```shell
+```sh
 yum search <search_string>
 ```
 
@@ -56,14 +56,14 @@ yum search <search_string>
 
 Debian:
 
-```shell
+```sh
 apt-get update
 apt-get install <package_name>
 ```
 
 Red Hat:
 
-```shell
+```sh
 yum install <package_name>
 ```
 
@@ -71,13 +71,13 @@ yum install <package_name>
 
 Debian:
 
-```shell
+```sh
 dpkg -i <package_file>
 ```
 
 Red Hat:
 
-```shell
+```sh
 rpm -i package_file
 ```
 
@@ -85,25 +85,25 @@ rpm -i package_file
 
 Debian:
 
-```shell
+```sh
 apt-get remove package_name
 ```
 
 Red Hat:
 
-```shell
+```sh
 yum erase package_name
 ```
 
 ## Updating Packages from a Repository
 
-```shell
+```sh
 apt-get update; apt-get upgrade
 ```
 
 Red Hat:
 
-```shell
+```sh
 yum update
 ```
 
@@ -111,13 +111,13 @@ yum update
 
 Debian:
 
-```shell
+```sh
 dpkg -l
 ```
 
 Red Hat:
 
-```shell
+```sh
 rpm -qa
 ```
 
@@ -125,13 +125,13 @@ rpm -qa
 
 Debian:
 
-```shell
+```sh
 apt-cache show <package_name>
 ```
 
 Red Hat:
 
-```shell
+```sh
 yum info <package_name>
 ```
 

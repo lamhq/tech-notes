@@ -28,7 +28,7 @@ Github Flow can be used with [Trunk-Based Development](https://trunkbaseddevelop
 ## Start a new feature
 
 1. Create a feature branch from the main branch.
-    ```bash
+    ```sh
     git checkout master
     git checkout -b 'feat/MEGA-123/commit-convention'
     git push --set-upstream origin 'feat/MEGA-123/commit-convention'

@@ -2,7 +2,7 @@
 
 ## Create a GraphQL API
 
-```shell
+```sh
 amplify add api
 ```
 
@@ -13,21 +13,21 @@ You can access the GraphQL schema at `amplify/backend/api/<your-api-name>/schema
 
 ## Deploying the API
 
-```shell
+```sh
 amplify push -y
 ```
 
 
 ## Review deployed API in AWS console
 
-```shell
+```sh
 amplify console api
 ```
 
 
 ## Test API with local mocking
 
-```shell
+```sh
 amplify mock api
 ```
 
@@ -36,6 +36,6 @@ This will open the GraphiQL explorer on a local port.
 
 ## Update the generated schema
 
-```shell
+```sh
 amplify api gql-compile
 ```

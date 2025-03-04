@@ -26,7 +26,7 @@ console.log(password);
 // "Geheimnis"
 ```
 
-```shell filename=".env"
+```sh filename=".env"
 PASSWORD=Geheimnis
 ```
 

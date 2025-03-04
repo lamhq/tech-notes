@@ -32,7 +32,7 @@ Markdown-based formats are great for documentation-oriented notebooks.
 
 ## Installation
 
-```shell
+```sh
 pip install jupytext
 ```
 

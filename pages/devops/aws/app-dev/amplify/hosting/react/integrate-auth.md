@@ -4,7 +4,7 @@ Create a login UI for your React app.
 
 ## Install Amplify UI
 
-```shell
+```sh
 npm install @aws-amplify/ui-react
 ```
 

@@ -29,12 +29,12 @@ Python 3.10+
 
 Install FastAPI framework:
 
-```shell
+```sh
 pip install fastapi==0.110.0
 ```
 
 Install Uvicorn web server:
 
-```shell
+```sh
 pip install uvicorn
 ```

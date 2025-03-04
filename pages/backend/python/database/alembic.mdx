@@ -11,7 +11,7 @@ Alembic store the migration history in database, `alembic_version` table.
 
 ## Installation
 
-```shell
+```sh
 pip install alembic
 ```
 
@@ -19,7 +19,7 @@ pip install alembic
 ## Creating the Migration Environment
 
 Init the existing directory:
-```shell
+```sh
 alembic init <directory>
 ```
 
@@ -59,7 +59,7 @@ Alembic uses the metadata to compare the database with the models defined in SQL
 
 ## Generate migration
 
-```shell
+```sh
 alembic revision --autogenerate -m "Added Cookie model"
 ```
 
@@ -84,20 +84,20 @@ Schema changes that autogenerate cannot detect:
 
 ## Create an empty migration
 
-```shell
+```sh
 alembic revision -m "Init db"
 ```
 
 
 ## Get current migration version
 
-```shell
+```sh
 alembic current
 ```
 
 ## View migration history
 
-```shell
+```sh
 alembic history
 ```
 
@@ -108,13 +108,13 @@ Or you can look at the table `alembic_version` in the database.
 
 When you want to change the database's current migration version without running migrations.
 
-```shell
+```sh
 alembic stamp 2e6a6cc63e9
 ```
 
 ## Run all migrations
 
-```shell
+```sh
 alembic upgrade head
 ```
 
@@ -122,7 +122,7 @@ alembic upgrade head
 
 To downgrade migrations, we need to choose the revision ID for the migration that we want to go back to.
 
-```shell
+```sh
 alembic downgrade 34044511331
 ```
 
@@ -160,7 +160,7 @@ Generate SQL commands required to change the database without running migration 
 Use cases:
 - Manually changing multiple databases using SQL scripts
 
-```shell
+```sh
 alembic upgrade <start-version>:<end-version> --sql > migration.sql
 ```
 

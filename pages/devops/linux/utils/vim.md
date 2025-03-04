@@ -6,7 +6,7 @@ Vi is a popular text editors used in Unix-like operating systems.
 
 Vim is an enhanced version of Vi with additional features and functionalities.
 
-```shell
+```sh
 vim text-fime.txt
 ```
 

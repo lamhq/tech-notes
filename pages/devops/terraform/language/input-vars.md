@@ -81,7 +81,7 @@ Variables can be set:
 
 ### From the Command Line
 
-```shell
+```sh
 terraform apply -var="image_id=ami-abc123"
 terraform apply -var='image_id_list=["ami-abc123","ami-def456"]' -var="instance_type=t2.micro"
 terraform apply -var='image_id_map={"us-east-1":"ami-abc123","us-east-2":"ami-def456"}'
@@ -89,7 +89,7 @@ terraform apply -var='image_id_map={"us-east-1":"ami-abc123","us-east-2":"ami-de
 
 ### From Variable Definitions (`.tfvars`) Files
 
-```shell
+```sh
 terraform apply -var-file="testing.tfvars"
 ```
 
@@ -114,7 +114,7 @@ if they are present:
 
 Terraform searches the environment for environment variables named `TF_VAR_` followed by the name of a declared variable.
 
-```shell
+```sh
 export TF_VAR_image_id=ami-abc123
 terraform plan
 ```

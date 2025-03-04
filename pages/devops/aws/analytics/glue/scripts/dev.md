@@ -47,12 +47,12 @@ To set up docker for local development:
     ```
 
 2. Pull the image:
-    ```shell
+    ```sh
     docker pull amazon/aws-glue-libs:glue_libs_4.0.0_image_01
     ```
 
 To run a python script with **spark-submit**:
-```shell
+```sh
 docker run -it --rm \
   --name glue_spark_submit \
   -v ~/.aws:/home/glue_user/.aws \

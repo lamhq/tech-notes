@@ -8,6 +8,6 @@ Require Node.js >= version 16.
 ## Creating a Project
 
 Follow the prompts:
-```shell
+```sh
 npm create rsbuild@latest
 ```

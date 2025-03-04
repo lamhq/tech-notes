@@ -9,17 +9,17 @@ docker system prune
 
 ## Remove image
 Remove a single image:
-```shell
+```sh
 docker rmi -f <image_id>
 ```
 
 Remove dangling images:
-```shell
+```sh
 docker images purge
 ```
 
 Remove all images:
-```shell
+```sh
 docker rmi $(docker images -a -q)
 ```
 
@@ -27,12 +27,12 @@ docker rmi $(docker images -a -q)
 ## Remove container
 
 Remove a container and its volume:
-```shell
+```sh
 docker container -v rm <container_name or ID>
 ```
 
 Stop and remove all containers:
-```shell
+```sh
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 ```

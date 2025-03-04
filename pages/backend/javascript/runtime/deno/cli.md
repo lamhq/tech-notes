@@ -2,7 +2,7 @@
 
 ## Deno run command
 
-```shell
+```sh
 deno run --allow-net net_client.ts
 ```
 
@@ -13,7 +13,7 @@ Options:
 
 ### Hot Module Replacement
 
-```shell
+```sh
 deno run --unstable-hmr main.ts
 ```
 
@@ -30,7 +30,7 @@ addEventListener("hmr", (e) => {
 
 Deno can grab the scripts from: local file, url, stdin.
 
-```shell
+```sh
 deno run main.ts
 deno run https://mydomain.com/main.ts
 cat main.ts | deno run -
@@ -41,7 +41,7 @@ cat main.ts | deno run -
 
 You can pass user-space arguments to the script you are running by specifying them **after** the script name:
 
-```shell
+```sh
 deno run main.ts a b -c --quiet
 ```
 
@@ -59,14 +59,14 @@ To enable the built-in file watcher, you can supply the `--watch` flag to:
 - deno compile
 - deno fmt
 
-```shell
+```sh
 deno run --watch main.ts
 deno test --watch
 deno fmt --watch
 ```
 
 Exclude files:
-```shell
+```sh
 deno run --watch --watch-exclude=file1.ts,file2.ts main.ts
 ```
 
@@ -74,12 +74,12 @@ deno run --watch --watch-exclude=file1.ts,file2.ts main.ts
 ## Type checking
 
 You can type-check your code (without executing it):
-```shell
+```sh
 deno check main.ts
 ```
 
 Type-check your code before execution:
-```shell
+```sh
 deno run --check main.ts
 ```
 
@@ -88,19 +88,19 @@ deno run --check main.ts
 
 Enable command autocompletion for bash, zsh, fish:
 
-```shell
+```sh
 brew install fig
 ```
 
 
 ## Viewing help
 
-```shell
+```sh
 deno -h
 ```
 
 For `run` command:
-```shell
+```sh
 deno run -h
 ```
 

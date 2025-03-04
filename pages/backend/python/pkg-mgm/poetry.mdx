@@ -15,7 +15,7 @@ Python 3.8+
 ### Install Homebrew
 
 1. run this script in the terminal
-    ```shell
+    ```sh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 1. follow instruction in the terminal
@@ -23,27 +23,27 @@ Python 3.8+
 
 ### Install `pipx`
 
-```shell
+```sh
 brew install pipx
 pipx ensurepath
 ```
 
 Upgrade `pipx`:
 
-```shell
+```sh
 brew update && brew upgrade pipx
 ```
 
 ### Install Poetry
 
-```shell
+```sh
 pipx install poetry
 ```
 
 ## Configure Poetry
 
 Create virtual environment within your project directory:
-```shell
+```sh
 poetry config virtualenvs.in-project true
 ```
 
@@ -51,17 +51,17 @@ poetry config virtualenvs.in-project true
 
 Create a new project:
 
-```shell
+```sh
 poetry new poetry-demo
 ```
 
 Initialize an existing project:
 
-```shell
+```sh
 cd pre-existing-project
 ```
 
-```shell
+```sh
 poetry init
 ```
 
@@ -96,20 +96,20 @@ If there's no directory matching the package name in `pyproject.toml`, run `poet
 
 ## Activating virtual environment
 
-```shell
+```sh
 poetry shell
 ```
 
 To deactivate the virtual environment without leaving, use:
 
-```shell
+```sh
 deactivate
 ```
 
 
 ## Install dependencies
 
-```shell
+```sh
 poetry install
 ```
 
@@ -122,7 +122,7 @@ poetry add fastapi
 
 Add dev package
 
-```shell
+```sh
 poetry add pylint --dev
 ```
 
@@ -135,13 +135,13 @@ poetry remove fastapi
 
 ## Show installed packages
 
-```shell
+```sh
 poetry show
 ```
 
 
 ## Export a `requirements.txt`
 
-```shell
+```sh
 poetry export -f requirements.txt --output requirements.txt
 ```

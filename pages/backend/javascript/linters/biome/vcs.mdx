@@ -44,7 +44,7 @@ To process only changed files when running `biome check --changed`:
 ## Process only staged files
 
 To process only staged files:
-```shell
+```sh
 biome check --staged
 ```
 
@@ -91,7 +91,7 @@ pre-push:
 
 1. Set up [Husky](/tools/git/husky.md) and [lint-staged](https://github.com/lint-staged/lint-staged) in your project
 2. Add the following husky configuration:
-    ```shell filename=".husky/pre-commit"
+    ```sh filename=".husky/pre-commit"
     lint-staged
     ```
 3. Add lint-staged configuration in your `package.json`:

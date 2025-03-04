@@ -4,7 +4,7 @@
 
 For Express and Apollo (default):
 
-```shell
+```sh
 npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql
 ```
 

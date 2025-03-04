@@ -17,12 +17,12 @@ It's particularly loved for its speed and reliability compared to npm and Yarn.
 
 Install pnpm using standalone script. It allows you to install and manage multiple versions of Node.js.
 
-```shell
+```sh
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
 You can install a specific version:
-```shell
+```sh
 curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=<version> sh -
 ```
 
@@ -32,6 +32,6 @@ curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=<version> sh -
 `pnpm` might be hard to type, so you may use a shorter alias like `pn` instead.
 
 For POSIX systems (like macOS), just put the following line to your `.bashrc`, `.zshrc`, or `config.fish`:
-```shell
+```sh
 alias pn=pnpm
 ```

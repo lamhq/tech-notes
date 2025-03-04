@@ -40,6 +40,6 @@ pnpm can automatically resolve merge conflicts in `pnpm-lock.yaml`. If you have 
 ## VS Code Dev Containers
 
 If avoid permission errors when running `pnpm install` inside a Dev Container, make sure to change pnpm's store directory to an accessible location for the remote user (often is `root`):
-```shell
+```sh
 pnpm config set store-dir /root/.pnpm-store
 ```

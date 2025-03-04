@@ -6,7 +6,7 @@ Terraform does not support user-defined functions.
 
 You can experiment with the behavior of Terraform's built-in functions from the Terraform expression console:
 
-```shell
+```sh
 terraform console
 ```
 

@@ -2,7 +2,7 @@
 
 ## Copy cells to another excel file
 
-```bash
+```sh
 pip install openpyxl
 ```
 

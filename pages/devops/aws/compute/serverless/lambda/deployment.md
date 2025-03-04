@@ -13,7 +13,7 @@ Simple and great for experimentation in a development environment.
 Not recommended for production environments - unless managed via other tooling.
 
 An example shell command to create the zip file for code in `src/functions` directory:
-```shell
+```sh
 (cd src/functions/ && zip -r ../../function_code.zip .)
 ```
 

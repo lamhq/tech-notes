@@ -18,7 +18,7 @@ You can use Chrome DevTools or VSCode to debug Deno programs (using V8 Inspector
 To activate debugging capabilities run Deno with the `--inspect`,
 `--inspect-wait` or `--inspect-brk` flags:
 
-```shell
+```sh
 deno run --inspect main.ts
 ```
 

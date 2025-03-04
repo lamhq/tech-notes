@@ -86,7 +86,7 @@ def test_example():
 ```
 
 If you want to skip the slow tests, you can use:
-```shell
+```sh
 pytest -m "not slow"
 ```
 
@@ -118,7 +118,7 @@ def test_normal():
 
 Finally, select tests with our custom marker when running pytest:
 
-```shell
+```sh
 pytest -m smoke
 
 pytest -m "(exception or smoke) and (not finish)"
@@ -132,7 +132,7 @@ PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?
 ```
 
 If we want that warning to be an error instead, we can use the `--strict-markers` flag:
-```shell
+```sh
 pytest --strict-markers -m smoke
 ```
 
@@ -178,6 +178,6 @@ def test_value(value1, value2):
 
 ## Listing Markers
 
-```shell
+```sh
 pytest --markers
 ```

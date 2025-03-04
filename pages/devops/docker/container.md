@@ -2,7 +2,7 @@
 
 ## Start a container for testing
 
-```shell
+```sh
 docker run --rm -it --entrypoint /bin/bash <image_name>
 ```
 
@@ -17,7 +17,7 @@ Use cases:
 
 ## Start and mount directories
 
-```shell
+```sh
 docker run \
   --name <container_name> \
   -p host_port:container_port \
@@ -33,35 +33,35 @@ docker run \
 ## Connect to a container
 
 Open terminal in a running container:
-```shell
+```sh
 docker exec -it <container_name> /bin/bash
 ```
 
 ## List containers
 
 List running containers:
-```shell
+```sh
 docker ps
 ```
 
 List all containers:
-```shell
+```sh
 docker ps -a
 ```
 
 ## Stop a container
 
 Gracefully stop the specified container
-```shell
+```sh
 docker container stop <container_name or ID>
 ```
 
 Force shutdown a specified container:
-```shell
+```sh
 docker container kill <container_name or ID>
 ```
 
 ## Start a stopped container
-```shell
+```sh
 docker start container_name
 ```

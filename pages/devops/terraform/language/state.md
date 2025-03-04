@@ -26,13 +26,13 @@ In the case of an error persisting the state to the backend, Terraform will writ
 
 You can manually retrieve the state using the command:
 
-```shell
+```sh
 terraform state pull
 ```
 
 You can manually write state, but this is extremely dangerous and should be avoided if possible:
 
-```shell
+```sh
 terraform state push
 ```
 

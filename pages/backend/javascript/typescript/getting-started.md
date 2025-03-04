@@ -12,7 +12,7 @@ npm i -D typescript@^5.7.2 @types/node@^22.10.5
 ## Configuration
 
 Install a [predefined config](https://github.com/tsconfig/bases) from the community for your runtime environment:
-```shell npm2yarn
+```sh npm2yarn
 npm install --save-dev @tsconfig/node22
 ```
 
@@ -46,13 +46,13 @@ Update your `tsconfig.json` to extend the installed config:
 ## Run code
 
 First, compile TypeScript code to JavaScript:
-```shell
+```sh
 npx tsc example.ts
 ```
 
 Run JavaScript with Node.js:
 
-```shell
+```sh
 node example.js
 ```
 
