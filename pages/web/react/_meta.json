@@ -1,8 +1,0 @@
-{
-  "typescript": "TypeScript",
-  "form": "Form Handling",
-  "state": "State Management",
-  "routing": "Routing",
-  "ssr": "Server Rendering",
-  "auth": "Authentication"
-}

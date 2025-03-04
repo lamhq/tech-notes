@@ -1,16 +1,16 @@
+import { PackageManagerTabs } from '@theme'
+
 # react-oidc-context
 
 ## Installation
 
-```sh npm2yarn
-npm install oidc-client-ts react-oidc-context --save
-```
+<PackageManagerTabs command="install oidc-client-ts react-oidc-context --save" />
 
 ## Set up
 
 Wrap your application in `AuthProvider`:
 
-```tsx filename="index.tsx"
+```tsx title="index.tsx"
 import { AuthProvider } from "react-oidc-context";
 
 const oidcConfig = {
@@ -65,7 +65,7 @@ const oidcConfig: AuthProviderProps = {
 
 Inside a React component:
 
-```tsx filename="App.tsx"
+```tsx title="App.tsx"
 import { useAuth } from "react-oidc-context";
 
 export default function App() {
@@ -147,7 +147,7 @@ export default function App() {
 
 ## Sign-in automatically
 
-```tsx filename="index.tsx"
+```tsx title="index.tsx"
 import { WebStorageStateStore } from 'oidc-client-ts';
 
 const oidcConfig: AuthProviderProps = {

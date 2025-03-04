@@ -12,7 +12,7 @@ To allow dispatching functions that contain async logic you need to use middlewa
 Below is an example of using Redux Thunk middleware.
 
 Create an action creator that returns a function (instead of plain object):
-```ts filename="actions.ts"
+```ts title="actions.ts"
 export const fetchData = () => {
   return async (dispatch) => {
     dispatch({ type: 'FETCH_DATA_REQUEST' });
@@ -28,7 +28,7 @@ export const fetchData = () => {
 ```
 
 Create reducers to handle the actions:
-```ts filename="reducers.ts"
+```ts title="reducers.ts"
 const initialState = {
   loading: false,
   data: null,
@@ -52,7 +52,7 @@ export default dataReducer;
 ```
 
 Setup the Redux store with Thunk middleware:
-```ts filename="store.ts"
+```ts title="store.ts"
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import dataReducer from './reducers';
@@ -63,7 +63,7 @@ export default store;
 ```
 
 Dispatch the thunk action in your component:
-```ts filename="App.tsx"
+```ts title="App.tsx"
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from './actions';
@@ -103,7 +103,7 @@ The Redux Toolkit configureStore function automatically sets up the thunk middle
 ### Perform async request
 
 Define an action creator with `createAsyncThunk`:
-```ts filename="userSlice.ts"
+```ts title="userSlice.ts"
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 interface User {
@@ -131,7 +131,7 @@ const fetchUserById = createAsyncThunk(
 - `async (userId, thunkAPI) => { ... }`: a callback that does the actual async logic and returns a promise with the result
 
 Handle thunk actions:
-```ts filename="userSlice.ts"
+```ts title="userSlice.ts"
 import { createSlice } from '@reduxjs/toolkit';
 
 const usersSlice = createSlice({

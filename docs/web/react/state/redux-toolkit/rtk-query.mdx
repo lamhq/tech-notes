@@ -23,7 +23,7 @@ RTK Query is an advanced data fetching/mutation/caching tool.
 
 ## Create an API service
 
-```ts filename="services/pokemon.ts"
+```ts title="services/pokemon.ts"
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -50,7 +50,7 @@ With RTK Query, you define your entire API definition in one place to easier to 
 
 ## Add the service to your store
 
-```ts filename="store.ts"
+```ts title="store.ts"
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { pokemonApi } from './services/pokemon'
@@ -74,7 +74,7 @@ setupListeners(store.dispatch)
 
 ## Use the query in a component
 
-```tsx filename="App.tsx"
+```tsx title="App.tsx"
 import { useGetPokemonByNameQuery } from './services/pokemon'
 
 export default function App() {

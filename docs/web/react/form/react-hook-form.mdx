@@ -1,3 +1,5 @@
+import { PackageManagerTabs } from '@theme'
+
 # React Hook Form
 
 ## Version
@@ -18,9 +20,7 @@ React Hook Form is a library designed to simplify form handling in React applica
 
 ## Installation
 
-```sh npm2yarn
-npm install react-hook-form
-```
+<PackageManagerTabs command="install react-hook-form" />
 
 
 ## Basic Usage
@@ -223,7 +223,7 @@ When the input component doesn't expose input's ref.
 - `shouldUnregister: boolean`
 - `disabled: boolean`
 
-```tsx filename="Input.tsx"
+```tsx title="Input.tsx"
 import { useController, UseControllerProps, FieldValues } from "react-hook-form"
 
 type InputProps<T extends FieldValues> = UseControllerProps<T> & {
@@ -243,7 +243,7 @@ function Input<T extends FieldValues>({ customProp, ...controllerProps }: InputP
 }
 ```
 
-```tsx filename="App.tsx"
+```tsx title="App.tsx"
 import Input from './Input'
 import { useForm, SubmitHandler } from "react-hook-form"
 
@@ -281,7 +281,7 @@ export default function App() {
 
 Your input is wrapped with `Controller` component. Then it is rendered by the `render` props.
 
-```tsx filename="Input.tsx"
+```tsx title="Input.tsx"
 import { Controller, ControllerProps, FieldValues } from "react-hook-form"
 
 type InputProps<T extends FieldValues> = Omit<ControllerProps<T>, 'render'> & {

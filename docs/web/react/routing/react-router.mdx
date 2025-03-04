@@ -1,3 +1,5 @@
+import { PackageManagerTabs } from '@theme'
+
 # React Router
 
 ## Version
@@ -7,9 +9,7 @@ This document is for React Router v7.1.5 (2025).
 
 ## Installation
 
-```sh npm2yarn
-npm i react-router
-```
+<PackageManagerTabs command="i react-router" />
 
 Use React Router in the application:
 ```tsx showLineNumbers
@@ -114,7 +114,7 @@ If a path segment starts with `:` then it becomes a "dynamic segment".
 
 To get the value from dynamic segment:
 
-```tsx filename="Team.tsx"
+```tsx title="Team.tsx"
 import { useParams } from "react-router";
 
 export default function Team() {

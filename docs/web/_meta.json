@@ -10,9 +10,19 @@
     "collapsed": true
   },
   {
-    "name": "design-patterns",
+    "name": "react",
     "type": "dir",
-    "label": "Design Patterns",
+    "collapsed": true
+  },
+  {
+    "name": "ssr",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Server Rendering"
+  },
+  {
+    "name": "ssg",
+    "type": "dir",
     "collapsed": true
   },
   {
@@ -22,8 +32,9 @@
     "collapsed": true
   },
   {
-    "name": "ssg",
+    "name": "design-patterns",
     "type": "dir",
+    "label": "Design Patterns",
     "collapsed": true
   }
 ]
