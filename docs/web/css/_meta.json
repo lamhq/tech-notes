@@ -3,5 +3,9 @@
   "grid-layout",
   "sass",
   "css-modules",
-  "tailwind-css"
+  {
+    "name": "tailwind-css",
+    "type": "dir",
+    "collapsed": true
+  }
 ]
