@@ -1,4 +1,4 @@
-# Declaring Component's Props
+# Props
 
 ## Snippets
 
