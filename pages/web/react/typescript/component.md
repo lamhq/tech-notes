@@ -1,4 +1,4 @@
-# Declaring Components
+# Components
 
 Function components cannot return anything other than a JSX expression or `null`.
 

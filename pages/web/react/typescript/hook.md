@@ -1,4 +1,4 @@
-# Hooks with TypeScript
+# Hooks
 
 ## useState
 

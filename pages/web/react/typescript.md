@@ -1,4 +1,4 @@
-# TypeScript syntax for React
+# TypeScript
 
 ## Reference
 

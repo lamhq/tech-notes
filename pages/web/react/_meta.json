@@ -1,8 +1,8 @@
 {
   "typescript": "TypeScript",
-  "form": "Form",
+  "form": "Form Handling",
   "state": "State Management",
-  "react-router": "Routing",
-  "nextjs": "Server Rendering",
-  "react-oidc-context": "Authentication"
+  "routing": "Routing",
+  "ssr": "Server Rendering",
+  "auth": "Authentication"
 }
