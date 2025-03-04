@@ -12,44 +12,44 @@ Install MongoDB Community Edition for local development (macOS 11 or later).
 ## Steps
 
 Download Homebrew formula for MongoDB (repository of installation scripts):
-```shell
+```sh
 brew tap mongodb/brew
 ```
 
 Update Homebrew:
-```shell
+```sh
 brew update
 ```
 
 Install MongoDB:
-```shell
+```sh
 brew install mongodb-community@8.0
 ```
 
 Run MongoDB manually as a background process:
-```shell
+```sh
 mongod --config /opt/homebrew/etc/mongod.conf --fork
 ```
 
 Verify that MongoDB is running:
-```shell
+```sh
 ps aux | grep -v grep | grep mongod
 ```
 
 
 ## Connect and use
-```shell
+```sh
 mongosh
 ```
 
 
 ## Create an user administrator
 
-```shell
+```sh
 mongosh --authenticationDatabase "admin"
 ```
 
-```shell
+```sh
 use test
 db.createUser(
   {
@@ -63,7 +63,7 @@ db.createUser(
 
 ## Shutdown
 
-```shell
+```sh
 db.adminCommand({ shutdown: 1 })
 ```
 

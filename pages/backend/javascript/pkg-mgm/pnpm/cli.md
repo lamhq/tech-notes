@@ -2,7 +2,7 @@
 
 ## Install dependencies
 
-```bash
+```sh
 pnpm i
 
 # install for production, packages listed in `devDependencies` won't be installed
@@ -15,7 +15,7 @@ pnpm i --frozen-lockfile
 
 ## Add package
 
-```bash
+```sh
 pnpm add <pkg@version>
 
 # Save to devDependencies
@@ -28,51 +28,51 @@ pnpm add -g <pkg>
 ## Upgrade package list
 
 Updates packages to their latest version based on the specified range:
-```bash
+```sh
 pnpm up
 ```
 
 Updates all dependencies, ignoring ranges specified in `package.json`:
-```bash
+```sh
 pnpm up --latest
 ```
 
 ## Find outdated packages
 
-```shell
+```sh
 pnpm outdated
 ```
 
-```shell
+```sh
 pnpm outdated "*gulp-*" @babel/core
 ```
 
 ## Remove packages
 
-```bash
+```sh
 pnpm remove <pkg>
 ```
 
 ## Removes unnecessary packages
 
-```bash
+```sh
 pnpm prune
 ```
 
 ## Run scripts
 
 Runs a script defined in `package.json`:
-```bash
+```sh
 pnpm run <cmd>
 ```
 
 Runs the `test` script defined in `package.json`:
-```shell
+```sh
 pnpm test
 ```
 
 Runs the `start` script defined in `package.json`:
-```shell
+```sh
 pnpm start
 ```
 
@@ -81,7 +81,7 @@ pnpm start
 Execute a shell command in scope of a project.
 
 For example, if you have Jest as a dependency of your project, you can run it with `pnpm exec`:
-```bash
+```sh
 pnpm exec jest
 ```
 
@@ -89,11 +89,11 @@ pnpm exec jest
 
 Fetches a package from the registry without installing it as a dependency, hotloads it, and runs whatever default command binary it exposes.
 
-```bash
+```sh
 pnpm dlx create-react-app ./my-app
 ```
 
 `pnpx` is an alias for `pnpm dlx`:
-```bash
+```sh
 pnpx create-react-app ./my-app
 ```

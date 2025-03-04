@@ -3,7 +3,7 @@
 ## Snippets
 
 ### Print text with variable interpolation
-```shell
+```sh
 cat << EOF
 The current working directory is: $PWD
 You are logged in as: $(whoami)
@@ -18,7 +18,7 @@ You are logged in as: linuxize
 
 ### Disable expansion (delimiter is quoted)
 
-```shell
+```sh
 cat <<- "EOF"
 The current working directory is: $PWD
 You are logged in as: $(whoami)
@@ -28,7 +28,7 @@ EOF
 ### Using a heredoc inside a statement or loop
 
 Use the `<<-` redirection operation that allows you to indent your code:
-```shell
+```sh
 if true; then
     cat <<- EOF
     Line with a leading tab.
@@ -38,7 +38,7 @@ fi
 
 ### Redirect output to a file using the `>`, `>>` operators
 
-```shell
+```sh
 cat << EOF > file.txt
 The current working directory is: $PWD
 You are logged in as: $(whoami)
@@ -49,7 +49,7 @@ EOF
 
 The `sed` command will replace all instances of the `l` character with `e`:
 
-```shell
+```sh
 cat <<'EOF' |  sed 's/l/e/g'
 Hello
 World
@@ -58,7 +58,7 @@ EOF
 
 Output:
 
-```shell
+```sh
 Heeeo
 Wored
 ```
@@ -69,7 +69,7 @@ Using Heredoc is one of the most convenient and easiest ways to execute multiple
 
 When using unquoted delimiter make sure you escape all variables, commands and special characters otherwise they will be interpolated locally:
 
-```shell
+```sh
 ssh -T user@host.com << EOF
 echo "The current local working directory is: $PWD"
 echo "The current remote working directory is: \$PWD"
@@ -77,7 +77,7 @@ EOF
 ```
 
 Output:
-```shell
+```sh
 The current local working directory is: /home/linuxize
 The current remote working directory is: /home/user
 ```
@@ -91,7 +91,7 @@ In Bash and other shells like Zsh, a Here document (Heredoc) is a type of redire
 
 ## Syntax
 
-```shell
+```sh
 [COMMAND] <<[-] 'DELIMITER'
   HERE-DOCUMENT
 DELIMITER

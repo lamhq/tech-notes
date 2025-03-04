@@ -52,7 +52,7 @@ For everything else, place the changes in `.bashrc`.
 The changes we have made to our `.bashrc` will not take effect until we close our terminal session and start a new one, because the `.bashrc` file is read only at the beginning of a session.
 
 We can force bash to reread the modified `.bashrc` file with the following command:
-```shell
+```sh
 source .bashrc
 ```
 
@@ -61,16 +61,16 @@ source .bashrc
 
 Print available environment variables:
 
-```shell
+```sh
 printenv | less
 ```
 
 View the value of a specific variable:
-```shell
+```sh
 printenv USER
 ```
 
-```shell
+```sh
 echo $HOME
 ```
 

@@ -4,13 +4,13 @@
 
 Manually deploy and host your static web app.
 
-```shell
+```sh
 amplify add hosting
 ```
 
 ## Publish your app
 
-```shell
+```sh
 amplify publish
 ```
 
@@ -20,6 +20,6 @@ After publishing, your terminal will display your app URL hosted on a `amplifyap
 ## View deployment status of your app
 
 To view your entire app in the Amplify console
-```shell
+```sh
 amplify console
 ```

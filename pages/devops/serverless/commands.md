@@ -3,24 +3,24 @@
 ## Deploy
 
 Deploy all functions:
-```shell
+```sh
 sls deploy
 ```
 
 Deploy a single function:
-```shell
+```sh
 sls deploy function -f <function_name>
 ```
 
 ## Invoke
 
 Invoke a function by name:
-```shell
+```sh
 sls invoke -f hello
 ```
 
 Invoke a function locally:
-```shell
+```sh
 serverless invoke local --function <function_name> --data '{"a":"bar"}'
 ```
 
@@ -28,18 +28,18 @@ serverless invoke local --function <function_name> --data '{"a":"bar"}'
 ## Monitoring
 
 Stream logs from all functions:
-```shell
+```sh
 sls dev --verbose
 ```
 
 Stream logs from a specific function:
-```shell
+```sh
 sls dev -f <function_name>
 ```
 
 
 ## Remove
 
-```shell
+```sh
 sls remove
 ```

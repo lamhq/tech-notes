@@ -4,7 +4,7 @@ Pylint is a powerful tool that not only checks PEP 8 compliance but also perform
 
 ## Install Pylint package
 
-```shell
+```sh
 poetry add pylint --dev
 ```
 

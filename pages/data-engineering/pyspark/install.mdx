@@ -48,7 +48,7 @@ Add a Dev Container Configuration File with below content:
 Then in command palette, select `Dev Containers: Reopen in Container` to open the project inside a Spark environment and start developing.
 
 To execute PySpark code:
-```shell
+```sh
 spark-submit hello_world.py
 ```
 
@@ -66,39 +66,39 @@ Install Apache Spark on macOS for local development.
 
 Spark runs on Java 8/11/17, Scala 2.12/2.13, Python 3.8+, and R 3.5+.
 
-```shell
+```sh
 brew update
 brew install openjdk@17
 ```
 
 Add Java in your `PATH`, run:
-```shell
+```sh
 echo 'export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"' >> /Users/admin/.zshrc
 ```
 
 Verify the installation:
-```shell
+```sh
 java -version
 ```
 
 
 ### Install Scala (optional)
 
-```shell
+```sh
 brew install scala
 ```
 
 
 ### Install Apache Spark
 
-```shell
+```sh
 brew install apache-spark
 ```
 
 ### Configure Apache Spark
 
 Find the install location:
-```shell
+```sh
 brew info apache-spark
 ```
 
@@ -109,12 +109,12 @@ Installed
 ```
 
 Go to the `conf` directory inside the Spark installed directory:
-```shell
+```sh
 cd /opt/homebrew/Cellar/apache-spark/3.5.3/libexec/conf
 ```
 
 Create a config file:
-```shell
+```sh
 cp spark-defaults.conf.template spark-defaults.conf
 ```
 
@@ -124,17 +124,17 @@ spark.driver.bindAddress 127.0.0.1
 ```
 
 Verify the installation by launching Spark interactive Scala shell:
-```shell
+```sh
 spark-shell
 ```
 
 
 ### Install PySpark
-```shell
+```sh
 pip install pyspark
 ```
 
 Verify the installation by by running the PySpark shell:
-```shell
+```sh
 pyspark
 ```

@@ -5,7 +5,7 @@
 View the [official installation instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions) for macOS. (GUI installer is recommended).
 
 Verify installation:
-```shell
+```sh
 which aws
 aws --version
 ```
@@ -22,7 +22,7 @@ You can set up AWS Credentials by:
 
 You can set credentials for AWS CLI by set up these environment variables:
 
-```shell
+```sh
 export AWS_DEFAULT_REGION=us-east-1
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
@@ -31,24 +31,24 @@ export AWS_SESSION_TOKEN=
 
 ### Configuring AWS CLI
 
-```shell
+```sh
 aws configure
 ```
 
 You can also configure profiles for different sets of credentials:
-```shell
+```sh
 aws configure --profile myprofile
 ```
 
 And in your code or commands, specify the profile:
-```shell
+```sh
 aws s3 ls --profile myprofile
 ```
 
 ### Updating credentials file
 
 Create a credentials file at `~/.aws/credentials` and add your credentials:
-```shell filename="~/.aws/credentials"
+```sh filename="~/.aws/credentials"
 [profile myprofile]
 aws_access_key_id =
 aws_secret_access_key =
@@ -69,11 +69,11 @@ The CLI will look for credentials in this order:
 ## Export credentials to terminal
 
 To export credentials of default profile to terminal:
-```shell
+```sh
 eval $(aws configure export-credentials --format env)
 ```
 
 Use a specific profile:
-```shell
+```sh
 eval $(aws configure export-credentials --profile <profile_name> --format env)
 ```

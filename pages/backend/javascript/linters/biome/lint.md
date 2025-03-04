@@ -33,7 +33,7 @@ Biome distinguishes between safe and unsafe code fixes:
 - Safe fixes are guaranteed to not change the semantic of your code. To apply safe fixes, use `--write`
 - Unsafe fixes may change the semantic of your program. To apply both safe fixes and unsafe fixes, use `--write --unsafe`.
 
-```shell
+```sh
 npx @biomejs/biome lint --write ./src
 npx @biomejs/biome lint --write --unsafe ./src
 ```

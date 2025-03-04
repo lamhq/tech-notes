@@ -5,37 +5,37 @@ Running pytest without mentioning a filename will run all files of format `test_
 ## Running a subset of tests
 
 Run tests in a file:
-```shell
+```sh
 pytest test_one.py
 ```
 
 Run tests in a directory:
-```shell
+```sh
 pytest tests/
 ```
 
 Run tests matching a name pattern:
-```shell
+```sh
 pytest -k pattern
 ```
-```shell
+```sh
 pytest -k equality
 pytest -k "equality and not equality_fail"
 pytest -k "(dict or ids) and not TestEquality"
 ```
 
 Run single test function:
-```shell
+```sh
 pytest path/test_module.py::test_function
 ```
 
 Run single test method in a class:
-```shell
+```sh
 pytest path/test_module.py::TestClass::test_method
 ```
 
 Run tests in current working directory and all subdirectories:
-```shell
+```sh
 pytest
 ```
 
@@ -43,21 +43,21 @@ pytest
 ## Modify test output
 
 Turn off tracebacks:
-```shell
+```sh
 pytest --tb=no
 ```
 
 View verbose output:
-```shell
+```sh
 pytest -v test_two.py
 ```
 
 View full diff when assert fail:
-```shell
+```sh
 pytest -vv test_two.py
 ```
 
 Shows the order of operations of tests and fixtures:
-```shell
+```sh
 pytest --setup-show test_count.py
 ```

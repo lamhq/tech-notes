@@ -5,17 +5,17 @@ Filenames that begin with a period character are hidden.
 ## Snippets
 
 **View content of a file in paginated mode**:
-```shell
+```sh
 less ls-output.txt
 ```
 
 **Display first 5 lines of a file**:
-```shell
+```sh
 head -n 5 ls-output.txt
 ```
 
 **Display last 5 lines of a file**:
-```bash
+```sh
 tail -n 5 -f /var/log/system.log
 ```
 
@@ -114,7 +114,7 @@ If the file is deleted, the link will continue to exist, but will point to nothi
 
 To create a symbolic link:
 
-```shell
+```sh
 ln -s item link
 ```
 
@@ -123,7 +123,7 @@ ln -s item link
 
 Look at the output of the ls command
 
-```shell
+```sh
 [me@linuxbox ~]$ ls -l foo.txt
 -rw-rw-r-- 1 me me 0 2018-03-06 14:52 foo.txt
 ```

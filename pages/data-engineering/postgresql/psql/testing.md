@@ -2,7 +2,7 @@
 
 ## Create a test database
 
-```shell
+```sh
 psql -d postgres << EOF
 DROP DATABASE test_db;
 CREATE DATABASE test_db;
@@ -13,7 +13,7 @@ EOF
 
 ## Import data from CSV
 
-```shell
+```sh
 psql -d test_db << EOF
 DROP TABLE IF EXISTS raw_data;
 CREATE TABLE raw_data (

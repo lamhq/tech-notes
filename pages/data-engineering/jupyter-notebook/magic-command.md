@@ -10,7 +10,7 @@ The entire cell content is treated as a Bash script.
 
 The output is displayed in the notebook.
 
-```shell
+```sh
 %%bash
 psql -d postgres << EOF
 DROP DATABASE test_db;

@@ -2,14 +2,14 @@
 
 ## Installation
 
-```shell
+```sh
 brew install supabase/tap/supabase
 ```
 
 
 ## Updating
 
-```shell
+```sh
 brew upgrade supabase
 ```
 
@@ -19,19 +19,19 @@ brew upgrade supabase
 Requirements: [Docker Desktop](https://docs.docker.com/desktop).
 
 ### Init an existing project
-```shell
+```sh
 supabase init
 ```
 
 This will create a new `supabase` folder. It's safe to commit this folder to your version control system.
 
 ### Start the Supabase stack
-```shell
+```sh
 supabase start
 ```
 
 ### Stopping local services
-```shell
+```sh
 supabase stop
 ```
 

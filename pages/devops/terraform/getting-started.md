@@ -3,7 +3,7 @@
 ## Initialize
 
 Initialize the working directory:
-```shell
+```sh
 terraform init
 ```
 
@@ -16,19 +16,19 @@ artifact_bucket_name = "glue-demo-artifact-bucket-2024"
 
 ## Preview
 Preview the changes before apply:
-```shell
+```sh
 terraform plan -var-file="params.tfvars"
 ```
 
 ## Deploy
 
 Establish the infrastructure:
-```shell
+```sh
 terraform apply -var-file="params.tfvars" --auto-approve
 ```
 
 ## Clean up
 Destroy the infrastructure when you no longer need it:
-```shell
+```sh
 terraform destroy -var-file="params.tfvars" --auto-approve
 ```

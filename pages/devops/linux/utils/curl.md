@@ -11,7 +11,7 @@
 - `-f`: Fail silently on server errors
 
 
-```bash
+```sh
 curl http://example.com
 curl -o vlc.dmg http://ftp.belnet.be/mirror/videolan/vlc/3.0.4/macosx/vlc-3.0.4.dmg
 curl -O http://ftp.belnet.be/mirror/videolan/vlc/3.0.4/macosx/vlc-3.0.4.dmg

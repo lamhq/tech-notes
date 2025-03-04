@@ -17,6 +17,6 @@ Get AWS credentials, including Access key ID and Secret access key.
 6. Install Docker
 
 Verify SAM installation:
-```shell
+```sh
 sam --version
 ```

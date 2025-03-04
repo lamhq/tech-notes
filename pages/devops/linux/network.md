@@ -1,7 +1,7 @@
 # Network
 
 ## Port commands
-```shell
+```sh
 # Check port is inuse
 sudo lsof -i -P -n | grep LISTEN | grep 5432
 
@@ -20,7 +20,7 @@ netstat -tulpn
 
 ## Get public ip
 
-```shell
+```sh
 dig +short myip.opendns.com @resolver1.opendns.com
 dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
 ```

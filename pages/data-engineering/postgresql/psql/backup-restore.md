@@ -4,7 +4,7 @@
 
 Export database schema to a sql file (password is specified when running the command):
 
-```shell
+```sh
 PGPASSWORD=<your_password> pg_dump -U postgres -h localhost mobilesc_db -s > schema.sql
 ```
 

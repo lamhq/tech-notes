@@ -3,7 +3,7 @@
 ## dev
 
 Start a local dev server:
-```shell
+```sh
 rsbuild dev -o
 ```
 - `-o`: open the page in browser on startup
@@ -15,7 +15,7 @@ rsbuild dev -o
 
 Build the outputs for production in the `dist/` directory
 
-```shell
+```sh
 rsbuild build -m production
 ```
 - `-m <mode>`: specify the build mode, can be `development`, `production` or `none`
@@ -27,7 +27,7 @@ rsbuild build -m production
 
 Preview the production build outputs locally (you need to execute the **build** command beforehand).
 
-```shell
+```sh
 rsbuild preview
 ```
 - `-o`: open the page in browser on startup

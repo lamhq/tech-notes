@@ -2,7 +2,7 @@
 
 ## Add Remote and Push
 
-```bash
+```sh
 git remote add origin git@github.com:lamhq/restful-api-boilerplate.git
 git config --global push.autoSetupRemote true
 git push
@@ -11,7 +11,7 @@ git push
 
 ## List remote
 
-```bash
+```sh
 git remote
 git config --get remote.origin.url
 ```
@@ -19,21 +19,21 @@ git config --get remote.origin.url
 
 ## Updating remote's URL
 
-```bash
+```sh
 git remote set-url origin git@bitbucket.org:theappteamdevs/troocoo-web.git
 ```
 
 
 ## Rename remote
 
-```bash
+```sh
 git remote rename <old> <new>
 ```
 
 
 ## Remove remote
 
-```bash
+```sh
 git remote remove <name>
 ```
 
@@ -44,7 +44,7 @@ Use multiple Github account on the same machine.
 
 ### Modify the ssh config
 
-```shell
+```sh
 vi ~/.ssh/config
 ```
 
@@ -68,12 +68,12 @@ Host github.com-lamhq
 
 Add `-truck2hand` in the host
 
-```shell
+```sh
 git clone git@github.com-truck2hand:truck2hand/t2h-backend.git t2h
 ```
 
 ### Update remote url of existing repos
 
-```shell
+```sh
 git remote set-url origin git@github.com-truck2hand:truck2hand/t2h-backend.git
 ```

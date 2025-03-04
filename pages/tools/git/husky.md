@@ -24,7 +24,7 @@ npx husky init
 ## Adding a Hook
 
 To add a hook:
-```shell
+```sh
 echo "npm test" > .husky/pre-commit
 ```
 
@@ -38,14 +38,14 @@ npm i -D git-branch-is@^4.0.0
 ```
 
 Add hook:
-```shell
+```sh
 echo "npx git-branch-is -r '^(feature|fix)/[a-z\\-\\d\\.]+$'" > .husky/pre-push
 ```
 
 
 ### Run unit test before push
 
-```shell
+```sh
 echo "npm run test:cov" > .husky/pre-commit
 npm pkg set scripts.test:cov="jest --coverage"
 ```

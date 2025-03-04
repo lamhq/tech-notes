@@ -3,7 +3,7 @@
 ## Integrate Amplify to project
 
 After you have a running app, run:
-```shell
+```sh
 amplify init
 ```
 

@@ -40,7 +40,7 @@ custom:
 ## Poetry
 
 If you include a `pyproject.toml` and have `poetry` installed, this will use below command to generate `requirements.txt`:
-```shell
+```sh
 poetry export --without-hashes -f requirements.txt -o requirements.txt --with-credentials
 ```
 

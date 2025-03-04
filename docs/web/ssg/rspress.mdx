@@ -1,5 +1,3 @@
-import { PackageManagerTabs } from '@theme';
-
 # Rspress
 
 Lightning Fast Static Site Generator.
@@ -20,13 +18,16 @@ Lightning Fast Static Site Generator.
 
 ### Create new project
 
-<PackageManagerTabs command="create rspress@latest" />
+```sh
+npm create rspress@latest
+```
 
 
 ### Add Rspress to existing project
 
-<PackageManagerTabs command="install rspress -D" />
-
+```sh npm2yarn
+npm install rspress -D
+```
 
 Add the following script to `package.json`:
 
@@ -77,19 +78,19 @@ Create a TypeScript configuration file:
 
 ### Start dev server
 
-```shell
+```sh
 npm run dev
 ```
 
 
 ### Build
 
-```shell
+```sh
 npm run build
 ```
 
 ### Preview
 
-```shell
-npm run preview
+```sh
+rspress preview --port 8080
 ```

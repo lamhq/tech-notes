@@ -47,7 +47,7 @@ Metrics are grouped first by the service namespace, and then by the various dime
 ## AWS CLI
 
 To view metrics using the AWS CLI:
-```shell
+```sh
 aws cloudwatch list-metrics --namespace Glue
 ```
 

@@ -10,17 +10,17 @@ This document is for version `1.7.x` (2024).
 Terraform is installed using Homebrew.
 
 Install the HashiCorp tap, a repository of all HashiCorp packages:
-```shell
+```sh
 brew tap hashicorp/tap
 ```
 
 Install Terraform:
-```shell
+```sh
 brew install hashicorp/tap/terraform
 ```
 
 Verify the installation:
-```shell
+```sh
 terraform -help
 ```
 
@@ -28,12 +28,12 @@ terraform -help
 ### Enable tab completion
 
 Create a `.zshrc` file if not exists:
-```shell
+```sh
 touch ~/.zshrc
 ```
 
 Install the autocomplete package:
-```shell
+```sh
 terraform -install-autocomplete
 ```
 

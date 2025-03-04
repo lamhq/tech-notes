@@ -34,7 +34,7 @@ Cons:
 
 Install `serverless` module via NPM:
 
-```shell
+```sh
 npm install -g serverless
 ```
 
@@ -47,12 +47,12 @@ Refer to [AWS CLI guide](./aws/cli.md#configure).
 ## Initialize new project
 
 Create a new serverless project:
-```shell
+```sh
 sls
 ```
 
 Move into the newly created directory:
-```shell
+```sh
 cd sls-demo
 ```
 

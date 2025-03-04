@@ -2,14 +2,14 @@
 
 ## Get version
 
-```shell
+```sh
 terraform version
 ```
 
 ## Set working directory
 
 You can add `-chdir=<path_to/tf>` flag to commands to specify the working directory:
-```shell
+```sh
 terraform -chdir="infra/" apply -var-file="test.tfvars"
 ```
 
@@ -17,104 +17,104 @@ terraform -chdir="infra/" apply -var-file="test.tfvars"
 ## Validate Terraform code
 
 Validate the code to look for any errors in syntax, parameters, or attributes within Terraform resources that may prevent it from deploying correctly:
-```shell
+```sh
 terraform validate
 ```
 
 ## Preview
 
 Create an execution plan:
-```shell
+```sh
 terraform plan
 ```
 
 Output the destroy plan:
-```shell
+```sh
 terraform plan -destroy
 ```
 
 ## Apply changes
 
-```shell
+```sh
 terraform apply
 ```
 
 No asking:
-```shell
+```sh
 terraform apply --auto-approve
 ```
 
 Apply a specific plan:
-```shell
+```sh
 terraform apply <plan_name>
 ```
 
 Only apply changes to a targeted resource:
-```shell
+```sh
 terraform apply -target=<resource_name>
 ```
 
 Pass a variable via the command line:
-```shell
+```sh
 terraform apply -var my_variable=<variable>
 ```
 
 
 ## Destroy
 
-```shell
+```sh
 terraform destroy
 ```
 
-```shell
+```sh
 terraform destroy --auto-approve
 ```
 
 ## View outputs
 
 Display all the output variables from your Terraform state:
-```shell
+```sh
 terraform output
 ```
 
 ## State
 
 List all the resources being tracked by the Terraform state file:
-```shell
+```sh
 terraform state list
 ```
 
 ## Workspace commands
 
 List workspaces:
-```shell
+```sh
 terraform workspace list
 ```
 
 Create a workspace:
-```shell
+```sh
 terraform workspace new <WORKSPACE_NAME>
 ```
 
 Switch workspace:
-```shell
+```sh
 terraform workspace select <WORKSPACE_NAME>
 ```
 
 Delete workspace:
-```shell
+```sh
 terraform workspace delete <WORKSPACE_NAME>
 ```
 
 ## List available commands
 
-```shell
+```sh
 terraform
 ```
 
 ## List available options for a sub command
 
-```shell
+```sh
 terraform <sub_command> -h
 ```
 
@@ -123,12 +123,12 @@ terraform <sub_command> -h
 
 First update Homebrew:
 
-```shell
+```sh
 brew update
 ```
 
 Upgrade Terraform to the latest version:
 
-```shell
+```sh
 brew upgrade hashicorp/tap/terraform
 ```

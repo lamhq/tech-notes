@@ -13,7 +13,7 @@ The IPython is used as a kernel (a programming language mode) for using Python w
 
 ## Installation
 
-```shell
+```sh
 pip install ipython
 ```
 
@@ -21,11 +21,11 @@ pip install ipython
 ## Usage
 
 Launch the IPython shell:
-```shell
+```sh
 ipython
 ```
 
 Run python program inside the IPython interpreter:
-```shell
+```sh
 %run hello_world.py
 ```

@@ -87,12 +87,12 @@ For example, a function-scope fixture can depend on other function-scope fixture
 ## Listing Fixtures
 
 Below command list available fixtures in a directory or test file:
-```shell
+```sh
 pytest --fixtures -v path/to/directory
 ```
 
 You can also use `--fixtures-per-test` to see what fixtures are used by each test and where the fixtures are defined:
-```shell
+```sh
 pytest --fixtures-per-test test_count.py::test_empty
 ```
 
@@ -161,7 +161,7 @@ def test_1():
 ```
 
 Run the test with turning off output capture:
-```shell
+```sh
 pytest -v --capture=no test_autouse.py
 ```
 

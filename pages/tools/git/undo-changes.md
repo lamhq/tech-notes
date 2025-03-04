@@ -26,7 +26,7 @@ git revert <commit>...HEAD --no-commit
 - Caution: always check that your working directory is clean before using this command
 - Use cases: undoing unwanted changes permanently
 
-```shell
+```sh
 git reset --hard <commit>
 ```
 
@@ -41,6 +41,6 @@ git reset --hard <commit>
   - Combine local (uncommited) commits before pushing
   - Compare changes since the last commit by rolling back history (make sure to back up your branch first)
 
-```shell
+```sh
 git reset <commit>
 ```

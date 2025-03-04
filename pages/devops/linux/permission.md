@@ -6,58 +6,58 @@
 
 View your `uid`, `gid`:
 
-```shell
+```sh
 id
 ```
 
 ### Start a new shell as a superuser
-```shell
+```sh
 su -
 ```
-```shell
+```sh
 sudo -i
 ```
 
 ### Start a new shell as another user
-```shell
+```sh
 su -l [username]
 ```
 
 ### Execute a single command as superuser
-```shell
+```sh
 su -c 'command'
 ```
 
-```shell
+```sh
 sudo command
 ```
 
 ### See what privileges are granted by `sudo`
-```shell
+```sh
 sudo -l
 ```
 
 ### Add file permission
 
 Add execute permission for the owner
-```shell
+```sh
 chmod u+x foo.txt
 ```
 
 Add execute permission for the owner, group, and world (equivalent to `a+x`):
-```shell
+```sh
 chmod +x foo.txt
 ```
 
 ### Remove file permission
 
 Remove the read and write permission from anyone besides the owner and group owner:
-```shell
+```sh
 chmod o-rw foo.txt
 ```
 
 Add execute permission for the owner and set the permissions for the group and others to read and execute. Multiple specifications may be separated by commas:
-```shell
+```sh
 chmod u+x,go=rx foo.txt
 ```
 
@@ -79,7 +79,7 @@ To change the mode (permissions) of a file or directory, use the `chmod` command
 
 ### Permission Attributes
 
-```shell
+```sh
 [me@linuxbox ~]$ ls -l foo.txt
 -rw-rw-r-- 1 me me 0 2018-03-06 14:52 foo.txt
 ```
@@ -113,7 +113,7 @@ The `sudo` command allows an administrator to set up a configuration file called
 
 To allow a user to run the `sudo` without entering password, update the file `sudoers` by this command (superuser privileges are required):
 
-```shell
+```sh
 visudo
 ```
 
@@ -130,34 +130,34 @@ The `chown` command is used to change the owner and group owner of a file or dir
 Superuser privileges are required to use this command.
 
 Changes the ownership of the file from its current owner to user *bob*:
-```shell
+```sh
 chown bob myfile
 ```
 
 Changes the file owner from the current owner to user *bob* and changes the group owner to the login group of user *bob*:
-```shell
+```sh
 chown bob: myfile
 ```
 
 Changes the group owner to the group *admins*. The file owner is unchanged:
-```shell
+```sh
 chown :admins myfile
 ```
 
 Changes the ownership of the file from its current owner to user *bob* and changes the file group owner to group *users*.
-```shell
+```sh
 chown bob:users myfile
 ```
 
 ## Changing user's password
 
 Change your own password:
-```shell
+```sh
 passwd
 ```
 
 Change user's password (superuser privileges are required):
-```shell
+```sh
 passwd [user]
 ```
 
@@ -170,7 +170,7 @@ passwd [user]
 - add the user to the wheel group
 - Test sudo access on new user account
 
-```bash
+```sh
 ssh root@server_ip_address
 adduser username
 passwd username

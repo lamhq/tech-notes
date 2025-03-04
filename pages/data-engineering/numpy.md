@@ -27,7 +27,7 @@ NumPy aims to provide an array object that is up to 50x faster than traditional 
 
 ## Install NumPy
 
-```shell
+```sh
 pip install numpy
 ```
 

@@ -20,6 +20,6 @@ Features:
 - Stream Logs and other telemetry instantly while you develop via the Dev Mode user interface.
 
 To set up Serverless Console, run:
-```shell
+```sh
 sls --console
 ```

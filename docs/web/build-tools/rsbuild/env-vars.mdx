@@ -1,5 +1,3 @@
-import { PackageManagerTabs } from '@theme';
-
 # Environment Variables
 
 Rsbuild supports injecting env variables or expressions into the code during build, which is helpful for distinguishing the running environment or replacing constants.
@@ -65,7 +63,7 @@ Rsbuild supports reading the following types of env files:
 ### Env Mode
 
 You can specify the env mode using the `--env-mode <mode>` flag.
-```shell
+```sh
 npx rsbuild dev --env-mode test
 ```
 
@@ -73,7 +71,7 @@ npx rsbuild dev --env-mode test
 ### Env Directory
 
 You can specify the env directory by using the `--env-dir <dir>` option:
-```shell
+```sh
 npx rsbuild dev --env-dir env
 ```
 
@@ -97,5 +95,6 @@ declare namespace NodeJS {
 ```
 
 Also, install the dependency `@types/node`:
-
-<PackageManagerTabs command="install @types/node -D" />
+```sh npm2yarn
+npm add @types/node -D
+```

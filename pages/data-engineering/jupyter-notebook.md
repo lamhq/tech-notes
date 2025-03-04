@@ -11,14 +11,14 @@ It support over 40 programming languages.
 
 ## Installation
 
-```shell
+```sh
 pip install jupyter
 ```
 
 ## Usage
 
 Launch Jupyter Notebook:
-```shell
+```sh
 jupyter notebook
 ```
 

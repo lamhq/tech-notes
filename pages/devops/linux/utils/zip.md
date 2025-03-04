@@ -8,19 +8,19 @@ zip -r archive_name.zip directory1 directory2
 ```
 
 Compress files:
-```shell
+```sh
 zip archive_name.zip file1 file2 file3
 ```
 
 
 ## Extract
 
-```shell
+```sh
 unzip archive_name.zip
 ```
 
 ## Viewing content
 
-```shell
+```sh
 unzip -l hello-fn.zip
 ```

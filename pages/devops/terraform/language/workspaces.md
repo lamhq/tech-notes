@@ -15,19 +15,19 @@ Terraform starts with a single, default workspace named `default` that you canno
 
 ## Creating new workspace
 
-```shell
+```sh
 terraform workspace new <workspace_name>
 ```
 
 ## Switching workspaces
 
-```shell
+```sh
 terraform workspace select <workspace_name>
 ```
 
 ## Listing workspaces
 
-```shell
+```sh
 terraform workspace list
 ```
 

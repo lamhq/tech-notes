@@ -83,12 +83,12 @@ Amplify.configure(config, {
 You can generate GraphQL queries, mutations, and subscriptions directly from your backend GraphQL schema to use in your frontend project.
 
 To add Appsync GraphQL API, run the command:
-```shell
+```sh
 npx @aws-amplify/cli codegen add --apiId <...> --region <...>
 ```
 
 After every API deployment, you can rerun the following command to generate updated GraphQL statement and types:
-```shell
+```sh
 npx @aws-amplify/cli codegen
 ```
 

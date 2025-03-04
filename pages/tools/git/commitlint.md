@@ -2,12 +2,12 @@
 
 ## Install
 
-```shell npm2yarn
+```sh npm2yarn
 npm install --save-dev @commitlint/{cli,config-conventional}
 ```
 
 Create a configuration file to use Conventional Commits:
-```shell
+```sh
 echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.mjs
 ```
 
@@ -17,16 +17,16 @@ echo "export default { extends: ['@commitlint/config-conventional'] };" > commit
 To lint commits before they are created, you can use Husky:
 
 1. Install Husky
-    ```shell npm2yarn
+    ```sh npm2yarn
     npm install --save-dev husky
     ```
 2. Set up Husky and commit-msg hook
-    ```shell
+    ```sh
     npx husky init
     echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
     ```
 
 You can test by making a git commit:
-```shell
+```sh
 git commit -m "foo: this will fail"
 ```

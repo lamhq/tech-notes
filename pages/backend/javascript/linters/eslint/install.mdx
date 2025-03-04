@@ -10,7 +10,7 @@ Install and configure ESLint for a TypeScript project.
 ## Installing packages
 
 Install ESLint, `typescript-eslint`, `husky`, `lint-staged`:
-```bash npm2yarn
+```sh npm2yarn
 npm install --save-dev eslint@^9.17.0 \
   @eslint/js@^9.17.0 \
   @types/eslint__js@^8.42.3 \
@@ -64,7 +64,7 @@ export default tseslint.config(
 
 Set up Git Hook to run `lint-staged` on commit:
 
-```shell
+```sh
 npx husky init
 node --eval "fs.writeFileSync('.husky/pre-commit','npx lint-staged\n')"
 ```
@@ -110,7 +110,7 @@ npm run lint --fix
 ```
 
 You can run ESLint directly without using npm script:
-```shell
+```sh
 npx eslint
 ```
 

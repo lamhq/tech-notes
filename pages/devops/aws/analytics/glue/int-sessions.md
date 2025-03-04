@@ -26,17 +26,17 @@ There is a 1-minute minimum billing duration for each provisioned Interactive Se
 ## Setting up interactive sessions locally
 
 Install packages:
-```shell
+```sh
 pip3 install --upgrade jupyter boto3 aws-glue-sessions         
 ```
 
 Install kernels for pyspark and spark:
-```shell
+```sh
 install-glue-kernels  	          
 ```
 
 Run a local Jupyter session:
-```shell
+```sh
 jupyter notebook
 ```
 
@@ -48,18 +48,18 @@ http://localhost:8888/tree?token=???
 ## Configuring session credentials and region
 
 Configure AWS credentials with magic command:
-```shell
+```sh
 !aws configure set aws_access_key_id ''
 !aws configure set aws_secret_access_key ''
 ```
 
 Configuring a session role:
-```shell
+```sh
 %iam_role <Glue_Service_Role_ARN>
 ```
 
 Configure a region:
-```shell
+```sh
 %region <region>
 ```
 
