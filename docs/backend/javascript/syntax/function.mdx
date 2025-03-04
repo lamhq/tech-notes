@@ -1,0 +1,56 @@
+# Function
+
+## Arrow Function
+
+```js
+setTimeout(() ={
+  console.log('delayed')
+}, 1000)
+```
+
+Equivalent with Anonymous Function:
+
+```js
+setTimeout(function () {
+  console.log('delayed')
+}.bind(this), 1000)
+```
+
+
+## Function arguments
+
+Functions with variable arguments (ES6):
+
+```js
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Output: 10
+```
+
+Default Params (ES6):
+
+```js
+function howAreYou (answer = 'ok') {
+  console.log(answer) // probably 'ok'
+}
+```
+
+
+## Scoped Functions
+
+```js
+{
+  let cue = 'Luke, I am your father' ... console.log(cue)
+}
+```
+
+Equivalent with Immediately Invoked Function Expressions (IIFE):
+ 
+```js
+(function () {
+  var cue = 'Luke, I am your father'
+  console.log(cue) // 'Luke, I am –
+}())
+```

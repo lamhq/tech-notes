@@ -1,6 +1,7 @@
 [
   "variables",
   "operators",
-  "es6",
-  "es7"
+  "es7",
+  "loop",
+  "function"
 ]

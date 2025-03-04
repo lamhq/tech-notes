@@ -8,12 +8,46 @@ Create an array with `n` items
 Array.from({length: n}, (_, i) => i + 1);
 ```
 
+Joining two arrays:
+
+```js
+arr1.concat(arr2)
+```
+
+Spreading the elements of an array into another array (ES6):
+
+```js
+const numbers = [1, 2, 3];
+const moreNumbers = [...numbers, 4, 5, 6];
+console.log(moreNumbers); // Output: [1, 2, 3, 4, 5, 6]
+```
+
 
 ## Find item's location
 
-Determining the location of an item in an array
+Determining the location of an item in an array:
+
 ```ts
 arr.indexOf(item)
+```
+
+
+## Extracting array elements
+
+Use array destructuring (ES6):
+
+```js
+const [uid, uname] = [1, "Batman"];
+console.log(uid, uname); // 1 Batman
+```
+
+Using rest operator (ES6):
+
+```js
+const [first, second, ...rest] = [10, 20, 30, 40, 50];
+console.log(first); // Output: 10
+console.log(second); // Output: 20
+console.log(rest); // Output: [30, 40, 50]
 ```
 
 
@@ -66,11 +100,4 @@ removeWithoutCopy = function(arr, item) {
     }
   }
 }
-```
-
-
-## Joining two arrays
-
-```tsx
-arr1.concat(arr2)
 ```

@@ -2,6 +2,11 @@
   "number",
   "string",
   "array",
+  "object",
+  "promise",
+  "map",
+  "set",
+  "symbol",
   "null-undefined",
   "truthy",
   "this"

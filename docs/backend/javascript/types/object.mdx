@@ -1,0 +1,42 @@
+# Object
+
+## Defining object
+
+```js
+const newUser = {
+  id,
+  username,
+  email,
+  foo (a, b) { ... },
+}
+```
+
+
+## Extracting object properties
+
+Object Destructuring (ES6):
+
+```js
+const response = { id: 1, username: "Batman", email: "bruce@gmail.com" };
+const { id, username, email } = response;
+console.log(id, username, email); // 1 Alice a@b.com
+```
+
+Extracting multiple properties using rest operator (ES6):
+
+```js
+const { name, ...otherDetails } = { name: "Albert", age: 25, city: "Bangkok City" };
+console.log(name); // Output: Albert
+console.log(otherDetails); // Output: { age: 25, city: "Bangkok City" }
+```
+
+
+## Merging objects
+
+Use spread operator (ES6):
+
+```js
+const user = { name: "Albert", age: 25 };
+const updatedUser = { ...user, city: "Bangkok City" };
+console.log(updatedUser); // Output: { name: "Albert", age: 25, city: "Bangkok City" }
+```

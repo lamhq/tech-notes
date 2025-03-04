@@ -1,0 +1,16 @@
+# Set
+
+Require ES6.
+
+```js
+const superHeroSet = new Set(["Batman", "Superman", "Wonder Woman","Flash"]);
+console.log(superHeroSet); // Set(4) { 'Batman', 'Superman', 'Wonder Woman', 'Flash' }
+
+superHeroSet.add("Aquaman");
+console.log(superHeroSet); // Set(5) { 'Batman', 'Superman', 'Wonder Woman', 'Flash', 'Aquaman' }
+
+superHeroSet.delete("Superman");
+console.log(superHeroSet) // Set(4) { 'Batman', 'Wonder Woman', 'Flash', 'Aquaman' }
+
+console.log(superHeroSet.has("Batman")); // true
+```

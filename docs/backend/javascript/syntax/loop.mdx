@@ -1,0 +1,69 @@
+# Loop
+
+## `for of`
+
+The `for..of` loop can be used for iterating over iterable objects, such as arrays, strings, maps, sets, ...
+
+Iterating Over Arrays:
+   
+```js
+const fruits = ["apple", "banana", "cherry"];
+for (const fruit of fruits) {
+  console.log(fruit);
+}
+// Output: apple, banana, cherry
+```
+
+Iterating Over characters of a Strings:
+
+```js
+const message = "Hello";
+for (const char of message) {
+  console.log(char);
+}
+// Output: H, e, l, l, o
+```
+
+Iterating Over Maps:
+
+```js
+const map = new Map();
+map.set("name", "Lac");
+map.set("age", 25);
+for (const [key, value] of map) {
+  console.log(`${key}: ${value}`);
+}
+// Output: name: Lac, age: 25
+```
+
+Iterating Over Set:
+
+```js
+const set = new Set([1, 2, 3]);
+for (const value of set) {
+  console.log(value);
+}
+// Output: 1, 2, 3
+```
+
+Iterating Over NodeLis:
+
+```js
+const listItems = document.querySelectorAll("li");
+for (const item of listItems) {
+  console.log(item.textContent);
+}
+```
+
+Extract elements or properties:
+
+```js
+const users = [
+  { name: "Lac", age: 25 },
+  { name: "Tuan", age: 30 }
+];
+for (const { name, age } of users) {
+  console.log(`${name} is ${age} years old`);
+}
+// Output: Lac is 25 years old, Tuan is 30 years old
+```
