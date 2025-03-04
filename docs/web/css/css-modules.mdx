@@ -1,0 +1,141 @@
+# CSS Modules
+
+## Overview
+
+A CSS Module is a CSS file where all class names and animation names are scoped locally by default.
+
+
+## Example
+
+The following class `title` is local to the css file. It does not pollute the global namespace:
+
+```css title="style.css"
+.title {
+  color: green;
+}
+```
+
+When importing a CSS Module from a JavaScript Module, it exports an object with all mappings from local names to global names.
+
+```js
+import styles from './style.css';
+
+element.innerHTML = `<div class="${styles.title}">`;
+```
+
+
+## Why CSS Modules?
+
+- **Local Scope Prevents Clashes:** CSS Modules use local scope to avoid style conflicts across different project parts, allowing component-scoped styling.
+- **Clear Style Dependencies:** Importing styles into their respective components clarifies which styles impact which areas, enhancing code readability and maintenance.
+- **Solves Global Scope Problems:** CSS Modules prevent the common issue of styles in one file affecting the entire project by localizing styles to specific components.
+- **Boosts Reusability and Modularity:** CSS Modules allow the same class names in different modules, promoting modular, reusable styling.
+
+
+## Class name
+
+camelCase is recommended (`styles.className`).
+
+If using kebab-case, you need to use bracket notation (e.g. `styles['class-name']`) .
+
+```css
+.className {
+  color: green;
+  background: gray;
+}
+```
+
+You can disable local scope and use global class names with `:global(xxx)`:
+```css
+:global(.some-selector) {
+  /* ... */
+}
+```
+
+
+## Pseudo class selectors
+
+```css
+/* component/text.css */
+.text {
+  color: #777;
+  font-weight: 24px;
+}
+
+.text:hover {
+  color: #f60;
+}
+```
+
+## Composition
+
+You can extend a selector with `composes`:
+```css title="App.module.css"
+.className {
+  color: green;
+  background: gray;
+}
+
+.otherClassName {
+  composes: className;
+  color: white;
+}
+```
+
+```tsx title="App.tsx"
+import styles from './App.module.css';
+
+export default function App() {
+  return <p className={styles.otherClassName}>Test</p>;
+}
+```
+
+
+### Compose multiple class
+
+It's also possible to compose multiple classes with `composes: classNameA classNameB;`.
+
+
+### Pseudo classes
+
+Classes which have pseudo selectors can also be inherited.
+```css
+.className {
+  color: green;
+}
+
+.className:hover {
+  color: red;
+}
+
+.otherClassName {
+  composes: className;
+  background: black;
+}
+```
+
+
+### Composing from other files
+
+It's possible to extends class names from other CSS Modules.
+```css
+.otherClassName {
+  composes: className from './style.css';
+}
+```
+
+
+### Composing from global class names
+
+It's possible to compose from global class names.
+
+```css
+.otherClassName {
+  composes: globalClassName from global;
+}
+```
+
+
+## Reference
+
+- https://github.com/css-modules/css-modules

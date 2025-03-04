@@ -1,0 +1,145 @@
+import { PackageManagerTabs } from '@theme'
+
+# Tailwind CSS
+
+## Version
+
+This document is applied for version `3.4.4` (2024).
+
+
+## How it work
+
+Tailwind CSS works by:
+1. Scanning all of your HTML files, JavaScript components, and any other templates for class names
+2. Generating the corresponding styles
+3. Writing styles to a static CSS file.
+
+
+## Why use it?
+
+With Tailwind, you style elements by using utility classes to build custom designs without writing CSS.
+
+Benefits:
+- It speeds up development significantly. Allowing to style HTML elemments directly.
+- **You aren't wasting energy inventing class name**s.
+- **You don't have to jump between multiple files to make changes**
+- **Your CSS stops growing**. Using a traditional approach, your CSS files get bigger every time you add a new feature. With utilities, everything is reusable so you rarely need to write new CSS.
+- **Making changes feels safer**. CSS is global and you never know what you're breaking when you make a change. Classes in your HTML are local, so you can change them without worrying about something else breaking.
+
+
+### Why not just use inline styles?
+
+Using utility classes has a few important advantages over inline styles:
+
+- Designing with constraints. With utilities, you're choosing styles from a predefined design system, which makes it much easier to build visually consistent UIs.
+- Responsive design. You can't use media queries in inline styles, but you can use Tailwind's responsive utilities to build fully responsive interfaces easily.
+- Hover, focus, and other states. Inline styles can't target states like hover or focus, but Tailwind's state variants make it easy to style those states with utility classes.
+
+
+## Concerns
+
+The biggest maintainability concern when using a utility-first approach is managing commonly repeated utility combinations. This is easily solved by:
+- extracting components and partials
+- using editor and language features like multi-cursor editing and simple loops.
+
+Maintaining a utility-first CSS project is a lot easier than maintaining a large CSS codebase, because HTML is so much easier to maintain than CSS.
+
+
+## Installation (React)
+
+1. Install `tailwindcss` via `npm`, and create your `tailwind.config.js` file.
+    <PackageManagerTabs command="install -D tailwindcss" />
+    
+    ```sh
+    npx tailwindcss init -p
+    ```
+1. Configure your template paths `tailwind.config.js`
+    ```tsx
+    /** @type {import('tailwindcss').Config} */
+    export default {
+      content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
+      ],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    }
+    ```
+2. Add the Tailwind directives to your CSS (`index.css`)
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+3. Start your build process
+    ```sh
+    npm run dev
+    ```
+4. Start using Tailwind in your project
+    ```tsx
+    export default function App() {
+      return (
+        <h1 className="text-3xl font-bold underline">
+          Hello world!
+        </h1>
+      )
+    }
+    ```
+
+
+## Editor Setup
+
+### VS Code
+
+Install [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension.
+
+Features included:
+- Autocomplete. Intelligent suggestions for class names, as well as CSS functions and directives.
+- Linting. Highlights errors and potential bugs in both your CSS and your markup.
+- Hover Previews. See the complete CSS for a Tailwind class name by hovering over it.
+- Syntax Highlighting. Provides syntax definitions so that Tailwind features are highlighted correctly.
+
+
+### Prettier
+
+Install [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) for Tailwind CSS that automatically sorts your classes following our [recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted).
+
+
+## Optimizing for Production
+
+If you're using Tailwind CLI, you can **minify your CSS** by adding the `--minify` flag:
+
+```sh
+npx tailwindcss -o build.css --minify
+```
+
+If you've installed Tailwind as a PostCSS plugin, add `cssnano` to the end of your plugin list:
+
+```js title="postcss.config.js"
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+  }
+}
+```
+
+If you're using a framework, check the documentation as this is often handled for you in production automatically and you don't even need to configure it.
+
+
+## Best practices
+
+### Avoid dynamic class names
+
+Always use complete class names.
+
+Don't construct class names dynamically. If you use string interpolation or concatenate partial class names together, Tailwind will not find them and therefore will not generate the corresponding CSS.
+
+
+## Resources
+
+- [Tailwind CSS Cheat Sheet](https://nerdcave.com/tailwind-cheat-sheet)
+- [Tailwind CSS Cheat Sheet (Flowbite)](https://flowbite.com/tools/tailwind-cheat-sheet/)

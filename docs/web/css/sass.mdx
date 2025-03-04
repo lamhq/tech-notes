@@ -1,0 +1,190 @@
+# Sass
+
+## Overview
+
+Sass (Syntactically Awesome Style Sheets) is a powerful CSS preprocessor that helps writing more efficient and maintainable CSS.
+
+Sass comes in two syntaxes:
+- SCSS (Sassy CSS), which is a superset of CSS3, uses `.scss` file extension
+- The Indented Syntax, use `.sass` file extension, relies on indentation rather than brackets.
+
+
+## Variables
+
+```scss
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
+
+
+## Nesting
+
+```scss
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+```
+
+Remember to keep nesting shallow!
+
+
+## Partials
+
+You can split your CSS into smaller, manageable files and then import them into a main stylesheet.
+
+This is a great way to modularize your CSS and help keep things easier to maintain.
+
+A partial is a Sass file named with a leading underscore. For example, `_reset.scss`.
+
+```scss title="_reset.scss"
+* { margin: 0; padding: 0; }
+```
+
+
+## Modules
+
+You can load another Sass file as a module, and refer to its variables, mixins, and functions in your Sass file with a namespace based on the filename.
+
+```scss title="_base.scss"
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
+
+```scss title="styles.scss"
+@use 'base';
+
+.inverse {
+  background-color: base.$primary-color;
+  color: white;
+}
+```
+
+The outputed css:
+```css
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+.inverse {
+  background-color: #333;
+  color: white;
+}
+```
+
+
+## Mixins
+
+A mixin lets you make groups of CSS declarations that you want to reuse throughout your site.
+
+You can even pass in values to make your mixin more flexible.
+
+```scss
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+        -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+```
+
+You create a mixin using `@mixin` directive and use it with `@include`.
+
+
+## Extend/Inheritance
+
+Using `@extend` lets you share a set of CSS properties from one selector to another.
+
+```scss
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.message {
+  @extend %message-shared;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border-color: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
+```
+
+The outputed css:
+```css
+.warning, .error, .success, .message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+```
+
+
+## Operators
+
+Sass has a handful of standard math operators:
+```scss
+@use "sass:math";
+
+.container {
+  display: flex;
+}
+
+article[role="main"] {
+  width: math.div(600px, 960px) * 100%;
+}
+
+aside[role="complementary"] {
+  width: math.div(300px, 960px) * 100%;
+  margin-left: auto;
+}
+```

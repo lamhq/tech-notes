@@ -1,3 +1,5 @@
+import { PackageManagerTabs } from '@theme'
+
 # Environment Variables
 
 Rsbuild supports injecting env variables or expressions into the code during build, which is helpful for distinguishing the running environment or replacing constants.
@@ -95,6 +97,4 @@ declare namespace NodeJS {
 ```
 
 Also, install the dependency `@types/node`:
-```sh
-npm add @types/node -D
-```
+<PackageManagerTabs command="add @types/node -D" />

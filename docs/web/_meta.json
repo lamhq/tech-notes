@@ -1,6 +1,29 @@
 [
-  { "name": "index", "label": "Web Development" },
-  { "name": "design-patterns", "type": "dir", "label": "Design Patterns" },
-  { "name": "build-tools", "type": "dir", "label": "Build Tools" },
-  { "name": "ssg", "type": "dir" }
+  {
+    "name": "index",
+    "label": "Web Development"
+  },
+  {
+    "name": "css",
+    "label": "CSS",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "design-patterns",
+    "type": "dir",
+    "label": "Design Patterns",
+    "collapsed": true
+  },
+  {
+    "name": "build-tools",
+    "type": "dir",
+    "label": "Build Tools",
+    "collapsed": true
+  },
+  {
+    "name": "ssg",
+    "type": "dir",
+    "collapsed": true
+  }
 ]

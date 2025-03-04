@@ -1,0 +1,253 @@
+# Custom Styles
+
+Best practices for adding your own custom styles to Tailwind.
+
+## Customizing your theme
+
+If you want to change things like your color palette, spacing scale, typography scale, or breakpoints, add your customizations to the `theme` section of your `tailwind.config.js` file:
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+    },
+    colors: {
+      'blue': '#1fb6ff',
+      'pink': '#ff49db',
+      'orange': '#ff7849',
+      'green': '#13ce66',
+      'gray-dark': '#273444',
+      'gray': '#8492a6',
+      'gray-light': '#d3dce6',
+    },
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
+    extend: {
+      spacing: {
+        '128': '32rem',
+        '144': '36rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      }
+    }
+  }
+}
+```
+
+## Using arbitrary values
+
+When you need to get things pixel-perfect, use Tailwind's square bracket notation `[...]` to generate a class on the fly with any arbitrary value:
+```html
+<div class="top-[117px]">
+  <!-- ... -->
+</div>
+```
+
+You can combine with modifiers like `hover:` and responsive modifiers like `lg:`:
+```html
+<div class="bg-[#bada55] text-[22px] before:content-['Festivus']">
+  <!-- ... -->
+</div>
+```
+
+### Refering theme value
+You can refer to value in your theme's configuration:
+```html
+<div class="grid grid-cols-[fit-content(theme(spacing.32))]">
+  <!-- ... -->
+</div>
+```
+
+### Using CSS variables
+```html
+<div class="bg-[--my-color]">
+  <!-- ... -->
+</div>
+```
+
+### Arbitrary properties
+When you need to use a CSS property that Tailwind doesn't include a utility for out of the box:
+```html
+<div class="[mask-type:luminance]">
+  <!-- ... -->
+</div>
+```
+
+Changing value of CSS variables under different conditions:
+```html
+<div class="[--scroll-offset:56px] lg:[--scroll-offset:44px]">
+  <!-- ... -->
+</div>
+```
+
+### Arbitrary variants
+Check out the [Pseudo Utilities](pseudo-utilities.md) documentation.
+
+
+### Handling whitespace
+
+When an arbitrary value needs to contain a space, use an underscore `_` instead:
+```html
+<div class="grid grid-cols-[1fr_500px_2fr]">
+  <!-- ... -->
+</div>
+```
+
+In case that you need to use an underscore, escape the underscore with a backslash and Tailwind won't convert it to a space:
+
+```html
+<div class="before:content-['hello\_world']">
+  <!-- ... -->
+</div>
+```
+
+
+## Using CSS and `@layer`
+
+When you need to add custom CSS rules to a Tailwind project, use the `@layer` directive to add styles to Tailwind's `base`, `components`, and `utilities` layers:
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .my-custom-style {
+    /* ... */
+  }
+}
+```
+
+Check out the [official doc](https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer).
+
+
+### Adding base styles
+
+If you want to set some defaults for the page (like the text color, background color, or font family), add some classes to the `html` or `body` elements:
+
+```html
+<!doctype html>
+<html lang="en" class="text-gray-900 bg-gray-100 font-serif">
+  <!-- ... -->
+</html>
+```
+
+If you want to add your own default base styles for specific HTML elements, use the `@layer` directive to add those styles to Tailwind’s `base` layer:
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  /* ... */
+}
+```
+
+Use the `theme` function or `@apply` directive when adding custom base styles if you want to refer to any of the values defined in your theme:
+```css
+.content-area {
+  height: calc(100vh - theme(spacing.12));
+}
+```
+
+### Adding component classes
+
+Use the `components` layer for any more complicated classes you want to add to your project that you'd still like to be able to override with utility classes.
+
+Traditionally these would be classes like `card`, `btn`, `badge`, ...
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card {
+    background-color: theme('colors.white');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    box-shadow: theme('boxShadow.xl');
+  }
+  /* ... */
+}
+```
+
+The `components` layer is also a good place to put custom styles for any third-party components you’re using:
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .select2-dropdown {
+    @apply rounded-b-lg shadow-md;
+  }
+  .select2-search {
+    @apply border border-gray-300 rounded;
+  }
+  .select2-results__group {
+    @apply text-lg font-bold text-gray-900;
+  }
+  /* ... */
+}
+```
+
+
+### Adding custom utilities
+
+Add any of your own custom utility classes to Tailwind's `utilities` layer:
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+}
+```
+
+### Using modifiers with custom CSS
+
+Any custom styles you add to Tailwind with `@layer` will automatically support Tailwind's modifier syntax for handling things like hover states, responsive breakpoints, dark mode, and more.
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+}
+```
+
+```html
+<div class="lg:dark:content-auto">
+  <!-- ... -->
+</div>
+```
+
+
+### Using multiple CSS files
+
+If you are writing a lot of CSS and organizing it into multiple files, make sure those files are combined into a single stylesheet before processing them with Tailwind.
+
+Check out the [official documentation](https://tailwindcss.com/docs/adding-custom-styles#using-multiple-css-files).

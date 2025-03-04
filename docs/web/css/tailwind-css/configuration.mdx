@@ -1,0 +1,352 @@
+# Configuration
+
+## Configuration file
+
+By default, Tailwind will look for an optional `tailwind.config.js` file at the root of your project where you can define any customizations.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{html,js}'],
+  theme: {
+    colors: {
+      'blue': '#1fb6ff',
+      'purple': '#7e5bef',
+      'pink': '#ff49db',
+      'orange': '#ff7849',
+      'green': '#13ce66',
+      'yellow': '#ffc82c',
+      'gray-dark': '#273444',
+      'gray': '#8492a6',
+      'gray-light': '#d3dce6',
+    },
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
+    extend: {
+      spacing: {
+        '8xl': '96rem',
+        '9xl': '128rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      }
+    }
+  },
+}
+```
+
+Every section of the config file is optional, missing sections will fall back to Tailwind's [default configuration](https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js).
+
+TypeScript syntax for configuration file:
+```ts title="tailwind.config.ts"
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config
+```
+
+
+## Creating configuration file
+Generate a TypeScript config file:
+```sh
+npx tailwindcss init --ts
+```
+
+To use a different file name for configuration file, check out the [official doc](https://tailwindcss.com/docs/configuration#using-a-different-file-name).
+
+
+
+## Configuration options
+
+### Content
+
+The `content` section is where you configure the paths to all of your HTML templates, JS components, and any other files that contain Tailwind class names.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{html,js}',
+    './components/**/*.{html,js}',
+  ],
+  // ...
+}
+```
+
+Paths are configured as glob patterns by default. You can configure it to resolve paths relative to the config file.
+
+Paths are relative to your project root, not config file.
+
+Best practices:
+- Don’t use extremely broad patterns
+- Remember to include your HTML entry point if applicable.
+- If you have any JavaScript files that manipulate your HTML to add classes, make sure you include those as well
+- Never include CSS files in your content configuration
+
+
+### Theme
+
+The `theme` section is where you define your color palette, fonts, type scale, border sizes, breakpoints — anything related to the visual design of your site.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // ...
+  theme: {
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    colors: {
+      'blue': '#1fb6ff',
+      'purple': '#7e5bef',
+      'pink': '#ff49db',
+      'orange': '#ff7849',
+      'green': '#13ce66',
+      'yellow': '#ffc82c',
+      'gray-dark': '#273444',
+      'gray': '#8492a6',
+      'gray-light': '#d3dce6',
+    },
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
+    extend: {
+      spacing: {
+        '8xl': '96rem',
+        '9xl': '128rem',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      }
+    }
+  }
+}
+```
+
+The `screens` key allows you to customize the responsive breakpoints in your project.
+
+The `colors` key allows you to customize the global color palette for your project.
+
+The `spacing` key allows you to customize the global spacing and sizing scale for your project.
+
+The rest of the `theme` section is used to configure which values are available for each individual core plugin.
+
+You can customize or extend the default theme (using the `theme.extend` key).
+
+Theme's values can be referenced in other configuration properties.
+
+You can reference a value in the default theme by importing it from `tailwindcss/defaultTheme`.
+
+
+### Colors
+
+Tailwind includes a [default color palette](https://tailwindcss.com/docs/customizing-colors#default-color-palette) that you can use in your project.
+
+You can configure your own custom colors from scratch using the `theme.colors` key:
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'white': '#ffffff',
+      'purple': '#3f3cbb',
+      'midnight': '#121063',
+      'metal': '#565584',
+      'tahiti': '#3ab7bf',
+      'silver': '#ecebff',
+      'bubble-gum': '#ff77e9',
+      'bermuda': '#78dcca',
+    },
+  },
+}
+```
+
+```html
+<div class="bg-midnight text-tahiti">
+  <!-- ... -->
+</div>
+```
+
+When your palette includes multiple shades of the same color, you can group them together:
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      // example usage: `bg-tahiti-400`
+      'tahiti': {
+        DEFAULT: '#cffafe',
+        100: '#cffafe',
+        200: '#a5f3fc',
+        300: '#67e8f9',
+        400: '#22d3ee',
+        500: '#06b6d4',
+        600: '#0891b2',
+        700: '#0e7490',
+        800: '#155e75',
+        900: '#164e63',
+      },
+    },
+  },
+}
+```
+
+These tools can help you on creating your own custom color palette:
+- [UI Colors](https://uicolors.app).
+- [Palettte](https://palettte.app/).
+- [ColorBox](https://colorbox.io/).
+
+To use arbitrary colors, you can use Tailwind's arbitrary value notation. For example: `bg-[#1da1f2]`.
+
+With the default colors:
+- You can import and use it from `tailwindcss/colors` in your Tailwind config file.
+- You can add new color to the default palette in `theme.extend.colors` section.
+
+To use CSS variables, you need to define those variables in your css file, then refer them in your color configuration.
+
+
+### Safelisting classes
+
+You can make certain class names always be generated (even if they don't exist in your content files).
+
+You do that by configuring the `safelist` option.
+
+Regular expressions are supported.
+
+
+### Blocklisting classes
+
+You can prevent certain class names be generated by Tailwind with the `blocklist` option.
+
+Regular expressions are not supported.
+
+### Plugins
+
+The `plugins` section allows you to register plugins with Tailwind that can be used to generate extra utilities, components, base styles, or custom variants.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // ...
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-children'),
+  ],
+}
+```
+
+### Presets
+
+The `presets` section allows you to specify your own custom base configuration as your base, instead of using Tailwind's default base configuration.
+
+You may want package up a set of customizations that you'd like to reuse across projects.
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // ...
+  presets: [
+    require('@acmecorp/base-tailwind-config')
+  ],
+
+  // Project-specific customizations
+  theme: {
+    //...
+  },
+}
+```
+
+
+### Prefix
+
+The `prefix` option allows you to add a custom prefix to all of Tailwind's generated utility classes.
+
+For example, you could add a `tw-` prefix by setting the `prefix` option like so:
+
+```js title="tailwind.config.js"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  prefix: 'tw-',
+}
+```
+
+Prefix is added _after_ any variant modifiers:
+
+```html
+<div class="tw-text-lg md:tw-text-xl tw-bg-red-500 hover:tw-bg-blue-500">
+  <!-- -->
+</div>
+```
+
+Negative value: the dash modifier for negative values should be added before your prefix, so `-mt-8` would become `-tw-mt-8` if you've configured `tw-` as your prefix:
+
+```html
+<div class="-tw-mt-8">
+  <!-- -->
+</div>
+```
+
+Prefixes are only added to classes generated by Tailwind, not custom classes.
+
+
+### Important
+
+The important option lets you control whether or not Tailwind’s utilities should be marked with `!important`.
+
+#### Important modifier
+
+You can make any utility important by adding a `!` character to the beginning:
+
+```html
+<p class="font-bold !font-medium">
+  This will be medium even though bold comes later in the CSS.
+</p>
+```
+
+The `!` always goes at the beginning of the utility name, after any variants, but before any prefix:
+
+```html
+<div class="sm:hover:!tw-font-bold">
+```
+
+This can be useful in rare situations where you need to increase specificity because you're at war with some styles you don't control.
+
+
+## Referencing in JavaScript
+
+Reference configuration values in client-side JavaScript.
+
+```js
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from './tailwind.config.js'
+
+const fullConfig = resolveConfig(tailwindConfig)
+
+fullConfig.theme.width[4]
+// => '1rem'
+
+fullConfig.theme.screens.md
+// => '768px'
+
+fullConfig.theme.boxShadow['2xl']
+// => '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+```
+
+Note that this will transitively pull in a lot of our build-time dependencies, resulting in bigger client-side bundle size. To avoid this, we recommend using a tool like [babel-plugin-preval](https://github.com/kentcdodds/babel-plugin-preval) to generate a static version of your configuration at build-time.

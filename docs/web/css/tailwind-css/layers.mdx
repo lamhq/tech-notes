@@ -1,0 +1,43 @@
+# Layers
+
+## Overview
+
+Tailwind organizes the styles it generates into three different “layers”:
+- The `base` layer is for things like reset rules or default styles applied to plain HTML elements.
+- The `components` layer is for class-based styles that you want to be able to override with utilities.
+- The `utilities` layer is for small, single-purpose classes that should always take precedence over any other styles.
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+...
+```
+
+## Why does Tailwind group styles into "layers"?
+
+By grouping styles into layers, Tailwind ensures a sensible order of declarations, minimizing conflicts.
+
+The `@layer` directive helps you control declaration order by automatically relocating your styles to the corresponding `@tailwind` directive, and also enables features like modifiers and tree-shaking for your own custom CSS.
+
+
+## The `@layer` directive
+
+The `@layer` directive lets you add styles to Tailwind’s `base`, `components`, and `utilities` layers.
+
+```css title="main.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  /* ... */
+}
+```
