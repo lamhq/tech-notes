@@ -1,5 +1,3 @@
-import { FileTree } from 'nextra/components'
-
 # Poetry
 
 ## Version
@@ -76,13 +74,13 @@ name = "app"
 ```
 
 Your project structure will look like this:
-<FileTree>
-  <FileTree.Folder name="app" defaultOpen>
-    <FileTree.File name="main.py" />
-    <FileTree.File name="utils.py" />
-  </FileTree.Folder>
-  <FileTree.File name="pyproject.toml" />
-</FileTree>
+
+```
+app/
+├── main.py
+└── utils.py
+pyproject.toml
+```
 
 Files in project are imported under `app` package:
 ```py filename="main.py"

@@ -5,19 +5,19 @@ import { FileTree } from 'nextra/components'
 ## Basic
 
 ```
-.
-├── app
-│   ├── __init__.py
-│   ├── main.py
-│   ├── dependencies.py
-│   └── routers
-│   │   ├── __init__.py
-│   │   ├── items.py
-│   │   └── users.py
-│   └── internal
-│       ├── __init__.py
-│       └── admin.py
+app
+├── __init__.py
+├── main.py
+├── dependencies.py
+├── routers
+│   ├── __init__.py
+│   ├── items.py
+│   └── users.py
+└── internal
+    ├── __init__.py
+    └── admin.py
 ```
+
 
 ### `app/dependencies.py`
 
@@ -121,26 +121,22 @@ async def root():
 
 Here's how we apply [Multitier architecture](https://en.wikipedia.org/wiki/Multitier_architecture) to a FastAPI project:
 
-<FileTree>
-  <FileTree.Folder name="src" defaultOpen>
-    <FileTree.Folder name="routers" defaultOpen>
-      <FileTree.File name="__init__.py" />
-      <FileTree.File name="product.py" />
-    </FileTree.Folder>
-    <FileTree.Folder name="services">
-      <FileTree.File name="__init__.py" />
-      <FileTree.File name="product.py" />
-    </FileTree.Folder>
-    <FileTree.Folder name="repositories">
-      <FileTree.File name="__init__.py" />
-      <FileTree.File name="product.py" />
-    </FileTree.Folder>
-    <FileTree.Folder name="models">
-      <FileTree.File name="__init__.py" />
-      <FileTree.File name="product.py" />
-    </FileTree.Folder>
-  </FileTree.Folder>
-</FileTree>
+```
+src
+├── routers
+│   ├── __init__.py
+│   └── product.py
+├── services
+│   ├── __init__.py
+│   └── product.py
+├── repositories
+│   ├── __init__.py
+│   └── product.py
+└── models
+    ├── __init__.py
+    └── product.py
+```
+
 
 - `routers`: where we define your routes, parameters, responses, and dependencies
 - `services`: where we define your business rules, validations, calculations, and exceptions.
