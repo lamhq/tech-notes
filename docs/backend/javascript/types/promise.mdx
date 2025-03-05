@@ -2,6 +2,8 @@
 
 Require ES6.
 
+## Define
+
 ```js
 new Promise((resolve, reject) => {
   request.get(url, (error, response, body) => {
@@ -13,11 +15,37 @@ new Promise((resolve, reject) => {
   })
 }).then(() => { ... })
 .catch((err) => throw err)
+```
 
-// Parallelize tasks
-Promise.all([
-   promise1, promise2, promise3
-]).then(() => {
-   // all tasks are finished
+
+## Parallelize tasks
+
+Use `Promise.all` when you need all promises to resolve successfully and want to handle any rejections as errors:
+
+```js
+Promise.all([ promise1, promise2, promise3 ])
+.then(() => {
+  // all tasks are finished
 })
+.catch((error) => {
+  console.error(error);
+});
+```
+
+Use `Promise.allSettled` when you want to wait for all promises to settle, regardless of whether they are resolved or rejected, and you need to handle both outcomes:
+
+```js
+const promise1 = Promise.resolve(3);
+const promise2 = Promise.reject('error');
+const promise3 = new Promise((resolve) => setTimeout(resolve, 100, 'foo'));
+
+Promise.allSettled([promise1, promise2, promise3]).then((results) => {
+  results.forEach((result) => {
+    if (result.status === 'fulfilled') {
+      console.log(`Fulfilled: ${result.value}`);
+    } else {
+      console.log(`Rejected: ${result.reason}`);
+    }
+  });
+});
 ```

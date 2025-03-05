@@ -9,5 +9,6 @@
   "symbol",
   "null-undefined",
   "truthy",
-  "this"
+  "this",
+  "regex"
 ]

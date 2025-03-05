@@ -1,0 +1,34 @@
+# Regex
+
+## Matching 
+
+```js
+const regex = /bruce.wayne/s; // Allows . to match newline characters (\n).
+console.log(regex.test('bruce\\wayne')); // true
+```
+
+Get all matches in a string:
+
+```js
+const regex = /man+/g;
+const str = 'Superman Batman Flash';
+
+const matches = str.matchAll(regex);
+
+for (const match of matches) {
+  console.log(match[0]); // man man
+}
+```
+
+
+## Extracting
+
+Require ES10.
+
+```js
+const dateRegex = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/; // Improves regex readability with named groups.
+const match = dateRegex.exec('2025-02-17');
+
+console.log(match.groups); // { year: '2025', month: '02', day: '17' }
+console.log(match.groups.year); // 2025
+```

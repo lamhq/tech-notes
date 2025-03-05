@@ -11,6 +11,14 @@ const newUser = {
 }
 ```
 
+From key-value pairs (ES10):
+```js
+const superHeroArray = [['name', 'Bruce'], ['age', 32]];
+const superHeroObject = Object.fromEntries(superHeroArray);
+
+console.log(superHeroObject); // { name: 'Bruce', age: 32 }
+```
+
 
 ## Extracting object properties
 
@@ -39,4 +47,19 @@ Use spread operator (ES6):
 const user = { name: "Albert", age: 25 };
 const updatedUser = { ...user, city: "Bangkok City" };
 console.log(updatedUser); // Output: { name: "Albert", age: 25, city: "Bangkok City" }
+```
+
+
+## Get field's values
+
+```js
+const superhero = { id: 9089, name: 'Batman', age: 32 };
+console.log(Object.values(superhero)); // [9089, 'Batman', 32]
+```
+
+## Get field & values
+
+```js
+const superhero = { id: 9089, name: 'Batman', age: 32 };
+console.log(Object.entries(superhero)); // [ [ 'id', 9089 ], [ 'name', 'Batman' ], [ 'age', 32 ] ]
 ```

@@ -101,3 +101,20 @@ removeWithoutCopy = function(arr, item) {
   }
 }
 ```
+
+
+## Falttening
+
+```js
+const nestedNumbers = [1, [2, [3, [4]]]];
+
+console.log(nestedNumbers.flat());       // 1 level flattening [1, 2, [3, [4]]]
+console.log(nestedNumbers.flat(2));      // 2 level flattening [1, 2, 3, [4]]
+console.log(nestedNumbers.flat(Infinity)); // infinite flattening [1, 2, 3, 4]
+```
+
+Combines `map()` and `flat()` in one method:
+
+```js
+console.log(nestedNumbers.flat(Infinity).flatMap(x => [x, x * 2]));  // [1, 2, 2, 4, 3, 6, 4, 8]
+```

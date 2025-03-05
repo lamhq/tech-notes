@@ -1,7 +1,7 @@
 [
   "variables",
   "operators",
-  "es7",
   "loop",
-  "function"
+  "function",
+  "async"
 ]
