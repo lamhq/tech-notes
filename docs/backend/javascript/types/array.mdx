@@ -23,9 +23,33 @@ console.log(moreNumbers); // Output: [1, 2, 3, 4, 5, 6]
 ```
 
 
-## Find item's location
+## Check item exists
 
-Determining the location of an item in an array:
+```js
+const superheroes = ["Batman", "Superman", "Flash"];
+
+if (superheroes.includes("Batman")) {
+    console.log("Batman is bruce wayne!");
+} // will print - Batman is bruce wayne!
+```
+
+
+## Get item by index
+
+Require ES13.
+
+```js
+const superheroes = ["Batman", "Superman", "Spiderman", "Ironman", "Captain America"];
+
+console.log(superheroes.at(1)); // Superman (from the start)
+console.log(superheroes.at(-1)); // Captain America (from the end)
+console.log(superheroes.at(-2)); // Ironman (from the end)
+```
+
+
+## Find item's index
+
+Determining the index of an item in an array:
 
 ```ts
 arr.indexOf(item)
@@ -61,9 +85,8 @@ arr.reduce((prev, cur) => prev+cur, 0);
 
 ## Changing array
 
-`Array.splice()` is a method in JavaScript that can add, remove, or replace elements in an array.
-
-It changes the original array and returns the removed elements (if any).
+- `.splice()`: a method that can add, remove, or replace elements in an array. It changes the original array and returns the removed elements (if any).
+- `.toSpliced()`: Returns a modified copy of an array with elements removed/added, without mutating the original array
 
 ```js
 array.splice(start, deleteCount, item1, item2, ...)
@@ -74,6 +97,7 @@ array.splice(start, deleteCount, item1, item2, ...)
 - `item1`, `item2`, ...: The elements to add to the array. If not provided, `splice()` will only remove elements.
 
 Example:
+
 ```js
 let fruits = ['apple', 'banana', 'cherry', 'date'];
 
@@ -84,6 +108,36 @@ console.log(fruits);
 // Output: ['apple', 'banana', 'kiwi', 'mango', 'date']
 ```
 
+
+## Sorting array
+
+- `toSorted()`: Returns a sorted copy of an array, without mutating the original array
+- `toReversed()`: Returns a reversed copy of an array, without mutating the original array
+
+
+## Grouping
+
+Group the array of objects based on a given callback function:
+
+```js
+const superheroes = [
+  { name: "Batman", id: 9801 },
+  { name: "Superman", id: 9804 },
+  { name: "Flash", id: 9802 },
+  { name: "Aquaman", id: 9803 },
+];
+
+const groupedById = Object.groupBy(superheroes, (superhero) => superhero.id);
+console.log(groupedById);
+/* 
+{
+'9801': [ { name: 'Batman', id: 9801 } ],
+'9802': [ { name: 'Flash', id: 9802 } ],
+'9803': [ { name: 'Aquaman', id: 9803 } ],
+'9804': [ { name: 'Superman', id: 9804 } ]
+}
+*/
+```
 
 ## Removing values
 
@@ -103,7 +157,7 @@ removeWithoutCopy = function(arr, item) {
 ```
 
 
-## Falttening
+## Flattening
 
 ```js
 const nestedNumbers = [1, [2, [3, [4]]]];

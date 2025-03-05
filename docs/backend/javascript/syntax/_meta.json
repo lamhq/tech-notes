@@ -3,5 +3,7 @@
   "operators",
   "loop",
   "function",
-  "async"
+  "closure",
+  "async",
+  "event-loop"
 ]

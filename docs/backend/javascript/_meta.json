@@ -11,9 +11,6 @@
     "collapsed": true,
     "label": "Syntax"
   },
-  "closure",
-  "event-loop",
-  "fetch",
   {
     "name": "typescript",
     "type": "dir",
@@ -57,5 +54,6 @@
     "type": "dir",
     "collapsed": true,
     "label": "Codebase Setup"
-  }
+  },
+  "fetch"
 ]

@@ -3,12 +3,12 @@
   "string",
   "array",
   "object",
-  "promise",
-  "map",
-  "set",
-  "symbol",
   "null-undefined",
   "truthy",
   "this",
-  "regex"
+  "promise",
+  "regex",
+  "map",
+  "set",
+  "symbol"
 ]

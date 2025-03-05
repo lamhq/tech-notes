@@ -2,7 +2,7 @@
 
 Require ES6.
 
-## Define
+## Defining promises
 
 ```js
 new Promise((resolve, reject) => {
@@ -13,26 +13,41 @@ new Promise((resolve, reject) => {
       resolve({});
     }
   })
-}).then(() => { ... })
-.catch((err) => throw err)
+}).then(
+    () => { /* resolve handling */  }, 
+    () => { /* reject handling */ }
+  ).catch((err) => throw err)
+  .finally(() => console.log('Request completed'));
+```
+
+Create an externally controlled promise:
+
+```js
+const { promise, resolve, reject } = Promise.withResolvers();
+
+setTimeout(() => {
+  resolve('I am batman');
+}, 1000);
+
+promise.then(console.log); // Output after 1 second: I am batman
 ```
 
 
 ## Parallelize tasks
 
-Use `Promise.all` when you need all promises to resolve successfully and want to handle any rejections as errors:
+`Promise.all`: wait all promises to resolve successfully, handle any rejections as errors:
 
 ```js
 Promise.all([ promise1, promise2, promise3 ])
-.then(() => {
-  // all tasks are finished
-})
-.catch((error) => {
-  console.error(error);
-});
+  .then(() => {
+    // all tasks are finished
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
-Use `Promise.allSettled` when you want to wait for all promises to settle, regardless of whether they are resolved or rejected, and you need to handle both outcomes:
+`Promise.allSettled`: wait for all promises to settle, regardless of whether they are resolved or rejected, handle both outcomes:
 
 ```js
 const promise1 = Promise.resolve(3);
@@ -48,4 +63,16 @@ Promise.allSettled([promise1, promise2, promise3]).then((results) => {
     }
   });
 });
+```
+
+`Promise.any`: returns the first promise that resolves
+
+```js
+const p1 = Promise.reject('Superhero not found');
+const p2 = Promise.reject('Human not found');
+const p3 = Promise.resolve('Martian found');
+
+Promise.any([p1, p2, p3])
+  .then(result => console.log(result)) // 'Martian found'
+  .catch(err => console.log(err));
 ```
