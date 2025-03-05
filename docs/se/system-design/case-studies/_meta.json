@@ -1,0 +1,17 @@
+[
+  {
+    "name": "web-app",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "taxi-app",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "chat",
+    "type": "dir",
+    "collapsed": true
+  }
+]

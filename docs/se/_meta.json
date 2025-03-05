@@ -1,3 +1,11 @@
 [
-  { "name": "index", "label": "Software Engineering" }
+  {
+    "name": "index",
+    "label": "Software Engineering"
+  },
+  {
+    "name": "system-design",
+    "type": "dir",
+    "collapsed": true
+  }
 ]

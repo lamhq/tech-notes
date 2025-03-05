@@ -1,6 +1,0 @@
-{
-  "tcp": "TCP",
-  "udp": "UDP",
-  "websocket": "WebSocket",
-  "grpc": "gRPC"
-}

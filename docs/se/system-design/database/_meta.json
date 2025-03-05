@@ -1,0 +1,38 @@
+[
+  {
+    "name": "sql",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "no-sql",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "indexes",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "sharding",
+    "type": "dir",
+    "collapsed": true
+  },
+  "partitioning",
+  {
+    "name": "replication",
+    "type": "dir",
+    "collapsed": true
+  },
+  {
+    "name": "cap-theorem",
+    "type": "dir",
+    "collapsed": true
+  },
+  "base-model",
+  "eventual-consistency",
+  "concurrency",
+  "transaction",
+  "choosing-db"
+]

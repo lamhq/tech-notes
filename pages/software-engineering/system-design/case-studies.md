@@ -1,1 +1,0 @@
-# System Designs Case Studies
