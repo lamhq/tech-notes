@@ -1,9 +1,5 @@
 [
-  {
-    "name": "web-app",
-    "type": "dir",
-    "collapsed": true
-  },
+  "web-app",
   {
     "name": "taxi-app",
     "type": "dir",
