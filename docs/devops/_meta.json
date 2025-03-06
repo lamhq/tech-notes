@@ -2,7 +2,7 @@
   { "name": "index", "label": "DevOps" },
   {
     "name": "k8s",
-    "type": "dir",
+    "type": "file",
     "collapsed": true
   }
 ]
