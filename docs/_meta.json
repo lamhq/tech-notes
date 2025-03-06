@@ -8,19 +8,15 @@
     "link": "/backend"
   },
   {
-    "text": "Web",
-    "link": "/web"
+    "text": "DevOps",
+    "link": "/devops"
   },
   {
     "text": "Others",
     "items": [
       {
-        "text": "DevOps",
-        "link": "/devops"
-      },
-      {
-        "text": "Data Engineering",
-        "link": "/data"
+        "text": "Web",
+        "link": "/web"
       },
       {
         "text": "Tools",
@@ -29,6 +25,10 @@
       {
         "text": "Soft Skills",
         "link": "/soft-skills"
+      },
+      {
+        "text": "Data Engineering",
+        "link": "/data"
       }
     ]
   }

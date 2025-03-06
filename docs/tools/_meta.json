@@ -1,3 +1,11 @@
 [
-  { "name": "index", "label": "Tools" }
+  {
+    "name": "index",
+    "label": "Tools"
+  },
+  {
+    "name": "udemy",
+    "type": "dir",
+    "collapsed": true
+  }
 ]
