@@ -1,0 +1,62 @@
+# Kubernetes
+
+## Overview
+
+Kubernetes is an open source platform for managing containerized workloads and services
+
+
+## Why Kubernetes?
+
+Kubernetes provides you with a framework to manage containers in a production environment.
+
+It allows you to run distributed systems, handling scaling, failover, deployment patterns, ... 
+
+Key Features:
+
+- **Service Discovery and Load Balancing:** A container can be exposed using DNS or IP address.Kubernetes balances and distributes network traffic between containers to maintain stable deployments during high traffic.
+- **Storage Orchestration:** Automatically mounts storage systems of your choice.
+- **Automated Rollouts and Rollbacks:** automatically change the container's state to your desired state.
+- **Automatic Bin Packing:** Kubernetes can fit containers onto your available nodes to make the best use of your resources.
+- **Self-Healing:** Kubernetes restarts/replaces/kills unhealthy containers
+- **Secret and Configuration Management:** you can store and manage sensitive information securely.
+- **Batch Execution:**  Kubernetes can manage batch and CI workloads, replacing failing containers if needed.
+- **Horizontal Scaling:** Scales applications up or down with manually or automatically (based on CPU usage).
+- **IPv4/IPv6 Dual-Stack:** Allocates IPv4 and IPv6 addresses to Pods and Services.
+- **Designed for Extensibility:** Adds features without changing source code. 
+
+
+## Core Components
+
+![](https://www.cncf.io/wp-content/uploads/2020/09/Kubernetes-architecture-diagram-1-1-900x614.png)
+
+
+### Control Plane
+
+The central management entity that maintains the desired state of the cluster and orchestrates the containerized applications
+- **Maintaining Cluster State**: ensures that the cluster's state matches the desired state.
+- **Managing Workloads**: decides which nodes will run the workloads and ensures they are running as expected.
+- **Network Policies**: manages network policies to ensure secure and efficient communication between different components of the cluster.
+- **Scaling and Resilience**: enables automatic scaling of applications based on demand and maintains the desired system state even in the face of failures.
+
+The control plane consists of several key components:
+- **kube-apiserver**: the core component server that exposes the Kubernetes HTTP API.
+- **etcd**: a consistent and highly-available key-value store that holds the configuration data of the cluster.
+- **kube-scheduler**: determines which node a new or modified Pod should run on.
+- **kube-controller-manager**: runs a set of controllers to ensure the desired state matches the current state.
+- **Cloud Controller Manager**: integrates with the underlying cloud provider.
+
+
+### Node Components
+
+A Node is a worker machine in the cluster
+
+- **Running Pods**: Nodes are responsible for running Pods, which are the smallest deployable units in Kubernetes. Each Pod contains one or more containers.
+- **Runs essential services** that ensure proper functionality and communication with the control plane
+- **Manage resources**: CPU, memory, and storage, and allocate them to Pods
+- **Health Monitoring**: monitor the health of the services and containers they run
+- **Logging and Metrics Collection**: collecting logs and metrics from the running containers
+
+Node services:
+- **kubelet**: ensures that Pods are running, communicate with the Kubernetes API server.
+- **kube-proxy**: manage the network rules that allow communication to your Pods from network sessions inside or outside of your cluster.
+- **Container Runtime**: software responsible for running containers (Docker, containerd, and CRI-O, ...)
