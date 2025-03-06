@@ -4,10 +4,6 @@
 
 The first statement of the function body can optionally be a string literal; this string literal is the function's documentation string, or *docstring*.
 
-There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code.
-
-It's good practice to include docstrings in code that you write.
-
 ```py
 # Creating a Function
 def my_function():
@@ -21,6 +17,8 @@ my_function()
 def my_function(x):
     return 5 * x
 ```
+
+There are tools which use docstrings to automatically produce online or printed documentation, or to let the user interactively browse through code.
 
 
 ## Function Arguments
@@ -83,8 +81,6 @@ my_function(fname = "Tobias", lname = "Refsnes")
 
 
 ### Passing Arguments
-
-When calling function, if the parameters are already in a list or tuple but need to be unpacked for a function call requiring separate positional arguments, write the function call with the `*` operator to unpack the arguments out of a list or tuple.
 
 Passing a list to function as positional arguments (unpacking list):
 ```py
