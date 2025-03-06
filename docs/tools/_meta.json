@@ -3,5 +3,39 @@
     "name": "index",
     "label": "Tools"
   },
-  "udemy"
+  {
+    "name": "git",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Git"
+  },
+  "yaml",
+  {
+    "name": "vscode",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Visual Studio Code"
+  },
+  {
+    "name": "macos",
+    "type": "dir",
+    "collapsed": true,
+    "label": "macOS"
+  },
+  {
+    "name": "windows",
+    "type": "dir",
+    "collapsed": true,
+    "label": "Windows"
+  },
+  "facebook",
+  "google",
+  "youtube",
+  "udemy",
+  {
+    "name": "pdf",
+    "type": "dir",
+    "collapsed": true,
+    "label": "PDF Files"
+  }
 ]

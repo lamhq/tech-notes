@@ -1,0 +1,14 @@
+[
+  "markdown",
+  "python",
+  "jupyter-nb",
+  "fastapi",
+  "typescript",
+  "debug",
+  "genie",
+  {
+    "name": "dev-containers",
+    "type": "dir",
+    "collapsed": true
+  }
+]

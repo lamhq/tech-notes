@@ -7,7 +7,7 @@ Debug a single page web application in VS Code.
 In this guide, we'll configure VS Code to debug a React application created with [Rsbuild](https://rsbuild.dev/).
 
 Add a NPM script to start the web server to `package.json`:
-```json filename="package.json"
+```json title="package.json"
 {
   "scripts": {
     "dev": "rsbuild dev --port 3030"
@@ -17,7 +17,7 @@ Add a NPM script to start the web server to `package.json`:
 - The script will run the rsbuild dev server at port 3030
 
 Add a task configuration that runs the script: 
-```json filename=".vscode/tasks.json"
+```json title=".vscode/tasks.json"
 {
   "version": "2.0.0",
   "tasks": [
@@ -47,7 +47,7 @@ Add a task configuration that runs the script:
 
 
 Add a launch configuration to start and debug the web app with VS Code:
-```json filename=".vscode/launch.json"
+```json title=".vscode/launch.json"
 {
   "version": "0.2.0",
   "configurations": [
@@ -73,7 +73,7 @@ Start debugging with VS Code.
 
 Update launch configuration with `"justMyCode": false`:
 
-```json filename="vscode/launch.json"
+```json title="vscode/launch.json"
 {
   "configurations": [
     {

@@ -1,0 +1,39 @@
+# Cloning
+
+## Clone a repo with SSH key
+
+```sh
+GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git clone <REPO_URL>
+```
+
+
+## Set default SSH key when clonig
+
+```sh
+git config core.sshCommand 'ssh -i ~/.ssh/id_rsa'
+```
+
+
+## Clone the latest commit 
+
+```sh
+git clone --depth 1 -b <branch> <git_url> <directory>
+```
+
+
+## Download a directory from GitHub
+
+Go to [download-directory.github.io](https://download-directory.github.io/), paste the URL to download.
+
+
+## Export files of the latest commit
+
+ZIP format:
+```sh
+git archive --format=zip --output=code.zip HEAD
+```
+
+TAR format:
+```sh
+git archive --format=tar --output=code.tar.gz HEAD
+```

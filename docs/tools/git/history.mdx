@@ -1,4 +1,4 @@
-# Working with commit history
+# History
 
 ## List commits
 
@@ -16,19 +16,6 @@ git log --author="Alana"
 
 # Returns any commit with a commit message which matches the string you entered
 git log --grep="HOT-"
-```
-
-
-## Export all files in a commit
-
-TAR format:
-```sh
-git archive --format=tar --output=commit.tar.gz HEAD
-```
-
-ZIP format:
-```sh
-git archive --format=zip --output=commit.zip HEAD
 ```
 
 
