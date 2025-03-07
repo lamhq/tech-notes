@@ -1,8 +1,17 @@
 [
-  { "name": "index", "label": "DevOps" },
+  {
+    "name": "index",
+    "label": "DevOps"
+  },
+  {
+    "name": "docker",
+    "type": "dir",
+    "collapsed": true
+  },
+  "podman",
   {
     "name": "k8s",
-    "type": "file",
+    "type": "dir",
     "collapsed": true
   }
 ]

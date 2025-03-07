@@ -1,0 +1,60 @@
+# kubectl
+
+## Node
+
+List all the nodes in cluster:
+```sh
+kubectl get nodes
+```
+
+
+## Deploy
+
+Update cluster based on configuration defined in `pod.yml`:
+```sh
+kubectl apply -f pod.yml
+```
+
+Here's an example configuration file:
+
+```yml title="pod.yml"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+      hostPort: 8080
+```
+
+
+## Pod
+
+List all Pods:
+```sh
+kubectl get pods
+```
+
+Describle Pod:
+```sh
+kubectl describe pod nginx-pod
+```
+
+
+## Context
+
+List all the contexts defined in your kubeconfig file:
+```sh
+kubectl config get-contexts
+```
+
+Switch the current Kubernetes context:
+```sh
+kubectl config use-context my-context
+```

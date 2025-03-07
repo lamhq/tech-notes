@@ -1,0 +1,95 @@
+# Getting Started
+
+## Installation
+
+minikube is local Kubernetes, focusing on making it easy to learn and develop for Kubernetes.
+
+### Install minikube
+
+Install minikube on macOS (ARM64) using Homebrew:
+
+```sh
+brew install minikube
+```
+
+### Install kubectl 
+
+`kubectl` is the command-line tool used to interact with Kubernetes clusters.
+
+minikube already has a pre-installed version of `kubectl` that you can use like this:
+
+```sh
+minikube kubectl -- get po -A
+```
+
+You can make a command alias by adding this to your shell config (`~/.zshrc`):
+```sh
+alias kubectl="minikube kubectl --"
+```
+
+
+## Start cluster
+
+Start cluster with Podman (rootless mode):
+
+```sh
+minikube start --driver=podman --container-runtime=containerd
+```
+- `--container-runtime=containerd` is recommended for rootless Podman
+
+To make podman the default driver:
+```sh
+minikube config set driver podman
+```
+
+Configure minikube to use rootless mode:
+```sh
+minikube config set rootless true
+```
+
+
+## Deploy a sample application
+
+```sh
+kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+```
+
+Wait a moment, your deployment will soon show up when you run:
+```sh
+kubectl get services hello-minikube
+```
+
+Launch a web browser and opens the URL for the service:
+```sh
+minikube service hello-minikube
+```
+
+
+## Cleanup
+
+Halt the cluster:
+```sh
+minikube stop
+```
+
+Delete all of the minikube clusters:
+```sh
+minikube delete --all
+```
+
+
+Pause Kubernetes without impacting deployed applications:
+```sh
+minikube pause
+```
+
+Resume:
+```sh
+minikube unpause
+```
+
+
+## References
+
+https://minikube.sigs.k8s.io/docs/start/

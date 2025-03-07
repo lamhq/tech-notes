@@ -1,0 +1,26 @@
+# Concepts
+
+## Workloads
+
+A workload is an application running on Kubernetes. It is run inside a set of pods.
+
+You can use workload resources to manage a set of pods on your behalf.
+
+Kubernetes provides several built-in workload resources:
+- **Deployment** and **ReplicaSet**: manages stateless applications and ensures the desired number of pods are running.
+- **StatefulSet** lets you run one or more related Pods that do track state somehow
+- **DaemonSet** ensures that all (or some) Nodes run a copy of a Pod
+- **Job** and **CronJob** provide different ways to define tasks that run to completion and then stop.
+
+There're also third-party workload resources that provide additional behaviors.
+
+
+## Pods
+
+Pods are the smallest deployable units of computing that you can create and manage.
+
+A Pod is a group of one or more containers which are relatively tightly coupled, with shared storage and network resources, and a specification for how to run the containers.
+
+The name of a Pod should follow the more restrictive rules for a [DNS label](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names).
+
+Usually you use workload resources such as **Deployment** or **Job** to create Pods. If your Pods need to track state, consider the **StatefulSet** resource.

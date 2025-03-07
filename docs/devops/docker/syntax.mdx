@@ -31,30 +31,7 @@ CMD ["python", "app.py"]
 ```
 
 
-## Multi-Stage build
-
-Multi-stage builds allow you to use multiple `FROM` statements in your Dockerfile. Each `FROM` instruction starts a new stage of the build process, and you can selectively copy artifacts from one stage to another. 
-
-This helps in keeping the final image lean by excluding unnecessary build dependencies.
-
-Here's an example of a Dockerfile for a Go application:
-```dockerfile
-# First stage: Build the application
-FROM golang:1.23 AS builder
-WORKDIR /src
-COPY . .
-RUN go build -o /app/hello
-
-# Second stage: Create the final image
-FROM scratch
-COPY --from=builder /app/hello /app/hello
-CMD ["/app/hello"]
-```
-- The first stage (`builder`) uses the `golang` image to compile a Go application.
-- The second stage (`scratch`) creates a minimal final image that only contains the compiled binary.
-
-
-## References
+## Syntax References
 
 ### FROM
 - Specifies the base image to use.
@@ -83,3 +60,26 @@ CMD ["/app/hello"]
 ### ENTRYPOINT
 - Sets the executable file to run when the container starts.
 - Example: `ENTRYPOINT ["python"]`
+
+
+## Multi-Stage build
+
+Multi-stage builds allow you to use multiple `FROM` statements in your Dockerfile. Each `FROM` instruction starts a new stage of the build process, and you can selectively copy artifacts from one stage to another. 
+
+This helps in keeping the final image lean by excluding unnecessary build dependencies.
+
+Here's an example of a Dockerfile for a Go application:
+```dockerfile
+# First stage: Build the application
+FROM golang:1.23 AS builder
+WORKDIR /src
+COPY . .
+RUN go build -o /app/hello
+
+# Second stage: Create the final image
+FROM scratch
+COPY --from=builder /app/hello /app/hello
+CMD ["/app/hello"]
+```
+- The first stage (`builder`) uses the `golang` image to compile a Go application.
+- The second stage (`scratch`) creates a minimal final image that only contains the compiled binary.

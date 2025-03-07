@@ -1,0 +1,54 @@
+# Podman
+
+## Why Podman?
+
+1. Podman is completely free and open source
+2. Improve security because it doesn't require root privileges for running containers (Rootless Mode)
+3. Lightweight: Podman doesn't rely on a central daemon, uses fewer resources
+4. Compatible with Docker CLI
+5. Directly generates YAML for Kubernetes deployment.
+
+
+## Installation (macOS)
+
+1. For a graphical interface, you can install [Podman Desktop](https://podman.io/docs/installation)
+2. For the CLI, it is **recommended** to download the [installer](https://podman.io/docs/installation#macos)
+
+After installing, init the Podman machine:
+```sh
+podman machine init
+```
+
+Then start it:
+```sh
+podman machine start
+```
+
+To stop it:
+```sh
+podman machine stop
+```
+
+
+## Rootless mode
+
+Rootless mode allows regular users to deploy containers without elevated privileges (without becoming **root** or using `sudo`).
+
+Improved security: rootless containers cannot access and manipulate resources that require **root** privileges.
+
+When not to use rootless containers:
+
+- You need the container to have write access to the host's file system
+- You need to bind the container to a port lower than 1024, without reconfiguring `sysctl`
+
+To enable rootless mode:
+
+```sh
+podman machine set --rootful=false
+```
+
+To disable rootless mode:
+
+```sh
+podman machine set --rootful
+```
