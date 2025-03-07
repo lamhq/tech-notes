@@ -8,6 +8,7 @@ docker system prune
 ```
 
 ## Remove image
+
 Remove a single image:
 ```sh
 docker rmi -f <image_id>
@@ -28,7 +29,7 @@ docker rmi $(docker images -a -q)
 
 Remove a container and its volume:
 ```sh
-docker container -v rm <container_name or ID>
+docker container rm <container_name or ID>
 ```
 
 Stop and remove all containers:
